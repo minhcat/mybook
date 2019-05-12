@@ -1,0 +1,472 @@
+.right {
+  float: right; }
+
+.left {
+  float: left; }
+
+.text-left {
+  text-align: left; }
+
+.text-right {
+  text-align: right; }
+
+.mr5 {
+  margin-right: 5px; }
+
+p {
+  padding: 0;
+  margin: 0; }
+
+.mt-50 {
+  margin-top: 50px; }
+
+.pt-5 {
+  padding-top: 5px; }
+
+.px-0 {
+  padding-right: 0;
+  padding-left: 0; }
+
+.py-5 {
+  padding-top: 5px;
+  padding-bottom: 5px; }
+
+.py-0 {
+  padding-left: 0;
+  padding-right: 0; }
+
+.bg-red {
+  background-color: #e32220; }
+  .bg-red:hover {
+    background-color: #f32220; }
+
+.bg-green {
+  background-color: #22aa2f; }
+  .bg-green:hover {
+    background-color: #22ca2f; }
+
+.bg-blue {
+  background-color: #337ab7; }
+  .bg-blue:hover {
+    background-color: #337ad7; }
+
+.white {
+  color: #fff; }
+  .white:hover {
+    color: #fff; }
+
+a {
+  cursor: pointer; }
+
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  background-color: unset;
+  border-color: #337ab7; }
+
+section {
+  background-color: #dde;
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.slide {
+  margin-bottom: 10px; }
+  .slide .slick-dots {
+    bottom: 5px; }
+    .slide .slick-dots li button:before {
+      font-size: 10px; }
+  .slide .slick-prev {
+    left: 15px;
+    z-index: 10; }
+  .slide .slick-next {
+    right: 25px;
+    z-index: 10; }
+  .slide .slick-prev:before, .slide .slick-next:before {
+    font-size: 30px; }
+
+.listbook .content {
+  background-color: #fff;
+  margin-right: -15px;
+  padding: 15px;
+  padding-top: 1px; }
+  .listbook .content .topic {
+    margin-top: 15px; }
+    .listbook .content .topic.update .topic-content .book .book-hover .chap {
+      height: 34px;
+      overflow: hidden; }
+    .listbook .content .topic.update .topic-content .book .new {
+      background-color: rgba(195, 0, 0, 0.6);
+      width: 60px;
+      height: 60px;
+      border-radius: 30px;
+      text-align: center;
+      padding: 18px 0;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff; }
+    .listbook .content .topic.rate .topic-content .book .book-content .book-info .group, .listbook .content .topic.rate .topic-content .book .book-content .book-hover .group {
+      padding: 5px 0;
+      font-size: 12px; }
+      .listbook .content .topic.rate .topic-content .book .book-content .book-info .group .star, .listbook .content .topic.rate .topic-content .book .book-content .book-hover .group .star {
+        padding: 0;
+        text-align: left; }
+      .listbook .content .topic.rate .topic-content .book .book-content .book-info .group .rate, .listbook .content .topic.rate .topic-content .book .book-content .book-hover .group .rate {
+        padding: 0;
+        text-align: right; }
+    .listbook .content .topic.rate .topic-content .book .book-content .book-hover .group {
+      padding: 5px 10px; }
+    .listbook .content .topic .topic-header {
+      padding: 10px;
+      background-color: #009;
+      color: white;
+      font-size: 16px;
+      position: relative;
+      margin: 0;
+      float: left; }
+      .listbook .content .topic .topic-header:after {
+        border: 21px solid transparent;
+        border-left-color: #009;
+        border-bottom-color: #009;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        content: ""; }
+    .listbook .content .topic .topic-content {
+      margin-top: 15px;
+      padding-left: 15px;
+      padding-right: 10px; }
+      .listbook .content .topic .topic-content .book .book-content {
+        height: 200px;
+        margin-top: 5px;
+        margin-left: -15px;
+        margin-right: -10px;
+        position: relative;
+        overflow: hidden; }
+        .listbook .content .topic .topic-content .book .book-content:hover .book-hover {
+          visibility: visible;
+          top: 0; }
+        .listbook .content .topic .topic-content .book .book-content:hover .book-info {
+          visibility: hidden;
+          opacity: 0; }
+        .listbook .content .topic .topic-content .book .book-content:hover .new {
+          visibility: hidden;
+          opacity: 0; }
+        .listbook .content .topic .topic-content .book .book-content img {
+          width: 100%;
+          height: 200px; }
+        .listbook .content .topic .topic-content .book .book-content .rank {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          width: 40px;
+          height: 40px;
+          text-align: center;
+          border-radius: 20px;
+          z-index: 10;
+          padding: 8px 0;
+          color: #fff;
+          font-size: 16px;
+          font-weight: 600; }
+          .listbook .content .topic .topic-content .book .book-content .rank.bg-red {
+            background-color: #d00; }
+          .listbook .content .topic .topic-content .book .book-content .rank.bg-blue {
+            background-color: #00d; }
+          .listbook .content .topic .topic-content .book .book-content .rank.bg-green {
+            background-color: #0a0; }
+          .listbook .content .topic .topic-content .book .book-content .rank.bg-orange {
+            background-color: #d80; }
+          .listbook .content .topic .topic-content .book .book-content .rank.bg-gray {
+            background-color: #444; }
+        .listbook .content .topic .topic-content .book .book-content .book-info {
+          position: absolute;
+          bottom: 0;
+          color: #fff;
+          padding: 0 10px;
+          width: 204.38px;
+          opacity: 1;
+          transition: all 0.2s ease-out;
+          background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)); }
+          .listbook .content .topic .topic-content .book .book-content .book-info .name {
+            font-size: 15px; }
+          .listbook .content .topic .topic-content .book .book-content .book-info .group {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            text-align: center; }
+          .listbook .content .topic .topic-content .book .book-content .book-info .like, .listbook .content .topic .topic-content .book .book-content .book-info .comment, .listbook .content .topic .topic-content .book .book-content .book-info .view {
+            padding: 5px 0; }
+          .listbook .content .topic .topic-content .book .book-content .book-info .chap {
+            font-size: 12px;
+            padding: 0;
+            height: 25px;
+            line-height: 2;
+            overflow: hidden; }
+        .listbook .content .topic .topic-content .book .book-content .book-hover {
+          position: absolute;
+          top: -200px;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          color: white;
+          overflow: hidden;
+          visibility: hidden;
+          transition: all 0.4s ease-out; }
+          .listbook .content .topic .topic-content .book .book-content .book-hover.bg-red {
+            background-color: rgba(195, 25, 0, 0.75); }
+          .listbook .content .topic .topic-content .book .book-content .book-hover.bg-blue {
+            background-color: rgba(0, 85, 195, 0.75); }
+          .listbook .content .topic .topic-content .book .book-content .book-hover.bg-orange {
+            background-color: rgba(225, 135, 0, 0.75); }
+          .listbook .content .topic .topic-content .book .book-content .book-hover.bg-green {
+            background-color: rgba(25, 175, 0, 0.75); }
+          .listbook .content .topic .topic-content .book .book-content .book-hover.bg-turquoise {
+            background-color: rgba(0, 162, 116, 0.75); }
+          .listbook .content .topic .topic-content .book .book-content .book-hover.bg-gray {
+            background-color: rgba(80, 80, 80, 0.75); }
+          .listbook .content .topic .topic-content .book .book-content .book-hover .name {
+            padding-top: 20px;
+            height: 60px;
+            font-size: 16px; }
+          .listbook .content .topic .topic-content .book .book-content .book-hover .type, .listbook .content .topic .topic-content .book .book-content .book-hover .chap {
+            font-size: 12px; }
+          .listbook .content .topic .topic-content .book .book-content .book-hover .play {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 0;
+            border-radius: 0;
+            background-color: #df0c1b;
+            padding: 5px 10px;
+            color: #fff; }
+            .listbook .content .topic .topic-content .book .book-content .book-hover .play:hover {
+              background-color: #ef0c1b; }
+          .listbook .content .topic .topic-content .book .book-content .book-hover .group {
+            margin-top: 6px;
+            margin-right: 0;
+            margin-left: 0;
+            padding: 0 10px; }
+            .listbook .content .topic .topic-content .book .book-content .book-hover .group .like, .listbook .content .topic .topic-content .book .book-content .book-hover .group .comment, .listbook .content .topic .topic-content .book .book-content .book-hover .group .view {
+              padding: 0 5px; }
+    .listbook .content .topic .topic-more {
+      text-align: center; }
+      .listbook .content .topic .topic-more span {
+        font-size: 16px;
+        color: #000; }
+
+.popup {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 252px;
+  background-color: #fff;
+  z-index: 10;
+  border: 1px solid #aaa;
+  box-shadow: 2px 2px 2px 2px rgba(150, 150, 150, 0.5);
+  display: none; }
+  .popup .arrow {
+    position: absolute;
+    z-index: 1;
+    right: -11px;
+    top: 60px;
+    border-bottom: 11px solid transparent;
+    border-top: 11px solid transparent;
+    border-left: 11px solid #aaa;
+    height: 0px;
+    width: 0px; }
+    .popup .arrow:after {
+      position: absolute;
+      z-index: 0;
+      right: 1px;
+      top: -10px;
+      border-bottom: 10px solid transparent;
+      border-top: 10px solid transparent;
+      border-left: 10px solid #fff;
+      height: 0px;
+      width: 0px;
+      content: " "; }
+  .popup .content {
+    padding: 10px; }
+    .popup .content .image {
+      padding-right: 5px; }
+    .popup .content .main {
+      width: 140px; }
+      .popup .content .main .name {
+        font-size: 16px;
+        color: #337ab7; }
+      .popup .content .main .star, .popup .content .main .rate {
+        color: #3a4; }
+    .popup .content .info {
+      padding-top: 10px;
+      clear: both; }
+      .popup .content .info .icon {
+        padding-left: 5px;
+        padding-right: 5px; }
+
+.top {
+  display: none;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #c00;
+  border-radius: 25px;
+  cursor: pointer;
+  text-align: center;
+  padding: 12px 0; }
+  .top:hover {
+    background-color: #e00; }
+  .top span {
+    font-size: 20px;
+    color: #fff; }
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 4;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 150%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5); }
+  .modal .content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 16% auto;
+    width: 340px; }
+    .modal .content .header {
+      padding: 8px 12px;
+      background-color: #009;
+      color: white; }
+      .modal .content .header h3 {
+        margin: 0;
+        padding: 6px 0; }
+      .modal .content .header span {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 25px; }
+    .modal .content .main {
+      padding: 8px 12px 12px 12px; }
+      .modal .content .main p {
+        font-size: 16px;
+        padding: 5px 0 10px 0; }
+      .modal .content .main .rate .star {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        padding: 5px; }
+        .modal .content .main .rate .star span {
+          font-size: 25px;
+          color: #0a0; }
+      .modal .content .main .rate.end .star span {
+        color: #fb0; }
+      .modal .content .main .btn {
+        width: 150px; }
+        .modal .content .main .btn.login {
+          background-color: #e20;
+          color: #fff; }
+          .modal .content .main .btn.login:hover {
+            background-color: #f00; }
+        .modal .content .main .btn.cancel {
+          background-color: #fff;
+          color: #000;
+          border: 1px solid #ccc; }
+          .modal .content .main .btn.cancel:hover {
+            background-color: #ccc; }
+
+@media (min-width: 1370px) {
+  .listbook .content .topic .topic-content .book .book-content .book-info {
+    width: 236.25px; } }
+@media (min-width: 992px) and (max-width: 1199px) {
+  .listbook .content .topic.rate .topic-content .book .book-content .book-info .group, .listbook .content .topic.rate .topic-content .book .book-content .book-hover .group {
+    font-size: 11px; }
+  .listbook .content .topic.rate .topic-content .book .book-content .book-hover .group {
+    padding: 5px; }
+  .listbook .content .topic .topic-content .book .book-content .book-info {
+    width: 166.88px;
+    padding: 0 5px; }
+    .listbook .content .topic .topic-content .book .book-content .book-info .name {
+      font-size: 14px; }
+    .listbook .content .topic .topic-content .book .book-content .book-info .group {
+      font-size: 11px; }
+    .listbook .content .topic .topic-content .book .book-content .book-info .chap {
+      font-size: 11px; }
+  .listbook .content .topic .topic-content .book .book-content .book-hover .name {
+    font-size: 13px; }
+  .listbook .content .topic .topic-content .book .book-content .book-hover .chap, .listbook .content .topic .topic-content .book .book-content .book-hover .type {
+    font-size: 11px; }
+  .listbook .content .topic .topic-content .book .book-content .book-hover .group {
+    padding: 0 5px;
+    font-size: 12px; } }
+@media (min-width: 768px) and (max-width: 991px) {
+  .listbook .content {
+    margin-right: 0; }
+    .listbook .content .topic .topic-content .book .book-content .book-info {
+      width: 342.5px; } }
+@media (min-width: 576px) and (max-width: 767px) {
+  .navbar-nav > li {
+    float: left; }
+
+  .banner .image {
+    display: none; }
+
+  .slide {
+    display: none; }
+
+  .listbook .content {
+    margin-right: 0; }
+    .listbook .content .topic .topic-header {
+      font-size: 14px; }
+      .listbook .content .topic .topic-header:after {
+        border: 20px solid transparent;
+        border-left-color: #009;
+        border-bottom-color: #009; }
+    .listbook .content .topic .topic-content .book .book-content .book-info {
+      width: 237.5px; }
+    .listbook .content .topic .topic-content .book .book-content .book-hover .group {
+      font-size: 12px; } }
+@media (max-width: 575px) {
+  .slide {
+    display: none; }
+
+  .listbook .content {
+    margin-right: 0; }
+    .listbook .content .topic.view .topic-content .book .book-content .book-hover .chap, .listbook .content .topic.comment .topic-content .book .book-content .book-hover .chap, .listbook .content .topic.rate .topic-content .book .book-content .book-hover .chap {
+      display: none; }
+    .listbook .content .topic.rate .topic-content .book .book-content .book-info .group .rate {
+      display: none; }
+    .listbook .content .topic .topic-header {
+      font-size: 14px; }
+      .listbook .content .topic .topic-header:after {
+        border: 20px solid transparent;
+        border-left-color: #009;
+        border-bottom-color: #009; }
+    .listbook .content .topic .topic-content .book .book-content {
+      height: 150px; }
+      .listbook .content .topic .topic-content .book .book-content .book-info {
+        width: 147.5px; }
+        .listbook .content .topic .topic-content .book .book-content .book-info .name {
+          font-size: 14px; }
+        .listbook .content .topic .topic-content .book .book-content .book-info .group {
+          font-size: 12px; }
+      .listbook .content .topic .topic-content .book .book-content .book-hover .name {
+        font-size: 14px; }
+      .listbook .content .topic .topic-content .book .book-content .book-hover .type {
+        font-size: 12px; }
+      .listbook .content .topic .topic-content .book .book-content .book-hover .group {
+        display: none; }
+      .listbook .content .topic .topic-content .book .book-content .book-hover .play {
+        margin-top: 12px;
+        margin-bottom: 0; }
+      .listbook .content .topic .topic-content .book .book-content .rank {
+        width: 35px;
+        height: 35px;
+        font-size: 15px;
+        padding: 6px 0; } }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,124 @@
+.cmd.comment {
+  margin-top: 15px; }
+  .cmd.comment h4 {
+    padding: 10px;
+    background-color: #00a;
+    color: #fff; }
+  .cmd.comment .sort {
+    padding: 0 10px; }
+    .cmd.comment .sort .right {
+      position: relative; }
+    .cmd.comment .sort .select {
+      padding-left: 5px;
+      padding-right: 5px; }
+    .cmd.comment .sort .dropdown-menu {
+      right: 0;
+      margin-top: 10px;
+      padding: 10px 0; }
+      .cmd.comment .sort .dropdown-menu li {
+        padding: 0 10px;
+        cursor: pointer; }
+        .cmd.comment .sort .dropdown-menu li:hover {
+          background-color: #55f;
+          color: #fff; }
+  .cmd.comment hr {
+    margin-top: 10px;
+    margin-bottom: 15px; }
+  .cmd.comment .form-comment.child .text-cmd {
+    width: 711px; }
+  .cmd.comment .form-comment .image {
+    width: 50px;
+    float: left; }
+    .cmd.comment .form-comment .image img {
+      width: 50px; }
+  .cmd.comment .form-comment .text-cmd {
+    padding: 0 10px;
+    float: left;
+    width: 782px; }
+    .cmd.comment .form-comment .text-cmd .textarea {
+      width: 100%;
+      padding: 5px;
+      min-height: 60px;
+      border-radius: 5px;
+      border: solid 1px #ddd;
+      margin-bottom: 10px;
+      cursor: text; }
+      .cmd.comment .form-comment .text-cmd .textarea:focus {
+        outline: none; }
+      .cmd.comment .form-comment .text-cmd .textarea:empty:before {
+        content: attr(data-placeholder);
+        color: #aaa; }
+      .cmd.comment .form-comment .text-cmd .textarea .img {
+        width: 20px; }
+    .cmd.comment .form-comment .text-cmd .btn.hide {
+      display: none !important; }
+    .cmd.comment .form-comment .text-cmd button.submit {
+      background-color: #2b2;
+      color: #fff; }
+      .cmd.comment .form-comment .text-cmd button.submit:hover {
+        background-color: #2c0; }
+    .cmd.comment .form-comment .text-cmd button.reset:hover {
+      background-color: #e5e5e5; }
+    .cmd.comment .form-comment .text-cmd button.emoji {
+      background: #fff;
+      border: 1px solid #ededed;
+      padding: 2px; }
+      .cmd.comment .form-comment .text-cmd button.emoji:hover {
+        background: #ededed; }
+    .cmd.comment .form-comment .text-cmd .dropdown {
+      display: inline-block; }
+      .cmd.comment .form-comment .text-cmd .dropdown .dropdown-menu {
+        width: 415px;
+        padding: 5px; }
+        .cmd.comment .form-comment .text-cmd .dropdown .dropdown-menu img {
+          padding: 5px;
+          cursor: pointer; }
+          .cmd.comment .form-comment .text-cmd .dropdown .dropdown-menu img:hover {
+            background-color: #eee; }
+  .cmd.comment .list-comment {
+    margin-top: 10px;
+    margin-bottom: 10px; }
+    .cmd.comment .list-comment .item-comment {
+      margin-top: 15px;
+      position: relative; }
+      .cmd.comment .list-comment .item-comment .image {
+        width: 50px;
+        float: left; }
+        .cmd.comment .list-comment .item-comment .image img {
+          width: 50px; }
+      .cmd.comment .list-comment .item-comment .info {
+        padding: 0 10px;
+        float: left; }
+        .cmd.comment .list-comment .item-comment .info .text {
+          padding-top: 5px;
+          padding-bottom: 5px; }
+        .cmd.comment .list-comment .item-comment .info p.name, .cmd.comment .list-comment .item-comment .info p.like {
+          color: #90909a; }
+        .cmd.comment .list-comment .item-comment .info p.like span.like img {
+          cursor: pointer; }
+        .cmd.comment .list-comment .item-comment .info p.like span.dislike img {
+          cursor: pointer; }
+        .cmd.comment .list-comment .item-comment .info .report {
+          position: absolute;
+          top: 30px;
+          right: 10px;
+          width: 15px;
+          height: 15px;
+          text-align: center; }
+          .cmd.comment .list-comment .item-comment .info .report span {
+            color: #ddd;
+            cursor: pointer;
+            display: none; }
+          .cmd.comment .list-comment .item-comment .info .report ul {
+            min-width: 80px; }
+        .cmd.comment .list-comment .item-comment .info.main {
+          width: 782px;
+          padding-right: 0; }
+    .cmd.comment .list-comment .more {
+      padding-top: 15px; }
+    .cmd.comment .list-comment.reply {
+      margin-left: -10px;
+      padding-left: 10px;
+      border-left: 1px solid #f5f5f5; }
+
+/*# sourceMappingURL=comment.css.map */

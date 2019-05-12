@@ -1,0 +1,95 @@
+.banner {
+  height: 65px; }
+  .banner .header .logo h1 {
+    margin-top: 15px;
+    font-size: 35px; }
+  .banner .header .logo img {
+    height: 60px; }
+  .banner .image {
+    padding: 5px;
+    margin-top: 0; }
+    .banner .image img {
+      width: 70px; }
+
+.scroll {
+  background-color: #bbf;
+  display: none;
+  padding: 10px;
+  text-align: center; }
+  .scroll .list-chap {
+    display: inline-block;
+    width: 200px; }
+  .scroll.fixed-top {
+    position: fixed;
+    top: 0;
+    display: block;
+    z-index: 15;
+    width: 100%; }
+
+.control {
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-top: 10px solid #2196F3; }
+  .control h1 {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px; }
+  .control p {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center; }
+  .control .server {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center; }
+  .control .chap {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center; }
+    .control .chap .list-chap {
+      display: inline-block;
+      width: 200px; }
+
+.main-read {
+  text-align: center; }
+  .main-read img {
+    max-width: 1200px; }
+
+.bottom {
+  background-color: #fff;
+  margin-top: 10px;
+  padding: 10px;
+  text-align: left !important; }
+
+.books-else h3 {
+  background-color: #00a;
+  color: #fff;
+  padding: 10px; }
+.books-else .books-slide img {
+  width: 100%;
+  padding: 10px;
+  margin: 0; }
+.books-else .books-slide.slick-slider {
+  margin-bottom: 0; }
+.books-else .books-slide .book-item {
+  position: relative; }
+  .books-else .books-slide .book-item p {
+    width: 100%;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    text-shadow: 3px 3px 5px #555; }
+  .books-else .books-slide .book-item img:hover {
+    filter: brightness(50%); }
+
+.comment .list-comment .item-comment .info.main {
+  width: 1070px; }
+
+.comment .form-comment .text-cmd {
+  width: 1070px; }
+
+/*# sourceMappingURL=read.css.map */

@@ -1,0 +1,78 @@
+.setting .content {
+  background-color: #fff;
+  margin-right: -15px;
+  padding: 15px;
+  padding-top: 1px; }
+  .setting .content .breadcrumb {
+    margin-top: 14px; }
+  .setting .content .set-group div.set-label {
+    overflow: auto; }
+    .setting .content .set-group div.set-label h4 {
+      margin: 0;
+      font-weight: bold;
+      background-color: #d2d2d2;
+      padding: 10px;
+      float: left;
+      border-radius: 5px; }
+  .setting .content .set-group .set-item {
+    padding: 10px;
+    font-size: 16px; }
+    .setting .content .set-group .set-item p, .setting .content .set-group .set-item button, .setting .content .set-group .set-item .dropdown {
+      display: inline-block; }
+    .setting .content .set-group .set-item p {
+      width: 690px; }
+    .setting .content .set-group .set-item button.btn {
+      color: #fff;
+      background-color: #aaa;
+      box-shadow: none; }
+      .setting .content .set-group .set-item button.btn:hover, .setting .content .set-group .set-item button.btn:active {
+        background-color: #bbb; }
+      .setting .content .set-group .set-item button.btn:focus {
+        outline: none; }
+      .setting .content .set-group .set-item button.btn.active {
+        background-color: #e32220; }
+        .setting .content .set-group .set-item button.btn.active:hover, .setting .content .set-group .set-item button.btn.active:active {
+          background-color: #f32220; }
+      .setting .content .set-group .set-item button.btn.btn-private {
+        background-color: #337ab7; }
+        .setting .content .set-group .set-item button.btn.btn-private:hover, .setting .content .set-group .set-item button.btn.btn-private:active {
+          background-color: #337ad7; }
+    .setting .content .set-group .set-item .dropdown .dropdown-menu {
+      padding-top: 5px;
+      padding-bottom: 5px; }
+      .setting .content .set-group .set-item .dropdown .dropdown-menu li {
+        cursor: pointer;
+        padding-left: 10px;
+        padding-right: 10px; }
+        .setting .content .set-group .set-item .dropdown .dropdown-menu li:hover {
+          background-color: #337ab7;
+          color: #fff; }
+  .setting .content .set-group .block {
+    background-color: #eee;
+    padding: 10px;
+    padding-top: 5px;
+    border-radius: 10px;
+    overflow: auto;
+    height: 120px; }
+    .setting .content .set-group .block .user {
+      cursor: pointer;
+      background-color: #d2d2d2;
+      padding: 5px;
+      border-radius: 5px;
+      margin-right: 5px;
+      margin-top: 5px;
+      float: left; }
+      .setting .content .set-group .block .user span.cancel-block {
+        display: none;
+        cursor: pointer;
+        background-color: #c00;
+        color: #fff;
+        border-radius: 10px;
+        padding: 2px 6px; }
+        .setting .content .set-group .block .user span.cancel-block.active {
+          display: initial; }
+      .setting .content .set-group .block .user.active {
+        background-color: #e00;
+        color: #fff; }
+
+/*# sourceMappingURL=setting.css.map */

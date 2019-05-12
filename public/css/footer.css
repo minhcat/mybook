@@ -1,0 +1,35 @@
+footer .footer {
+  background-color: #009;
+  color: #fff; }
+  footer .footer .content {
+    padding: 20px 15px; }
+    footer .footer .content h4 {
+      border-bottom: 2px solid rgba(0, 0, 255, 0.6);
+      padding: 10px 0; }
+    footer .footer .content p {
+      color: #ddd;
+      padding: 10px 0; }
+      footer .footer .content p a {
+        color: #ddd;
+        text-decoration: none; }
+        footer .footer .content p a:hover {
+          text-decoration: underline; }
+footer .copyright {
+  background-color: #007;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #fff; }
+
+@media (min-width: 768px) and (max-width: 991px) {
+  footer {
+    font-size: 12px; } }
+@media (min-width: 576px) and (max-width: 767px) {
+  footer {
+    font-size: 12px; } }
+@media (max-width: 575px) {
+  footer {
+    font-size: 12px; }
+    footer .hide-xxs {
+      display: none; } }
+
+/*# sourceMappingURL=footer.css.map */

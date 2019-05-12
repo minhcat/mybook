@@ -1,0 +1,174 @@
+.red {
+  color: #e33; }
+
+.login-form, .sign-up-form {
+  background-color: #58f; }
+  .login-form .main, .sign-up-form .main {
+    background-color: #fff;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 40px;
+    padding-top: 1px;
+    width: 780px;
+    float: left; }
+    .login-form .main .breadcrumb, .sign-up-form .main .breadcrumb {
+      margin-top: 19px; }
+    .login-form .main .header, .sign-up-form .main .header {
+      text-align: center; }
+      .login-form .main .header h2, .sign-up-form .main .header h2 {
+        color: #e33; }
+      .login-form .main .header button, .sign-up-form .main .header button {
+        background-color: #03c233;
+        border-color: #03c233;
+        color: #fff; }
+      .login-form .main .header .image, .sign-up-form .main .header .image {
+        padding-top: 10px;
+        padding-bottom: 10px; }
+        .login-form .main .header .image img, .sign-up-form .main .header .image img {
+          width: 200px; }
+          .login-form .main .header .image img.sign-up, .sign-up-form .main .header .image img.sign-up {
+            border-radius: 8px; }
+    .login-form .main .login .line, .sign-up-form .main .login .line {
+      margin-top: 15px;
+      margin-bottom: 15px; }
+      .login-form .main .login .line button, .sign-up-form .main .login .line button {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        height: 44px; }
+      .login-form .main .login .line button.submit, .sign-up-form .main .login .line button.submit {
+        background-color: #d93330;
+        border-color: #d93330;
+        color: #fff; }
+        .login-form .main .login .line button.submit:hover, .login-form .main .login .line button.submit:focus, .sign-up-form .main .login .line button.submit:hover, .sign-up-form .main .login .line button.submit:focus {
+          background-color: #ee3f3a;
+          border-color: #d9302c; }
+      .login-form .main .login .line button.reset, .sign-up-form .main .login .line button.reset {
+        background-color: #f8f8f8;
+        border-color: #d5d5d5;
+        color: #444;
+        box-shadow: unset; }
+        .login-form .main .login .line button.reset:hover, .login-form .main .login .line button.reset:focus, .sign-up-form .main .login .line button.reset:hover, .sign-up-form .main .login .line button.reset:focus {
+          background-color: #fefefe;
+          border-color: #e5e5e5; }
+    .login-form .main .sign-up h4, .sign-up-form .main .sign-up h4 {
+      margin-top: 20px;
+      padding-left: 15px;
+      color: #d93330; }
+    .login-form .main .sign-up hr, .sign-up-form .main .sign-up hr {
+      margin-left: 15px;
+      margin-right: 15px;
+      margin-top: 10px; }
+    .login-form .main .sign-up .line, .sign-up-form .main .sign-up .line {
+      margin-top: 15px;
+      margin-bottom: 15px; }
+      .login-form .main .sign-up .line label span, .sign-up-form .main .sign-up .line label span {
+        color: #e33; }
+      .login-form .main .sign-up .line button, .sign-up-form .main .sign-up .line button {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        height: 44px; }
+      .login-form .main .sign-up .line button.select, .sign-up-form .main .sign-up .line button.select {
+        height: 34px;
+        text-align: left;
+        color: #999; }
+        .login-form .main .sign-up .line button.select .caret, .sign-up-form .main .sign-up .line button.select .caret {
+          float: right;
+          margin-top: 10px;
+          color: #444; }
+        .login-form .main .sign-up .line button.select.checked, .sign-up-form .main .sign-up .line button.select.checked {
+          color: #444; }
+      .login-form .main .sign-up .line button.submit, .sign-up-form .main .sign-up .line button.submit {
+        background-color: #d93330;
+        border-color: #d93330;
+        color: #fff; }
+        .login-form .main .sign-up .line button.submit:hover, .login-form .main .sign-up .line button.submit:focus, .sign-up-form .main .sign-up .line button.submit:hover, .sign-up-form .main .sign-up .line button.submit:focus {
+          background-color: #ee3f3a;
+          border-color: #d9302c; }
+      .login-form .main .sign-up .line button.reset, .sign-up-form .main .sign-up .line button.reset {
+        background-color: #f8f8f8;
+        border-color: #d5d5d5;
+        color: #444;
+        box-shadow: unset; }
+        .login-form .main .sign-up .line button.reset:hover, .login-form .main .sign-up .line button.reset:focus, .sign-up-form .main .sign-up .line button.reset:hover, .sign-up-form .main .sign-up .line button.reset:focus {
+          background-color: #fefefe;
+          border-color: #e5e5e5; }
+      .login-form .main .sign-up .line .dropdown-menu, .sign-up-form .main .sign-up .line .dropdown-menu {
+        left: 15px;
+        margin-top: 10px;
+        padding: 5px 0; }
+        .login-form .main .sign-up .line .dropdown-menu li, .sign-up-form .main .sign-up .line .dropdown-menu li {
+          padding-left: 12px;
+          padding-right: 12px; }
+          .login-form .main .sign-up .line .dropdown-menu li:hover, .login-form .main .sign-up .line .dropdown-menu li:focus, .sign-up-form .main .sign-up .line .dropdown-menu li:hover, .sign-up-form .main .sign-up .line .dropdown-menu li:focus {
+            background-color: #55f;
+            color: #fff; }
+      .login-form .main .sign-up .line .item-group, .sign-up-form .main .sign-up .line .item-group {
+        margin-left: -5px;
+        padding-top: 10px; }
+        .login-form .main .sign-up .line .item-group .item, .sign-up-form .main .sign-up .line .item-group .item {
+          float: left;
+          min-width: 90px;
+          padding: 5px;
+          margin-left: 5px;
+          margin-right: 5px;
+          margin-bottom: 10px;
+          color: #fff;
+          font-size: 14px;
+          text-align: center;
+          background-color: #00e;
+          border-radius: 5px;
+          cursor: pointer; }
+          .login-form .main .sign-up .line .item-group .item:hover, .sign-up-form .main .sign-up .line .item-group .item:hover {
+            background-color: #24f; }
+          .login-form .main .sign-up .line .item-group .item.select, .sign-up-form .main .sign-up .line .item-group .item.select {
+            background-color: #d42; }
+      .login-form .main .sign-up .line .rules, .sign-up-form .main .sign-up .line .rules {
+        padding: 10px 15px;
+        border: 1px solid #eee;
+        border-radius: 10px; }
+        .login-form .main .sign-up .line .rules .head, .sign-up-form .main .sign-up .line .rules .head {
+          padding-top: 5px;
+          padding-bottom: 5px;
+          color: #d00; }
+  .login-form .sidebar, .sign-up-form .sidebar {
+    width: 360px;
+    float: left;
+    padding: 15px;
+    padding-top: 80px;
+    color: #fff;
+    font-size: 16px; }
+    .login-form .sidebar .web, .sign-up-form .sidebar .web {
+      text-align: center;
+      padding-bottom: 20px; }
+      .login-form .sidebar .web h1, .sign-up-form .sidebar .web h1 {
+        display: inline-block; }
+    .login-form .sidebar .logan, .sign-up-form .sidebar .logan {
+      text-align: center; }
+    .login-form .sidebar .link, .sign-up-form .sidebar .link {
+      padding-top: 20px;
+      padding-left: 45px;
+      padding-right: 45px; }
+      .login-form .sidebar .link .group, .sign-up-form .sidebar .link .group {
+        padding-top: 12px;
+        padding-bottom: 12px; }
+        .login-form .sidebar .link .group a, .sign-up-form .sidebar .link .group a {
+          color: #fff; }
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .login-form .main, .sign-up-form .main {
+    width: 620px; }
+  .login-form .sidebar, .sign-up-form .sidebar {
+    width: 320px; } }
+@media (min-width: 768px) and (max-width: 991px) {
+  .login-form .main, .sign-up-form .main {
+    width: 720px; } }
+@media (min-width: 576px) and (max-width: 767px) {
+  .login-form .main, .sign-up-form .main {
+    width: 510px; } }
+@media (max-width: 575px) {
+  .login-form .main, .sign-up-form .main {
+    width: 330px; }
+    .login-form .main .login .line .button, .sign-up-form .main .login .line .button {
+      margin-top: 10px; } }
+
+/*# sourceMappingURL=login.css.map */
