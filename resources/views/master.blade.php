@@ -40,5 +40,7 @@
 	@yield('content')
 
 	@include('pages.content_footer')
+
+	@yield('define-footer')
 </body>
 </html>

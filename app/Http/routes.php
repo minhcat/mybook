@@ -17,3 +17,5 @@ Route::get('home', 'HomeController@index');
 
 Route::get('list', 'ListController@index');
 
+Route::get('detail', 'DetailController@index');
+
