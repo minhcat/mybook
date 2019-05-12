@@ -29,8 +29,8 @@
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link rel="stylesheet" type="text/css" href="css/sidebar.css">
 	<link rel="icon" href="image/icon.png">
-	<script type="text/javascript" src="jquery/index.js"></script>
-	<script type="text/javascript" src="jquery/common.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
 </head>
 <body>
 	@include('pages.content_header')
