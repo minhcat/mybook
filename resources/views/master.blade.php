@@ -36,5 +36,7 @@
 	@include('pages.content_header')
 
 	@yield('content')
+
+	@include('pages.content_footer')
 </body>
 </html>
