@@ -31,6 +31,8 @@
 	<link rel="shortcut icon" type="image/png" sizes="16x16" href="image/icon.png">
 	<script type="text/javascript" src="js/index.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
+
+	@yield('define-header')
 </head>
 <body>
 	@include('pages.content_header')
