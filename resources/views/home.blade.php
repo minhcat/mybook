@@ -13,4 +13,6 @@
 		</div>
 	</div>
 </section>
+
+<div class="top"><span class="glyphicon glyphicon-chevron-up"></span></div>
 @endsection
