@@ -3,13 +3,13 @@
 @section('content')
 <section>
 
-	@include('home.slider')
+	@include('partials.home.slider')
 
 	<div class="main container">
 		<div class="row">
-			@include('home.listbook')
+			@include('partials.home.listbook')
 			
-			@include('home.sidebar')
+			@include('partials.home.sidebar')
 		</div>
 	</div>
 </section>
