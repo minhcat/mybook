@@ -26,6 +26,7 @@ $(document).ready(function() {
 	var enter_link_book = 0;
 	
 	$('.show-popup.book').mouseenter(function() {
+		console.log('enter');
 		enter_link_book = 1;
 		$('.popup.user').css('display','none');
 
