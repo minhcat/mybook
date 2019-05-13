@@ -35,11 +35,11 @@
 	@yield('define-header')
 </head>
 <body>
-	@include('pages.content_header')
+	@include('layouts.content_header')
 
 	@yield('content')
 
-	@include('pages.content_footer')
+	@include('layouts.content_footer')
 
 	@yield('define-footer')
 </body>
