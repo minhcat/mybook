@@ -1,0 +1,57 @@
+hr {
+  margin-top: 5px;
+  margin-bottom: 5px; }
+
+.hidden {
+  display: none; }
+
+.mt-15 {
+  margin-top: 15px; }
+
+.direct-chat-primary .direct-chat-messages {
+  height: 420px; }
+  .direct-chat-primary .direct-chat-messages .direct-chat-msg .direct-chat-text {
+    background: #3c8dbc;
+    border-color: #3c8dbc;
+    color: #ffffff;
+    float: left;
+    margin: 5px 0 0 10px; }
+    .direct-chat-primary .direct-chat-messages .direct-chat-msg .direct-chat-text:before {
+      border-right-color: #3c8dbc; }
+    .direct-chat-primary .direct-chat-messages .direct-chat-msg .direct-chat-text:after {
+      border-right-color: #3c8dbc; }
+    .direct-chat-primary .direct-chat-messages .direct-chat-msg .direct-chat-text strong {
+      background-color: #dd4b39;
+      color: white;
+      padding-right: 3px;
+      padding-left: 3px;
+      border-radius: 3px; }
+  .direct-chat-primary .direct-chat-messages .direct-chat-msg span.fa {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 14px;
+    color: #fff;
+    background-color: #ccc;
+    margin-top: 9px;
+    margin-left: 6px; }
+    .direct-chat-primary .direct-chat-messages .direct-chat-msg span.fa.bg-red {
+      background-color: #d22 !important; }
+      .direct-chat-primary .direct-chat-messages .direct-chat-msg span.fa.bg-red:hover {
+        background-color: #e22 !important; }
+    .direct-chat-primary .direct-chat-messages .direct-chat-msg span.fa.bg-orange {
+      background-color: #ea0 !important; }
+      .direct-chat-primary .direct-chat-messages .direct-chat-msg span.fa.bg-orange:hover {
+        background-color: #fa0 !important; }
+    .direct-chat-primary .direct-chat-messages .direct-chat-msg span.fa.bg-blue {
+      background-color: #36b !important; }
+      .direct-chat-primary .direct-chat-messages .direct-chat-msg span.fa.bg-blue:hover {
+        background-color: #47c !important; }
+    .direct-chat-primary .direct-chat-messages .direct-chat-msg span.fa.bg-green {
+      background-color: #4a4 !important; }
+      .direct-chat-primary .direct-chat-messages .direct-chat-msg span.fa.bg-green:hover {
+        background-color: #5b5 !important; }
+
+/*# sourceMappingURL=mod.css.map */

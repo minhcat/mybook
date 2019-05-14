@@ -19,3 +19,4 @@ Route::get('list', 'ListController@index');
 
 Route::get('detail', 'DetailController@index');
 
+Route::get('admin', 'AdminController@index');

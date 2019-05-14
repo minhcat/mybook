@@ -1,0 +1,13 @@
+section.content .well {
+  position: relative; }
+  section.content .well.well-info {
+    background-color: #00c0ef;
+    color: #fff; }
+  section.content .well .btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 16px;
+    color: #fff; }
+
+/*# sourceMappingURL=common.css.map */
