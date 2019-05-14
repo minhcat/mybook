@@ -6,7 +6,7 @@
 		</ul>
 		<div class="list">
 			<div class="book clearfix">
-				<a href=""><img src="image/bang-hoai-3rd.jpg" width="160px" height="160px"></a>
+				<a href=""><img src="{{ asset('image/bang-hoai-3rd.jpg') }}" width="160px" height="160px"></a>
 				<div class="info">
 					<h4 class="name"><a href="detail-book.html">Băng Hoại 3rd</a></h4>
 					<div class="star">
@@ -43,7 +43,7 @@
 			</div>
 			<hr>
 			<div class="book clearfix">
-				<a href=""><img src="image/boruto.jpg" width="160px" height="160px"></a>
+				<a href=""><img src="{{ asset('image/boruto.jpg') }}" width="160px" height="160px"></a>
 				<div class="info">
 					<h4 class="name"><a href="detail-book.html">Boruto</a></h4>
 					<div class="star">
@@ -80,7 +80,7 @@
 			</div>
 			<hr>
 			<div class="book clearfix">
-				<a href=""><img src="image/mahoutsukai-no-yome.jpg" width="160px" height="160px"></a>
+				<a href=""><img src="{{ asset('image/mahoutsukai-no-yome.jpg') }}" width="160px" height="160px"></a>
 				<div class="info">
 					<h4 class="name"><a href="detail-book.html">Mahoutsulai no Yome</a></h4>
 					<div class="star">
@@ -117,7 +117,7 @@
 			</div>
 			<hr>
 			<div class="book clearfix">
-				<a href=""><img src="image/himouto-umaru-chan.jpg" width="160px" height="160px"></a>
+				<a href=""><img src="{{ asset('image/himouto-umaru-chan.jpg') }}" width="160px" height="160px"></a>
 				<div class="info">
 					<h4 class="name"><a href="detail-book.html">Himouto Umaru-chan</a></h4>
 					<div class="star">
@@ -154,7 +154,7 @@
 			</div>
 			<hr>
 			<div class="book clearfix">
-				<a href=""><img src="image/sword-art-online.jpg" width="160px" height="160px"></a>
+				<a href=""><img src="{{ asset('image/sword-art-online.jpg') }}" width="160px" height="160px"></a>
 				<div class="info">
 					<h4 class="name"><a href="detail-book.html">Swort Art Online</a></h4>
 					<div class="star">
@@ -191,7 +191,7 @@
 			</div>
 			<hr>
 			<div class="book clearfix">
-				<a href=""><img src="image/attack-on-titan-movie.jpg" width="160px" height="160px"></a>
+				<a href=""><img src="{{ asset('image/attack-on-titan-movie.jpg') }}" width="160px" height="160px"></a>
 				<div class="info">
 					<h4 class="name"><a href="detail-book.html">Attack on Titan</a></h4>
 					<div class="star">
@@ -228,7 +228,7 @@
 			</div>
 			<hr>
 			<div class="book clearfix">
-				<a href=""><img src="image/seiken-tsukai-no-kinshuu-eishou.jpg" width="160px" height="160px"></a>
+				<a href=""><img src="{{ asset('image/seiken-tsukai-no-kinshuu-eishou.jpg') }}" width="160px" height="160px"></a>
 				<div class="info">
 					<h4 class="name"><a href="detail-book.html">Seiken Tsukai no Kinshuu eishou</a></h4>
 					<div class="star">
@@ -265,7 +265,7 @@
 			</div>
 			<hr>
 			<div class="book clearfix">
-				<a href=""><img src="image/shokugeki-no-souma.jpg" width="160px" height="160px"></a>
+				<a href=""><img src="{{ asset('image/shokugeki-no-souma.jpg') }}" width="160px" height="160px"></a>
 				<div class="info">
 					<h4 class="name"><a href="detail-book.html">Shokugeki no Souma</a></h4>
 					<div class="star">
@@ -302,7 +302,7 @@
 			</div>
 			<hr>
 			<div class="book clearfix">
-				<a href=""><img src="image/conan.jpg" width="160px" height="160px"></a>
+				<a href=""><img src="{{ asset('image/conan.jpg') }}" width="160px" height="160px"></a>
 				<div class="info">
 					<h4 class="name"><a href="detail-book.html">Thám Tử Lừng Danh Conan</a></h4>
 					<div class="star">
@@ -339,7 +339,7 @@
 			</div>
 			<hr>
 			<div class="book clearfix">
-				<a href=""><img src="image/dragon-ball-super.jpg" width="160px" height="160px"></a>
+				<a href=""><img src="{{ asset('image/dragon-ball-super.jpg') }}" width="160px" height="160px"></a>
 				<div class="info">
 					<h4 class="name"><a href="detail-book.html">Dragon Ball Super</a></h4>
 					<div class="star">

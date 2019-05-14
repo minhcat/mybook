@@ -1,17 +1,17 @@
 <div class="top"><span class="glyphicon glyphicon-chevron-up"></span></div>
 
 <!-- bootstrap -->
-<script type="text/javascript" src="vendor/jquery/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="{{ asset('vendor/jquery/jquery-1.11.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap.js') }}"></script>
 <!-- end bootstrap -->
 
 <!-- slick -->
-<script type="text/javascript" src="vendor/slick/slick.min.js"></script>
+<script type="text/javascript" src="{{ asset('vendor/slick/slick.min.js') }}"></script>
 <!-- end slick -->
 
 <!-- mybook -->
-<script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="{{ asset('js/index.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/common.js') }}"></script>
 <!-- end mybook -->
 
 <!-- facebook -->

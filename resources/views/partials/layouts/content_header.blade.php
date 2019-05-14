@@ -4,14 +4,14 @@
 			<div class="header left">
 				<div class="logo">
 					<h1>My Book</h1>
-					<img src="image/logo.png">
+					<img src="{{ asset('image/logo.png') }}">
 				</div>
 				<p>Luôn cập nhập truyện tranh mới nhất</p>
 			</div>
 			<div class="image right">
-				<img src="image/conan_200.png" class="img-circle">
-				<img src="image/attack-on-titan-200x150.png" class="img-circle">
-				<img src="image/kirito-200x150.png" class="img-circle">
+				<img src="{{ asset('image/conan_200.png') }}" class="img-circle">
+				<img src="{{ asset('image/attack-on-titan-200x150.png') }}" class="img-circle">
+				<img src="{{ asset('image/kirito-200x150.png') }}" class="img-circle">
 			</div>
 		</div>
 	</div>
@@ -32,28 +32,28 @@
 						<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tình Trạng <span class="caret"></span></a> -->
 						<ul class="dropdown-menu">
 							<li class="clearfix">
-								<img src="image/bang-hoai-3rd.jpg" class="image" alt="" width="60px" height="60px">
+								<img src="{{ asset('image/bang-hoai-3rd.jpg') }}" class="image" alt="" width="60px" height="60px">
 								<div class="info">
 									<a href="detail-book.html" class="name">Băng Hoại 3rd</a>
 									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
 								</div>
 							</li>
 							<li class="clearfix">
-								<img src="image/boruto.jpg" class="image" alt="" width="60px" height="60px">
+								<img src="{{ asset('image/boruto.jpg') }}" class="image" alt="" width="60px" height="60px">
 								<div class="info">
 									<a href="detail-book.html" class="name">Boruto</a>
 									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
 								</div>
 							</li>
 							<li class="clearfix">
-								<img src="image/mahoutsukai-no-yome.jpg" class="image" alt="" width="60px" height="60px">
+								<img src="{{ asset('image/mahoutsukai-no-yome.jpg') }}" class="image" alt="" width="60px" height="60px">
 								<div class="info">
 									<a href="detail-book.html" class="name">Mahoutsukai no Yome</a>
 									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
 								</div>
 							</li>
 							<li class="clearfix">
-								<img src="image/himouto-umaru-chan.jpg" class="image" alt="" width="60px" height="60px">
+								<img src="{{ asset('image/himouto-umaru-chan.jpg') }}" class="image" alt="" width="60px" height="60px">
 								<div class="info">
 									<a href="detail-book.html" class="name">Himouto Umaru-chan</a>
 									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
@@ -147,28 +147,28 @@
 						<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tình Trạng <span class="caret"></span></a> -->
 						<ul class="dropdown-menu">
 							<li class="clearfix">
-								<img src="image/bang-hoai-3rd.jpg" class="image" alt="" width="60px" height="60px">
+								<img src="{{ asset('image/bang-hoai-3rd.jpg') }}" class="image" alt="" width="60px" height="60px">
 								<div class="info">
 									<a href="detail-book.html" class="name">Băng Hoại 3rd</a>
 									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
 								</div>
 							</li>
 							<li class="clearfix">
-								<img src="image/boruto.jpg" class="image" alt="" width="60px" height="60px">
+								<img src="{{ asset('image/boruto.jpg') }}" class="image" alt="" width="60px" height="60px">
 								<div class="info">
 									<a href="detail-book.html" class="name">Boruto</a>
 									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
 								</div>
 							</li>
 							<li class="clearfix">
-								<img src="image/mahoutsukai-no-yome.jpg" class="image" alt="" width="60px" height="60px">
+								<img src="{{ asset('image/mahoutsukai-no-yome.jpg') }}" class="image" alt="" width="60px" height="60px">
 								<div class="info">
 									<a href="detail-book.html" class="name">Mahoutsukai no Yome</a>
 									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
 								</div>
 							</li>
 							<li class="clearfix">
-								<img src="image/himouto-umaru-chan.jpg" class="image" alt="" width="60px" height="60px">
+								<img src="{{ asset('image/himouto-umaru-chan.jpg') }}" class="image" alt="" width="60px" height="60px">
 								<div class="info">
 									<a href="detail-book.html" class="name">Himouto Umaru-chan</a>
 									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>

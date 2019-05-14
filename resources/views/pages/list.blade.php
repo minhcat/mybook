@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('define-header')
-	<link rel="stylesheet" type="text/css" href="css/list.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/list.css') }}">
 @endsection
 
 @section('content')
@@ -10,7 +10,9 @@
 
 	<div class="main container">
 		<div class="row">
-			@include('partials.list.listbook')
+			@if ($type == 'category')
+				@include('partials.list.listbook')
+			@endif
 			
 			@include('partials.common.sidebar')
 		</div>

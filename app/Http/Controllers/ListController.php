@@ -12,9 +12,10 @@ class ListController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($type)
 	{
-		return view('pages.list');
+		$data['type'] = $type;
+		return view('pages.list', $data);
 	}
 
 	/**
