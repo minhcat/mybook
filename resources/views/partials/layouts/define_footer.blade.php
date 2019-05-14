@@ -1,3 +1,5 @@
+<div class="top"><span class="glyphicon glyphicon-chevron-up"></span></div>
+
 <!-- bootstrap -->
 <script type="text/javascript" src="vendor/jquery/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.js"></script>

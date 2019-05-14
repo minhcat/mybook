@@ -7,12 +7,12 @@
 
 @section('content')
 <section>
-	@include('partials.detail.title')
+	@include('partials.common.title')
 	<div class="main container notlogin">
 		<div class="row">
 			@include('partials.detail.detail')
 
-			@include('partials.detail.sidebar')
+			@include('partials.common.sidebar')
 		</div>
 	</div>
 </section>

@@ -9,10 +9,9 @@
 		<div class="row">
 			@include('partials.home.listbook')
 			
-			@include('partials.home.sidebar')
+			@include('partials.common.sidebar')
 		</div>
 	</div>
 </section>
 
-<div class="top"><span class="glyphicon glyphicon-chevron-up"></span></div>
 @endsection
