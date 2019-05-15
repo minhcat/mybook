@@ -32,7 +32,7 @@
 	<div class="arrow"></div>
 	<div class="content">
 		<div class="image left">
-			<img src="image/bang-hoai-3rd.jpg" width="85px">
+			<img src="{{ asset('image/bang-hoai-3rd.jpg') }}" width="85px">
 		</div>
 		<div class="main right">
 			<p class="name"><strong>Băng Hoại 3rd lorem ipsum</strong></p>
@@ -63,7 +63,7 @@
 	<div class="arrow"></div>
 	<div class="content">
 		<div class="image left">
-			<img src="image/Asuna.jpg" width="85px">
+			<img src="{{ asset('image/Asuna.jpg') }}" width="85px">
 		</div>
 		<div class="main right">
 			<p class="name"><strong>Asuna</strong></p>

@@ -17,6 +17,6 @@ Route::get('home', 'HomeController@index');
 
 Route::get('list/{type}', 'ListController@index');
 
-Route::get('detail', 'DetailController@index');
+Route::get('detail/{type}', 'DetailController@index');
 
 Route::get('admin', 'AdminController@index');

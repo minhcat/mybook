@@ -1,8 +1,8 @@
 @extends('master')
 
 @section('define-header')
-	<link rel="stylesheet" type="text/css" href="css/detail.css">
-	<link rel="stylesheet" type="text/css" href="css/comment.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/detail.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/comment.css') }}">
 @endsection
 
 @section('content')
@@ -10,7 +10,10 @@
 	@include('partials.common.title')
 	<div class="main container notlogin">
 		<div class="row">
-			@include('partials.detail.detail')
+			@if ($type == 'book')
+				@include('partials.detail.detail-book')
+
+			@endif
 
 			@include('partials.common.sidebar')
 		</div>
@@ -19,5 +22,5 @@
 @endsection
 
 @section('define-footer')
-	<script type="text/javascript" src="jquery/detail.js"></script>
+	<script type="text/javascript" src="{{ asset('jquery/detail.js') }}"></script>
 @endsection

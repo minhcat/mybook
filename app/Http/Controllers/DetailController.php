@@ -12,9 +12,10 @@ class DetailController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($type)
 	{
-		return view('pages.detail');
+		$data['type'] = $type;
+		return view('pages.detail', $data);
 	}
 
 	/**
