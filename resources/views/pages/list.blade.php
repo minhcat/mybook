@@ -25,6 +25,12 @@
 			@elseif ($type == 'comment')
 				@include('partials.list.list-comment')
 
+			@elseif ($type == 'completed')
+				@include('partials.list.list-completed')
+
+			@elseif ($type == 'process')
+				@include('partials.list.list-process')
+
 			@endif
 			
 			@include('partials.common.sidebar')
