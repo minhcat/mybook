@@ -37,6 +37,15 @@
 			@elseif ($type == 'year')
 				@include('partials.list.list-year')
 
+			@elseif ($type == 'friend')
+				@include('partials.list.list-friend')
+
+			@elseif ($type == 'follow')
+				@include('partials.list.list-follow')
+
+			@elseif ($type == 'notification')
+				@include('partials.list.list-notification')
+
 			@endif
 			
 			@include('partials.common.sidebar')
