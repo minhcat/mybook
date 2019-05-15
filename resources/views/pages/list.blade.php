@@ -31,6 +31,12 @@
 			@elseif ($type == 'process')
 				@include('partials.list.list-process')
 
+			@elseif ($type == 'rate')
+				@include('partials.list.list-rate')
+
+			@elseif ($type == 'year')
+				@include('partials.list.list-year')
+
 			@endif
 			
 			@include('partials.common.sidebar')
