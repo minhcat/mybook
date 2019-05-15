@@ -11,7 +11,11 @@
 	<div class="main container">
 		<div class="row">
 			@if ($type == 'category')
-				@include('partials.list.listbook')
+				@include('partials.list.list-category')
+			@elseif ($type == 'view')
+				@include('partials.list.list-view')
+			@elseif ($type == 'update')
+				@include('partials.list.list-update')
 			@endif
 			
 			@include('partials.common.sidebar')
