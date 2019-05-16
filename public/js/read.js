@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$(window).scroll(function() {
-		if ($(this).scrollTop() > 353) {
+		if ($(this).scrollTop() > 425) {
 			$('.scroll').addClass('fixed-top');
 			// $('section').addClass('mt-50');
 		}
@@ -16,12 +16,11 @@ $(document).ready(function() {
 		else {
 			$('.top').css('display','none');
 		}
-
-		$('.books-slide').slick({
-			dots: false,
-			arrows: false,
-			slidesToShow: 5,
-			slidesToScroll: 5
-		});
+	});
+	$('.books-slide').slick({
+		dots: false,
+		arrows: false,
+		slidesToShow: 5,
+		slidesToScroll: 5
 	});
 });
