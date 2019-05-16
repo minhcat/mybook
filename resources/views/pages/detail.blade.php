@@ -19,6 +19,12 @@
 			@elseif ($type == 'character')
 				@include('partials.detail.detail-character')
 
+			@elseif ($type == 'user')
+				@include('partials.detail.detail-user')
+
+			@elseif ($type == 'trans')
+				@include('partials.detail.detail-trans')
+
 			@endif
 
 			@include('partials.common.sidebar')
