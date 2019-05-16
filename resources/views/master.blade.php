@@ -12,8 +12,8 @@
 
 	@include('partials.layouts.content_footer')
 
-	@yield('define-footer')
-
 	@include('partials.layouts.define_footer')
+
+	@yield('define-footer')
 </body>
 </html>

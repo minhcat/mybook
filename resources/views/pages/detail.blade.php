@@ -13,6 +13,12 @@
 			@if ($type == 'book')
 				@include('partials.detail.detail-book')
 
+			@elseif ($type == 'author')
+				@include('partials.detail.detail-author')
+
+			@elseif ($type == 'character')
+				@include('partials.detail.detail-character')
+
 			@endif
 
 			@include('partials.common.sidebar')
@@ -22,5 +28,5 @@
 @endsection
 
 @section('define-footer')
-	<script type="text/javascript" src="{{ asset('jquery/detail.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/detail.js') }}"></script>
 @endsection
