@@ -32,6 +32,9 @@
 	@elseif ($type == 'statistic')
 		@include('partials.admin.content.statistic')
 
+	@elseif ($type == 'admin')
+		@include('partials.admin.content.admin')
+
 	@endif
 
 @endsection
