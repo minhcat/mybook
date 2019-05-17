@@ -19,4 +19,6 @@ Route::get('list/{type}', 'ListController@index');
 
 Route::get('detail/{type}', 'DetailController@index');
 
+Route::get('read', 'ReadController@index');
+
 Route::get('admin', 'AdminController@index');

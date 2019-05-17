@@ -1,5 +1,10 @@
 $(document).ready(function() {
 	$(window).scroll(function() {
+		if ($(this).scrollTop() > 140) {
+			$('.menu').removeClass('fixed-top');
+			$('section').removeClass('mt-50');
+		}
+
 		if ($(this).scrollTop() > 425) {
 			$('.scroll').addClass('fixed-top');
 			// $('section').addClass('mt-50');
