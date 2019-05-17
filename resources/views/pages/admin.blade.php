@@ -29,6 +29,9 @@
 	@elseif ($type == 'mod')
 		@include('partials.admin.content.mod')
 
+	@elseif ($type == 'statistic')
+		@include('partials.admin.content.statistic')
+
 	@endif
 
 @endsection
