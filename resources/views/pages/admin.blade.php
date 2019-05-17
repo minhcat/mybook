@@ -14,6 +14,9 @@
 	@elseif ($type == 'admin')
 		@include('partials.admin.aside.admin')
 
+	@elseif ($type == 'super-admin')
+		@include('partials.admin.aside.super-admin')
+
 	@endif
 
 @endsection
