@@ -1,5 +1,17 @@
 @extends('admin')
 
+@section('sidebar')
+
+	@if ($type == 'uploader')
+		@include('partials.admin.aside.uploader')
+
+	@elseif ($type == 'mod')
+		@include('partials.admin.aside.mod')
+
+	@endif
+
+@endsection
+
 @section('content')
 <section>
 

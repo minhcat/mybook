@@ -1,25 +1,25 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Admin MyBook - Uploader</title>
-<link rel="icon" href="image/admin/icon.png">
+<link rel="icon" href="{{ asset('image/icon.png') }}">
 <!-- Tell the browser to be responsive to screen width -->
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-<link rel="stylesheet" href="css/admin/bootstrap.css">
+<link rel="stylesheet" href="{{ asset('css/admin/bootstrap.css') }}">
 <!-- Font Awesome -->
-<link rel="stylesheet" href="css/admin/font-awesome.css">
+<link rel="stylesheet" href="{{ asset('css/admin/font-awesome.css') }}">
 <!-- Ionicons -->
-<link rel="stylesheet" href="css/admin/ionicons.css">
+<link rel="stylesheet" href="{{ asset('css/admin/ionicons.css') }}">
 <!-- Datepicker -->
-<link rel="stylesheet" href="css/admin/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="{{ asset('css/admin/bootstrap-datepicker.min.css') }}">
 <!-- Theme style -->
-<link rel="stylesheet" href="css/admin/AdminLTE.css">
+<link rel="stylesheet" href="{{ asset('css/admin/AdminLTE.css') }}">
 <!-- Setting MyBook -->
-<link rel="stylesheet" href="css/admin/uploader.css">
+<link rel="stylesheet" href="{{ asset('css/admin/uploader.css') }}">
 <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
 			page. However, you can choose any other skin. Make sure you
 			apply the skin class to the body tag so the changes take effect. -->
-<link rel="stylesheet" href="css/admin/skin-blue.css">
-<link rel="stylesheet" href="css/admin/skin-black.css">
+<link rel="stylesheet" href="{{ asset('css/admin/skin-blue.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin/skin-black.css') }}">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

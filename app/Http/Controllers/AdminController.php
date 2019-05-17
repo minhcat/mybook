@@ -12,9 +12,10 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($type)
 	{
-		return view('pages.admin');
+		$data['type'] = $type;
+		return view('pages.admin', $data);
 	}
 
 	/**

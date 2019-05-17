@@ -1,25 +1,25 @@
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- ChartJS -->
-<script src="js/admin/chart.min.js"></script>
+<script src="{{ asset('js/admin/chart.min.js') }}"></script>
 <!-- jQuery 3 -->
-<script src="js/admin/jquery.js"></script>
+<script src="{{ asset('js/admin/jquery.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="js/admin/bootstrap.js"></script>
+<script src="{{ asset('js/admin/bootstrap.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="js/admin/adminlte.js"></script>
+<script src="{{ asset('js/admin/adminlte.js') }}"></script>
 <!-- Chartjs Label Plugin -->
-<script src="js/admin/chartjs-plugin-labels.min.js"></script>
+<script src="{{ asset('js/admin/chartjs-plugin-labels.min.js') }}"></script>
 <!-- Datepicker -->
-<script src="js/admin/bootstrap-datepicker.min.js"></script>
+<script src="{{ asset('js/admin/bootstrap-datepicker.min.js') }}"></script>
 <!-- CKEditor -->
-<script src="js/admin/ckeditor/ckeditor.js"></script>
+<script src="{{ asset('js/admin/ckeditor/ckeditor.js') }}"></script>
 
 <!-- MyBook -->
-<script src="js/admin/common.js"></script>
+<script src="{{ asset('js/admin/common.js') }}"></script>
 
 <!-- ChartJS option -->
-<script src="js/admin/upload.js"></script>
+<script src="{{ asset('js/admin/upload.js') }}"></script>
 
 <script type="text/javascript">
 	$(document).ready(function() {

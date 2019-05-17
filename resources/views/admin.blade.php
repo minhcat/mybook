@@ -8,8 +8,8 @@
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
 		@include('partials.admin.layouts.content_header')
-
-		@include('partials.admin.aside.uploader')
+		
+		@yield('sidebar')
 
 		@yield('content')
 

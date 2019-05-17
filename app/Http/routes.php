@@ -21,4 +21,4 @@ Route::get('detail/{type}', 'DetailController@index');
 
 Route::get('read', 'ReadController@index');
 
-Route::get('admin', 'AdminController@index');
+Route::get('admin/{type}', 'AdminController@index');

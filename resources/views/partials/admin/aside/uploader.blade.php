@@ -7,7 +7,7 @@
 		<!-- Sidebar user panel (optional) -->
 		<div class="user-panel">
 			<div class="pull-left image">
-				<img src="image/admin/user-uploader.jpg" class="img-circle" alt="User Image">
+				<img src="{{ asset('image/admin/user-uploader.jpg') }}" class="img-circle" alt="User Image">
 			</div>
 			<div class="pull-left info">
 				<p>Võ Trinh</p>
