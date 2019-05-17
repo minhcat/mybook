@@ -11,6 +11,9 @@
 	@elseif ($type == 'statistic')
 		@include('partials.admin.aside.statistic')
 
+	@elseif ($type == 'admin')
+		@include('partials.admin.aside.admin')
+
 	@endif
 
 @endsection
