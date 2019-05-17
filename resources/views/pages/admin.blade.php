@@ -35,6 +35,9 @@
 	@elseif ($type == 'admin')
 		@include('partials.admin.content.admin')
 
+	@elseif ($type == 'super-admin')
+		@include('partials.admin.content.super-admin')
+
 	@endif
 
 @endsection
