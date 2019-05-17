@@ -8,6 +8,9 @@
 	@elseif ($type == 'mod')
 		@include('partials.admin.aside.mod')
 
+	@elseif ($type == 'statistic')
+		@include('partials.admin.aside.statistic')
+
 	@endif
 
 @endsection
