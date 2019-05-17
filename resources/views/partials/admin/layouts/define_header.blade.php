@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="{{ asset('css/admin/AdminLTE.css') }}">
 <!-- Setting MyBook -->
 <link rel="stylesheet" href="{{ asset('css/admin/uploader.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin/mod.css') }}">
 <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
 			page. However, you can choose any other skin. Make sure you
 			apply the skin class to the body tag so the changes take effect. -->
