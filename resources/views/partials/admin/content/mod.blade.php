@@ -199,6 +199,7 @@
 			</div>
 			<!-- /.modal-dialog -->
 		</div>
+
 		<div class="modal fade" id="modal-comment-save">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -219,6 +220,7 @@
 			</div>
 			<!-- /.modal-dialog -->
 		</div>
+
 		<div class="modal fade" id="modal-comment-punish">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -271,6 +273,7 @@
 			</div>
 			<!-- /.modal-dialog -->
 		</div>
+
 		<div class="modal fade" id="modal-comment-remove">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -291,6 +294,7 @@
 			</div>
 			<!-- /.modal-dialog -->
 		</div>
+
 		<div class="modal fade" id="modal-checkword-add">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -314,6 +318,7 @@
 			</div>
 			<!-- /.modal-dialog -->
 		</div>
+
 		<div class="modal fade" id="modal-checkword-remove">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -334,6 +339,7 @@
 			</div>
 			<!-- /.modal-dialog -->
 		</div>
+
 		<div class="modal fade" id="modal-user-remove-punishlist">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -354,6 +360,7 @@
 			</div>
 			<!-- /.modal-dialog -->
 		</div>
+
 		<div class="modal fade" id="modal-user-remove-banlist">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -374,6 +381,7 @@
 			</div>
 			<!-- /.modal-dialog -->
 		</div>
+
 		<div class="modal fade" id="modal-book-remove-follow">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -394,6 +402,7 @@
 			</div>
 			<!-- /.modal-dialog -->
 		</div>
+		
 	</section>
 	<!-- /.content -->
 </div>
