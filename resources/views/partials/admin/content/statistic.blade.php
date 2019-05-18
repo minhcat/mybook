@@ -16,127 +16,13 @@
 			<p>Add the sidebar-collapse class to the body tag to get this layout. You should combine this option with a fixed layout if you have a long sidebar. Doing that will prevent your page content from getting stretched vertically.</p>
 		</div>
 		<!-- Statistic book control box -->
-		<div class="row small statistic">
-			<div class="col-xs-3">
-				<div class="small-box bg-blue collapse in box-link all" data-target="#box-book-all" data-small="statistic">
-					<div class="small-box-header">Thống kê</div>
-					<div class="inner">
-						<h4>Tổng Số</h4>
-					</div>
-					<div class="icon">
-						<i class="fa fa-bar-chart"></i>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-3">
-				<div class="small-box bg-green collapse in box-link book" data-target="#box-book-chart" data-small="statistic" data-with="#box-book-list-small">
-					<div class="small-box-header">Thống kê</div>
-					<div class="inner">
-						<h4>Truyện Với Nhau</h4>
-					</div>
-					<div class="icon">
-						<i class="fa fa-book"></i>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-3">
-				<div class="small-box bg-aqua collapse in box-link time" data-target="#box-book-time" data-small="statistic" data-with="#box-book-list-small">
-					<div class="small-box-header">Thống kê</div>
-					<div class="inner">
-						<h4>Theo Thời Gian</h4>
-					</div>
-					<div class="icon">
-						<i class="fa fa-calendar"></i>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-3">
-				<div class="small-box bg-red collapse in box-link chap" data-target="#box-book-chap" data-small="statistic" data-with="#box-book-list-small-2">
-					<div class="small-box-header">Thống kê</div>
-					<div class="inner">
-						<h4>Chap Trong Truyện</h4>
-					</div>
-					<div class="icon">
-						<i class="fa fa-sticky-note"></i>
-					</div>
-				</div>
-			</div>
-		</div>
+		@include('partials.admin.content.small.statistic-book')
 		<!-- Statistic category control box -->
-		<div class="row small statistic2">
-			<div class="col-xs-6">
-				<div class="small-box bg-green collapse box-link category" data-target="#box-category-chart" data-small="statistic2" data-with="#box-category-list-small">
-					<div class="small-box-header">Thống kê</div>
-					<div class="inner">
-						<h4>Các Thể Loại</h4>
-					</div>
-					<div class="icon">
-						<i class="fa fa-book"></i>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6">
-				<div class="small-box bg-aqua collapse box-link time" data-target="#box-category-time" data-small="statistic2" data-with="#box-category-list-small">
-					<div class="small-box-header">Thống kê</div>
-					<div class="inner">
-						<h4>Theo Thời Gian</h4>
-					</div>
-					<div class="icon">
-						<i class="fa fa-calendar"></i>
-					</div>
-				</div>
-			</div>
-		</div>
+		@include('partials.admin.content.small.statistic-category')
 		<!-- Statistic user control box -->
-		<div class="row small statistic3">
-			<div class="col-xs-6">
-				<div class="small-box bg-green collapse box-link user" data-target="#box-user-chart" data-small="statistic3" data-with="#box-user-list-small">
-					<div class="small-box-header">Thống kê</div>
-					<div class="inner">
-						<h4>Người dùng với nhau</h4>
-					</div>
-					<div class="icon">
-						<i class="fa fa-book"></i>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6">
-				<div class="small-box bg-aqua collapse box-link time" data-target="#box-user-time" data-small="statistic3" data-with="#box-user-list-small">
-					<div class="small-box-header">Thống kê</div>
-					<div class="inner">
-						<h4>Theo Thời Gian</h4>
-					</div>
-					<div class="icon">
-						<i class="fa fa-calendar"></i>
-					</div>
-				</div>
-			</div>
-		</div>
+		@include('partials.admin.content.small.statistic-user')
 		<!-- Statistic translator control box -->
-		<div class="row small statistic4">
-			<div class="col-xs-6">
-				<div class="small-box bg-green collapse box-link trans" data-target="#box-trans-chart" data-small="statistic4" data-with="#box-trans-list-small">
-					<div class="small-box-header">Thống kê</div>
-					<div class="inner">
-						<h4>Các Nhóm Dịch</h4>
-					</div>
-					<div class="icon">
-						<i class="fa fa-book"></i>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6">
-				<div class="small-box bg-aqua collapse box-link time" data-target="#box-trans-time" data-small="statistic4" data-with="#box-trans-list-small">
-					<div class="small-box-header">Thống kê</div>
-					<div class="inner">
-						<h4>Theo Thời Gian</h4>
-					</div>
-					<div class="icon">
-						<i class="fa fa-calendar"></i>
-					</div>
-				</div>
-			</div>
-		</div>
+		@include('partials.admin.content.small.statistic-trans')
 
 		<!-- Box -->
 		<div class="row">
