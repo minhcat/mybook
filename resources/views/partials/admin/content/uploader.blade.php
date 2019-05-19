@@ -185,90 +185,15 @@
 				@include('partials.admin.content.comment.comment-new-book')
 
 				<!-- statistic contant book -->
-				<div class="box box-primary collapse" id="box-book-chart-cmd" aria-expanded="false">
-					<div class="box-header">
-						<h3 class="box-title">Thống Kê Bình Luận</h3>
+				@include('partials.admin.content.statistic.statistic-book-view')
 
-						<div class="box-tools pull-right">
-							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-							</button>
-							<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
-						</div>
-					</div>
-					<div class="box-body">
-						<div class="box-chart" style="height: 478px">
-							<canvas id="cmd-chart"></canvas>
-						</div>
-					</div>
-				</div>
+				@include('partials.admin.content.statistic.statistic-book-like')
 
-				<div class="box box-primary collapse" id="box-book-chart-view" aria-expanded="false">
-					<div class="box-header">
-						<h3 class="box-title">Thống Kê Lượt Xem</h3>
+				@include('partials.admin.content.statistic.statistic-book-comment')
 
-						<div class="box-tools pull-right">
-							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-							</button>
-							<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
-						</div>
-					</div>
-					<div class="box-body">
-						<div class="box-chart" style="height: 478px">
-							<canvas id="view-chart"></canvas>
-						</div>
-					</div>
-				</div>
+				@include('partials.admin.content.statistic.statistic-book-follow')
 
-				<div class="box box-primary collapse" id="box-book-chart-like" aria-expanded="false">
-					<div class="box-header">
-						<h3 class="box-title">Thống Kê Yêu Thích</h3>
-
-						<div class="box-tools pull-right">
-							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-							</button>
-							<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
-						</div>
-					</div>
-					<div class="box-body">
-						<div class="box-chart" style="height: 478px">
-							<canvas id="like-chart"></canvas>
-						</div>
-					</div>
-				</div>
-
-				<div class="box box-primary collapse" id="box-book-chart-follow" aria-expanded="false">
-					<div class="box-header">
-						<h3 class="box-title">Thống Kê Theo Dõi</h3>
-
-						<div class="box-tools pull-right">
-							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-							</button>
-							<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
-						</div>
-					</div>
-					<div class="box-body">
-						<div class="box-chart" style="height: 478px">
-							<canvas id="follow-chart"></canvas>
-						</div>
-					</div>
-				</div>
-
-				<div class="box box-primary collapse" id="box-book-chart-rate" aria-expanded="false">
-					<div class="box-header with-border">
-						<h3 class="box-title">Thống Kê Đánh Giá</h3>
-
-						<div class="box-tools pull-right">
-							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-							</button>
-							<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
-						</div>
-					</div>
-					<div class="box-body">
-						<div class="box-chart" style="height: 478px">
-							<canvas id="rate-chart"></canvas>
-						</div>
-					</div>
-				</div>
+				@include('partials.admin.content.statistic.statistic-book-rate')
 			</div>
 
 			<div class="col-xs-3">
