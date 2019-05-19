@@ -27,36 +27,7 @@
 		<!-- Box -->
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="box box-primary collapse in book" id="box-book-all" aria-expanded="true">
-					<div class="box-header with-border">
-						<h3 class="box-title">Thống Kê Tổng Số</h3>
-
-						<div class="box-tools pull-right">
-							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-							</button>
-							<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
-						</div>
-					</div>
-					<div class="box-body">
-						<div class="box-button">
-							<button class="btn btn-control btn-primary view">Lượt xem</button>
-							<button class="btn btn-control btn-success comment">Bình luận</button>
-							<button class="btn btn-control btn-danger like">Yêu thích</button>
-							<button class="btn btn-control btn-info follow">Theo dõi</button>
-							<button class="btn btn-control btn-warning rate" data-toggle="modal" data-target="#modal-rate-all">Đánh giá</button>
-						</div>
-						<div class="box-chart" style="height: 372px">
-							<canvas id="all-book-chart"></canvas>
-						</div>
-					</div>
-					<div class="box-footer">
-						<button class="btn btn-control btn-primary day">Theo ngày</button>
-						<button class="btn btn-control btn-success week">Theo tuần</button>
-						<button class="btn btn-control btn-info month">Theo tháng</button>
-						<button class="btn btn-control btn-danger season">Theo mùa</button>
-						<button class="btn btn-control btn-warning year">Theo năm</button>
-					</div>
-				</div>
+				@include('partials.admin.content.statistic.statistic-book-all')
 
 				<!-- Mail Box -->
 				<div class="box box-primary collapse" id="box-mail" aria-expanded="false">
@@ -186,97 +157,11 @@
 
 			<div class="col-xs-9">
 				<!-- statistic contant book -->
-				<div class="box box-primary collapse book" id="box-book-chart" aria-expanded="false">
-					<div class="box-header with-border">
-						<h3 class="box-title">Thống Kê Truyện</h3>
+				@include('partials.admin.content.statistic.statistic-book-other')
 
-						<div class="box-tools pull-right">
-							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-							</button>
-							<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
-						</div>
-					</div>
-					<div class="box-body">
-						<div class="box-button">
-							<button class="btn btn-control btn-primary view">Lượt xem</button>
-							<button class="btn btn-control btn-success comment">Bình luận</button>
-							<button class="btn btn-control btn-danger like">Yêu thích</button>
-							<button class="btn btn-control btn-info follow">Theo dõi</button>
-							<button class="btn btn-control btn-warning rate" data-toggle="modal" data-target="#modal-rate-item">Đánh giá</button>
-						</div>
-						<div class="box-chart" style="height: 372px">
-							<canvas id="book-chart"></canvas>
-						</div>
-					</div>
-					<div class="box-footer">
-						<button class="btn btn-control btn-primary day">Theo ngày</button>
-						<button class="btn btn-control btn-success week">Theo tuần</button>
-						<button class="btn btn-control btn-info month">Theo tháng</button>
-						<button class="btn btn-control btn-danger season">Theo mùa</button>
-						<button class="btn btn-control btn-warning year">Theo năm</button>
-					</div>
-				</div>
+				@include('partials.admin.content.statistic.statistic-book-time')
 
-				<div class="box box-primary collapse book" id="box-book-time" aria-expanded="false">
-					<div class="box-header with-border">
-						<h3 class="box-title">Thống Kê Theo Thời Gian</h3>
-
-						<div class="box-tools pull-right">
-							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-							</button>
-							<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
-						</div>
-					</div>
-					<div class="box-body">
-						<div class="box-button">
-							<button class="btn btn-control btn-primary view">Lượt xem</button>
-							<button class="btn btn-control btn-success comment">Bình luận</button>
-							<button class="btn btn-control btn-danger like">Yêu thích</button>
-							<button class="btn btn-control btn-info follow">Theo dõi</button>
-							<button class="btn btn-control btn-warning rate" data-toggle="modal" data-target="#modal-rate-time">Đánh giá</button>
-						</div>
-						<div class="box-chart" style="height: 372px">
-							<canvas id="time-book-chart"></canvas>
-						</div>
-					</div>
-					<div class="box-footer">
-						<button class="btn btn-control btn-primary day">Theo ngày</button>
-						<button class="btn btn-control btn-success week">Theo tuần</button>
-						<button class="btn btn-control btn-info month">Theo tháng</button>
-						<button class="btn btn-control btn-danger season">Theo mùa</button>
-						<button class="btn btn-control btn-warning year">Theo năm</button>
-					</div>
-				</div>
-
-				<div class="box box-primary collapse book" id="box-book-chap" aria-expanded="false">
-					<div class="box-header with-border">
-						<h3 class="box-title">Thống Kê Chap</h3>
-
-						<div class="box-tools pull-right">
-							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-							</button>
-							<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
-						</div>
-					</div>
-					<div class="box-body">
-						<div class="box-button">
-							<button class="btn btn-control btn-primary view">Lượt xem</button>
-							<button class="btn btn-control btn-success comment">Bình luận</button>
-							<button class="btn btn-control btn-danger like">Yêu thích</button>
-							<button class="btn btn-control btn-info follow">Theo dõi</button>
-						</div>
-						<div class="box-chart" style="height: 372px">
-							<canvas id="book-chap-chart"></canvas>
-						</div>
-					</div>
-					<div class="box-footer">
-						<button class="btn btn-control btn-primary day">Theo ngày</button>
-						<button class="btn btn-control btn-success week">Theo tuần</button>
-						<button class="btn btn-control btn-info month">Theo tháng</button>
-						<button class="btn btn-control btn-danger season">Theo mùa</button>
-						<button class="btn btn-control btn-warning year">Theo năm</button>
-					</div>
-				</div>
+				@include('partials.admin.content.statistic.statistic-chap')
 
 				<!-- statistic contant category -->
 				<div class="box box-primary collapse category" id="box-category-chart" aria-expanded="false">
