@@ -10,7 +10,7 @@
 	</div>
 	<div class="box-body">
 		<div class="avatar">
-			<img src="image/admin/Sword-Art-Online.jpg" class="img-circle" width="150px"  alt="user image">
+			<img src="{{ asset('image/admin/Sword-Art-Online.jpg') }}" class="img-circle" width="150px"  alt="user image">
 			<button class="btn btn-success">Thay đổi hình</button>
 		</div>
 		<div class="box-edit">
