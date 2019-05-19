@@ -44,7 +44,7 @@
 		</div>
 	</div>
 	<div class="col-mb-5">
-		<div class="small-box bg-purple collapse box-link" data-target="#box-book-chart-rate" data-small="statistic" data-with="#box-book-list-small-4">
+		<div class="small-box bg-purple collapse box-link" data-target="#box-book-chart-rate" data-small="statistic" data-with="#box-book-list-small-2">
 			<div class="small-box-header">Thống kê</div>
 			<div class="inner">
 				<h4>Đánh Giá</h4>
