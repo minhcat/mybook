@@ -271,134 +271,17 @@
 		</div>
 
 		<!-- Modal -->
-		<div class="modal fade category" id="modal-remove-category">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Xóa Thể Loại</h4>
-					</div>
-					<div class="modal-body">
-						<p>Bạn có chắc muốn xóa thể loại này</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Đồng ý</button>
-						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
+		@include('partials.admin.content.modal.modal-reply')
 
-		<div class="modal fade trans" id="modal-remove-trans">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Xóa Nhóm Dịch</h4>
-					</div>
-					<div class="modal-body">
-						<p>Bạn có chắc muốn xóa nhóm dịch này</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Đồng ý</button>
-						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
+		@include('partials.admin.content.modal.modal-permiss')
 
-		<div class="modal fade reply" id="modal-reply">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Phản hồi</h4>
-					</div>
-					<div class="modal-body">
-						<label>Nội dung phản hồi</label>
-						<textarea class="form-control" rows="3"></textarea>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Gữi</button>
-						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
+		@include('partials.admin.content.modal.modal-remove-category')
 
-		<div class="modal fade permiss" id="modal-permiss">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Cấp quyền</h4>
-					</div>
-					<div class="modal-body">
-						<button class="btn btn-primary uploader">uploader</button>
-						<button class="btn btn-success mod">mod</button>
-						<button class="btn btn-warning statistic">statistic</button>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Đồng ý</button>
-						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
+		@include('partials.admin.content.modal.modal-remove-trans')
 
-		<div class="modal fade remove-character" id="modal-remove-character">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Xóa Nhân Vật</h4>
-					</div>
-					<div class="modal-body">
-						Bạn có chắc xóa nhân vật này
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Đồng ý</button>
-						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
+		@include('partials.admin.content.modal.modal-remove-character')
 
-		<div class="modal fade remove-character" id="modal-remove-author">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Xóa Tác Giả</h4>
-					</div>
-					<div class="modal-body">
-						Bạn có chắc xóa tác giả này
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Đồng ý</button>
-						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
+		@include('partials.admin.content.modal.modal-remove-author')
 
 	</section>
 	<!-- /.content -->
