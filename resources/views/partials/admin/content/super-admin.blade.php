@@ -88,7 +88,7 @@
 				<!-- End Add, Edit Box -->
 
 				<!-- Permiss Box -->
-				@include('partials.admin.content.list.list-staff')
+				@include('partials.admin.content.list.list-staff-permiss')
 				<!-- End Permiss Box -->
 
 				<!-- System Box -->
@@ -116,194 +116,23 @@
 		</div>
 
 		<!-- Modal -->
-		<div class="modal fade user" id="modal-remove-temporary-user">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Xóa Tạm Người Dùng</h4>
-					</div>
-					<div class="modal-body">
-						<p>Bạn có chắc muốn đưa người dùng này vào danh sách xóa tạm</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Đồng ý</button>
-						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
+		@include('partials.admin.content.modal.modal-remove-user-temporary')
 
-		<div class="modal fade user" id="modal-remove-permanent-user">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Xóa Vĩnh Viễn Người Dùng</h4>
-					</div>
-					<div class="modal-body">
-						<p>Bạn có chắc muốn xóa vĩnh viễn người dùng này. Mọi dữ liệu liên quan có thể bị xóa</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Đồng ý</button>
-						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
+		@include('partials.admin.content.modal.modal-remove-user-permanent')
 
-		<div class="modal fade user" id="modal-remove-all-user">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Xóa Toàn Bộ Người Dùng</h4>
-					</div>
-					<div class="modal-body">
-						<p>Bạn có chắc muốn xóa toàn bộ các người dùng</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Đồng ý</button>
-						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
+		@include('partials.admin.content.modal.modal-remove-user-all')
 
-		<div class="modal fade category" id="modal-remove-temporary-category">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Xóa Tạm Thể Loại</h4>
-					</div>
-					<div class="modal-body">
-						<p>Bạn có chắc muốn đưa thể loại này vào danh sách xóa tạm</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Đồng ý</button>
-						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
+		@include('partials.admin.content.modal.modal-remove-category-temporary')
 
-		<div class="modal fade category" id="modal-remove-permanent-category">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Xóa Vĩnh Viễn Thể Loại</h4>
-					</div>
-					<div class="modal-body">
-						<p>Bạn có chắc muốn xóa vĩnh viễn thể loại này. Mọi dữ liệu liên quan có thể bị xóa</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Đồng ý</button>
-						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
+		@include('partials.admin.content.modal.modal-remove-category-permanent')
 
-		<div class="modal fade category" id="modal-remove-all-category">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Xóa Toàn Bộ Thể Loại</h4>
-					</div>
-					<div class="modal-body">
-						<p>Bạn có chắc muốn xóa toàn bộ các thể loại</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Đồng ý</button>
-						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
+		@include('partials.admin.content.modal.modal-remove-category-all')
 
-		<div class="modal fade trans" id="modal-remove-temporary-trans">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Xóa Tạm Nhóm Dịch</h4>
-					</div>
-					<div class="modal-body">
-						<p>Bạn có chắc muốn đưa nhóm dịch này vào danh sách xóa tạm</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Đồng ý</button>
-						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
+		@include('partials.admin.content.modal.modal-remove-trans-temporary')
 
-		<div class="modal fade trans" id="modal-remove-permanent-trans">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Xóa Vĩnh Viễn Nhóm Dịch</h4>
-					</div>
-					<div class="modal-body">
-						<p>Bạn có chắc muốn xóa vĩnh viễn nhóm dịch này. Mọi dữ liệu liên quan có thể bị xóa.</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Đồng ý</button>
-						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
+		@include('partials.admin.content.modal.modal-remove-trans-permanent')
 
-		<div class="modal fade trans" id="modal-remove-all-trans">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Xóa Toàn Bộ Nhóm Dịch</h4>
-					</div>
-					<div class="modal-body">
-						<p>Bạn có chắc muốn xóa toàn bộ các nhóm dịch</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Đồng ý</button>
-						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
+		@include('partials.admin.content.modal.modal-remove-trans-all')
 
 		<div class="modal fade permiss" id="modal-permiss">
 			<div class="modal-dialog">
