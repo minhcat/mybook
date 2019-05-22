@@ -12,10 +12,9 @@ class ListController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index($type)
+	public function category()
 	{
-		$data['type'] = $type;
-		return view('pages.list', $data);
+		return view('pages.list.list-category');
 	}
 
 	/**
@@ -23,8 +22,8 @@ class ListController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function category()
+	public function comment()
 	{
-		return view('pages.list.list-category');
+		return view('pages.list.list-comment');
 	}
 }

@@ -19,6 +19,8 @@ Route::group(['prefix' => 'list'], function() {
 
 	Route::get('category', 'ListController@category');
 
+	Route::get('comment', 'ListController@comment');
+
 });
 
 Route::get('detail/{type}', 'DetailController@index');
