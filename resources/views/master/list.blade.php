@@ -10,7 +10,8 @@
 
 	<div class="main container">
 		<div class="row">
-			@if ($type == 'category')
+			@yield('list')
+			{{-- @if ($type == 'category')
 				@include('partials.list.list-category')
 
 			@elseif ($type == 'view')
@@ -46,7 +47,7 @@
 			@elseif ($type == 'notification')
 				@include('partials.list.list-notification')
 
-			@endif
+			@endif --}}
 			
 			@include('partials.common.sidebar')
 		</div>

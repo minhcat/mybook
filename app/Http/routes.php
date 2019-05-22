@@ -15,7 +15,11 @@ Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::get('list/{type}', 'ListController@index');
+Route::group(['prefix' => 'list'], function() {
+
+	Route::get('category', 'ListController@category');
+
+});
 
 Route::get('detail/{type}', 'DetailController@index');
 
