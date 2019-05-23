@@ -1,5 +1,19 @@
 @extends('master.list')
 
+{{-- title --}}
+@section('title-color')
+teal
+@endsection
+
+@section('title-header')
+Thông Báo
+@endsection
+
+@section('title-content')
+Tổng hợp các thông báo của bạn tại đây
+@endsection
+{{-- end title --}}
+
 @section('list')
 <div class="listbook col-lg-9 col-md-9 col-sm-12 col-xs-12">
 	<div class="content">
