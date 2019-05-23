@@ -1,5 +1,19 @@
 @extends('master.list')
 
+{{-- title --}}
+@section('title-color')
+blue
+@endsection
+
+@section('title-header')
+Comedy
+@endsection
+
+@section('title-content')
+Các loại truyện có yếu tố hài hước, vui nhộn
+@endsection
+{{-- end title --}}
+
 @section('list')
 <div class="listbook col-lg-9 col-md-9 col-sm-12 col-xs-12">
 	<div class="content">

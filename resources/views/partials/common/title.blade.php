@@ -1,6 +1,6 @@
 <div class="container">
-	<div class="title blue">
-		<h1>Chi Tiết Truyện</h1>
-		<p>Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đây</p>
+	<div class="title @yield('title-color')">
+		<h1>@yield('title-header')</h1>
+		<p>@yield('title-content')</p>
 	</div>
 </div>
