@@ -10,22 +10,7 @@
 	@include('partials.common.title')
 	<div class="main container notlogin">
 		<div class="row">
-			@if ($type == 'book')
-				@include('partials.detail.detail-book')
-
-			@elseif ($type == 'author')
-				@include('partials.detail.detail-author')
-
-			@elseif ($type == 'character')
-				@include('partials.detail.detail-character')
-
-			@elseif ($type == 'user')
-				@include('partials.detail.detail-user')
-
-			@elseif ($type == 'trans')
-				@include('partials.detail.detail-trans')
-
-			@endif
+			@yield('detail')
 
 			@include('partials.common.sidebar')
 		</div>

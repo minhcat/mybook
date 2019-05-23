@@ -12,74 +12,48 @@ class DetailController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index($type)
+	public function author()
 	{
-		$data['type'] = $type;
-		return view('pages.detail', $data);
+		return view('pages.detail.detail-author');
 	}
 
 	/**
-	 * Show the form for creating a new resource.
+	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function book()
 	{
-		//
+		return view('pages.detail.detail-book');
 	}
 
 	/**
-	 * Store a newly created resource in storage.
+	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function character()
 	{
-		//
+		return view('pages.detail.detail-character');
 	}
 
 	/**
-	 * Display the specified resource.
+	 * Display a listing of the resource.
 	 *
-	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function user()
 	{
-		//
+		return view('pages.detail.detail-user');
 	}
 
 	/**
-	 * Show the form for editing the specified resource.
+	 * Display a listing of the resource.
 	 *
-	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function trans()
 	{
-		//
+		return view('pages.detail.detail-trans');
 	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
 }

@@ -43,7 +43,19 @@ Route::group(['prefix' => 'list'], function() {
 
 });
 
-Route::get('detail/{type}', 'DetailController@index');
+Route::group(['prefix' => 'detail'], function () {
+	
+	Route::get('author', 'DetailController@author');
+
+	Route::get('book', 'DetailController@book');
+
+	Route::get('character', 'DetailController@character');
+
+	Route::get('user', 'DetailController@user');
+
+	Route::get('trans', 'DetailController@trans');
+
+});
 
 Route::get('read', 'ReadController@index');
 
