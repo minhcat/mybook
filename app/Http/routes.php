@@ -29,6 +29,18 @@ Route::group(['prefix' => 'list'], function() {
 
 	Route::get('notification', 'ListController@notification');
 
+	Route::get('process', 'ListController@process');
+
+	Route::get('rate', 'ListController@rate');
+
+	Route::get('search', 'ListController@search');
+
+	Route::get('update', 'ListController@update');
+
+	Route::get('view', 'ListController@view');
+
+	Route::get('year', 'ListController@year');
+
 });
 
 Route::get('detail/{type}', 'DetailController@index');

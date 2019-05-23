@@ -66,4 +66,64 @@ class ListController extends Controller {
 	{
 		return view('pages.list.list-notification');
 	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function process()
+	{
+		return view('pages.list.list-process');
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function rate()
+	{
+		return view('pages.list.list-rate');
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function search()
+	{
+		return view('pages.list.list-search');
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function update()
+	{
+		return view('pages.list.list-update');
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function view()
+	{
+		return view('pages.list.list-view');
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function year()
+	{
+		return view('pages.list.list-year');
+	}
 }
