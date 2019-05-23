@@ -21,6 +21,14 @@ Route::group(['prefix' => 'list'], function() {
 
 	Route::get('comment', 'ListController@comment');
 
+	Route::get('completed', 'ListController@completed');
+
+	Route::get('follow', 'ListController@follow');
+
+	Route::get('friend', 'ListController@friend');
+
+	Route::get('notification', 'ListController@notification');
+
 });
 
 Route::get('detail/{type}', 'DetailController@index');
