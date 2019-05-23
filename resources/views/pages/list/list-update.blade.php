@@ -1,5 +1,19 @@
 @extends('master.list')
 
+{{-- title --}}
+@section('title-color')
+indigo
+@endsection
+
+@section('title-header')
+Truyện Mới Cập Nhật
+@endsection
+
+@section('title-content')
+Các loại truyện có được cập nhập, thêm chap mới, ra bảng dịch mới gần đây
+@endsection
+{{-- end title --}}
+
 @section('list')
 <div class="listbook col-lg-9 col-md-9 col-sm-12 col-xs-12">
 	<div class="content">

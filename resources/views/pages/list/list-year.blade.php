@@ -1,5 +1,19 @@
 @extends('master.list')
 
+{{-- title --}}
+@section('title-color')
+teal
+@endsection
+
+@section('title-header')
+Năm 2016
+@endsection
+
+@section('title-content')
+Các truyện được xuất bản chính thức trong năm 2016
+@endsection
+{{-- end title --}}
+
 @section('list')
 <div class="listbook col-lg-9 col-md-9 col-sm-12 col-xs-12">
 	<div class="content">
