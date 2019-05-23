@@ -57,6 +57,19 @@ Route::group(['prefix' => 'detail'], function () {
 
 });
 
+Route::group(['prefix' => 'admin'], function() {
+
+	Route::get('mod', 'AdminController@mod');
+
+	Route::get('uploader', 'AdminController@uploader');
+
+	Route::get('statistic', 'AdminController@statistic');
+
+	Route::get('admin', 'AdminController@admin');
+
+	Route::get('super-admin', 'AdminController@super_admin');
+});
+
 Route::get('read', 'ReadController@index');
 
 Route::get('admin/{type}', 'AdminController@index');

@@ -12,74 +12,48 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index($type)
+	public function mod()
 	{
-		$data['type'] = $type;
-		return view('pages.admin', $data);
+		return view('pages.admin.mod');
 	}
 
 	/**
-	 * Show the form for creating a new resource.
+	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function uploader()
 	{
-		//
+		return view('pages.admin.uploader');
 	}
 
 	/**
-	 * Store a newly created resource in storage.
+	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function statistic()
 	{
-		//
+		return view('pages.admin.statistic');
 	}
 
 	/**
-	 * Display the specified resource.
+	 * Display a listing of the resource.
 	 *
-	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function admin()
 	{
-		//
+		return view('pages.admin.admin');
 	}
 
 	/**
-	 * Show the form for editing the specified resource.
+	 * Display a listing of the resource.
 	 *
-	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function super_admin()
 	{
-		//
+		return view('pages.admin.super-admin');
 	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
 }

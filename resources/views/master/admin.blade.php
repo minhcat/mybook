@@ -1,43 +1,23 @@
-@extends('admin')
+<!DOCTYPE html>
+<html>
+<head>
+	@include('partials.admin.layouts.define_header')
 
-@section('sidebar')
+	@yield('define-header')
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		@include('partials.admin.layouts.content_header')
+		
+		@yield('sidebar')
 
-	@if ($type == 'uploader')
-		@include('partials.admin.aside.uploader')
+		@yield('content')
 
-	@elseif ($type == 'mod')
-		@include('partials.admin.aside.mod')
+		@include('partials.admin.layouts.content_footer')
+	</div>
 
-	@elseif ($type == 'statistic')
-		@include('partials.admin.aside.statistic')
+	@yield('define-footer')
 
-	@elseif ($type == 'admin')
-		@include('partials.admin.aside.admin')
-
-	@elseif ($type == 'super-admin')
-		@include('partials.admin.aside.super-admin')
-
-	@endif
-
-@endsection
-
-@section('content')
-
-	@if ($type == 'uploader')
-		@include('partials.admin.content.uploader')
-
-	@elseif ($type == 'mod')
-		@include('partials.admin.content.mod')
-
-	@elseif ($type == 'statistic')
-		@include('partials.admin.content.statistic')
-
-	@elseif ($type == 'admin')
-		@include('partials.admin.content.admin')
-
-	@elseif ($type == 'super-admin')
-		@include('partials.admin.content.super-admin')
-
-	@endif
-
-@endsection
+	@include('partials.admin.layouts.define_footer')
+</body>
+</html>
