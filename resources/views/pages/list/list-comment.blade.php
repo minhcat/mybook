@@ -1,5 +1,19 @@
 @extends('master.list')
 
+{{-- title --}}
+@section('title-color')
+orange
+@endsection
+
+@section('title-header')
+Truyện Bình Luận Nhiều
+@endsection
+
+@section('title-content')
+Danh sách truyện được sắp xếp dựa trên lượt bình luận của mọi người
+@endsection
+{{-- end title --}}
+
 @section('list')
 <div class="listbook comment col-lg-9 col-md-9 col-sm-12 col-xs-12">
 	<div class="content">
