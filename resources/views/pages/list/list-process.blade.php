@@ -1,5 +1,19 @@
 @extends('master.list')
 
+{{-- title --}}
+@section('title-color')
+purple
+@endsection
+
+@section('title-header')
+Truyện Đang Tiến Hành
+@endsection
+
+@section('title-content')
+Danh sách các truyện chưa kết thúc và vẫn đang ra chap mới thường xuyên
+@endsection
+{{-- end title --}}
+
 @section('list')
 <div class="listbook col-lg-9 col-md-9 col-sm-12 col-xs-12">
 	<div class="content">

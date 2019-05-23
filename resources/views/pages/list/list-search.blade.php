@@ -1,5 +1,19 @@
 @extends('master.list')
 
+{{-- title --}}
+@section('title-color')
+deep-purple
+@endsection
+
+@section('title-header')
+Tìm Kiếm Nâng Cao
+@endsection
+
+@section('title-content')
+Các bạn có thể tìm kiếm truyện thông qua từ khóa, thể loại, tác giả,...
+@endsection
+{{-- end title --}}
+
 @section('list')
 <div class="listbook col-lg-9 col-md-9 col-sm-12 col-xs-12">
 	<div class="content">
