@@ -64,19 +64,19 @@
 
 			<div class="col-xs-3">
 				<!-- list book small statistaic -->
-				@include('partials.admin.content.list.list-book-button-small')
+				@include('partials.admin.content.list.book.list-book-button-small')
 
 				<!-- list book small statistaic not button-->
-				@include('partials.admin.content.list.list-book-small')
+				@include('partials.admin.content.list.book.list-book-small')
 
 				<!-- list category small statistaic -->
-				@include('partials.admin.content.list.list-category-small')
+				@include('partials.admin.content.list.category.list-category-small')
 
 				<!-- list user small statistaic -->
-				@include('partials.admin.content.list.list-user-small')
+				@include('partials.admin.content.list.user.list-user-small')
 
 				<!-- list translator small statistaic -->
-				@include('partials.admin.content.list.list-trans-small')
+				@include('partials.admin.content.list.trans.list-trans-small')
 			</div>
 		</div>
 

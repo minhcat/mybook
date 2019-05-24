@@ -30,15 +30,15 @@
 				<!-- /Comment Box -->
 
 				<!-- User Box -->
-				@include('partials.admin.content.list.list-comment-user-follow')
+				@include('partials.admin.content.list.comment.list-comment-user-follow')
 
-				@include('partials.admin.content.list.list-comment-user-punish')
+				@include('partials.admin.content.list.comment.list-comment-user-punish')
 
-				@include('partials.admin.content.list.list-comment-user-ban')
+				@include('partials.admin.content.list.comment.list-comment-user-ban')
 				<!-- /User Box -->
 
 				<!-- Book Box -->
-				@include('partials.admin.content.list.list-comment-book-follow')
+				@include('partials.admin.content.list.comment.list-comment-book-follow')
 				<!-- /Book Box -->
 
 				@include('partials.admin.content.list.list-checkword')
@@ -58,7 +58,7 @@
 			</div>
 
 			<div class="col-xs-3">
-				@include('partials.admin.content.list.list-comment-book-follow-small')
+				@include('partials.admin.content.list.comment.list-comment-book-follow-small')
 			</div>
 		</div>
 		<!-- Modal -->

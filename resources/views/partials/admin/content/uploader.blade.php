@@ -22,19 +22,19 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<!-- list book -->
-				@include('partials.admin.content.list.list-book-upload')
+				@include('partials.admin.content.list.book.list-book-upload')
 
 				<!-- book new -->
 				@include('partials.admin.content.new.new-book')
 
 				<!-- list book not approved -->
-				@include('partials.admin.content.list.list-book-not-approved')
+				@include('partials.admin.content.list.book.list-book-not-approved')
 
 				<!-- list chap not approved -->
-				@include('partials.admin.content.list.list-chap-not-approved')
+				@include('partials.admin.content.list.chap.list-chap-not-approved')
 
 				<!-- list error book -->
-				@include('partials.admin.content.list.list-book-error')
+				@include('partials.admin.content.list.book.list-book-error')
 
 				<!-- chap edit -->
 				@include('partials.admin.content.edit.edit-chap')
@@ -81,22 +81,22 @@
 
 			<div class="col-xs-3">
 				<!-- list book small -->
-				@include('partials.admin.content.list.list-book-upload-small')
+				@include('partials.admin.content.list.book.list-book-upload-small')
 
 				<!-- list book not approved small -->
-				@include('partials.admin.content.list.list-book-not-approved-small')
+				@include('partials.admin.content.list.book.list-book-not-approved-small')
 
 				<!-- list book error small -->
-				@include('partials.admin.content.list.list-book-error-small')
+				@include('partials.admin.content.list.book.list-book-error-small')
 
 				<!-- list book small -->
-				@include('partials.admin.content.list.list-book-mine-small')
+				@include('partials.admin.content.list.book.list-book-mine-small')
 
 				<!-- list book small statistaic -->
-				@include('partials.admin.content.list.list-book-mine-button-small')
+				@include('partials.admin.content.list.book.list-book-mine-button-small')
 
 				<!-- list book small statistaic rate -->
-				@include('partials.admin.content.list.list-book-mine-small')
+				@include('partials.admin.content.list.book.list-book-mine-small')
 			</div>
 		</div>
 

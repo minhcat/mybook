@@ -26,43 +26,43 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<!-- Database Box -->
-				@include('partials.admin.content.list.list-book-super-admin')
+				@include('partials.admin.content.list.book.list-book-super-admin')
 
-				@include('partials.admin.content.list.list-chap-super-admin')
+				@include('partials.admin.content.list.chap.list-chap-super-admin')
 
-				@include('partials.admin.content.list.list-view-super-admin')
+				@include('partials.admin.content.list.view.list-view-super-admin')
 
-				@include('partials.admin.content.list.list-comment-super-admin')
+				@include('partials.admin.content.list.comment.list-comment-super-admin')
 
-				@include('partials.admin.content.list.list-like-super-admin')
+				@include('partials.admin.content.list.like.list-like-super-admin')
 
-				@include('partials.admin.content.list.list-follow-super-admin')
+				@include('partials.admin.content.list.follow.list-follow-super-admin')
 
-				@include('partials.admin.content.list.list-rate-super-admin')
+				@include('partials.admin.content.list.rate.list-rate-super-admin')
 
-				@include('partials.admin.content.list.list-character-super-admin')
+				@include('partials.admin.content.list.character.list-character-super-admin')
 
-				@include('partials.admin.content.list.list-author-super-admin')
+				@include('partials.admin.content.list.author.list-author-super-admin')
 
-				@include('partials.admin.content.list.list-user-super-admin')
+				@include('partials.admin.content.list.user.list-user-super-admin')
 
-				@include('partials.admin.content.list.list-category-super-admin')
+				@include('partials.admin.content.list.category.list-category-super-admin')
 
-				@include('partials.admin.content.list.list-trans-super-admin')
+				@include('partials.admin.content.list.trans.list-trans-super-admin')
 
-				@include('partials.admin.content.list.list-book-temporary')
+				@include('partials.admin.content.list.book.list-book-temporary')
 
-				@include('partials.admin.content.list.list-chap-temporary')
+				@include('partials.admin.content.list.chap.list-chap-temporary')
 
-				@include('partials.admin.content.list.list-character-temporary')
+				@include('partials.admin.content.list.character.list-character-temporary')
 
-				@include('partials.admin.content.list.list-author-temporary')
+				@include('partials.admin.content.list.author.list-author-temporary')
 
-				@include('partials.admin.content.list.list-user-temporary')
+				@include('partials.admin.content.list.user.list-user-temporary')
 
-				@include('partials.admin.content.list.list-category-temporary')
+				@include('partials.admin.content.list.category.list-category-temporary')
 
-				@include('partials.admin.content.list.list-trans-temporary')
+				@include('partials.admin.content.list.trans.list-trans-temporary')
 
 				<!-- Add, Edit Box -->
 				@include('partials.admin.content.new.new-category')
@@ -88,7 +88,7 @@
 				<!-- End Add, Edit Box -->
 
 				<!-- Permiss Box -->
-				@include('partials.admin.content.list.list-staff-permiss')
+				@include('partials.admin.content.list.staff.list-staff-permiss')
 				<!-- End Permiss Box -->
 
 				<!-- System Box -->
