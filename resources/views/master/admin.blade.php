@@ -15,9 +15,10 @@
 
 		@include('partials.admin.layouts.content_footer')
 	</div>
+	
+	@include('partials.admin.layouts.define_footer')
 
 	@yield('define-footer')
 
-	@include('partials.admin.layouts.define_footer')
 </body>
 </html>

@@ -20,7 +20,7 @@
 					<span class="direct-chat-name pull-left">Nguyễn Hoài Nam - <span class="direct-chat-timestamp">Overlord chap 10</span> - <span class="direct-chat-timestamp">2:00 pm 23/3/2019</span></span>
 				</div>
 				<!-- /.direct-chat-info -->
-				<img class="direct-chat-img" src="{{ asset('image/user1-128x128.jpg') }}" alt="Message User Image">
+				<img class="direct-chat-img" src="{{ asset('image/admin/user1-128x128.jpg') }}" alt="Message User Image">
 				<!-- /.direct-chat-img -->
 				<div class="direct-chat-text">
 				Lorem ipsum dolor sit amet, consectetuer adipiscing elit
@@ -42,7 +42,7 @@
 					<span class="direct-chat-name pull-left">Thu Hà - <span class="direct-chat-timestamp">Overlord chap 10</span> - <span class="direct-chat-timestamp">2:00 pm 23/3/2019</span></span>
 				</div>
 				<!-- /.direct-chat-info -->
-				<img class="direct-chat-img" src="{{ asset('image/user3-128x128.jpg') }}" alt="Message User Image">
+				<img class="direct-chat-img" src="{{ asset('image/admin/user3-128x128.jpg') }}" alt="Message User Image">
 				<!-- /.direct-chat-img -->
 				<div class="direct-chat-text">
 				Sed diam nonummy nibh euismod
@@ -61,7 +61,7 @@
 					<span class="direct-chat-name pull-left">Later Phát - <span class="direct-chat-timestamp">Overlord chap 10</span> - <span class="direct-chat-timestamp">2:00 pm 23/3/2019</span></span>
 				</div>
 				<!-- /.direct-chat-info -->
-				<img class="direct-chat-img" src="{{ asset('image/user4-128x128.jpg') }}" alt="Message User Image">
+				<img class="direct-chat-img" src="{{ asset('image/admin/user4-128x128.jpg') }}" alt="Message User Image">
 				<!-- /.direct-chat-img -->
 				<div class="direct-chat-text">
 				tincidunt ut laoreet dolore magna aliquam erat volutpat.
@@ -80,7 +80,7 @@
 					<span class="direct-chat-name pull-left">Hoàng Lê - <span class="direct-chat-timestamp">Overlord chap 10</span> - <span class="direct-chat-timestamp">2:00 pm 23/3/2019</span></span>
 				</div>
 				<!-- /.direct-chat-info -->
-				<img class="direct-chat-img" src="{{ asset('image/user5-128x128.jpg') }}" alt="Message User Image">
+				<img class="direct-chat-img" src="{{ asset('image/admin/user5-128x128.jpg') }}" alt="Message User Image">
 				<!-- /.direct-chat-img -->
 				<div class="direct-chat-text">
 				Ut wisi enim ad minim veniam.
