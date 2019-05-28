@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Models\BooksQModel;
+use App\Http\Helpers\Helper;
 
 class HomeController extends Controller {
 
