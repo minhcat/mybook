@@ -3,42 +3,57 @@
 	<div class="clearfix"></div>
 	<div class="topic-content">
 		<div class="row">
+			<?php $i = 0; ?>
+			@foreach($books as $book)
+			<?php $i ++; ?>
 			<div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
 				<div class="book-content">
-					<img src="image/bang-hoai-3rd.jpg">
+					<img src="image/books/{{ $book->image }}.jpg">
 					<div class="book-info">
-						<div class="name">{{ $books[0]->name }}</div>
+						<div class="name">{{ $book->name }}</div>
 						<div class="group row">
 							<div class="view col-md-6 col-sm-4 col-xs-4 col-6 text-left">
 								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>100,000</span>
+								<span>{{ $book->view }}</span>
 							</div>
 							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-6 col-xs-push-5 text-right">
 								<span class="glyphicon glyphicon-heart"></span>
-								<span>1000</span>
+								<span>{{ $book->like }}</span>
 							</div>
 						</div>
 					</div>
-					<div class="rank bg-red">1</div>
+					@if ($i == 1)
+						<?php $bg = 'bg-red'; ?>
+					@elseif ($i == 2)
+						<?php $bg = 'bg-blue'; ?>
+					@elseif ($i == 3)
+						<?php $bg = 'bg-green'; ?>
+					@elseif ($i == 4)
+						<?php $bg = 'bg-orange'; ?>
+					@else
+						<?php $bg = 'bg-gray'; ?>
+					@endif
+					<div class="rank {{ $bg }}">{{ $i }}</div>
 					<div class="book-hover bg-red">
-						<div class="name">Băng Hoại 3rd</div>
+						<div class="name">{{ $book->name }}</div>
 						<div class="type">Khoa học viễn tưởng, hài hước</div>
 						<div class="chap">75 tập</div>
 						<a href="detail-book.html" class="btn play">Xem Ngay</a>
 						<div class="group row">
 							<div class="view col-md-6 col-sm-4 col-xs-4">
 								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>100,000</span>
+								<span>{{ $book->view }}</span>
 							</div>
 							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-xs-push-5">
 								<span class="glyphicon glyphicon-heart"></span>
-								<span>1000</span>
+								<span>{{ $book->like }}</span>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
+			@endforeach
+			{{-- <div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
 				<div class="book-content">
 					<img src="image/bang-hoai-3rd.jpg">
 					<div class="book-info">
@@ -282,7 +297,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> --}}
 		</div>
 	</div>
 	<div class="topic-more">

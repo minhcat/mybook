@@ -34,7 +34,11 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
+		//get data
 		$data['books'] = BooksQModel::get_all_books();
+		//sort data
+		$data['books'] = collect($data['books'])->sortByDesc('view');
+		// dd($data['books']);
 		return view('pages.home', $data);
 	}
 
