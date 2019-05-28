@@ -7,7 +7,7 @@
 				<div class="book-content">
 					<img src="image/bang-hoai-3rd.jpg">
 					<div class="book-info">
-						<div class="name">Băng Hoại 3rd</div>
+						<div class="name">{{ $books[0]->name }}</div>
 						<div class="group row">
 							<div class="view col-md-6 col-sm-4 col-xs-4 col-6 text-left">
 								<span class="glyphicon glyphicon-eye-open"></span>

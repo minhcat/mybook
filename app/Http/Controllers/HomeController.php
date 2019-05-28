@@ -1,4 +1,7 @@
-<?php namespace App\Http\Controllers;
+<?php 
+namespace App\Http\Controllers;
+
+use App\Http\Models\BooksQModel;
 
 class HomeController extends Controller {
 
@@ -30,7 +33,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('pages.home');
+		$data['books'] = BooksQModel::get_all_books();
+		return view('pages.home', $data);
 	}
 
 }
