@@ -34,13 +34,39 @@ class BooksQModel extends Model
 	}
 
 	/**
-	 * get books and sort by view
+	 * get books and sort by update
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
 	public static function get_books_sort_update() {
 		$result = DB::table('books')
 				->orderBy('update_at','desc')
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * get books and sort by comment
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_books_sort_comment() {
+		$result = DB::table('books')
+				->orderBy('comment','desc')
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * get books and sort by rate
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_books_sort_rate() {
+		$result = DB::table('books')
+				->orderBy('rate','desc')
 				->get();
 
 		return $result;

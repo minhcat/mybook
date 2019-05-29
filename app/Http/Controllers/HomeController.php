@@ -67,7 +67,9 @@ class HomeController extends Controller {
 			$i++;
 			$book->index = $i;
 		}
-		$data['books_update'] = $books_update;
+		$data['books_update']  = $books_update;
+		$data['books_comment'] = BooksQModel::get_books_sort_comment();
+		$data['books_rate']    = BooksQModel::get_books_sort_rate();
 
 		return view('pages.home', $data);
 	}
