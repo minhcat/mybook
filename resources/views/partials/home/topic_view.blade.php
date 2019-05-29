@@ -3,301 +3,43 @@
 	<div class="clearfix"></div>
 	<div class="topic-content">
 		<div class="row">
-			<?php $i = 0; ?>
-			@foreach($books as $book)
-			<?php $i ++; ?>
-			<div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-				<div class="book-content">
-					<img src="image/books/{{ $book->image }}.jpg">
-					<div class="book-info">
-						<div class="name">{{ $book->name }}</div>
-						<div class="group row">
-							<div class="view col-md-6 col-sm-4 col-xs-4 col-6 text-left">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>{{ $book->view }}</span>
-							</div>
-							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-6 col-xs-push-5 text-right">
-								<span class="glyphicon glyphicon-heart"></span>
-								<span>{{ $book->like }}</span>
+			@foreach($books_view as $book)
+				<div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
+					<div class="book-content">
+						<img src="image/books/{{ $book->image }}.jpg">
+						<div class="book-info">
+							<div class="name">{{ $book->name }}</div>
+							<div class="group row">
+								<div class="view col-md-6 col-sm-4 col-xs-4 col-6 text-left">
+									<span class="glyphicon glyphicon-eye-open"></span>
+									<span>{{ $book->view }}</span>
+								</div>
+								<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-6 col-xs-push-5 text-right">
+									<span class="glyphicon glyphicon-heart"></span>
+									<span>{{ $book->like }}</span>
+								</div>
 							</div>
 						</div>
-					</div>
-					@if ($i == 1)
-						<?php $bg = 'bg-red'; ?>
-					@elseif ($i == 2)
-						<?php $bg = 'bg-blue'; ?>
-					@elseif ($i == 3)
-						<?php $bg = 'bg-green'; ?>
-					@elseif ($i == 4)
-						<?php $bg = 'bg-orange'; ?>
-					@else
-						<?php $bg = 'bg-gray'; ?>
-					@endif
-					<div class="rank {{ $bg }}">{{ $i }}</div>
-					<div class="book-hover bg-red">
-						<div class="name">{{ $book->name }}</div>
-						<div class="type">Khoa học viễn tưởng, hài hước</div>
-						<div class="chap">75 tập</div>
-						<a href="detail-book.html" class="btn play">Xem Ngay</a>
-						<div class="group row">
-							<div class="view col-md-6 col-sm-4 col-xs-4">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>{{ $book->view }}</span>
-							</div>
-							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-xs-push-5">
-								<span class="glyphicon glyphicon-heart"></span>
-								<span>{{ $book->like }}</span>
+						<div class="rank {{ $book->background }}">{{ $book->index }}</div>
+						<div class="book-hover {{ $book->background }}">
+							<div class="name">{{ $book->name }}</div>
+							<div class="type">Khoa học viễn tưởng, hài hước</div>
+							<div class="chap">75 tập</div>
+							<a href="detail-book.html" class="btn play">Xem Ngay</a>
+							<div class="group row">
+								<div class="view col-md-6 col-sm-4 col-xs-4">
+									<span class="glyphicon glyphicon-eye-open"></span>
+									<span>{{ $book->view }}</span>
+								</div>
+								<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-xs-push-5">
+									<span class="glyphicon glyphicon-heart"></span>
+									<span>{{ $book->like }}</span>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 			@endforeach
-			{{-- <div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-				<div class="book-content">
-					<img src="image/bang-hoai-3rd.jpg">
-					<div class="book-info">
-						<div class="name">Băng Hoại 3rd</div>
-						<div class="group row">
-							<div class="view col-md-6 col-sm-4 col-xs-4 col-6 text-left">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>100,000</span>
-							</div>
-							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-6 col-xs-push-5 text-right">
-								<span class="glyphicon glyphicon-heart"></span>
-								<span>1000</span>
-							</div>
-						</div>
-					</div>
-					<div class="rank bg-blue">2</div>
-					<div class="book-hover bg-blue">
-						<div class="name">Băng Hoại 3rd</div>
-						<div class="type">Khoa học viễn tưởng, hài hước</div>
-						<div class="chap">75 tập</div>
-						<a href="detail-book.html" class="btn play">Xem Ngay</a>
-						<div class="group row">
-							<div class="view col-md-6 col-sm-4 col-xs-4">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>100,000</span>
-							</div>
-							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-xs-push-5">
-								<span class="glyphicon glyphicon-heart"></span>
-								<span>1000</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-				<div class="book-content">
-					<img src="image/bang-hoai-3rd.jpg">
-					<div class="book-info">
-						<div class="name">Băng Hoại 3rd</div>
-						<div class="group row">
-							<div class="view col-md-6 col-sm-4 col-xs-4 col-6 text-left">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>100,000</span>
-							</div>
-							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-6 col-xs-push-5 text-right">
-								<span class="glyphicon glyphicon-heart"></span>
-								<span>1000</span>
-							</div>
-						</div>
-					</div>
-					<div class="rank bg-green">3</div>
-					<div class="book-hover bg-green">
-						<div class="name">Băng Hoại 3rd</div>
-						<div class="type">Khoa học viễn tưởng, hài hước</div>
-						<div class="chap">75 tập</div>
-						<a href="detail-book.html" class="btn play">Xem Ngay</a>
-						<div class="group row">
-							<div class="view col-md-6 col-sm-4 col-xs-4">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>100,000</span>
-							</div>
-							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-xs-push-5">
-								<span class="glyphicon glyphicon-heart"></span>
-								<span>1000</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-				<div class="book-content">
-					<img src="image/bang-hoai-3rd.jpg">
-					<div class="book-info">
-						<div class="name">Băng Hoại 3rd</div>
-						<div class="group row">
-							<div class="view col-md-6 col-sm-4 col-xs-4 col-6 text-left">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>100,000</span>
-							</div>
-							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-6 col-xs-push-5 text-right">
-								<span class="glyphicon glyphicon-heart"></span>
-								<span>1000</span>
-							</div>
-						</div>
-					</div>
-					<div class="rank bg-orange">4</div>
-					<div class="book-hover bg-orange">
-						<div class="name">Băng Hoại 3rd</div>
-						<div class="type">Khoa học viễn tưởng, hài hước</div>
-						<div class="chap">75 tập</div>
-						<a href="detail-book.html" class="btn play">Xem Ngay</a>
-						<div class="group row">
-							<div class="view col-md-6 col-sm-4 col-xs-4">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>100,000</span>
-							</div>
-							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-xs-push-5">
-								<span class="glyphicon glyphicon-heart"></span>
-								<span>1000</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-				<div class="book-content">
-					<img src="image/boruto.jpg">
-					<div class="book-info">
-						<div class="name">Boruto</div>
-						<div class="group row">
-							<div class="view col-md-6 col-sm-4 col-xs-4 col-6 text-left">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>100,000</span>
-							</div>
-							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-6 col-xs-push-5 text-right">
-								<span class="glyphicon glyphicon-heart"></span>
-								<span>1000</span>
-							</div>
-						</div>
-					</div>
-					<div class="rank bg-gray">5</div>
-					<div class="book-hover bg-gray">
-						<div class="name">Boruto</div>
-						<div class="type">phiêu lưu, hài hước</div>
-						<div class="chap">35 tập</div>
-						<a href="detail-book.html" class="btn play">Xem Ngay</a>
-						<div class="group row">
-							<div class="view col-md-6 col-sm-4 col-xs-4">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>100,000</span>
-							</div>
-							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-xs-push-5">
-								<span class="glyphicon glyphicon-heart"></span>
-								<span>1000</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-				<div class="book-content">
-					<img src="image/boruto.jpg">
-					<div class="book-info">
-						<div class="name">Boruto</div>
-						<div class="group row">
-							<div class="view col-md-6 col-sm-4 col-xs-4 col-6 text-left">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>100,000</span>
-							</div>
-							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-6 col-xs-push-5 text-right">
-								<span class="glyphicon glyphicon-heart"></span>
-								<span>1000</span>
-							</div>
-						</div>
-					</div>
-					<div class="rank bg-gray">6</div>
-					<div class="book-hover bg-gray">
-						<div class="name">Boruto</div>
-						<div class="type">phiêu lưu, hài hước</div>
-						<div class="chap">35 tập</div>
-						<a href="detail-book.html" class="btn play">Xem Ngay</a>
-						<div class="group row">
-							<div class="view col-md-6 col-sm-4 col-xs-4">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>100,000</span>
-							</div>
-							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-xs-push-5">
-								<span class="glyphicon glyphicon-heart"></span>
-								<span>1000</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-				<div class="book-content">
-					<img src="image/boruto.jpg">
-					<div class="book-info">
-						<div class="name">Boruto</div>
-						<div class="group row">
-							<div class="view col-md-6 col-sm-4 col-xs-4 col-6 text-left">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>100,000</span>
-							</div>
-							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-6 col-xs-push-5 text-right">
-								<span class="glyphicon glyphicon-heart"></span>
-								<span>1000</span>
-							</div>
-						</div>
-					</div>
-					<div class="rank bg-gray">7</div>
-					<div class="book-hover bg-gray">
-						<div class="name">Boruto</div>
-						<div class="type">phiêu lưu, hài hước</div>
-						<div class="chap">35 tập</div>
-						<a href="detail-book.html" class="btn play">Xem Ngay</a>
-						<div class="group row">
-							<div class="view col-md-6 col-sm-4 col-xs-4">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>100,000</span>
-							</div>
-							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-xs-push-5">
-								<span class="glyphicon glyphicon-heart"></span>
-								<span>1000</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-				<div class="book-content">
-					<img src="image/boruto.jpg">
-					<div class="book-info">
-						<div class="name">Boruto</div>
-						<div class="group row">
-							<div class="view col-md-6 col-sm-4 col-xs-4 col-6 text-left">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>100,000</span>
-							</div>
-							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-6 col-xs-push-5 text-right">
-								<span class="glyphicon glyphicon-heart"></span>
-								<span>1000</span>
-							</div>
-						</div>
-					</div>
-					<div class="rank bg-gray">8</div>
-					<div class="book-hover bg-gray">
-						<div class="name">Boruto</div>
-						<div class="type">phiêu lưu, hài hước</div>
-						<div class="chap">35 tập</div>
-						<a href="detail-book.html" class="btn play">Xem Ngay</a>
-						<div class="group row">
-							<div class="view col-md-6 col-sm-4 col-xs-4">
-								<span class="glyphicon glyphicon-eye-open"></span>
-								<span>100,000</span>
-							</div>
-							<div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-xs-push-5">
-								<span class="glyphicon glyphicon-heart"></span>
-								<span>1000</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div> --}}
 		</div>
 	</div>
 	<div class="topic-more">

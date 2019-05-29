@@ -15,7 +15,33 @@ class BooksQModel extends Model
 	 */
 	public static function get_all_books() {
 		$result = DB::table('books')
-			->get();
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * get books and sort by view
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_books_sort_view() {
+		$result = DB::table('books')
+				->orderBy('view','desc')
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * get books and sort by view
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_books_sort_update() {
+		$result = DB::table('books')
+				->orderBy('update_at','desc')
+				->get();
 
 		return $result;
 	}
