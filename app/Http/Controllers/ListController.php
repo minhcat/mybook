@@ -107,7 +107,8 @@ class ListController extends Controller {
 	 */
 	public function update()
 	{
-		return view('pages.list.list-update');
+		$data['books'] = BooksQModel::get_books_sort_update(12);
+		return view('pages.list.list-update', $data);
 	}
 
 	/**
@@ -117,7 +118,10 @@ class ListController extends Controller {
 	 */
 	public function view()
 	{
-		$data['books'] = BooksQModel::get_books_sort_view();
+		$data['books'] = BooksQModel::get_books_sort_view(12);
+		$background = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
+		$data['books'] = Helper::add_background($data['books'], $background);
+
 		return view('pages.list.list-view', $data);
 	}
 

@@ -25,10 +25,10 @@ class BooksQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_books_sort_view() {
+	public static function get_books_sort_view($number) {
 		$result = DB::table('books')
 				->orderBy('view','desc')
-				->take(8)
+				->take($number)
 				->get();
 
 		return $result;
@@ -39,10 +39,10 @@ class BooksQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_books_sort_update() {
+	public static function get_books_sort_update($number) {
 		$result = DB::table('books')
 				->orderBy('update_at','desc')
-				->take(8)
+				->take($number)
 				->get();
 
 		return $result;
@@ -53,10 +53,10 @@ class BooksQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_books_sort_comment() {
+	public static function get_books_sort_comment($number) {
 		$result = DB::table('books')
 				->orderBy('comment','desc')
-				->take(8)
+				->take($number)
 				->get();
 
 		return $result;
@@ -67,10 +67,10 @@ class BooksQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_books_sort_rate() {
+	public static function get_books_sort_rate($number) {
 		$result = DB::table('books')
 				->orderBy('rate','desc')
-				->take(8)
+				->take($number)
 				->get();
 
 		return $result;

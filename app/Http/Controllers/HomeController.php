@@ -36,20 +36,20 @@ class HomeController extends Controller {
 	{
 		//get data topic view
 		$background = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
-		$books_view = BooksQModel::get_books_sort_view();
+		$books_view = BooksQModel::get_books_sort_view(8);
 		$books_view = Helper::add_background($books_view, $background);
 
 		$data['books_view'] = $books_view;
 
 		//get data topic update
-		$books_update = BooksQModel::get_books_sort_update();
+		$books_update = BooksQModel::get_books_sort_update(8);
 		$data['books_update']  = $books_update;
 
 		//get data topic comment
-		$data['books_comment'] = BooksQModel::get_books_sort_comment();
+		$data['books_comment'] = BooksQModel::get_books_sort_comment(8);
 
 		//get data topic rate
-		$data['books_rate']    = BooksQModel::get_books_sort_rate();
+		$data['books_rate']    = BooksQModel::get_books_sort_rate(8);
 
 		return view('pages.home', $data);
 	}
