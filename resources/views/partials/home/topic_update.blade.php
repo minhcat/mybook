@@ -3,7 +3,7 @@
 	<div class="clearfix"></div>
 	<div class="topic-content">
 		<div class="row">
-			@foreach ($books_update as $book)
+			@foreach ($books_update as $key => $book)
 			<div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
 				<div class="book-content">
 					<img src="image/books/{{ $book->image }}.jpg">
@@ -11,7 +11,7 @@
 						<div class="name">{{ $book->name }}</div>
 						<div class="chap">Chap 25: Không kẻ nào điếc hơn kẻ không muốn nghe</div>
 					</div>
-					@if ($book->index <= 2) 
+					@if ($key <= 1) 
 					<div class="new">NEW</div>
 					@endif
 					<div class="book-hover bg-blue">

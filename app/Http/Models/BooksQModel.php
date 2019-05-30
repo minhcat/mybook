@@ -28,6 +28,7 @@ class BooksQModel extends Model
 	public static function get_books_sort_view() {
 		$result = DB::table('books')
 				->orderBy('view','desc')
+				->take(8)
 				->get();
 
 		return $result;
@@ -41,6 +42,7 @@ class BooksQModel extends Model
 	public static function get_books_sort_update() {
 		$result = DB::table('books')
 				->orderBy('update_at','desc')
+				->take(8)
 				->get();
 
 		return $result;
@@ -54,6 +56,7 @@ class BooksQModel extends Model
 	public static function get_books_sort_comment() {
 		$result = DB::table('books')
 				->orderBy('comment','desc')
+				->take(8)
 				->get();
 
 		return $result;
@@ -67,6 +70,7 @@ class BooksQModel extends Model
 	public static function get_books_sort_rate() {
 		$result = DB::table('books')
 				->orderBy('rate','desc')
+				->take(8)
 				->get();
 
 		return $result;
