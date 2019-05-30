@@ -22,11 +22,12 @@ Danh sách truyện được sắp xếp dựa trên lượt xem, lượt yêu t
 			<li class="active">Bảng xếp hạng</li>
 		</ul>
 		<div class="list">
+			@foreach ($books as $book)
 			<div class="book clearfix">
-				<a href=""><img src="{{ asset('image/bang-hoai-3rd.jpg') }}" width="160px" height="160px"></a>
+				<a href=""><img src="{{ asset('image/books/'.$book->image.'.jpg') }}" width="160px" height="160px"></a>
 				<div class="rank bg-red">1</div>
 				<div class="info">
-					<h4 class="name"><a href="detail-book.html">Băng Hoại 3rd</a></h4>
+					<h4 class="name"><a href="detail-book.html">{{ $book->name }}</a></h4>
 					<div class="star">
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star"></span>
@@ -63,7 +64,8 @@ Danh sách truyện được sắp xếp dựa trên lượt xem, lượt yêu t
 				</div>
 			</div>
 			<hr>
-			<div class="book clearfix">
+			@endforeach
+			{{-- <div class="book clearfix">
 				<a href=""><img src="{{ asset('image/boruto.jpg') }}" width="160px" height="160px"></a>
 				<div class="rank bg-blue">2</div>
 				<div class="info">
@@ -430,7 +432,7 @@ Danh sách truyện được sắp xếp dựa trên lượt xem, lượt yêu t
 						<div class="all">tổng cộng: 200.000 lượt</div>
 					</div>
 				</div>
-			</div>
+			</div> --}}
 		</div>
 		<div class="paging">
 			<ul class="pagination">

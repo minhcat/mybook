@@ -1,7 +1,10 @@
-<?php namespace App\Http\Controllers;
+<?php 
+namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Models\BooksQModel;
+use App\Http\Helpers\Helper;
 
 use Illuminate\Http\Request;
 
@@ -114,7 +117,8 @@ class ListController extends Controller {
 	 */
 	public function view()
 	{
-		return view('pages.list.list-view');
+		$data['books'] = BooksQModel::get_books_sort_view();
+		return view('pages.list.list-view', $data);
 	}
 
 	/**
