@@ -27,7 +27,10 @@ class ListController extends Controller {
 	 */
 	public function comment()
 	{
-		return view('pages.list.list-comment');
+		$data['books'] = BooksQModel::get_books_sort_comment(12);
+		$background = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
+		$data['books'] = Helper::add_background($data['books'], $background);
+		return view('pages.list.list-comment', $data);
 	}
 
 	/**
@@ -87,7 +90,10 @@ class ListController extends Controller {
 	 */
 	public function rate()
 	{
-		return view('pages.list.list-rate');
+		$data['books'] = BooksQModel::get_books_sort_rate(12);
+		$background = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
+		$data['books'] = Helper::add_background($data['books'], $background);
+		return view('pages.list.list-rate', $data);
 	}
 
 	/**
