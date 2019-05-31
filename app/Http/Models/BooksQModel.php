@@ -25,7 +25,7 @@ class BooksQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_books_sort_view($number) {
+	public static function get_books_home_view($number) {
 		$result = DB::table('books')
 				->orderBy('view','desc')
 				->take($number)
@@ -39,7 +39,7 @@ class BooksQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_books_sort_update($number) {
+	public static function get_books_home_update($number) {
 		$result = DB::table('books')
 				->orderBy('update_at','desc')
 				->take($number)
@@ -53,7 +53,7 @@ class BooksQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_books_sort_comment($number) {
+	public static function get_books_home_comment($number) {
 		$result = DB::table('books')
 				->orderBy('comment','desc')
 				->take($number)
@@ -67,11 +67,23 @@ class BooksQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
+	public static function get_books_home_rate($number) {
+		$result = DB::table('books')
+				->orderBy('rate','desc')
+				->paginate($number);
+
+		return $result;
+	}
+
+	/**
+	 * get books and sort by rate
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
 	public static function get_books_sort_rate($number) {
 		$result = DB::table('books')
 				->orderBy('rate','desc')
-				->take($number)
-				->get();
+				->paginate($number);
 
 		return $result;
 	}
