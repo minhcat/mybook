@@ -70,7 +70,8 @@ class BooksQModel extends Model
 	public static function get_books_home_rate($number) {
 		$result = DB::table('books')
 				->orderBy('rate','desc')
-				->paginate($number);
+				->take($number)
+				->get();
 
 		return $result;
 	}
@@ -80,7 +81,7 @@ class BooksQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_books_sort_rate($number) {
+	public static function get_books_list_rate($number) {
 		$result = DB::table('books')
 				->orderBy('rate','desc')
 				->paginate($number);

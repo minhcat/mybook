@@ -90,7 +90,7 @@ class ListController extends Controller {
 	 */
 	public function rate()
 	{
-		$data['books'] = BooksQModel::get_books_sort_rate(12);
+		$data['books'] = BooksQModel::get_books_list_rate(12);
 		$background = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
 		$data['books'] = Helper::add_background($data['books'], $background);
 		return view('pages.list.list-rate', $data);
