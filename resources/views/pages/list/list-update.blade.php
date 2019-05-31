@@ -69,16 +69,7 @@ Các loại truyện có được cập nhập, thêm chap mới, ra bảng dị
 			@endforeach
 		</div>
 		<div class="paging">
-			<ul class="pagination">
-				<li><a href="#"><<</a></li>
-				<li><a href="#"><</a></li>
-				<li class="active"><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">6</a></li>
-				<li><a href="#">></a></li>
-				<li><a href="#">>></a></li>
-			</ul>
+			{!! $books->render() !!}
 		</div>
 	</div>
 </div>

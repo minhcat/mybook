@@ -23,6 +23,7 @@ Danh sách truyện được sắp xếp dựa trên lượt bình luận của 
 		</ul>
 		<div class="list">
 			@foreach ($books as $key => $book)
+			
 			<div class="book clearfix">
 				<a href="detail-book.html"><img src="{{ asset('image/books/'.$book->image.'.jpg') }}" width="160px" height="160px"></a>
 				<div class="rank {{ $book->background }}">{{ $book->index }}</div>
@@ -69,16 +70,7 @@ Danh sách truyện được sắp xếp dựa trên lượt bình luận của 
 			@endforeach
 		</div>
 		<div class="paging">
-			<ul class="pagination">
-				<li><a href="#"><<</a></li>
-				<li><a href="#"><</a></li>
-				<li class="active"><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">6</a></li>
-				<li><a href="#">></a></li>
-				<li><a href="#">>></a></li>
-			</ul>
+			{!! $books->render() !!}
 		</div>
 	</div>
 </div>

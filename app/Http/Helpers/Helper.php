@@ -30,4 +30,20 @@ class Helper {
 		}
 		return $array;
 	}
+
+	/**
+	 * Add index to array
+	 *
+	 * @param array
+	 * @return array
+	 */
+	public static function add_background_else($array, $bg, $number_index) {
+		$i = $number_index;
+		foreach ($array as $item) {
+			$i++;
+			$item->index = $i;
+			$item->background = $bg;
+		}
+		return $array;
+	}
 }

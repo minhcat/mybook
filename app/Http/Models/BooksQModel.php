@@ -77,6 +77,45 @@ class BooksQModel extends Model
 	}
 
 	/**
+	 * get books and sort by view
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_books_list_view($number) {
+		$result = DB::table('books')
+				->orderBy('view','desc')
+				->paginate($number);
+
+		return $result;
+	}
+
+	/**
+	 * get books and sort by update
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_books_list_update($number) {
+		$result = DB::table('books')
+				->orderBy('update_at','desc')
+				->paginate($number);
+
+		return $result;
+	}
+
+	/**
+	 * get books and sort by update
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_books_list_comment($number) {
+		$result = DB::table('books')
+				->orderBy('comment','desc')
+				->paginate($number);
+
+		return $result;
+	}
+
+	/**
 	 * get books and sort by rate
 	 * @param 
 	 * @return object|boolean : all properties from `books` table

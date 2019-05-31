@@ -5,6 +5,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Models\BooksQModel;
 use App\Http\Helpers\Helper;
+use App\Http\Helpers\Constants;
 
 use Illuminate\Http\Request;
 
@@ -25,11 +26,18 @@ class ListController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function comment()
+	public function comment(Request $request)
 	{
-		$data['books'] = BooksQModel::get_books_sort_comment(12);
+		$data['books'] = BooksQModel::get_books_list_comment(Constants::BOOKS_ITEM_LIST);
 		$background = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
-		$data['books'] = Helper::add_background($data['books'], $background);
+		$page = $request->input('page');
+		if ($page == null) 
+			$data['books'] = Helper::add_background($data['books'], $background);
+		else
+			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
+		
+		// dd($data['books']);
+
 		return view('pages.list.list-comment', $data);
 	}
 
@@ -88,11 +96,17 @@ class ListController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function rate()
+	public function rate(Request $request)
 	{
-		$data['books'] = BooksQModel::get_books_list_rate(12);
+		$data['books'] = BooksQModel::get_books_list_rate(Constants::BOOKS_ITEM_LIST);
 		$background = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
-		$data['books'] = Helper::add_background($data['books'], $background);
+		$page = $request->input('page');
+		if ($page == null) 
+			$data['books'] = Helper::add_background($data['books'], $background);
+		else
+			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
+		
+
 		return view('pages.list.list-rate', $data);
 	}
 
@@ -113,7 +127,7 @@ class ListController extends Controller {
 	 */
 	public function update()
 	{
-		$data['books'] = BooksQModel::get_books_sort_update(12);
+		$data['books'] = BooksQModel::get_books_list_update(Constants::BOOKS_ITEM_LIST);
 		return view('pages.list.list-update', $data);
 	}
 
@@ -122,11 +136,15 @@ class ListController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function view()
+	public function view(Request $request)
 	{
-		$data['books'] = BooksQModel::get_books_sort_view(12);
+		$data['books'] = BooksQModel::get_books_list_view(Constants::BOOKS_ITEM_LIST);
 		$background = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
-		$data['books'] = Helper::add_background($data['books'], $background);
+		$page = $request->input('page');
+		if ($page == null) 
+			$data['books'] = Helper::add_background($data['books'], $background);
+		else
+			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
 
 		return view('pages.list.list-view', $data);
 	}

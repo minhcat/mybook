@@ -8,4 +8,6 @@ Class Constants {
 	const BOOKS_ITEM_UPDATE  = 8;
 	const BOOKS_ITEM_COMMENT = 8;
 	const BOOKS_ITEM_RATE    = 8;
+	//Book item in list pages
+	const BOOKS_ITEM_LIST 	 = 12;
 }
