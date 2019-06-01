@@ -10,4 +10,7 @@ Class Constants {
 	const BOOKS_ITEM_RATE    = 8;
 	//Book item in list pages
 	const BOOKS_ITEM_LIST 	 = 12;
+	//Status book
+	const STATUS_PROCESS     = true;
+	const STATUS_COMPLETED   = false;
 }

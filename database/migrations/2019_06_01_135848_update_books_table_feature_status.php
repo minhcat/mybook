@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateBooksTableFeatureRelease extends Migration {
+class UpdateBooksTableFeatureStatus extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,7 +13,7 @@ class UpdateBooksTableFeatureRelease extends Migration {
 	public function up()
 	{
 		Schema::table('books', function (Blueprint $table) {
-			$table->date('release_at');
+			$table->boolean('status');
 		});
 	}
 
@@ -25,7 +25,7 @@ class UpdateBooksTableFeatureRelease extends Migration {
 	public function down()
 	{
 		Schema::table('books', function (Blueprint $table) {
-			$table->dropColumn('release_at');
+			$table->dropColumn('status');
 		});
 	}
 

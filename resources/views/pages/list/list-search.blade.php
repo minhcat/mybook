@@ -543,3 +543,7 @@ Các bạn có thể tìm kiếm truyện thông qua từ khóa, thể loại, t
 	</div>
 </div>
 @endsection
+
+@section('define-footer')
+<script type="text/javascript" src="{{ asset('js/list.js') }}"></script>
+@endsection

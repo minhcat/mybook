@@ -48,7 +48,9 @@ class ListController extends Controller {
 	 */
 	public function completed()
 	{
-		return view('pages.list.list-completed');
+		$data['status'] = Constants::STATUS_COMPLETED;
+		$data['books']  = BooksQModel::get_books_list_status(Constants::STATUS_COMPLETED, Constants::BOOKS_ITEM_LIST);
+		return view('pages.list.list-completed', $data);
 	}
 
 	/**
@@ -88,7 +90,9 @@ class ListController extends Controller {
 	 */
 	public function process()
 	{
-		return view('pages.list.list-process');
+		$data['status'] = Constants::STATUS_PROCESS;
+		$data['books']  = BooksQModel::get_books_list_status(Constants::STATUS_PROCESS, Constants::BOOKS_ITEM_LIST);
+		return view('pages.list.list-process', $data);
 	}
 
 	/**
