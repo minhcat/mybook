@@ -16,9 +16,12 @@ class ListController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function category()
+	public function category($category)
 	{
-		return view('pages.list.list-category');
+		$data['books'] = BooksQModel::get_books_list_category($category, Constants::BOOKS_ITEM_LIST);
+		$data['category'] = $category;
+		// dd($data);
+		return view('pages.list.list-category', $data);
 	}
 
 	/**

@@ -17,8 +17,6 @@ Route::get('home', 'HomeController@index');
 
 Route::group(['prefix' => 'list'], function() {
 
-	Route::get('category', 'ListController@category');
-
 	Route::get('comment', 'ListController@comment');
 
 	Route::get('completed', 'ListController@completed');
@@ -40,6 +38,8 @@ Route::group(['prefix' => 'list'], function() {
 	Route::get('view', 'ListController@view');
 
 	Route::get('year/{year}', 'ListController@year');
+
+	Route::get('category/{category}', 'ListController@category');
 
 });
 

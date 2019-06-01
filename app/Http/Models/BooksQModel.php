@@ -153,4 +153,20 @@ class BooksQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get books by category
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_books_list_category($category, $number) {
+		$result = DB::table('books as b')
+				->join('book_category as bc', 'bc.id_book', '=', 'b.id')
+				->join('categories as c', 'bc.id_category', '=', 'c.id')
+				->select('b.*', 'c.name as category_name')
+				->where('c.name', '=', $category)
+				->paginate($number);
+
+		return $result;
+	}
 }
