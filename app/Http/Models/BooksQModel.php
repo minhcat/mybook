@@ -127,4 +127,17 @@ class BooksQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get books by year
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_books_list_year($year, $number) {
+		$result = DB::table('books')
+				->whereYear('release_at', '=', $year)
+				->paginate($number);
+
+		return $result;
+	}
 }

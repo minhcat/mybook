@@ -39,7 +39,7 @@ Route::group(['prefix' => 'list'], function() {
 
 	Route::get('view', 'ListController@view');
 
-	Route::get('year', 'ListController@year');
+	Route::get('year/{year}', 'ListController@year');
 
 });
 

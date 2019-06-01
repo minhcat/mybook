@@ -154,8 +154,11 @@ class ListController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function year()
+	public function year($year)
 	{
-		return view('pages.list.list-year');
+		$data['books'] = BooksQModel::get_books_list_year($year, Constants::BOOKS_ITEM_LIST);
+		$data['year'] = $year;
+		// dd($data);
+		return view('pages.list.list-year', $data);
 	}
 }
