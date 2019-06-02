@@ -6,11 +6,11 @@ blue
 @endsection
 
 @section('title-header')
-{{ $books[0]->category_name }}
+{{ $category->name }}
 @endsection
 
 @section('title-content')
-Các loại truyện có yếu tố hài hước, vui nhộn
+{{ $category->description }}
 @endsection
 {{-- end title --}}
 
@@ -19,7 +19,7 @@ Các loại truyện có yếu tố hài hước, vui nhộn
 	<div class="content">
 		<ul class="breadcrumb">
 			<li><a href="">Trang chủ</a></li>
-			<li class="active">Thể loại {{ $category }}</li>
+			<li class="active">Thể loại {{ strtolower($category->name) }}</li>
 		</ul>
 		<div class="list">
 			@foreach ($books as $key => $book)

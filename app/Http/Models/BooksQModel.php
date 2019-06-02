@@ -163,7 +163,6 @@ class BooksQModel extends Model
 		$result = DB::table('books as b')
 				->join('book_category as bc', 'bc.id_book', '=', 'b.id')
 				->join('categories as c', 'bc.id_category', '=', 'c.id')
-				->select('b.*', 'c.name as category_name')
 				->where('c.name', '=', $category)
 				->paginate($number);
 

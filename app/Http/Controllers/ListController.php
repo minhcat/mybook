@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Models\BooksQModel;
+use App\Http\Models\CategoriesQModel;
 use App\Http\Helpers\Helper;
 use App\Http\Helpers\Constants;
 
@@ -19,7 +20,7 @@ class ListController extends Controller {
 	public function category($category)
 	{
 		$data['books'] = BooksQModel::get_books_list_category($category, Constants::BOOKS_ITEM_LIST);
-		$data['category'] = $category;
+		$data['category'] = CategoriesQModel::get_category_by_name($category);
 		// dd($data);
 		return view('pages.list.list-category', $data);
 	}
