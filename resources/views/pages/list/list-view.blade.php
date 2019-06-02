@@ -22,7 +22,7 @@ Danh sách truyện được sắp xếp dựa trên lượt xem, lượt yêu t
 			<li class="active">Bảng xếp hạng</li>
 		</ul>
 		<div class="list">
-			@foreach ($books as $book)
+			@foreach ($books as $key => $book)
 			<div class="book clearfix">
 				<a href=""><img src="{{ asset('image/books/'.$book->image.'.jpg') }}" width="160px" height="160px"></a>
 				<div class="rank {{ $book->background }}">{{ $book->index }}</div>
@@ -63,7 +63,7 @@ Danh sách truyện được sắp xếp dựa trên lượt xem, lượt yêu t
 					</div>
 				</div>
 			</div>
-			@if ($book->index < count($books))
+			@if ($key < count($books) - 1)
 			<hr>
 			@endif
 			@endforeach
