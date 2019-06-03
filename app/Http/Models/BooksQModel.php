@@ -168,4 +168,17 @@ class BooksQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get books by category
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_book_by_slug($slug) {
+		$result = DB::table('books')
+				->where('slug', $slug)
+				->get();
+
+		return $result[0];
+	}
 }

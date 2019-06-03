@@ -19,13 +19,13 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 	<div class="content">
 		<ul class="breadcrumb">
 			<li><a href="">Trang chủ</a></li>
-			<li class="active">Overlord</li>
+			<li class="active">{{ $book->name }}</li>
 		</ul>
 		<div class="book">
 			<div class="line first clearfix">
 				<div class="image left">
 					<div class="img">
-						<img src="{{ asset('image/overlord-800.jpg') }}">
+						<img src="{{ asset('image/books/'.$book->image.'.jpg') }}">
 					</div>
 					<div class="button">
 						<button type="button" class="btn left open-modal" data-modal="#modalnotlogin">Đánh giá</button>
@@ -34,35 +34,35 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 					</div>
 				</div>
 				<div class="info">
-					<h3>Overlord</h3>
+					<h3>{{ $book->name }}</h3>
 					<div class="star">
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star-half-o"></span>
 						<span class="fa fa-star-o"></span>
-						<span>3.5</span>
-						<span class="rate">100 đánh giá</span>
+						<span>{{ $book->rate_point }}</span>
+						<span class="rate">{{ $book->rate }} đánh giá</span>
 					</div>
 					<div class="group clearfix">
 						<div class="item red" title="yêu thích">
 							<span class="glyphicon glyphicon-heart"></span> 
-							<span>100</span>
+							<span>{{ $book->like }}</span>
 						</div>
 						<div class="item blue" title="lượt xem">
 							<span class="glyphicon glyphicon-eye-open"></span> 
-							<span>100</span>
+							<span>{{ $book->view }}</span>
 						</div>
 						<div class="item orange" title="bình luận">
 							<span class="glyphicon glyphicon-comment"></span> 
-							<span>100</span>
+							<span>{{ $book->comment }}</span>
 						</div>
 						<div class="item green" title="theo dõi">
 							<span class="glyphicon glyphicon-user"></span> 
-							<span>100</span>
+							<span>{{ $book->follow }}</span>
 						</div>
 					</div>
-					<p><strong>Tên khác:</strong> Chúa Tể</p>
+					<p><strong>Tên khác:</strong> {{ $book->other_name }}</p>
 					<p><strong>Thể loại:</strong> <a href="">Comedy</a>, <a href="">Magic, <a href="">Fanstasy</a></p>
 					<p><strong>Tác giả:</strong> <a href="">Maruyama Kugane</a></p>
 					<p><strong>Minh họa:</strong> <a href="">Miyama Hugin</a></p>
@@ -73,8 +73,8 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 				</div>
 			</div>
 			<div class="line second">
-				<p style="text-align: justify;"><strong>Giới thiệu:</strong> Câu chuyện bắt đầu trong những giây phút cuối tại Yggdrasil, một game online đình đám sắp phải đóng cửa. Nhân vật chính Momonga quyết định ở lại đến tận những phút cuối cùng với trò chơi yêu thích của mình và chờ server down. Bất ngờ, server không shutdown và Momonga bị mắc kẹt trong nhân vật của chính mình và dịch chuyển tới một thế giới khác. Vị chúa tể hùng mạnh giờ đây lại tiếp tục đi khám phá thế giới mới và đối mặt với những thử thách mới. Không gia đình, bạn bè, địa vị xã hội, người đàn ông bình thường này sẽ cố gắng hết sức để thống trị thế giới mới này.</p>
-				<p><strong>Từ khóa:</strong> Overlord, Momonga, Ainz Ooal Gown, Albedo, Nazarick</p>
+				<p style="text-align: justify;"><strong>Giới thiệu:</strong> {{ $book->description }}</p>
+				<p><strong>Từ khóa:</strong> {{ $book->keyword }}</p>
 			</div>
 			<div class="line chap">
 				<!-- <h4>Danh sách chap</h4>
@@ -92,203 +92,21 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 						<span class="date"><strong>NGÀY ĐĂNG</strong></span>
 					</div>
 					<div class="tab-content">
-						<div id="group1" class="tab-pane fade in active">
+						@foreach ($chaps_trans as $key => $chaps)
+						<div id="group{{ $key }}" class="tab-pane fade in active">
 							<table>
+								@foreach ($chaps as $chap)
 								<tr>
 									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 32</a></p>
-										<p class="right">24-12-2017</p>
+										<p class="left"><a href="#">{{ $chap->name }}</a></p>
+										<p class="right">{{ date_format(date_create($chap->create_at),'d-m-Y') }}</p>
 									</td>
 								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 31</a></p>
-										<p class="right">17-12-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 30</a></p>
-										<p class="right">10-12-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 29</a></p>
-										<p class="right">03-12-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 28</a></p>
-										<p class="right">26-11-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 27</a></p>
-										<p class="right">19-11-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 26</a></p>
-										<p class="right">12-11-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 25</a></p>
-										<p class="right">05-11-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 24</a></p>
-										<p class="right">29-10-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 23</a></p>
-										<p class="right">22-10-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 22</a></p>
-										<p class="right">15-10-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 21</a></p>
-										<p class="right">08-10-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 20</a></p>
-										<p class="right">01-10-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 19</a></p>
-										<p class="right">24-09-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 18</a></p>
-										<p class="right">17-09-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 17</a></p>
-										<p class="right">10-09-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 16</a></p>
-										<p class="right">03-09-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 15</a></p>
-										<p class="right">27-08-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 14</a></p>
-										<p class="right">20-08-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 13</a></p>
-										<p class="right">13-08-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 12</a></p>
-										<p class="right">06-08-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 11</a></p>
-										<p class="right">30-07-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 10</a></p>
-										<p class="right">23-07-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 9</a></p>
-										<p class="right">16-07-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 8</a></p>
-										<p class="right">09-07-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 7</a></p>
-										<p class="right">02-07-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 6</a></p>
-										<p class="right">25-06-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 5</a></p>
-										<p class="right">18-06-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 4</a></p>
-										<p class="right">11-06-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 3</a></p>
-										<p class="right">04-06-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 2</a></p>
-										<p class="right">28-05-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord chap 1</a></p>
-										<p class="right">21-05-2017</p>
-									</td>
-								</tr>
+								@endforeach
 							</table>
 						</div>
-						<div id="group2" class="tab-pane fade">
+						@endforeach
+						{{-- <div id="group2" class="tab-pane fade">
 							<table>
 								<tr>
 									<td class="clearfix">
@@ -643,7 +461,7 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 									</td>
 								</tr>
 							</table>
-						</div>
+						</div> --}}
 					</div>
 				</div>
 			</div>

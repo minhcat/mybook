@@ -15,6 +15,8 @@ Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::get('read', 'ReadController@index');
+
 Route::group(['prefix' => 'list'], function() {
 
 	Route::get('comment', 'ListController@comment');
@@ -47,7 +49,7 @@ Route::group(['prefix' => 'detail'], function () {
 	
 	Route::get('author', 'DetailController@author');
 
-	Route::get('book', 'DetailController@book');
+	Route::get('book/{slug}', 'DetailController@book');
 
 	Route::get('character', 'DetailController@character');
 
@@ -69,7 +71,3 @@ Route::group(['prefix' => 'admin'], function() {
 
 	Route::get('super-admin', 'AdminController@super_admin');
 });
-
-Route::get('read', 'ReadController@index');
-
-Route::get('admin/{type}', 'AdminController@index');
