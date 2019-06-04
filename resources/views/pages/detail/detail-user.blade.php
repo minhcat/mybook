@@ -19,13 +19,13 @@ Bạn có thể xem thông tin người dùng được cập nhật công khai t
 	<div class="content">
 		<ul class="breadcrumb">
 			<li><a href="">Trang chủ</a></li>
-			<li class="active">Asuna</li>
+			<li class="active">{{ $user->name }}</li>
 		</ul>
 		<div class="book">
 			<div class="line first clearfix">
 				<div class="image left">
 					<div class="img">
-						<img src="{{ asset('image/Asuna.jpg') }}">
+						<img src="{{ asset('image/users/'.$user->image.'.jpg') }}">
 					</div>
 					<div class="button">
 						<button type="button" class="btn left open-modal" data-modal="#modalnotlogin">Đánh giá</button>
@@ -34,42 +34,42 @@ Bạn có thể xem thông tin người dùng được cập nhật công khai t
 					</div>
 				</div>
 				<div class="info">
-					<h3>Asuna</h3>
+					<h3>{{ $user->name }}</h3>
 					<div class="star">
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star-half-o"></span>
 						<span class="fa fa-star-o"></span>
-						<span>3.5</span>
-						<span class="rate">100 đánh giá</span>
+						<span>{{ $user->rate_point }}</span>
+						<span class="rate">{{ $user->rate }} đánh giá</span>
 					</div>
 					<div class="group clearfix">
 						<div class="item red" title="yêu thích">
 							<span class="glyphicon glyphicon-heart"></span> 
-							<span>100</span>
+							<span>{{ $user->like }}</span>
 						</div>
 						<div class="item blue" title="bạn bè">
 							<span class="glyphicon glyphicon-user"></span> 
-							<span>100</span>
+							<span>{{ $user->friend }}</span>
 						</div>
 						<div class="item orange" title="bình luận">
 							<span class="glyphicon glyphicon-comment"></span> 
-							<span>100</span>
+							<span>{{ $user->comment }}</span>
 						</div>
 					</div>
-					<p><strong>Biệt hiệu:</strong> Kiếm vương</p>
-					<p><strong>Giới tính:</strong> Nữ</p>
-					<p><strong>Ngày sinh:</strong> 7/9/2007</p>
-					<p><strong>Tính cách:</strong> vui vẻ, hòa đồng</p>
+					<p><strong>Biệt hiệu:</strong> {{ $user->nickname }}</p>
+					<p><strong>Giới tính:</strong> {{ ($user->gender)? 'nữ' : 'nam'}}</p>
+					<p><strong>Ngày sinh:</strong> {{ date_format(date_create($user->birth),'d/m/Y')}}</p>
+					<p><strong>Tính cách:</strong> {{ $user->genitive }}</p>
 					<p><strong>Thể loại yêu thích:</strong> <a href="">Comedy</a>, <a href="">Magic, <a href="">Fanstasy</a></p>
-					<p><strong>Facebook:</strong> <a href="">Asuna</a></p>
-					<p><strong>Twitter:</strong> <a href="">Asuna</a></p>
-					<p><strong>Câu logan:</strong> Giết hết đã</p>
+					<p><strong>Facebook:</strong> <a href="">{{ $user->name }}</a></p>
+					<p><strong>Twitter:</strong> <a href="">{{ $user->name }}</a></p>
+					<p><strong>Câu slogan:</strong> {{ $user->slogan}}</p>
 				</div>
 			</div>
 			<div class="line second">
-				<p style="text-align: justify;"><strong>Tự giới thiệu:</strong> Yuuki Asuna (結城 明日奈 Yūki Asuna?), hay còn được gọi là Asuna (アスナ Asuna?) là nhân vật chính thứ hai trong Phần Aincradcủa series Sword Art Online và cũng là nhân vật chính trong ngoại truyện Thánh giá của mẹ. Cô là phó thủ lĩnh của hội Huyết Kỵ Sĩ‏‎ trong Sword Art Online. Cô tên thật là Yuuki Asuna (結城 明日奈 Yūki Asuna?) và là con gái của cựu CEO của Tập đoàn RECT. Bởi kĩ năng và thanh rapier nên cô được mệnh danh là Tia Chớp.</p>
+				<p style="text-align: justify;"><strong>Tự giới thiệu:</strong> {{ $user->description }}</p>
 			</div>
 			<div class="line cmd comment">
 				<h4>Bình luận</h4>

@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Models\BooksQModel;
+use App\Http\Models\UsersQModel;
 use App\Http\Models\ChapsQModel;
 
 use Illuminate\Http\Request;
@@ -54,9 +55,10 @@ class DetailController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function user()
+	public function user($slug)
 	{
-		return view('pages.detail.detail-user');
+		$data['user'] = UsersQModel::get_user_by_name_login($slug);
+		return view('pages.detail.detail-user', $data);
 	}
 
 	/**
