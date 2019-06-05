@@ -32,7 +32,7 @@ Bạn có thể xem thông tin nhân vật được cập nhật ở đây
 					<h3>{{ $character->name }}</h3>
 					
 					<p><strong>Tên khác:</strong> {{ $character->other_name }}</p>
-					<p><strong>Giới tính:</strong> {{ ($character->gender) ? 'nữ' : 'nam'}}</p>
+					<p><strong>Giới tính:</strong> {{ ($character->gender) ? 'Nữ' : 'Nam'}}</p>
 					<p><strong>Ngày sinh:</strong> {{ ($character->birth != null) ? date_format(date_create($character->birth),'d/m/Y') : 'Đang cập nhật'}}</p>
 					<p><strong>Loại nhân vật:</strong> {{ $character->type }}</p>
 					<p><strong>Gia đình:</strong> {{ $character->family }}</p>

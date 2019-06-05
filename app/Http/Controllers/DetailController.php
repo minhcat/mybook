@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Models\AuthorsQModel;
 use App\Http\Models\BooksQModel;
 use App\Http\Models\UsersQModel;
 use App\Http\Models\ChapsQModel;
@@ -16,9 +17,11 @@ class DetailController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function author()
+	public function author($slug)
 	{
-		return view('pages.detail.detail-author');
+		$data['author'] = AuthorsQModel::get_author_by_slug($slug);
+		// dd($data);
+		return view('pages.detail.detail-author', $data);
 	}
 
 	/**

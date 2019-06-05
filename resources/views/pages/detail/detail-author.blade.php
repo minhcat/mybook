@@ -19,13 +19,13 @@ Bạn có thể xem thông tin tác giả tại đây
 	<div class="content">
 		<ul class="breadcrumb">
 			<li><a href="">Trang chủ</a></li>
-			<li class="active">Maruyama Kugane</li>
+			<li class="active">{{ $author->name }}</li>
 		</ul>
 		<div class="book">
 			<div class="line first clearfix">
 				<div class="image left">
 					<div class="img">
-						<img src="{{ asset('image/user-default.png') }}">
+						<img src="{{ asset('image/authors/'.$author->image.'.jpg') }}">
 					</div>
 					<div class="button">
 						<button type="button" class="btn left open-modal" data-modal="#modalnotlogin">Đánh giá</button>
@@ -34,44 +34,44 @@ Bạn có thể xem thông tin tác giả tại đây
 					</div>
 				</div>
 				<div class="info">
-					<h3>Maruyama Kugane</h3>
+					<h3>{{ $author->name }}</h3>
 					<div class="star">
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star-half-o"></span>
 						<span class="fa fa-star-o"></span>
-						<span>3.5</span>
-						<span class="rate">100 đánh giá</span>
+						<span>{{ $author->rate_point }}</span>
+						<span class="rate">{{ $author->rate }} đánh giá</span>
 					</div>
 					<div class="group clearfix">
 						<div class="item red" title="yêu thích">
 							<span class="glyphicon glyphicon-heart"></span> 
-							<span>100</span>
+							<span>{{ $author->like }}</span>
 						</div>
 						<div class="item blue" title="lượt xem">
 							<span class="glyphicon glyphicon-eye-open"></span> 
-							<span>100</span>
+							<span>{{ $author->view }}</span>
 						</div>
 						<div class="item orange" title="bình luận">
 							<span class="glyphicon glyphicon-comment"></span> 
-							<span>100</span>
+							<span>{{ $author->comment }}</span>
 						</div>
 						<div class="item green" title="theo dõi">
 							<span class="glyphicon glyphicon-user"></span> 
-							<span>100</span>
+							<span>{{ $author->follow }}</span>
 						</div>
 					</div>
-					<p><strong>Nơi sinh:</strong> Nhật Bản</p>
-					<p><strong>Ngày sinh:</strong> Đang cập nhật</p>
-					<p><strong>Giới tính:</strong> Nam</p>
-					<p><strong>Twitter:</strong> <a href="">maruyama_kugane</a></p>
-					<p><strong>Website:</strong> Đang cập nhật</p>
+					<p><strong>Nơi sinh:</strong> {{ $author->birthplace }}</p>
+					<p><strong>Ngày sinh:</strong> {{ ($author->birth != null) ? date_format(date_create($author->birth),'d/m/Y') : 'Đang cập nhật' }}</p>
+					<p><strong>Giới tính:</strong> {{ ($author->gender) ? 'Nữ' : 'Nam'}}</p>
+					<p><strong>Twitter:</strong> <a href="">{{ $author->name }}</a></p>
+					<p><strong>Website:</strong> <a href="">{{ $author->name }}</a></p>
 					<p><strong>Thể loại truyện:</strong> <a href="">Comedy</a>, <a href="">Magic, <a href="">Fanstasy</a></p>
 				</div>
 			</div>
 			<div class="line second">
-				<p style="text-align: justify;"><strong>Giới thiệu:</strong> Là tác giả của bộ truyện đình đám Overlord, với rất nhiều fan hâm mộ. Anh là tác giả light novel. Anh lúc đầu còn có bút danh là Manyimuchi Puririn, sau khi bô overlord nổi tiếng anh đã đổi sang là Maruyama Kugane, vì Manyimuchi Puririn có nghĩa là "béo ngậy". Truyện ngắn Dawn của anh đã được chuyển thể trong Kagetsu Tohya, phần tiếp theo của Type-Moon trong trò chơi tiểu thuyết hình ảnh doujin trước đó của họ, Tsukihime, phát hành vào tháng 8 năm 2001.</p>
+				<p style="text-align: justify;"><strong>Giới thiệu:</strong> {{ $author->description }}</p>
 			</div>
 			<div class="line chap">
 				<!-- <h4>Danh sách chap</h4>

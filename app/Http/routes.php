@@ -47,7 +47,7 @@ Route::group(['prefix' => 'list'], function() {
 
 Route::group(['prefix' => 'detail'], function () {
 	
-	Route::get('author', 'DetailController@author');
+	Route::get('author/{slug}', 'DetailController@author');
 
 	Route::get('book/{slug}', 'DetailController@book');
 
