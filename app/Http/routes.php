@@ -55,7 +55,7 @@ Route::group(['prefix' => 'detail'], function () {
 
 	Route::get('user/{slug}', 'DetailController@user');
 
-	Route::get('trans', 'DetailController@trans');
+	Route::get('trans/{slug}', 'DetailController@trans');
 
 });
 

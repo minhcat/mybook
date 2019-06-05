@@ -6,6 +6,7 @@ use App\Http\Models\AuthorsQModel;
 use App\Http\Models\BooksQModel;
 use App\Http\Models\UsersQModel;
 use App\Http\Models\ChapsQModel;
+use App\Http\Models\TransQModel;
 use App\Http\Models\CharactersQModel;
 
 use Illuminate\Http\Request;
@@ -72,8 +73,11 @@ class DetailController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function trans()
+	public function trans($slug)
 	{
-		return view('pages.detail.detail-trans');
+		$data['trans'] = TransQModel::get_trans_by_slug($slug);
+		$data['books'] = TransQModel::get_books_by_trans_id($data['trans']->id);
+		// dd($data);
+		return view('pages.detail.detail-trans', $data);
 	}
 }
