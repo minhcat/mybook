@@ -19,29 +19,29 @@ Bạn có thể xem thông tin nhân vật được cập nhật ở đây
 	<div class="content">
 		<ul class="breadcrumb">
 			<li><a href="">Trang chủ</a></li>
-			<li class="active">Ainz Ooal Gown</li>
+			<li class="active">{{ $character->name }}</li>
 		</ul>
 		<div class="book">
 			<div class="line first clearfix">
 				<div class="image left">
 					<div class="img">
-						<img src="{{ asset('image/ainz_ooal_gown.jpg') }}">
+						<img src="{{ asset('image/characters/'.$character->image.'.jpg') }}">
 					</div>
 				</div>
 				<div class="info">
-					<h3>Ainz Ooal Gown</h3>
+					<h3>{{ $character->name }}</h3>
 					
-					<p><strong>Tên khác:</strong> Momonga</p>
-					<p><strong>Giới tính:</strong> Nam</p>
-					<p><strong>Ngày sinh:</strong> Đang cập nhật</p>
-					<p><strong>Loại nhân vật:</strong> Nhân vật chính</p>
-					<p><strong>Gia đình:</strong> Người mẹ (đã chết)</p>
-					<p><strong>Nghề nghiệp:</strong> Chúa tể, chủ lăng Nazarick</p>
-					<p><strong>Sở thích:</strong> Thám hiểm</p>
+					<p><strong>Tên khác:</strong> {{ $character->other_name }}</p>
+					<p><strong>Giới tính:</strong> {{ ($character->gender) ? 'nữ' : 'nam'}}</p>
+					<p><strong>Ngày sinh:</strong> {{ ($character->birth != null) ? date_format(date_create($character->birth),'d/m/Y') : 'Đang cập nhật'}}</p>
+					<p><strong>Loại nhân vật:</strong> {{ $character->type }}</p>
+					<p><strong>Gia đình:</strong> {{ $character->family }}</p>
+					<p><strong>Nghề nghiệp:</strong> {{ $character->job }}</p>
+					<p><strong>Sở thích:</strong> {{ $character->hobby }}</p>
 				</div>
 			</div>
 			<div class="line second">
-				<p style="text-align: justify;"><strong>Giới thiệu:</strong> Ainz Ooal Gown tạo hình là một bộ xương bất tử. Khi đang chơi một trò chơi thì anh bị rơi vào thế giới của trò chơi đó và trở thành chúa tể của đại lăng Nazarick. Anh ta cũng là người tạo ra NPC Pandora. Cùng với các hộ vệ lăng anh ta đi tìm hiểu về thế giới này, đồng thời tìm kiếm những người bị triệu hồi đến thế giới này như anh. Có trong tay vô số các bảo bối khủng anh ta làm thế nào để đạt được mục đích của mình?</p>
+				<p style="text-align: justify;"><strong>Giới thiệu:</strong> {{ $character->description }}</p>
 			</div>
 			@include('partials.common.comment');
 		</div>

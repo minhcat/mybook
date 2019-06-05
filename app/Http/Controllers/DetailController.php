@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Models\BooksQModel;
 use App\Http\Models\UsersQModel;
 use App\Http\Models\ChapsQModel;
+use App\Http\Models\CharactersQModel;
 
 use Illuminate\Http\Request;
 
@@ -45,9 +46,10 @@ class DetailController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function character()
+	public function character($slug)
 	{
-		return view('pages.detail.detail-character');
+		$data['character'] = CharactersQModel::get_character_by_slug($slug);
+		return view('pages.detail.detail-character', $data);
 	}
 
 	/**

@@ -59,7 +59,7 @@ Bạn có thể xem thông tin người dùng được cập nhật công khai t
 						</div>
 					</div>
 					<p><strong>Biệt hiệu:</strong> {{ $user->nickname }}</p>
-					<p><strong>Giới tính:</strong> {{ ($user->gender)? 'nữ' : 'nam'}}</p>
+					<p><strong>Giới tính:</strong> {{ ($user->gender)? 'Nữ' : 'Nam'}}</p>
 					<p><strong>Ngày sinh:</strong> {{ date_format(date_create($user->birth),'d/m/Y')}}</p>
 					<p><strong>Tính cách:</strong> {{ $user->genitive }}</p>
 					<p><strong>Thể loại yêu thích:</strong> <a href="">Comedy</a>, <a href="">Magic, <a href="">Fanstasy</a></p>

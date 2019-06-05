@@ -51,7 +51,7 @@ Route::group(['prefix' => 'detail'], function () {
 
 	Route::get('book/{slug}', 'DetailController@book');
 
-	Route::get('character', 'DetailController@character');
+	Route::get('character/{slug}', 'DetailController@character');
 
 	Route::get('user/{slug}', 'DetailController@user');
 
