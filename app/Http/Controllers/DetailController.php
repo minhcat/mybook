@@ -20,6 +20,7 @@ class DetailController extends Controller {
 	public function author($slug)
 	{
 		$data['author'] = AuthorsQModel::get_author_by_slug($slug);
+		$data['books']  = BooksQModel::get_books_by_author_id($data['author']->id);
 		// dd($data);
 		return view('pages.detail.detail-author', $data);
 	}

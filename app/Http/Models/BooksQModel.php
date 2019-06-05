@@ -170,7 +170,7 @@ class BooksQModel extends Model
 	}
 
 	/**
-	 * get books by category
+	 * get book by slug
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
@@ -180,5 +180,18 @@ class BooksQModel extends Model
 				->get();
 
 		return $result[0];
+	}
+
+	/**
+	 * get books by author id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_books_by_author_id($author_id) {
+		$result = DB::table('books')
+				->where('id_author', $author_id)
+				->get();
+
+		return $result;
 	}
 }

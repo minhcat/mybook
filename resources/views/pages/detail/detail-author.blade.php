@@ -65,6 +65,7 @@ Bạn có thể xem thông tin tác giả tại đây
 					<p><strong>Nơi sinh:</strong> {{ $author->birthplace }}</p>
 					<p><strong>Ngày sinh:</strong> {{ ($author->birth != null) ? date_format(date_create($author->birth),'d/m/Y') : 'Đang cập nhật' }}</p>
 					<p><strong>Giới tính:</strong> {{ ($author->gender) ? 'Nữ' : 'Nam'}}</p>
+					<p><strong>Công việc:</strong> {{ $author->type }}</p>
 					<p><strong>Twitter:</strong> <a href="">{{ $author->name }}</a></p>
 					<p><strong>Website:</strong> <a href="">{{ $author->name }}</a></p>
 					<p><strong>Thể loại truyện:</strong> <a href="">Comedy</a>, <a href="">Magic, <a href="">Fanstasy</a></p>
@@ -87,30 +88,14 @@ Bạn có thể xem thông tin tác giả tại đây
 					<div class="tab-content">
 						<div id="group1" class="tab-pane fade in active">
 							<table>
+								@foreach ($books as $book)
 								<tr>
 									<td class="clearfix">
-										<p class="left"><a href="#">Overlord I</a></p>
-										<p class="right">24-12-2017</p>
+										<p class="left"><a href="#">{{ $book->name }}</a></p>
+										<p class="right">{{ date_format(date_create($book->create_at), 'd-m-Y') }}</p>
 									</td>
 								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord II</a></p>
-										<p class="right">17-12-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">Overlord III</a></p>
-										<p class="right">10-12-2017</p>
-									</td>
-								</tr>
-								<tr>
-									<td class="clearfix">
-										<p class="left"><a href="#">The Dark Warrior</a></p>
-										<p class="right">10-12-2017</p>
-									</td>
-								</tr>
+								@endforeach
 							</table>
 						</div>
 					</div>
