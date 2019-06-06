@@ -1,4 +1,4 @@
-<div class="box">
+<div class="box {{ ($key == 0) ? 'first': '' }}">
 	<div class="header">Truyện Ngẫu Nhiên</div>
 	<div class="content">
 		<div class="book row first">

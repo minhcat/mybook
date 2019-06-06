@@ -21,6 +21,7 @@ class ListController extends Controller {
 	{
 		$data['books'] = BooksQModel::get_books_list_category($category, Constants::BOOKS_ITEM_LIST);
 		$data['category'] = CategoriesQModel::get_category_by_name($category);
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
 		// dd($data);
 		return view('pages.list.list-category', $data);
 	}
@@ -39,7 +40,7 @@ class ListController extends Controller {
 			$data['books'] = Helper::add_background($data['books'], $background);
 		else
 			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
-		
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
 		// dd($data['books']);
 
 		return view('pages.list.list-comment', $data);
@@ -54,6 +55,8 @@ class ListController extends Controller {
 	{
 		$data['status'] = Constants::STATUS_COMPLETED;
 		$data['books']  = BooksQModel::get_books_list_status(Constants::STATUS_COMPLETED, Constants::BOOKS_ITEM_LIST);
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+
 		return view('pages.list.list-completed', $data);
 	}
 
@@ -96,6 +99,8 @@ class ListController extends Controller {
 	{
 		$data['status'] = Constants::STATUS_PROCESS;
 		$data['books']  = BooksQModel::get_books_list_status(Constants::STATUS_PROCESS, Constants::BOOKS_ITEM_LIST);
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+
 		return view('pages.list.list-process', $data);
 	}
 
@@ -113,7 +118,7 @@ class ListController extends Controller {
 			$data['books'] = Helper::add_background($data['books'], $background);
 		else
 			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
-		
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
 
 		return view('pages.list.list-rate', $data);
 	}
@@ -136,6 +141,8 @@ class ListController extends Controller {
 	public function update()
 	{
 		$data['books'] = BooksQModel::get_books_list_update(Constants::BOOKS_ITEM_LIST);
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+
 		return view('pages.list.list-update', $data);
 	}
 
@@ -153,6 +160,7 @@ class ListController extends Controller {
 			$data['books'] = Helper::add_background($data['books'], $background);
 		else
 			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
 
 		return view('pages.list.list-view', $data);
 	}
@@ -166,6 +174,7 @@ class ListController extends Controller {
 	{
 		$data['books'] = BooksQModel::get_books_list_year($year, Constants::BOOKS_ITEM_LIST);
 		$data['year'] = $year;
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
 		// dd($data);
 		return view('pages.list.list-year', $data);
 	}

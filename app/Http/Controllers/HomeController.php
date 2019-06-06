@@ -52,6 +52,9 @@ class HomeController extends Controller {
 		//get data topic rate
 		$data['books_rate']    = BooksQModel::get_books_home_rate(Constants::BOOKS_ITEM_RATE);
 
+		//data system sidebar
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+
 		return view('pages.home', $data);
 	}
 

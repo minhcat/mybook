@@ -20,8 +20,9 @@ class DetailController extends Controller {
 	 */
 	public function author($slug)
 	{
-		$data['author'] = AuthorsQModel::get_author_by_slug($slug);
-		$data['books']  = BooksQModel::get_books_by_author_id($data['author']->id);
+		$data['author']  = AuthorsQModel::get_author_by_slug($slug);
+		$data['books']   = BooksQModel::get_books_by_author_id($data['author']->id);
+		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
 		// dd($data);
 		return view('pages.detail.detail-author', $data);
 	}
@@ -42,6 +43,7 @@ class DetailController extends Controller {
 
 		$data['book']  = $book;
 		$data['chaps_trans'] = $chaps;
+		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
 		// dd($data);
 		return view('pages.detail.detail-book', $data);
 	}
@@ -54,6 +56,8 @@ class DetailController extends Controller {
 	public function character($slug)
 	{
 		$data['character'] = CharactersQModel::get_character_by_slug($slug);
+		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
+
 		return view('pages.detail.detail-character', $data);
 	}
 
@@ -65,6 +69,8 @@ class DetailController extends Controller {
 	public function user($slug)
 	{
 		$data['user'] = UsersQModel::get_user_by_name_login($slug);
+		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
+
 		return view('pages.detail.detail-user', $data);
 	}
 
@@ -77,6 +83,8 @@ class DetailController extends Controller {
 	{
 		$data['trans'] = TransQModel::get_trans_by_slug($slug);
 		$data['books'] = TransQModel::get_books_by_trans_id($data['trans']->id);
+		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
+		
 		// dd($data);
 		return view('pages.detail.detail-trans', $data);
 	}
