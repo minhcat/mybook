@@ -194,4 +194,18 @@ class BooksQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get books random
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_books_random($number) {
+		$result = DB::table('books')
+				->orderByRaw('RAND()')
+				->take($number)
+				->get();
+
+		return $result;
+	}
 }

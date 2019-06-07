@@ -60,6 +60,15 @@ class HomeController extends Controller {
 		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
 		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
 		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
+
+		//data random-book sidebar
+		$data['random_book'] = BooksQModel::get_books_random(6);
+		foreach ($data['random_book'] as $key => $book) {
+			if (strlen($book->name) >= 22)
+				$book->name = substr($book->name, 0, 20).'...';
+			$book->description = substr($book->description, 0, 60).'...';
+		}
+		// dd($data['random_book']);
 		// dd($data['top_view']['month']);
 
 		return view('pages.home', $data);
