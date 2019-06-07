@@ -66,7 +66,7 @@ class HomeController extends Controller {
 		foreach ($data['random_book'] as $key => $book) {
 			if (strlen($book->name) >= 22)
 				$book->name = substr($book->name, 0, 20).'...';
-			$book->description = substr($book->description, 0, 60).'...';
+			$book->description = substr($book->description, 0, 45).'...';
 		}
 		// dd($data['random_book']);
 		// dd($data['top_view']['month']);
