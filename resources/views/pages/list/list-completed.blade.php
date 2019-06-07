@@ -65,7 +65,7 @@ Danh sách các truyện đã kết thúc hoặc kết thúc trong một phần 
 			@endforeach
 		</div>
 		<div class="paging">
-			{!! $books->render() !!}
+			@include('vendor.default', ['paginator' => $books])
 		</div>
 	</div>
 </div>

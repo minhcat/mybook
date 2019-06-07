@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Models\BooksQModel;
+use App\Http\Models\BooksViewQModel;
 use App\Http\Helpers\Helper;
 use App\Http\Helpers\Constants;
 
@@ -54,6 +55,12 @@ class HomeController extends Controller {
 
 		//data system sidebar
 		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+
+		//data top-view sidebar
+		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
+		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
+		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
+		// dd($data['top_view']['month']);
 
 		return view('pages.home', $data);
 	}

@@ -70,7 +70,7 @@ Danh sách truyện được sắp xếp dựa trên lượt bình luận của 
 			@endforeach
 		</div>
 		<div class="paging">
-			{!! $books->render() !!}
+			@include('vendor.default', ['paginator' => $books])
 		</div>
 	</div>
 </div>

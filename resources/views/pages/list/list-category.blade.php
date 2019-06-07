@@ -65,7 +65,7 @@ blue
 			@endforeach
 		</div>
 		<div class="paging">
-			{!! $books->render() !!}
+			@include('vendor.default', ['paginator' => $books])
 		</div>
 	</div>
 </div>

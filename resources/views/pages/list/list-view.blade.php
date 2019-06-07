@@ -69,7 +69,6 @@ Danh sách truyện được sắp xếp dựa trên lượt xem, lượt yêu t
 			@endforeach
 		</div>
 		<div class="paging">
-			{{-- {{dd($books)}} --}}
 			@include('vendor.default', ['paginator' => $books])
 		</div>
 	</div>

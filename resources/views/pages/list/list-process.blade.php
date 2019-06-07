@@ -65,7 +65,7 @@ Danh sách các truyện chưa kết thúc và vẫn đang ra chap mới thườ
 			@endforeach
 		</div>
 		<div class="paging">
-			{!! $books->render() !!}
+			@include('vendor.default', ['paginator' => $books])
 		</div>
 	</div>
 </div>

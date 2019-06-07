@@ -66,7 +66,7 @@ Các truyện được xuất bản chính thức trong năm {{ $year }}
 			@endforeach
 		</div>
 		<div class="paging">
-			{!! $books->render() !!}
+			@include('vendor.default', ['paginator' => $books])
 		</div>
 	</div>
 </div>

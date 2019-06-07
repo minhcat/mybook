@@ -1,7 +1,7 @@
 @if ($paginator->hasPages())
 	<ul class="pagination">
 		{{-- Previous Page Link --}}
-		@if ($paginator->firstItem())
+		@if ($paginator->currentPage() == 1)
 			<li class="disabled"><span>&laquo;</span></li>
 		@else
 			<li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">&laquo;</a></li>
@@ -15,9 +15,9 @@
 			</li> --}}
 			@if ($i == $paginator->currentPage())
 				<li class="active"><span>{{ $i }}</span></li>
-			@elseif (($i == $paginator->currentPage() + 1 || $i == $paginator->currentPage() + 2) || $i == $paginator->lastPage())
+			@elseif (($i == $paginator->currentPage() + 1 || $i == $paginator->currentPage() + 2 || $i == $paginator->currentPage() - 1) || $i == $paginator->lastPage() || $i == 1)
 				<li><a href="{{ $paginator->url($i) }}">{{ $i }}</a></li>
-			@elseif ($i == $paginator->lastPage() - 1)
+			@elseif ($i == $paginator->lastPage() - 1 || $i == $paginator->currentPage() - 2)
 				<li class="disabled"><span><i class="fa fa-ellipsis-h"></i></span></li>
 			@endif
 			{{-- Array Of Links --}}

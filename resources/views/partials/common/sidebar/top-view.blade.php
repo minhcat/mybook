@@ -11,122 +11,38 @@
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
 				<table>
-					<tr class="gray">
+					@foreach ($top_view['date'] as $key => $book)
+					<tr class="{{ ($key%2 == 0) ? 'gray' : '' }}">
 						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd</a></p>
-							<p>1000 lượt xem</p>
+							<p><a href="detail-book.html" class="show-popup book">{{ $book->name }}</a></p>
+							<p>{{ $book->view }} lượt xem</p>
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd Lorem ipsum</a></p>
-							<p>1000 lượt xem</p>
-						</td>
-					</tr>
-					<tr class="gray">
-						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd Lorem ipsum dolor</a></p>
-							<p>1000 lượt xem</p>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd Lorem ipsum</a></p>
-							<p>1000 lượt xem</p>
-						</td>
-					</tr>
-					<tr class="gray">
-						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd Lorem ipsum dolor</a></p>
-							<p>1000 lượt xem</p>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd Lorem ipsum</a></p>
-							<p>1000 lượt xem</p>
-						</td>
-					</tr>
+					@endforeach
 				</table>
 			</div>
 			<div id="menu1" class="tab-pane fade">
 				<table>
-					<tr class="gray">
+					@foreach ($top_view['week'] as $key => $book)
+					<tr class="{{ ($key%2 == 0) ? 'gray' : '' }}">
 						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd</a></p>
-							<p>1000 lượt xem</p>
+							<p><a href="detail-book.html" class="show-popup book">{{ $book->name }}</a></p>
+							<p>{{ $book->view }} lượt xem</p>
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd Lorem ipsum</a></p>
-							<p>1000 lượt xem</p>
-						</td>
-					</tr>
-					<tr class="gray">
-						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd Lorem ipsum dolor</a></p>
-							<p>1000 lượt xem</p>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd Lorem ipsum</a></p>
-							<p>1000 lượt xem</p>
-						</td>
-					</tr>
-					<tr class="gray">
-						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd Lorem ipsum dolor</a></p>
-							<p>1000 lượt xem</p>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd Lorem ipsum</a></p>
-							<p>1000 lượt xem</p>
-						</td>
-					</tr>
+					@endforeach
 				</table>
 			</div>
 			<div id="menu2" class="tab-pane fade">
 				<table>
-					<tr class="gray">
+					@foreach ($top_view['month'] as $key => $book)
+					<tr class="{{ ($key%2 == 0) ? 'gray' : '' }}">
 						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd</a></p>
-							<p>1000 lượt xem</p>
+							<p><a href="detail-book.html" class="show-popup book">{{ $book->name }}</a></p>
+							<p>{{ $book->view }} lượt xem</p>
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd Lorem ipsum</a></p>
-							<p>1000 lượt xem</p>
-						</td>
-					</tr>
-					<tr class="gray">
-						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd Lorem ipsum dolor</a></p>
-							<p>1000 lượt xem</p>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd Lorem ipsum</a></p>
-							<p>1000 lượt xem</p>
-						</td>
-					</tr>
-					<tr class="gray">
-						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd Lorem ipsum dolor</a></p>
-							<p>1000 lượt xem</p>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p><a href="detail-book.html" class="show-popup book">Băng Hoại 3rd Lorem ipsum</a></p>
-							<p>1000 lượt xem</p>
-						</td>
-					</tr>
+					@endforeach
 				</table>
 			</div>
 		</div>

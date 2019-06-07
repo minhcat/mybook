@@ -69,7 +69,7 @@ Các loại truyện có được cập nhập, thêm chap mới, ra bảng dị
 			@endforeach
 		</div>
 		<div class="paging">
-			{!! $books->render() !!}
+			@include('vendor.default', ['paginator' => $books])
 		</div>
 	</div>
 </div>
