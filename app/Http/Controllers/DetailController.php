@@ -24,6 +24,19 @@ class DetailController extends Controller {
 		$data['author']  = AuthorsQModel::get_author_by_slug($slug);
 		$data['books']   = BooksQModel::get_books_by_author_id($data['author']->id);
 		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
+
+		$data['random_book'] = BooksQModel::get_books_random(6);
+		foreach ($data['random_book'] as $key => $rd_book) {
+			if (strlen($rd_book->name) >= 22)
+				$rd_book->name = substr($rd_book->name, 0, 20).'...';
+			$rd_book->description = substr($rd_book->description, 0, 45).'...';
+		}
+
+		$data['comments'] = CommentsQModel::get_comments_by_author_id($data['author']->id);
+		foreach ($data['comments'] as $comment) {
+			$reply = CommentsQModel::get_comments_author_reply_by_user_id($comment->id_user, $data['author']->id);
+			$comment->reply = $reply;
+		}
 		// dd($data);
 		return view('pages.detail.detail-author', $data);
 	}
@@ -129,6 +142,18 @@ class DetailController extends Controller {
 		$data['books'] = TransQModel::get_books_by_trans_id($data['trans']->id);
 		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
 		
+		$data['random_book'] = BooksQModel::get_books_random(6);
+		foreach ($data['random_book'] as $key => $rd_book) {
+			if (strlen($rd_book->name) >= 22)
+				$rd_book->name = substr($rd_book->name, 0, 20).'...';
+			$rd_book->description = substr($rd_book->description, 0, 45).'...';
+		}
+
+		$data['comments'] = CommentsQModel::get_comments_by_trans_id($data['trans']->id);
+		foreach ($data['comments'] as $comment) {
+			$reply = CommentsQModel::get_comments_trans_reply_by_user_id($comment->id_user, $data['trans']->id);
+			$comment->reply = $reply;
+		}
 		// dd($data);
 		return view('pages.detail.detail-trans', $data);
 	}

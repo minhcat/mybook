@@ -118,4 +118,78 @@ class CommentsQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get comment
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_comments_by_author_id($id_author) {
+		$result = DB::table('comments as c')
+				->join('users as u', 'u.id', '=', 'c.id_user')
+				->where('type', 'detail')
+				->where('page', 'author')
+				->where('level', 0)
+				->where('id_page', $id_author)
+				->select('c.*', 'u.image', 'u.name', 'u.nickname')
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * get comment
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_comments_author_reply_by_user_id($id_user, $id_author) {
+		$result = DB::table('comments as c')
+				->join('users as u', 'u.id', '=', 'c.id_user')
+				->where('type', 'detail')
+				->where('page', 'author')
+				->where('level', 1)
+				->where('id_page', $id_author)
+				->where('id_reply', $id_user)
+				->select('c.*', 'u.image', 'u.name', 'u.nickname')
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * get comment
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_comments_by_trans_id($id_trans) {
+		$result = DB::table('comments as c')
+				->join('users as u', 'u.id', '=', 'c.id_user')
+				->where('type', 'detail')
+				->where('page', 'trans')
+				->where('level', 0)
+				->where('id_page', $id_trans)
+				->select('c.*', 'u.image', 'u.name', 'u.nickname')
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * get comment
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_comments_trans_reply_by_user_id($id_user, $id_trans) {
+		$result = DB::table('comments as c')
+				->join('users as u', 'u.id', '=', 'c.id_user')
+				->where('type', 'detail')
+				->where('page', 'trans')
+				->where('level', 1)
+				->where('id_page', $id_trans)
+				->where('id_reply', $id_user)
+				->select('c.*', 'u.image', 'u.name', 'u.nickname')
+				->get();
+
+		return $result;
+	}
 }
