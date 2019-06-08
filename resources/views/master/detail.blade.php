@@ -19,5 +19,6 @@
 @endsection
 
 @section('define-footer')
+	<script type="text/javascript" src="{{ asset('js/select.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/detail.js') }}"></script>
 @endsection
