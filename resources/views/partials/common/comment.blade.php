@@ -119,66 +119,48 @@
 	</div>
 	<div class="list-comment clearfix">
 		<div class="list-cmd">
+			@foreach ($comments as $comment)
 			<div class="item-comment clearfix">
 				<div class="image">
-					<img src="{{ asset('image/A-kun.jpg') }}" class="img-circle">
+					<img src="{{ asset('image/users/'.$comment->image.'.jpg') }}" class="img-circle">
 				</div>
 				<div class="info main">
-					<p class="name"><a href="">A-kun</a> · <span>otaku</span></p>
-					<p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, ducimus.</p>
-					<p class="like"><a class="cmd-main" disabled="disabled">Phản hồi</a> · <span class="like"><img src="{{ asset('image/like.png') }}"> <span class="num-like">200</span></span> · <span class="dislike"><img src="{{ asset('image/dislike.png') }}"> <span class="num-dislike">100</span></span> <span class="cmd-date">· 04/01/2018</span></p>
+					<p class="name"><a href="">{{ $comment->name }}</a> · <span>{{ $comment->nickname }}</span></p>
+					<p class="text">{{ $comment->content }}</p>
+					<p class="like"><a class="cmd-main" disabled="disabled">Phản hồi</a> · <span class="like"><img src="{{ asset('image/like.png') }}"> <span class="num-like">{{ ($comment->like != 0) ? $comment->like : '' }}</span></span> · <span class="dislike"><img src="{{ asset('image/dislike.png') }}"> <span class="num-dislike">{{ ($comment->dislike != 0) ? $comment->dislike : '' }}</span></span> <span class="cmd-date">· {{ date_format(date_create($comment->date), 'd/m/Y') }}</span></p>
+					@if (!empty($comment->reply))
 					<div class="list-comment reply">
 						<div class="list-cmd">
-							<div class="item-comment clearfix">
-								<div class="image">
-									<img src="{{ asset('image/Asuna.jpg') }}" class="img-circle">
+							@foreach ($comment->reply as $key => $reply)
+							@if ($key < 2)
+								<div class="item-comment clearfix">
+									<div class="image">
+										<img src="{{ asset('image/users/'.$reply->image.'.jpg') }}" class="img-circle">
+									</div>
+									<div class="info">
+										<p class="name"><a href="">{{ $reply->name }}</a> · <span>{{ $reply->nickname }}</span></p>
+										<p class="text">{{ $reply->content }}</p>
+										<p class="like"><a class="cmd-child" disabled="disabled">Phản hồi</a> · <span class="like"><img src="{{ asset('image/like.png') }}"> <span class="num-like">{{ ($reply->like != 0) ? $reply->like : '' }}</span></span> · <span class="dislike"><img src="{{ asset('image/dislike.png') }}"> <span class="num-dislike">{{ ($comment->dislike != 0) ? $comment->dislike : '' }}</span></span> <span class="cmd-date">· 04/01/2018</span></p>
+									</div>
 								</div>
-								<div class="info">
-									<p class="name"><a href="">Asuna</a> · <span>kiếm vương</span></p>
-									<p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, ducimus.</p>
-									<p class="like"><a class="cmd-child" disabled="disabled">Phản hồi</a> · <span class="like"><img src="{{ asset('image/like.png') }}"> <span class="num-like"></span></span> · <span class="dislike"><img src="{{ asset('image/dislike.png') }}"> <span class="num-dislike"></span></span> <span class="cmd-date">· 04/01/2018</span></p>
-								</div>
-							</div>
-							<div class="item-comment clearfix">
-								<div class="image">
-									<img src="{{ asset('image/Eren.jpg') }}" class="img-circle">
-								</div>
-								<div class="info">
-									<p class="name"><a href="">Eren</a> · <span>người khổng lồ</span></p>
-									<p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, ducimus.</p>
-									<p class="like"><a class="cmd-child" disabled="disabled">Phản hồi</a> · <span class="like"><img src="{{ asset('image/like.png') }}"> <span class="num-like"></span></span> · <span class="dislike"><img src="{{ asset('image/dislike.png') }}"> <span class="num-dislike"></span></span> <span class="cmd-date">· 04/01/2018</span></p>
-								</div>
-							</div>
+							@endif
+							@endforeach
 						</div>
+						@if (count($comment->reply) > 2)
 						<div class="more">
 							<a disabled="disabled">Xem thêm bình luận</a>
 						</div>
+						@endif
 					</div>
+					@endif
 				</div>
 			</div>
-			<div class="item-comment clearfix">
-				<div class="image">
-					<img src="{{ asset('image/kirito-150x150.png') }}" class="img-circle">
-				</div>
-				<div class="info main">
-					<p class="name"><a href="">Kirito</a> · <span>hacker</span></p>
-					<p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, ducimus.</p>
-					<p class="like"><a class="cmd-main" disabled="disabled">Phản hồi</a> · <span class="like"><img src="{{ asset('image/like.png') }}"> <span class="num-like">20</span></span> · <span class="dislike"><img src="{{ asset('image/dislike.png') }}"> <span class="num-dislike"></span></span> <span class="cmd-date">· 04/01/2018</span></p>
-				</div>
-			</div>
-			<div class="item-comment clearfix">
-				<div class="image">
-					<img src="{{ asset('image/Eren.jpg') }}" class="img-circle">
-				</div>
-				<div class="info main">
-					<p class="name"><a href="">Eren</a> · <span>người khổng lồ</span></p>
-					<p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, ducimus.</p>
-					<p class="like"><a class="cmd-main" disabled="disabled">Phản hồi</a> · <span class="like"><img src="{{ asset('image/like.png') }}"> <span class="num-like"></span></span> · <span class="dislike"><img src="{{ asset('image/dislike.png') }}"> <span class="num-dislike"></span></span> <span class="cmd-date">· 04/01/2018</span></p>
-				</div>
-			</div>
+			@endforeach
 		</div>
+		@if (count($comments) > 2)
 		<div class="more">
 			<a disabled="disabled">Xem thêm bình luận</a>
 		</div>
+		@endif
 	</div>
 </div>

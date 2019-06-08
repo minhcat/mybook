@@ -8,6 +8,7 @@ use App\Http\Models\UsersQModel;
 use App\Http\Models\ChapsQModel;
 use App\Http\Models\TransQModel;
 use App\Http\Models\CharactersQModel;
+use App\Http\Models\CommentsQModel;
 
 use Illuminate\Http\Request;
 
@@ -44,6 +45,21 @@ class DetailController extends Controller {
 		$data['book']  = $book;
 		$data['chaps_trans'] = $chaps;
 		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
+
+		$data['random_book'] = BooksQModel::get_books_random(6);
+		foreach ($data['random_book'] as $key => $rd_book) {
+			if (strlen($rd_book->name) >= 22)
+				$rd_book->name = substr($rd_book->name, 0, 20).'...';
+			$rd_book->description = substr($rd_book->description, 0, 45).'...';
+		}
+
+		$data['comments'] = CommentsQModel::get_comments_by_book_id($book->id);
+		foreach ($data['comments'] as $comment) {
+			// dd($book->id);
+			// dd($comment->id_user);
+			$reply = CommentsQModel::get_comments_book_reply_by_user_id($comment->id_user, $book->id);
+			$comment->reply = $reply;
+		}
 		// dd($data);
 		return view('pages.detail.detail-book', $data);
 	}

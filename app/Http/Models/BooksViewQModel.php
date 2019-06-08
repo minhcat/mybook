@@ -14,7 +14,7 @@ class BooksViewQModel extends Model
 	 * @return object|boolean : all properties from `books` table
 	 */
 	public static function get_books_view_current_date() {
-		$date = date('d');
+		$date = date('d', strtotime('2019-06-07'));
 
 		$result = DB::table('books_view as bv')
 				->join('books as b', 'b.id', '=', 'bv.id_book')
@@ -33,8 +33,8 @@ class BooksViewQModel extends Model
 	 * @return object|boolean : all properties from `books` table
 	 */
 	public static function get_books_view_current_week() {
-		$day =  (int)date('w') + 1;
-		$date = (int)date('d');
+		$day =  (int)date('w', strtotime('2019-06-07')) + 1;
+		$date = (int)date('d', strtotime('2019-06-07'));
 		$week = 0;
 		for ($i = 1; $i <= 6; $i++) {
 			$week = $i;
@@ -62,7 +62,7 @@ class BooksViewQModel extends Model
 	 * @return object|boolean : all properties from `books` table
 	 */
 	public static function get_books_view_current_month() {
-		$month = date('m');
+		$month = date('m', strtotime('2019-06-07'));
 
 		$result = DB::table('books_view as bv')
 				->join('books as b', 'b.id', '=', 'bv.id_book')

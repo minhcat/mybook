@@ -109,7 +109,7 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 					</div>
 				</div>
 			</div>
-			@include('partials.common.comment');
+			@include('partials.common.comment')
 		</div>
 	</div>
 </div>
