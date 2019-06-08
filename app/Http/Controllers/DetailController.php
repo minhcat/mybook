@@ -74,6 +74,21 @@ class DetailController extends Controller {
 		$data['character'] = CharactersQModel::get_character_by_slug($slug);
 		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
 
+		$data['random_book'] = BooksQModel::get_books_random(6);
+		foreach ($data['random_book'] as $key => $rd_book) {
+			if (strlen($rd_book->name) >= 22)
+				$rd_book->name = substr($rd_book->name, 0, 20).'...';
+			$rd_book->description = substr($rd_book->description, 0, 45).'...';
+		}
+
+		//data comment
+		$data['comments'] = CommentsQModel::get_comments_by_character_id($data['character']->id);
+		foreach ($data['comments'] as $comment) {
+			$reply = CommentsQModel::get_comments_character_reply_by_user_id($comment->id_user, $data['character']->id);
+			$comment->reply = $reply;
+		}
+		// dd($data);
+
 		return view('pages.detail.detail-character', $data);
 	}
 
@@ -87,6 +102,19 @@ class DetailController extends Controller {
 		$data['user'] = UsersQModel::get_user_by_name_login($slug);
 		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
 
+		$data['random_book'] = BooksQModel::get_books_random(6);
+		foreach ($data['random_book'] as $key => $rd_book) {
+			if (strlen($rd_book->name) >= 22)
+				$rd_book->name = substr($rd_book->name, 0, 20).'...';
+			$rd_book->description = substr($rd_book->description, 0, 45).'...';
+		}
+		
+		//data comment
+		$data['comments'] = CommentsQModel::get_comments_by_user_id($data['user']->id);
+		foreach ($data['comments'] as $comment) {
+			$reply = CommentsQModel::get_comments_user_reply_by_user_id($comment->id_user, $data['user']->id);
+			$comment->reply = $reply;
+		}
 		return view('pages.detail.detail-user', $data);
 	}
 

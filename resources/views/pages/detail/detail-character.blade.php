@@ -43,7 +43,7 @@ Bạn có thể xem thông tin nhân vật được cập nhật ở đây
 			<div class="line second">
 				<p style="text-align: justify;"><strong>Giới thiệu:</strong> {{ $character->description }}</p>
 			</div>
-			@include('partials.common.comment');
+			@include('partials.common.comment')
 		</div>
 	</div>
 </div>

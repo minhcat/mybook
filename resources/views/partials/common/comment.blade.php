@@ -119,7 +119,8 @@
 	</div>
 	<div class="list-comment clearfix">
 		<div class="list-cmd">
-			@foreach ($comments as $comment)
+			@foreach ($comments as $i => $comment)
+			@if ($i <= 3)
 			<div class="item-comment clearfix">
 				<div class="image">
 					<img src="{{ asset('image/users/'.$comment->image.'.jpg') }}" class="img-circle">
@@ -155,9 +156,10 @@
 					@endif
 				</div>
 			</div>
+			@endif
 			@endforeach
 		</div>
-		@if (count($comments) > 2)
+		@if (count($comments) > 3)
 		<div class="more">
 			<a disabled="disabled">Xem thêm bình luận</a>
 		</div>

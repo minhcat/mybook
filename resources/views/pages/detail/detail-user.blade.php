@@ -71,7 +71,7 @@ Bạn có thể xem thông tin người dùng được cập nhật công khai t
 			<div class="line second">
 				<p style="text-align: justify;"><strong>Tự giới thiệu:</strong> {{ $user->description }}</p>
 			</div>
-			@include('partials.common.comment');
+			@include('partials.common.comment')
 		</div>
 	</div>
 </div>
