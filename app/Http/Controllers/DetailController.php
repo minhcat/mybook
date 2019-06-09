@@ -9,6 +9,7 @@ use App\Http\Models\ChapsQModel;
 use App\Http\Models\TransQModel;
 use App\Http\Models\CharactersQModel;
 use App\Http\Models\CommentsQModel;
+use App\Http\Models\BooksBModel;
 
 use Illuminate\Http\Request;
 
@@ -25,12 +26,7 @@ class DetailController extends Controller {
 		$data['books']   = BooksQModel::get_books_by_author_id($data['author']->id);
 		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
 
-		$data['random_book'] = BooksQModel::get_books_random(6);
-		foreach ($data['random_book'] as $key => $rd_book) {
-			if (strlen($rd_book->name) >= 22)
-				$rd_book->name = substr($rd_book->name, 0, 20).'...';
-			$rd_book->description = substr($rd_book->description, 0, 45).'...';
-		}
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
 
 		$data['new_comment'] = CommentsQModel::get_comments_new(6);
 		foreach ($data['new_comment'] as $comment) {
@@ -83,12 +79,7 @@ class DetailController extends Controller {
 		$data['chaps_trans'] = $chaps;
 		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
 
-		$data['random_book'] = BooksQModel::get_books_random(6);
-		foreach ($data['random_book'] as $key => $rd_book) {
-			if (strlen($rd_book->name) >= 22)
-				$rd_book->name = substr($rd_book->name, 0, 20).'...';
-			$rd_book->description = substr($rd_book->description, 0, 45).'...';
-		}
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
 
 		$data['new_comment'] = CommentsQModel::get_comments_new(6);
 		foreach ($data['new_comment'] as $comment) {
@@ -135,12 +126,7 @@ class DetailController extends Controller {
 		$data['character'] = CharactersQModel::get_character_by_slug($slug);
 		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
 
-		$data['random_book'] = BooksQModel::get_books_random(6);
-		foreach ($data['random_book'] as $key => $rd_book) {
-			if (strlen($rd_book->name) >= 22)
-				$rd_book->name = substr($rd_book->name, 0, 20).'...';
-			$rd_book->description = substr($rd_book->description, 0, 45).'...';
-		}
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
 
 		$data['new_comment'] = CommentsQModel::get_comments_new(6);
 		foreach ($data['new_comment'] as $comment) {
@@ -187,12 +173,7 @@ class DetailController extends Controller {
 		$data['user'] = UsersQModel::get_user_by_name_login($slug);
 		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
 
-		$data['random_book'] = BooksQModel::get_books_random(6);
-		foreach ($data['random_book'] as $key => $rd_book) {
-			if (strlen($rd_book->name) >= 22)
-				$rd_book->name = substr($rd_book->name, 0, 20).'...';
-			$rd_book->description = substr($rd_book->description, 0, 45).'...';
-		}
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
 
 		$data['new_comment'] = CommentsQModel::get_comments_new(6);
 		foreach ($data['new_comment'] as $comment) {
@@ -238,12 +219,7 @@ class DetailController extends Controller {
 		$data['books'] = TransQModel::get_books_by_trans_id($data['trans']->id);
 		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
 		
-		$data['random_book'] = BooksQModel::get_books_random(6);
-		foreach ($data['random_book'] as $key => $rd_book) {
-			if (strlen($rd_book->name) >= 22)
-				$rd_book->name = substr($rd_book->name, 0, 20).'...';
-			$rd_book->description = substr($rd_book->description, 0, 45).'...';
-		}
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
 
 		$data['new_comment'] = CommentsQModel::get_comments_new(6);
 		foreach ($data['new_comment'] as $comment) {
