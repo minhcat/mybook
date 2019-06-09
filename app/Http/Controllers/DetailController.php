@@ -31,11 +31,7 @@ class DetailController extends Controller {
 
 		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 
-		$data['comments'] = CommentsQModel::get_comments_by_author_id($data['author']->id);
-		foreach ($data['comments'] as $comment) {
-			$reply = CommentsQModel::get_comments_author_reply_by_user_id($comment->id_user, $data['author']->id);
-			$comment->reply = $reply;
-		}
+		$data['comments'] = CommentsBModel::get_comments_page($data['author']->id, 'author');
 		// dd($data);
 		return view('pages.detail.detail-author', $data);
 	}
@@ -61,14 +57,8 @@ class DetailController extends Controller {
 		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
 
 		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
-		
-		$data['comments'] = CommentsQModel::get_comments_by_book_id($book->id);
-		foreach ($data['comments'] as $comment) {
-			// dd($book->id);
-			// dd($comment->id_user);
-			$reply = CommentsQModel::get_comments_book_reply_by_user_id($comment->id_user, $book->id);
-			$comment->reply = $reply;
-		}
+
+		$data['comments'] = CommentsBModel::get_comments_page($data['book']->id, 'book');
 		// dd($data);
 		return view('pages.detail.detail-book', $data);
 	}
@@ -87,11 +77,7 @@ class DetailController extends Controller {
 
 		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 		//data comment
-		$data['comments'] = CommentsQModel::get_comments_by_character_id($data['character']->id);
-		foreach ($data['comments'] as $comment) {
-			$reply = CommentsQModel::get_comments_character_reply_by_user_id($comment->id_user, $data['character']->id);
-			$comment->reply = $reply;
-		}
+		$data['comments'] = CommentsBModel::get_comments_page($data['character']->id, 'character');
 		// dd($data);
 
 		return view('pages.detail.detail-character', $data);
@@ -112,11 +98,7 @@ class DetailController extends Controller {
 		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 		
 		//data comment
-		$data['comments'] = CommentsQModel::get_comments_by_user_id($data['user']->id);
-		foreach ($data['comments'] as $comment) {
-			$reply = CommentsQModel::get_comments_user_reply_by_user_id($comment->id_user, $data['user']->id);
-			$comment->reply = $reply;
-		}
+		$data['comments'] = CommentsBModel::get_comments_page($data['user']->id, 'user');
 		return view('pages.detail.detail-user', $data);
 	}
 
@@ -135,11 +117,7 @@ class DetailController extends Controller {
 
 		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 
-		$data['comments'] = CommentsQModel::get_comments_by_trans_id($data['trans']->id);
-		foreach ($data['comments'] as $comment) {
-			$reply = CommentsQModel::get_comments_trans_reply_by_user_id($comment->id_user, $data['trans']->id);
-			$comment->reply = $reply;
-		}
+		$data['comments'] = CommentsBModel::get_comments_page($data['trans']->id, 'trans');
 		// dd($data);
 		return view('pages.detail.detail-trans', $data);
 	}
