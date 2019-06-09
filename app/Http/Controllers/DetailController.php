@@ -32,6 +32,30 @@ class DetailController extends Controller {
 			$rd_book->description = substr($rd_book->description, 0, 45).'...';
 		}
 
+		$data['new_comment'] = CommentsQModel::get_comments_new(6);
+		foreach ($data['new_comment'] as $comment) {
+			//get page name
+			if ($comment->page == 'book') {
+				$book = BooksQModel::get_book_by_id($comment->id_page);
+				$comment->page_name = $book->name;
+			} else if ($comment->page == 'character') {
+				$character = CharactersQModel::get_character_by_id($comment->id_page);
+				$comment->page_name = $character->name;
+			} else if ($comment->page == 'author') {
+				$author = AuthorsQModel::get_author_by_id($comment->id_page);
+				$comment->page_name = $author->name;
+			} else if ($comment->page == 'trans') {
+				$trans = TransQModel::get_trans_by_id($comment->id_page);
+				$comment->page_name = $trans->name;
+			} else if ($comment->page == 'user') {
+				$user = UsersQModel::get_user_by_id($comment->id_page);
+				$comment->page_name = $user->name;
+			}
+			//shorten comment
+			if (strlen($comment->content) >= 25)
+				$comment->content = substr($comment->content, 0, 25).'...';
+		}
+
 		$data['comments'] = CommentsQModel::get_comments_by_author_id($data['author']->id);
 		foreach ($data['comments'] as $comment) {
 			$reply = CommentsQModel::get_comments_author_reply_by_user_id($comment->id_user, $data['author']->id);
@@ -66,6 +90,30 @@ class DetailController extends Controller {
 			$rd_book->description = substr($rd_book->description, 0, 45).'...';
 		}
 
+		$data['new_comment'] = CommentsQModel::get_comments_new(6);
+		foreach ($data['new_comment'] as $comment) {
+			//get page name
+			if ($comment->page == 'book') {
+				$book = BooksQModel::get_book_by_id($comment->id_page);
+				$comment->page_name = $book->name;
+			} else if ($comment->page == 'character') {
+				$character = CharactersQModel::get_character_by_id($comment->id_page);
+				$comment->page_name = $character->name;
+			} else if ($comment->page == 'author') {
+				$author = AuthorsQModel::get_author_by_id($comment->id_page);
+				$comment->page_name = $author->name;
+			} else if ($comment->page == 'trans') {
+				$trans = TransQModel::get_trans_by_id($comment->id_page);
+				$comment->page_name = $trans->name;
+			} else if ($comment->page == 'user') {
+				$user = UsersQModel::get_user_by_id($comment->id_page);
+				$comment->page_name = $user->name;
+			}
+			//shorten comment
+			if (strlen($comment->content) >= 25)
+				$comment->content = substr($comment->content, 0, 25).'...';
+		}
+
 		$data['comments'] = CommentsQModel::get_comments_by_book_id($book->id);
 		foreach ($data['comments'] as $comment) {
 			// dd($book->id);
@@ -92,6 +140,30 @@ class DetailController extends Controller {
 			if (strlen($rd_book->name) >= 22)
 				$rd_book->name = substr($rd_book->name, 0, 20).'...';
 			$rd_book->description = substr($rd_book->description, 0, 45).'...';
+		}
+
+		$data['new_comment'] = CommentsQModel::get_comments_new(6);
+		foreach ($data['new_comment'] as $comment) {
+			//get page name
+			if ($comment->page == 'book') {
+				$book = BooksQModel::get_book_by_id($comment->id_page);
+				$comment->page_name = $book->name;
+			} else if ($comment->page == 'character') {
+				$character = CharactersQModel::get_character_by_id($comment->id_page);
+				$comment->page_name = $character->name;
+			} else if ($comment->page == 'author') {
+				$author = AuthorsQModel::get_author_by_id($comment->id_page);
+				$comment->page_name = $author->name;
+			} else if ($comment->page == 'trans') {
+				$trans = TransQModel::get_trans_by_id($comment->id_page);
+				$comment->page_name = $trans->name;
+			} else if ($comment->page == 'user') {
+				$user = UsersQModel::get_user_by_id($comment->id_page);
+				$comment->page_name = $user->name;
+			}
+			//shorten comment
+			if (strlen($comment->content) >= 25)
+				$comment->content = substr($comment->content, 0, 25).'...';
 		}
 
 		//data comment
@@ -121,6 +193,30 @@ class DetailController extends Controller {
 				$rd_book->name = substr($rd_book->name, 0, 20).'...';
 			$rd_book->description = substr($rd_book->description, 0, 45).'...';
 		}
+
+		$data['new_comment'] = CommentsQModel::get_comments_new(6);
+		foreach ($data['new_comment'] as $comment) {
+			//get page name
+			if ($comment->page == 'book') {
+				$book = BooksQModel::get_book_by_id($comment->id_page);
+				$comment->page_name = $book->name;
+			} else if ($comment->page == 'character') {
+				$character = CharactersQModel::get_character_by_id($comment->id_page);
+				$comment->page_name = $character->name;
+			} else if ($comment->page == 'author') {
+				$author = AuthorsQModel::get_author_by_id($comment->id_page);
+				$comment->page_name = $author->name;
+			} else if ($comment->page == 'trans') {
+				$trans = TransQModel::get_trans_by_id($comment->id_page);
+				$comment->page_name = $trans->name;
+			} else if ($comment->page == 'user') {
+				$user = UsersQModel::get_user_by_id($comment->id_page);
+				$comment->page_name = $user->name;
+			}
+			//shorten comment
+			if (strlen($comment->content) >= 25)
+				$comment->content = substr($comment->content, 0, 25).'...';
+		}
 		
 		//data comment
 		$data['comments'] = CommentsQModel::get_comments_by_user_id($data['user']->id);
@@ -148,6 +244,7 @@ class DetailController extends Controller {
 				$rd_book->name = substr($rd_book->name, 0, 20).'...';
 			$rd_book->description = substr($rd_book->description, 0, 45).'...';
 		}
+
 		$data['new_comment'] = CommentsQModel::get_comments_new(6);
 		foreach ($data['new_comment'] as $comment) {
 			//get page name
