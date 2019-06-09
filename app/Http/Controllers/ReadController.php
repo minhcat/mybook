@@ -2,6 +2,11 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Models\CommentsBModel;
+use App\Http\Models\BooksQModel;
+use App\Http\Models\ChapsQModel;
+use App\Http\Models\TransQModel;
+use App\Http\Models\ImagesQModel;
 
 use Illuminate\Http\Request;
 
@@ -12,73 +17,26 @@ class ReadController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($book_slug, $trans_slug, $chap_slug)
 	{
-		return view('pages.read');
-	}
+		$book = BooksQModel::get_book_by_slug($book_slug);
+		// dd($book);
+		$trans = TransQModel::get_trans_by_slug($trans_slug);
+		// dd($trans);
+		$chap = ChapsQModel::get_chap_by_book_id_trans_id_chap_slug($book->id, $trans->id, $chap_slug);
+		// dd($chap);
+		$data['images'] = ImagesQModel::get_images_by_chap_id($chap->id);
+		$data['book']['name']  = $book->name;
+		$data['trans']['name'] = $trans->name;
+		$data['chap']['name']  = $chap->name;
+		$data['book']['slug']  = $book_slug;
+		$data['trans']['slug'] = $trans_slug;
+		$data['chap']['slug']  = $chap_slug;
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
+		// dd($data);
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
+		$data['comments'] = CommentsBModel::get_comments_page(1, 'author');
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
+		return view('pages.read', $data);
 	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
 }

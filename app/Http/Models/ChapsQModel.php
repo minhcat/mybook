@@ -28,6 +28,22 @@ class ChapsQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `categories` table
 	 */
+	public static function get_chap_by_book_id_trans_id_chap_slug($book_id, $trans_id, $chap_slug) {
+		$result = DB::table('chaps')
+				->where('id_book',$book_id)
+				->where('id_trans',$trans_id)
+				->where('slug',$chap_slug)
+				->orderBy('index','desc')
+				->get();
+
+		return $result[0];
+	}
+
+	/**
+	 * get categories by name
+	 * @param 
+	 * @return object|boolean : all properties from `categories` table
+	 */
 	public static function get_trans_id_by_book_id($book_id) {
 		$result = DB::table('chaps')
 				->where('id_book',$book_id)

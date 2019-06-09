@@ -4,13 +4,13 @@
 			<div class="header left">
 				<div class="logo">
 					<h1>My Book</h1>
-					<img src="image/logo.png">
+					<img src="{{ asset('image/logo.png') }}">
 				</div>
 			</div>
 			<div class="image right">
-				<img src="image/conan_200.png" class="img-circle">
-				<img src="image/attack-on-titan-200x150.png" class="img-circle">
-				<img src="image/kirito-200x150.png" class="img-circle">
+				<img src="{{ asset('image/conan_200.png') }}" class="img-circle">
+				<img src="{{ asset('image/attack-on-titan-200x150.png') }}" class="img-circle">
+				<img src="{{ asset('image/kirito-200x150.png') }}" class="img-circle">
 			</div>
 		</div>
 	</div>

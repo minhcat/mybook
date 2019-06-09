@@ -12,11 +12,13 @@
 	<section>
 		<div class="container">
 			<div class="control">
-				<h1>Overlord - Chap 1</h1>
+				<h1>{{ $book['name'] }}</h1>
+				<h1>{{ $chap['name'] }}</h1>
 				<ul class="breadcrumb">
 					<li><a href="">Trang chủ</a></li>
-					<li><a href="">Overlord</a></li>
-					<li class="active">Chap 1</li>
+					<li><a href="">{{ $book['name'] }}</a></li>
+					<li><a href="">{{ $trans['name'] }}</a></li>
+					<li class="active">{{ $chap['name'] }}</li>
 				</ul>
 				<p>Nếu không xem được truyện vui lòng đổi "SERVER ẢNH"</p>
 				<div class="server">
@@ -39,28 +41,13 @@
 			</div>
 		</div>
 		<div class="main-read">
-			<img src="image/book/overlord-chap1-p1.jpg">
-			<img src="image/book/overlord-chap1-p2.jpg">
-			<img src="image/book/overlord-chap1-p3.jpg">
-			<img src="image/book/overlord-chap1-p4.jpg">
-			<img src="image/book/overlord-chap1-p5.jpg">
-			<img src="image/book/overlord-chap1-p6.jpg">
-			<img src="image/book/overlord-chap1-p7.jpg">
-			<img src="image/book/overlord-chap1-p8.jpg">
-			<img src="image/book/overlord-chap1-p9.jpg">
-			<img src="image/book/overlord-chap1-p10.jpg">
-			<img src="image/book/overlord-chap1-p11.jpg">
-			<img src="image/book/overlord-chap1-p12.jpg">
-			<img src="image/book/overlord-chap1-p13.jpg">
-			<img src="image/book/overlord-chap1-p14.jpg">
-			<img src="image/book/overlord-chap1-p15.jpg">
-			<img src="image/book/overlord-chap1-p16.jpg">
-			<img src="image/book/overlord-chap1-p17.jpg">
-			<img src="image/book/overlord-chap1-p18.jpg">
+			@foreach ($images as $image)
+			<img src="{{ asset('image/chaps/'.$book['slug'].'/'.$trans['slug'].'/'.$image->id_chap.'/'.$image->image.'') }}">
+			@endforeach
 		</div>
 		<div class="container">
 			<div class="bottom">
-				<div class="cmd comment">
+				{{-- <div class="cmd comment">
 					<h4>Bình luận</h4>
 					<div class="sort clearfix">
 						<span class="left"><strong>20 bình luận</strong></span>
@@ -243,7 +230,8 @@
 							<a disabled="disabled">Xem thêm bình luận</a>
 						</div>
 					</div>
-				</div>
+				</div> --}}
+				@include('partials.common.comment')
 				<hr>
 				<div class="books-else">
 					<h3>Có thể bạn thích</h3>
