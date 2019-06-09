@@ -9,6 +9,19 @@ use App\Http\Helpers\Constants;
 class TransQModel extends Model
 {
 	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_trans_by_id($id) {
+		$result = DB::table('trans')
+				->where('id', $id)
+				->get();
+
+		return $result[0];
+	}
+
+	/**
 	 * get trans by slug
 	 * @param 
 	 * @return object|boolean : all properties from `books` table

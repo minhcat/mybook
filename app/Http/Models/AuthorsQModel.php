@@ -9,6 +9,19 @@ use App\Http\Helpers\Constants;
 class AuthorsQModel extends Model
 {
 	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_author_by_id($id) {
+		$result = DB::table('authors')
+				->where('id', $id)
+				->get();
+
+		return $result[0];
+	}
+
+	/**
 	 * get author by slug
 	 * @param 
 	 * @return object|boolean : all properties from `books` table

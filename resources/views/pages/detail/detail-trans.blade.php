@@ -99,7 +99,7 @@ Bạn có thể xem thông tin nhóm dịch tại đây
 					</div>
 				</div>
 			</div>
-			@include('partials.common.comment');
+			@include('partials.common.comment')
 		</div>
 	</div>
 </div>

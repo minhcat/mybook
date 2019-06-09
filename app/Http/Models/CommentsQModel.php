@@ -192,4 +192,20 @@ class CommentsQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get comment
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_comments_new($number) {
+		$result = DB::table('comments as c')
+				->join('users as u', 'u.id', '=', 'c.id_user')
+				->orderBy('datetime','desc')
+				->select('c.*', 'u.image', 'u.name', 'u.nickname')
+				->take($number)
+				->get();
+
+		return $result;
+	}
 }

@@ -128,7 +128,7 @@
 				<div class="info main">
 					<p class="name"><a href="">{{ $comment->name }}</a> · <span>{{ $comment->nickname }}</span></p>
 					<p class="text">{{ $comment->content }}</p>
-					<p class="like"><a class="cmd-main" disabled="disabled">Phản hồi</a> · <span class="like"><img src="{{ asset('image/like.png') }}"> <span class="num-like">{{ ($comment->like != 0) ? $comment->like : '' }}</span></span> · <span class="dislike"><img src="{{ asset('image/dislike.png') }}"> <span class="num-dislike">{{ ($comment->dislike != 0) ? $comment->dislike : '' }}</span></span> <span class="cmd-date">· {{ date_format(date_create($comment->date), 'd/m/Y') }}</span></p>
+					<p class="like"><a class="cmd-main" disabled="disabled">Phản hồi</a> · <span class="like"><img src="{{ asset('image/like.png') }}"> <span class="num-like">{{ ($comment->like != 0) ? $comment->like : '' }}</span></span> · <span class="dislike"><img src="{{ asset('image/dislike.png') }}"> <span class="num-dislike">{{ ($comment->dislike != 0) ? $comment->dislike : '' }}</span></span> <span class="cmd-date">· {{ date_format(date_create($comment->datetime), 'd/m/Y') }}</span></p>
 					@if (!empty($comment->reply))
 					<div class="list-comment reply">
 						<div class="list-cmd">

@@ -9,6 +9,19 @@ use App\Http\Helpers\Constants;
 class UsersQModel extends Model
 {
 	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_user_by_id($id) {
+		$result = DB::table('users')
+				->where('id', $id)
+				->get();
+
+		return $result[0];
+	}
+
+	/**
 	 * get user by name_login(slug)
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
