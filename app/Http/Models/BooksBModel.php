@@ -10,7 +10,7 @@ use App\Http\Models\BooksQModel;
 class BooksBModel extends Model
 {
 	public static function get_books_random_sidebar($number) {
-		$result = BooksQModel::get_books_random(6);
+		$result = BooksQModel::get_books_random($number);
 		foreach ($result as $key => $book) {
 			if (strlen($book->name) >= 22)
 				$book->name = substr($book->name, 0, 20).'...';

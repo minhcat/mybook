@@ -101,7 +101,7 @@ Bạn có thể xem thông tin tác giả tại đây
 					</div>
 				</div>
 			</div>
-			@include('partials.common.comment');
+			@include('partials.common.comment')
 		</div>
 	</div>
 </div>

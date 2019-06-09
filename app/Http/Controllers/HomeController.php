@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Models\BooksQModel;
+use App\Http\Models\BooksBModel;
 use App\Http\Models\AuthorsQModel;
 use App\Http\Models\UsersQModel;
 use App\Http\Models\ChapsQModel;
@@ -9,6 +10,7 @@ use App\Http\Models\TransQModel;
 use App\Http\Models\CharactersQModel;
 use App\Http\Models\BooksViewQModel;
 use App\Http\Models\CommentsQModel;
+use App\Http\Models\CommentsBModel;
 use App\Http\Helpers\Helper;
 use App\Http\Helpers\Constants;
 
@@ -68,36 +70,9 @@ class HomeController extends Controller {
 		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
 
 		//data random-book sidebar
-		$data['random_book'] = BooksQModel::get_books_random(6);
-		foreach ($data['random_book'] as $key => $book) {
-			if (strlen($book->name) >= 22)
-				$book->name = substr($book->name, 0, 20).'...';
-			$book->description = substr($book->description, 0, 45).'...';
-		}
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
 
-		$data['new_comment'] = CommentsQModel::get_comments_new(6);
-		foreach ($data['new_comment'] as $comment) {
-			//get page name
-			if ($comment->page == 'book') {
-				$book = BooksQModel::get_book_by_id($comment->id_page);
-				$comment->page_name = $book->name;
-			} else if ($comment->page == 'character') {
-				$character = CharactersQModel::get_character_by_id($comment->id_page);
-				$comment->page_name = $character->name;
-			} else if ($comment->page == 'author') {
-				$author = AuthorsQModel::get_author_by_id($comment->id_page);
-				$comment->page_name = $author->name;
-			} else if ($comment->page == 'trans') {
-				$trans = TransQModel::get_trans_by_id($comment->id_page);
-				$comment->page_name = $trans->name;
-			} else if ($comment->page == 'user') {
-				$user = UsersQModel::get_user_by_id($comment->id_page);
-				$comment->page_name = $user->name;
-			}
-			//shorten comment
-			if (strlen($comment->content) >= 25)
-				$comment->content = substr($comment->content, 0, 25).'...';
-		}
+		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 		// dd($data['random_book']);
 		// dd($data['top_view']['month']);
 
