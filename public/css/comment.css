@@ -35,6 +35,8 @@
     padding: 0 10px;
     float: left;
     width: 782px; }
+    .cmd.comment .form-comment .text-cmd.large {
+      width: 1060px; }
     .cmd.comment .form-comment .text-cmd .textarea {
       width: 100%;
       padding: 5px;
@@ -114,6 +116,8 @@
         .cmd.comment .list-comment .item-comment .info.main {
           width: 782px;
           padding-right: 0; }
+        .cmd.comment .list-comment .item-comment .info.large {
+          width: 1060px; }
     .cmd.comment .list-comment .more {
       padding-top: 15px; }
     .cmd.comment .list-comment.reply {

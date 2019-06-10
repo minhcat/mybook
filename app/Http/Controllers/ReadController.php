@@ -35,7 +35,10 @@ class ReadController extends Controller {
 
 		// dd($data);
 
-		$data['comments'] = CommentsBModel::get_comments_page(1, 'author');
+		$data['comments'] = CommentsBModel::get_comments_page($chap->id, 'read');
+		$data['large_comment'] = 0 ; //set css
+
+		$data['random_books'] = BooksQModel::get_books_random(10);
 
 		return view('pages.read', $data);
 	}

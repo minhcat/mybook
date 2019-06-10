@@ -78,6 +78,12 @@ class CommentsBModel extends Model
 				$reply = CommentsQModel::get_comments_trans_reply_by_user_id($comment->id_user, $id);
 				$comment->reply = $reply;
 			}
+		} else if ($page == 'read') {
+			$result = CommentsQModel::get_comments_by_chap_id($id);
+			foreach ($result as $comment) {
+				$reply = CommentsQModel::get_comments_chap_reply_by_user_id($comment->id_user, $id);
+				$comment->reply = $reply;
+			}
 		}
 
 		return $result;
