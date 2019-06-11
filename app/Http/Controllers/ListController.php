@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Models\BooksQModel;
+use App\Http\Models\BooksBModel;
+use App\Http\Models\BooksFollowQModel;
+use App\Http\Models\BooksViewQModel;
 use App\Http\Models\CategoriesQModel;
+use App\Http\Models\CommentsBModel;
+use App\Http\Models\FriendsQModel;
 use App\Http\Helpers\Helper;
 use App\Http\Helpers\Constants;
 
@@ -67,7 +72,22 @@ class ListController extends Controller {
 	 */
 	public function follow()
 	{
-		return view('pages.list.list-follow');
+		$user_id = 1;
+		$data['books'] = BooksFollowQModel::get_books_follow_by_user_id($user_id);
+
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+
+		//data top-view sidebar
+		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
+		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
+		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
+
+		//data random-book sidebar
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
+
+		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
+		// dd($data);
+		return view('pages.list.list-follow', $data);
 	}
 
 	/**
@@ -77,7 +97,26 @@ class ListController extends Controller {
 	 */
 	public function friend()
 	{
-		return view('pages.list.list-friend');
+		$user_id = 1;
+		$data['friends'] = FriendsQModel::get_friends_by_user_id($user_id);
+		foreach ($data['friends'] as $friend) {
+			if (strlen($friend->description) >= 162)
+				$friend->description = substr($friend->description, 0, 160).'...';
+		}
+
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+
+		//data top-view sidebar
+		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
+		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
+		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
+
+		//data random-book sidebar
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
+
+		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
+		// dd($data);
+		return view('pages.list.list-friend', $data);
 	}
 
 	/**

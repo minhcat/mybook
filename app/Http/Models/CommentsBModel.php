@@ -33,6 +33,9 @@ class CommentsBModel extends Model
 			} else if ($comment->page == 'user') {
 				$user = UsersQModel::get_user_by_id($comment->id_page);
 				$comment->page_name = $user->name;
+			} else if ($comment->page == 'read') {
+				$book = BooksQModel::get_book_by_id($comment->id_page);
+				$comment->page_name = $book->name;
 			}
 			//shorten comment
 			if (strlen($comment->content) >= 25)
