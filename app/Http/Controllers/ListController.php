@@ -10,6 +10,8 @@ use App\Http\Models\BooksViewQModel;
 use App\Http\Models\CategoriesQModel;
 use App\Http\Models\CommentsBModel;
 use App\Http\Models\FriendsQModel;
+use App\Http\Models\NotificationsQModel;
+use App\Http\Models\NotificationsBModel;
 use App\Http\Helpers\Helper;
 use App\Http\Helpers\Constants;
 
@@ -27,6 +29,17 @@ class ListController extends Controller {
 		$data['books'] = BooksQModel::get_books_list_category($category, Constants::BOOKS_ITEM_LIST);
 		$data['category'] = CategoriesQModel::get_category_by_name($category);
 		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+
+		//data top-view sidebar
+		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
+		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
+		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
+
+		//data random-book sidebar
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
+
+		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
+
 		// dd($data);
 		return view('pages.list.list-category', $data);
 	}
@@ -48,6 +61,16 @@ class ListController extends Controller {
 		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
 		// dd($data['books']);
 
+		//data top-view sidebar
+		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
+		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
+		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
+
+		//data random-book sidebar
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
+
+		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
+
 		return view('pages.list.list-comment', $data);
 	}
 
@@ -61,6 +84,16 @@ class ListController extends Controller {
 		$data['status'] = Constants::STATUS_COMPLETED;
 		$data['books']  = BooksQModel::get_books_list_status(Constants::STATUS_COMPLETED, Constants::BOOKS_ITEM_LIST);
 		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+
+		//data top-view sidebar
+		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
+		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
+		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
+
+		//data random-book sidebar
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
+
+		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 
 		return view('pages.list.list-completed', $data);
 	}
@@ -126,7 +159,21 @@ class ListController extends Controller {
 	 */
 	public function notification()
 	{
-		return view('pages.list.list-notification');
+		$user_id = 1;
+		$data['notifications'] = NotificationsBModel::get_notifications_list($user_id);
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+
+		//data top-view sidebar
+		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
+		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
+		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
+
+		//data random-book sidebar
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
+
+		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
+		// dd($data);
+		return view('pages.list.list-notification', $data);
 	}
 
 	/**
@@ -139,6 +186,16 @@ class ListController extends Controller {
 		$data['status'] = Constants::STATUS_PROCESS;
 		$data['books']  = BooksQModel::get_books_list_status(Constants::STATUS_PROCESS, Constants::BOOKS_ITEM_LIST);
 		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+
+		//data top-view sidebar
+		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
+		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
+		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
+
+		//data random-book sidebar
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
+
+		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 
 		return view('pages.list.list-process', $data);
 	}
@@ -158,6 +215,16 @@ class ListController extends Controller {
 		else
 			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
 		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+
+		//data top-view sidebar
+		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
+		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
+		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
+
+		//data random-book sidebar
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
+
+		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 
 		return view('pages.list.list-rate', $data);
 	}
@@ -182,6 +249,16 @@ class ListController extends Controller {
 		$data['books'] = BooksQModel::get_books_list_update(Constants::BOOKS_ITEM_LIST);
 		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
 
+		//data top-view sidebar
+		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
+		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
+		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
+
+		//data random-book sidebar
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
+
+		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
+
 		return view('pages.list.list-update', $data);
 	}
 
@@ -201,6 +278,16 @@ class ListController extends Controller {
 			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
 		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
 
+		//data top-view sidebar
+		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
+		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
+		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
+
+		//data random-book sidebar
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
+
+		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
+
 		return view('pages.list.list-view', $data);
 	}
 
@@ -214,6 +301,16 @@ class ListController extends Controller {
 		$data['books'] = BooksQModel::get_books_list_year($year, Constants::BOOKS_ITEM_LIST);
 		$data['year'] = $year;
 		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+
+		//data top-view sidebar
+		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
+		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
+		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
+
+		//data random-book sidebar
+		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
+
+		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 		// dd($data);
 		return view('pages.list.list-year', $data);
 	}
