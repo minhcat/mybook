@@ -28,7 +28,7 @@ class ListController extends Controller {
 	{
 		$data['books'] = BooksQModel::get_books_list_category($category, Constants::BOOKS_ITEM_LIST);
 		$data['category'] = CategoriesQModel::get_category_by_name($category);
-		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook'];
 
 		//data top-view sidebar
 		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
@@ -58,7 +58,7 @@ class ListController extends Controller {
 			$data['books'] = Helper::add_background($data['books'], $background);
 		else
 			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
-		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook'];
 		// dd($data['books']);
 
 		//data top-view sidebar
@@ -83,7 +83,7 @@ class ListController extends Controller {
 	{
 		$data['status'] = Constants::STATUS_COMPLETED;
 		$data['books']  = BooksQModel::get_books_list_status(Constants::STATUS_COMPLETED, Constants::BOOKS_ITEM_LIST);
-		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook'];
 
 		//data top-view sidebar
 		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
@@ -108,7 +108,7 @@ class ListController extends Controller {
 		$user_id = 1;
 		$data['books'] = BooksFollowQModel::get_books_follow_by_user_id($user_id);
 
-		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook'];
 
 		//data top-view sidebar
 		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
@@ -137,7 +137,7 @@ class ListController extends Controller {
 				$friend->description = substr($friend->description, 0, 160).'...';
 		}
 
-		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook'];
 
 		//data top-view sidebar
 		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
@@ -161,7 +161,7 @@ class ListController extends Controller {
 	{
 		$user_id = 1;
 		$data['notifications'] = NotificationsBModel::get_notifications_list($user_id);
-		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook'];
 
 		//data top-view sidebar
 		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
@@ -185,7 +185,7 @@ class ListController extends Controller {
 	{
 		$data['status'] = Constants::STATUS_PROCESS;
 		$data['books']  = BooksQModel::get_books_list_status(Constants::STATUS_PROCESS, Constants::BOOKS_ITEM_LIST);
-		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook'];
 
 		//data top-view sidebar
 		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
@@ -214,7 +214,7 @@ class ListController extends Controller {
 			$data['books'] = Helper::add_background($data['books'], $background);
 		else
 			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
-		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook'];
 
 		//data top-view sidebar
 		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
@@ -247,7 +247,7 @@ class ListController extends Controller {
 	public function update()
 	{
 		$data['books'] = BooksQModel::get_books_list_update(Constants::BOOKS_ITEM_LIST);
-		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook'];
 
 		//data top-view sidebar
 		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
@@ -276,7 +276,7 @@ class ListController extends Controller {
 			$data['books'] = Helper::add_background($data['books'], $background);
 		else
 			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
-		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook'];
 
 		//data top-view sidebar
 		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
@@ -300,7 +300,7 @@ class ListController extends Controller {
 	{
 		$data['books'] = BooksQModel::get_books_list_year($year, Constants::BOOKS_ITEM_LIST);
 		$data['year'] = $year;
-		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook'];
 
 		//data top-view sidebar
 		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
