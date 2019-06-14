@@ -221,4 +221,17 @@ class BooksQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * search books by name 
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function search_books_by_name($name) {
+		$result = DB::table('books')
+				->where('keyword', 'like' ,'%'.$name.'%')
+				->get();
+
+		return $result;
+	}
 }

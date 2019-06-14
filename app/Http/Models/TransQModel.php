@@ -50,4 +50,17 @@ class TransQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get character by name
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function search_trans_by_name($name) {
+		$result = DB::table('trans')
+				->where('name','LIKE', '%'.$name.'%')
+				->get();
+
+		return $result;
+	}
 }

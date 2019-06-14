@@ -125,6 +125,10 @@
     border-radius: 4px;
     font-size: 14px;
     color: #777; }
+  .listbook .content .list h3 {
+    text-align: center; }
+    .listbook .content .list h3.green {
+      color: #0a2; }
   .listbook .content .list .book {
     margin-top: 15px;
     position: relative; }

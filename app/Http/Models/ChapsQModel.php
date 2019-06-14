@@ -68,4 +68,34 @@ class ChapsQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get categories by name
+	 * @param 
+	 * @return object|boolean : all properties from `categories` table
+	 */
+	public static function get_book_id_by_trans_id($trans_id) {
+		$result = DB::table('chaps')
+				->where('id_trans',$trans_id)
+				->groupBy('id_book')
+				->select('id_book')
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * get categories by name
+	 * @param 
+	 * @return object|boolean : all properties from `categories` table
+	 */
+	public static function count_chaps_by_book_id($book_id) {
+		$result = DB::table('chaps')
+				->where('id_book', $book_id)
+				->groupBy('id_trans')
+				->selectRaw('id_trans, COUNT(id_trans) as chap_count')
+				->get();
+
+		return $result;
+	}
 }

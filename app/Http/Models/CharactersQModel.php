@@ -33,4 +33,17 @@ class CharactersQModel extends Model
 
 		return $result[0];
 	}
+
+	/**
+	 * get character by name
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function search_characters_by_name($name) {
+		$result = DB::table('characters')
+				->where('name','LIKE', '%'.$name.'%')
+				->get();
+
+		return $result;
+	}
 }

@@ -33,11 +33,13 @@ Route::group(['prefix' => 'list'], function() {
 
 	Route::get('rate', 'ListController@rate');
 
-	Route::get('search', 'ListController@search');
-
 	Route::get('update', 'ListController@update');
 
 	Route::get('view', 'ListController@view');
+
+	Route::get('search', 'ListController@search');
+
+	Route::post('search', 'ListController@search_post');
 
 	Route::get('year/{year}', 'ListController@year');
 

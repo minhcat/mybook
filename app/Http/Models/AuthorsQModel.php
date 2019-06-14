@@ -33,4 +33,17 @@ class AuthorsQModel extends Model
 
 		return $result[0];
 	}
+
+	/**
+	 * get author by slug
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function search_authors_by_name($name) {
+		$result = DB::table('authors')
+				->where('name','LIKE', '%'.$name.'%')
+				->get();
+
+		return $result;
+	}
 }
