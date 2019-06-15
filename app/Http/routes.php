@@ -39,7 +39,7 @@ Route::group(['prefix' => 'list'], function() {
 
 	Route::get('search', 'ListController@search');
 
-	Route::post('search', 'ListController@search_post');
+	// Route::post('search', 'ListController@search_post');
 
 	Route::get('year/{year}', 'ListController@year');
 

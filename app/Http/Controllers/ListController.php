@@ -235,10 +235,53 @@ class ListController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function search()
+	public function search(Request $request)
 	{
-		//get request search
-		$data['search'] = null;
+		//get value search
+		$search = new \stdClass;
+		$search->book      = $request->input('book');
+		$search->year      = $request->input('year');
+		$search->status    = $request->input('status');
+		$search->chap      = $request->input('chap');
+		$search->author    = $request->input('author');
+		$search->character = $request->input('character');
+		$search->trans     = $request->input('trans');
+		$search->category  = $request->input('category');
+		$search->sort      = $request->input('sort');
+		$search->order     = $request->input('order');
+		$page              = $request->input('page');
+		if ($page == null)
+			$page = 1;
+		// dd($search);
+		if ($search->book === null) {
+			// dd('hello');
+			//get request search
+			$data['search'] = null;
+			$books = new Paginator(null, 0, 12, 1, [
+				'path'  => $request->url(),
+				'query' => $request->query(),
+			]);
+			$data['books'] = $books;
+		} else {
+			$books = BooksQModel::search_books_by_name($search->book);
+			$books = BooksBModel::search_books_general($books,$search);
+			// dd($books);
+			if (count($books) == 0) {
+				$books = new Paginator(null, 0, 12, 1, [
+					'path'  => $request->url(),
+					'query' => $request->query(),
+				]);
+			} else {
+				$books = new Paginator(array_chunk($books,12)[$page-1], count($books), 12, $page, [
+					'path'  => $request->url(),
+					'query' => $request->query(),
+				]);
+			}
+			// $books_page = arr
+			
+			$data['search'] = 'true';
+			$data['books'] = $books;
+		}
 
 		//sidebar
 		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook'];
@@ -252,7 +295,7 @@ class ListController extends Controller {
 		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
 
 		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
-		
+		// dd($data['books']);
 		return view('pages.list.list-search', $data);
 	}
 

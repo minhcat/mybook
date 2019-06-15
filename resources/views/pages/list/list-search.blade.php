@@ -23,7 +23,7 @@ Các bạn có thể tìm kiếm truyện thông qua từ khóa, thể loại, t
 		</ul>
 		<div class="search-box">
 			<!-- <h3>Tìm kiếm</h3> -->
-			<form action="{{ url('/list/search') }}" method="POST">
+			<form action="{{ url('/list/search') }}" method="GET">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="form-horizontal clearfix">
 					<div class="group col-md-4 col-sm-6">
@@ -169,8 +169,8 @@ Các bạn có thể tìm kiếm truyện thông qua từ khóa, thể loại, t
 			<hr> -->
 			@if ($search == null)
 				<h3 class="green">Chọn Từ Khóa Tìm Kiếm</h3>
-			@elseif ($books == [])
-				<h3 class="green">Không tìm thấy truyện</h3>
+			@elseif (count($books) == 0)
+				<h3 class="green">Không Tìm Thấy Truyện</h3>
 			@else
 				@foreach ($books as $key => $book)
 				<div class="book clearfix">
