@@ -17,7 +17,7 @@ class ChapsQModel extends Model
 		$result = DB::table('chaps as c')
 				->join('books as b', 'b.id', '=', 'c.id_book')
 				->where('c.id',$id)
-				->select('c.*', 'b.name as book_name', 'b.image')
+				->select('c.*', 'b.name as book_name', 'b.image', 'b.view', 'b.like','b.follow','b.description')
 				->get();
 
 		return $result[0];

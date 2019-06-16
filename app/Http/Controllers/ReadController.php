@@ -9,6 +9,7 @@ use App\Http\Models\TransQModel;
 use App\Http\Models\ImagesQModel;
 
 use Illuminate\Http\Request;
+use Cookie;
 
 class ReadController extends Controller {
 
@@ -39,6 +40,28 @@ class ReadController extends Controller {
 		$data['large_comment'] = 0 ; //set css
 
 		$data['random_books'] = BooksQModel::get_books_random(10);
+
+		// set cookie history
+		$history = Cookie::get('history');
+		// dd($history);
+		// check history has value
+		if ($history == null)
+			$history = '[]';
+		//history decode
+		$history = json_decode($history);
+		// dd($history);
+		// add item
+		$item = new \stdClass;
+		$item->id = $chap->id;
+		$item->page = 'read';
+		$item->time = time();
+		$item = json_encode($item);
+		array_push($history, $item);
+
+		$history = json_encode($history);
+		// dd($history);
+
+		Cookie::queue('history',$history, 1440);
 
 		return view('pages.read', $data);
 	}

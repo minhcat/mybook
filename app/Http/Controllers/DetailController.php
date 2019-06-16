@@ -13,6 +13,7 @@ use App\Http\Models\BooksBModel;
 use App\Http\Models\CommentsBModel;
 
 use Illuminate\Http\Request;
+use Cookie;
 
 class DetailController extends Controller {
 
@@ -32,6 +33,27 @@ class DetailController extends Controller {
 		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 
 		$data['comments'] = CommentsBModel::get_comments_page($data['author']->id, 'author');
+		//set history cookie
+		$history = Cookie::get('history');
+		// dd($history);
+		// check history has value
+		if ($history == null)
+			$history = '[]';
+		//history decode
+		$history = json_decode($history);
+		// dd($history);
+		// add item
+		$item = new \stdClass;
+		$item->id = $data['author']->id;
+		$item->page = 'author';
+		$item->time = time();
+		$item = json_encode($item);
+		array_push($history, $item);
+
+		$history = json_encode($history);
+		// dd($history);
+
+		Cookie::queue('history',$history, 1440);
 		// dd($data);
 		return view('pages.detail.detail-author', $data);
 	}
@@ -59,6 +81,27 @@ class DetailController extends Controller {
 		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 
 		$data['comments'] = CommentsBModel::get_comments_page($data['book']->id, 'book');
+		//set history cookie
+		$history = Cookie::get('history');
+		// dd($history);
+		// check history has value
+		if ($history == null)
+			$history = '[]';
+		//history decode
+		$history = json_decode($history);
+		// dd($history);
+		// add item
+		$item = new \stdClass;
+		$item->id = $data['book']->id;
+		$item->page = 'book';
+		$item->time = time();
+		$item = json_encode($item);
+		array_push($history, $item);
+
+		$history = json_encode($history);
+		// dd($history);
+
+		Cookie::queue('history',$history, 1440);
 		// dd($data);
 		return view('pages.detail.detail-book', $data);
 	}
@@ -78,6 +121,27 @@ class DetailController extends Controller {
 		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 		//data comment
 		$data['comments'] = CommentsBModel::get_comments_page($data['character']->id, 'character');
+		//set history cookie
+		$history = Cookie::get('history');
+		// dd($history);
+		// check history has value
+		if ($history == null)
+			$history = '[]';
+		//history decode
+		$history = json_decode($history);
+		// dd($history);
+		// add item
+		$item = new \stdClass;
+		$item->id = $data['character']->id;
+		$item->page = 'character';
+		$item->time = time();
+		$item = json_encode($item);
+		array_push($history, $item);
+
+		$history = json_encode($history);
+		// dd($history);
+
+		Cookie::queue('history',$history, 1440);
 		// dd($data);
 
 		return view('pages.detail.detail-character', $data);
@@ -99,6 +163,29 @@ class DetailController extends Controller {
 		
 		//data comment
 		$data['comments'] = CommentsBModel::get_comments_page($data['user']->id, 'user');
+
+		//set history cookie
+		$history = Cookie::get('history');
+		// dd($history);
+		// check history has value
+		if ($history == null)
+			$history = '[]';
+		//history decode
+		$history = json_decode($history);
+		// dd($history);
+		// add item
+		$item = new \stdClass;
+		$item->id = $data['user']->id;
+		$item->page = 'user';
+		$item->time = time();
+		$item = json_encode($item);
+		array_push($history, $item);
+
+		$history = json_encode($history);
+		// dd($history);
+
+		Cookie::queue('history',$history, 1440);
+
 		return view('pages.detail.detail-user', $data);
 	}
 
@@ -118,6 +205,27 @@ class DetailController extends Controller {
 		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 
 		$data['comments'] = CommentsBModel::get_comments_page($data['trans']->id, 'trans');
+		//set history cookie
+		$history = Cookie::get('history');
+		// dd($history);
+		// check history has value
+		if ($history == null)
+			$history = '[]';
+		//history decode
+		$history = json_decode($history);
+		// dd($history);
+		// add item
+		$item = new \stdClass;
+		$item->id = $data['trans']->id;
+		$item->page = 'trans';
+		$item->time = time();
+		$item = json_encode($item);
+		array_push($history, $item);
+
+		$history = json_encode($history);
+		// dd($history);
+
+		Cookie::queue('history',$history, 1440);
 		// dd($data);
 		return view('pages.detail.detail-trans', $data);
 	}
