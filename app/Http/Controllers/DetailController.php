@@ -2,15 +2,15 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Models\AuthorsQModel;
-use App\Http\Models\BooksQModel;
-use App\Http\Models\UsersQModel;
-use App\Http\Models\ChapsQModel;
-use App\Http\Models\TransQModel;
-use App\Http\Models\CharactersQModel;
-use App\Http\Models\CommentsQModel;
-use App\Http\Models\BooksBModel;
-use App\Http\Models\CommentsBModel;
+use App\Http\Models\QModels\AuthorsQModel;
+use App\Http\Models\QModels\BooksQModel;
+use App\Http\Models\QModels\UsersQModel;
+use App\Http\Models\QModels\ChapsQModel;
+use App\Http\Models\QModels\TransQModel;
+use App\Http\Models\QModels\CharactersQModel;
+use App\Http\Models\QModels\CommentsQModel;
+use App\Http\Models\BModels\BooksBModel;
+use App\Http\Models\BModels\CommentsBModel;
 
 use Illuminate\Http\Request;
 use Cookie;

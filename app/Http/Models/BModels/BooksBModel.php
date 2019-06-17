@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Models;
+namespace App\Http\Models\BModels;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\Http\Helpers\Constants;
-use App\Http\Models\BooksQModel;
-use App\Http\Models\BooksCategoryQModel;
-use App\Http\Models\AuthorsQModel;
-use App\Http\Models\ChapsQModel;
-use App\Http\Models\CategoriesQModel;
+use App\Http\Models\QModels\BooksQModel;
+use App\Http\Models\QModels\BooksCategoryQModel;
+use App\Http\Models\QModels\AuthorsQModel;
+use App\Http\Models\QModels\ChapsQModel;
+use App\Http\Models\QModels\CategoriesQModel;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
 class BooksBModel extends Model

@@ -2,11 +2,11 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Models\CommentsBModel;
-use App\Http\Models\BooksQModel;
-use App\Http\Models\ChapsQModel;
-use App\Http\Models\TransQModel;
-use App\Http\Models\ImagesQModel;
+use App\Http\Models\BModels\CommentsBModel;
+use App\Http\Models\QModels\BooksQModel;
+use App\Http\Models\QModels\ChapsQModel;
+use App\Http\Models\QModels\TransQModel;
+use App\Http\Models\QModels\ImagesQModel;
 
 use Illuminate\Http\Request;
 use Cookie;

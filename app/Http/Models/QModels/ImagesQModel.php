@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Http\Models;
+namespace App\Http\Models\QModels;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\Http\Helpers\Constants;
 
-class NotificationsQModel extends Model
+class ImagesQModel extends Model
 {
 	/**
 	 * get book by id
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_notifications_by_user_id($user_id) {
-		$result = DB::table('notifications')
-				->where('id_user', $user_id)
-				->paginate(12);
+	public static function get_images_by_chap_id($id) {
+		$result = DB::table('images')
+				->where('id_chap', $id)
+				->get();
 
 		return $result;
 	}

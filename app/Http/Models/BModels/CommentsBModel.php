@@ -1,11 +1,16 @@
 <?php
 
-namespace App\Http\Models;
+namespace App\Http\Models\BModels;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\Http\Helpers\Constants;
-use App\Http\Models\CommentsQModel;
+use App\Http\Models\QModels\CommentsQModel;
+use App\Http\Models\QModels\AuthorsQModel;
+use App\Http\Models\QModels\BooksQModel;
+use App\Http\Models\QModels\CharactersQModel;
+use App\Http\Models\QModels\TransQModel;
+use App\Http\Models\QModels\UsersQModel;
 
 class CommentsBModel extends Model
 {

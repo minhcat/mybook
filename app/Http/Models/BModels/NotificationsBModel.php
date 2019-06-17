@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Models;
+namespace App\Http\Models\BModels;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\Http\Helpers\Constants;
-use App\Http\Models\NotificationsQModel;
-use App\Http\Models\UsersQModel;
-use App\Http\Models\ChapsQModel;
-use App\Http\Models\CommentsQModel;
+use App\Http\Models\QModels\NotificationsQModel;
+use App\Http\Models\QModels\BooksQModel;
+use App\Http\Models\QModels\UsersQModel;
+use App\Http\Models\QModels\ChapsQModel;
+use App\Http\Models\QModels\CommentsQModel;
 
 class NotificationsBModel extends Model
 {
