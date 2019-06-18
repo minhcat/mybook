@@ -11,6 +11,7 @@ use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\CharactersQModel;
 use App\Http\Models\QModels\TransQModel;
 use App\Http\Models\QModels\UsersQModel;
+use App\Http\Models\QModels\ChapsQModel;
 
 class CommentsBModel extends Model
 {
@@ -39,12 +40,46 @@ class CommentsBModel extends Model
 				$user = UsersQModel::get_user_by_id($comment->id_page);
 				$comment->page_name = $user->name;
 			} else if ($comment->page == 'read') {
-				$book = BooksQModel::get_book_by_id($comment->id_page);
-				$comment->page_name = $book->name;
+				$chap = ChapsQModel::get_chap_by_id($comment->id_page);
+				$comment->page_name = $chap->book_name;
 			}
 			//shorten comment
 			if (strlen($comment->content) >= 25)
 				$comment->content = substr($comment->content, 0, 25).'...';
+		}
+
+		return $result;
+	}
+
+	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_new_comments_mod($number) {
+		$result = CommentsQModel::get_comments_new($number);
+		foreach ($result as $comment) {
+			//get page name
+			if ($comment->page == 'book') {
+				$book = BooksQModel::get_book_by_id($comment->id_page);
+				$comment->page_name = $book->name;
+			} else if ($comment->page == 'character') {
+				$character = CharactersQModel::get_character_by_id($comment->id_page);
+				$comment->page_name = $character->name;
+			} else if ($comment->page == 'author') {
+				$author = AuthorsQModel::get_author_by_id($comment->id_page);
+				$comment->page_name = $author->name;
+			} else if ($comment->page == 'trans') {
+				$trans = TransQModel::get_trans_by_id($comment->id_page);
+				$comment->page_name = $trans->name;
+			} else if ($comment->page == 'user') {
+				$user = UsersQModel::get_user_by_id($comment->id_page);
+				$comment->page_name = $user->name;
+			} else if ($comment->page == 'read') {
+				$chap = ChapsQModel::get_chap_by_id($comment->id_page);
+				$comment->page_name = $chap->book_name;
+				$comment->chap_name = $chap->name;
+			}
 		}
 
 		return $result;

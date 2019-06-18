@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Admin MyBook - Uploader</title>
+<title>Admin MyBook - @yield('title')</title>
 <link rel="icon" href="{{ asset('image/icon.png') }}">
 <!-- Tell the browser to be responsive to screen width -->
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">

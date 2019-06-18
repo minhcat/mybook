@@ -1,5 +1,9 @@
 @extends('master.admin')
 
+@section('title')
+MOD
+@endsection
+
 @section('define-header')
 	<link rel="stylesheet" href="{{ asset('css/admin/mod.css') }}">
 @endsection

@@ -34,7 +34,7 @@
 									<a href="#">
 										<div class="pull-left">
 											<!-- User Image -->
-											<img src="{{ asset('image/admin/user-uploader.jpg') }}" class="img-circle" alt="User Image">
+											<img src="{{ asset('image/users/'.$user->image.'.jpg') }}" class="img-circle" alt="User Image">
 										</div>
 										<!-- Message title and timestamp -->
 										<h4>
@@ -82,17 +82,17 @@
 					<!-- Menu Toggle Button -->
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<!-- The user image in the navbar-->
-						<img src="{{ asset('image/admin/user-uploader.jpg') }}" class="user-image" alt="User Image">
+						<img src="{{ asset('image/users/'.$user->image.'.jpg') }}" class="user-image" alt="User Image">
 						<!-- hidden-xs hides the username on small devices so only the image appears. -->
-						<span class="hidden-xs">Võ Trinh</span>
+						<span class="hidden-xs">{{ $user->name }}</span>
 					</a>
 					<ul class="dropdown-menu">
 						<!-- The user image in the menu -->
 						<li class="user-header">
-							<img src="{{ asset('image/admin/user-uploader.jpg') }}" class="img-circle" alt="User Image">
+							<img src="{{ asset('image/users/'.$user->image.'.jpg') }}" class="img-circle" alt="User Image">
 
 							<p>
-								Võ Trinh - Uploader
+								{{ $user->name }} - Uploader
 								<small>Nhân viên tháng 3 2018</small>
 							</p>
 						</li>
