@@ -10,11 +10,7 @@
 
 	<!-- Main content -->
 	<section class="content container-fluid">
-		<div class="callout callout-info collapse">
-			<h4>Thông Báo!</h4>
-
-			<p>Add the sidebar-collapse class to the body tag to get this layout. You should combine this option with a fixed layout if you have a long sidebar. Doing that will prevent your page content from getting stretched vertically.</p>
-		</div>
+		@include('partials.admin.content.well')
 		<!-- Statistic book control box -->
 		@include('partials.admin.content.small.statistic-book')
 		<!-- Statistic category control box -->
