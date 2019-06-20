@@ -13,6 +13,36 @@ class CommentsQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
+	public static function get_comment_by_id($id) {
+		$result = DB::table('comments as c')
+				->join('users as u', 'u.id', '=', 'c.id_user')
+				->where('c.id', $id)
+				->select('c.*', 'u.image', 'u.name', 'u.nickname')
+				->get();
+
+		return $result[0];
+	}
+
+	/**
+	 * get comment
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_comments_all() {
+		$result = DB::table('comments as c')
+				->join('users as u', 'u.id', '=', 'c.id_user')
+				->select('c.*', 'u.image', 'u.name', 'u.nickname')
+				->orderBy('c.id','desc')
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * get comment
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
 	public static function get_comments_by_book_id($id_book) {
 		$result = DB::table('comments as c')
 				->join('users as u', 'u.id', '=', 'c.id_user')

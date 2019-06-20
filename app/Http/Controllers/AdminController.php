@@ -19,9 +19,17 @@ class AdminController extends Controller {
 	{
 		$user_id = 13;
 		$user = UsersQModel::get_user_by_id($user_id);
-		$comments = CommentsBModel::get_new_comments_mod(5);
+		$new_comments = CommentsBModel::get_new_comments_mod(5);
+		$report_comments = CommentsBModel::get_new_comments_report();
+		$checkword_comments = CommentsBModel::get_comments_checkword();
+		$save_comments = CommentsBModel::get_comments_save($user_id);
+		// dd($save_comments);
+		
 		$data['user'] = $user;
-		$data['new_comments'] = $comments;
+		$data['new_comments'] = $new_comments;
+		$data['report_comments'] = $report_comments;
+		$data['checkword_comments'] = $checkword_comments;
+		$data['save_comments'] = $save_comments;
 		// dd($data);
 		return view('pages.admin.mod', $data);
 	}
