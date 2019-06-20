@@ -19,54 +19,16 @@
 				<th>Bình luận mới nhất</th>
 				<th>Danh sách bình luận</th>
 			</tr>
+			@foreach ($users_follow as $key => $user)
 			<tr>
-				<td>1</td>
-				<td>John Doe</td>
-				<td>11-7-2014</td>
-				<td>120</td>
-				<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+				<td>{{ $key + 1 }}</td>
+				<td>{{ $user->name }}</td>
+				<td>{{ $user->date }}</td>
+				<td>{{ $user->number }}</td>
+				<td>{{ $user->new_comment }}</td>
 				<td><a href="../MyBook/read-book.html" target="_blank" class="btn btn-primary">Xem</a></td>
 			</tr>
-			<tr>
-				<td>2</td>
-				<td>Alexander Pierce</td>
-				<td>11-7-2014</td>
-				<td>300</td>
-				<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-				<td><a href="../MyBook/read-book.html" target="_blank" class="btn btn-primary">Xem</a></td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>Bob Doe</td>
-				<td>11-7-2014</td>
-				<td>410</td>
-				<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-				<td><a href="../MyBook/read-book.html" target="_blank" class="btn btn-primary">Xem</a></td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td>Mike Doe</td>
-				<td>11-7-2014</td>
-				<td>220</td>
-				<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-				<td><a href="../MyBook/read-book.html" target="_blank" class="btn btn-primary">Xem</a></td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td>Juny Wess</td>
-				<td>11-7-2014</td>
-				<td>240</td>
-				<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-				<td><a href="../MyBook/read-book.html" target="_blank" class="btn btn-primary">Xem</a></td>
-			</tr>
-			<tr>
-				<td>6</td>
-				<td>Weris Queen</td>
-				<td>11-7-2014</td>
-				<td>520</td>
-				<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-				<td><a href="../MyBook/read-book.html" target="_blank" class="btn btn-primary">Xem</a></td>
-			</tr>
+			@endforeach
 		</table>
 	</div>
 	<!-- /.box-body -->

@@ -273,4 +273,34 @@ class CommentsQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get comment
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_number_comments_by_user_id($id_user) {
+		$result = DB::table('comments')
+				->where('id_user', $id_user)
+				->groupBy('id_user')
+				->selectRaw('id_user, COUNT(content) as number')
+				->get();
+
+		return $result[0]->number;
+	}
+
+	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_comments_new_by_user_id($id_user) {
+		$result = DB::table('comments')
+				->where('id_user', $id_user)
+				->orderBy('datetime','desc')
+				->take(1)
+				->get();
+
+		return $result[0]->content;
+	}
 }
