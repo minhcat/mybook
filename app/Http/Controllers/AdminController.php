@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\BModels\UsersBModel;
 use App\Http\Models\QModels\UsersPunishQModel;
+use App\Http\Models\QModels\UsersBanQModel;
 use App\Http\Models\QModels\CommentsQModel;
 use App\Http\Models\BModels\CommentsBModel;
 
@@ -27,7 +28,8 @@ class AdminController extends Controller {
 		$save_comments      = CommentsBModel::get_comments_save($user_id);
 		$users_follow       = UsersBModel::get_user_follow($user_id);
 		$users_punish       = UsersPunishQModel::get_user_punish_by_user_mod_id($user_id);
-		// dd($users_punish);
+		$users_ban          = UsersBanQModel::get_user_ban_by_user_mod_id($user_id);
+		// dd($users_ban);
 		
 		$data['user']               = $user;
 		$data['new_comments']       = $new_comments;
@@ -36,6 +38,7 @@ class AdminController extends Controller {
 		$data['save_comments']      = $save_comments;
 		$data['users_follow']       = $users_follow;
 		$data['users_punish']       = $users_punish;
+		$data['users_ban']          = $users_ban;
 		// dd($data);
 		return view('pages.admin.mod', $data);
 	}

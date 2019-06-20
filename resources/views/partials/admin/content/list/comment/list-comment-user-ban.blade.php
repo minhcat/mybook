@@ -1,5 +1,5 @@
 <div class="box box-primary collapse" id="box-user-ban" aria-expanded="false">
-	<div class="box-header">
+	<div class="box-header with-border">
 		<h3 class="box-title">Người Dùng Bị Chặn</h3>
 
 		<div class="box-tools pull-right">
@@ -9,68 +9,29 @@
 		</div>
 	</div>
 	<!-- /.box-header -->
-	<div class="box-body table-responsive no-padding">
-		<table class="table table-hover table-striped">
-			<tr>
-				<th>Stt</th>
-				<th>Người dùng</th>
-				<th>Ngày bị chặn</th>
-				<th>Bình luận vi phạm</th>
-				<th>Gỡ chặn</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>John Doe</td>
-				<td>11-7-2014</td>
-				<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-				<td><button class="btn btn-success" data-toggle="modal" data-target="#modal-user-remove-banlist">Gỡ</button></td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>Alexander Pierce</td>
-				<td>11-7-2014</td>
-				<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-				<td><button class="btn btn-success" data-toggle="modal" data-target="#modal-user-remove-banlist">Gỡ</button></td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>Bob Doe</td>
-				<td>11-7-2014</td>
-				<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-				<td><button class="btn btn-success" data-toggle="modal" data-target="#modal-user-remove-banlist">Gỡ</button></td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td>Mike Doe</td>
-				<td>11-7-2014</td>
-				<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-				<td><button class="btn btn-success" data-toggle="modal" data-target="#modal-user-remove-banlist">Gỡ</button></td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td>Juny Wess</td>
-				<td>11-7-2014</td>
-				<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-				<td><button class="btn btn-success" data-toggle="modal" data-target="#modal-user-remove-banlist">Gỡ</button></td>
-			</tr>
-			<tr>
-				<td>6</td>
-				<td>Weris Queen</td>
-				<td>11-7-2014</td>
-				<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-				<td><button class="btn btn-success" data-toggle="modal" data-target="#modal-user-remove-banlist">Gỡ</button></td>
-			</tr>
+	<div class="box-body table-responsive">
+		<table class="table table-bordered table-hover table-striped" id="table-users-ban">
+			<thead>
+				<tr>
+					<th>Stt</th>
+					<th>Người dùng</th>
+					<th>Ngày bị chặn</th>
+					<th>Bình luận vi phạm</th>
+					<th>Gỡ chặn</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach ($users_ban as $key => $user)
+				<tr>
+					<td>{{ $key + 1 }}</td>
+					<td>{{ $user->name }}</td>
+					<td>{{ date_format(date_create($user->date), 'd-m-Y') }}</td>
+					<td>{{ $user->content }}</td>
+					<td><button class="btn btn-success" data-toggle="modal" data-target="#modal-user-remove-banlist">Gỡ</button></td>
+				</tr>
+				@endforeach
+			</tbody>
 		</table>
 	</div>
 	<!-- /.box-body -->
-	<div class="box-footer clearfix">
-		<ul class="pagination pagination-sm no-margin pull-right">
-			<li><a href="#">&laquo;</a></li>
-			<li><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">&raquo;</a></li>
-		</ul>
-	</div>
-	<!-- /.box footer -->
 </div>
