@@ -18,7 +18,6 @@ class UsersFollowQModel extends Model
 				->join('users as u', 'u.id', '=', 'uf.id_user_follow')
 				->where('id_user_mod', $user_mod_id)
 				->select('uf.*', 'u.name')
-				->take(6)
 				->get();
 
 		return $result;

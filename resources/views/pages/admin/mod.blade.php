@@ -6,6 +6,7 @@ MOD
 
 @section('define-header')
 	<link rel="stylesheet" href="{{ asset('css/admin/mod.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin/dataTables.bootstrap.css') }}">
 @endsection
 
 @section('sidebar')
@@ -98,8 +99,14 @@ MOD
 @endsection
 
 @section('define-footer')
+	<script src="{{ asset('js/admin/jquery.dataTables.js') }}"></script>
+	<script src="{{ asset('js/admin/dataTables.bootstrap.js') }}"></script>
+
 	<script>
 		$(function () {
+			$('#table-users-follow').DataTable({
+				"lengthMenu": [5, 10, 25, 50],
+			});
 			CKEDITOR.replace('mail-content', {
 				toolbar: [
 					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' , '-', 'Image', 'Table', '-', 'Scayt'],
