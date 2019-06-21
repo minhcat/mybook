@@ -22,4 +22,18 @@ class BooksCategoryQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get categories by name
+	 * @param 
+	 * @return object|boolean : all properties from `categories` table
+	 */
+	public static function get_categories_by_book_id($book_id) {
+		$result = DB::table('books_category as bc')
+				->join('categories as c', 'c.id', '=', 'bc.id_category')
+				->where('id_book',$book_id)
+				->get();
+
+		return $result;
+	}
 }

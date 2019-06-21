@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Helpers\Constants;
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksCategoryQModel;
+use App\Http\Models\QModels\BooksFollowAdminQModel;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\CategoriesQModel;
@@ -250,5 +251,25 @@ class BooksBModel extends Model
 			
 		}
 		return $result;
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_books_follow_admin($admin_id) {
+		$books = BooksFollowAdminQModel::get_books_follow_by_admin_id($admin_id);
+		// dd($books);
+		foreach ($books as $book) {
+			$book->categories = [];
+			$categories = BooksCategoryQModel::get_categories_by_book_id($book->id);
+			// dd($categories);
+			foreach ($categories as $key => $category) {
+				$book->categories[$key] = $category->name;
+			}
+		}
+		
+		return $books;
 	}
 }

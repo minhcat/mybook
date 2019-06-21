@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\BModels\UsersBModel;
 use App\Http\Models\QModels\UsersPunishQModel;
@@ -29,6 +30,7 @@ class AdminController extends Controller {
 		$users_follow       = UsersBModel::get_user_follow($user_id);
 		$users_punish       = UsersPunishQModel::get_user_punish_by_user_mod_id($user_id);
 		$users_ban          = UsersBanQModel::get_user_ban_by_user_mod_id($user_id);
+		$books_follow       = BooksBModel::get_books_follow_admin($user_id);
 		// dd($users_ban);
 		
 		$data['user']               = $user;
@@ -39,6 +41,7 @@ class AdminController extends Controller {
 		$data['users_follow']       = $users_follow;
 		$data['users_punish']       = $users_punish;
 		$data['users_ban']          = $users_ban;
+		$data['books_follow']       = $books_follow;
 		// dd($data);
 		return view('pages.admin.mod', $data);
 	}

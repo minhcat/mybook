@@ -113,6 +113,9 @@ MOD
 			$('#table-users-ban').DataTable({
 				"lengthMenu": [5, 10, 25, 50],
 			});
+			$('#table-books-follow').DataTable({
+				"lengthMenu": [5, 10, 25, 50],
+			});
 			CKEDITOR.replace('mail-content', {
 				toolbar: [
 					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' , '-', 'Image', 'Table', '-', 'Scayt'],
