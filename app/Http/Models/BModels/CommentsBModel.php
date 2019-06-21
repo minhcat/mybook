@@ -250,4 +250,19 @@ class CommentsBModel extends Model
 		}
 		return $comments;
 	}
+
+	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_checkword_with_number_comments_have() {
+		$checkwords = CheckwordsQModel::get_checkwords_all();
+		foreach ($checkwords as $key => $checkword) {
+			$comments = CommentsQModel::search_comments_by_keyword($checkword->checkword);
+			$checkword->number = count($comments);
+		}
+
+		return $checkwords;
+	}
 }

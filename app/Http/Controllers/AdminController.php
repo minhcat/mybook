@@ -31,7 +31,8 @@ class AdminController extends Controller {
 		$users_punish       = UsersPunishQModel::get_user_punish_by_user_mod_id($user_id);
 		$users_ban          = UsersBanQModel::get_user_ban_by_user_mod_id($user_id);
 		$books_follow       = BooksBModel::get_books_follow_admin($user_id);
-		// dd($users_ban);
+		$checkwords         = CommentsBModel::get_checkword_with_number_comments_have();
+		// dd($checkwords);
 		
 		$data['user']               = $user;
 		$data['new_comments']       = $new_comments;
@@ -42,6 +43,7 @@ class AdminController extends Controller {
 		$data['users_punish']       = $users_punish;
 		$data['users_ban']          = $users_ban;
 		$data['books_follow']       = $books_follow;
+		$data['checkwords']         = $checkwords;
 		// dd($data);
 		return view('pages.admin.mod', $data);
 	}

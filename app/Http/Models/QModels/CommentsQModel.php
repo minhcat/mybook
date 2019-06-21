@@ -303,4 +303,17 @@ class CommentsQModel extends Model
 
 		return $result[0]->content;
 	}
+
+	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function search_comments_by_keyword($keyword) {
+		$result = DB::table('comments')
+				->where('content', 'LIKE', '%'.$keyword.'%')
+				->get();
+
+		return $result;
+	}
 }
