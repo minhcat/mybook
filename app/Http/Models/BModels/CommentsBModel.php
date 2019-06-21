@@ -265,4 +265,22 @@ class CommentsBModel extends Model
 
 		return $checkwords;
 	}
+
+	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_comments_in_books_follow($books_follow) {
+		$result = [];
+		foreach ($books_follow as $key => $book) {
+			$comments = CommentsQModel::get_comments_by_book_id($book->id);
+			$result[$key] = new \stdClass;
+			$result[$key]->id_book = $book->id;
+			$result[$key]->name_book = $book->name;
+			$result[$key]->comments = $comments;
+		}
+		
+		return $result;
+	}
 }

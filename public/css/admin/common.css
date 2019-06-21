@@ -9,5 +9,7 @@ section.content .well {
     top: 10px;
     font-size: 16px;
     color: #fff; }
+section.content .box table tr.link {
+  cursor: pointer; }
 
 /*# sourceMappingURL=common.css.map */

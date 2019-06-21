@@ -52,7 +52,7 @@
 				</a>
 				<ul class="treeview-menu">
 					<li><a href="#" class="box-link" data-target="#box-book-follow">Danh sách truyện theo dõi</a></li>
-					<li><a href="#" class="box-link" data-target="#box-book-comment" data-with="#box-book-follow-small">Bình luận truyện theo dõi</a></li>
+					<li><a href="#" class="box-link" data-target="#box-book-comment-1" data-with="#box-book-follow-small">Bình luận truyện theo dõi</a></li>
 				</ul>
 			</li>
 			<li class="treeview"><a href="#" class="box-link" data-target="#box-checkword"><i class="fa fa-pencil"></i> <span>Từ khóa kiểm tra tự động</span></a></li>
