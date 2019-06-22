@@ -17,6 +17,9 @@ class AuthorsQModel extends Model
 		$result = DB::table('authors')
 				->where('id', $id)
 				->get();
+				
+		if (empty($result))
+			return null;
 
 		return $result[0];
 	}

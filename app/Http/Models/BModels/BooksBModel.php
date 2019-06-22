@@ -11,6 +11,8 @@ use App\Http\Models\QModels\BooksFollowAdminQModel;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\CategoriesQModel;
+use App\Http\Models\QModels\TransQModel;
+use App\Http\Models\QModels\CharactersQModel;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
 class BooksBModel extends Model
@@ -282,15 +284,41 @@ class BooksBModel extends Model
 		$books = BooksQModel::get_books_by_uploader_id($admin_id);
 		// dd($books);
 		foreach ($books as $book) {
+			//get category
 			$book->categories = [];
 			$categories = BooksCategoryQModel::get_categories_by_book_id($book->id);
 			// dd($categories);
 			foreach ($categories as $key => $category) {
 				$book->categories[$key] = $category->name;
 			}
-
+			//shorted description
 			if (strlen($book->description) >= 152)
 				$book->description = mb_substr($book->description, 0, 150).'...';
+			//get translator
+			$book->transes = [];
+			$transes_id = ChapsQModel::get_trans_id_by_book_id($book->id);
+			foreach ($transes_id as $key => $trans_id) {
+				$trans = TransQModel::get_trans_by_id($trans_id->id_trans);
+				$book->transes[$key] = $trans->name;
+			}
+			//get character
+			$book->characters = [];
+			$characters = CharactersQModel::get_character_by_book_id($book->id);
+			foreach ($characters as $key => $character) {
+				$book->characters[$key] = $character->name;
+			}
+			//get author, artist
+			$author = AuthorsQModel::get_author_by_id($book->id_author);
+			if ($author != null)
+				$book->author = $author->name;
+			else
+				$book->author = 'Đang cập nhật';
+
+			$artist = AuthorsQModel::get_author_by_id($book->id_artist);
+			if ($artist != null)
+				$book->artist = $artist->name;
+			else
+				$book->artist = 'Đang cập nhật';
 		}
 
 		return $books;
