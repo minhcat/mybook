@@ -234,4 +234,17 @@ class BooksQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * search books by name 
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_books_by_uploader_id($uploader_id) {
+		$result = DB::table('books')
+				->where('id_uploader', $uploader_id)
+				->get();
+
+		return $result;
+	}
 }

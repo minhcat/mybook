@@ -58,9 +58,12 @@ class AdminController extends Controller {
 	public function uploader()
 	{
 		$user_id = 14;
-		$user = UsersQModel::get_user_by_id($user_id);
+		$user         = UsersQModel::get_user_by_id($user_id);
+		$books_upload = BooksBModel::get_books_upload($user_id);
 
-		$data['user'] = $user;
+		$data['user']         = $user;
+		$data['books_upload'] = $books_upload;
+		// dd($data);
 		return view('pages.admin.uploader', $data);
 	}
 

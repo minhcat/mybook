@@ -6,6 +6,7 @@ Uploader
 
 @section('define-header')
 	<link rel="stylesheet" href="{{ asset('css/admin/uploader.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin/dataTables.bootstrap.css') }}">
 @endsection
 
 @section('sidebar')
@@ -128,6 +129,8 @@ Uploader
 
 @section('define-footer')
 	<script src="{{ asset('js/admin/upload.js') }}"></script>
+	<script src="{{ asset('js/admin/jquery.dataTables.js') }}"></script>
+	<script src="{{ asset('js/admin/dataTables.bootstrap.js') }}"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -136,6 +139,9 @@ Uploader
 			});
 			$('#datepicker-book-edit').datepicker({
 				autoclose: true
+			});
+			$('#table-book-upload').DataTable({
+				"lengthMenu": [5, 10, 25, 50],
 			});
 			CKEDITOR.replace('book-content', {
 				toolbar: [

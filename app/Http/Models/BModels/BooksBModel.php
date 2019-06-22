@@ -272,4 +272,27 @@ class BooksBModel extends Model
 		
 		return $books;
 	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_books_upload($admin_id) {
+		$books = BooksQModel::get_books_by_uploader_id($admin_id);
+		// dd($books);
+		foreach ($books as $book) {
+			$book->categories = [];
+			$categories = BooksCategoryQModel::get_categories_by_book_id($book->id);
+			// dd($categories);
+			foreach ($categories as $key => $category) {
+				$book->categories[$key] = $category->name;
+			}
+
+			if (strlen($book->description) >= 152)
+				$book->description = mb_substr($book->description, 0, 150).'...';
+		}
+
+		return $books;
+	}
 }
