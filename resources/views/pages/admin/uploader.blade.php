@@ -1,5 +1,9 @@
 @extends('master.admin')
 
+@section('title')
+Uploader
+@endsection
+
 @section('define-header')
 	<link rel="stylesheet" href="{{ asset('css/admin/uploader.css') }}">
 @endsection
