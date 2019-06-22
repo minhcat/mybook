@@ -75,6 +75,9 @@ Uploader
 				<!-- book detail error-->
 				@include('partials.admin.content.detail.detail-book-error')
 
+				<!-- chap list -->
+				@include('partials.admin.content.list.chap.list-chap')
+
 				<!-- user contact -->
 				@include('partials.admin.content.comment.comment-new-book')
 
@@ -112,6 +115,8 @@ Uploader
 		</div>
 
 		<!-- Modal -->
+		@include('partials.admin.content.modal.modal-new-keyword')
+
 		@include('partials.admin.content.modal.modal-remove-book')
 
 		@include('partials.admin.content.modal.modal-remove-chap')		
