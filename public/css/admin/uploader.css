@@ -2,7 +2,7 @@
   float: left; }
 .box .box-body .box-info {
   margin-left: 170px; }
-.box .box-body form input {
+.box .box-body form input.input-new-chap {
   width: 250px; }
 .box .box-body .height-fixed {
   min-height: 419px; }
@@ -11,7 +11,7 @@
 .box#box-book-list-small .box-body table tr {
   cursor: pointer; }
 .box#box-chap-new .box-body .image-group, .box#box-chap-edit .box-body .image-group {
-  border: solid 1px #f1f1f1;
+  border: solid 1px #d2d6de;
   height: 310px;
   margin-bottom: 10px;
   text-align: left;

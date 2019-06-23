@@ -10,6 +10,24 @@
 	</div>
 	<!-- /.box-header -->
 	<div class="box-body">
+		<form action="">
+			<div class="form-group">
+				<label for="transInput">Tựa chap</label>
+				<input type="text" class="form-control" placeholder="nhập tên chap">
+			</div>
+			<div class="form-group">
+				<label for="transInput">Nhóm dịch</label>
+				<select class="form-control">
+					<option class="action">Dark Angels Group</option>
+					<option>A3Manga</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="transInput">Thứ tự</label>
+				<input type="text" class="form-control" placeholder="nhập số thứ tư">
+			</div>
+		</form>
+		<label>Hình ảnh</label>
 		<div class="image-group clearfix" data-files="0">
 
 		</div>
@@ -20,7 +38,9 @@
 	</div>
 	<!-- /.box-body -->
 	<div class="box-footer clearfix">
-		<button class="btn btn-primary box-link" data-target="#box-book-detail" data-unclose="#box-book-list-small">Chi tiết truyện</button>
+		<button class="btn btn-success box-link">Thêm chap</button>
+		<button class="btn btn-default box-link">Hủy</button>
+		<button class="btn btn-primary box-link pull-right" data-target="#box-book-detail" data-unclose="#box-book-list-small">Chi tiết truyện</button>
 	</div>
 	<!-- /.box footer -->
 </div>
