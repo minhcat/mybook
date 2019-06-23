@@ -28,7 +28,7 @@
 				</a>
 				<ul class="treeview-menu">
 					<li><a href="#" class="box-link" data-target="#box-book-list">Danh sách truyện</a></li>
-					<li><a href="#" class="box-link" data-target="#box-book-detail-1" data-with="#box-book-list-small">Chi tiết truyện</a></li>
+					<li><a href="#" class="box-link" data-target="#box-book-detail-0" data-with="#box-book-list-small">Chi tiết truyện</a></li>
 					<li><a href="#" class="box-link" data-target="#box-book-new">Thêm truyện mới</a></li>
 				</ul>
 			</li>

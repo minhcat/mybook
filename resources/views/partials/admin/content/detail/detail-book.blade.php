@@ -1,5 +1,5 @@
 @foreach ($books_upload as $key => $book)
-<div class="box box-primary collapse" id="box-book-detail-{{ $key+1 }}" aria-expanded="false"  data-with="#box-book-list-small">
+<div class="box box-primary collapse" id="box-book-detail-{{ $key }}" aria-expanded="false"  data-with="#box-book-list-small">
 	<div class="box-header with-border">
 		<h3 class="box-title">{{ $book->name }}</h3>
 
@@ -40,7 +40,7 @@
 		</div>
 	</div>
 	<div class="box-footer">
-		<button class="btn btn-primary box-link" data-target="#box-chap-list" data-unclose="#box-book-list-small">Danh sách chap</button>
+		<button class="btn btn-primary box-link" data-target="#box-chap-list-{{ $key }}" data-unclose="#box-book-list-small">Danh sách chap</button>
 		<button class="btn bg-purple box-link" data-target="#box-chap-new" data-unclose="#box-book-list-small">Thêm chap mới</button>
 		<button class="btn btn-info" data-toggle="modal" data-target="#modal-keyword-new">Thêm từ khóa</button>
 		<button class="btn btn-success box-link" data-target="#box-book-edit" data-unclose="#box-book-list-small">Chỉnh sửa</button>

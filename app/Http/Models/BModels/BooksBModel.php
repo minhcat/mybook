@@ -12,6 +12,7 @@ use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\TransQModel;
+use App\Http\Models\QModels\ImagesQModel;
 use App\Http\Models\QModels\CharactersQModel;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
@@ -319,6 +320,18 @@ class BooksBModel extends Model
 				$book->artist = $artist->name;
 			else
 				$book->artist = 'Đang cập nhật';
+			//get chaps
+			$chaps = ChapsQModel::get_chaps_by_book_id($book->id);
+			foreach ($chaps as $key => $chap) {
+				$number_images = ImagesQModel::count_images_by_chap_id($chap->id);
+				// dd($number_images);
+				if ($number_images != null)
+					$chap->number_images = $number_images->count;
+				else
+					$chap->number_images = 0;
+			}
+			$book->chaps = $chaps;
+			
 		}
 
 		return $books;
