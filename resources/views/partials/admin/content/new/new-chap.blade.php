@@ -15,7 +15,7 @@
 		</div>
 		
 		<form class="form-group">
-			<input id="input-new-chap" type="file" multiple>
+			<input class="input-new-chap" type="file" multiple>
 		</form>
 	</div>
 	<!-- /.box-body -->

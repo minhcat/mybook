@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	//show box when click link show box
 	$('.box-link').click(function() {
-		debugger;
+		// debugger;
 		var target = $(this).data('target');
 		var attr = $(target).attr('aria-expanded');
 		var unclose = $(this).data('unclose');
@@ -59,22 +59,40 @@ $(document).ready(function() {
 		$(box).collapse('hide');
 	});
 	//show image new chap
-	$('#input-new-chap').change(function() {
+	$('.input-new-chap').change(function() {
 		var this_ = this;
 		var f = $('.image-group').data('files');
+		var array = [];
 		$.each(this.files,function(i) {
 
 			if (this_.files && this_.files[i]) {
 				var reader = new FileReader();
 				reader.onload = function(e) {
 
-					$('.image-group').append('<img src="'+e.target.result+'">');
+					// $('.image-group').append('<img src="'+e.target.result+'">');
+					var obj = {index:i,src:e.target.result};
+					// console.log(obj);
+					array.push(obj);
+					// console.log(array);
+					if (array.length == this_.files.length) {
+						console.log(array);
+						debugger;
+						for (var a = 0; a < array.length; a++) {
+							for (var b = 0; b < array.length; b++) {
+								if (array[b].index == a) {
+									$('.image-group').append('<img src="'+array[b].src+'" data-index="'+array[b].index+'">');
+									break;
+								}
+							}
+						}
+					}
 				}
 			}
 			reader.readAsDataURL(this_.files[i]);
 		});
 		f = f + this.files.length;
-		console.log(f);
+		// console.log(array);
+
 		$('.image-group').data('files',f);
 	});
 	//choose category edit book
