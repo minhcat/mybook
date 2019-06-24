@@ -18,7 +18,7 @@
 			@foreach ($books_upload as $key => $book)
 			<tr class="link">
 				<td>{{ $key+1 }}</td>
-				<td class="box-link" data-target="#box-book-detail-{{ $key+1 }}" data-with="#box-book-list-small">{{ $book->name }}</td>
+				<td class="box-link" data-target="#box-book-detail-{{ $key }}" data-with="#box-book-list-small">{{ $book->name }}</td>
 			</tr>
 			@endforeach
 		</table>

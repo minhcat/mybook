@@ -40,7 +40,6 @@
 	<div class="box-footer clearfix">
 		<button class="btn btn-success box-link">Thêm chap</button>
 		<button class="btn btn-default box-link">Hủy</button>
-		<button class="btn btn-primary box-link pull-right" data-target="#box-book-detail" data-unclose="#box-book-list-small">Chi tiết truyện</button>
 	</div>
 	<!-- /.box footer -->
 </div>

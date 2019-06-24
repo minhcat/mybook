@@ -23,19 +23,19 @@
     float: none; }
     .box#box-chap-new .box-body .image-group img:hover, .box#box-chap-edit .box-body .image-group img:hover {
       filter: brightness(0.8); }
-.box#box-book-edit .box-body .avatar, .box#box-book-new .box-body .avatar, .box#box-book-edit-approved .box-body .avatar {
+.box.book-edit .box-body .avatar, .box.book-new .box-body .avatar, .box.book-edit-approved .box-body .avatar {
   width: 150px;
   float: left;
   text-align: center; }
-  .box#box-book-edit .box-body .avatar button, .box#box-book-new .box-body .avatar button, .box#box-book-edit-approved .box-body .avatar button {
+  .box.book-edit .box-body .avatar button, .box.book-new .box-body .avatar button, .box.book-edit-approved .box-body .avatar button {
     margin-top: 10px; }
-.box#box-book-edit .box-body .box-edit, .box#box-book-new .box-body .box-edit, .box#box-book-edit-approved .box-body .box-edit {
+.box.book-edit .box-body .box-edit, .box.book-new .box-body .box-edit, .box.book-edit-approved .box-body .box-edit {
   margin-left: 170px; }
-  .box#box-book-edit .box-body .box-edit .form-group span.label, .box#box-book-new .box-body .box-edit .form-group span.label, .box#box-book-edit-approved .box-body .box-edit .form-group span.label {
+  .box.book-edit .box-body .box-edit .form-group span.label, .box.book-new .box-body .box-edit .form-group span.label, .box.book-edit-approved .box-body .box-edit .form-group span.label {
     cursor: pointer;
     font-size: 12px;
     line-height: 2; }
-  .box#box-book-edit .box-body .box-edit .form-group input.date, .box#box-book-new .box-body .box-edit .form-group input.date, .box#box-book-edit-approved .box-body .box-edit .form-group input.date {
+  .box.book-edit .box-body .box-edit .form-group input.date, .box.book-new .box-body .box-edit .form-group input.date, .box.book-edit-approved .box-body .box-edit .form-group input.date {
     width: 60px;
     display: inline-block; }
 .box#box-book-comment .box-body .direct-chat-messages {

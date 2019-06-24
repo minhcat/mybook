@@ -43,7 +43,7 @@
 		<button class="btn btn-primary box-link" data-target="#box-chap-list-{{ $key }}" data-unclose="#box-book-list-small">Danh sách chap</button>
 		<button class="btn bg-purple box-link" data-target="#box-chap-new" data-unclose="#box-book-list-small">Thêm chap mới</button>
 		<button class="btn btn-info" data-toggle="modal" data-target="#modal-keyword-new">Thêm từ khóa</button>
-		<button class="btn btn-success box-link" data-target="#box-book-edit" data-unclose="#box-book-list-small">Chỉnh sửa</button>
+		<button class="btn btn-success box-link" data-target="#box-book-edit-{{ $key }}" data-unclose="#box-book-list-small">Chỉnh sửa</button>
 		<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-book">Xóa</button>
 	</div>
 </div>
