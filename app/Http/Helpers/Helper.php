@@ -4,7 +4,6 @@ namespace App\Http\Helpers;
 class Helper {
 	/**
 	 * Convert string uppercase first letter
-	 *
 	 * @param string
 	 * @return string
 	 */
@@ -14,7 +13,6 @@ class Helper {
 	
 	/**
 	 * Add index to array
-	 *
 	 * @param array
 	 * @return array
 	 */
@@ -33,7 +31,6 @@ class Helper {
 
 	/**
 	 * Add index to array
-	 *
 	 * @param array
 	 * @return array
 	 */

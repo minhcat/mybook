@@ -5,6 +5,7 @@ Uploader
 @endsection
 
 @section('define-header')
+	<link rel="stylesheet" href="{{ asset('css/admin/common.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/admin/uploader.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/admin/dataTables.bootstrap.css') }}">
 @endsection

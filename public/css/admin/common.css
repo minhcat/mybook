@@ -3,6 +3,9 @@ section.content .well {
   section.content .well.well-info {
     background-color: #00c0ef;
     color: #fff; }
+  section.content .well.well-danger {
+    background-color: #dd4b39;
+    color: #fff; }
   section.content .well .btn {
     position: absolute;
     right: 10px;

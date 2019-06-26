@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Http\Helpers\Images;
 use App\Http\Controllers\Controller;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\BModels\BooksBModel;
@@ -117,6 +118,16 @@ class AdminController extends Controller {
 	 */
 	public function create_book(Request $request)
 	{
+		$validate = [
+			'image' 		=> 'required|image',
+			'name'			=> 'required',
+			'category'		=> 'required',
+			'description'	=> 'required',
+			'keyword'		=> 'required',
+			'status'		=> 'required'
+		];
+		$this->validate($request, $validate);
+
 		$new_book = new \stdClass;
 		$new_book->image		= $request->input('image');
 		$new_book->name			= $request->input('name');
@@ -125,27 +136,26 @@ class AdminController extends Controller {
 		$new_book->characters	= $request->input('characters');
 		$new_book->release_at	= $request->input('release_at');
 		$new_book->description	= $request->input('description');
+		$new_book->keyword		= $request->input('keyword');
 		$new_book->status		= $request->input('status');
 
-		if ($request->hasFile('image')) {
-			//get extension
-			$file_extension = $request->file('image')->getClientOriginalExtension();
-			//get name
-			$file_name 		= $new_book->name . '.' . $file_extension;
-			//get folder
-			$folder_upload	= public_path('/image/books');
-			//save file
-			$request->file('image')->move($folder_upload, $file_name);
-		}
+		$upload = Images::upload_image($request);
+		if ($upload == false)
+			return redirect()->back()->with('danger','lưu ảnh thất bại');
 		// dd($new_book);
+
 		$data['book'] = [
 			'name'			=> $new_book->name,
+			'image'			=> str_slug($new_book->name,'-'),
+			'slug'			=> str_slug($new_book->name,'_'),
 			'other_name'	=> $new_book->other_name,
 			'release_at'	=> $new_book->release_at,
 			'description'	=> $new_book->description,
+			'keyword'		=> $new_book->keyword,
 			'status'		=> $new_book->status
 		];
-		$is_success = BooksCModel::insert_book($data['book']);
+		$completed = BooksCModel::insert_book($data['book']);
+
 		return redirect()->back();
 	}
 }

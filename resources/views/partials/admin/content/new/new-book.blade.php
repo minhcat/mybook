@@ -58,7 +58,6 @@
 				<div class="form-group character">
 					<label>Nhân vật</label>
 					<div class="list-character hide">
-						{{-- <span class="character" data-id="1">kirito <i class="fa fa-times"></i></span>  --}}
 					</div>
 					<select class="form-control" name="characters">
 						<option disabled selected value> -- thêm nhân vật -- </option>
@@ -71,6 +70,10 @@
 					<label>Nội dung</label>
 					<!-- <br> -->
 					<textarea id="book-content" name="description" class="book-content" rows="4"></textarea>
+				</div>
+				<div class="form-group">
+					<label>Từ khóa</label>
+					<input type="text" class="form-control" name="keyword">
 				</div>
 				<div class="form-group status">
 					<label>Tình trạng</label>
