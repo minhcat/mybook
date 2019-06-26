@@ -120,7 +120,8 @@ Uploader
 
 		@include('partials.admin.content.modal.modal-remove-book')
 
-		@include('partials.admin.content.modal.modal-remove-chap')		
+		@include('partials.admin.content.modal.modal-remove-chap')
+
 	</section>
 	<!-- /.content -->
 </div>

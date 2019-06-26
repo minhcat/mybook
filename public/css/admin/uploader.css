@@ -29,6 +29,10 @@
   text-align: center; }
   .box.book-edit .box-body .avatar button, .box.book-new .box-body .avatar button, .box.book-edit-approved .box-body .avatar button {
     margin-top: 10px; }
+  .box.book-edit .box-body .avatar .btn, .box.book-new .box-body .avatar .btn, .box.book-edit-approved .box-body .avatar .btn {
+    margin-top: 10px; }
+    .box.book-edit .box-body .avatar .btn input[type="file"], .box.book-new .box-body .avatar .btn input[type="file"], .box.book-edit-approved .box-body .avatar .btn input[type="file"] {
+      display: none; }
 .box.book-edit .box-body .box-edit, .box.book-new .box-body .box-edit, .box.book-edit-approved .box-body .box-edit {
   margin-left: 170px; }
   .box.book-edit .box-body .box-edit .form-group span.label, .box.book-new .box-body .box-edit .form-group span.label, .box.book-edit-approved .box-body .box-edit .form-group span.label {
@@ -38,6 +42,17 @@
   .box.book-edit .box-body .box-edit .form-group input.date, .box.book-new .box-body .box-edit .form-group input.date, .box.book-edit-approved .box-body .box-edit .form-group input.date {
     width: 60px;
     display: inline-block; }
+  .box.book-edit .box-body .box-edit .form-group .list-character, .box.book-new .box-body .box-edit .form-group .list-character, .box.book-edit-approved .box-body .box-edit .form-group .list-character {
+    margin-bottom: 10px; }
+    .box.book-edit .box-body .box-edit .form-group .list-character.hide, .box.book-new .box-body .box-edit .form-group .list-character.hide, .box.book-edit-approved .box-body .box-edit .form-group .list-character.hide {
+      display: none; }
+    .box.book-edit .box-body .box-edit .form-group .list-character span.character, .box.book-new .box-body .box-edit .form-group .list-character span.character, .box.book-edit-approved .box-body .box-edit .form-group .list-character span.character {
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 5px; }
+      .box.book-edit .box-body .box-edit .form-group .list-character span.character i.fa, .box.book-new .box-body .box-edit .form-group .list-character span.character i.fa, .box.book-edit-approved .box-body .box-edit .form-group .list-character span.character i.fa {
+        font-size: 12px;
+        cursor: pointer; }
 .box#box-book-comment .box-body .direct-chat-messages {
   min-height: 494px; }
   .box#box-book-comment .box-body .direct-chat-messages .direct-chat-text {

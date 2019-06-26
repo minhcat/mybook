@@ -1,82 +1,88 @@
-<div class="box box-primary collapse" id="box-book-new" aria-expanded="false"  data-with="#box-book-list-small">
-	<div class="box-header with-border">
-		<h3 class="box-title">Thêm truyện</h3>
+<div class="box box-primary collapse book-new" id="box-book-new" aria-expanded="false"  data-with="#box-book-list-small">
+	<form id="create-book" action="{{ url('/admin/uploader/create_book') }}" method="POST" enctype="multipart/form-data">
+		<div class="box-header with-border">
+			<h3 class="box-title">Thêm truyện</h3>
 
-		<div class="box-tools pull-right">
-			<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-			</button>
-			<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
-		</div>
-	</div>
-	<div class="box-body">
-		<div class="avatar">
-			<img src="{{ asset('image/admin/book-default.png') }}" class="img-circle" width="150px"  alt="user image">
-			<button class="btn btn-success">Thêm hình</button>
-		</div>
-		<div class="box-edit">
-			<div class="form-group">
-				<label>Tên truyện</label>
-				<input class="form-control" type="text" name="">
-			</div>
-			<div class="form-group">
-				<label>Tên khác</label>
-				<input class="form-control" type="text" name="">
-			</div>
-			<div class="form-group category">
-				<label>Thể loại</label><br>
-				<span class="label label-primary">action</span>
-				<span class="label label-primary">adult</span>
-				<span class="label label-primary">advanture</span>
-				<span class="label label-primary">anime</span>
-				<span class="label label-primary">bender</span>
-				<span class="label label-primary">comedy</span>
-				<span class="label label-primary">comic</span>
-				<span class="label label-primary">cooking</span>
-				<span class="label label-primary">cosplay</span>
-				<span class="label label-primary">demons</span>
-				<span class="label label-primary">doujinshi</span>
-				<span class="label label-primary">ecchi</span>
-				<span class="label label-primary">fanmade</span>
-				<span class="label label-primary">fantasy</span>
-				<span class="label label-primary">funny</span>
-				<span class="label label-primary">harem</span>
-				<span class="label label-primary">history</span>
-				<span class="label label-primary">magic</span>
-				<span class="label label-primary">mystery</span>
-				<span class="label label-primary">romance</span>
-				<span class="label label-primary">school life</span>
-				<span class="label label-primary">zombie</span>
-			</div>
-			<div class="form-group">
-				<label>Tác giả</label>
-				<input class="form-control" type="text" name="">
-			</div>
-			<div class="form-group">
-				<label>Minh họa</label>
-				<input class="form-control" type="text" name="">
-			</div>
-			<div class="form-group">
-				<label>Ngày xuất bản</label>
-				<input type="text" class="form-control pull-right" id="datepicker-book-new">
-			</div>
-			<div class="form-group">
-				<label>Nhân vật</label>
-				<input class="form-control" type="text" name="">
-			</div>
-			<div class="form-group">
-				<label>Nội dung</label>
-				<!-- <br> -->
-				<textarea id="book-content" name="book-content" class="book-content" rows="4"></textarea>
-			</div>
-			<div class="form-group status">
-				<label>Tình trạng</label>
-				<br>
-				<button class="btn btn-success">Đang tiến hành</button>
+			<div class="box-tools pull-right">
+				<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+				</button>
+				<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
 			</div>
 		</div>
-	</div>
-	<div class="box-footer">
-		<button class="btn btn-primary">Thêm</button>
-		<button class="btn">Hủy</button>
-	</div>
+		<div class="box-body">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<div class="avatar">
+				<img src="{{ asset('image/admin/book-default.png') }}" class="img-circle" width="150px" height="150px"  alt="user image">
+				<label class="btn btn-success">
+					Thêm hình
+					<input id="image" type="file" name="image">
+				</label>
+			</div>
+			<div class="box-edit">
+				<div class="form-group">
+					<label>Tên truyện</label>
+					<input class="form-control" type="text" name="name">
+				</div>
+				<a href="../../image/A-kun.jpg" download="A-kun.jpg">link</a>
+				<div class="form-group">
+					<label>Tên khác</label>
+					<input class="form-control" type="text" name="other_name">
+				</div>
+				<div class="form-group category">
+					<label>Thể loại</label><br>
+					@foreach ($categories as $category)
+					<span class="label label-primary {{ $category->slug }}" data-id="{{ $category->id }}">{{ $category->name }}</span>
+					@endforeach
+					<input type="hidden" name="category" value="[]">
+				</div>
+				<div class="form-group">
+					<label>Tác giả</label>
+					<select class="form-control" name="characters">
+						@foreach ($authors as $author)
+							<option value="{{ $author->id }}">{{ $author->name }}</option>
+						@endforeach
+					</select>
+				</div>
+				<div class="form-group">
+					<label>Minh họa</label>
+					<select class="form-control" name="characters">
+						@foreach ($artists as $artist)
+							<option value="{{ $artist->id }}">{{ $artist->name }}</option>
+						@endforeach
+					</select>
+				</div>
+				<div class="form-group">
+					<label>Ngày xuất bản</label>
+					<input type="text" class="form-control" id="datepicker-book-new" name="release_at">
+				</div>
+				<div class="form-group character">
+					<label>Nhân vật</label>
+					<div class="list-character hide">
+						{{-- <span class="character" data-id="1">kirito <i class="fa fa-times"></i></span>  --}}
+					</div>
+					<select class="form-control" name="characters">
+						<option disabled selected value> -- thêm nhân vật -- </option>
+						@foreach ($characters_no_book as $character)
+							<option value="{{ $character->id }}">{{ $character->name }}</option>
+						@endforeach
+					</select>
+				</div>
+				<div class="form-group">
+					<label>Nội dung</label>
+					<!-- <br> -->
+					<textarea id="book-content" name="description" class="book-content" rows="4"></textarea>
+				</div>
+				<div class="form-group status">
+					<label>Tình trạng</label>
+					<br>
+					<button type="button" class="btn btn-success">Đang tiến hành</button>
+					<input type="hidden" name="status" value="1">
+				</div>
+			</div>
+		</div>
+		<div class="box-footer">
+			<button type="submit" class="btn btn-primary">Thêm</button>
+			<button type="reset" class="btn">Hủy</button>
+		</div>
+	</form>
 </div>

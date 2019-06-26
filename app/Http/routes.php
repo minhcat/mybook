@@ -72,4 +72,11 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::get('admin', 'AdminController@admin');
 
 	Route::get('super-admin', 'AdminController@super_admin');
+
+	Route::group(['prefix' => 'uploader'], function() {
+
+		Route::post('create_book', 'AdminController@create_book');
+
+	});
+	
 });

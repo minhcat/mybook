@@ -96,14 +96,31 @@ $(document).ready(function() {
 		$('.image-group').data('files',f);
 	});
 	//choose category edit book
+	Array.prototype.remove = function() {
+		var what, a = arguments, L = a.length, ax;
+		while (L && this.length) {
+			what = a[--L];
+			while ((ax = this.indexOf(what)) !== -1) {
+				this.splice(ax, 1);
+			}
+		}
+		return this;
+	};
 	$('.form-group.category span.label').click(function() {
+		var category = JSON.parse($('.form-group.category input').val());
 		if ($(this).hasClass('label-primary')) {
 			$(this).removeClass('label-primary');
 			$(this).addClass('label-danger');
+			category.push(parseInt($(this).data('id')));
+			var json_category = JSON.stringify(category);
+			$('.form-group.category input').val(json_category);
 		}
 		else {
 			$(this).removeClass('label-danger');
 			$(this).addClass('label-primary');
+			category.remove(parseInt($(this).data('id')));
+			var json_category = JSON.stringify(category);
+			$('.form-group.category input').val(json_category);
 		}
 	});
 	//change status of book
@@ -112,12 +129,62 @@ $(document).ready(function() {
 			$(this).removeClass('btn-success');
 			$(this).addClass('btn-danger');
 			$(this).text('Đã hoàn thành');
+			$('.form-group.status input').val(0);
 		}
 		else {
 			$(this).removeClass('btn-danger');
 			$(this).addClass('btn-success');
 			$(this).text('Đang tiến hành');
+			$('.form-group.status input').val(1);
 		}
+	});
+	$('.form-group.character select').change(function() {
+		var value = parseInt($(this).val());
+		var text  = $(this).find('option:selected').text()
+		var list  = $(this).parent().find('.list-character');
+		var check = 0;
+
+		if (list.hasClass('hide'))
+			list.removeClass('hide');
+
+		list.find('span').each(function() {
+			var id = parseInt($(this).data('id'));
+			if (id == value) {
+				check = 1;
+				return false;
+			}
+		});
+		if (check == 0)
+			list.append('<span class="character" data-id="' + value + '">' + text + ' <i class="fa fa-times"></i></span> ');
+	});
+	$('.avatar input#image').change(function() {
+		if (this.files && this.files[0]) {
+			var t = this;
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+				$(t).parent().parent().find('img').attr('src',e.target.result);
+			}
+			reader.readAsDataURL(this.files[0]);
+		}
+	});
+	$('form#create-book .box-footer button.btn-primarys').click(function() {
+		console.log('well');
+		var input = document.getElementById('image');
+		console.log(input.files);
+		file = input.files[0];
+        fr = new FileReader();
+        fr.readAsDataURL(file);
+
+        var blob = new Blob([file], { type: "application/pdf" });
+
+        var objectURL = window.URL.createObjectURL(blob);
+        console.log(objectURL);
+
+        var link = document.createElement('a');
+        link.href = objectURL;
+        link.download = "hello.jpg";
+        link.click();
 	});
 	$(document).on('keypress',function(e) {
 		console.log(e.which);

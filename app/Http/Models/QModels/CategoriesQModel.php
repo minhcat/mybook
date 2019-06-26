@@ -20,4 +20,16 @@ class CategoriesQModel extends Model
 
 		return $result[0];
 	}
+
+	/**
+	 * get categories by name
+	 * @param 
+	 * @return object|boolean : all properties from `categories` table
+	 */
+	public static function get_categories_all() {
+		$result = DB::table('categories')
+				->get();
+
+		return $result;
+	}
 }

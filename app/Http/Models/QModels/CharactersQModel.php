@@ -59,4 +59,17 @@ class CharactersQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get all books
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_characters_no_book() {
+		$result = DB::table('characters')
+				->where('id_book', 0)
+				->get();
+
+		return $result;
+	}
 }

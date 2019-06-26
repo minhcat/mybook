@@ -2,13 +2,18 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\BModels\BooksBModel;
+use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\BModels\UsersBModel;
 use App\Http\Models\QModels\UsersPunishQModel;
 use App\Http\Models\QModels\UsersBanQModel;
 use App\Http\Models\QModels\CommentsQModel;
 use App\Http\Models\BModels\CommentsBModel;
+use App\Http\Models\QModels\CategoriesQModel;
+use App\Http\Models\QModels\CharactersQModel;
+use Illuminate\Support\Facades\Input;
 
 use Illuminate\Http\Request;
 
@@ -58,11 +63,19 @@ class AdminController extends Controller {
 	public function uploader()
 	{
 		$user_id = 14;
-		$user         = UsersQModel::get_user_by_id($user_id);
-		$books_upload = BooksBModel::get_books_upload($user_id);
+		$user 				= UsersQModel::get_user_by_id($user_id);
+		$books_upload 		= BooksBModel::get_books_upload($user_id);
+		$categories			= CategoriesQModel::get_categories_all();
+		$characters_no_book = CharactersQModel::get_characters_no_book();
+		$authors			= AuthorsQModel::get_authors_all();
+		$artists			= AuthorsQModel::get_artists_all();
 
-		$data['user']         = $user;
-		$data['books_upload'] = $books_upload;
+		$data['user']				= $user;
+		$data['books_upload']		= $books_upload;
+		$data['categories']			= $categories;
+		$data['characters_no_book']	= $characters_no_book;
+		$data['authors']			= $authors;
+		$data['artists']			= $artists;
 		// dd($data);
 		return view('pages.admin.uploader', $data);
 	}
@@ -95,5 +108,44 @@ class AdminController extends Controller {
 	public function super_admin()
 	{
 		return view('pages.admin.super-admin');
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function create_book(Request $request)
+	{
+		$new_book = new \stdClass;
+		$new_book->image		= $request->input('image');
+		$new_book->name			= $request->input('name');
+		$new_book->other_name	= $request->input('other_name');
+		$new_book->categories	= $request->input('category');
+		$new_book->characters	= $request->input('characters');
+		$new_book->release_at	= $request->input('release_at');
+		$new_book->description	= $request->input('description');
+		$new_book->status		= $request->input('status');
+
+		if ($request->hasFile('image')) {
+			//get extension
+			$file_extension = $request->file('image')->getClientOriginalExtension();
+			//get name
+			$file_name 		= $new_book->name . '.' . $file_extension;
+			//get folder
+			$folder_upload	= public_path('/image/books');
+			//save file
+			$request->file('image')->move($folder_upload, $file_name);
+		}
+		// dd($new_book);
+		$data['book'] = [
+			'name'			=> $new_book->name,
+			'other_name'	=> $new_book->other_name,
+			'release_at'	=> $new_book->release_at,
+			'description'	=> $new_book->description,
+			'status'		=> $new_book->status
+		];
+		$is_success = BooksCModel::insert_book($data['book']);
+		return redirect()->back();
 	}
 }
