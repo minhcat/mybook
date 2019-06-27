@@ -12,7 +12,7 @@ class Images {
 			//get extension
 			$file_extension = $request->file('image')->getClientOriginalExtension();
 			//get name
-			$file_name 		= str_slug($new_book->name,'-') . '.' . $file_extension;
+			$file_name 		= str_slug($request->input('name'),'-') . '.' . $file_extension;
 			//get folder
 			$folder_upload	= public_path('/image/books');
 			//save file

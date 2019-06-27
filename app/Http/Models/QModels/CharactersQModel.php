@@ -53,8 +53,9 @@ class CharactersQModel extends Model
 	 * @return object|boolean : all properties from `books` table
 	 */
 	public static function get_character_by_book_id($book_id) {
-		$result = DB::table('characters')
-				->where('id_book', $book_id)
+		$result = DB::table('characters as c')
+				->join('books_character as bc','c.id','=','bc.id_character')
+				->where('bc.id_book', $book_id)
 				->get();
 
 		return $result;
@@ -65,9 +66,8 @@ class CharactersQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_characters_no_book() {
+	public static function get_characters_all() {
 		$result = DB::table('characters')
-				->where('id_book', 0)
 				->get();
 
 		return $result;

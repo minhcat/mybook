@@ -64,17 +64,18 @@ class AdminController extends Controller {
 	public function uploader()
 	{
 		$user_id = 14;
+		// dd('h');
 		$user 				= UsersQModel::get_user_by_id($user_id);
 		$books_upload 		= BooksBModel::get_books_upload($user_id);
 		$categories			= CategoriesQModel::get_categories_all();
-		$characters_no_book = CharactersQModel::get_characters_no_book();
+		$characters			= CharactersQModel::get_characters_all();
 		$authors			= AuthorsQModel::get_authors_all();
 		$artists			= AuthorsQModel::get_artists_all();
 
 		$data['user']				= $user;
 		$data['books_upload']		= $books_upload;
 		$data['categories']			= $categories;
-		$data['characters_no_book']	= $characters_no_book;
+		$data['characters_no_book']	= $characters;
 		$data['authors']			= $authors;
 		$data['artists']			= $artists;
 		// dd($data);
@@ -118,6 +119,7 @@ class AdminController extends Controller {
 	 */
 	public function create_book(Request $request)
 	{
+		$user_id = 14;
 		$validate = [
 			'image' 		=> 'required|image',
 			'name'			=> 'required',
@@ -126,36 +128,29 @@ class AdminController extends Controller {
 			'keyword'		=> 'required',
 			'status'		=> 'required'
 		];
+		// dd($request->all());
 		$this->validate($request, $validate);
 
 		$new_book = new \stdClass;
 		$new_book->image		= $request->input('image');
 		$new_book->name			= $request->input('name');
 		$new_book->other_name	= $request->input('other_name');
-		$new_book->categories	= $request->input('category');
-		$new_book->characters	= $request->input('characters');
+		$new_book->categories	= json_decode($request->input('category'));
+		$new_book->characters	= json_decode($request->input('character'));
 		$new_book->release_at	= $request->input('release_at');
 		$new_book->description	= $request->input('description');
 		$new_book->keyword		= $request->input('keyword');
 		$new_book->status		= $request->input('status');
-
+		$new_book->id_author	= $request->input('author');
+		$new_book->id_artist	= $request->input('artist');
+		$new_book->id_uploader	= $user_id;
+		// dd($new_book);
 		$upload = Images::upload_image($request);
 		if ($upload == false)
-			return redirect()->back()->with('danger','lưu ảnh thất bại');
-		// dd($new_book);
+			return redirect()->back()->with('danger','Lưu ảnh thất bại');
 
-		$data['book'] = [
-			'name'			=> $new_book->name,
-			'image'			=> str_slug($new_book->name,'-'),
-			'slug'			=> str_slug($new_book->name,'_'),
-			'other_name'	=> $new_book->other_name,
-			'release_at'	=> $new_book->release_at,
-			'description'	=> $new_book->description,
-			'keyword'		=> $new_book->keyword,
-			'status'		=> $new_book->status
-		];
-		$completed = BooksCModel::insert_book($data['book']);
+		BooksBModel::create_book($new_book);
 
-		return redirect()->back();
+		return redirect()->back()->with('success','Thêm truyện thành công');
 	}
 }

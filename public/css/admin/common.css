@@ -1,10 +1,13 @@
 section.content .well {
   position: relative; }
   section.content .well.well-info {
-    background-color: #00c0ef;
+    background-color: #00c0efdd;
     color: #fff; }
   section.content .well.well-danger {
-    background-color: #dd4b39;
+    background-color: #dd4b39dd;
+    color: #fff; }
+  section.content .well.well-success {
+    background-color: #00a65add;
     color: #fff; }
   section.content .well .btn {
     position: absolute;

@@ -23,7 +23,6 @@
 					<label>Tên truyện</label>
 					<input class="form-control" type="text" name="name">
 				</div>
-				<a href="../../image/A-kun.jpg" download="A-kun.jpg">link</a>
 				<div class="form-group">
 					<label>Tên khác</label>
 					<input class="form-control" type="text" name="other_name">
@@ -37,7 +36,7 @@
 				</div>
 				<div class="form-group">
 					<label>Tác giả</label>
-					<select class="form-control" name="characters">
+					<select class="form-control" name="author">
 						@foreach ($authors as $author)
 							<option value="{{ $author->id }}">{{ $author->name }}</option>
 						@endforeach
@@ -45,7 +44,7 @@
 				</div>
 				<div class="form-group">
 					<label>Minh họa</label>
-					<select class="form-control" name="characters">
+					<select class="form-control" name="artist">
 						@foreach ($artists as $artist)
 							<option value="{{ $artist->id }}">{{ $artist->name }}</option>
 						@endforeach
@@ -59,12 +58,13 @@
 					<label>Nhân vật</label>
 					<div class="list-character hide">
 					</div>
-					<select class="form-control" name="characters">
+					<select class="form-control" name="select_character">
 						<option disabled selected value> -- thêm nhân vật -- </option>
 						@foreach ($characters_no_book as $character)
 							<option value="{{ $character->id }}">{{ $character->name }}</option>
 						@endforeach
 					</select>
+					<input type="hidden" name="character" value="[]">
 				</div>
 				<div class="form-group">
 					<label>Nội dung</label>

@@ -154,8 +154,12 @@ $(document).ready(function() {
 				return false;
 			}
 		});
-		if (check == 0)
+		if (check == 0) {
 			list.append('<span class="character" data-id="' + value + '">' + text + ' <i class="fa fa-times"></i></span> ');
+			var array_characters = JSON.parse($(this).parent().find('input').val());
+			array_characters.push(value);
+			$(this).parent().find('input').val(JSON.stringify(array_characters));
+		}
 	});
 	$('.avatar input#image').change(function() {
 		if (this.files && this.files[0]) {
@@ -168,23 +172,8 @@ $(document).ready(function() {
 			reader.readAsDataURL(this.files[0]);
 		}
 	});
-	$('form#create-book .box-footer button.btn-primarys').click(function() {
-		console.log('well');
-		var input = document.getElementById('image');
-		console.log(input.files);
-		file = input.files[0];
-        fr = new FileReader();
-        fr.readAsDataURL(file);
+	$('form#create-book .box-footer button.btn-primary').click(function() {
 
-        var blob = new Blob([file], { type: "application/pdf" });
-
-        var objectURL = window.URL.createObjectURL(blob);
-        console.log(objectURL);
-
-        var link = document.createElement('a');
-        link.href = objectURL;
-        link.download = "hello.jpg";
-        link.click();
 	});
 	$(document).on('keypress',function(e) {
 		console.log(e.which);

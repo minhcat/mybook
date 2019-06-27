@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\Http\Helpers\Constants;
 use App\Http\Models\QModels\BooksQModel;
+use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\QModels\BooksCategoryQModel;
+use App\Http\Models\CModels\BooksCategoryCModel;
+use App\Http\Models\CModels\BooksCharacterCModel;
 use App\Http\Models\QModels\BooksFollowAdminQModel;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\ChapsQModel;
@@ -335,5 +338,46 @@ class BooksBModel extends Model
 		}
 
 		return $books;
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function create_book($new_book) {
+		$book = [
+			'name'			=> $new_book->name,
+			'image'			=> str_slug($new_book->name,'-'),
+			'slug'			=> str_slug($new_book->name,'_'),
+			'other_name'	=> $new_book->other_name,
+			'release_at'	=> $new_book->release_at,
+			'id_author'		=> $new_book->id_author,
+			'id_artist'		=> $new_book->id_artist,
+			'id_uploader'	=> $new_book->id_uploader,
+			'description'	=> $new_book->description,
+			'keyword'		=> $new_book->keyword,
+			'status'		=> $new_book->status
+		];
+		$id_book = BooksCModel::insert_book($book);
+
+		$categories = [];
+
+		foreach ($new_book->categories as $key => $category) {
+			$categories[$key] = [
+				'id_book'		=> $id_book,
+				'id_category'	=> $category
+			];
+			BooksCategoryCModel::insert_book_category($categories[$key]);
+		}
+
+		$characters = [];
+		foreach ($new_book->characters as $key => $character) {
+			$characters[$key] = [
+				'id_book'		=> $id_book,
+				'id_character'	=> $character
+			];
+			BooksCharacterCModel::insert_book_character($characters[$key]);
+		}
 	}
 }
