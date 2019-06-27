@@ -124,9 +124,6 @@ class AdminController extends Controller {
 			'image' 		=> 'required|image',
 			'name'			=> 'required',
 			'category'		=> 'required',
-			'description'	=> 'required',
-			'keyword'		=> 'required',
-			'status'		=> 'required'
 		];
 		// dd($request->all());
 		$this->validate($request, $validate);

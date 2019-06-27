@@ -17,26 +17,30 @@
 					Thêm hình
 					<input id="image" type="file" name="image">
 				</label>
+				<p class="error hide">Bạn chưa up hình</p>
 			</div>
 			<div class="box-edit">
-				<div class="form-group">
-					<label>Tên truyện</label>
+				<div class="form-group name">
+					<label>Tên truyện (*)</label>
 					<input class="form-control" type="text" name="name">
+					<p class="error hide">Bạn chưa nhập tên truyện</p>
 				</div>
-				<div class="form-group">
+				<div class="form-group other_name">
 					<label>Tên khác</label>
 					<input class="form-control" type="text" name="other_name">
 				</div>
 				<div class="form-group category">
-					<label>Thể loại</label><br>
+					<label>Thể loại (*)</label><br>
 					@foreach ($categories as $category)
 					<span class="label label-primary {{ $category->slug }}" data-id="{{ $category->id }}">{{ $category->name }}</span>
 					@endforeach
 					<input type="hidden" name="category" value="[]">
+					<p class="error hide">Bạn chưa chọn thể loại</p>
 				</div>
-				<div class="form-group">
+				<div class="form-group author">
 					<label>Tác giả</label>
 					<select class="form-control" name="author">
+						<option disabled selected value> -- thêm tác giả -- </option>
 						@foreach ($authors as $author)
 							<option value="{{ $author->id }}">{{ $author->name }}</option>
 						@endforeach
@@ -45,14 +49,11 @@
 				<div class="form-group">
 					<label>Minh họa</label>
 					<select class="form-control" name="artist">
+						<option disabled selected value> -- thêm người minh họa -- </option>
 						@foreach ($artists as $artist)
 							<option value="{{ $artist->id }}">{{ $artist->name }}</option>
 						@endforeach
 					</select>
-				</div>
-				<div class="form-group">
-					<label>Ngày xuất bản</label>
-					<input type="text" class="form-control" id="datepicker-book-new" name="release_at">
 				</div>
 				<div class="form-group character">
 					<label>Nhân vật</label>
@@ -67,6 +68,10 @@
 					<input type="hidden" name="character" value="[]">
 				</div>
 				<div class="form-group">
+					<label>Ngày xuất bản</label>
+					<input type="text" class="form-control" id="datepicker-book-new" name="release_at">
+				</div>
+				<div class="form-group description">
 					<label>Nội dung</label>
 					<!-- <br> -->
 					<textarea id="book-content" name="description" class="book-content" rows="4"></textarea>
@@ -84,7 +89,7 @@
 			</div>
 		</div>
 		<div class="box-footer">
-			<button type="submit" class="btn btn-primary">Thêm</button>
+			<button type="button" class="btn btn-primary">Thêm</button>
 			<button type="reset" class="btn">Hủy</button>
 		</div>
 	</form>

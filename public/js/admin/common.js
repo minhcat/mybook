@@ -173,6 +173,41 @@ $(document).ready(function() {
 		}
 	});
 	$('form#create-book .box-footer button.btn-primary').click(function() {
+		var form = $('form#create-book');
+		var check = true;
+		var image = form.find('.avatar input').val();
+		//check upload image
+		if (image == '') {
+			form.find('.avatar p.error.hide').removeClass('hide');
+			check = false;
+		} else {
+			var p = form.find('.avatar p.error');
+			if (!p.hasClass('hide'))
+				form.find('.avatar p.error').addClass('hide');
+		}
+		//check enter name
+		var name = form.find('.form-group.name input').val();
+		if (name == '') {
+			form.find('.form-group.name p.error.hide').removeClass('hide');
+			check = false;
+		} else {
+			var p = form.find('.form-group.name p.error');
+			if (!p.hasClass('hide'))
+				form.find('.form-group.name p.error').addClass('hide');
+		}
+		//check select category
+		var cate = form.find('.form-group.category input').val();
+		if (cate == '[]') {
+			form.find('.form-group.category p.error').removeClass('hide');
+			check = false;
+		} else {
+			var p = form.find('.form-group.category p.error');
+			if (!p.hasClass('hide'))
+				form.find('.form-group.category p.error').addClass('hide');
+		}
+		if (check == true) {
+			form.submit();
+		}
 
 	});
 	$(document).on('keypress',function(e) {
