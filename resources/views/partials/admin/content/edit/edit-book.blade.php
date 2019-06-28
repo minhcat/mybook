@@ -10,60 +10,52 @@
 		</div>
 	</div>
 	<div class="box-body">
+		<input type="hidden" name="id_book" value="{{ $book->id }}">
 		<div class="avatar">
 			<img src="{{ asset('image/books/'.$book->image.'.jpg') }}" class="img-circle" width="150px"  alt="user image">
-			<button class="btn btn-success">Thay đổi hình</button>
+			<label class="btn btn-success">
+				Thêm hình
+				<input id="image" type="file" name="image">
+			</label>
 		</div>
 		<div class="box-edit">
 			<div class="form-group">
 				<label>Tên khác</label>
-				<input class="form-control" type="text" name="" value="{{ $book->other_name }}">
+				<input class="form-control" type="text" name="other_name" value="{{ $book->other_name }}">
 			</div>
 			<div class="form-group category">
 				<label>Thể loại</label><br>
-				<span class="label label-danger  action">action</span>
-				<span class="label label-primary adult">adult</span>
-				<span class="label label-primary advanture">advanture</span>
-				<span class="label label-primary anime">anime</span>
-				<span class="label label-primary bender">bender</span>
-				<span class="label label-danger  comedy">comedy</span>
-				<span class="label label-primary comic">comic</span>
-				<span class="label label-primary cooking">cooking</span>
-				<span class="label label-primary cosplay">cosplay</span>
-				<span class="label label-primary demons">demons</span>
-				<span class="label label-primary doujinshi">doujinshi</span>
-				<span class="label label-primary ecchi">ecchi</span>
-				<span class="label label-primary fanmade">fanmade</span>
-				<span class="label label-danger  fantasy">fantasy</span>
-				<span class="label label-danger  funny">funny</span>
-				<span class="label label-primary harem">harem</span>
-				<span class="label label-primary history">history</span>
-				<span class="label label-primary magic">magic</span>
-				<span class="label label-primary mystery">mystery</span>
-				<span class="label label-primary romance">romance</span>
-				<span class="label label-primary school">school life</span>
-				<span class="label label-primary zombie">zombie</span>
+				@foreach ($categories as $category)
+				<span class="label label-primary {{ $category->slug }}" data-id="{{ $category->id }}">{{ $category->name }}</span>
+				@endforeach
+				<input type="hidden" name="category" value="[]">
 			</div>
 			<div class="form-group">
 				<label>Tác giả</label>
-				<input class="form-control" type="text" name="" value="{{ $book->author }}">
+				<input class="form-control" type="text" name="author" value="{{ $book->author }}">
 			</div>
 			<div class="form-group">
 				<label>Minh họa</label>
-				<input class="form-control" type="text" name="" value="{{ $book->artist }}">
+				<input class="form-control" type="text" name="artist" value="{{ $book->artist }}">
 			</div>
 			<div class="form-group">
 				<label>Ngày xuất bản</label>
-				<input type="text" class="form-control pull-right" id="datepicker-book-edit" value="{{ date_format(date_create($book->create_at), 'd/m/Y') }}">
+				<input type="text" class="form-control" id="datepicker-book-edit" value="{{ date_format(date_create($book->create_at), 'd/m/Y') }}">
 			</div>
 			<div class="form-group">
 				<label>Nhân vật</label>
-				<p>
+				<div class="list-character {{ (empty($book->characters)) ? 'hide' : '' }}">
 					@foreach ($book->characters as $character)
-						{{ $character }}, 
+						<span class="character" data-id="{{ $character->id }}">{{ $character->name }} <i class="fa fa-times"></i></span> 
 					@endforeach
-				</p>
-				<input class="form-control" type="text" name="" placeholder="thêm nhân vật">
+				</div>
+				<select class="form-control" name="select_character">
+					<option disabled selected value> -- thêm nhân vật -- </option>
+					@foreach ($characters as $character)
+						<option value="{{ $character->id }}">{{ $character->name }}</option>
+					@endforeach
+				</select>
+				<input class="form-control" type="hidden" name="" val="[@foreach($book->characters as $key => $character) @if ($key < count($book->characters) - 1){{ $character->id }},@else {{ $character->id }} @endif @endforeach]" placeholder="thêm nhân vật">
 			</div>
 			<div class="form-group">
 				<label>Nội dung</label>
@@ -75,8 +67,10 @@
 				<br>
 				@if ($book->status == 0)
 				<button class="btn btn-danger">Đã hoàn thành</button>
+				<input type="hidden" name="status" value="0">
 				@else
 				<button class="btn btn-success">Đang tiến hành</button>
+				<input type="hidden" name="status" value="1">
 				@endif
 			</div>
 		</div>

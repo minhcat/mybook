@@ -61,7 +61,7 @@
 					</div>
 					<select class="form-control" name="select_character">
 						<option disabled selected value> -- thêm nhân vật -- </option>
-						@foreach ($characters_no_book as $character)
+						@foreach ($characters as $character)
 							<option value="{{ $character->id }}">{{ $character->name }}</option>
 						@endforeach
 					</select>

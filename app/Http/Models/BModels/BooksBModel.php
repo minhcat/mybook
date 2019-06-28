@@ -297,7 +297,7 @@ class BooksBModel extends Model
 			}
 			//shorted description
 			if (strlen($book->description) >= 152)
-				$book->description = mb_substr($book->description, 0, 150).'...';
+				$book->description_short = mb_substr($book->description, 0, 150).'...';
 			//get translator
 			$book->transes = [];
 			$transes_id = ChapsQModel::get_trans_id_by_book_id($book->id);
@@ -309,7 +309,9 @@ class BooksBModel extends Model
 			$book->characters = [];
 			$characters = CharactersQModel::get_character_by_book_id($book->id);
 			foreach ($characters as $key => $character) {
-				$book->characters[$key] = $character->name;
+				$book->characters[$key]       = new \stdClass;
+				$book->characters[$key]->id   = $character->id;
+				$book->characters[$key]->name = $character->name;
 			}
 			//get author, artist
 			$author = AuthorsQModel::get_author_by_id($book->id_author);

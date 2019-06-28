@@ -12,31 +12,31 @@
 	<div class="box-body">
 		<img src="{{ asset('image/books/'.$book->image.'.jpg') }}" class="img-circle" width="150px"  alt="user image">
 		<div class="box-info">
-			<p>Tên khác: {{ $book->other_name }}</p>
-			<p>Đánh giá: {{ $book->rate_point }}, lượt đánh giá: {{ $book->rate }}</p>
-			<p>Yêu thích: {{ $book->like }}, bình luận: {{ $book->comment }}, theo dõi: {{ $book->follow }}</p>
-			<p>Thể loại: 
+			<p><strong>Tên khác:</strong> {{ $book->other_name }}</p>
+			<p><strong>Đánh giá:</strong> {{ $book->rate_point }}, lượt đánh giá: {{ $book->rate }}</p>
+			<p><strong>Yêu thích:</strong> {{ $book->like }}, bình luận: {{ $book->comment }}, theo dõi: {{ $book->follow }}</p>
+			<p><strong>Thể loại:</strong> 
 				@foreach ($book->categories as $category)
 					{{ $category }}
 				@endforeach
 			</p>
-			<p>Tác giả: {{ $book->author }}</p>
-			<p>Minh họa: {{ $book->artist }}</p>
-			<p>Nhóm dịch: 
+			<p><strong>Tác giả:</strong> {{ $book->author }}</p>
+			<p><strong>Minh họa:</strong> {{ $book->artist }}</p>
+			<p><strong>Nhóm dịch:</strong> 
 				@foreach ($book->transes as $trans)
 					{{ $trans }}
 				@endforeach
 			</p>
-			<p>Ngày xuất bản:{{ date_format(date_create($book->release_at), 'd/m/Y') }}</p>
-			<p>Ngày đăng: {{ date_format(date_create($book->create_at), 'd/m/Y') }}</p>
-			<p>Tình trạng: {{ ($book->status == 1) ? 'Đang tiến hành' : 'Đã hoàn thành' }}</p>
-			<p>Nhân vật: 
+			<p><strong>Ngày xuất bản:</strong>{{ date_format(date_create($book->release_at), 'd/m/Y') }}</p>
+			<p><strong>Ngày đăng:</strong> {{ date_format(date_create($book->create_at), 'd/m/Y') }}</p>
+			<p><strong>Tình trạng:</strong> {{ ($book->status == 1) ? 'Đang tiến hành' : 'Đã hoàn thành' }}</p>
+			<p><strong>Nhân vật:</strong> 
 				@foreach ($book->characters as $character)
-					{{ $character }}
+					{{ $character->name }}
 				@endforeach
 			</p>
-			<p>Nội dung: {{ $book->description }}</p>
-			<p>Từ khóa: {{ $book->keyword }}</p>
+			<p><strong>Nội dung:</strong> {{ $book->description }}</p>
+			<p><strong>Từ khóa:</strong> {{ $book->keyword }}</p>
 		</div>
 	</div>
 	<div class="box-footer">

@@ -75,7 +75,7 @@ class AdminController extends Controller {
 		$data['user']				= $user;
 		$data['books_upload']		= $books_upload;
 		$data['categories']			= $categories;
-		$data['characters_no_book']	= $characters;
+		$data['characters']			= $characters;
 		$data['authors']			= $authors;
 		$data['artists']			= $artists;
 		// dd($data);

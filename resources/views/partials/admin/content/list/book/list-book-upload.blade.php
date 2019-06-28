@@ -33,7 +33,7 @@
 							<span class="label label-primary">{{ $category }}</span>
 						@endforeach
 					</td>
-					<td>{{ $book->description }}</td>
+					<td>{{ $book->description_short }}</td>
 					<td>{{ $book->keyword }}</td>
 					<td>
 						<button class="btn btn-success box-link" data-target="#box-book-edit" data-with="#box-book-list-small">Sửa</button>
@@ -41,66 +41,6 @@
 					</td>
 				</tr>
 				@endforeach
-				<tr>
-					<td>2</td>
-					<td>Kakegurui</td>
-					<td>11-7-2014</td>
-					<td><span class="label label-primary">Comedy</span> <span class="label label-primary">Action</span> <span class="label label-primary">Fantasy</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td>Kakegurui, Yumeko</td>
-					<td>
-						<button class="btn btn-success box-link" data-target="#box-book-edit" data-with="#box-book-list-small">Sửa</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-book">Xóa</button>
-					</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>Konosuba</td>
-					<td>11-7-2014</td>
-					<td><span class="label label-primary">Comedy</span> <span class="label label-primary">Action</span> <span class="label label-primary">Fantasy</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td>Konosuba, Kazuma</td>
-					<td>
-						<button class="btn btn-success box-link" data-target="#box-book-edit" data-with="#box-book-list-small">Sửa</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-book">Xóa</button>
-					</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>Overlord</td>
-					<td>11-7-2014</td>
-					<td><span class="label label-primary">Comedy</span> <span class="label label-primary">Action</span> <span class="label label-primary">Fantasy</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td>Overlord, Ainz Ooal Gown</td>
-					<td>
-						<button class="btn btn-success box-link" data-target="#box-book-edit" data-with="#box-book-list-small">Sửa</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-book">Xóa</button>
-					</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>Date A Live</td>
-					<td>11-7-2014</td>
-					<td><span class="label label-primary">Comedy</span> <span class="label label-primary">Action</span> <span class="label label-primary">Fantasy</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td>Date A Live, Shidou</td>
-					<td>
-						<button class="btn btn-success box-link" data-target="#box-book-edit" data-with="#box-book-list-small">Sửa</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-book">Xóa</button>
-					</td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td>Sword Art Online</td>
-					<td>11-7-2014</td>
-					<td><span class="label label-primary">Comedy</span> <span class="label label-primary">Action</span> <span class="label label-primary">Fantasy</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td>Sword Art Online, Kirito</td>
-					<td>
-						<button class="btn btn-success box-link" data-target="#box-book-edit" data-with="#box-book-list-small">Sửa</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-book">Xóa</button>
-					</td>
-				</tr>
 			</tbody>
 		</table>
 	</div>
