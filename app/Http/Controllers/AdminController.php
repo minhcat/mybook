@@ -64,7 +64,6 @@ class AdminController extends Controller {
 	public function uploader()
 	{
 		$user_id = 14;
-		// dd('h');
 		$user 				= UsersQModel::get_user_by_id($user_id);
 		$books_upload 		= BooksBModel::get_books_upload($user_id);
 		$categories			= CategoriesQModel::get_categories_all();

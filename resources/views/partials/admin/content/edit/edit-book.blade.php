@@ -1,5 +1,6 @@
 @foreach ($books_upload as $key => $book)
 <div class="box box-primary collapse book-edit" id="box-book-edit-{{ $key }}" aria-expanded="false"  data-with="#box-book-list-small">
+	<form id="update-book" action="{{ url('/admin/uploader/update_book/'.$book->id) }}" method="POST" enctype="multipart/form-data">
 	<div class="box-header with-border">
 		<h3 class="box-title">{{ $book->name }} - Chỉnh Sửa</h3>
 
@@ -12,7 +13,7 @@
 	<div class="box-body">
 		<input type="hidden" name="id_book" value="{{ $book->id }}">
 		<div class="avatar">
-			<img src="{{ asset('image/books/'.$book->image.'.jpg') }}" class="img-circle" width="150px"  alt="user image">
+			<img src="{{ asset('image/books/'.$book->image.'.jpg') }}" class="img-circle" width="150px" alt="user image">
 			<label class="btn btn-success">
 				Thêm hình
 				<input id="image" type="file" name="image">
@@ -26,21 +27,35 @@
 			<div class="form-group category">
 				<label>Thể loại</label><br>
 				@foreach ($categories as $category)
-				<span class="label label-primary {{ $category->slug }}" data-id="{{ $category->id }}">{{ $category->name }}</span>
+					<?php $check_cate = true; ?>
+					@foreach ($book->categories as $book_category)
+						@if ($book_category == $category->name)
+							<?php $check_cate = false; ?>
+							<span class="label label-danger {{ $category->slug }}" data-id="{{ $category->id }}">{{ $category->name }}</span>
+							<?php break;?>
+						@endif
+					@endforeach
+					@if ($check_cate == true)
+						<span class="label label-primary {{ $category->slug }}" data-id="{{ $category->id }}">{{ $category->name }}</span>
+					@endif
 				@endforeach
 				<input type="hidden" name="category" value="[]">
 			</div>
 			<div class="form-group">
 				<label>Tác giả</label>
-				<input class="form-control" type="text" name="author" value="{{ $book->author }}">
+				<select class="form-control" name="author">
+					@foreach ($authors as $author)
+						<option value="{{ $author->id }}">{{ $author->name }}</option>
+					@endforeach
+				</select>
 			</div>
 			<div class="form-group">
 				<label>Minh họa</label>
-				<input class="form-control" type="text" name="artist" value="{{ $book->artist }}">
-			</div>
-			<div class="form-group">
-				<label>Ngày xuất bản</label>
-				<input type="text" class="form-control" id="datepicker-book-edit" value="{{ date_format(date_create($book->create_at), 'd/m/Y') }}">
+				<select class="form-control" name="artist">
+					@foreach ($artists as $artist)
+						<option value="{{ $artist->id }}">{{ $artist->name }}</option>
+					@endforeach
+				</select>
 			</div>
 			<div class="form-group">
 				<label>Nhân vật</label>
@@ -56,6 +71,10 @@
 					@endforeach
 				</select>
 				<input class="form-control" type="hidden" name="" val="[@foreach($book->characters as $key => $character) @if ($key < count($book->characters) - 1){{ $character->id }},@else {{ $character->id }} @endif @endforeach]" placeholder="thêm nhân vật">
+			</div>
+			<div class="form-group">
+				<label>Ngày xuất bản</label>
+				<input type="text" class="form-control" id="datepicker-book-edit" value="{{ date_format(date_create($book->create_at), 'd/m/Y') }}">
 			</div>
 			<div class="form-group">
 				<label>Nội dung</label>
@@ -79,5 +98,6 @@
 		<button class="btn btn-primary box-link" data-target="#box-book-detail-{{ $key }}" data-unclose="#box-book-list-small">Thay đổi</button>
 		<button class="btn box-link" data-target="#box-book-detail-{{ $key }}" data-unclose="#box-book-list-small">Hủy</button>
 	</div>
+</form>
 </div>
 @endforeach
