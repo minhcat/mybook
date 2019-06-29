@@ -11,9 +11,9 @@
 		</div>
 	</div>
 	<div class="box-body">
-		<input type="hidden" name="id_book" value="{{ $book->id }}">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<div class="avatar">
-			<img src="{{ asset('image/books/'.$book->image.'.jpg') }}" class="img-circle" width="150px" alt="user image">
+			<img src="{{ asset('image/books/'.$book->image.'.jpg') }}" class="img-circle" width="150px" height="150px" alt="user image">
 			<label class="btn btn-success">
 				Thêm hình
 				<input id="image" type="file" name="image">
@@ -57,7 +57,7 @@
 					@endforeach
 				</select>
 			</div>
-			<div class="form-group">
+			<div class="form-group character">
 				<label>Nhân vật</label>
 				<div class="list-character {{ (empty($book->characters)) ? 'hide' : '' }}">
 					@foreach ($book->characters as $character)
@@ -70,16 +70,16 @@
 						<option value="{{ $character->id }}">{{ $character->name }}</option>
 					@endforeach
 				</select>
-				<input class="form-control" type="hidden" name="" val="[@foreach($book->characters as $key => $character) @if ($key < count($book->characters) - 1){{ $character->id }},@else {{ $character->id }} @endif @endforeach]" placeholder="thêm nhân vật">
+				<input class="form-control" type="hidden" name="character" value="[@foreach($book->characters as $key => $character) @if ($key < count($book->characters) - 1){{ $character->id }},@else {{ $character->id }} @endif @endforeach]" placeholder="thêm nhân vật">
 			</div>
 			<div class="form-group">
 				<label>Ngày xuất bản</label>
-				<input type="text" class="form-control" id="datepicker-book-edit" value="{{ date_format(date_create($book->create_at), 'd/m/Y') }}">
+				<input type="text" name="release_at" class="form-control" id="datepicker-book-edit" value="{{ date_format(date_create($book->create_at), 'd/m/Y') }}">
 			</div>
-			<div class="form-group">
+			<div class="form-group description">
 				<label>Nội dung</label>
 				<!-- <br> -->
-				<textarea class="form-control" name="book-content-edit">{{ $book->description }}</textarea>
+				<textarea class="form-control" name="book-content-edit" rows="4">{{ htmlspecialchars($book->description) }}</textarea>
 			</div>
 			<div class="form-group status">
 				<label>Tình trạng</label>

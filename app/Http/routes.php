@@ -77,6 +77,8 @@ Route::group(['prefix' => 'admin'], function() {
 
 		Route::post('create_book', 'AdminController@create_book');
 
+		Route::post('update_book/{id_book}', 'AdminController@update_book');
+
 	});
 	
 });

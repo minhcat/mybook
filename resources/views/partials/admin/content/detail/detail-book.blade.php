@@ -35,7 +35,7 @@
 					{{ $character->name }}
 				@endforeach
 			</p>
-			<p><strong>Nội dung:</strong> {{ $book->description }}</p>
+			<p><strong>Nội dung:</strong> {!! $book->description !!}</p>
 			<p><strong>Từ khóa:</strong> {{ $book->keyword }}</p>
 		</div>
 	</div>

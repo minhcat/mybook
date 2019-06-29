@@ -34,9 +34,9 @@ class BooksCategoryCModel extends Model
 	 * @param array data
 	 * @return boolean
 	 */
-	public static function update_book_category($id, $data) {
+	public static function delete_book_category_by_book_id($id_book) {
 		return DB::table('books_category')
-				->where('id', '=', $id)
-				->update($data);
+				->where('id_book', '=', $id_book)
+				->delete();
 	}
 }

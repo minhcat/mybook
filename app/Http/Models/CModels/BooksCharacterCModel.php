@@ -34,9 +34,9 @@ class BooksCharacterCModel extends Model
 	 * @param array data
 	 * @return boolean
 	 */
-	public static function update_book_character($id, $data) {
+	public static function delete_book_character_by_book_id($id_book) {
 		return DB::table('books_character')
-				->where('id', '=', $id)
-				->update($data);
+				->where('id_book', '=', $id_book)
+				->delete();
 	}
 }

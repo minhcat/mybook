@@ -133,6 +133,7 @@ Uploader
 	<script src="{{ asset('js/admin/upload.js') }}"></script>
 	<script src="{{ asset('js/admin/jquery.dataTables.js') }}"></script>
 	<script src="{{ asset('js/admin/dataTables.bootstrap.js') }}"></script>
+	<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -155,6 +156,7 @@ Uploader
 				]
 			});
 			CKEDITOR.replace('book-content-edit', {
+				language: 'vi',
 				toolbar: [
 					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
 					[ 'FontSize', 'TextColor', 'BGColor' ]

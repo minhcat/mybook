@@ -124,7 +124,7 @@ class AdminController extends Controller {
 			'name'			=> 'required',
 			'category'		=> 'required',
 		];
-		// dd($request->all());
+		dd($request->all());
 		$this->validate($request, $validate);
 
 		$new_book = new \stdClass;
@@ -148,5 +148,40 @@ class AdminController extends Controller {
 		BooksBModel::create_book($new_book);
 
 		return redirect()->back()->with('success','Thêm truyện thành công');
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function update_book($id_book, Request $request)
+	{
+		$user_id = 14;
+		$validate = [
+			'image' 		=> 'image',
+			'category'		=> 'required',
+		];
+		// dd($request->all());
+		$this->validate($request, $validate);
+		
+		$book = new \stdClass;
+		$book->id			= $id_book;
+		$book->other_name	= $request->input('other_name');
+		$book->image		= $request->input('image');
+		$book->categories	= json_decode($request->input('category'));
+		$book->characters	= json_decode($request->input('character'));
+		$book->release_at	= $request->input('release_at');
+		$book->description	= $request->input('book-content-edit');
+		$book->status		= $request->input('status');
+		$book->id_author	= $request->input('author');
+		$book->id_artist	= $request->input('artist');
+		$book->id_uploader	= $user_id;
+		// dd($book);
+		Images::upload_image($request);
+
+		BooksBModel::update_book($book);
+
+		return redirect()->back()->with('success','Cập nhật truyện thành công');
 	}
 }

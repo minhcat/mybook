@@ -363,8 +363,8 @@ class BooksBModel extends Model
 		];
 		$id_book = BooksCModel::insert_book($book);
 
+		//create book category
 		$categories = [];
-
 		foreach ($new_book->categories as $key => $category) {
 			$categories[$key] = [
 				'id_book'		=> $id_book,
@@ -373,10 +373,53 @@ class BooksBModel extends Model
 			BooksCategoryCModel::insert_book_category($categories[$key]);
 		}
 
+		//create book character
 		$characters = [];
 		foreach ($new_book->characters as $key => $character) {
 			$characters[$key] = [
 				'id_book'		=> $id_book,
+				'id_character'	=> $character
+			];
+			BooksCharacterCModel::insert_book_character($characters[$key]);
+		}
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function update_book($book) {
+		$id = $book->id;
+		$data_book = [
+			'other_name'	=> $book->other_name,
+			'release_at'	=> $book->release_at,
+			'description'	=> $book->description,
+			'status'		=> $book->status,
+			'id_author'		=> $book->id_author,
+			'id_artist'		=> $book->id_artist,
+			'id_uploader'	=> $book->id_uploader
+		];
+		//update book
+		BooksCModel::update_book($id, $data_book);
+
+		//update book category
+		BooksCategoryCModel::delete_book_category_by_book_id($id);
+		$categories = [];
+		foreach ($book->categories as $key => $category) {
+			$categories[$key] = [
+				'id_book'		=> $id,
+				'id_category'	=> $category
+			];
+			BooksCategoryCModel::insert_book_category($categories[$key]);
+		}
+
+		//update book character
+		BooksCharacterCModel::delete_book_character_by_book_id($id);
+		$characters = [];
+		foreach ($book->characters as $key => $character) {
+			$characters[$key] = [
+				'id_book'		=> $id,
 				'id_character'	=> $character
 			];
 			BooksCharacterCModel::insert_book_character($characters[$key]);
