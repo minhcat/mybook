@@ -16,15 +16,23 @@
 			<p><strong>Đánh giá:</strong> {{ $book->rate_point }}, lượt đánh giá: {{ $book->rate }}</p>
 			<p><strong>Yêu thích:</strong> {{ $book->like }}, bình luận: {{ $book->comment }}, theo dõi: {{ $book->follow }}</p>
 			<p><strong>Thể loại:</strong> 
-				@foreach ($book->categories as $category)
+				@foreach ($book->categories as $c_key => $category)
+					@if ($c_key < count($book->categories) - 1)
+					{{ $category }},
+					@else
 					{{ $category }}
+					@endif
 				@endforeach
 			</p>
 			<p><strong>Tác giả:</strong> {{ $book->author }}</p>
 			<p><strong>Minh họa:</strong> {{ $book->artist }}</p>
 			<p><strong>Nhóm dịch:</strong> 
-				@foreach ($book->transes as $trans)
+				@foreach ($book->transes as $t_key => $trans)
+					@if ($t_key < count($book->transes) - 1)
+					{{ $trans }},
+					@else
 					{{ $trans }}
+					@endif
 				@endforeach
 			</p>
 			<p><strong>Ngày xuất bản:</strong>{{ date_format(date_create($book->release_at), 'd/m/Y') }}</p>
@@ -42,7 +50,7 @@
 	<div class="box-footer">
 		<button class="btn btn-primary box-link" data-target="#box-chap-list-{{ $key }}" data-unclose="#box-book-list-small">Danh sách chap</button>
 		<button class="btn bg-purple box-link" data-target="#box-chap-new" data-unclose="#box-book-list-small">Thêm chap mới</button>
-		<button class="btn btn-info" data-toggle="modal" data-target="#modal-keyword-new">Thêm từ khóa</button>
+		<button class="btn btn-info" data-toggle="modal" data-target="#modal-keyword-new-{{ $key }}">Thêm từ khóa</button>
 		<button class="btn btn-success box-link" data-target="#box-book-edit-{{ $key }}" data-unclose="#box-book-list-small">Chỉnh sửa</button>
 		<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-book">Xóa</button>
 	</div>

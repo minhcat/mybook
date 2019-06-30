@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\CModels\BooksCModel;
+use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\BModels\UsersBModel;
 use App\Http\Models\QModels\UsersPunishQModel;
@@ -183,5 +184,20 @@ class AdminController extends Controller {
 		BooksBModel::update_book($book);
 
 		return redirect()->back()->with('success','Cập nhật truyện thành công');
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function add_keyword($id_book, Request $request) {
+		$keyword = $request->input('keyword');
+		$book = BooksQModel::get_book_by_id($id_book);
+
+		$data = ['keyword' => $book->keyword.', '.$keyword];
+		BooksCModel::update_book($id_book, $data);
+
+		return redirect()->back()->with('success','Thêm từ khóa thành công');
 	}
 }

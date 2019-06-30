@@ -151,6 +151,11 @@ $(document).ready(function() {
 		}
 
 	});
+	//submit add keyword
+	$('form#add_keyword button.btn-primary').click(function() {
+		$(this).parents('.modal').modal('hide');
+		$(this).parents('.form#add_keyword').submit();
+	});
 });
 //Comment Chart
 var cmd_chart_data = {
