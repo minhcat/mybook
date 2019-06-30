@@ -149,6 +149,13 @@ Uploader
 			$('.table-chap').DataTable({
 				"lengthMenu": [5, 10, 25, 50],
 			});
+			$('#table-book-upload-small').DataTable({
+				"lengthMenu": [8],
+				"lengthChange": false,
+				"searching": false,
+				"pagingType": "numbers",
+				"info": false,
+			});
 			CKEDITOR.replace('book-content', {
 				toolbar: [
 					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
