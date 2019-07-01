@@ -15,9 +15,9 @@
 				<tr>
 					<th>Stt</th>
 					<th>Tên truyện</th>
-					<th>Ngày đăng</th>
 					<th>Thể loại</th>
-					<th>Giới thiệu</th>
+					<th>Ngày đăng</th>
+					<th>Ngày xuất bản</th>
 					<th>Từ khóa</th>
 					<th class="fixed-115">Tùy chọn</th>
 				</tr>
@@ -27,17 +27,17 @@
 				<tr>
 					<td>{{ $key+1 }}</td>
 					<td>{{ $book->name }}</td>
-					<td>{{ date_format(date_create($book->create_at),'d-m-Y') }}</td>
 					<td>
 						@foreach ($book->categories as $category)
 							<span class="label label-primary">{{ $category }}</span>
 						@endforeach
 					</td>
-					<td>{{ $book->description_short }}</td>
+					<td>{{ date_format(date_create($book->create_at),'d-m-Y') }}</td>
+					<td>{{ date_format(date_create($book->release_at),'d-m-Y') }}</td>
 					<td>{{ $book->keyword }}</td>
 					<td>
-						<button class="btn btn-success box-link" data-target="#box-book-edit" data-with="#box-book-list-small">Sửa</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-book">Xóa</button>
+						<button class="btn btn-success box-link" data-target="#box-book-edit-{{ $key }}" data-with="#box-book-list-small">Sửa</button>
+						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-book-{{ $key }}">Xóa</button>
 					</td>
 				</tr>
 				@endforeach

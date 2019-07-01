@@ -99,7 +99,10 @@ class AdminController extends Controller {
 	 */
 	public function admin()
 	{
-		return view('pages.admin.admin');
+		$user_id = 14;
+		$user = UsersQModel::get_user_by_id($user_id);
+		$data['user'] = $user;
+		return view('pages.admin.admin', $data);
 	}
 
 	/**
@@ -109,7 +112,21 @@ class AdminController extends Controller {
 	 */
 	public function super_admin()
 	{
-		return view('pages.admin.super-admin');
+		$user_id = 14;
+		$user = UsersQModel::get_user_by_id($user_id);
+		$books_upload 		= BooksBModel::get_books_upload($user_id);
+		$categories			= CategoriesQModel::get_categories_all();
+		$characters			= CharactersQModel::get_characters_all();
+		$authors			= AuthorsQModel::get_authors_all();
+		$artists			= AuthorsQModel::get_artists_all();
+
+		$data['user'] = $user;
+		$data['books_upload']		= $books_upload;
+		$data['categories']			= $categories;
+		$data['authors']			= $authors;
+		$data['artists']			= $artists;
+		$data['characters']			= $characters;
+		return view('pages.admin.super-admin', $data);
 	}
 
 	/**
@@ -184,6 +201,17 @@ class AdminController extends Controller {
 		BooksBModel::update_book($book);
 
 		return redirect()->back()->with('success','Cập nhật truyện thành công');
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function delete_book($id_book) {
+		$data = ['deleted' => 1];
+		BooksCModel::update_book($id_book, $data);
+		return redirect()->back()->with('success','Xóa truyện thành công');
 	}
 
 	/**
