@@ -56,6 +56,19 @@
 				</ul>
 			</li>
 			<li class="treeview">
+				<a href="#"><i class="fa fa-qq"></i> <span>Thông tin khác</span>
+					<span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+				</a>
+				<ul class="treeview-menu">
+					<li><a href="#" class="box-link" data-target="#" data-with="#">Tác giả</a></li>
+					<li><a href="#" class="box-link" data-target="#" data-small=""  data-with="#">Họa sĩ</a></li>
+					<li><a href="#" class="box-link" data-target="#" data-small=""  data-with="#">Nhân vật</a></li>
+					<li><a href="#" class="box-link" data-target="#" data-small=""  data-with="#">Nhóm dịch</a></li>
+				</ul>
+			</li>
+			<li class="treeview">
 				<a href="#"><i class="fa fa-user"></i> <span>Người dùng tương tác</span>
 					<span class="pull-right-container">
 						<i class="fa fa-angle-left pull-right"></i>
