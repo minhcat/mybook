@@ -15,6 +15,7 @@ use App\Http\Models\QModels\CommentsQModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\CharactersQModel;
+use App\Http\Models\QModels\TransQModel;
 use Illuminate\Support\Facades\Input;
 
 use Illuminate\Http\Request;
@@ -71,6 +72,7 @@ class AdminController extends Controller {
 		$characters			= CharactersQModel::get_characters_all();
 		$authors			= AuthorsQModel::get_authors_all();
 		$artists			= AuthorsQModel::get_artists_all();
+		$trans				= TransQModel::get_trans_all();
 
 		$data['user']				= $user;
 		$data['books_upload']		= $books_upload;
@@ -78,6 +80,7 @@ class AdminController extends Controller {
 		$data['characters']			= $characters;
 		$data['authors']			= $authors;
 		$data['artists']			= $artists;
+		$data['transes']			= $trans;
 		// dd($data);
 		return view('pages.admin.uploader', $data);
 	}

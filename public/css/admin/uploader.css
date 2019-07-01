@@ -10,18 +10,18 @@
   min-width: 115px; }
 .box#box-book-list-small .box-body table tr {
   cursor: pointer; }
-.box#box-chap-new .box-body .image-group, .box#box-chap-edit .box-body .image-group {
+.box.chap-new .box-body .image-group, .box.chap-edit .box-body .image-group {
   border: solid 1px #d2d6de;
   height: 310px;
   margin-bottom: 10px;
   text-align: left;
   overflow-y: scroll; }
-  .box#box-chap-new .box-body .image-group img, .box#box-chap-edit .box-body .image-group img {
+  .box.chap-new .box-body .image-group img, .box.chap-edit .box-body .image-group img {
     width: 154px;
     padding: 8px;
     cursor: pointer;
     float: none; }
-    .box#box-chap-new .box-body .image-group img:hover, .box#box-chap-edit .box-body .image-group img:hover {
+    .box.chap-new .box-body .image-group img:hover, .box.chap-edit .box-body .image-group img:hover {
       filter: brightness(0.8); }
 .box.book-edit .box-body .avatar, .box.book-new .box-body .avatar, .box.book-edit-approved .box-body .avatar {
   width: 150px;

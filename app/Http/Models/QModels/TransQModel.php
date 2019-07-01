@@ -39,6 +39,18 @@ class TransQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
+	public static function get_trans_all() {
+		$result = DB::table('trans')
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * get trans by slug
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
 	public static function get_books_by_trans_id($trans_id) {
 		$result = DB::table('trans as t')
 				->join('chaps as c', 'c.id_trans', '=', 't.id')

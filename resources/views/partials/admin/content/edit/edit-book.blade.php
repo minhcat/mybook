@@ -96,7 +96,7 @@
 	</div>
 	<div class="box-footer">
 		<button class="btn btn-primary box-link" data-target="#box-book-detail-{{ $key }}" data-unclose="#box-book-list-small">Thay đổi</button>
-		<button class="btn box-link" data-target="#box-book-detail-{{ $key }}" data-unclose="#box-book-list-small">Hủy</button>
+		<button class="btn box-link" data-target="#box-book-detail-{{ $key }}" data-unclose="#box-book-list-small" type="button">Hủy</button>
 	</div>
 </form>
 </div>
