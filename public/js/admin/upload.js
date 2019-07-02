@@ -113,8 +113,9 @@ $(document).ready(function() {
 			reader.readAsDataURL(this.files[0]);
 		}
 	});
+	//check form create book
 	$('form#create-book .box-footer button.btn-primary').click(function() {
-		var form = $('form#create-book');
+		var form = $(this).parents('form#create-book');
 		var check = true;
 		var image = form.find('.avatar input').val();
 		//check upload image
@@ -150,6 +151,35 @@ $(document).ready(function() {
 			form.submit();
 		}
 
+	});
+	// check create chap
+	$('form#form-new-chap .box-footer .btn.btn-success').click(function() {
+		var form  = $(this).parents('form#form-new-chap');
+		var check = true;
+		//check enter name
+		var name = form.find('.form-group.name input').val();
+		if (name == '') {
+			form.find('.form-group.name p.error.hide').removeClass('hide');
+			check = false;
+		} else {
+			var p = form.find('.form-group.name p.error');
+			if (!p.hasClass('hide'))
+				p.addClass('hide');
+		}
+		//check enter index
+		var index = form.find('.form-group.index input').val();
+		if (name == '') {
+			form.find('.form-group.index p.error.hide').removeClass('hide');
+			check = false;
+		} else {
+			var p = form.find('.form-group.index p.error');
+			if (!p.hasClass('hide'))
+				p.addClass('hide');
+		}
+
+		if (check == true) {
+			form.submit();
+		}
 	});
 	//submit add keyword
 	$('form#add_keyword button.btn-primary').click(function() {

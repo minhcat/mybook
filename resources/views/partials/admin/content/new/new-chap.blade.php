@@ -14,9 +14,10 @@
 	<!-- /.box-header -->
 	<div class="box-body">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-		<div class="form-group">
-			<label for="transInput">Tên chap</label>
+		<div class="form-group name">
+			<label for="transInput">Tên chap (*)</label>
 			<input name="name" type="text" class="form-control" placeholder="nhập tên chap">
+			<p class="error hide">Bạn chưa nhập tên chap</p>
 		</div>
 		<div class="form-group">
 			<label for="transInput">Tựa chap</label>
@@ -30,9 +31,10 @@
 				@endforeach
 			</select>
 		</div>
-		<div class="form-group">
-			<label for="transInput">Thứ tự</label>
+		<div class="form-group index">
+			<label for="transInput">Thứ tự (*)</label>
 			<input name="index" type="number" class="form-control" placeholder="nhập số thứ tư">
+			<p class="error hide">Bạn chưa nhập tên chap</p>
 		</div>
 	
 		<label>Hình ảnh</label>
@@ -44,7 +46,7 @@
 	</div>
 	<!-- /.box-body -->
 	<div class="box-footer clearfix">
-		<button type="submit" class="btn btn-success box-link">Thêm chap</button>
+		<button type="button" class="btn btn-success">Thêm chap</button>
 		<button type="button" class="btn btn-default box-link">Hủy</button>
 	</div>
 	</form>

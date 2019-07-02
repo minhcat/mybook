@@ -53,8 +53,6 @@
       .box.book-edit .box-body .box-edit .form-group .list-character span.character i.fa, .box.book-new .box-body .box-edit .form-group .list-character span.character i.fa, .box.book-edit-approved .box-body .box-edit .form-group .list-character span.character i.fa {
         font-size: 12px;
         cursor: pointer; }
-.box.book-edit .box-body p.error, .box.book-new .box-body p.error, .box.book-edit-approved .box-body p.error {
-  color: #d20; }
 .box#box-book-comment .box-body .direct-chat-messages {
   min-height: 494px; }
   .box#box-book-comment .box-body .direct-chat-messages .direct-chat-text {
@@ -94,5 +92,8 @@
     font-size: 55px; }
   .small-box:hover .icon {
     font-size: 60px; }
+
+p.error {
+  color: #d20; }
 
 /*# sourceMappingURL=uploader.css.map */

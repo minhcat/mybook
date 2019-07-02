@@ -213,7 +213,7 @@ class AdminController extends Controller {
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function delete_book($id_book) {
+	public function delete_book($id_book) {
 		$data = ['deleted' => 1];
 		BooksCModel::update_book($id_book, $data);
 		return redirect()->back()->with('success','Xóa truyện thành công');
@@ -224,9 +224,15 @@ class AdminController extends Controller {
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function create_chap($id_book, Request $request) {
+	public function create_chap($id_book, Request $request) {
 		// dd($request->all());
 		// $files = $request->file('images');
+		$validate = [
+			'name' 	=> 'required',
+			'index'	=> 'required',
+		];
+		$this->validate($request, $validate);
+
 		$new_chap = new \stdClass;
 		$new_chap->name		= $request->input('name');
 		$new_chap->title	= $request->input('title');
