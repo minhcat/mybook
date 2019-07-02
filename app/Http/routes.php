@@ -79,7 +79,9 @@ Route::group(['prefix' => 'admin'], function() {
 
 		Route::post('update_book/{id_book}', 'AdminController@update_book');
 
-		Route::get('delete_book/{id_book}','AdminController@delete_book');
+		Route::get('delete_book/{id_book}', 'AdminController@delete_book');
+
+		Route::post('create_chap/{id_book}', 'AdminController@create_chap');
 
 		Route::post('add_keyword/{id_book}', 'AdminController@add_keyword');
 

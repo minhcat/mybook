@@ -15,6 +15,8 @@ use App\Http\Models\QModels\CommentsQModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\CharactersQModel;
+use App\Http\Models\QModels\ChapsQModel;
+use App\Http\Models\BModels\ChapsBModel;
 use App\Http\Models\QModels\TransQModel;
 use Illuminate\Support\Facades\Input;
 
@@ -145,7 +147,7 @@ class AdminController extends Controller {
 			'name'			=> 'required',
 			'category'		=> 'required',
 		];
-		dd($request->all());
+		// dd($request->all());
 		$this->validate($request, $validate);
 
 		$new_book = new \stdClass;
@@ -215,6 +217,53 @@ class AdminController extends Controller {
 		$data = ['deleted' => 1];
 		BooksCModel::update_book($id_book, $data);
 		return redirect()->back()->with('success','Xóa truyện thành công');
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function create_chap($id_book, Request $request) {
+		// dd($request->all());
+		// $files = $request->file('images');
+		$new_chap = new \stdClass;
+		$new_chap->name		= $request->input('name');
+		$new_chap->title	= $request->input('title');
+		$new_chap->index	= (int)$request->input('index');
+		$new_chap->book		= (int)$id_book;
+		$new_chap->trans	= (int)$request->input('trans');
+		$new_chap->images	= $request->file('images');
+		// dd($chap);
+
+		$id_trans = $request->input('trans');
+
+		$data_img['request'] = $request;
+		$data_img['book']    = BooksQModel::get_book_by_id($id_book)->name;
+		$data_img['trans']   = TransQModel::get_trans_by_id((int)$request->input('trans'))->slug;
+		$data_img['index']   = (int)$request->input('index');
+		// dd($data_img);
+		//check index
+		$chaps = ChapsQModel::get_chaps_by_book_id_trans_id($id_book, $id_trans);
+		$check_index = true;  
+		foreach ($chaps as $key => $chap) {
+			if ($chap->index == $data_img['index']) {
+				$check_index = false;
+				break;
+			}
+		}
+		if ($check_index == false) {
+			return redirect()->back()->with('danger','thứ tự chap trùng');
+		}
+		//upload images chap
+		$upload = Images::upload_multi_images($data_img);
+		if ($upload == false)
+			return redirect()->back()->with('danger','Lưu ảnh thất bại');
+
+		//insert chap into database
+		ChapsBModel::create_chap($new_chap);
+
+		return redirect()->back()->with('success','Thêm chap thành công');
 	}
 
 	/**
