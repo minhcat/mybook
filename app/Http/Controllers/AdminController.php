@@ -163,10 +163,13 @@ class AdminController extends Controller {
 		$new_book->id_author	= $request->input('author');
 		$new_book->id_artist	= $request->input('artist');
 		$new_book->id_uploader	= $user_id;
+
 		// dd($new_book);
-		$upload = Images::upload_image($request);
-		if ($upload == false)
-			return redirect()->back()->with('danger','Lưu ảnh thất bại');
+		// data image upload
+		$data['image'] = $request->file('image');
+		$data['name']  = $request->input('name');
+		$data['path']  = '/image/books';
+		Images::upload_image($data);
 
 		BooksBModel::create_book($new_book);
 
@@ -201,7 +204,12 @@ class AdminController extends Controller {
 		$book->id_artist	= $request->input('artist');
 		$book->id_uploader	= $user_id;
 		// dd($book);
-		Images::upload_image($request);
+
+		// data image upload
+		$data['image'] = $request->file('image');
+		$data['name']  = $request->input('name');
+		$data['path']  = '/image/books';
+		Images::upload_image($data);
 
 		BooksBModel::update_book($book);
 
@@ -244,32 +252,68 @@ class AdminController extends Controller {
 
 		$id_trans = $request->input('trans');
 
-		$data_img['request'] = $request;
-		$data_img['book']    = BooksQModel::get_book_by_id($id_book)->name;
-		$data_img['trans']   = TransQModel::get_trans_by_id((int)$request->input('trans'))->slug;
-		$data_img['index']   = (int)$request->input('index');
 		// dd($data_img);
+		$book    = BooksQModel::get_book_by_id($id_book);
+		$trans   = TransQModel::get_trans_by_id((int)$request->input('trans'));
+		$index   = (int)$request->input('index');
 		//check index
 		$chaps = ChapsQModel::get_chaps_by_book_id_trans_id($id_book, $id_trans);
 		$check_index = true;  
 		foreach ($chaps as $key => $chap) {
-			if ($chap->index == $data_img['index']) {
+			if ($chap->index == $index) {
 				$check_index = false;
 				break;
 			}
 		}
 		if ($check_index == false) {
-			return redirect()->back()->with('danger','thứ tự chap trùng');
+			return redirect()->back()->with('danger','Thứ tự chap trùng');
 		}
+
 		//upload images chap
-		$upload = Images::upload_multi_images($data_img);
-		if ($upload == false)
-			return redirect()->back()->with('danger','Lưu ảnh thất bại');
+		//data images
+		$data['images'] = $request->file('images');
+		$data['info'] 	= [];
+		//check data
+		if (!is_array($data['images']))
+			return redirect()->back()->with('danger','Up ảnh thất bại');
+		foreach ($data['images'] as $key => $image) {
+			$data['info'][$key]['name'] = 'img'.$key;
+			$data['info'][$key]['path'] = '/image/chaps/'.$book->slug.'/'.$trans->slug.'/'.$index;
+		}
+		Images::upload_multi_images($data);
 
 		//insert chap into database
 		ChapsBModel::create_chap($new_chap);
 
 		return redirect()->back()->with('success','Thêm chap thành công');
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public function update_chap($id_book, $id_chap, Request $request) {
+		//check validate
+		$validate = [
+			'name'	=> 'required',
+			'index'	=> 'required'
+		];
+		$this->validate($request, $validate);
+
+		//check index
+		$index = (int)$request->input('index');
+		$chaps = ChapsQModel::get_chaps_by_book_id_trans_id($id_book, $id_trans);
+		$check_index = true;
+		foreach ($chaps as $key => $chap) {
+			if ($chap->id != $id_chap && $chap->index == $index) {
+				$check_index = false;
+				break;
+			}
+		}
+		if ($check_index == false) {
+			return redirect()->back()->with('danger','Thứ tự chap trùng');
+		}
 	}
 
 	/**
