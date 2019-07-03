@@ -328,6 +328,7 @@ class BooksBModel extends Model
 			//get chaps
 			$chaps = ChapsQModel::get_chaps_by_book_id($book->id);
 			foreach ($chaps as $key => $chap) {
+				$chap->images = ImagesQModel::get_images_by_chap_id($chap->id);
 				$number_images = ImagesQModel::count_images_by_chap_id($chap->id);
 				// dd($number_images);
 				if ($number_images != null)

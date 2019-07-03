@@ -34,7 +34,7 @@
 					<td>{{ $chap->number_images }}</td>
 					<td>{{ $chap->view }}</td>
 					<td>{{ $chap->trans_name }}</td>
-					<td><button class="btn btn-success">Sửa</button></td>
+					<td><button class="btn btn-success box-link" data-target="#box-chap-edit-{{ $key }}-{{ $key2 }}" data-with="#box-book-list-small">Sửa</button></td>
 				</tr>
 				@endforeach
 			</tbody>

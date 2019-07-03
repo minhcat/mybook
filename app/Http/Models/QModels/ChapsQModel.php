@@ -92,8 +92,9 @@ class ChapsQModel extends Model
 	public static function get_chaps_by_book_id($book_id) {
 		$result = DB::table('chaps as c')
 				->join('trans as t', 'c.id_trans', '=', 't.id')
+				->join('books as b', 'c.id_book', '=', 'b.id')
 				->where('id_book',$book_id)
-				->select('c.*','t.name as trans_name')
+				->select('c.*','t.name as trans_name','t.slug as trans_slug', 'b.slug as book_slug')
 				->get();
 
 		return $result;

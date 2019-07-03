@@ -1,4 +1,7 @@
-<div class="box box-primary collapse" id="box-chap-edit" aria-expanded="false">
+@foreach ($books_upload as $key   => $book)
+@foreach ($book->chaps  as $key_2 => $chap)
+<div class="box box-primary chap-edit collapse" id="box-chap-edit-{{ $key }}-{{ $key_2 }}" aria-expanded="false">
+	<form id="form-edit-chap" action="{{ url('/admin/uploader/create_chap/'.$book->id) }}" method="POST" enctype="multipart/form-data">
 	<div class="box-header with-border">
 		<h3 class="box-title">Chỉnh Sửa Chap</h3>
 
@@ -10,24 +13,52 @@
 	</div>
 	<!-- /.box-header -->
 	<div class="box-body">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		<div class="form-group name">
+			<label for="transInput">Tên chap (*)</label>
+			<input name="name" type="text" class="form-control" placeholder="nhập tên chap" value="{{ $chap->name }}">
+			<p class="error hide">Bạn chưa nhập tên chap</p>
+		</div>
+		<div class="form-group">
+			<label for="transInput">Tựa chap</label>
+			<input name="title" type="text" class="form-control" placeholder="nhập tên chap" value="{{ $chap->title }}">
+		</div>
+		<div class="form-group">
+			<label for="transInput">Nhóm dịch</label>
+			<select class="form-control" name="trans">
+				@foreach ($transes as $trans)
+					@if ($trans->id == $chap->id_trans)
+					<option value="{{ $trans->id }}" selected>{{ $trans->name }}</option>
+					@else
+					<option value="{{ $trans->id }}">{{ $trans->name }}</option>
+					@endif
+				@endforeach
+			</select>
+		</div>
+		<div class="form-group index">
+			<label for="transInput">Thứ tự (*)</label>
+			<input name="index" type="number" class="form-control" placeholder="nhập số thứ tư" value="{{ $chap->index }}">
+			<p class="error hide">Bạn chưa nhập tên chap</p>
+		</div>
+	
+		<label>Hình ảnh</label>
 		<div class="image-group clearfix" data-files="0">
-			<img src="{{ asset('image/admin/overlord/overlord-chap1-p1.jpg') }}">
-			<img src="{{ asset('image/admin/overlord/overlord-chap1-p2.jpg') }}">
-			<img src="{{ asset('image/admin/overlord/overlord-chap1-p3.jpg') }}">
-			<img src="{{ asset('image/admin/overlord/overlord-chap1-p4.jpg') }}">
-			<img src="{{ asset('image/admin/overlord/overlord-chap1-p5.jpg') }}">
-			<img src="{{ asset('image/admin/overlord/overlord-chap1-p6.jpg') }}">
-			<img src="{{ asset('image/admin/overlord/overlord-chap1-p7.jpg') }}">
-			<img src="{{ asset('image/admin/overlord/overlord-chap1-p8.jpg') }}">
+			@foreach ($chap->images as $image)
+			<img src="{{ asset('image/chaps/'.$chap->book_slug.'/'.$chap->trans_slug.'/'.$chap->index.'/'.$image->image) }}">
+			@endforeach
 		</div>
 		
-		<form class="form-group">
-			<input id="input-new-chap" type="file" multiple>
-		</form>
+		<div class="form-group">
+			<input name="images[]" class="input-new-chap" type="file" multiple>
+		</div>
 	</div>
 	<!-- /.box-body -->
 	<div class="box-footer clearfix">
-		<button class="btn btn-primary box-link" data-target="#box-book-detail" data-unclose="#box-book-list-small">Chi tiết truyện</button>
+		<button class="btn btn-success">Thay đổi</button>
+		<button class="btn btn-default box-link" data-target="#box-book-detail" data-unclose="#box-book-list-small">Hủy</button>
 	</div>
 	<!-- /.box footer -->
+	</form>
 </div>
+@endforeach
+@endforeach

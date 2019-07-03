@@ -49,9 +49,6 @@ Uploader
 				<!-- list error book -->
 				@include('partials.admin.content.list.book.list-book-error')
 
-				<!-- chap edit -->
-				@include('partials.admin.content.edit.edit-chap')
-
 				<!-- Mail Box -->
 				@include('partials.admin.content.system.mail')
 				<!-- End Mail Box -->
@@ -79,6 +76,9 @@ Uploader
 
 				<!-- chap list -->
 				@include('partials.admin.content.list.chap.list-chap')
+
+				<!-- chap edit -->
+				@include('partials.admin.content.edit.edit-chap')
 
 				<!-- user contact -->
 				@include('partials.admin.content.comment.comment-new-book')
