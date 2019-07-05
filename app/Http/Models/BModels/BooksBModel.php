@@ -348,6 +348,26 @@ class BooksBModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
+	public static function get_books_not_approved($admin_id) {
+		// get books not approved
+		$books_notapproved	= BooksQModel::get_books_not_approved_by_uploader_id($admin_id);
+
+		// get books category
+		foreach ($books_notapproved as $key => $book) {
+			$categories = BooksCategoryQModel::get_categories_by_book_id($book->id);
+
+			foreach ($categories as $category) {
+				$book->categories[$key] = $category->name;
+			}
+		}
+		return $books_notapproved;
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
 	public static function create_book($new_book) {
 		$book = [
 			'name'			=> $new_book->name,

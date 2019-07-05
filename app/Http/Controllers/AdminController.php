@@ -77,6 +77,7 @@ class AdminController extends Controller {
 		$authors			= AuthorsQModel::get_authors_all();
 		$artists			= AuthorsQModel::get_artists_all();
 		$trans				= TransQModel::get_trans_all();
+		$books_notapproved	= BooksBModel::get_books_not_approved($user_id);
 
 		$data['user']				= $user;
 		$data['books_upload']		= $books_upload;
@@ -85,6 +86,7 @@ class AdminController extends Controller {
 		$data['authors']			= $authors;
 		$data['artists']			= $artists;
 		$data['transes']			= $trans;
+		$data['books_notapproved']	= $books_notapproved;
 		// dd($data);
 		return view('pages.admin.uploader', $data);
 	}

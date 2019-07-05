@@ -23,60 +23,35 @@
 				</tr>
 			</thead>
 			<tbody>
+				@foreach ($books_notapproved as $key => $book)
 				<tr>
-					<td>1</td>
-					<td>Attack on Titan</td>
-					<td>11-7-2014</td>
-					<td><span class="label label-primary">Comedy</span> <span class="label label-primary">Action</span> <span class="label label-primary">Fantasy</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td><span class="label bg-orange">Chưa xem</span></td>
+					<td>{{ $key + 1 }}</td>
+					<td>{{ $book->name }}</td>
+					<td>{{ date_format(date_create($book->create_at), 'd-m-Y') }}</td>
+					<td>
+						@foreach ($book->categories as $category)
+						<span class="label label-primary">{{ $category }}</span>
+						@endforeach
+					</td>
+					<td>
+						@if ($book->reply != '')
+						{{ $book->reply }}
+						@else
+						<i>Không có thông tin phản hồi</i>
+						@endif
+					</td>
+					<td>
+						@if ($book->approved_status == 'notsee')
+						<span class="label bg-orange">Chưa xem</span>
+						@elseif ($book->approved_status == 'seen')
+						<span class="label bg-red">Đã xem</span>
+						@elseif ($book->approved_status == 'reply')
+						<span class="label bg-green">Đã phản hồi</span>
+						@endif
+					</td>
 					<td><button class="btn btn-primary">Yêu cầu</button></td>
 				</tr>
-				<tr>
-					<td>2</td>
-					<td>Kakegurui</td>
-					<td>11-7-2014</td>
-					<td><span class="label label-primary">Comedy</span> <span class="label label-primary">Action</span> <span class="label label-primary">Fantasy</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td><span class="label bg-red">Đã xem</span></td>
-					<td><button class="btn btn-primary">Yêu cầu</button></td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>Konosuba</td>
-					<td>11-7-2014</td>
-					<td><span class="label label-primary">Comedy</span> <span class="label label-primary">Action</span> <span class="label label-primary">Fantasy</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td><span class="label bg-green">Đã phản hồi</span></td>
-					<td><button class="btn btn-primary">Yêu cầu</button></td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>Overlord</td>
-					<td>11-7-2014</td>
-					<td><span class="label label-primary">Comedy</span> <span class="label label-primary">Action</span> <span class="label label-primary">Fantasy</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td><span class="label bg-green">Đã phản hồi</span></td>
-					<td><button class="btn btn-primary">Yêu cầu</button></td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>Date A Live</td>
-					<td>11-7-2014</td>
-					<td><span class="label label-primary">Comedy</span> <span class="label label-primary">Action</span> <span class="label label-primary">Fantasy</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td><span class="label bg-red">Đã xem</span></td>
-					<td><button class="btn btn-primary">Yêu cầu</button></td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td>Sword Art Online</td>
-					<td>11-7-2014</td>
-					<td><span class="label label-primary">Comedy</span> <span class="label label-primary">Action</span> <span class="label label-primary">Fantasy</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td><span class="label bg-orange">Chưa xem</span></td>
-					<td><button class="btn btn-primary">Yêu cầu</button></td>
-				</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>
