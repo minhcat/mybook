@@ -41,7 +41,10 @@
 		<div class="image-group clearfix" data-files="0"></div>
 		
 		<div class="form-group">
-			<input name="images[]" class="input-new-chap" type="file" multiple>
+			<label class="btn btn-primary">
+				Chọn ảnh
+				<input name="images[]" class="input-new-chap hide" type="file" multiple>
+			</label>
 		</div>
 	</div>
 	<!-- /.box-body -->

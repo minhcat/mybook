@@ -1,7 +1,7 @@
 @foreach ($books_upload as $key   => $book)
 @foreach ($book->chaps  as $key_2 => $chap)
 <div class="box box-primary chap-edit collapse" id="box-chap-edit-{{ $key }}-{{ $key_2 }}" aria-expanded="false">
-	<form id="form-edit-chap" action="{{ url('/admin/uploader/create_chap/'.$book->id) }}" method="POST" enctype="multipart/form-data">
+	<form id="form-edit-chap" action="{{ url('/admin/uploader/update_chap/'.$book->id.'/'.$chap->id) }}" method="POST" enctype="multipart/form-data">
 	<div class="box-header with-border">
 		<h3 class="box-title">Chỉnh Sửa Chap</h3>
 
@@ -48,8 +48,16 @@
 			@endforeach
 		</div>
 		
-		<div class="form-group">
-			<input name="images[]" class="input-new-chap" type="file" multiple>
+		<div class="form-group images">
+			<label class="btn btn-primary">
+				Thêm Ảnh
+				<input name="images_add[]" class="input-new-chap hide" type="file" multiple>
+			</label>
+			<label class="btn btn-info">
+				Up lại
+				<input name="images_reup[]" class="input-new-chap hide" type="file" multiple>
+			</label>
+			<input class="select" type="hidden" name="images_select" value="add">
 		</div>
 	</div>
 	<!-- /.box-body -->

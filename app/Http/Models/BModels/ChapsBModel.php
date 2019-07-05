@@ -33,9 +33,52 @@ class ChapsBModel extends Model
 			$extension = $image->getClientOriginalExtension();
 			$data = [
 				'id_chap'	=> $id_chap,
-				'image'		=> 'img'. $key . '.' . $extension
+				'image'		=> 'img'. $key . '.' . $extension,
+				'index'		=> $key
 			];
 			ImagesCModel::insert_image($data);
+		}
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function update_chap($chap, $type) {
+		// update chap
+		$id   = $chap->id;
+		$data = [
+			'name'		=> $chap->name,
+			'title'		=> $chap->title,
+			'slug'		=> str_slug($chap->name,'_'),
+			'index'		=> $chap->index,
+			'id_book'	=> $chap->book,
+			'id_trans'	=> $chap->trans
+		];
+		ChapsCModel::update_chap($id, $data);
+
+		// update images
+		if ($type == 'add') {
+			$img_index = ImagesBModel::get_last_index_images($chap->id);
+			foreach ($chap->images as $key => $image) {
+				$data = [
+					'id_chap' => $chap->id,
+					'image'   => 'img'.($img_index + $key + 1).'.jpg',
+					'index'   => $img_index + $key + 1
+				];
+				ImagesCModel::insert_image($data);
+			}
+		} elseif ($type == 'reup') {
+			ImagesCModel::delete_images_by_chap_id($chap->id);
+			foreach ($chap->images as $key => $image) {
+				$data = [
+					'id_chap' => $chap->id,
+					'image'   => 'img'.$key.'.jpg',
+					'index'	  => $key
+				];
+				ImagesCModel::insert_image($data);
+			}
 		}
 	}
 }

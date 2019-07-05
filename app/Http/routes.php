@@ -83,6 +83,8 @@ Route::group(['prefix' => 'admin'], function() {
 
 		Route::post('create_chap/{id_book}', 'AdminController@create_chap');
 
+		Route::post('update_chap/{id_book}/{id_chap}', 'AdminController@update_chap');
+
 		Route::post('add_keyword/{id_book}', 'AdminController@add_keyword');
 
 	});

@@ -4,21 +4,23 @@ use App\Http\Requests;
 use App\Http\Helpers\Images;
 use App\Http\Controllers\Controller;
 use App\Http\Models\QModels\AuthorsQModel;
-use App\Http\Models\BModels\BooksBModel;
-use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\UsersQModel;
-use App\Http\Models\BModels\UsersBModel;
 use App\Http\Models\QModels\UsersPunishQModel;
 use App\Http\Models\QModels\UsersBanQModel;
 use App\Http\Models\QModels\CommentsQModel;
-use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\CharactersQModel;
 use App\Http\Models\QModels\ChapsQModel;
-use App\Http\Models\BModels\ChapsBModel;
 use App\Http\Models\QModels\TransQModel;
+use App\Http\Models\CModels\BooksCModel;
+use App\Http\Models\BModels\BooksBModel;
+use App\Http\Models\BModels\ChapsBModel;
+use App\Http\Models\BModels\CommentsBModel;
+use App\Http\Models\BModels\ImagesBModel;
+use App\Http\Models\BModels\UsersBModel;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Contracts\Filesystem\Factory;
 
 use Illuminate\Http\Request;
 
@@ -294,6 +296,7 @@ class AdminController extends Controller {
 	 * @return object|boolean : all properties from `books` table
 	 */
 	public function update_chap($id_book, $id_chap, Request $request) {
+		// dd($request->all());
 		//check validate
 		$validate = [
 			'name'	=> 'required',
@@ -303,6 +306,7 @@ class AdminController extends Controller {
 
 		//check index
 		$index = (int)$request->input('index');
+		$id_trans = (int)$request->input('trans');
 		$chaps = ChapsQModel::get_chaps_by_book_id_trans_id($id_book, $id_trans);
 		$check_index = true;
 		foreach ($chaps as $key => $chap) {
@@ -314,6 +318,49 @@ class AdminController extends Controller {
 		if ($check_index == false) {
 			return redirect()->back()->with('danger','Thứ tự chap trùng');
 		}
+
+		//upload images
+		$book  = BooksQModel::get_book_by_id($id_book);
+		$trans = TransQModel::get_trans_by_id($id_trans);
+		$images_select = $request->input('images_select');
+		if ($images_select == 'add') {
+			$data['images'] = $request->file('images_add');
+			$data['info']   = [];
+			//check data
+			if (!is_array($data['images']))
+				return redirect()->back()->with('danger','Up ảnh thất bại');
+			$img_index = ImagesBModel::get_last_index_images($id_chap);
+			foreach ($data['images'] as $key => $image) {
+				$data['info'][$key]['name'] = 'img'.($img_index + $key + 1);
+				$data['info'][$key]['path'] = '/image/chaps/'.$book->slug.'/'.$trans->slug.'/'.$index;
+			}
+		} elseif ($images_select == 'reup') {
+			$data['images'] = $request->file('images_reup');
+			$data['info']   = [];
+			//check data
+			if (!is_array($data['images']))
+				return redirect()->back()->with('danger','Up ảnh thất bại');
+			foreach ($data['images'] as $key => $image) {
+				$data['info'][$key]['name'] = 'img'.$key;
+				$data['info'][$key]['path'] = '/image/chaps/'.$book->slug.'/'.$trans->slug.'/'.$index;
+			}
+			Images::delete_all_images_from_folder('image/chaps/'.$book->slug.'/'.$trans->slug.'/'.$index);
+		}
+		Images::upload_multi_images($data);
+		
+		//update chap
+		$update_chap = new \stdClass;
+		$update_chap->id     = $id_chap;
+		$update_chap->name   = $request->input('name');
+		$update_chap->title  = $request->input('title');
+		$update_chap->index	 = (int)$request->input('index');
+		$update_chap->book   = (int)$id_book;
+		$update_chap->trans	 = (int)$request->input('trans');
+		$update_chap->images = $data['images'];
+
+		ChapsBModel::update_chap($update_chap, $images_select);
+
+		return redirect()->back()->with('success','Cập nhật chap thành công');
 	}
 
 	/**

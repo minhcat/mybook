@@ -113,6 +113,13 @@ $(document).ready(function() {
 			reader.readAsDataURL(this.files[0]);
 		}
 	});
+	//selected
+	$('.form-group.images .btn').click(function() {
+		if ($(this).hasClass('btn-primary'))
+			$(this).parent().find('input.select').val('add');
+		else if ($(this).hasClass('btn-info'))
+			$(this).parent().find('input.select').val('reup');
+	});
 	//check form create book
 	$('form#create-book .box-footer button.btn-primary').click(function() {
 		var form = $(this).parents('form#create-book');

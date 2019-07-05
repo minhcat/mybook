@@ -29,6 +29,17 @@ class ImagesCModel extends Model
 	}
 
 	/**
+	 * delete a food
+	 * @param $id int
+	 * @return boolean
+	 */
+	public static function delete_images_by_chap_id($id_chap) {
+		return DB::table('images')
+			->where('id_chap', '=', $id_chap)
+			->delete();
+	}
+
+	/**
 	 * update food
 	 * @param id
 	 * @param array data

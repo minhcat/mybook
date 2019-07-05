@@ -43,4 +43,18 @@ class Images {
 			$image->move($folder_upload, $file_name);
 		}
 	}
+
+	/**
+	 * Convert string uppercase first letter
+	 * @param string
+	 * @return string
+	 */
+	public static function delete_all_images_from_folder($folder) {
+		$files = glob($folder.'/*.jpg');
+		foreach ($files as $file) {
+			if (is_file($file)) {
+				unlink($file);
+			}
+		}
+	}
 }
