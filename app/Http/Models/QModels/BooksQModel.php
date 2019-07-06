@@ -277,7 +277,6 @@ class BooksQModel extends Model
 	public static function get_books_by_uploader_id($uploader_id) {
 		$result = DB::table('books')
 				->where('deleted', 0)
-				->where('approved', 1)
 				->where('id_uploader', $uploader_id)
 				->get();
 

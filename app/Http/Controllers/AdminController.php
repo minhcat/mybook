@@ -89,6 +89,7 @@ class AdminController extends Controller {
 		$data['artists']			= $artists;
 		$data['transes']			= $trans;
 		$data['books_notapproved']	= $books_notapproved;
+		$data['first_book']			= $books_upload[0];
 		// dd($data);
 		return view('pages.admin.uploader', $data);
 	}

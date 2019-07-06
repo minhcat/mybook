@@ -1,5 +1,5 @@
 @foreach ($books_upload as $key => $book)
-<div class="modal fade" id="modal-remove-book-{{ $key }}">
+<div class="modal fade" id="modal-remove-book-{{ $book->id }}">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">

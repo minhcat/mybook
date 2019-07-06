@@ -36,8 +36,8 @@
 					<td>{{ date_format(date_create($book->release_at),'d-m-Y') }}</td>
 					<td>{{ $book->keyword }}</td>
 					<td>
-						<button class="btn btn-success box-link" data-target="#box-book-edit-{{ $key }}" data-with="#box-book-list-small">Sửa</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-book-{{ $key }}">Xóa</button>
+						<button class="btn btn-success box-link" data-target="#box-book-edit-{{ $book->id }}" data-with="#box-book-list-small">Sửa</button>
+						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-book-{{ $book->id }}">Xóa</button>
 					</td>
 				</tr>
 				@endforeach

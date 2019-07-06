@@ -11,6 +11,9 @@ class Images {
 		$image = $data['image'];
 		$name  = $data['name'];
 		$path  = $data['path'];
+		
+		if ($image == null)
+			return 0;
 
 		//get extension
 		$file_extension = $image->getClientOriginalExtension();

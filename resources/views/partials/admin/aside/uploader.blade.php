@@ -28,7 +28,7 @@
 				</a>
 				<ul class="treeview-menu">
 					<li><a href="#" class="box-link" data-target="#box-book-list">Danh sách truyện</a></li>
-					<li><a href="#" class="box-link" data-target="#box-book-detail-0" data-with="#box-book-list-small">Chi tiết truyện</a></li>
+					<li><a href="#" class="box-link" data-target="#box-book-detail-{{ $first_book->id }}" data-with="#box-book-list-small">Chi tiết truyện</a></li>
 					<li><a href="#" class="box-link" data-target="#box-book-new">Thêm truyện mới</a></li>
 				</ul>
 			</li>
@@ -41,7 +41,6 @@
 				<ul class="treeview-menu">
 					<li><a href="#" class="box-link" data-target="#box-book-list-notapproved">Danh sách truyện chờ duyệt</a></li>
 					<li><a href="#" class="box-link" data-target="#box-chap-list-notapproved">Danh sách chap chờ duyệt</a></li>
-					<li><a href="#" class="box-link" data-target="#box-book-detail-notapproved" data-with="#box-book-list-notapproved-small">Chi tiết truyện</a></li>
 				</ul>
 			</li>
 			<li class="treeview">
@@ -52,7 +51,7 @@
 				</a>
 				<ul class="treeview-menu">
 					<li><a href="#" class="box-link" data-target="#box-book-list-error">Danh sách chap truyện lỗi</a></li>
-					<li><a href="#" class="box-link" data-target="#box-book-detail-error" data-with="#box-book-list-error-small">Truyện lỗi thông tin chi tiết</a></li>
+					<li><a href="#" class="box-link" data-target="#box-book-detail-error" data-with="#box-book-list-error-small">Thông tin truyện lỗi</a></li>
 				</ul>
 			</li>
 			<li class="treeview">

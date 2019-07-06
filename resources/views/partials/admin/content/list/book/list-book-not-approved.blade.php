@@ -19,6 +19,7 @@
 					<th>Thể loại</th>
 					<th>Phản hồi</th>
 					<th>Tình trạng</th>
+					<th class="fixed-115">Chỉnh sửa</th>
 					<th class="fixed-115">Yêu cầu duyệt</th>
 				</tr>
 			</thead>
@@ -48,6 +49,9 @@
 						@elseif ($book->approved_status == 'reply')
 						<span class="label bg-green">Đã phản hồi</span>
 						@endif
+					</td>
+					<td>
+						<button class="btn btn-success box-link" data-target="#box-book-edit-{{ $book->id }}" data-with="#box-book-list-small">Chỉnh sửa</button>
 					</td>
 					<td>
 						<button class="btn btn-primary call" data-id="{{ $book->id }}">Yêu cầu</button>

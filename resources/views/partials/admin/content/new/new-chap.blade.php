@@ -1,5 +1,5 @@
 @foreach ($books_upload as $key => $book)
-<div class="box box-primary chap-new collapse" id="box-chap-new-{{ $key }}" aria-expanded="false">
+<div class="box box-primary chap-new collapse" id="box-chap-new-{{ $book->id }}" aria-expanded="false">
 	<form id="form-new-chap" action="{{ url('/admin/uploader/create_chap/'.$book->id) }}" method="POST" enctype="multipart/form-data">
 	
 	<div class="box-header with-border">

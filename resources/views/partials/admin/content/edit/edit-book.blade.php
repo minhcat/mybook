@@ -1,5 +1,5 @@
 @foreach ($books_upload as $key => $book)
-<div class="box box-primary collapse book-edit" id="box-book-edit-{{ $key }}" aria-expanded="false"  data-with="#box-book-list-small">
+<div class="box box-primary collapse book-edit" id="box-book-edit-{{ $book->id }}" aria-expanded="false"  data-with="#box-book-list-small">
 	<form id="update-book" action="{{ url('/admin/uploader/update_book/'.$book->id) }}" method="POST" enctype="multipart/form-data">
 	<div class="box-header with-border">
 		<h3 class="box-title">{{ $book->name }} - Chỉnh Sửa</h3>
