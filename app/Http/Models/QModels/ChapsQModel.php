@@ -126,4 +126,21 @@ class ChapsQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get categories by name
+	 * @param 
+	 * @return object|boolean : all properties from `categories` table
+	 */
+	public static function get_chaps_not_approved($user_id) {
+		$result = DB::table('chaps as c')
+				->join('books as b', 'c.id_book', '=', 'b.id')
+				->where('b.deleted', 0)
+				->where('c.approved', 0)
+				->where('b.id_uploader', $user_id)
+				->select('c.*', 'b.name as book_name')
+				->get();
+
+		return $result;
+	}
 }

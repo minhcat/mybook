@@ -15,7 +15,7 @@
 				<tr>
 					<th>Stt</th>
 					<th>Tên truyện</th>
-					<th>Số chap</th>
+					<th>Tên chap</th>
 					<th>Tựa chap</th>
 					<th>Phản hồi</th>
 					<th>Tình trạng</th>
@@ -23,60 +23,17 @@
 				</tr>
 			</thead>
 			<tbody>
+				@foreach ($chaps_notapproved as $key => $chap)
 				<tr>
-					<td>1</td>
-					<td>Attack on Titan</td>
-					<td>chap 124</td>
-					<td>Amet salami venison</td>
+					<td>{{ $key + 1 }}</td>
+					<td>{{ $chap->book_name }}</td>
+					<td>{{ $chap->name }}</td>
+					<td>{{ $chap->title }}</td>
 					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
 					<td><span class="label bg-orange">Chưa xem</span></td>
 					<td><button class="btn btn-primary">Yêu cầu</button></td>
 				</tr>
-				<tr>
-					<td>2</td>
-					<td>Kakegurui</td>
-					<td>chap 24</td>
-					<td>Amet salami venison</td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td><span class="label bg-red">Đã xem</span></td>
-					<td><button class="btn btn-primary">Yêu cầu</button></td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>Konosuba</td>
-					<td>chap 35</td>
-					<td>Amet salami venison</td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td><span class="label bg-green">Đã phản hồi</span></td>
-					<td><button class="btn btn-primary">Yêu cầu</button></td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>Overlord</td>
-					<td>chap 46</td>
-					<td>Amet salami venison</td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td><span class="label bg-green">Đã phản hồi</span></td>
-					<td><button class="btn btn-primary">Yêu cầu</button></td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>Date A Live</td>
-					<td>chap 15</td>
-					<td>Amet salami venison</td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td><span class="label bg-red">Đã xem</span></td>
-					<td><button class="btn btn-primary">Yêu cầu</button></td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td>Sword Art Online</td>
-					<td>chap 1402</td>
-					<td>Amet salami venison</td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td><span class="label bg-orange">Chưa xem</span></td>
-					<td><button class="btn btn-primary">Yêu cầu</button></td>
-				</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>
