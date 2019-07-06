@@ -193,6 +193,21 @@ $(document).ready(function() {
 		$(this).parents('.modal').modal('hide');
 		$(this).parents('.form#add_keyword').submit();
 	});
+
+	//call approved book
+	$('table#table-book-approved .btn.btn-primary.call').click(function() {
+		var id = $(this).data('id');
+		var btn = $(this);
+		$.ajax({
+			type: 'GET',
+			url: '/admin/uploader/ajax/call_approved_book/'+id,
+			success:function(data) {
+				btn.removeClass('btn-primary');
+				btn.addClass('btn-success');
+				btn.text('Đã gữi')
+			}
+		});
+	});
 });
 //Comment Chart
 var cmd_chart_data = {

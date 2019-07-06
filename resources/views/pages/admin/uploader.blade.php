@@ -130,7 +130,6 @@ Uploader
 @endsection
 
 @section('define-footer')
-	<script src="{{ asset('js/admin/upload.js') }}"></script>
 	<script src="{{ asset('js/admin/jquery.dataTables.js') }}"></script>
 	<script src="{{ asset('js/admin/dataTables.bootstrap.js') }}"></script>
 	<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
@@ -180,4 +179,5 @@ Uploader
 			});
 		});
 	</script>
+	<script src="{{ asset('js/admin/upload.js') }}"></script>
 @endsection

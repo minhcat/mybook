@@ -5,6 +5,7 @@ use App\Http\Helpers\Images;
 use App\Http\Controllers\Controller;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\BooksQModel;
+use App\Http\Models\QModels\BooksApprovedQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\UsersPunishQModel;
 use App\Http\Models\QModels\UsersBanQModel;
@@ -14,6 +15,7 @@ use App\Http\Models\QModels\CharactersQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\TransQModel;
 use App\Http\Models\CModels\BooksCModel;
+use App\Http\Models\CModels\BooksApprovedCModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\ChapsBModel;
 use App\Http\Models\BModels\CommentsBModel;
@@ -378,5 +380,18 @@ class AdminController extends Controller {
 		BooksCModel::update_book($id_book, $data);
 
 		return redirect()->back()->with('success','Thêm từ khóa thành công');
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function call_admin_approved_book($id_book) {
+		$book_approved = BooksApprovedQModel::get_book_approved_by_book_id($id_book);
+		$data = [
+			'call' => $book_approved->call + 1,
+		];
+		BooksApprovedCModel::update_book_approved($book_approved->id, $data);
 	}
 }

@@ -294,6 +294,7 @@ class BooksQModel extends Model
 				->join('books_approved as ba', 'b.id', '=', 'ba.id_book')
 				->where('b.deleted', 0)
 				->where('b.approved', 0)
+				->select('b.id as id', 'b.*', 'ba.id as approved_id', 'ba.id')
 				->get();
 
 		return $result;
@@ -310,7 +311,7 @@ class BooksQModel extends Model
 				->where('b.deleted', 0)
 				->where('b.approved', 0)
 				->where('b.id_uploader', $uploader_id)
-				->select('b.*', 'ba.*', 'ba.status as approved_status')
+				->select('b.id as id', 'b.*', 'ba.status as approved_status', 'ba.reply as reply')
 				->get();
 
 		return $result;

@@ -355,7 +355,9 @@ class BooksBModel extends Model
 		// get books category
 		foreach ($books_notapproved as $key => $book) {
 			$categories = BooksCategoryQModel::get_categories_by_book_id($book->id);
-
+			if (empty($categories)) {
+				$book->categories = [];
+			}
 			foreach ($categories as $category) {
 				$book->categories[$key] = $category->name;
 			}

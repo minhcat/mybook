@@ -87,6 +87,12 @@ Route::group(['prefix' => 'admin'], function() {
 
 		Route::post('add_keyword/{id_book}', 'AdminController@add_keyword');
 
+		Route::group(['prefix' => 'ajax'], function() {
+
+			Route::get('call_approved_book/{id_book}', 'AdminController@call_admin_approved_book');
+			
+		});
+
 	});
 	
 });

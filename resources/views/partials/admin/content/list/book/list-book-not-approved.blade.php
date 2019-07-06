@@ -49,7 +49,9 @@
 						<span class="label bg-green">Đã phản hồi</span>
 						@endif
 					</td>
-					<td><button class="btn btn-primary">Yêu cầu</button></td>
+					<td>
+						<button class="btn btn-primary call" data-id="{{ $book->id }}">Yêu cầu</button>
+					</td>
 				</tr>
 				@endforeach
 			</tbody>
