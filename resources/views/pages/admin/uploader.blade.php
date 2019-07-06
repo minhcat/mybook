@@ -148,6 +148,9 @@ Uploader
 			$('#table-book-approved').DataTable({
 				"lengthMenu": [5, 10, 25, 50],
 			});
+			$('#table-chap-approved').DataTable({
+				"lengthMenu": [5, 10, 25, 50],
+			});
 			$('.table-chap').DataTable({
 				"lengthMenu": [5, 10, 25, 50],
 			});
