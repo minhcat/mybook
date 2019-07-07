@@ -19,6 +19,7 @@
 					<th>Tựa chap</th>
 					<th>Phản hồi</th>
 					<th>Tình trạng</th>
+					<th class="fixed-115">Chỉnh sửa</th>
 					<th class="fixed-115">Yêu cầu duyệt</th>
 				</tr>
 			</thead>
@@ -29,9 +30,26 @@
 					<td>{{ $chap->book_name }}</td>
 					<td>{{ $chap->name }}</td>
 					<td>{{ $chap->title }}</td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td><span class="label bg-orange">Chưa xem</span></td>
-					<td><button class="btn btn-primary">Yêu cầu</button></td>
+					<td>
+						@if ($chap->reply != '')
+						{{ $chap->reply }}
+						@else
+						<i>Không có thông tin phản hồi</i>
+						@endif
+					</td>
+					<td>
+						@if ($chap->approved_status == 'notsee')
+						<span class="label bg-orange">Chưa xem</span>
+						@elseif ($chap->approved_status == 'seen')
+						<span class="label bg-red">Đã xem</span>
+						@elseif ($chap->approved_status == 'reply')
+						<span class="label bg-green">Đã phản hồi</span>
+						@endif
+					</td>
+					<td>
+						<button class="btn btn-success box-link" data-target="#box-chap-edit-{{ $chap->id_book }}-{{ $chap->id }}" data-with="#box-book-list-small">Chỉnh sửa</button>
+					</td>
+					<td><button class="btn btn-primary call" data-id="{{ $chap->id }}">Yêu cầu</button></td>
 				</tr>
 				@endforeach
 			</tbody>

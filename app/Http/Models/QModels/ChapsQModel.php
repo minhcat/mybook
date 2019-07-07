@@ -135,10 +135,11 @@ class ChapsQModel extends Model
 	public static function get_chaps_not_approved($user_id) {
 		$result = DB::table('chaps as c')
 				->join('books as b', 'c.id_book', '=', 'b.id')
+				->join('chaps_approved as ca', 'c.id', '=', 'ca.id_chap')
 				->where('b.deleted', 0)
 				->where('c.approved', 0)
 				->where('b.id_uploader', $user_id)
-				->select('c.*', 'b.name as book_name')
+				->select('c.*', 'b.name as book_name', 'ca.status as approved_status', 'ca.reply as reply')
 				->get();
 
 		return $result;

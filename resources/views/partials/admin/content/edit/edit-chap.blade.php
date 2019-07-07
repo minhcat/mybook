@@ -1,6 +1,6 @@
 @foreach ($books_upload as $key   => $book)
 @foreach ($book->chaps  as $key_2 => $chap)
-<div class="box box-primary chap-edit collapse" id="box-chap-edit-{{ $key }}-{{ $key_2 }}" aria-expanded="false">
+<div class="box box-primary chap-edit collapse" id="box-chap-edit-{{ $book->id }}-{{ $chap->id }}" aria-expanded="false">
 	<form id="form-edit-chap" action="{{ url('/admin/uploader/update_chap/'.$book->id.'/'.$chap->id) }}" method="POST" enctype="multipart/form-data">
 	<div class="box-header with-border">
 		<h3 class="box-title">Chỉnh Sửa Chap</h3>
