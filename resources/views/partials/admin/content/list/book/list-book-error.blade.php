@@ -21,66 +21,26 @@
 				</tr>
 			</thead>
 			<tbody>
+				@foreach ($books_error as $key => $book)
 				<tr>
-					<td>1</td>
-					<td>Attack on Titan</td>
-					<td><span class="label bg-blue">chap die</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+					<td>{{ $key + 1 }}</td>
+					<td>{{ $book->name }}</td>
 					<td>
-						<button class="btn btn-success box-link" data-target="#box-chap-edit">Sửa</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-chap">Xóa</button>
+						@if ($book->type == 'incorrect')
+						<span class="label bg-red">sai thông tin</span>
+						@elseif ($book->type == 'incompliance')
+						<span class="label bg-orange">không đầy đủ</span>
+						@elseif ($book->type == 'errorshow')
+						<span class="label bg-green">Lỗi hiển thị</span>
+						@endif
+					</td>
+					<td>{{ $book->content }}</td>
+					<td>
+						<button class="btn btn-success box-link" data-target="#box-book-edit-{{ $book->id_book }}" data-with="#box-book-list-small">Sửa</button>
+						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-book-{{ $book->id_book }}">Xóa</button>
 					</td>
 				</tr>
-				<tr>
-					<td>2</td>
-					<td>Kakegurui</td>
-					<td><span class="label bg-red">trùng</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td>
-						<button class="btn btn-success box-link" data-target="#box-chap-edit">Sửa</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-chap">Xóa</button>
-					</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>Konosuba</td>
-					<td><span class="label bg-green">sai thứ tự</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td>
-						<button class="btn btn-success box-link" data-target="#box-chap-edit">Sửa</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-chap">Xóa</button>
-					</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>Overlord</td>
-					<td><span class="label bg-green">sai thứ tự</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td>
-						<button class="btn btn-success box-link" data-target="#box-chap-edit">Sửa</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-chap">Xóa</button>
-					</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>Date A Live</td>
-					<td><span class="label bg-red">trùng</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td>
-						<button class="btn btn-success box-link" data-target="#box-chap-edit">Sửa</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-chap">Xóa</button>
-					</td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td>Sword Art Online</td>
-					<td><span class="label bg-blue">chap die</span></td>
-					<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-					<td>
-						<button class="btn btn-success box-link" data-target="#box-chap-edit">Sửa</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-chap">Xóa</button>
-					</td>
-				</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>

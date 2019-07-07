@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksApprovedQModel;
+use App\Http\Models\QModels\BooksErrorQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\UsersPunishQModel;
 use App\Http\Models\QModels\UsersBanQModel;
@@ -83,6 +84,7 @@ class AdminController extends Controller {
 		$trans				= TransQModel::get_trans_all();
 		$books_notapproved	= BooksBModel::get_books_not_approved($user_id);
 		$chaps_notapproved	= ChapsQModel::get_chaps_not_approved($user_id);
+		$books_error		= BooksErrorQModel::get_books_error_by_uploader_id($user_id);
 
 		$data['user']				= $user;
 		$data['books_upload']		= $books_upload;
@@ -94,6 +96,7 @@ class AdminController extends Controller {
 		$data['books_notapproved']	= $books_notapproved;
 		$data['first_book']			= $books_upload[0];
 		$data['chaps_notapproved']	= $chaps_notapproved;
+		$data['books_error']		= $books_error;
 		// dd($data);
 		return view('pages.admin.uploader', $data);
 	}
