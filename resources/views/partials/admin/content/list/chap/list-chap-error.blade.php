@@ -1,6 +1,6 @@
-<div class="box box-primary collapse" id="box-book-list-error" aria-expanded="false">
+<div class="box box-primary collapse" id="box-chap-list-error" aria-expanded="false">
 	<div class="box-header with-border">
-		<h3 class="box-title">Danh sách truyện lỗi</h3>
+		<h3 class="box-title">Danh sách chap lỗi</h3>
 
 		<div class="box-tools pull-right">
 			<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -15,6 +15,7 @@
 				<tr>
 					<th>Stt</th>
 					<th>Tên truyện</th>
+					<th>Tên chap</th>
 					<th>Dạng lỗi</th>
 					<th>Nội dung</th>
 					<th class="fixed-115">Tùy chọn</th>
@@ -25,6 +26,7 @@
 				<tr>
 					<td>{{ $key + 1 }}</td>
 					<td>{{ $book->name }}</td>
+					<td></td>
 					<td>
 						@if ($book->type == 'incorrect')
 						<span class="label bg-red">sai thông tin</span>
@@ -37,7 +39,7 @@
 					<td>{{ $book->content }}</td>
 					<td>
 						<button class="btn btn-success box-link" data-target="#box-book-edit-{{ $book->id_book }}" data-with="#box-book-list-small">Sửa</button>
-						<button class="btn btn-primary" data-toggle="modal" data-target="#modal-remove-book-{{ $book->id_book }}">Xem truyện</button>
+						<button class="btn btn-primary" data-toggle="modal" data-target="#modal-remove-book-{{ $book->id_book }}">Xem chap</button>
 					</td>
 				</tr>
 				@endforeach
