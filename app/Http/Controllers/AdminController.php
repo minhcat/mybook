@@ -13,9 +13,11 @@ use App\Http\Models\QModels\CommentsQModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\CharactersQModel;
 use App\Http\Models\QModels\ChapsQModel;
+use App\Http\Models\QModels\ChapsApprovedQModel;
 use App\Http\Models\QModels\TransQModel;
 use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\BooksApprovedCModel;
+use App\Http\Models\CModels\ChapsApprovedCModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\ChapsBModel;
 use App\Http\Models\BModels\CommentsBModel;
@@ -396,5 +398,18 @@ class AdminController extends Controller {
 			'call' => $book_approved->call + 1,
 		];
 		BooksApprovedCModel::update_book_approved($book_approved->id, $data);
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function call_admin_approved_chap($id_chap) {
+		$chap_approved = ChapsApprovedQModel::get_chap_approved_by_chap_id($id_chap);
+		$data = [
+			'call' => $chap_approved->call + 1,
+		];
+		ChapsApprovedCModel::update_chap_approved($chap_approved->id, $data);
 	}
 }

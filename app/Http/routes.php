@@ -90,6 +90,8 @@ Route::group(['prefix' => 'admin'], function() {
 		Route::group(['prefix' => 'ajax'], function() {
 
 			Route::get('call_approved_book/{id_book}', 'AdminController@call_admin_approved_book');
+
+			Route::get('call_approved_chap/{id_chap}', 'AdminController@call_admin_approved_chap');
 			
 		});
 
