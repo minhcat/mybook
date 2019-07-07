@@ -10,7 +10,7 @@
 	</div>
 	<!-- /.box-header -->
 	<div class="box-body table-responsive">
-		<table class="table table-bordered table-hover table-striped" id="table-book-error">
+		<table class="table table-bordered table-hover table-striped" id="table-chap-error">
 			<thead>
 				<tr>
 					<th>Stt</th>

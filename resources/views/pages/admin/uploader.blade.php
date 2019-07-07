@@ -49,6 +49,9 @@ Uploader
 				<!-- list error book -->
 				@include('partials.admin.content.list.book.list-book-error')
 
+				<!-- list error chap -->
+				@include('partials.admin.content.list.chap.list-chap-error')
+
 				<!-- Mail Box -->
 				@include('partials.admin.content.system.mail')
 				<!-- End Mail Box -->
@@ -152,6 +155,9 @@ Uploader
 				"lengthMenu": [5, 10, 25, 50],
 			});
 			$('#table-book-error').DataTable({
+				"lengthMenu": [5, 10, 25, 50],
+			});
+			$('#table-chap-error').DataTable({
 				"lengthMenu": [5, 10, 25, 50],
 			});
 			$('.table-chap').DataTable({

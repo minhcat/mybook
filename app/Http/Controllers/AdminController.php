@@ -85,6 +85,7 @@ class AdminController extends Controller {
 		$books_notapproved	= BooksBModel::get_books_not_approved($user_id);
 		$chaps_notapproved	= ChapsQModel::get_chaps_not_approved($user_id);
 		$books_error		= BooksErrorQModel::get_books_error_by_uploader_id($user_id);
+		// $chaps_error		= 
 
 		$data['user']				= $user;
 		$data['books_upload']		= $books_upload;
