@@ -50,8 +50,8 @@
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="#" class="box-link" data-target="#box-book-list-error">Danh sách chap truyện lỗi</a></li>
-					<li><a href="#" class="box-link" data-target="#box-book-detail-error" data-with="#box-book-list-error-small">Thông tin truyện lỗi</a></li>
+					<li><a href="#" class="box-link" data-target="#box-book-list-error">Danh sách truyện lỗi</a></li>
+					<li><a href="#" class="box-link" data-target="#box-book-detail-error" data-with="#box-book-list-error-small">Danh sách chap lỗi</a></li>
 				</ul>
 			</li>
 			<li class="treeview">
