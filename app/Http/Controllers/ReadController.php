@@ -29,7 +29,7 @@ class ReadController extends Controller {
 		$data['images'] = ImagesQModel::get_images_by_chap_id($chap->id);
 		$data['book']['name']  = $book->name;
 		$data['trans']['name'] = $trans->name;
-		$data['chap']['name']  = $chap->name;
+		$data['chap']['name']  = $chap->name.' - '.$chap->title;
 		$data['book']['slug']  = $book_slug;
 		$data['trans']['slug'] = $trans_slug;
 		$data['chap']['slug']  = $chap_slug;

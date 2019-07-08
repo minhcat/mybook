@@ -37,7 +37,7 @@
 					<td>{{ $book->content }}</td>
 					<td>
 						<button class="btn btn-success box-link" data-target="#box-book-edit-{{ $book->id_book }}" data-with="#box-book-list-small">Sửa</button>
-						<button class="btn btn-primary" data-toggle="modal" data-target="#modal-remove-book-{{ $book->id_book }}">Xem truyện</button>
+						<a href="{{ url('/detail/book/'.$book->slug) }}" class="btn btn-primary" target="_blank">Xem truyện</button>
 					</td>
 				</tr>
 				@endforeach

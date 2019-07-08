@@ -17,7 +17,7 @@ class BooksErrorQModel extends Model
 		$result = DB::table('books_error as be')
 				->join('books as b', 'b.id', '=', 'be.id_book')
 				->where('b.id_uploader', $uploader_id)
-				->select('be.*', 'b.name')
+				->select('be.*', 'b.name', 'b.slug')
 				->get();
 
 		return $result;

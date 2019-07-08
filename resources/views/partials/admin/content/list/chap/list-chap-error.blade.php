@@ -22,24 +22,24 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach ($books_error as $key => $book)
+				@foreach ($chaps_error as $key => $chap)
 				<tr>
 					<td>{{ $key + 1 }}</td>
-					<td>{{ $book->name }}</td>
-					<td></td>
+					<td>{{ $chap->book_name }}</td>
+					<td>{{ $chap->name }}</td>
 					<td>
-						@if ($book->type == 'incorrect')
-						<span class="label bg-red">sai thông tin</span>
-						@elseif ($book->type == 'incompliance')
-						<span class="label bg-orange">không đầy đủ</span>
-						@elseif ($book->type == 'errorshow')
-						<span class="label bg-green">Lỗi hiển thị</span>
+						@if ($chap->type == 'chapdie')
+						<span class="label bg-blue">chap die</span>
+						@elseif ($chap->type == 'coincidence')
+						<span class="label bg-green">trùng</span>
+						@elseif ($chap->type == 'indexwrong')
+						<span class="label bg-red">sai thứ tự</span>
 						@endif
 					</td>
-					<td>{{ $book->content }}</td>
+					<td>{{ $chap->content }}</td>
 					<td>
-						<button class="btn btn-success box-link" data-target="#box-book-edit-{{ $book->id_book }}" data-with="#box-book-list-small">Sửa</button>
-						<button class="btn btn-primary" data-toggle="modal" data-target="#modal-remove-book-{{ $book->id_book }}">Xem chap</button>
+						<button class="btn btn-success box-link" data-target="#box-chap-edit-{{ $chap->id_book }}-{{ $chap->id_chap }}" data-with="#box-book-list-small">Sửa</button>
+						<a href="{{ url('/read/'.$chap->book_slug.'/'.$chap->trans_slug.'/'.$chap->chap_slug) }}" target="_blank" class="btn btn-primary">Xem chap</a>
 					</td>
 				</tr>
 				@endforeach

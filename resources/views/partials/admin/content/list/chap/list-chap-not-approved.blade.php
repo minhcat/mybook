@@ -24,7 +24,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach ($chaps_notapproved as $key => $chap)
+				@foreach ($chaps_approved as $key => $chap)
 				<tr>
 					<td>{{ $key + 1 }}</td>
 					<td>{{ $chap->book_name }}</td>
