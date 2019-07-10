@@ -65,6 +65,9 @@ Uploader
 				<!-- book detail -->
 				@include('partials.admin.content.detail.detail-book')
 
+				<!-- author detail -->
+				@include('partials.admin.content.detail.detail-author')
+
 				<!-- book chap new -->
 				@include('partials.admin.content.new.new-chap')
 
@@ -116,6 +119,9 @@ Uploader
 
 				<!-- list book small statistaic rate -->
 				@include('partials.admin.content.list.book.list-book-mine-small')
+
+				<!-- list author small -->
+				@include('partials.admin.content.list.author.list-author-small')
 			</div>
 		</div>
 
@@ -164,6 +170,13 @@ Uploader
 				"lengthMenu": [5, 10, 25, 50],
 			});
 			$('#table-book-upload-small').DataTable({
+				"lengthMenu": [8],
+				"lengthChange": false,
+				"searching": false,
+				"pagingType": "numbers",
+				"info": false,
+			});
+			$('#table-author-small').DataTable({
 				"lengthMenu": [8],
 				"lengthChange": false,
 				"searching": false,

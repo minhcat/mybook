@@ -20,6 +20,7 @@ use App\Http\Models\QModels\TransQModel;
 use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\BooksApprovedCModel;
 use App\Http\Models\CModels\ChapsApprovedCModel;
+use App\Http\Models\BModels\AuthorsBModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\ChapsBModel;
 use App\Http\Models\BModels\CommentsBModel;
@@ -87,6 +88,7 @@ class AdminController extends Controller {
 		$chaps_approved		= ChapsQModel::get_chaps_not_approved($user_id);
 		$books_error		= BooksErrorQModel::get_books_error_by_uploader_id($user_id);
 		$chaps_error		= ChapsErrorQModel::get_chaps_error_by_uploader_id($user_id);
+		$authors_detail		= AuthorsBModel::get_authors_all();
 
 		$data['user']				= $user;
 		$data['books_upload']		= $books_upload;
@@ -100,6 +102,7 @@ class AdminController extends Controller {
 		$data['chaps_approved']		= $chaps_approved;
 		$data['books_error']		= $books_error;
 		$data['chaps_error']		= $chaps_error;
+		$data['authors_detail']		= $authors_detail;
 		// dd($data);
 		return view('pages.admin.uploader', $data);
 	}
