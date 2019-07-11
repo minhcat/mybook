@@ -1,5 +1,4 @@
-@foreach ($authors_detail as $author)
-<div class="box box-primary collapse author-new" id="box-new-author-{{ $author->id }}" aria-expanded="false">
+<div class="box box-primary collapse author-new" id="box-new-author" aria-expanded="false">
 
 	<div class="box-header with-border">
 		<h3 class="box-title">Thêm tác giả</h3>
@@ -10,7 +9,7 @@
 			<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
 		</div>
 	</div>
-	<form id="create-book" action="{{ url('/admin/uploader/create_author') }}" method="POST" enctype="multipart/form-data">
+	<form id="create-chap" action="{{ url('/admin/uploader/create_author') }}" method="POST" enctype="multipart/form-data">
 		<div class="box-body">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="avatar">
@@ -53,10 +52,6 @@
 					<input type="text" class="form-control" id="name" placeholder="nhập website">
 				</div>
 				<div class="form-group">
-					<label for="name">Sở thích</label>
-					<input type="text" class="form-control" id="name" placeholder="nhập sở thích">
-				</div>
-				<div class="form-group">
 					<label for="name">Giới thiệu</label>
 					<textarea id="author-content" class="form-control" name="author-content-new" rows="2" placeholder="giới thiệu"></textarea>
 				</div>
@@ -64,8 +59,7 @@
 		</div>
 		<div class="box-footer">
 			<button type="submit" class="btn btn-primary">Thêm tác giả</button>
-			<button type="button" class="btn btn-default box-link" data-target="#box-character" data-small="database" data-with="#box-author">Quay lại</button>
+			<button type="button" class="btn btn-default box-link" data-target="#box-author-detail-1" data-with="#box-author-list-small">Quay lại</button>
 		</div>
 	</form>
 </div>
-@endforeach

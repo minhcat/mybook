@@ -77,6 +77,9 @@ Uploader
 				<!-- book edit -->
 				@include('partials.admin.content.edit.edit-book')
 
+				<!-- book edit -->
+				@include('partials.admin.content.edit.edit-author')
+
 				<!-- book detail not approved-->
 				@include('partials.admin.content.detail.detail-book-not-approved')
 
@@ -206,6 +209,12 @@ Uploader
 				]
 			});
 			CKEDITOR.replace('author-content', {
+				toolbar: [
+					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+					[ 'FontSize', 'TextColor', 'BGColor' ]
+				]
+			});
+			CKEDITOR.replace('author-content-edit', {
 				toolbar: [
 					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
 					[ 'FontSize', 'TextColor', 'BGColor' ]
