@@ -386,6 +386,42 @@ class AdminController extends Controller {
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
+	public function create_author(Request $request) {
+		// check validate
+		$validate = [
+			'name' => 'required'
+		];
+		$this->validate($request, $validate);
+
+		// upload image
+		$data['image'] = $request->file('image');
+		$data['name']  = $request->input('name');
+		$data['path']  = '/image/authors';
+		if ($data['image'] != null) {
+			Images::upload_image($data);
+		}
+
+		// create author
+		$author = new \stdClass;
+		$author->name        = $request->input('name');
+		$author->gender      = $request->input('gender');
+		$author->type        = $request->input('type');
+		$author->categories  = json_decode($request->input('category'));
+		$author->facebook    = $request->input('facebook');
+		$author->twitter     = $request->input('twitter');
+		$author->website     = $request->input('website');
+		$author->description = $request->input('description');
+
+		AuthorsBModel::create_author($author);
+
+		return redirect()->back()->with('success', 'Thêm tác giả thành công');
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
 	public static function add_keyword($id_book, Request $request) {
 		$keyword = $request->input('keyword');
 		$book = BooksQModel::get_book_by_id($id_book);

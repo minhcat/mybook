@@ -188,6 +188,24 @@ $(document).ready(function() {
 			form.submit();
 		}
 	});
+	$('form#create-author .box-footer button.btn-primary').click(function() {
+		var form  = $(this).parents('form#create-author');
+		var check = true;
+		//check enter name
+		var name = form.find('.form-group.name input').val();
+		if (name == '') {
+			form.find('.form-group.name p.error.hide').removeClass('hide');
+			check = false;
+		} else {
+			var p = form.find('.form-group.name p.error');
+			if (!p.hasClass('hide'))
+				p.addClass('hide');
+		}
+
+		if (check == true) {
+			form.submit();
+		}
+	});
 	//submit add keyword
 	$('form#add_keyword button.btn-primary').click(function() {
 		$(this).parents('.modal').modal('hide');

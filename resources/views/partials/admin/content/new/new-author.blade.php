@@ -9,7 +9,7 @@
 			<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
 		</div>
 	</div>
-	<form id="create-chap" action="{{ url('/admin/uploader/create_author') }}" method="POST" enctype="multipart/form-data">
+	<form id="create-author" action="{{ url('/admin/uploader/create_author') }}" method="POST" enctype="multipart/form-data">
 		<div class="box-body">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="avatar">
@@ -21,9 +21,10 @@
 				<p class="error hide">Bạn chưa up hình</p>
 			</div>
 			<div class="box-new">
-				<div class="form-group">
+				<div class="form-group name">
 					<label for="name">Tên tác giả</label>
-					<input type="text" class="form-control" id="name" placeholder="nhập tên tác giả">
+					<input type="text" class="form-control" id="name" placeholder="nhập tên tác giả" name="name">
+					<p class="error hide">Bạn chưa nhập tên tác giả</p>
 				</div>
 				<div class="form-group">
 					<label for="name">Giới tính</label>
@@ -39,21 +40,28 @@
 						<option value="artist">Họa sĩ</option>
 					</select>
 				</div>
+				<div class="form-group category">
+					<label>Thể loại</label><br>
+					@foreach ($categories as $category)
+					<span class="label label-primary {{ $category->slug }}" data-id="{{ $category->id }}">{{ $category->name }}</span>
+					@endforeach
+					<input type="hidden" name="category" value="[]">
+				</div>
 				<div class="form-group">
 					<label for="name">Facebook</label>
-					<input type="text" class="form-control" id="name" placeholder="nhập facebook">
+					<input type="text" class="form-control" id="name" name="facebook" placeholder="nhập facebook">
 				</div>
 				<div class="form-group">
 					<label for="name">Twitter</label>
-					<input type="text" class="form-control" id="name" placeholder="nhập twitter">
+					<input type="text" class="form-control" id="name" name="twitter" placeholder="nhập twitter">
 				</div>
 				<div class="form-group">
 					<label for="name">Website</label>
-					<input type="text" class="form-control" id="name" placeholder="nhập website">
+					<input type="text" class="form-control" id="name" name="website" placeholder="nhập website">
 				</div>
 				<div class="form-group">
 					<label for="name">Giới thiệu</label>
-					<textarea id="author-content" class="form-control" name="author-content-new" rows="2" placeholder="giới thiệu"></textarea>
+					<textarea id="author-content" class="form-control" name="description" rows="2" placeholder="giới thiệu"></textarea>
 				</div>
 			</div>
 		</div>
