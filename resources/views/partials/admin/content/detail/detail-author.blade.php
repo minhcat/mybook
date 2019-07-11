@@ -53,7 +53,7 @@
 		</div>
 	</div>
 	<div class="box-footer">
-		<button class="btn btn-primary box-link" data-target="#box-chap-list-{{ $author->id }}" data-unclose="#box-book-list-small">Thêm tác giả</button>
+		<button class="btn btn-primary box-link" data-target="#box-new-author-{{ $author->id }}" data-unclose="#box-author-list-small">Thêm tác giả</button>
 		<button class="btn btn-success box-link" data-target="#box-book-edit-{{ $author->id }}" data-unclose="#box-book-list-small">Chỉnh sửa</button>
 		<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-book">Xóa</button>
 	</div>

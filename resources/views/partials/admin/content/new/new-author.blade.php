@@ -1,4 +1,6 @@
-<div class="box box-primary collapse" id="box-new-author" aria-expanded="false">
+@foreach ($authors_detail as $author)
+<div class="box box-primary collapse author-new" id="box-new-author-{{ $author->id }}" aria-expanded="false">
+
 	<div class="box-header with-border">
 		<h3 class="box-title">Thêm tác giả</h3>
 
@@ -8,39 +10,56 @@
 			<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
 		</div>
 	</div>
-	<form role="form">
+	<form id="create-book" action="{{ url('/admin/uploader/create_author') }}" method="POST" enctype="multipart/form-data">
 		<div class="box-body">
-			<div class="form-group">
-				<label for="name">Tên tác giả</label>
-				<input type="text" class="form-control" id="name" placeholder="tên nhân vật">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<div class="avatar">
+				<img src="{{ asset('image/admin/user-default.jpg') }}" class="img-circle" width="150px" height="150px"  alt="user image">
+				<label class="btn btn-success">
+					Thêm hình
+					<input id="image" type="file" name="image">
+				</label>
+				<p class="error hide">Bạn chưa up hình</p>
 			</div>
-			<div class="form-group">
-				<label for="name">Giới tính</label>
-				<input type="text" class="form-control" id="name" placeholder="tên truyện">
-			</div>
-			<div class="form-group">
-				<label for="name">Loại tác giả</label>
-				<input type="text" class="form-control" id="name" placeholder="ngày sinh">
-			</div>
-			<div class="form-group">
-				<label for="name">Facebook</label>
-				<input type="text" class="form-control" id="name" placeholder="ngày">
-			</div>
-			<div class="form-group">
-				<label for="name">Twitter</label>
-				<input type="text" class="form-control" id="name" placeholder="loại nhân vật">
-			</div>
-			<div class="form-group">
-				<label for="name">Website</label>
-				<input type="text" class="form-control" id="name" placeholder="gia đình">
-			</div>
-			<div class="form-group">
-				<label for="name">Sở thích</label>
-				<input type="text" class="form-control" id="name" placeholder="sở thích">
-			</div>
-			<div class="form-group">
-				<label for="name">Giới thiệu</label>
-				<textarea class="form-control" name="author-content-new" rows="3" placeholder="giới thiệu"></textarea>
+			<div class="box-new">
+				<div class="form-group">
+					<label for="name">Tên tác giả</label>
+					<input type="text" class="form-control" id="name" placeholder="nhập tên tác giả">
+				</div>
+				<div class="form-group">
+					<label for="name">Giới tính</label>
+					<select class="form-control" name="gender">
+						<option value="0">Nam</option>
+						<option value="1">Nữ</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="name">Loại tác giả</label>
+					<select class="form-control" name="type">
+						<option value="author">Viết truyện</option>
+						<option value="artist">Họa sĩ</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="name">Facebook</label>
+					<input type="text" class="form-control" id="name" placeholder="nhập facebook">
+				</div>
+				<div class="form-group">
+					<label for="name">Twitter</label>
+					<input type="text" class="form-control" id="name" placeholder="nhập twitter">
+				</div>
+				<div class="form-group">
+					<label for="name">Website</label>
+					<input type="text" class="form-control" id="name" placeholder="nhập website">
+				</div>
+				<div class="form-group">
+					<label for="name">Sở thích</label>
+					<input type="text" class="form-control" id="name" placeholder="nhập sở thích">
+				</div>
+				<div class="form-group">
+					<label for="name">Giới thiệu</label>
+					<textarea id="author-content" class="form-control" name="author-content-new" rows="2" placeholder="giới thiệu"></textarea>
+				</div>
 			</div>
 		</div>
 		<div class="box-footer">
@@ -49,3 +68,4 @@
 		</div>
 	</form>
 </div>
+@endforeach

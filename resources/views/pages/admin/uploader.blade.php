@@ -71,6 +71,9 @@ Uploader
 				<!-- book chap new -->
 				@include('partials.admin.content.new.new-chap')
 
+				<!-- author new -->
+				@include('partials.admin.content.new.new-author')
+
 				<!-- book edit -->
 				@include('partials.admin.content.edit.edit-book')
 
@@ -199,6 +202,12 @@ Uploader
 			CKEDITOR.replace('mail-content', {
 				toolbar: [
 					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' , '-', 'Image', 'Table', '-', 'Scayt'],
+					[ 'FontSize', 'TextColor', 'BGColor' ]
+				]
+			});
+			CKEDITOR.replace('author-content', {
+				toolbar: [
+					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
 					[ 'FontSize', 'TextColor', 'BGColor' ]
 				]
 			});
