@@ -68,6 +68,9 @@ Uploader
 				<!-- author detail -->
 				@include('partials.admin.content.detail.detail-author')
 
+				<!-- character detail -->
+				@include('partials.admin.content.detail.detail-character')
+
 				<!-- book chap new -->
 				@include('partials.admin.content.new.new-chap')
 
