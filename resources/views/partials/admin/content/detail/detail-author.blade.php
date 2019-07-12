@@ -10,7 +10,11 @@
 		</div>
 	</div>
 	<div class="box-body">
-		<img src="{{ asset('image/authors/'.$author->image.'.jpg') }}" class="img-circle" width="150px"  alt="user image">
+		@if ($author->image == '')
+		<img src="{{ asset('image/admin/user-default.jpg') }}" class="img-circle" width="150px" height="150px"  alt="user image">
+		@else
+		<img src="{{ asset('image/authors/'.$author->image.'.jpg') }}" class="img-circle" width="150px" height="150px"  alt="user image">
+		@endif
 		<div class="box-info">
 			
 			<p><strong>Đánh giá:</strong> {{ $author->rate_point }}, lượt đánh giá: {{ $author->rate }}</p>
@@ -55,7 +59,7 @@
 	<div class="box-footer">
 		<button class="btn btn-primary box-link" data-target="#box-new-author" data-unclose="#box-author-list-small">Thêm tác giả</button>
 		<button class="btn btn-success box-link" data-target="#box-edit-author-{{ $author->id }}" data-unclose="#box-author-list-small">Chỉnh sửa</button>
-		<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-book">Xóa</button>
+		<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-author-{{ $author->id }}">Xóa</button>
 	</div>
 </div>
 @endforeach

@@ -48,7 +48,7 @@ class AuthorsBModel extends Model
 		// insert author
 		$author = [
 			'name'			=> $new_author->name,
-			'image'			=> str_slug($new_author->name, '-'),
+			'image'			=> ($new_author->is_image) ? str_slug($new_author->name, '-') : '',
 			'slug'			=> str_slug($new_author->name, '_'),
 			'gender'		=> $new_author->gender,
 			'type'			=> $new_author->type,

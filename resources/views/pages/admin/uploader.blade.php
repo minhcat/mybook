@@ -136,6 +136,8 @@ Uploader
 
 		@include('partials.admin.content.modal.modal-remove-book')
 
+		@include('partials.admin.content.modal.modal-remove-author')
+
 		@include('partials.admin.content.modal.modal-remove-chap')
 
 	</section>
@@ -214,12 +216,15 @@ Uploader
 					[ 'FontSize', 'TextColor', 'BGColor' ]
 				]
 			});
-			CKEDITOR.replace('author-content-edit', {
-				toolbar: [
-					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
-					[ 'FontSize', 'TextColor', 'BGColor' ]
-				]
+			$('.author-content-edit').each(function() {
+				CKEDITOR.replace($(this).attr('id'), {
+					toolbar: [
+						[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+						[ 'FontSize', 'TextColor', 'BGColor' ]
+					]
+				});
 			});
+			
 		});
 	</script>
 	<script src="{{ asset('js/admin/upload.js') }}"></script>

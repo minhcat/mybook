@@ -89,6 +89,8 @@ Route::group(['prefix' => 'admin'], function() {
 
 		Route::post('update_author/{id_author}', 'AdminController@update_author');
 
+		Route::get('delete_author/{id_author}', 'AdminController@delete_author');
+
 		Route::post('add_keyword/{id_book}', 'AdminController@add_keyword');
 
 		Route::group(['prefix' => 'ajax'], function() {

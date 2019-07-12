@@ -13,7 +13,11 @@
 		<div class="box-body">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="avatar">
+				@if ($author->image == '')
+				<img src="{{ asset('image/admin/user-default.jpg') }}" class="img-circle" width="150px" height="150px"  alt="user image">
+				@else
 				<img src="{{ asset('image/authors/'.$author->image.'.jpg') }}" class="img-circle" width="150px" height="150px"  alt="user image">
+				@endif
 				<label class="btn btn-success">
 					Thay đổi hình
 					<input id="image" type="file" name="image">
@@ -79,7 +83,7 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Giới thiệu</label>
-					<textarea id="author-content-edit" class="form-control" name="description" rows="2" placeholder="giới thiệu">{{ $author->description }}</textarea>
+					<textarea id="author-content-edit-{{ $author->id }}" class="form-control author-content-edit" name="description" rows="2" placeholder="giới thiệu">{{ $author->description }}</textarea>
 				</div>
 			</div>
 		</div>

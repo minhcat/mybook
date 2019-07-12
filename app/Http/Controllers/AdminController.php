@@ -18,6 +18,7 @@ use App\Http\Models\QModels\ChapsApprovedQModel;
 use App\Http\Models\QModels\ChapsErrorQModel;
 use App\Http\Models\QModels\TransQModel;
 use App\Http\Models\CModels\BooksCModel;
+use App\Http\Models\CModels\AuthorsCModel;
 use App\Http\Models\CModels\BooksApprovedCModel;
 use App\Http\Models\CModels\ChapsApprovedCModel;
 use App\Http\Models\BModels\AuthorsBModel;
@@ -411,6 +412,11 @@ class AdminController extends Controller {
 		$author->twitter     = $request->input('twitter');
 		$author->website     = $request->input('website');
 		$author->description = $request->input('description');
+		if ($data['image'] == null) {
+			$author->is_image = false;
+		} else {
+			$author->is_image = true;
+		}
 
 		AuthorsBModel::create_author($author);
 
@@ -452,6 +458,17 @@ class AdminController extends Controller {
 		AuthorsBModel::update_author($author);
 
 		return redirect()->back()->with('success', 'Chỉnh sửa thông tin tác giả thành công');
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public function delete_author($id_author) {
+		$data = ['deleted' => 1];
+		AuthorsCModel::update_author($id_author, $data);
+		return redirect()->back()->with('success','Xóa tác giả thành công');
 	}
 
 	/**

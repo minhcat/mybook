@@ -15,6 +15,7 @@ class AuthorsQModel extends Model
 	 */
 	public static function get_author_by_id($id) {
 		$result = DB::table('authors')
+				->where('deleted', 0)
 				->where('id', $id)
 				->get();
 				
@@ -31,6 +32,7 @@ class AuthorsQModel extends Model
 	 */
 	public static function get_author_by_slug($slug) {
 		$result = DB::table('authors')
+				->where('deleted', 0)
 				->where('slug', $slug)
 				->get();
 
@@ -44,6 +46,7 @@ class AuthorsQModel extends Model
 	 */
 	public static function get_authors_all() {
 		$result = DB::table('authors')
+				->where('deleted', 0)
 				->where('type','author')
 				->get();
 
@@ -57,6 +60,7 @@ class AuthorsQModel extends Model
 	 */
 	public static function get_artists_all() {
 		$result = DB::table('authors')
+				->where('deleted', 0)
 				->where('type','artist')
 				->get();
 
@@ -70,6 +74,7 @@ class AuthorsQModel extends Model
 	 */
 	public static function get_authors_all_2() {
 		$result = DB::table('authors')
+				->where('deleted', 0)
 				->get();
 
 		return $result;
@@ -82,6 +87,7 @@ class AuthorsQModel extends Model
 	 */
 	public static function search_authors_by_name($name) {
 		$result = DB::table('authors')
+				->where('deleted', 0)
 				->where('name','LIKE', '%'.$name.'%')
 				->get();
 
