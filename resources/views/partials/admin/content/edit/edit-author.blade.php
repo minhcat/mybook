@@ -9,7 +9,7 @@
 			<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
 		</div>
 	</div>
-	<form id="create-chap" action="{{ url('/admin/uploader/edit_author') }}" method="POST" enctype="multipart/form-data">
+	<form id="create-chap" action="{{ url('/admin/uploader/update_author/'.$author->id) }}" method="POST" enctype="multipart/form-data">
 		<div class="box-body">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="avatar">
@@ -22,7 +22,7 @@
 			<div class="box-edit">
 				<div class="form-group">
 					<label for="name">Tên tác giả</label>
-					<input type="text" class="form-control" id="name" placeholder="tên tác giả" value="{{ $author->name }}">
+					<input type="text" name="name" class="form-control" id="name" placeholder="tên tác giả" value="{{ $author->name }}">
 				</div>
 				<div class="form-group">
 					<label for="name">Giới tính</label>
@@ -48,21 +48,38 @@
 						@endif
 					</select>
 				</div>
+				<div class="form-group category">
+					<label>Thể loại</label><br>
+					@foreach ($categories as $category)
+						<?php $check_cate = true; ?>
+						@foreach ($author->categories as $author_category)
+							@if ($author_category == $category->name)
+								<?php $check_cate = false; ?>
+								<span class="label label-danger {{ $category->slug }}" data-id="{{ $category->id }}">{{ $category->name }}</span>
+								<?php break;?>
+							@endif
+						@endforeach
+						@if ($check_cate == true)
+							<span class="label label-primary {{ $category->slug }}" data-id="{{ $category->id }}">{{ $category->name }}</span>
+						@endif
+					@endforeach
+					<input type="hidden" name="category" value="[]">
+				</div>
 				<div class="form-group">
 					<label for="name">Facebook</label>
-					<input type="text" class="form-control" id="name" placeholder="facebook" value="{{ $author->facebook }}">
+					<input type="text" name="facebook" class="form-control" id="name" placeholder="facebook" value="{{ $author->facebook }}">
 				</div>
 				<div class="form-group">
 					<label for="name">Twitter</label>
-					<input type="text" class="form-control" id="name" placeholder="twitter" value="{{ $author->twitter }}">
+					<input type="text" name="twitter" class="form-control" id="name" placeholder="twitter" value="{{ $author->twitter }}">
 				</div>
 				<div class="form-group">
 					<label for="name">Website</label>
-					<input type="text" class="form-control" id="name" placeholder="website" value="{{ $author->website }}">
+					<input type="text" name="website" class="form-control" id="name" placeholder="website" value="{{ $author->website }}">
 				</div>
 				<div class="form-group">
 					<label for="name">Giới thiệu</label>
-					<textarea id="author-content-edit" class="form-control" name="author-content-edit" rows="2" placeholder="giới thiệu">{{ $author->description }}</textarea>
+					<textarea id="author-content-edit" class="form-control" name="description" rows="2" placeholder="giới thiệu">{{ $author->description }}</textarea>
 				</div>
 			</div>
 		</div>

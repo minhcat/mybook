@@ -36,7 +36,7 @@ class AuthorsCategoryCModel extends Model
 	 */
 	public static function delete_author_category_by_author_id($id_author) {
 		return DB::table('authors_category')
-				->where('id_author', '=', $id_book)
+				->where('id_author', '=', $id_author)
 				->delete();
 	}
 }

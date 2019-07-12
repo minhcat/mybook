@@ -31,6 +31,7 @@ class AuthorsBModel extends Model
 		foreach ($authors as $author) {
 			$categories = AuthorsCategoryQModel::get_categories_by_author_id($author->id);
 
+			$author->categories = [];
 			foreach ($categories as $key => $category) {
 				$author->categories[$key] = $category->name;
 			}
@@ -64,6 +65,40 @@ class AuthorsBModel extends Model
 		foreach ($new_author->categories as $key => $category) {
 			$categories[$key] = [
 				'id_author'		=> $id_author,
+				'id_category'	=> $category
+			];
+			AuthorsCategoryCModel::insert_author_category($categories[$key]);
+		}
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function update_author($update_author) {
+		$id = $update_author->id;
+		// update author
+		$author = [
+			'name'			=> $update_author->name,
+			'image'			=> str_slug($update_author->name, '-'),
+			'slug'			=> str_slug($update_author->name, '_'),
+			'gender'		=> $update_author->gender,
+			'type'			=> $update_author->type,
+			'facebook'		=> $update_author->facebook,
+			'twitter'		=> $update_author->twitter,
+			'website'		=> $update_author->website,
+			'description'	=> $update_author->description
+		];
+
+		AuthorsCModel::update_author($id, $author);
+
+		// update author category
+		AuthorsCategoryCModel::delete_author_category_by_author_id($id);
+		$categories = [];
+		foreach ($update_author->categories as $key => $category) {
+			$categories[$key] = [
+				'id_author'		=> $id,
 				'id_category'	=> $category
 			];
 			AuthorsCategoryCModel::insert_author_category($categories[$key]);
