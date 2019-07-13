@@ -45,7 +45,7 @@
 		</div>
 	</div>
 	<div class="box-footer">
-		<button class="btn btn-primary box-link" data-target="#box-new-character" data-unclose="#box-author-list-small">Thêm nhân vật</button>
+		<button class="btn btn-primary box-link" data-target="#box-new-character" data-unclose="#box-character-list-small">Thêm nhân vật</button>
 		<button class="btn btn-success box-link" data-target="#box-edit-author-{{ $character->id }}" data-unclose="#box-author-list-small">Chỉnh sửa</button>
 		<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-author-{{ $character->id }}">Xóa</button>
 	</div>

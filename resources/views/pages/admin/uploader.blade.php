@@ -77,6 +77,9 @@ Uploader
 				<!-- author new -->
 				@include('partials.admin.content.new.new-author')
 
+				<!-- character new -->
+				@include('partials.admin.content.new.new-character')
+
 				<!-- book edit -->
 				@include('partials.admin.content.edit.edit-book')
 
@@ -165,6 +168,12 @@ Uploader
 			$('#datepicker-book-edit').datepicker({
 				autoclose: true
 			});
+			$('#datepicker-char-new').datepicker({
+				autoclose: true
+			});
+			$('#datepicker-char-edit').datepicker({
+				autoclose: true
+			});
 			$('#table-book-upload').DataTable({
 				"lengthMenu": [5, 10, 25, 50],
 			});
@@ -224,6 +233,12 @@ Uploader
 				]
 			});
 			CKEDITOR.replace('author-content', {
+				toolbar: [
+					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+					[ 'FontSize', 'TextColor', 'BGColor' ]
+				]
+			});
+			CKEDITOR.replace('character-content-new', {
 				toolbar: [
 					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
 					[ 'FontSize', 'TextColor', 'BGColor' ]
