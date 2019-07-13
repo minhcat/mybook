@@ -22,7 +22,7 @@
 			<div class="box-new">
 				<div class="form-group">
 					<label for="name">Tên nhân vật</label>
-					<input type="text" class="form-control" placeholder="tên nhân vật">
+					<input type="text" name="name" class="form-control" placeholder="tên nhân vật">
 				</div>
 				<div class="form-group">
 					<label for="name">Loại nhân vật</label>
@@ -40,19 +40,19 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Ngày sinh</label>
-					<input type="text" id="datepicker-char-new" class="form-control" placeholder="ngày">
+					<input type="text" name="birthday" id="datepicker-char-new" class="form-control" placeholder="ngày">
 				</div>
 				<div class="form-group">
 					<label for="name">Gia đình</label>
-					<input type="text" class="form-control" placeholder="gia đình">
+					<input type="text" name="family" class="form-control" placeholder="gia đình">
 				</div>
 				<div class="form-group">
 					<label for="name">Nghề nghiệp</label>
-					<input type="text" class="form-control" placeholder="nghề nghiệp">
+					<input type="text" name="job" class="form-control" placeholder="nghề nghiệp">
 				</div>
 				<div class="form-group">
 					<label for="name">Sở thích</label>
-					<input type="text" class="form-control" placeholder="sở thích">
+					<input type="text" name="hobby" class="form-control" placeholder="sở thích">
 				</div>
 				<div class="form-group">
 					<label for="name">Giới thiệu</label>

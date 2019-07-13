@@ -19,11 +19,13 @@ use App\Http\Models\QModels\ChapsErrorQModel;
 use App\Http\Models\QModels\TransQModel;
 use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\AuthorsCModel;
+use App\Http\Models\CModels\CharactersCModel;
 use App\Http\Models\CModels\BooksApprovedCModel;
 use App\Http\Models\CModels\ChapsApprovedCModel;
 use App\Http\Models\BModels\AuthorsBModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\ChapsBModel;
+use App\Http\Models\BModels\CharactersBModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\ImagesBModel;
 use App\Http\Models\BModels\UsersBModel;
@@ -242,7 +244,8 @@ class AdminController extends Controller {
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public function delete_book($id_book) {
+	public function delete_book($id_book) 
+	{
 		$data = ['deleted' => 1];
 		BooksCModel::update_book($id_book, $data);
 		return redirect()->back()->with('success','Xóa truyện thành công');
@@ -469,6 +472,46 @@ class AdminController extends Controller {
 		$data = ['deleted' => 1];
 		AuthorsCModel::update_author($id_author, $data);
 		return redirect()->back()->with('success','Xóa tác giả thành công');
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public function create_character(Request $request) {
+		// check validate
+		$validate = [
+			'name' => 'required'
+		];
+		$this->validate($request, $validate);
+
+		// upload image
+		$data['image'] = $request->file('image');
+		$data['name']  = $request->input('name');
+		$data['path']  = '/image/characters';
+		if ($data['image'] != null) {
+			Images::upload_image($data);
+		}
+
+		// create character
+		$character = new \stdClass;
+		$character->name        = $request->input('name');
+		$character->gender      = $request->input('gender');
+		$character->type        = $request->input('type');
+		$character->birthday    = $request->input('birthday');
+		$character->family      = $request->input('family');
+		$character->job         = $request->input('job');
+		$character->description = $request->input('description');
+		if ($data['image'] == null) {
+			$character->is_image = false;
+		} else {
+			$character->is_image = true;
+		}
+
+		CharactersBModel::create_character($character);
+
+		return redirect()->back()->with('success', 'Thêm nhân vật thành công');
 	}
 
 	/**

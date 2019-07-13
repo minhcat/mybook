@@ -91,6 +91,8 @@ Route::group(['prefix' => 'admin'], function() {
 
 		Route::get('delete_author/{id_author}', 'AdminController@delete_author');
 
+		Route::post('create_character', 'AdminController@create_character');
+
 		Route::post('add_keyword/{id_book}', 'AdminController@add_keyword');
 
 		Route::group(['prefix' => 'ajax'], function() {
