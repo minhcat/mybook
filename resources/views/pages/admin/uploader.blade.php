@@ -131,6 +131,9 @@ Uploader
 
 				<!-- list author small -->
 				@include('partials.admin.content.list.author.list-author-small')
+
+				<!-- list character small -->
+				@include('partials.admin.content.list.character.list-character-small')
 			</div>
 		</div>
 
@@ -188,6 +191,13 @@ Uploader
 				"info": false,
 			});
 			$('#table-author-small').DataTable({
+				"lengthMenu": [8],
+				"lengthChange": false,
+				"searching": false,
+				"pagingType": "numbers",
+				"info": false,
+			});
+			$('#table-character-small').DataTable({
 				"lengthMenu": [8],
 				"lengthChange": false,
 				"searching": false,
