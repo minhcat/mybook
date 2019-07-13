@@ -27,8 +27,8 @@
 				<div class="form-group">
 					<label for="name">Loại nhân vật</label>
 					<select class="form-control" name="type">
-						<option value="author">Nhân vật chính</option>
-						<option value="artist">Nhân vật phụ</option>
+						<option value="main">Nhân vật chính</option>
+						<option value="supporting">Nhân vật phụ</option>
 					</select>
 				</div>
 				<div class="form-group">

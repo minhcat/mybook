@@ -83,8 +83,11 @@ Uploader
 				<!-- book edit -->
 				@include('partials.admin.content.edit.edit-book')
 
-				<!-- book edit -->
+				<!-- author edit -->
 				@include('partials.admin.content.edit.edit-author')
+
+				<!-- character edit -->
+				@include('partials.admin.content.edit.edit-character')
 
 				<!-- book detail not approved-->
 				@include('partials.admin.content.detail.detail-book-not-approved')
@@ -245,6 +248,14 @@ Uploader
 				]
 			});
 			$('.author-content-edit').each(function() {
+				CKEDITOR.replace($(this).attr('id'), {
+					toolbar: [
+						[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+						[ 'FontSize', 'TextColor', 'BGColor' ]
+					]
+				});
+			});
+			$('.character-content-edit').each(function() {
 				CKEDITOR.replace($(this).attr('id'), {
 					toolbar: [
 						[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],

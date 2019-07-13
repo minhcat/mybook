@@ -32,4 +32,27 @@ class CharactersBModel extends Model
 
 		$id_character = CharactersCModel::insert_character($character);
 	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function update_character($update_character) {
+		$id = $update_character->id;
+		// insert character
+		$character = [
+			'name'			=> $update_character->name,
+			'image'			=> ($update_character->is_image) ? str_slug($update_character->name, '-') : '',
+			'slug'			=> str_slug($update_character->name, '_'),
+			'gender'		=> $update_character->gender,
+			'type'			=> $update_character->type,
+			'birth'			=> $update_character->birthday,
+			'family'		=> $update_character->family,
+			'job'			=> $update_character->job,
+			'description'	=> $update_character->description
+		];
+
+		CharactersCModel::update_character($id, $character);
+	}
 }

@@ -519,6 +519,42 @@ class AdminController extends Controller {
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
+	public function update_character($id_character, Request $request) {
+		// check validate
+		$validate = [
+			'name' => 'required'
+		];
+		$this->validate($request, $validate);
+
+		// upload image
+		$data['image'] = $request->file('image');
+		$data['name']  = $request->input('name');
+		$data['path']  = '/image/characters';
+		if ($data['image'] != null) {
+			Images::upload_image($data);
+		}
+
+		// create character
+		$character = new \stdClass;
+		$character->id          = $id_character;
+		$character->name        = $request->input('name');
+		$character->gender      = $request->input('gender');
+		$character->type        = $request->input('type');
+		$character->birthday    = $request->input('birthday');
+		$character->family      = $request->input('family');
+		$character->job         = $request->input('job');
+		$character->description = $request->input('description');
+
+		CharactersBModel::update_character($character);
+
+		return redirect()->back()->with('success', 'Chỉnh sửa thông tin nhân vật thành công');
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
 	public static function add_keyword($id_book, Request $request) {
 		$keyword = $request->input('keyword');
 		$book = BooksQModel::get_book_by_id($id_book);

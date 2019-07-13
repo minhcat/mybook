@@ -19,7 +19,7 @@
 			</thead>
 			<tbody>
 				@foreach ($characters as $key => $character)
-				<tr>
+				<tr class="link box-link" data-target="#box-character-detail-{{ $character->id }}" data-with="#box-character-list-small">
 					<td>{{ $key + 1 }}</td>
 					<td>{{ $character->name }}</td>
 				</tr>
