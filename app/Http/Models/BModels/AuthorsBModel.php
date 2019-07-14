@@ -81,7 +81,7 @@ class AuthorsBModel extends Model
 		// update author
 		$author = [
 			'name'			=> $update_author->name,
-			'image'			=> str_slug($update_author->name, '-'),
+			'image'			=> ($update_author->is_image) ? str_slug($update_author->name, '-') : null,
 			'slug'			=> str_slug($update_author->name, '_'),
 			'gender'		=> $update_author->gender,
 			'type'			=> $update_author->type,

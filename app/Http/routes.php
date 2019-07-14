@@ -93,6 +93,8 @@ Route::group(['prefix' => 'admin'], function() {
 
 		Route::post('create_character', 'AdminController@create_character');
 
+		Route::post('update_character/{id_character}', 'AdminController@update_character');
+
 		Route::post('add_keyword/{id_book}', 'AdminController@add_keyword');
 
 		Route::group(['prefix' => 'ajax'], function() {

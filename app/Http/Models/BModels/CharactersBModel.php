@@ -43,13 +43,14 @@ class CharactersBModel extends Model
 		// insert character
 		$character = [
 			'name'			=> $update_character->name,
-			'image'			=> ($update_character->is_image) ? str_slug($update_character->name, '-') : '',
+			'image'			=> ($update_character->is_image) ? str_slug($update_character->name, '-') : null,
 			'slug'			=> str_slug($update_character->name, '_'),
 			'gender'		=> $update_character->gender,
 			'type'			=> $update_character->type,
 			'birth'			=> $update_character->birthday,
 			'family'		=> $update_character->family,
 			'job'			=> $update_character->job,
+			'hobby'			=> $update_character->hobby,
 			'description'	=> $update_character->description
 		];
 

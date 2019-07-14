@@ -74,12 +74,12 @@
 			</div>
 			<div class="form-group">
 				<label>Ngày xuất bản</label>
-				<input type="text" name="release_at" class="form-control" id="datepicker-book-edit" value="{{ date_format(date_create($book->create_at), 'd/m/Y') }}">
+				<input type="text" name="release_at" class="form-control datepicker-book-edit" id="datepicker-book-edit" value="{{ date_format(date_create($book->create_at), 'd/m/Y') }}">
 			</div>
 			<div class="form-group description">
 				<label>Nội dung</label>
 				<!-- <br> -->
-				<textarea class="form-control" name="book-content-edit" rows="4">{{ htmlspecialchars($book->description) }}</textarea>
+				<textarea class="form-control book-content-edit" id="book-content-edit-{{ $book->id }}" name="description" rows="4">{{ htmlspecialchars($book->description) }}</textarea>
 			</div>
 			<div class="form-group status">
 				<label>Tình trạng</label>

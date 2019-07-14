@@ -168,13 +168,13 @@ Uploader
 			$('#datepicker-book-new').datepicker({
 				autoclose: true
 			});
-			$('#datepicker-book-edit').datepicker({
+			$('.datepicker-book-edit').datepicker({
 				autoclose: true
 			});
 			$('#datepicker-char-new').datepicker({
 				autoclose: true
 			});
-			$('#datepicker-char-edit').datepicker({
+			$('.datepicker-char-edit').datepicker({
 				autoclose: true
 			});
 			$('#table-book-upload').DataTable({
@@ -222,13 +222,6 @@ Uploader
 					[ 'FontSize', 'TextColor', 'BGColor' ]
 				]
 			});
-			CKEDITOR.replace('book-content-edit', {
-				language: 'vi',
-				toolbar: [
-					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
-					[ 'FontSize', 'TextColor', 'BGColor' ]
-				]
-			});
 			CKEDITOR.replace('mail-content', {
 				toolbar: [
 					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' , '-', 'Image', 'Table', '-', 'Scayt'],
@@ -246,6 +239,14 @@ Uploader
 					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
 					[ 'FontSize', 'TextColor', 'BGColor' ]
 				]
+			});
+			$('.book-content-edit').each(function() {
+				CKEDITOR.replace($(this).attr('id'), {
+					toolbar: [
+						[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+						[ 'FontSize', 'TextColor', 'BGColor' ]
+					]
+				});
 			});
 			$('.author-content-edit').each(function() {
 				CKEDITOR.replace($(this).attr('id'), {

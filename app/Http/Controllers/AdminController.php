@@ -41,8 +41,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function mod()
-	{
+	public function mod() {
 		$user_id = 13;
 		$user                  = UsersQModel::get_user_by_id($user_id);
 		$new_comments          = CommentsBModel::get_new_comments_mod(5);
@@ -77,8 +76,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function uploader()
-	{
+	public function uploader() {
 		$user_id = 14;
 		$user 				= UsersQModel::get_user_by_id($user_id);
 		$books_upload 		= BooksBModel::get_books_upload($user_id);
@@ -115,8 +113,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function statistic()
-	{
+	public function statistic() {
 		return view('pages.admin.statistic');
 	}
 
@@ -125,8 +122,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function admin()
-	{
+	public function admin() {
 		$user_id = 14;
 		$user = UsersQModel::get_user_by_id($user_id);
 		$data['user'] = $user;
@@ -138,8 +134,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function super_admin()
-	{
+	public function super_admin() {
 		$user_id = 14;
 		$user = UsersQModel::get_user_by_id($user_id);
 		$books_upload 		= BooksBModel::get_books_upload($user_id);
@@ -162,8 +157,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create_book(Request $request)
-	{
+	public function create_book(Request $request) {
 		$user_id = 14;
 		$validate = [
 			'image' 		=> 'required|image',
@@ -204,8 +198,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function update_book($id_book, Request $request)
-	{
+	public function update_book($id_book, Request $request) {
 		$user_id = 14;
 		$validate = [
 			'image' 		=> 'image',
@@ -221,7 +214,7 @@ class AdminController extends Controller {
 		$book->categories	= json_decode($request->input('category'));
 		$book->characters	= json_decode($request->input('character'));
 		$book->release_at	= $request->input('release_at');
-		$book->description	= $request->input('book-content-edit');
+		$book->description	= $request->input('description');
 		$book->status		= $request->input('status');
 		$book->id_author	= $request->input('author');
 		$book->id_artist	= $request->input('artist');
@@ -244,8 +237,7 @@ class AdminController extends Controller {
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public function delete_book($id_book) 
-	{
+	public function delete_book($id_book) {
 		$data = ['deleted' => 1];
 		BooksCModel::update_book($id_book, $data);
 		return redirect()->back()->with('success','Xóa truyện thành công');
@@ -457,6 +449,11 @@ class AdminController extends Controller {
 		$author->twitter     = $request->input('twitter');
 		$author->website     = $request->input('website');
 		$author->description = $request->input('description');
+		if ($data['image'] == null) {
+			$author->is_image = false;
+		} else {
+			$author->is_image = true;
+		}
 
 		AuthorsBModel::update_author($author);
 
@@ -542,8 +539,14 @@ class AdminController extends Controller {
 		$character->type        = $request->input('type');
 		$character->birthday    = $request->input('birthday');
 		$character->family      = $request->input('family');
+		$character->hobby       = $request->input('hobby');
 		$character->job         = $request->input('job');
 		$character->description = $request->input('description');
+		if ($data['image'] == null) {
+			$character->is_image = false;
+		} else {
+			$character->is_image = true;
+		}
 
 		CharactersBModel::update_character($character);
 
