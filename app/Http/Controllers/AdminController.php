@@ -81,7 +81,7 @@ class AdminController extends Controller {
 		$user 				= UsersQModel::get_user_by_id($user_id);
 		$books_upload 		= BooksBModel::get_books_upload($user_id);
 		$categories			= CategoriesQModel::get_categories_all();
-		$characters			= CharactersQModel::get_characters_all();
+		$characters			= CharactersBModel::get_characters_all();
 		$authors			= AuthorsQModel::get_authors_all();
 		$artists			= AuthorsQModel::get_artists_all();
 		$trans				= TransQModel::get_trans_all();
@@ -551,6 +551,17 @@ class AdminController extends Controller {
 		CharactersBModel::update_character($character);
 
 		return redirect()->back()->with('success', 'Chỉnh sửa thông tin nhân vật thành công');
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public function delete_character($id_character) {
+		$data = ['deleted' => 1];
+		CharactersCModel::update_character($id_character, $data);
+		return redirect()->back()->with('success','Xóa nhân vật thành công');
 	}
 
 	/**

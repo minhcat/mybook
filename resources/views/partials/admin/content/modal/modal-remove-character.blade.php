@@ -1,4 +1,5 @@
-<div class="modal fade remove" id="modal-remove-character">
+@foreach ($characters as $character)
+<div class="modal fade remove" id="modal-remove-character-{{ $character->id }}">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -10,7 +11,7 @@
 				Bạn có chắc xóa nhân vật này
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Đồng ý</button>
+				<a href="{{ url('/admin/uploader/delete_character/'.$character->id) }}" class="btn btn-primary pull-left">Đồng ý</a>
 				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
 			</div>
 		</div>
@@ -18,3 +19,4 @@
 	</div>
 	<!-- /.modal-dialog -->
 </div>
+@endforeach

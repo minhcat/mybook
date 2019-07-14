@@ -75,15 +75,23 @@ Route::group(['prefix' => 'admin'], function() {
 
 	Route::group(['prefix' => 'uploader'], function() {
 
+		// book
+
 		Route::post('create_book', 'AdminController@create_book');
 
 		Route::post('update_book/{id_book}', 'AdminController@update_book');
 
 		Route::get('delete_book/{id_book}', 'AdminController@delete_book');
 
+		Route::post('add_keyword/{id_book}', 'AdminController@add_keyword');
+
+		// chap
+
 		Route::post('create_chap/{id_book}', 'AdminController@create_chap');
 
 		Route::post('update_chap/{id_book}/{id_chap}', 'AdminController@update_chap');
+
+		// author
 
 		Route::post('create_author', 'AdminController@create_author');
 
@@ -91,11 +99,15 @@ Route::group(['prefix' => 'admin'], function() {
 
 		Route::get('delete_author/{id_author}', 'AdminController@delete_author');
 
+		// character
+
 		Route::post('create_character', 'AdminController@create_character');
 
 		Route::post('update_character/{id_character}', 'AdminController@update_character');
 
-		Route::post('add_keyword/{id_book}', 'AdminController@add_keyword');
+		Route::get('delete_character/{id_character}', 'AdminController@delete_character');
+
+		// ajax
 
 		Route::group(['prefix' => 'ajax'], function() {
 

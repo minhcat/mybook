@@ -16,7 +16,22 @@
 		<img src="{{ asset('image/characters/'.$character->image.'.jpg') }}" class="img-circle" width="150px" height="150px"  alt="user image">
 		@endif
 		<div class="box-info">
-			<p><strong>Tên khác:</strong> {{ $character->other_name }}</p>
+			<p><strong>Tên khác:</strong>
+				@if ($character->other_name == '')
+				<i>Đang cập nhật</i>
+				@else
+				{{ $character->other_name }}
+				@endif
+			</p>
+			<p><strong>Truyện:</strong> 
+				@if (empty($character->books))
+				<i>Đang cập nhật</i>
+				@else
+					@foreach ($character->books as $book)
+					{{ $book }}
+					@endforeach
+				@endif
+			</p>
 			<p><strong>Giới tính:</strong>
 				@if ($character->gender == 0)
 				Nam
@@ -26,7 +41,7 @@
 			</p>
 			<p><strong>Ngày sinh:</strong> 
 				@if ($character->birth == null)
-				Đang cập nhật
+				<i>Đang cập nhật</i>
 				@else
 				{{ date_format(date_create($character->birth), 'd-m-Y') }}
 				@endif
@@ -47,7 +62,7 @@
 	<div class="box-footer">
 		<button class="btn btn-primary box-link" data-target="#box-new-character" data-unclose="#box-character-list-small">Thêm nhân vật</button>
 		<button class="btn btn-success box-link" data-target="#box-edit-character-{{ $character->id }}" data-unclose="#box-character-list-small">Chỉnh sửa</button>
-		<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-author-{{ $character->id }}">Xóa</button>
+		<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-character-{{ $character->id }}">Xóa</button>
 	</div>
 </div>
 @endforeach

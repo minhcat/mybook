@@ -19,6 +19,8 @@ class BooksQModel extends Model
 				->where('deleted', 0)
 				->where('approved', 1)
 				->get();
+		if (empty($result))
+			return null;
 
 		return $result[0];
 	}

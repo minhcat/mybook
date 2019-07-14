@@ -15,6 +15,7 @@ class CharactersQModel extends Model
 	 */
 	public static function get_character_by_id($id) {
 		$result = DB::table('characters')
+				->where('deleted', 0)
 				->where('id', $id)
 				->get();
 
@@ -28,6 +29,7 @@ class CharactersQModel extends Model
 	 */
 	public static function get_character_by_slug($slug) {
 		$result = DB::table('characters')
+				->where('deleted', 0)
 				->where('slug',$slug)
 				->get();
 
@@ -41,6 +43,7 @@ class CharactersQModel extends Model
 	 */
 	public static function search_characters_by_name($name) {
 		$result = DB::table('characters')
+				->where('deleted', 0)
 				->where('name','LIKE', '%'.$name.'%')
 				->get();
 
@@ -55,6 +58,7 @@ class CharactersQModel extends Model
 	public static function get_character_by_book_id($book_id) {
 		$result = DB::table('characters as c')
 				->join('books_character as bc','c.id','=','bc.id_character')
+				->where('c.deleted', 0)
 				->where('bc.id_book', $book_id)
 				->get();
 
@@ -68,6 +72,7 @@ class CharactersQModel extends Model
 	 */
 	public static function get_characters_all() {
 		$result = DB::table('characters')
+				->where('deleted', 0)
 				->get();
 
 		return $result;

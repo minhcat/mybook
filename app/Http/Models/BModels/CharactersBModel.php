@@ -6,11 +6,36 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\Http\Helpers\Constants;
 use App\Http\Models\CModels\CharactersCModel;
+use App\Http\Models\QModels\CharactersQModel;
+use App\Http\Models\QModels\BooksQModel;
+use App\Http\Models\QModels\BooksCharacterQModel;
 
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
 class CharactersBModel extends Model
 {
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_characters_all() {
+		$characters = CharactersQModel::get_characters_all();
+
+		foreach ($characters as $character) {
+			$books_id = BooksCharacterQModel::get_books_by_character_id($character->id);
+			$character->books = [];
+
+			foreach ($books_id as $key => $book_id) {
+				$book = BooksQModel::get_book_by_id($book_id->id_book);
+				if ($book != null)
+					$character->books[$key] = $book->name;
+			}
+		}
+		return $characters;
+	}
+
 	/**
 	 * get random books in sidebar
 	 * @param 

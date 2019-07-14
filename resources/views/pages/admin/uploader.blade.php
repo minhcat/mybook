@@ -152,6 +152,8 @@ Uploader
 
 		@include('partials.admin.content.modal.modal-remove-chap')
 
+		@include('partials.admin.content.modal.modal-remove-character')
+
 	</section>
 	<!-- /.content -->
 </div>
