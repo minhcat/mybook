@@ -166,6 +166,8 @@ Uploader
 
 		@include('partials.admin.content.modal.modal-remove-character')
 
+		@include('partials.admin.content.modal.modal-remove-trans')
+
 	</section>
 	<!-- /.content -->
 </div>

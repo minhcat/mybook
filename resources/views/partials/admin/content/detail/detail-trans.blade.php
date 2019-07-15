@@ -53,7 +53,7 @@
 	<div class="box-footer">
 		<button class="btn btn-primary box-link" data-target="#box-new-trans" data-unclose="#box-trans-list-small">Thêm nhân vật</button>
 		<button class="btn btn-success box-link" data-target="#box-edit-trans-{{ $trans->id }}" data-unclose="#box-trans-list-small">Chỉnh sửa</button>
-		<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-character-{{ $trans->id }}">Xóa</button>
+		<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-trans-{{ $trans->id }}">Xóa</button>
 	</div>
 </div>
 @endforeach
