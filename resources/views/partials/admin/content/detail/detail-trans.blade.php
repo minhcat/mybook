@@ -16,7 +16,7 @@
 		<img src="{{ asset('image/trans/'.$trans->image.'.jpg') }}" class="img-circle" width="150px" height="150px"  alt="user image">
 		@endif
 		<div class="box-info">
-			<p><strong>Đánh giá:</strong> {{ $trans->rate_point }}, <strong>lượt đánh giá: {{ $trans->rate }}</strong> </p>
+			<p><strong>Đánh giá:</strong> {{ $trans->rate_point }}, <strong>lượt đánh giá:</strong> {{ $trans->rate }} </p>
 			<p><strong>Yêu thích:</strong> {{ $trans->like }}, <strong>bình luận:</strong> {{ $trans->comment }}, <strong>theo dõi:</strong> {{ $trans->follow }}</p>
 			<p><strong>Trưởng nhóm:</strong> 
 				@if ($trans->leader == '')

@@ -143,6 +143,9 @@ Uploader
 
 				<!-- list character small -->
 				@include('partials.admin.content.list.character.list-character-small')
+
+				<!-- list trans small -->
+				@include('partials.admin.content.list.trans.list-trans-small')
 			</div>
 		</div>
 
@@ -215,6 +218,13 @@ Uploader
 				"info": false,
 			});
 			$('#table-character-small').DataTable({
+				"lengthMenu": [8],
+				"lengthChange": false,
+				"searching": false,
+				"pagingType": "numbers",
+				"info": false,
+			});
+			$('#table-trans-small').DataTable({
 				"lengthMenu": [8],
 				"lengthChange": false,
 				"searching": false,
