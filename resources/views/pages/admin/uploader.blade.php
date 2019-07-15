@@ -83,6 +83,9 @@ Uploader
 				<!-- character new -->
 				@include('partials.admin.content.new.new-character')
 
+				<!-- trans new -->
+				@include('partials.admin.content.new.new-trans')
+
 				<!-- book edit -->
 				@include('partials.admin.content.edit.edit-book')
 
@@ -250,6 +253,12 @@ Uploader
 				]
 			});
 			CKEDITOR.replace('character-content-new', {
+				toolbar: [
+					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+					[ 'FontSize', 'TextColor', 'BGColor' ]
+				]
+			});
+			CKEDITOR.replace('trans-content-new', {
 				toolbar: [
 					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
 					[ 'FontSize', 'TextColor', 'BGColor' ]

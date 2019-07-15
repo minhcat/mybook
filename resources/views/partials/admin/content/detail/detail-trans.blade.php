@@ -51,7 +51,7 @@
 		</div>
 	</div>
 	<div class="box-footer">
-		<button class="btn btn-primary box-link" data-target="#box-new-character" data-unclose="#box-character-list-small">Thêm nhân vật</button>
+		<button class="btn btn-primary box-link" data-target="#box-new-trans" data-unclose="#box-trans-list-small">Thêm nhân vật</button>
 		<button class="btn btn-success box-link" data-target="#box-edit-character-{{ $trans->id }}" data-unclose="#box-character-list-small">Chỉnh sửa</button>
 		<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-character-{{ $trans->id }}">Xóa</button>
 	</div>
