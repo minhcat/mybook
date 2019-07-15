@@ -226,7 +226,7 @@ class DetailController extends Controller {
 		// dd($history);
 
 		Cookie::queue('history',$history, 1440);
-		// dd($data);
+		dd($data);
 		return view('pages.detail.detail-trans', $data);
 	}
 }

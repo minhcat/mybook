@@ -63,7 +63,7 @@
 				<ul class="treeview-menu">
 					<li><a href="#" class="box-link" data-target="#box-author-detail-1" data-with="#box-author-list-small">Tác giả</a></li>
 					<li><a href="#" class="box-link" data-target="#box-character-detail-1" data-with="#box-character-list-small">Nhân vật</a></li>
-					<li><a href="#" class="box-link" data-target="#" data-small=""  data-with="#">Nhóm dịch</a></li>
+					<li><a href="#" class="box-link" data-target="#box-trans-detail-1" data-with="#box-character-list-small">Nhóm dịch</a></li>
 				</ul>
 			</li>
 			<li class="treeview">

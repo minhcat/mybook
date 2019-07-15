@@ -19,6 +19,7 @@ use App\Http\Models\QModels\ChapsErrorQModel;
 use App\Http\Models\QModels\TransQModel;
 use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\AuthorsCModel;
+use App\Http\Models\CModels\ChapsCModel;
 use App\Http\Models\CModels\CharactersCModel;
 use App\Http\Models\CModels\BooksApprovedCModel;
 use App\Http\Models\CModels\ChapsApprovedCModel;
@@ -27,6 +28,7 @@ use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\ChapsBModel;
 use App\Http\Models\BModels\CharactersBModel;
 use App\Http\Models\BModels\CommentsBModel;
+use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\ImagesBModel;
 use App\Http\Models\BModels\UsersBModel;
 use Illuminate\Support\Facades\Input;
@@ -79,12 +81,13 @@ class AdminController extends Controller {
 	public function uploader() {
 		$user_id = 14;
 		$user 				= UsersQModel::get_user_by_id($user_id);
+		$chaps				= ChapsQModel::get_chaps_all();
 		$books_upload 		= BooksBModel::get_books_upload($user_id);
 		$categories			= CategoriesQModel::get_categories_all();
 		$characters			= CharactersBModel::get_characters_all();
 		$authors			= AuthorsQModel::get_authors_all();
 		$artists			= AuthorsQModel::get_artists_all();
-		$trans				= TransQModel::get_trans_all();
+		$trans				= TransBModel::get_transes_all();
 		$books_approved		= BooksBModel::get_books_not_approved($user_id);
 		$chaps_approved		= ChapsQModel::get_chaps_not_approved($user_id);
 		$books_error		= BooksErrorQModel::get_books_error_by_uploader_id($user_id);
@@ -92,6 +95,7 @@ class AdminController extends Controller {
 		$authors_detail		= AuthorsBModel::get_authors_all();
 
 		$data['user']				= $user;
+		$data['chaps']				= $chaps;
 		$data['books_upload']		= $books_upload;
 		$data['categories']			= $categories;
 		$data['characters']			= $characters;
@@ -375,6 +379,16 @@ class AdminController extends Controller {
 		ChapsBModel::update_chap($update_chap, $images_select);
 
 		return redirect()->back()->with('success','Cập nhật chap thành công');
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public function delete_chap($id_chap) {
+		ChapsCModel::delete_chap($id_chap);
+		return redirect()->back()->with('success','Xóa chap thành công');
 	}
 
 	/**

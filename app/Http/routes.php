@@ -91,6 +91,8 @@ Route::group(['prefix' => 'admin'], function() {
 
 		Route::post('update_chap/{id_book}/{id_chap}', 'AdminController@update_chap');
 
+		Route::get('delete_chap/{id_chap}', 'AdminController@delete_chap');
+
 		// author
 
 		Route::post('create_author', 'AdminController@create_author');
@@ -106,6 +108,14 @@ Route::group(['prefix' => 'admin'], function() {
 		Route::post('update_character/{id_character}', 'AdminController@update_character');
 
 		Route::get('delete_character/{id_character}', 'AdminController@delete_character');
+
+		// translator
+
+		Route::post('create_trans', 'AdminController@create_trans');
+
+		Route::post('update_trans/{id_trans}', 'AdminController@update_trans');
+
+		Route::get('delete_trans/{id_trans}', 'AdminController@delete_trans');
 
 		// ajax
 

@@ -1,5 +1,5 @@
 @foreach ($books_upload as $key => $book)
-<div class="box box-primary collapse" id="box-chap-list-{{ $key }}" aria-expanded="false">
+<div class="box box-primary collapse" id="box-chap-list-{{ $book->id }}" aria-expanded="false">
 	<div class="box-header with-border">
 		<h3 class="box-title">Danh sách chap</h3>
 
@@ -21,7 +21,7 @@
 					<th>Số trang</th>
 					<th>Lượt xem</th>
 					<th>Nhóm dịch</th>
-					<th>Sửa chap</th>
+					<th>Tùy chọn</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,7 +34,8 @@
 					<td>{{ $chap->number_images }}</td>
 					<td>{{ $chap->view }}</td>
 					<td>{{ $chap->trans_name }}</td>
-					<td><button class="btn btn-success box-link" data-target="#box-chap-edit-{{ $key }}-{{ $key2 }}" data-with="#box-book-list-small">Sửa</button></td>
+					<td><button class="btn btn-success box-link" data-target="#box-chap-edit-{{ $book->id }}-{{ $chap->id }}" data-with="#box-book-list-small">Sửa</button>
+					 <button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-chap-{{ $chap->id }}">Xóa</button></td>
 				</tr>
 				@endforeach
 			</tbody>
@@ -42,7 +43,7 @@
 	</div>
 	<!-- /.box-body -->
 	<div class="box-footer clearfix">
-		<button class="btn btn-primary box-link" data-target="#box-book-detail-{{ $key }}" data-unclose="#box-book-list-small">Chi tiết truyện</button>
+		<button class="btn btn-primary box-link" data-target="#box-book-detail-{{ $book->id }}" data-unclose="#box-book-list-small">Chi tiết truyện</button>
 	</div>
 	<!-- /.box footer -->
 </div>

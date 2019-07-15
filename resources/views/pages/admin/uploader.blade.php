@@ -71,6 +71,9 @@ Uploader
 				<!-- character detail -->
 				@include('partials.admin.content.detail.detail-character')
 
+				<!-- trans detail -->
+				@include('partials.admin.content.detail.detail-trans')
+
 				<!-- book chap new -->
 				@include('partials.admin.content.new.new-chap')
 

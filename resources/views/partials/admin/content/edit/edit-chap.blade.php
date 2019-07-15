@@ -63,7 +63,7 @@
 	<!-- /.box-body -->
 	<div class="box-footer clearfix">
 		<button class="btn btn-success">Thay đổi</button>
-		<button class="btn btn-default box-link" data-target="#box-book-detail" data-unclose="#box-book-list-small">Hủy</button>
+		<button type="button" class="btn btn-default box-link" data-target="#box-book-detail-{{ $book->id }}" data-unclose="#box-book-list-small">Hủy</button>
 	</div>
 	<!-- /.box footer -->
 	</form>

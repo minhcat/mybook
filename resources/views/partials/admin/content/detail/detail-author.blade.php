@@ -17,8 +17,8 @@
 		@endif
 		<div class="box-info">
 			
-			<p><strong>Đánh giá:</strong> {{ $author->rate_point }}, lượt đánh giá: {{ $author->rate }}</p>
-			<p><strong>Yêu thích:</strong> {{ $author->like }}, bình luận: {{ $author->comment }}, theo dõi: {{ $author->follow }}</p>
+			<p><strong>Đánh giá:</strong> {{ $author->rate_point }}, <strong>lượt đánh giá:</strong> {{ $author->rate }}</p>
+			<p><strong>Yêu thích:</strong> {{ $author->like }}, <strong>bình luận:</strong> {{ $author->comment }}, <strong>theo dõi:</strong> {{ $author->follow }}</p>
 			<p><strong>Nơi sinh:</strong> {{ $author->birthplace }}</p>
 			<p><strong>Ngày sinh:</strong> 
 				@if ($author->birth == null)
