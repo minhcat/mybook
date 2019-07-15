@@ -95,6 +95,9 @@ Uploader
 				<!-- character edit -->
 				@include('partials.admin.content.edit.edit-character')
 
+				<!-- trans edit -->
+				@include('partials.admin.content.edit.edit-trans')
+
 				<!-- book detail not approved-->
 				@include('partials.admin.content.detail.detail-book-not-approved')
 
@@ -281,6 +284,14 @@ Uploader
 				});
 			});
 			$('.character-content-edit').each(function() {
+				CKEDITOR.replace($(this).attr('id'), {
+					toolbar: [
+						[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+						[ 'FontSize', 'TextColor', 'BGColor' ]
+					]
+				});
+			});
+			$('.trans-content-edit').each(function() {
 				CKEDITOR.replace($(this).attr('id'), {
 					toolbar: [
 						[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],

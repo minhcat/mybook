@@ -12,7 +12,7 @@
 		<div class="box-body">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="avatar">
-				<img src="{{ asset('image/admin/character-default.jpg') }}" class="img-circle" width="150px" height="150px"  alt="user image">
+				<img src="{{ asset('image/admin/group-default.png') }}" class="img-circle" width="150px" height="150px"  alt="user image">
 				<label class="btn btn-success">
 					Thêm hình
 					<input id="image" type="file" name="image">
@@ -31,6 +31,14 @@
 				<div class="form-group">
 					<label for="name">Thành viên</label>
 					<input type="text" name="member" class="form-control" id="name" placeholder="tên thành viên">
+				</div>
+				<div class="form-group">
+					<label for="name">Facebook</label>
+					<input type="text" name="facebook" class="form-control" id="name" placeholder="tên thành viên">
+				</div>
+				<div class="form-group">
+					<label for="name">Website</label>
+					<input type="text" name="website" class="form-control" id="name" placeholder="tên thành viên">
 				</div>
 				<div class="form-group">
 					<label for="name">Mô tả</label>
