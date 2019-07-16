@@ -5,18 +5,8 @@ namespace App\Http\Models\BModels;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\Http\Helpers\Constants;
-use App\Http\Models\QModels\BooksQModel;
-use App\Http\Models\QModels\BooksCategoryQModel;
-use App\Http\Models\QModels\AuthorsQModel;
-use App\Http\Models\QModels\AuthorsCategoryQModel;
-use App\Http\Models\QModels\ChapsQModel;
-use App\Http\Models\QModels\CategoriesQModel;
-use App\Http\Models\QModels\UsersQModel;
-use App\Http\Models\QModels\UsersFollowQModel;
-use App\Http\Models\QModels\CommentsQModel;
 use App\Http\Models\QModels\TransQModel;
-use App\Http\Models\CModels\AuthorsCModel;
-use App\Http\Models\CModels\AuthorsCategoryCModel;
+use App\Http\Models\CModels\TransCModel;
 
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
@@ -41,31 +31,20 @@ class TransBModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function create_author($new_author) {
-		// insert author
-		$author = [
-			'name'			=> $new_author->name,
-			'image'			=> ($new_author->is_image) ? str_slug($new_author->name, '-') : '',
-			'slug'			=> str_slug($new_author->name, '_'),
-			'gender'		=> $new_author->gender,
-			'type'			=> $new_author->type,
-			'facebook'		=> $new_author->facebook,
-			'twitter'		=> $new_author->twitter,
-			'website'		=> $new_author->website,
-			'description'	=> $new_author->description
+	public static function create_trans($new_trans) {
+		// insert trans
+		$trans = [
+			'name'			=> $new_trans->name,
+			'image'			=> ($new_trans->is_image) ? str_slug($new_trans->name, '-') : '',
+			'slug'			=> str_slug($new_trans->name, '_'),
+			'leader'		=> $new_trans->leader,
+			'member'		=> $new_trans->member,
+			'facebook'		=> $new_trans->facebook,
+			'website'		=> $new_trans->website,
+			'description'	=> $new_trans->description
 		];
 
-		$id_author = AuthorsCModel::insert_author($author);
-
-		// insert author category
-		$categories = [];
-		foreach ($new_author->categories as $key => $category) {
-			$categories[$key] = [
-				'id_author'		=> $id_author,
-				'id_category'	=> $category
-			];
-			AuthorsCategoryCModel::insert_author_category($categories[$key]);
-		}
+		$id_trans = TransCModel::insert_trans($trans);
 	}
 
 	/**

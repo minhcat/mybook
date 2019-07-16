@@ -39,7 +39,7 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Facebook</label>
-					<input type="text" name="facebook" class="form-control" id="name" placeholder="link" value="{{ $trans->facebook }}">
+					<input type="text" name="facebook" class="form-control" id="name" placeholder="link facebook" value="{{ $trans->facebook }}">
 				</div>
 				<div class="form-group">
 					<label for="name">Website</label>
