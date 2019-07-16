@@ -52,32 +52,21 @@ class TransBModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function update_author($update_author) {
-		$id = $update_author->id;
-		// update author
-		$author = [
-			'name'			=> $update_author->name,
-			'image'			=> ($update_author->is_image) ? str_slug($update_author->name, '-') : null,
-			'slug'			=> str_slug($update_author->name, '_'),
-			'gender'		=> $update_author->gender,
-			'type'			=> $update_author->type,
-			'facebook'		=> $update_author->facebook,
-			'twitter'		=> $update_author->twitter,
-			'website'		=> $update_author->website,
-			'description'	=> $update_author->description
+	public static function update_trans($update_trans) {
+		$id = $update_trans->id;
+		// update trans
+		$trans = [
+			'name'			=> $update_trans->name,
+			'slug'			=> str_slug($update_trans->name, '_'),
+			'leader'		=> $update_trans->leader,
+			'member'		=> $update_trans->member,
+			'facebook'		=> $update_trans->facebook,
+			'website'		=> $update_trans->website,
+			'description'	=> $update_trans->description
 		];
-
-		AuthorsCModel::update_author($id, $author);
-
-		// update author category
-		AuthorsCategoryCModel::delete_author_category_by_author_id($id);
-		$categories = [];
-		foreach ($update_author->categories as $key => $category) {
-			$categories[$key] = [
-				'id_author'		=> $id,
-				'id_category'	=> $category
-			];
-			AuthorsCategoryCModel::insert_author_category($categories[$key]);
+		if ($update_trans->is_image) {
+			$trans['image'] = str_slug($update_trans->name);
 		}
+		TransCModel::update_trans($id, $trans);
 	}
 }

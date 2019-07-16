@@ -68,7 +68,6 @@ class CharactersBModel extends Model
 		// insert character
 		$character = [
 			'name'			=> $update_character->name,
-			'image'			=> ($update_character->is_image) ? str_slug($update_character->name, '-') : null,
 			'slug'			=> str_slug($update_character->name, '_'),
 			'gender'		=> $update_character->gender,
 			'type'			=> $update_character->type,
@@ -78,6 +77,9 @@ class CharactersBModel extends Model
 			'hobby'			=> $update_character->hobby,
 			'description'	=> $update_character->description
 		];
+		if ($update_character->is_image) {
+			$character['image'] = str_slug($update_character->name);
+		}
 
 		CharactersCModel::update_character($id, $character);
 	}

@@ -9,7 +9,7 @@
 			<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
 		</div>
 	</div>
-	<form id="create-trans" action="{{ url('/admin/uploader/create_trans') }}" method="POST" enctype="multipart/form-data">
+	<form id="create-trans" action="{{ url('/admin/uploader/update_trans/'.$trans->id) }}" method="POST" enctype="multipart/form-data">
 		<div class="box-body">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="avatar">

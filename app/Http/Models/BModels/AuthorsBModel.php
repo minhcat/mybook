@@ -81,7 +81,6 @@ class AuthorsBModel extends Model
 		// update author
 		$author = [
 			'name'			=> $update_author->name,
-			'image'			=> ($update_author->is_image) ? str_slug($update_author->name, '-') : null,
 			'slug'			=> str_slug($update_author->name, '_'),
 			'gender'		=> $update_author->gender,
 			'type'			=> $update_author->type,
@@ -90,6 +89,9 @@ class AuthorsBModel extends Model
 			'website'		=> $update_author->website,
 			'description'	=> $update_author->description
 		];
+		if ($update_author->is_image) {
+			$author['image'] = str_slug($update_author->name);
+		}
 
 		AuthorsCModel::update_author($id, $author);
 

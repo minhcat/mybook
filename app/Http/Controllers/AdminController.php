@@ -622,6 +622,46 @@ class AdminController extends Controller {
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
+	public function update_trans($id_trans, Request $request) {
+		// check validate
+		$validate = [
+			'name' => 'required'
+		];
+		$this->validate($request, $validate);
+
+		// upload image
+		$data['image'] = $request->file('image');
+		$data['name']  = $request->input('name');
+		$data['path']  = '/image/trans';
+		if ($data['image'] != null) {
+			Images::upload_image($data);
+		}
+
+		// create trans
+		$trans = new \stdClass;
+		$trans->id          = $id_trans;
+		$trans->name        = $request->input('name');
+		$trans->leader      = $request->input('leader');
+		$trans->member      = $request->input('member');
+		$trans->facebook    = $request->input('facebook');
+		$trans->website     = $request->input('website');
+		$trans->description = $request->input('description');
+		if ($data['image'] == null) {
+			$trans->is_image = false;
+		} else {
+			$trans->is_image = true;
+		}
+
+		TransBModel::update_trans($trans);
+
+		return redirect()->back()->with('success', 'Chỉnh sửa thông tin nhóm dịch thành công');
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
 	public static function add_keyword($id_book, Request $request) {
 		$keyword = $request->input('keyword');
 		$book = BooksQModel::get_book_by_id($id_book);
