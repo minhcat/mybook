@@ -23,6 +23,7 @@ use App\Http\Models\CModels\ChapsCModel;
 use App\Http\Models\CModels\CharactersCModel;
 use App\Http\Models\CModels\BooksApprovedCModel;
 use App\Http\Models\CModels\ChapsApprovedCModel;
+use App\Http\Models\CModels\TransCModel;
 use App\Http\Models\BModels\AuthorsBModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\ChapsBModel;
@@ -655,6 +656,17 @@ class AdminController extends Controller {
 		TransBModel::update_trans($trans);
 
 		return redirect()->back()->with('success', 'Chỉnh sửa thông tin nhóm dịch thành công');
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public function delete_trans($id_trans) {
+		$data = ['deleted' => 1];
+		TransCModel::update_trans($id_trans, $data);
+		return redirect()->back()->with('success','Xóa nhóm dịch thành công');
 	}
 
 	/**

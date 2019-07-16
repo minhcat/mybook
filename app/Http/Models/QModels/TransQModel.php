@@ -15,6 +15,7 @@ class TransQModel extends Model
 	 */
 	public static function get_trans_by_id($id) {
 		$result = DB::table('trans')
+				->where('deleted', 0)
 				->where('id', $id)
 				->get();
 
@@ -28,6 +29,7 @@ class TransQModel extends Model
 	 */
 	public static function get_trans_by_slug($slug) {
 		$result = DB::table('trans')
+				->where('deleted', 0)
 				->where('slug', $slug)
 				->get();
 
@@ -41,6 +43,7 @@ class TransQModel extends Model
 	 */
 	public static function get_trans_all() {
 		$result = DB::table('trans')
+				->where('deleted', 0)
 				->get();
 
 		return $result;
@@ -56,6 +59,7 @@ class TransQModel extends Model
 				->join('chaps as c', 'c.id_trans', '=', 't.id')
 				->join('books as b', 'c.id_book', '=', 'b.id')
 				->groupBy('b.id')
+				->where('t.deleted', 0)
 				->where('t.id', $trans_id)
 				->select('b.name', 'b.create_at')
 				->get();
@@ -70,6 +74,7 @@ class TransQModel extends Model
 	 */
 	public static function search_trans_by_name($name) {
 		$result = DB::table('trans')
+				->where('deleted', 0)
 				->where('name','LIKE', '%'.$name.'%')
 				->get();
 
