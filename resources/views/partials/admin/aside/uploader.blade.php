@@ -73,7 +73,7 @@
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="#" class="box-link" data-target="#box-book-comment" data-with="#box-book-list-small-2">Bình luận truyện</a></li>
+					<li><a href="#" class="box-link" data-target="#box-book-comment-1" data-with="#box-book-list-small-comment">Bình luận truyện</a></li>
 					<li><a href="#" class="box-link" data-target="#box-book-chart-view" data-small="statistic"  data-with="#box-book-list-small-3">Thống kê tương tác</a></li>
 				</ul>
 			</li>

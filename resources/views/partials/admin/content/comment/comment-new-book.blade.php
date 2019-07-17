@@ -1,4 +1,5 @@
-<div class="box box-primary direct-chat direct-chat-primary collapse" id="box-book-comment" aria-expanded="false">
+@foreach ($comments as $key => $comments_book)
+<div class="box box-primary direct-chat direct-chat-primary collapse box-book-comment" id="box-book-comment-{{ $key }}" aria-expanded="false">
 	<!-- box header -->
 	<div class="box-header with-border">
 		<h3 class="box-title">Bình Luận Mới</h3>
@@ -15,63 +16,26 @@
 		<!-- Conversations are loaded here -->
 		<div class="direct-chat-messages">
 			<!-- Message. Default to the left -->
+			@foreach ($comments_book as $comment)
 			<div class="direct-chat-msg">
 				<div class="direct-chat-info clearfix">
-					<span class="direct-chat-name pull-left">Nguyễn Hoài Nam - <span class="direct-chat-timestamp">Overlord chap 10</span> - <span class="direct-chat-timestamp">2:00 pm 23/3/2019</span></span>
+					<span class="direct-chat-name pull-left">{{ $comment->name }} - <span class="direct-chat-timestamp">{{ ($comment->type == 'read') ? $comment->chap_name : 'trang chi tiết' }}</span> - <span class="direct-chat-timestamp">{{ date_format(date_create($comment->datetime), 'h:i d-m-Y') }}</span></span>
 				</div>
 				<!-- /.direct-chat-info -->
-				<img class="direct-chat-img" src="{{ asset('image/admin/user1-128x128.jpg') }}" alt="Message User Image">
+				<img class="direct-chat-img" src="{{ asset('image/users/'.$comment->image.'.jpg') }}" alt="Message User Image">
 				<!-- /.direct-chat-img -->
 				<div class="direct-chat-text">
-				Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+				{{ $comment->content }}
 				</div>
 
 				<!-- /.direct-chat-text -->
 			</div>
 			<!-- /.direct-chat-msg -->
-
-			<!-- Message to the right -->
-			<div class="direct-chat-msg">
-				<div class="direct-chat-info clearfix">
-					<span class="direct-chat-name pull-left">Thu Hà - <span class="direct-chat-timestamp">Overlord chap 10</span> - <span class="direct-chat-timestamp">2:00 pm 23/3/2019</span></span>
-				</div>
-				<!-- /.direct-chat-info -->
-				<img class="direct-chat-img" src="{{ asset('image/admin/user3-128x128.jpg') }}" alt="Message User Image">
-				<!-- /.direct-chat-img -->
-				<div class="direct-chat-text">
-				Sed diam nonummy nibh euismod
-				</div>
-				<!-- /.direct-chat-text -->
-			</div>
-			<!-- /.direct-chat-msg -->
-			<div class="direct-chat-msg">
-				<div class="direct-chat-info clearfix">
-					<span class="direct-chat-name pull-left">Later Phát - <span class="direct-chat-timestamp">Overlord chap 10</span> - <span class="direct-chat-timestamp">2:00 pm 23/3/2019</span></span>
-				</div>
-				<!-- /.direct-chat-info -->
-				<img class="direct-chat-img" src="{{ asset('image/admin/user4-128x128.jpg') }}" alt="Message User Image">
-				<!-- /.direct-chat-img -->
-				<div class="direct-chat-text">
-				tincidunt ut laoreet dolore magna aliquam erat volutpat.
-				</div>
-				<!-- /.direct-chat-text -->
-			</div>
-			<!-- /.direct-chat-msg -->
-			<div class="direct-chat-msg">
-				<div class="direct-chat-info clearfix">
-					<span class="direct-chat-name pull-left">Hoàng Lê - <span class="direct-chat-timestamp">Overlord chap 10</span> - <span class="direct-chat-timestamp">2:00 pm 23/3/2019</span></span>
-				</div>
-				<!-- /.direct-chat-info -->
-				<img class="direct-chat-img" src="{{ asset('image/admin/user5-128x128.jpg') }}" alt="Message User Image">
-				<!-- /.direct-chat-img -->
-				<div class="direct-chat-text">
-				Ut wisi enim ad minim veniam.
-				</div>
-				<!-- /.direct-chat-text -->
-			</div>
+			@endforeach
 		</div>
 		<!--/.direct-chat-messages-->
 
 		<!-- /.direct-chat-pane -->
 	</div>
 </div>
+@endforeach

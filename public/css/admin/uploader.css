@@ -53,17 +53,17 @@
       .box.book-edit .box-body .box-edit .form-group .list-character span.character i.fa, .box.book-edit .box-body .box-new .form-group .list-character span.character i.fa, .box.book-new .box-body .box-edit .form-group .list-character span.character i.fa, .box.book-new .box-body .box-new .form-group .list-character span.character i.fa, .box.book-edit-approved .box-body .box-edit .form-group .list-character span.character i.fa, .box.book-edit-approved .box-body .box-new .form-group .list-character span.character i.fa, .box.author-new .box-body .box-edit .form-group .list-character span.character i.fa, .box.author-new .box-body .box-new .form-group .list-character span.character i.fa, .box.author-edit .box-body .box-edit .form-group .list-character span.character i.fa, .box.author-edit .box-body .box-new .form-group .list-character span.character i.fa, .box.character-new .box-body .box-edit .form-group .list-character span.character i.fa, .box.character-new .box-body .box-new .form-group .list-character span.character i.fa, .box.character-edit .box-body .box-edit .form-group .list-character span.character i.fa, .box.character-edit .box-body .box-new .form-group .list-character span.character i.fa, .box.trans-new .box-body .box-edit .form-group .list-character span.character i.fa, .box.trans-new .box-body .box-new .form-group .list-character span.character i.fa, .box.trans-edit .box-body .box-edit .form-group .list-character span.character i.fa, .box.trans-edit .box-body .box-new .form-group .list-character span.character i.fa {
         font-size: 12px;
         cursor: pointer; }
-.box#box-book-comment .box-body .direct-chat-messages {
+.box.box-book-comment .box-body .direct-chat-messages {
   min-height: 494px; }
-  .box#box-book-comment .box-body .direct-chat-messages .direct-chat-text {
+  .box.box-book-comment .box-body .direct-chat-messages .direct-chat-text {
     background: #3c8dbc;
     border-color: #3c8dbc;
     color: #ffffff;
     float: left;
     margin: 5px 0 0 10px; }
-    .box#box-book-comment .box-body .direct-chat-messages .direct-chat-text:before {
+    .box.box-book-comment .box-body .direct-chat-messages .direct-chat-text:before {
       border-right-color: #3c8dbc; }
-    .box#box-book-comment .box-body .direct-chat-messages .direct-chat-text:after {
+    .box.box-book-comment .box-body .direct-chat-messages .direct-chat-text:after {
       border-right-color: #3c8dbc; }
 
 .col-mb-5 {

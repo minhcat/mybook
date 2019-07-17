@@ -144,6 +144,9 @@ Uploader
 				<!-- list book small statistaic rate -->
 				@include('partials.admin.content.list.book.list-book-mine-small')
 
+				<!-- list book comment small -->
+				@include('partials.admin.content.list.book.list-book-small-comment')
+
 				<!-- list author small -->
 				@include('partials.admin.content.list.author.list-author-small')
 
@@ -233,6 +236,13 @@ Uploader
 				"info": false,
 			});
 			$('#table-trans-small').DataTable({
+				"lengthMenu": [8],
+				"lengthChange": false,
+				"searching": false,
+				"pagingType": "numbers",
+				"info": false,
+			});
+			$('#table-book-comment-small').DataTable({
 				"lengthMenu": [8],
 				"lengthChange": false,
 				"searching": false,

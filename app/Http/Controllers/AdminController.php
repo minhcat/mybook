@@ -94,6 +94,7 @@ class AdminController extends Controller {
 		$books_error		= BooksErrorQModel::get_books_error_by_uploader_id($user_id);
 		$chaps_error		= ChapsErrorQModel::get_chaps_error_by_uploader_id($user_id);
 		$authors_detail		= AuthorsBModel::get_authors_all();
+		$comments			= CommentsBModel::get_new_comments_uploader($books_upload);
 
 		$data['user']				= $user;
 		$data['chaps']				= $chaps;
@@ -109,6 +110,7 @@ class AdminController extends Controller {
 		$data['books_error']		= $books_error;
 		$data['chaps_error']		= $chaps_error;
 		$data['authors_detail']		= $authors_detail;
+		$data['comments']			= $comments;
 		// dd($data);
 		return view('pages.admin.uploader', $data);
 	}

@@ -93,6 +93,38 @@ class CommentsBModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
+	public static function get_new_comments_uploader($books) {
+		$comments = [];
+		// get comments each book
+		foreach ($books as $i => $book) {
+			$chaps     = ChapsQModel::get_chaps_by_book_id($book->id);
+			$comments1 = CommentsQModel::get_comments_by_book_id($book->id);
+			$comments[$book->id] = [];
+			// push all comment in detail book
+			foreach ($comments1 as $comment1) {
+				array_push($comments[$book->id], $comment1);
+			}
+			// get comments each chap
+			foreach ($chaps as $j => $chap) {
+				$comments2 = CommentsQModel::get_comments_by_chap_id($chap->id);
+
+				// push all comment in chap
+				foreach ($comments2 as $comment2) {
+					$comment2->chap_name = $chap->name;
+					array_push($comments[$book->id], $comment2);
+				}
+			}
+			$comments[$book->id] = collect($comments[$book->id])->sortBy('datetime')->reverse()->toArray();
+		}
+		return $comments;
+
+	}
+
+	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
 	public static function get_new_comments_report() {
 		$result = CommentsReportQModel::get_comments_report_new();
 		// dd($result);
