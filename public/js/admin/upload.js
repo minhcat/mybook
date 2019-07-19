@@ -244,14 +244,14 @@ $(document).ready(function() {
 });
 //Comment Chart
 var cmd_chart_data = {
-	labels: ['Attack On Titan', 'Sword Art Online', 'Date A Live', 'Dragon Ball Super', 'Konosuba'],
+	labels: cmd_name,
 	datasets: [
 		{
 			label: 'Bình luận',
 			backgroundColor: '#00a65a',
 			borderColor: '#00b65a',
 			borderWidth: 1,
-			data: [35,24,56,48,30],
+			data: cmd_data,
 		}
 	]
 };
@@ -269,7 +269,8 @@ var cmd_chart_option = {
 	scales: {
 		yAxes: [{
 			ticks: {
-				beginAtZero: true
+				beginAtZero: true,
+				suggestedMax: 140
 			}
 		}]
 	}
@@ -446,3 +447,59 @@ window.onload = function() {
 		options: rate_chart_option
 	});
 }
+
+$(document).ready(function() {
+	var array_index_chart = [0,1,2,3,4];
+	for (i = 5; i < cmd_name_all.length; i++) {
+		array_index_chart[i] = null;
+	}
+	function update_array_chart(index) {
+		// debugger;
+		for (i = 0; i < array_index_chart.length; i++) {
+			if (array_index_chart[i] > array_index_chart[index]) {
+				array_index_chart[i]--;
+				if (array_index_chart[i] < 0) array_index_chart[i] = 0;
+			}
+		}
+		array_index_chart[index] = null;
+	}
+	$(document).on('click', '#table-statistic-button-small .btn-success', function() {
+		if (cmd_chart_data.datasets.length > 0) {
+			var index = parseInt($(this).data('index'));
+			var name  = cmd_name_all[index];
+			var data  = cmd_data_all[index];
+
+			cmd_chart_data.labels.push(name);
+			cmd_chart_data.datasets[0].data.push(data);
+
+			array_index_chart[index] = cmd_chart_data.labels.length - 1;
+
+			$(this).removeClass('btn-success');
+			$(this).addClass('btn-danger');
+			$(this).text('Xóa');
+
+			console.log(array_index_chart);
+
+			window.cmd_chart.update();
+		}
+	});
+
+	$(document).on('click', '#table-statistic-button-small .btn-danger', function() {
+		// set data-index not working
+		// then create array index
+		// debugger;s
+		var index = parseInt($(this).data('index'));
+		cmd_chart_data.labels.splice(array_index_chart[index], 1);
+		cmd_chart_data.datasets[0].data.splice(array_index_chart[index], 1);
+
+		update_array_chart(index);
+
+		$(this).removeClass('btn-danger');
+		$(this).addClass('btn-success');
+		$(this).text('Thêm');
+
+		console.log(array_index_chart);
+
+		window.cmd_chart.update();
+	});
+});

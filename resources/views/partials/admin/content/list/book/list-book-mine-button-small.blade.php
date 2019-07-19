@@ -1,5 +1,5 @@
 <div class="box box-primary collapse" id="box-book-list-small-3" aria-expanded="false">
-	<div class="box-header">
+	<div class="box-header with-border">
 		<h3 class="box-title">Truyện Của Bạn</h3>
 
 		<div class="box-tools pull-right">
@@ -9,64 +9,29 @@
 		</div>
 	</div>
 	<!-- /.box-header -->
-	<div class="box-body table-responsive no-padding">
-		<table class="table table-hover table-striped">
-			<tr>
-				<th>Stt</th>
-				<th>Tên truyện</th>
-				<th>Thêm/Xóa</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>Black Clover</td>
-				<td><button class="btn btn-success">Thêm</button></td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>Attack on Titan</td>
-				<td><button class="btn btn-success">Thêm</button></td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>Kakegurui</td>
-				<td><button class="btn btn-success">Thêm</button></td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td>Overlord</td>
-				<td><button class="btn btn-success">Thêm</button></td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td>Date A Live</td>
-				<td><button class="btn btn-success">Thêm</button></td>
-			</tr>
-			<tr>
-				<td>6</td>
-				<td>Fairy Tail</td>
-				<td><button class="btn btn-success">Thêm</button></td>		
-			</tr>
-			<tr>
-				<td>7</td>
-				<td>Girly Air Force</td>
-				<td><button class="btn btn-success">Thêm</button></td>
-			</tr>
-			<tr>
-				<td>8</td>
-				<td>Sword Art Online</td>
-				<td><button class="btn btn-success">Thêm</button></td>
-			</tr>
+	<div class="box-body table-responsive">
+		<table class="table table-bordered table-hover table-striped" id="table-statistic-button-small">
+			<thead>
+				<tr>
+					<th>Tên truyện</th>
+					<th>Thêm/Xóa</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach ($books_upload as $key => $book)
+				<tr>
+					<td>{{ $book->name }}</td>
+					<td>
+						@if ($key <= 4)
+							<button class="btn btn-danger" data-index="{{ $key }}">Xóa</button>
+						@else
+							<button class="btn btn-success" data-index="{{ $key }}">Thêm</button>
+						@endif
+					</td>
+				</tr>
+				@endforeach
+			</tbody>
 		</table>
 	</div>
 	<!-- /.box-body -->
-	<div class="box-footer clearfix">
-		<ul class="pagination pagination-sm no-margin pull-right">
-			<li><a href="#">&laquo;</a></li>
-			<li><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">&raquo;</a></li>
-		</ul>
-	</div>
-	<!-- /.box footer -->
 </div>

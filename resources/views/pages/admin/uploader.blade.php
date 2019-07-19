@@ -249,6 +249,13 @@ Uploader
 				"pagingType": "numbers",
 				"info": false,
 			});
+			$('#table-statistic-button-small').DataTable({
+				"lengthMenu": [5],
+				"lengthChange": false,
+				"searching": false,
+				"pagingType": "numbers",
+				"info": false,
+			});
 			CKEDITOR.replace('book-content', {
 				toolbar: [
 					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
@@ -313,6 +320,20 @@ Uploader
 			});
 			
 		});
+		var cmd_name     = new Array();
+		var cmd_data     = new Array();
+		var cmd_name_all = new Array();
+		var cmd_data_all = new Array();
+		@foreach ($books_upload as $key => $book)
+			@if ($key <= 4)
+				cmd_name.push('{{ $book->name }}');
+				cmd_data.push('{{ $book->comment }}');
+			@endif
+			cmd_name_all.push('{{ $book->name }}');
+			cmd_data_all.push('{{ $book->comment }}');
+		@endforeach
+		// console.log(cmd_name_all);
+		// console.log(cmd_name);
 	</script>
 	<script src="{{ asset('js/admin/upload.js') }}"></script>
 @endsection
