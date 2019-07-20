@@ -244,7 +244,7 @@ $(document).ready(function() {
 });
 //Comment Chart
 var cmd_chart_data = {
-	labels: cmd_name,
+	labels: lb_name,
 	datasets: [
 		{
 			label: 'Bình luận',
@@ -278,14 +278,14 @@ var cmd_chart_option = {
 
 //View Chart
 var view_chart_data = {
-	labels: ['Attack On Titan', 'Sword Art Online', 'Date A Live', 'Dragon Ball Super', 'Konosuba'],
+	labels: lb_name,
 	datasets: [
 		{
 			label: 'Lượt xem',
 			backgroundColor: '#3c8dbc',
 			borderColor: '#3c8dcc',
 			borderWidth: 1,
-			data: [35,24,56,48,30],
+			data: view_data,
 		}
 	]
 };
@@ -450,7 +450,7 @@ window.onload = function() {
 
 $(document).ready(function() {
 	var array_index_chart = [0,1,2,3,4];
-	for (i = 5; i < cmd_name_all.length; i++) {
+	for (i = 5; i < lb_name_all.length; i++) {
 		array_index_chart[i] = null;
 	}
 	function update_array_chart(index) {
@@ -466,11 +466,13 @@ $(document).ready(function() {
 	$(document).on('click', '#table-statistic-button-small .btn-success', function() {
 		if (cmd_chart_data.datasets.length > 0) {
 			var index = parseInt($(this).data('index'));
-			var name  = cmd_name_all[index];
-			var data  = cmd_data_all[index];
+			var name  = lb_name_all[index];
+			var cmd_data  = cmd_data_all[index];
+			var view_data = view_data_all[index];
 
 			cmd_chart_data.labels.push(name);
-			cmd_chart_data.datasets[0].data.push(data);
+			cmd_chart_data.datasets[0].data.push(cmd_data);
+			view_chart_data.datasets[0].data.push(view_data);
 
 			array_index_chart[index] = cmd_chart_data.labels.length - 1;
 
@@ -481,6 +483,7 @@ $(document).ready(function() {
 			console.log(array_index_chart);
 
 			window.cmd_chart.update();
+			window.view_chart.update();
 		}
 	});
 
@@ -491,6 +494,7 @@ $(document).ready(function() {
 		var index = parseInt($(this).data('index'));
 		cmd_chart_data.labels.splice(array_index_chart[index], 1);
 		cmd_chart_data.datasets[0].data.splice(array_index_chart[index], 1);
+		view_chart_data.datasets[0].data.splice(array_index_chart[index], 1);
 
 		update_array_chart(index);
 
@@ -501,5 +505,6 @@ $(document).ready(function() {
 		console.log(array_index_chart);
 
 		window.cmd_chart.update();
+		window.view_chart.update();
 	});
 });
