@@ -342,14 +342,14 @@ var like_chart_option = {
 }
 //Follow Chart
 var follow_chart_data = {
-	labels: ['Attack On Titan', 'Sword Art Online', 'Date A Live', 'Dragon Ball Super', 'Konosuba'],
+	labels: lb_name,
 	datasets: [
 		{
 			label: 'Theo dõi',
 			backgroundColor: '#ef851b',
 			borderColor: '#ef851b',
 			borderWidth: 1,
-			data: [35,24,56,48,30],
+			data: follow_data,
 		}
 	]
 };
@@ -475,6 +475,7 @@ $(document).ready(function() {
 			cmd_chart_data.datasets[0].data.push(cmd_data);
 			view_chart_data.datasets[0].data.push(view_data);
 			like_chart_data.datasets[0].data.push(like_data);
+			follow_chart_data.datasets[0].data.push(like_data);
 
 			array_index_chart[index] = cmd_chart_data.labels.length - 1;
 
@@ -487,18 +488,19 @@ $(document).ready(function() {
 			window.cmd_chart.update();
 			window.view_chart.update();
 			window.like_chart.update();
+			window.follow_chart.update();
 		}
 	});
 
 	$(document).on('click', '#table-statistic-button-small .btn-danger', function() {
 		// set data-index not working
 		// then create array index
-		// debugger;s
 		var index = parseInt($(this).data('index'));
 		cmd_chart_data.labels.splice(array_index_chart[index], 1);
 		cmd_chart_data.datasets[0].data.splice(array_index_chart[index], 1);
 		view_chart_data.datasets[0].data.splice(array_index_chart[index], 1);
 		like_chart_data.datasets[0].data.splice(array_index_chart[index], 1);
+		follow_chart_data.datasets[0].data.splice(array_index_chart[index], 1);
 
 		update_array_chart(index);
 
@@ -511,5 +513,6 @@ $(document).ready(function() {
 		window.cmd_chart.update();
 		window.view_chart.update();
 		window.like_chart.update();
+		window.follow_chart.update();
 	});
 });
