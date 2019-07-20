@@ -326,15 +326,19 @@ Uploader
 		var cmd_data_all  = new Array();
 		var view_data     = new Array();
 		var view_data_all = new Array();
+		var like_data     = new Array();
+		var like_data_all = new Array();
 		@foreach ($books_upload as $key => $book)
 			@if ($key <= 4)
 				lb_name.push('{{ $book->name }}');
 				cmd_data.push('{{ $book->comment }}');
 				view_data.push('{{ $book->view }}');
+				like_data.push('{{ $book->like }}');
 			@endif
 			lb_name_all.push('{{ $book->name }}');
 			cmd_data_all.push('{{ $book->comment }}');
 			view_data_all.push('{{ $book->view }}');
+			like_data_all.push('{{ $book->like }}');
 		@endforeach
 	</script>
 	<script src="{{ asset('js/admin/upload.js') }}"></script>

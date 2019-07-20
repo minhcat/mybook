@@ -310,14 +310,14 @@ var view_chart_option = {
 }
 //Like Chart
 var like_chart_data = {
-	labels: ['Attack On Titan', 'Sword Art Online', 'Date A Live', 'Dragon Ball Super', 'Konosuba'],
+	labels: lb_name,
 	datasets: [
 		{
 			label: 'Lượt xem',
 			backgroundColor: '#dd4b39',
 			borderColor: '#dd4b39',
 			borderWidth: 1,
-			data: [35,24,56,48,30],
+			data: like_data,
 		}
 	]
 };
@@ -469,10 +469,12 @@ $(document).ready(function() {
 			var name  = lb_name_all[index];
 			var cmd_data  = cmd_data_all[index];
 			var view_data = view_data_all[index];
+			var like_data = like_data_all[index];
 
 			cmd_chart_data.labels.push(name);
 			cmd_chart_data.datasets[0].data.push(cmd_data);
 			view_chart_data.datasets[0].data.push(view_data);
+			like_chart_data.datasets[0].data.push(like_data);
 
 			array_index_chart[index] = cmd_chart_data.labels.length - 1;
 
@@ -484,6 +486,7 @@ $(document).ready(function() {
 
 			window.cmd_chart.update();
 			window.view_chart.update();
+			window.like_chart.update();
 		}
 	});
 
@@ -495,6 +498,7 @@ $(document).ready(function() {
 		cmd_chart_data.labels.splice(array_index_chart[index], 1);
 		cmd_chart_data.datasets[0].data.splice(array_index_chart[index], 1);
 		view_chart_data.datasets[0].data.splice(array_index_chart[index], 1);
+		like_chart_data.datasets[0].data.splice(array_index_chart[index], 1);
 
 		update_array_chart(index);
 
@@ -506,5 +510,6 @@ $(document).ready(function() {
 
 		window.cmd_chart.update();
 		window.view_chart.update();
+		window.like_chart.update();
 	});
 });
