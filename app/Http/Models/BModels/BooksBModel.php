@@ -11,6 +11,7 @@ use App\Http\Models\QModels\BooksCategoryQModel;
 use App\Http\Models\CModels\BooksCategoryCModel;
 use App\Http\Models\CModels\BooksCharacterCModel;
 use App\Http\Models\QModels\BooksFollowAdminQModel;
+use App\Http\Models\QModels\BooksRateQModel;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\CategoriesQModel;
@@ -337,7 +338,20 @@ class BooksBModel extends Model
 					$chap->number_images = 0;
 			}
 			$book->chaps = $chaps;
-			
+			//get rate
+			$rate = [];
+			$rate[5] = BooksRateQModel::get_rate_five_star_by_book_id($book->id);
+			$rate[4] = BooksRateQModel::get_rate_four_star_by_book_id($book->id);
+			$rate[3] = BooksRateQModel::get_rate_three_star_by_book_id($book->id);
+			$rate[2] = BooksRateQModel::get_rate_two_star_by_book_id($book->id);
+			$rate[1] = BooksRateQModel::get_rate_one_star_by_book_id($book->id);
+			for ($i = 1; $i <= 5; $i++) {
+				if ($rate[$i] == null)
+					$rate[$i] = 0;
+				else
+					$rate[$i] = $rate[$i]->number;
+			}
+			$book->rates = $rate;
 		}
 
 		return $books;

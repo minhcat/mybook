@@ -142,7 +142,7 @@ Uploader
 				@include('partials.admin.content.list.book.list-book-mine-button-small')
 
 				<!-- list book small statistaic rate -->
-				@include('partials.admin.content.list.book.list-book-mine-small')
+				@include('partials.admin.content.list.book.list-book-mine-rate-small')
 
 				<!-- list book comment small -->
 				@include('partials.admin.content.list.book.list-book-small-comment')
@@ -256,6 +256,13 @@ Uploader
 				"pagingType": "numbers",
 				"info": false,
 			});
+			$('#table-statistic-small').DataTable({
+				"lengthMenu": [8],
+				"lengthChange": false,
+				"searching": false,
+				"pagingType": "numbers",
+				"info": false,
+			});
 			CKEDITOR.replace('book-content', {
 				toolbar: [
 					[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
@@ -330,6 +337,8 @@ Uploader
 		var like_data_all   = new Array();
 		var follow_data     = new Array();
 		var follow_data_all = new Array();
+		var rate_data       = new Array();
+		var rate_data_all   = new Array();
 		@foreach ($books_upload as $key => $book)
 			@if ($key <= 4)
 				lb_name.push('{{ $book->name }}');
@@ -343,6 +352,11 @@ Uploader
 			view_data_all.push('{{ $book->view }}');
 			like_data_all.push('{{ $book->like }}');
 			follow_data_all.push('{{ $book->follow }}');
+			rate_data = new Array();
+			@foreach ($book->rates as $rate)
+				rate_data.push({{ $rate }});
+			@endforeach
+			rate_data_all.push(rate_data);
 		@endforeach
 	</script>
 	<script src="{{ asset('js/admin/upload.js') }}"></script>

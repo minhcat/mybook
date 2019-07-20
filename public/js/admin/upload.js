@@ -379,7 +379,7 @@ var rate_chart_data = {
 		{
 			label: 'Đánh giá',
 			backgroundColor: ['#dd4b39','#ef851b','#00b65a','#3c8dbc', '#605ca8'],
-			data: [35,24,56,48,30],
+			data: rate_data_all[0],
 		}
 	]
 };
@@ -514,5 +514,12 @@ $(document).ready(function() {
 		window.view_chart.update();
 		window.like_chart.update();
 		window.follow_chart.update();
+	});
+	$('#table-statistic-small tr.link').click(function() {
+		var index = parseInt($(this).data('index'));
+		var data  = rate_data_all[index];
+		rate_chart_data.datasets[0].data = data;
+
+		window.rate_chart.update();
 	});
 });
