@@ -13,13 +13,15 @@
 		<table class="table table-bordered table-hover table-striped" id="table-statistic-button-small">
 			<thead>
 				<tr>
-					<th>Tên truyện</th>
-					<th>Thêm/Xóa</th>
+					<th>Stt</th>
+					<th>Truyện</th>
+					<th>Chọn</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach ($books_upload as $key => $book)
 				<tr>
+					<td>{{ $key + 1 }}</td>
 					<td>{{ $book->name }}</td>
 					<td>
 						@if ($key <= 4)
