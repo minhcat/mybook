@@ -63,67 +63,67 @@ Route::group(['prefix' => 'detail'], function () {
 
 Route::group(['prefix' => 'admin'], function() {
 
-	Route::get('mod', 'AdminController@mod');
+	Route::get('mod', 'Admin\ModController@mod');
 
-	Route::get('uploader', 'AdminController@uploader');
+	Route::get('uploader', 'Admin\UploaderController@uploader');
 
-	Route::get('statistic', 'AdminController@statistic');
+	Route::get('statistic', 'Admin\StatisticController@statistic');
 
-	Route::get('admin', 'AdminController@admin');
+	Route::get('admin', 'Admin\AdminController@admin');
 
-	Route::get('super-admin', 'AdminController@super_admin');
+	Route::get('super-admin', 'Admin\SuperAdminController@super_admin');
 
 	Route::group(['prefix' => 'uploader'], function() {
 
 		// book
 
-		Route::post('create_book', 'AdminController@create_book');
+		Route::post('create_book', 'Admin\UploaderController@create_book');
 
-		Route::post('update_book/{id_book}', 'AdminController@update_book');
+		Route::post('update_book/{id_book}', 'Admin\UploaderController@update_book');
 
-		Route::get('delete_book/{id_book}', 'AdminController@delete_book');
+		Route::get('delete_book/{id_book}', 'Admin\UploaderController@delete_book');
 
-		Route::post('add_keyword/{id_book}', 'AdminController@add_keyword');
+		Route::post('add_keyword/{id_book}', 'Admin\UploaderController@add_keyword');
 
 		// chap
 
-		Route::post('create_chap/{id_book}', 'AdminController@create_chap');
+		Route::post('create_chap/{id_book}', 'Admin\UploaderController@create_chap');
 
-		Route::post('update_chap/{id_book}/{id_chap}', 'AdminController@update_chap');
+		Route::post('update_chap/{id_book}/{id_chap}', 'Admin\UploaderController@update_chap');
 
-		Route::get('delete_chap/{id_chap}', 'AdminController@delete_chap');
+		Route::get('delete_chap/{id_chap}', 'Admin\UploaderController@delete_chap');
 
 		// author
 
-		Route::post('create_author', 'AdminController@create_author');
+		Route::post('create_author', 'Admin\UploaderController@create_author');
 
-		Route::post('update_author/{id_author}', 'AdminController@update_author');
+		Route::post('update_author/{id_author}', 'Admin\UploaderController@update_author');
 
-		Route::get('delete_author/{id_author}', 'AdminController@delete_author');
+		Route::get('delete_author/{id_author}', 'Admin\UploaderController@delete_author');
 
 		// character
 
-		Route::post('create_character', 'AdminController@create_character');
+		Route::post('create_character', 'Admin\UploaderController@create_character');
 
-		Route::post('update_character/{id_character}', 'AdminController@update_character');
+		Route::post('update_character/{id_character}', 'Admin\UploaderController@update_character');
 
-		Route::get('delete_character/{id_character}', 'AdminController@delete_character');
+		Route::get('delete_character/{id_character}', 'Admin\UploaderController@delete_character');
 
 		// translator
 
-		Route::post('create_trans', 'AdminController@create_trans');
+		Route::post('create_trans', 'Admin\UploaderController@create_trans');
 
-		Route::post('update_trans/{id_trans}', 'AdminController@update_trans');
+		Route::post('update_trans/{id_trans}', 'Admin\UploaderController@update_trans');
 
-		Route::get('delete_trans/{id_trans}', 'AdminController@delete_trans');
+		Route::get('delete_trans/{id_trans}', 'Admin\UploaderController@delete_trans');
 
 		// ajax
 
 		Route::group(['prefix' => 'ajax'], function() {
 
-			Route::get('call_approved_book/{id_book}', 'AdminController@call_admin_approved_book');
+			Route::get('call_approved_book/{id_book}', 'Admin\UploaderController@call_admin_approved_book');
 
-			Route::get('call_approved_chap/{id_chap}', 'AdminController@call_admin_approved_chap');
+			Route::get('call_approved_chap/{id_chap}', 'Admin\UploaderController@call_admin_approved_chap');
 			
 		});
 
