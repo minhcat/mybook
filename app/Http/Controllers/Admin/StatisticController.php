@@ -7,7 +7,7 @@ use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\UsersPunishQModel;
 use App\Http\Models\QModels\UsersBanQModel;
 use App\Http\Models\BModels\BooksBModel;
-use App\Http\Models\BModels\CommentsBModel;
+use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\UsersBModel;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Contracts\Filesystem\Factory;
@@ -22,6 +22,9 @@ class StatisticController extends Controller {
 	 * @return Response
 	 */
 	public function statistic() {
-		return view('pages.admin.statistic');
+		$user_id = 15;
+		$data['user'] 				= UsersQModel::get_user_by_id($user_id);
+		$data['transes']			= TransBModel::get_transes_all();
+		return view('pages.admin.statistic', $data);
 	}
 }
