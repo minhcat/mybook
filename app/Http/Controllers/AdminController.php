@@ -46,30 +46,17 @@ class AdminController extends Controller {
 	 */
 	public function mod() {
 		$user_id = 13;
-		$user                  = UsersQModel::get_user_by_id($user_id);
-		$new_comments          = CommentsBModel::get_new_comments_mod(5);
-		$report_comments       = CommentsBModel::get_new_comments_report();
-		$checkword_comments    = CommentsBModel::get_comments_checkword();
-		$save_comments         = CommentsBModel::get_comments_save($user_id);
-		$users_follow          = UsersBModel::get_user_follow($user_id);
-		$users_punish          = UsersPunishQModel::get_user_punish_by_user_mod_id($user_id);
-		$users_ban             = UsersBanQModel::get_user_ban_by_user_mod_id($user_id);
-		$books_follow          = BooksBModel::get_books_follow_admin($user_id);
-		$checkwords            = CommentsBModel::get_checkword_with_number_comments_have();
-		$comments_books_follow = CommentsBModel::get_comments_in_books_follow($books_follow);
-		// dd($comments_books_follow);
-		
-		$data['user']                  = $user;
-		$data['new_comments']          = $new_comments;
-		$data['report_comments']       = $report_comments;
-		$data['checkword_comments']    = $checkword_comments;
-		$data['save_comments']         = $save_comments;
-		$data['users_follow']          = $users_follow;
-		$data['users_punish']          = $users_punish;
-		$data['users_ban']             = $users_ban;
-		$data['books_follow']          = $books_follow;
-		$data['checkwords']            = $checkwords;
-		$data['comments_books_follow'] = $comments_books_follow;
+		$data['user']                  = UsersQModel::get_user_by_id($user_id);
+		$data['new_comments']          = CommentsBModel::get_new_comments_mod(5);
+		$data['report_comments']       = CommentsBModel::get_new_comments_report();
+		$data['checkword_comments']    = CommentsBModel::get_comments_checkword();
+		$data['save_comments']         = CommentsBModel::get_comments_save($user_id);
+		$data['users_follow']          = UsersBModel::get_user_follow($user_id);
+		$data['users_punish']          = UsersPunishQModel::get_user_punish_by_user_mod_id($user_id);
+		$data['users_ban']             = UsersBanQModel::get_user_ban_by_user_mod_id($user_id);
+		$data['books_follow']          = BooksBModel::get_books_follow_admin($user_id);
+		$data['checkwords']            = CommentsBModel::get_checkword_with_number_comments_have();
+		$data['comments_books_follow'] = CommentsBModel::get_comments_in_books_follow($data['books_follow']);
 		// dd($data);
 		return view('pages.admin.mod', $data);
 	}
@@ -81,36 +68,22 @@ class AdminController extends Controller {
 	 */
 	public function uploader() {
 		$user_id = 14;
-		$user 				= UsersQModel::get_user_by_id($user_id);
-		$chaps				= ChapsQModel::get_chaps_all();
-		$books_upload 		= BooksBModel::get_books_upload($user_id);
-		$categories			= CategoriesQModel::get_categories_all();
-		$characters			= CharactersBModel::get_characters_all();
-		$authors			= AuthorsQModel::get_authors_all();
-		$artists			= AuthorsQModel::get_artists_all();
-		$trans				= TransBModel::get_transes_all();
-		$books_approved		= BooksBModel::get_books_not_approved($user_id);
-		$chaps_approved		= ChapsQModel::get_chaps_not_approved($user_id);
-		$books_error		= BooksErrorQModel::get_books_error_by_uploader_id($user_id);
-		$chaps_error		= ChapsErrorQModel::get_chaps_error_by_uploader_id($user_id);
-		$authors_detail		= AuthorsBModel::get_authors_all();
-		$comments			= CommentsBModel::get_new_comments_uploader($books_upload);
+		$data['user'] 				= UsersQModel::get_user_by_id($user_id);
+		$data['chaps']				= ChapsQModel::get_chaps_all();
+		$data['books_upload'] 		= BooksBModel::get_books_upload($user_id);
+		$data['categories']			= CategoriesQModel::get_categories_all();
+		$data['characters']			= CharactersBModel::get_characters_all();
+		$data['authors']			= AuthorsQModel::get_authors_all();
+		$data['artists']			= AuthorsQModel::get_artists_all();
+		$data['transes']			= TransBModel::get_transes_all();
+		$data['books_approved']		= BooksBModel::get_books_not_approved($user_id);
+		$data['chaps_approved']		= ChapsQModel::get_chaps_not_approved($user_id);
+		$data['books_error']		= BooksErrorQModel::get_books_error_by_uploader_id($user_id);
+		$data['chaps_error']		= ChapsErrorQModel::get_chaps_error_by_uploader_id($user_id);
+		$data['authors_detail']		= AuthorsBModel::get_authors_all();
+		$data['comments']			= CommentsBModel::get_new_comments_uploader($data['books_upload']);
+		$data['first_book']			= $data['books_upload'][0];
 
-		$data['user']				= $user;
-		$data['chaps']				= $chaps;
-		$data['books_upload']		= $books_upload;
-		$data['categories']			= $categories;
-		$data['characters']			= $characters;
-		$data['authors']			= $authors;
-		$data['artists']			= $artists;
-		$data['transes']			= $trans;
-		$data['books_approved']		= $books_approved;
-		$data['first_book']			= $books_upload[0];
-		$data['chaps_approved']		= $chaps_approved;
-		$data['books_error']		= $books_error;
-		$data['chaps_error']		= $chaps_error;
-		$data['authors_detail']		= $authors_detail;
-		$data['comments']			= $comments;
 		// dd($data);
 		return view('pages.admin.uploader', $data);
 	}
@@ -131,8 +104,12 @@ class AdminController extends Controller {
 	 */
 	public function admin() {
 		$user_id = 14;
-		$user = UsersQModel::get_user_by_id($user_id);
-		$data['user'] = $user;
+		$data['user']			= UsersQModel::get_user_by_id($user_id);
+		$data['transes']		= TransBModel::get_transes_all();
+		$data['characters']		= CharactersBModel::get_characters_all();
+		$data['categories']		= CategoriesQModel::get_categories_all();
+		$data['books_error']	= BooksErrorQModel::get_books_error_by_uploader_id($user_id);
+		$data['authors_detail']	= AuthorsBModel::get_authors_all();
 		return view('pages.admin.admin', $data);
 	}
 
@@ -143,19 +120,15 @@ class AdminController extends Controller {
 	 */
 	public function super_admin() {
 		$user_id = 14;
-		$user = UsersQModel::get_user_by_id($user_id);
-		$books_upload 		= BooksBModel::get_books_upload($user_id);
-		$categories			= CategoriesQModel::get_categories_all();
-		$characters			= CharactersQModel::get_characters_all();
-		$authors			= AuthorsQModel::get_authors_all();
-		$artists			= AuthorsQModel::get_artists_all();
+		$data['user']			= UsersQModel::get_user_by_id($user_id);
+		$data['books_upload']	= BooksBModel::get_books_upload($user_id);
+		$data['categories']		= CategoriesQModel::get_categories_all();
+		$data['characters']		= CharactersQModel::get_characters_all();
+		$data['transes']		= TransBModel::get_transes_all();
+		$data['authors']		= AuthorsQModel::get_authors_all();
+		$data['artists']		= AuthorsQModel::get_artists_all();
+		$data['authors_detail']	= AuthorsBModel::get_authors_all();
 
-		$data['user'] = $user;
-		$data['books_upload']		= $books_upload;
-		$data['categories']			= $categories;
-		$data['authors']			= $authors;
-		$data['artists']			= $artists;
-		$data['characters']			= $characters;
 		return view('pages.admin.super-admin', $data);
 	}
 
