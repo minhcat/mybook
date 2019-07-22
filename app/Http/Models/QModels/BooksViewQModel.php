@@ -75,4 +75,113 @@ class BooksViewQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get book view current week
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_book_view_all($date, $month, $year) {
+		$result = DB::table('books_view')
+				->where('year', $year)
+				->where('month', $month)
+				->where('date', $date)
+				->get();
+
+		if (empty($result)) return null;
+
+		return $result[0];
+	}
+
+	/**
+	 * get book view current week
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_book_view_day_all($day, $week, $month, $year) {
+		$result = DB::table('books_view')
+				->where('year', $year)
+				->where('month', $month)
+				->where('week', $week)
+				->where('day', $day)
+				->groupBy('day')
+				->selectRaw('SUM(view) as view')
+				->get();
+
+		if (empty($result)) return null;
+		
+		return $result[0];
+	}
+
+	/**
+	 * get book view current week
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_book_view_week_all($week, $month, $year) {
+		$result = DB::table('books_view')
+				->where('year', $year)
+				->where('month', $month)
+				->where('week', $week)
+				->groupBy('week')
+				->selectRaw('SUM(view) as view')
+				->get();
+
+		if (empty($result)) return null;
+		
+		return $result[0];
+	}
+
+	/**
+	 * get book view current week
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_book_view_month_all($month, $year) {
+		$result = DB::table('books_view')
+				->where('year', $year)
+				->where('month', $month)
+				->groupBy('month')
+				->selectRaw('SUM(view) as view')
+				->get();
+
+		if (empty($result)) return null;
+		
+		return $result[0];
+	}
+
+	/**
+	 * get book view current week
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_book_view_season_all($season, $year) {
+		$result = DB::table('books_view')
+				->where('year', $year)
+				->where('season', $season)
+				->groupBy('season')
+				->selectRaw('SUM(view) as view')
+				->get();
+
+		if (empty($result)) return null;
+		
+		return $result[0];
+	}
+
+	/**
+	 * get book view current week
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_book_view_year_all($year) {
+		$result = DB::table('books_view')
+				->where('year', $year)
+				->groupBy('year')
+				->selectRaw('SUM(view) as view')
+				->get();
+
+		if (empty($result)) return null;
+		
+		return $result[0];
+	}
 }

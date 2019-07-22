@@ -12,6 +12,7 @@ use App\Http\Models\CModels\BooksCategoryCModel;
 use App\Http\Models\CModels\BooksCharacterCModel;
 use App\Http\Models\QModels\BooksFollowAdminQModel;
 use App\Http\Models\QModels\BooksRateQModel;
+use App\Http\Models\QModels\BooksViewQModel;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\CategoriesQModel;
@@ -461,5 +462,71 @@ class BooksBModel extends Model
 			];
 			BooksCharacterCModel::insert_book_character($characters[$key]);
 		}
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_view_all($today) {
+		$today = date_create($today);
+		$year  = date_format($today, 'Y');
+		$month = date_format($today, 'm');
+		$date  = date_format($today, 'd');
+		// get week
+		$book_view = BooksViewQModel::get_book_view_all($date, $month, $year);
+		if ($book_view == null) {
+			$week = null;
+		} else {
+			$week  = $book_view->week;
+		}
+		// dd($week);
+		$data['day']	= [];
+		$data['week']	= [];
+		$data['month']	= [];
+		$data['season']	= [];
+		$data['year']	= [];
+		// get view day all
+		for ($i = 0; $i < 7; $i++) { 
+			$data['day'][$i]  = BooksViewQModel::get_book_view_day_all($i, $week, $month, $year);
+			if ($data['day'][$i] == null)
+				$data['day'][$i] = 0;
+			else
+				$data['day'][$i] = (int)$data['day'][$i]->view;
+		}
+		// get view week all
+		for ($i = 0; $i < 5; $i++) { 
+			$data['week'][$i]  = BooksViewQModel::get_book_view_week_all($i, $month, $year);
+			if ($data['week'][$i] == null)
+				$data['week'][$i] = 0;
+			else
+				$data['week'][$i] = (int)$data['week'][$i]->view;
+		}
+		// get view month all
+		for ($i = 1; $i <= 12; $i++) { 
+			$data['month'][$i]  = BooksViewQModel::get_book_view_month_all($i, $year);
+			if ($data['month'][$i] == null)
+				$data['month'][$i] = 0;
+			else
+				$data['month'][$i] = (int)$data['month'][$i]->view;
+		}
+		// get view month all
+		for ($i = 1; $i <= 12; $i++) { 
+			$data['season'][$i]  = BooksViewQModel::get_book_view_season_all($i, $year);
+			if ($data['season'][$i] == null)
+				$data['season'][$i] = 0;
+			else
+				$data['season'][$i] = (int)$data['season'][$i]->view;
+		}
+		// get view year all
+		for ($i = 2012; $i <= 2019; $i++) { 
+			$data['year'][$i]  = BooksViewQModel::get_book_view_year_all($i);
+			if ($data['year'][$i] == null)
+				$data['year'][$i] = 0;
+			else
+				$data['year'][$i] = (int)$data['year'][$i]->view;
+		}
+		return $data;
 	}
 }

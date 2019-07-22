@@ -25,6 +25,8 @@ class StatisticController extends Controller {
 		$user_id = 15;
 		$data['user'] 				= UsersQModel::get_user_by_id($user_id);
 		$data['transes']			= TransBModel::get_transes_all();
+		$data['view']				= BooksBModel::get_view_all('2019-7-21');
+		// dd($data);
 		return view('pages.admin.statistic', $data);
 	}
 }

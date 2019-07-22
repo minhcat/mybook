@@ -1,5 +1,9 @@
 @extends('master.admin')
 
+@section('title')
+Statistic
+@endsection
+
 @section('define-header')
 	<link rel="stylesheet" href="{{ asset('css/admin/uploader.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/admin/statistic.css') }}">
@@ -101,8 +105,6 @@
 @endsection
 
 @section('define-footer')
-	<!-- ChartJS option -->
-	<script src="{{ asset('js/admin/statistic.js') }}"></script>
 
 	<script>
 	$(function () {
@@ -113,6 +115,28 @@
 			]
 		});
 	});
+	var view_day_all = [];
+	@foreach ($view['day'] as $v)
+		view_day_all.push({{$v}});
+	@endforeach
+	var view_week_all = [];
+	@foreach ($view['week'] as $v)
+		view_week_all.push({{$v}});
+	@endforeach
+	var view_month_all = [];
+	@foreach ($view['month'] as $v)
+		view_month_all.push({{$v}});
+	@endforeach
+	var view_season_all = [];
+	@foreach ($view['season'] as $v)
+		view_season_all.push({{$v}});
+	@endforeach
+	var view_year_all = [];
+	@foreach ($view['year'] as $v)
+		view_year_all.push({{$v}});
+	@endforeach
 	</script>
+	<!-- ChartJS option -->
+	<script src="{{ asset('js/admin/statistic.js') }}"></script>
 
 @endsection

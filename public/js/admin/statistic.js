@@ -143,32 +143,32 @@ $(document).ready(function() {
 
 				if (time_type == 'day') {
 
-					all_book_data.labels = ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật'];
-					all_book_data.datasets[0].data = [64,34,66,58,20,57,56];
+					all_book_data.labels = ['Chủ Nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'];
+					all_book_data.datasets[0].data = view_day_all;
 					window.all_book_chart.update();
 
 				} else if (time_type == 'week') {
 
 					all_book_data.labels = ['Tuần 1','Tuần 2','Tuần 3','Tuần 4','Tuần 5'];
-					all_book_data.datasets[0].data = [68,49,79,34,78];
+					all_book_data.datasets[0].data = view_week_all;
 					window.all_book_chart.update();
 
 				} else if (time_type == 'month') {
 
 					all_book_data.labels = ['tháng 1', 'tháng 2', 'tháng 3', 'tháng 4', 'tháng 5', 'tháng 6', 'tháng 7', 'tháng 8', 'tháng 9', 'tháng 10', 'tháng 11', 'tháng 12'];
-					all_book_data.datasets[0].data = [45,68,49,79,34,78,59,30,20,40,50,60];
+					all_book_data.datasets[0].data = view_month_all;
 					window.all_book_chart.update();
 
 				} else if (time_type == 'season') {
 
 					all_book_data.labels = ['mùa xuân', 'mùa hè', 'mùa thu', 'mùa đông'];
-					all_book_data.datasets[0].data = [49,55,86,23];
+					all_book_data.datasets[0].data = view_season_all;
 					window.all_book_chart.update();
 
 				} else if (time_type == 'year') {
 
-					all_book_data.labels = ['2010', '2011', '2012', '2013','2014','2015','2016','2017','2018'];
-					all_book_data.datasets[0].data = [24,45,76,43,23,56,98,104,56];
+					all_book_data.labels = ['2012', '2013','2014','2015','2016','2017','2018', '2019'];
+					all_book_data.datasets[0].data = view_year_all;
 					window.all_book_chart.update();
 
 				}
@@ -3119,14 +3119,14 @@ $(document).ready(function() {
 =====================
 */
 var all_book_data = {
-	labels: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật'],
+	labels: ['Chủ Nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'],
 	datasets: [
 		{
 			label: '5 sao',
 			backgroundColor: '#3c8dbcaa',
 			borderColor: '#3c8dbc',
 			borderWidth: 2,
-			data: [35,24,56,48,30,57,66],
+			data: view_day_all,
 			fill:false,
 		},
 		{
