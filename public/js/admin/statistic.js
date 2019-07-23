@@ -178,31 +178,31 @@ $(document).ready(function() {
 				if (time_type == 'day') {
 
 					all_book_data.labels = ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật'];
-					all_book_data.datasets[0].data = [40,30,66,48,30,67,26];
+					all_book_data.datasets[0].data = comment_day_all;
 					window.all_book_chart.update();
 
 				} else if (time_type == 'week') {
 
 					all_book_data.labels = ['Tuần 1','Tuần 2','Tuần 3','Tuần 4','Tuần 5'];
-					all_book_data.datasets[0].data = [18,39,76,34,58];
+					all_book_data.datasets[0].data = comment_week_all;
 					window.all_book_chart.update();
 
 				} else if (time_type == 'month') {
 
 					all_book_data.labels = ['tháng 1', 'tháng 2', 'tháng 3', 'tháng 4', 'tháng 5', 'tháng 6', 'tháng 7', 'tháng 8', 'tháng 9', 'tháng 10', 'tháng 11', 'tháng 12'];
-					all_book_data.datasets[0].data = [35,58,79,89,24,88,49,50,30,43,55,60];
+					all_book_data.datasets[0].data = comment_month_all;
 					window.all_book_chart.update();
 
 				} else if (time_type == 'season') {
 
 					all_book_data.labels = ['mùa xuân', 'mùa hè', 'mùa thu', 'mùa đông'];
-					all_book_data.datasets[0].data = [54,35,76,43];
+					all_book_data.datasets[0].data = comment_season_all;
 					window.all_book_chart.update();
 
 				} else if (time_type == 'year') {
 
-					all_book_data.labels = ['2010', '2011', '2012', '2013','2014','2015','2016','2017','2018'];
-					all_book_data.datasets[0].data = [34,45,66,33,43,66,88,14,46];
+					all_book_data.labels = ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'];
+					all_book_data.datasets[0].data = comment_year_all;
 					window.all_book_chart.update();
 
 				}

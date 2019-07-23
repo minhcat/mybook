@@ -115,6 +115,7 @@ Statistic
 			]
 		});
 	});
+	// -- VIEW -- //
 	var view_day_all = [];
 	@foreach ($view['day'] as $v)
 		view_day_all.push({{$v}});
@@ -134,6 +135,27 @@ Statistic
 	var view_year_all = [];
 	@foreach ($view['year'] as $v)
 		view_year_all.push({{$v}});
+	@endforeach
+	// -- COMMENT -- //
+	var comment_day_all = [];
+	@foreach ($comment['day'] as $v)
+		comment_day_all.push({{$v}});
+	@endforeach
+	var comment_week_all = [];
+	@foreach ($comment['week'] as $v)
+		comment_week_all.push({{$v}});
+	@endforeach
+	var comment_month_all = [];
+	@foreach ($comment['month'] as $v)
+		comment_month_all.push({{$v}});
+	@endforeach
+	var comment_season_all = [];
+	@foreach ($comment['season'] as $v)
+		comment_season_all.push({{$v}});
+	@endforeach
+	var comment_year_all = [];
+	@foreach ($comment['year'] as $v)
+		comment_year_all.push({{$v}});
 	@endforeach
 	</script>
 	<!-- ChartJS option -->

@@ -431,50 +431,6 @@ class ListController extends Controller {
 		return view('pages.list.list-search', $data);
 	}
 
-	// public function search_post(Request $request)
-	// {
-	// 	//get value search
-	// 	$search = new \stdClass;
-	// 	$search->book      = $request->input('book');
-	// 	$search->year      = $request->input('year');
-	// 	$search->status    = $request->input('status');
-	// 	$search->chap      = $request->input('chap');
-	// 	$search->author    = $request->input('author');
-	// 	$search->character = $request->input('character');
-	// 	$search->trans     = $request->input('trans');
-	// 	$search->category  = $request->input('category');
-	// 	$search->sort      = $request->input('sort');
-	// 	$search->order     = $request->input('order');
-
-	// 	$books = BooksQModel::search_books_by_name($search->book);
-	// 	$books = BooksBModel::search_books_general($books,$search);
-	// 	// dd($search);
-	// 	// dd($books);
-	// 	// $books_page = arr
-	// 	$books = new Paginator(array_chunk($books,12)[0], count($books), 12, 1, [
-	// 		'path'  => $request->url(),
-	// 		'query' => $request->query(),
-	// 	]);
-	// 	$data['search'] = 'true';
-	// 	$data['books'] = $books;
-	// 	// dd($books);
-
-	// 	//sidebar
-	// 	$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook'];
-
-	// 	//data top-view sidebar
-	// 	$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
-	// 	$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
-	// 	$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
-
-	// 	//data random-book sidebar
-	// 	$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
-
-	// 	$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
-	// 	// dd($data['search']);
-	// 	return view('pages.list.list-search', $data);
-	// }
-
 	/**
 	 * Display a listing of the resource.
 	 *

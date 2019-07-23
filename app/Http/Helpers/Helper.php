@@ -43,4 +43,41 @@ class Helper {
 		}
 		return $array;
 	}
+
+	/**
+	 * Add index to array
+	 * @param array
+	 * @return array
+	 */
+	public static function get_week_from_time($time) {
+		$date  = date_format($time, 'd');
+		$week  = 1;
+		while ($date > 7) {
+			$week ++;
+			$date -= 7;
+		}
+		
+		return $week;
+	}
+
+	/**
+	 * Add index to array
+	 * @param array
+	 * @return array
+	 */
+	public static function get_season_from_time($time) {
+		$month = date_format($time, 'm');
+
+		if ($month == 1 || $month == 2 || $month == 3) {
+			$season = 1;
+		} elseif ($month == 4 || $month == 5 || $month == 6) {
+			$season = 2;
+		} elseif ($month == 7 || $month == 8 || $month == 9) {
+			$season = 3;
+		} elseif ($month == 10 || $month == 11 || $month == 12) {
+			$season = 4;
+		}
+
+		return $season;
+	}
 }
