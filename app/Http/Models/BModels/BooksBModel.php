@@ -14,6 +14,7 @@ use App\Http\Models\QModels\BooksFollowAdminQModel;
 use App\Http\Models\QModels\BooksRateQModel;
 use App\Http\Models\QModels\BooksViewQModel;
 use App\Http\Models\QModels\BooksCommentQModel;
+use App\Http\Models\QModels\BooksLikeStatisticQModel;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\CategoriesQModel;
@@ -593,6 +594,72 @@ class BooksBModel extends Model
 				$data['year'][$i] = 0;
 			else
 				$data['year'][$i] = (int)$data['year'][$i]->comment;
+		}
+		return $data;
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_like_all($today) {
+		$today = date_create($today);
+		$year  = date_format($today, 'Y');
+		$month = date_format($today, 'm');
+		$date  = date_format($today, 'd');
+		// get week
+		$book_like = BooksLikeStatisticQModel::get_book_like_all($date, $month, $year);
+		if ($book_like == null) {
+			$week = null;
+		} else {
+			$week  = $book_like->week;
+		}
+		// dd($week);
+		$data['day']	= [];
+		$data['week']	= [];
+		$data['month']	= [];
+		$data['season']	= [];
+		$data['year']	= [];
+		// get view day all
+		for ($i = 0; $i < 7; $i++) { 
+			$data['day'][$i]  = BooksLikeStatisticQModel::get_book_like_day_all($i, $week, $month, $year);
+			if ($data['day'][$i] == null)
+				$data['day'][$i] = 0;
+			else
+				$data['day'][$i] = (int)$data['day'][$i]->_like;
+		}
+		// get view week all
+		for ($i = 0; $i < 5; $i++) { 
+			$data['week'][$i]  = BooksLikeStatisticQModel::get_book_like_week_all($i, $month, $year);
+			if ($data['week'][$i] == null)
+				$data['week'][$i] = 0;
+			else
+				$data['week'][$i] = (int)$data['week'][$i]->_like;
+		}
+		// get view month all
+		for ($i = 1; $i <= 12; $i++) { 
+			$data['month'][$i]  = BooksLikeStatisticQModel::get_book_like_month_all($i, $year);
+			if ($data['month'][$i] == null)
+				$data['month'][$i] = 0;
+			else
+				$data['month'][$i] = (int)$data['month'][$i]->_like;
+		}
+		// get view season all
+		for ($i = 1; $i <= 4; $i++) { 
+			$data['season'][$i]  = BooksLikeStatisticQModel::get_book_like_season_all($i, $year);
+			if ($data['season'][$i] == null)
+				$data['season'][$i] = 0;
+			else
+				$data['season'][$i] = (int)$data['season'][$i]->_like;
+		}
+		// get view year all
+		for ($i = 2012; $i <= 2019; $i++) { 
+			$data['year'][$i]  = BooksLikeStatisticQModel::get_book_like_year_all($i);
+			if ($data['year'][$i] == null)
+				$data['year'][$i] = 0;
+			else
+				$data['year'][$i] = (int)$data['year'][$i]->_like;
 		}
 		return $data;
 	}

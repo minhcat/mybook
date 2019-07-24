@@ -117,45 +117,66 @@ Statistic
 	});
 	// -- VIEW -- //
 	var view_day_all = [];
-	@foreach ($view['day'] as $v)
+	@foreach ($view_all['day'] as $v)
 		view_day_all.push({{$v}});
 	@endforeach
 	var view_week_all = [];
-	@foreach ($view['week'] as $v)
+	@foreach ($view_all['week'] as $v)
 		view_week_all.push({{$v}});
 	@endforeach
 	var view_month_all = [];
-	@foreach ($view['month'] as $v)
+	@foreach ($view_all['month'] as $v)
 		view_month_all.push({{$v}});
 	@endforeach
 	var view_season_all = [];
-	@foreach ($view['season'] as $v)
+	@foreach ($view_all['season'] as $v)
 		view_season_all.push({{$v}});
 	@endforeach
 	var view_year_all = [];
-	@foreach ($view['year'] as $v)
+	@foreach ($view_all['year'] as $v)
 		view_year_all.push({{$v}});
 	@endforeach
 	// -- COMMENT -- //
 	var comment_day_all = [];
-	@foreach ($comment['day'] as $v)
+	@foreach ($comment_all['day'] as $v)
 		comment_day_all.push({{$v}});
 	@endforeach
 	var comment_week_all = [];
-	@foreach ($comment['week'] as $v)
+	@foreach ($comment_all['week'] as $v)
 		comment_week_all.push({{$v}});
 	@endforeach
 	var comment_month_all = [];
-	@foreach ($comment['month'] as $v)
+	@foreach ($comment_all['month'] as $v)
 		comment_month_all.push({{$v}});
 	@endforeach
 	var comment_season_all = [];
-	@foreach ($comment['season'] as $v)
+	@foreach ($comment_all['season'] as $v)
 		comment_season_all.push({{$v}});
 	@endforeach
 	var comment_year_all = [];
-	@foreach ($comment['year'] as $v)
+	@foreach ($comment_all['year'] as $v)
 		comment_year_all.push({{$v}});
+	@endforeach
+	// -- LIKE -- //
+	var like_day_all = [];
+	@foreach ($like_all['day'] as $v)
+		like_day_all.push({{$v}});
+	@endforeach
+	var like_week_all = [];
+	@foreach ($like_all['week'] as $v)
+		like_week_all.push({{$v}});
+	@endforeach
+	var like_month_all = [];
+	@foreach ($like_all['month'] as $v)
+		like_month_all.push({{$v}});
+	@endforeach
+	var like_season_all = [];
+	@foreach ($like_all['season'] as $v)
+		like_season_all.push({{$v}});
+	@endforeach
+	var like_year_all = [];
+	@foreach ($like_all['year'] as $v)
+		like_year_all.push({{$v}});
 	@endforeach
 	</script>
 	<!-- ChartJS option -->
