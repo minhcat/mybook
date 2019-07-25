@@ -178,6 +178,109 @@ Statistic
 	@foreach ($like_all['year'] as $v)
 		like_year_all.push({{$v}});
 	@endforeach
+	// -- FOLLOW -- //
+	var follow_day_all = [];
+	@foreach ($follow_all['day'] as $v)
+		follow_day_all.push({{$v}});
+	@endforeach
+	var follow_week_all = [];
+	@foreach ($follow_all['week'] as $v)
+		follow_week_all.push({{$v}});
+	@endforeach
+	var follow_month_all = [];
+	@foreach ($follow_all['month'] as $v)
+		follow_month_all.push({{$v}});
+	@endforeach
+	var follow_season_all = [];
+	@foreach ($follow_all['season'] as $v)
+		follow_season_all.push({{$v}});
+	@endforeach
+	var follow_year_all = [];
+	@foreach ($follow_all['year'] as $v)
+		follow_year_all.push({{$v}});
+	@endforeach
+	// -- RATE -- //
+	// day
+	var rate_day_all = [];
+	// create array
+	@foreach ($rate_all['day'] as $i => $av)
+		@foreach ($av as $j => $v)
+			rate_day_all[{{$j}}] = [];
+		@endforeach
+	@endforeach
+	// add data
+	@foreach ($rate_all['day'] as $i => $av)
+		@foreach ($av as $j => $v)
+			@if ($j != 0)
+				rate_day_all[{{$j}}][{{$i}}] = {{$v}};
+			@endif
+		@endforeach
+	@endforeach
+	// week
+	var rate_week_all = [];
+	// create array
+	@foreach ($rate_all['week'] as $i => $av)
+		@foreach ($av as $j => $v)
+			rate_week_all[{{$j}}] = [];
+		@endforeach
+	@endforeach
+	// add data
+	@foreach ($rate_all['week'] as $i => $av)
+		@foreach ($av as $j => $v)
+			@if ($j != 0)
+				rate_week_all[{{$j}}][{{$i}}] = {{$v}};
+			@endif
+		@endforeach
+	@endforeach
+	// month
+	var rate_month_all = [];
+	// create array
+	@foreach ($rate_all['month'] as $i => $av)
+		@foreach ($av as $j => $v)
+			rate_month_all[{{$j}}] = [];
+		@endforeach
+	@endforeach
+	// add data
+	@foreach ($rate_all['month'] as $i => $av)
+		@foreach ($av as $j => $v)
+			@if ($j != 0)
+				rate_month_all[{{$j}}][{{$i-1}}] = {{$v}};
+			@endif
+		@endforeach
+	@endforeach
+	// season
+	var rate_season_all = [];
+	// create array
+	@foreach ($rate_all['season'] as $i => $av)
+		@foreach ($av as $j => $v)
+			rate_season_all[{{$j}}] = [];
+		@endforeach
+	@endforeach
+	// add data
+	@foreach ($rate_all['season'] as $i => $av)
+		@foreach ($av as $j => $v)
+			@if ($j != 0)
+				rate_season_all[{{$j}}][{{$i-1}}] = {{$v}};
+			@endif
+		@endforeach
+	@endforeach
+	// year
+	var rate_year_all = [];
+	// create array
+	@foreach ($rate_all['year'] as $i => $av)
+		@foreach ($av as $j => $v)
+			rate_year_all[{{$j}}] = [];
+		@endforeach
+	@endforeach
+	// add data
+	@foreach ($rate_all['year'] as $i => $av)
+		@foreach ($av as $j => $v)
+			@if ($j != 0)
+				rate_year_all[{{$j}}][{{$i}}] = {{$v}};
+			@endif
+		@endforeach
+	@endforeach
+	console.log(rate_year_all);
 	</script>
 	<!-- ChartJS option -->
 	<script src="{{ asset('js/admin/statistic.js') }}"></script>

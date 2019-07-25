@@ -28,6 +28,8 @@ class StatisticController extends Controller {
 		$data['view_all']			= BooksBModel::get_view_all('2019-7-21');
 		$data['comment_all']		= BooksBModel::get_comment_all('2019-7-23');
 		$data['like_all']			= BooksBModel::get_like_all('2019-7-24');
+		$data['follow_all']			= BooksBModel::get_follow_all('2019-7-24');
+		$data['rate_all']			= BooksBModel::get_rate_all('2019-7-25');
 		// dd($data);
 		return view('pages.admin.statistic', $data);
 	}

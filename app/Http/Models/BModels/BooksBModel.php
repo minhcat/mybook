@@ -15,6 +15,8 @@ use App\Http\Models\QModels\BooksRateQModel;
 use App\Http\Models\QModels\BooksViewQModel;
 use App\Http\Models\QModels\BooksCommentQModel;
 use App\Http\Models\QModels\BooksLikeStatisticQModel;
+use App\Http\Models\QModels\BooksFollowStatisticQModel;
+use App\Http\Models\QModels\BooksRateStatisticQModel;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\CategoriesQModel;
@@ -660,6 +662,173 @@ class BooksBModel extends Model
 				$data['year'][$i] = 0;
 			else
 				$data['year'][$i] = (int)$data['year'][$i]->_like;
+		}
+		return $data;
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_follow_all($today) {
+		$today = date_create($today);
+		$year  = date_format($today, 'Y');
+		$month = date_format($today, 'm');
+		$date  = date_format($today, 'd');
+		// get week
+		$book_follow = BooksFollowStatisticQModel::get_book_follow_all($date, $month, $year);
+		if ($book_follow == null) {
+			$week = null;
+		} else {
+			$week  = $book_follow->week;
+		}
+		// dd($week);
+		$data['day']	= [];
+		$data['week']	= [];
+		$data['month']	= [];
+		$data['season']	= [];
+		$data['year']	= [];
+		// get view day all
+		for ($i = 0; $i < 7; $i++) { 
+			$data['day'][$i]  = BooksFollowStatisticQModel::get_book_follow_day_all($i, $week, $month, $year);
+			if ($data['day'][$i] == null)
+				$data['day'][$i] = 0;
+			else
+				$data['day'][$i] = (int)$data['day'][$i]->follow;
+		}
+		// get view week all
+		for ($i = 0; $i < 5; $i++) { 
+			$data['week'][$i]  = BooksFollowStatisticQModel::get_book_follow_week_all($i, $month, $year);
+			if ($data['week'][$i] == null)
+				$data['week'][$i] = 0;
+			else
+				$data['week'][$i] = (int)$data['week'][$i]->follow;
+		}
+		// get view month all
+		for ($i = 1; $i <= 12; $i++) { 
+			$data['month'][$i]  = BooksFollowStatisticQModel::get_book_follow_month_all($i, $year);
+			if ($data['month'][$i] == null)
+				$data['month'][$i] = 0;
+			else
+				$data['month'][$i] = (int)$data['month'][$i]->follow;
+		}
+		// get view season all
+		for ($i = 1; $i <= 4; $i++) { 
+			$data['season'][$i]  = BooksFollowStatisticQModel::get_book_follow_season_all($i, $year);
+			if ($data['season'][$i] == null)
+				$data['season'][$i] = 0;
+			else
+				$data['season'][$i] = (int)$data['season'][$i]->follow;
+		}
+		// get view year all
+		for ($i = 2012; $i <= 2019; $i++) { 
+			$data['year'][$i]  = BooksFollowStatisticQModel::get_book_follow_year_all($i);
+			if ($data['year'][$i] == null)
+				$data['year'][$i] = 0;
+			else
+				$data['year'][$i] = (int)$data['year'][$i]->follow;
+		}
+		return $data;
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_rate_all($today) {
+		$today = date_create($today);
+		$year  = date_format($today, 'Y');
+		$month = date_format($today, 'm');
+		$date  = date_format($today, 'd');
+		// get week
+		$book_follow = BooksRateStatisticQModel::get_book_rate_all($date, $month, $year);
+		if ($book_follow == null) {
+			$week = null;
+		} else {
+			$week  = $book_follow->week;
+		}
+		// dd($week);
+		$data['day']	= [];
+		$data['week']	= [];
+		$data['month']	= [];
+		$data['season']	= [];
+		$data['year']	= [];
+		// get view day all
+		for ($i = 0; $i < 7; $i++) { 
+			$data['day'][$i]  = [];
+			// j is rate point
+			$data['day'][$i][0] = 0;
+			for ($j = 1; $j <= 5; $j++) { 
+				$data['day'][$i][$j] = BooksRateStatisticQModel::get_book_rate_day_all($i,$week, $month, $year, $j);
+				if ($data['day'][$i][$j] == null) {
+					$data['day'][$i][$j] = $data['day'][$i][$j-1];
+				}
+				else {
+					$data['day'][$i][$j] = (int)$data['day'][$i][$j]->rate + $data['day'][$i][$j-1];
+				}
+			}	
+		}
+		// get view week all
+		for ($i = 0; $i < 5; $i++) { 
+			$data['week'][$i]  = [];
+			// j is rate point
+			$data['week'][$i][0] = 0;
+			for ($j = 1; $j <= 5; $j++) { 
+				$data['week'][$i][$j] = BooksRateStatisticQModel::get_book_rate_week_all($i, $month, $year, $j);
+				if ($data['week'][$i][$j] == null) {
+					$data['week'][$i][$j] = $data['week'][$i][$j-1];
+				}
+				else {
+					$data['week'][$i][$j] = (int)$data['week'][$i][$j]->rate + $data['week'][$i][$j-1];
+				}
+			}
+		}
+		// get view month all
+		for ($i = 1; $i <= 12; $i++) { 
+			$data['month'][$i]  = [];
+			// j is rate point
+			$data['month'][$i][0] = 0;
+			for ($j = 1; $j <= 5; $j++) { 
+				$data['month'][$i][$j] = BooksRateStatisticQModel::get_book_rate_month_all($i, $year, $j);
+				if ($data['month'][$i][$j] == null) {
+					$data['month'][$i][$j] = $data['month'][$i][$j-1];
+				}
+				else {
+					$data['month'][$i][$j] = (int)$data['month'][$i][$j]->rate + $data['month'][$i][$j-1];
+				}
+			}
+		}
+		// get view season all
+		for ($i = 1; $i <= 4; $i++) { 
+			$data['season'][$i]  = [];
+			// j is rate point
+			$data['season'][$i][0] = 0;
+			for ($j = 1; $j <= 5; $j++) { 
+				$data['season'][$i][$j] = BooksRateStatisticQModel::get_book_rate_season_all($i, $year, $j);
+				if ($data['season'][$i][$j] == null) {
+					$data['season'][$i][$j] = $data['season'][$i][$j-1];
+				}
+				else {
+					$data['season'][$i][$j] = (int)$data['season'][$i][$j]->rate + $data['season'][$i][$j-1];
+				}
+			}
+		}
+		// get view year all
+		for ($i = 0; $i < 8; $i++) { 
+			$data['year'][$i]  = [];
+			// j is rate point
+			$data['year'][$i][0] = 0;
+			for ($j = 1; $j <= 5; $j++) { 
+				$data['year'][$i][$j] = BooksRateStatisticQModel::get_book_rate_year_all($i+2012, $j);
+				if ($data['year'][$i][$j] == null) {
+					$data['year'][$i][$j] = $data['year'][$i][$j-1];
+				}
+				else {
+					$data['year'][$i][$j] = (int)$data['year'][$i][$j]->rate + $data['year'][$i][$j-1];
+				}
+			}
 		}
 		return $data;
 	}
