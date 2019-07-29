@@ -5,6 +5,7 @@ Statistic
 @endsection
 
 @section('define-header')
+	<link rel="stylesheet" href="{{ asset('css/admin/dataTables.bootstrap.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/admin/uploader.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/admin/statistic.css') }}">
 @endsection
@@ -105,9 +106,17 @@ Statistic
 @endsection
 
 @section('define-footer')
-
+	<script src="{{ asset('js/admin/jquery.dataTables.js') }}"></script>
+	<script src="{{ asset('js/admin/dataTables.bootstrap.js') }}"></script>
 	<script>
 	$(function () {
+		$('#table-book-button-small').DataTable({
+			"lengthMenu": [6],
+			"lengthChange": false,
+			"searching": false,
+			"pagingType": "numbers",
+			"info": false,
+		});
 		CKEDITOR.replace('mail-content', {
 			toolbar: [
 				[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' , '-', 'Image', 'Table', '-', 'Scayt'],
@@ -115,6 +124,10 @@ Statistic
 			]
 		});
 	});
+	// ----------- //
+	// --- ALL --- //
+	// ----------- //
+
 	// -- VIEW -- //
 	var view_day_all = [];
 	@foreach ($view_all['day'] as $v)
@@ -200,16 +213,17 @@ Statistic
 		follow_year_all.push({{$v}});
 	@endforeach
 	// -- RATE -- //
+	// ** SUM  ** //
 	// day
 	var rate_day_all = [];
 	// create array
-	@foreach ($rate_all['day'] as $i => $av)
+	@foreach ($rate_all['sum']['day'] as $i => $av)
 		@foreach ($av as $j => $v)
 			rate_day_all[{{$j}}] = [];
 		@endforeach
 	@endforeach
 	// add data
-	@foreach ($rate_all['day'] as $i => $av)
+	@foreach ($rate_all['sum']['day'] as $i => $av)
 		@foreach ($av as $j => $v)
 			@if ($j != 0)
 				rate_day_all[{{$j}}][{{$i}}] = {{$v}};
@@ -219,13 +233,13 @@ Statistic
 	// week
 	var rate_week_all = [];
 	// create array
-	@foreach ($rate_all['week'] as $i => $av)
+	@foreach ($rate_all['sum']['week'] as $i => $av)
 		@foreach ($av as $j => $v)
 			rate_week_all[{{$j}}] = [];
 		@endforeach
 	@endforeach
 	// add data
-	@foreach ($rate_all['week'] as $i => $av)
+	@foreach ($rate_all['sum']['week'] as $i => $av)
 		@foreach ($av as $j => $v)
 			@if ($j != 0)
 				rate_week_all[{{$j}}][{{$i}}] = {{$v}};
@@ -235,13 +249,13 @@ Statistic
 	// month
 	var rate_month_all = [];
 	// create array
-	@foreach ($rate_all['month'] as $i => $av)
+	@foreach ($rate_all['sum']['month'] as $i => $av)
 		@foreach ($av as $j => $v)
 			rate_month_all[{{$j}}] = [];
 		@endforeach
 	@endforeach
 	// add data
-	@foreach ($rate_all['month'] as $i => $av)
+	@foreach ($rate_all['sum']['month'] as $i => $av)
 		@foreach ($av as $j => $v)
 			@if ($j != 0)
 				rate_month_all[{{$j}}][{{$i-1}}] = {{$v}};
@@ -251,13 +265,13 @@ Statistic
 	// season
 	var rate_season_all = [];
 	// create array
-	@foreach ($rate_all['season'] as $i => $av)
+	@foreach ($rate_all['sum']['season'] as $i => $av)
 		@foreach ($av as $j => $v)
 			rate_season_all[{{$j}}] = [];
 		@endforeach
 	@endforeach
 	// add data
-	@foreach ($rate_all['season'] as $i => $av)
+	@foreach ($rate_all['sum']['season'] as $i => $av)
 		@foreach ($av as $j => $v)
 			@if ($j != 0)
 				rate_season_all[{{$j}}][{{$i-1}}] = {{$v}};
@@ -267,20 +281,106 @@ Statistic
 	// year
 	var rate_year_all = [];
 	// create array
-	@foreach ($rate_all['year'] as $i => $av)
+	@foreach ($rate_all['sum']['year'] as $i => $av)
 		@foreach ($av as $j => $v)
 			rate_year_all[{{$j}}] = [];
 		@endforeach
 	@endforeach
 	// add data
-	@foreach ($rate_all['year'] as $i => $av)
+	@foreach ($rate_all['sum']['year'] as $i => $av)
 		@foreach ($av as $j => $v)
 			@if ($j != 0)
 				rate_year_all[{{$j}}][{{$i}}] = {{$v}};
 			@endif
 		@endforeach
 	@endforeach
-	console.log(rate_year_all);
+	// ** PERCENT ** //
+	// day
+	var rate_day_per_all = [];
+	// create array
+	@foreach ($rate_all['percent']['day'] as $i => $av)
+		@foreach ($av as $j => $v)
+			rate_day_per_all[{{$j}}] = [];
+		@endforeach
+	@endforeach
+	// add data
+	@foreach ($rate_all['percent']['day'] as $i => $av)
+		@foreach ($av as $j => $v)
+			@if ($j != 0)
+				rate_day_per_all[{{$j}}][{{$i}}] = {{$v}};
+			@endif
+		@endforeach
+	@endforeach
+	// week
+	var rate_week_per_all = [];
+	// create array
+	@foreach ($rate_all['percent']['week'] as $i => $av)
+		@foreach ($av as $j => $v)
+			rate_week_per_all[{{$j}}] = [];
+		@endforeach
+	@endforeach
+	// add data
+	@foreach ($rate_all['percent']['week'] as $i => $av)
+		@foreach ($av as $j => $v)
+			@if ($j != 0)
+				rate_week_per_all[{{$j}}][{{$i}}] = {{$v}};
+			@endif
+		@endforeach
+	@endforeach
+	// month
+	var rate_month_per_all = [];
+	// create array
+	@foreach ($rate_all['percent']['month'] as $i => $av)
+		@foreach ($av as $j => $v)
+			rate_month_per_all[{{$j}}] = [];
+		@endforeach
+	@endforeach
+	// add data
+	@foreach ($rate_all['percent']['month'] as $i => $av)
+		@foreach ($av as $j => $v)
+			@if ($j != 0)
+				rate_month_per_all[{{$j}}][{{$i-1}}] = {{$v}};
+			@endif
+		@endforeach
+	@endforeach
+	// season
+	var rate_season_per_all = [];
+	// create array
+	@foreach ($rate_all['percent']['season'] as $i => $av)
+		@foreach ($av as $j => $v)
+			rate_season_per_all[{{$j}}] = [];
+		@endforeach
+	@endforeach
+	// add data
+	@foreach ($rate_all['percent']['season'] as $i => $av)
+		@foreach ($av as $j => $v)
+			@if ($j != 0)
+				rate_season_per_all[{{$j}}][{{$i-1}}] = {{$v}};
+			@endif
+		@endforeach
+	@endforeach
+	// year
+	var rate_year_per_all = [];
+	// create array
+	@foreach ($rate_all['percent']['year'] as $i => $av)
+		@foreach ($av as $j => $v)
+			rate_year_per_all[{{$j}}] = [];
+		@endforeach
+	@endforeach
+	// add data
+	@foreach ($rate_all['percent']['year'] as $i => $av)
+		@foreach ($av as $j => $v)
+			@if ($j != 0)
+				rate_year_per_all[{{$j}}][{{$i}}] = {{$v}};
+			@endif
+		@endforeach
+	@endforeach
+	// ------------ //
+	// --- BOOK --- //
+	// ------------ //
+
+	// --- VIEW --- //
+	var view_day_book = [2,1,3,4,5];
 	</script>
 	<!-- ChartJS option -->
 	<script src="{{ asset('js/admin/statistic.js') }}"></script>

@@ -743,90 +743,206 @@ class BooksBModel extends Model
 		$month = date_format($today, 'm');
 		$date  = date_format($today, 'd');
 		// get week
-		$book_follow = BooksRateStatisticQModel::get_book_rate_all($date, $month, $year);
-		if ($book_follow == null) {
+		$book_rate = BooksRateStatisticQModel::get_book_rate_all($date, $month, $year);
+		if ($book_rate == null) {
 			$week = null;
 		} else {
-			$week  = $book_follow->week;
+			$week  = $book_rate->week;
 		}
 		// dd($week);
-		$data['day']	= [];
-		$data['week']	= [];
-		$data['month']	= [];
-		$data['season']	= [];
-		$data['year']	= [];
+		$data['sum']			= [];
+		$data['sum']['day']		= [];
+		$data['sum']['week']	= [];
+		$data['sum']['month']	= [];
+		$data['sum']['season']	= [];
+		$data['sum']['year']	= [];
 		// get view day all
 		for ($i = 0; $i < 7; $i++) { 
-			$data['day'][$i]  = [];
+			$data['sum']['day'][$i]  = [];
 			// j is rate point
-			$data['day'][$i][0] = 0;
+			$data['sum']['day'][$i][0] = 0;
 			for ($j = 1; $j <= 5; $j++) { 
-				$data['day'][$i][$j] = BooksRateStatisticQModel::get_book_rate_day_all($i,$week, $month, $year, $j);
-				if ($data['day'][$i][$j] == null) {
-					$data['day'][$i][$j] = $data['day'][$i][$j-1];
+				$data['sum']['day'][$i][$j] = BooksRateStatisticQModel::get_book_rate_day_all($i,$week, $month, $year, $j);
+				if ($data['sum']['day'][$i][$j] == null) {
+					$data['sum']['day'][$i][$j] = $data['sum']['day'][$i][$j-1];
 				}
 				else {
-					$data['day'][$i][$j] = (int)$data['day'][$i][$j]->rate + $data['day'][$i][$j-1];
+					$data['sum']['day'][$i][$j] = (int)$data['sum']['day'][$i][$j]->rate + $data['sum']['day'][$i][$j-1];
 				}
 			}	
 		}
 		// get view week all
 		for ($i = 0; $i < 5; $i++) { 
-			$data['week'][$i]  = [];
+			$data['sum']['week'][$i]  = [];
 			// j is rate point
-			$data['week'][$i][0] = 0;
+			$data['sum']['week'][$i][0] = 0;
 			for ($j = 1; $j <= 5; $j++) { 
-				$data['week'][$i][$j] = BooksRateStatisticQModel::get_book_rate_week_all($i, $month, $year, $j);
-				if ($data['week'][$i][$j] == null) {
-					$data['week'][$i][$j] = $data['week'][$i][$j-1];
+				$data['sum']['week'][$i][$j] = BooksRateStatisticQModel::get_book_rate_week_all($i, $month, $year, $j);
+				if ($data['sum']['week'][$i][$j] == null) {
+					$data['sum']['week'][$i][$j] = $data['sum']['week'][$i][$j-1];
 				}
 				else {
-					$data['week'][$i][$j] = (int)$data['week'][$i][$j]->rate + $data['week'][$i][$j-1];
+					$data['sum']['week'][$i][$j] = (int)$data['sum']['week'][$i][$j]->rate + $data['sum']['week'][$i][$j-1];
 				}
 			}
 		}
 		// get view month all
 		for ($i = 1; $i <= 12; $i++) { 
-			$data['month'][$i]  = [];
+			$data['sum']['month'][$i]  = [];
 			// j is rate point
-			$data['month'][$i][0] = 0;
+			$data['sum']['month'][$i][0] = 0;
 			for ($j = 1; $j <= 5; $j++) { 
-				$data['month'][$i][$j] = BooksRateStatisticQModel::get_book_rate_month_all($i, $year, $j);
-				if ($data['month'][$i][$j] == null) {
-					$data['month'][$i][$j] = $data['month'][$i][$j-1];
+				$data['sum']['month'][$i][$j] = BooksRateStatisticQModel::get_book_rate_month_all($i, $year, $j);
+				if ($data['sum']['month'][$i][$j] == null) {
+					$data['sum']['month'][$i][$j] = $data['sum']['month'][$i][$j-1];
 				}
 				else {
-					$data['month'][$i][$j] = (int)$data['month'][$i][$j]->rate + $data['month'][$i][$j-1];
+					$data['sum']['month'][$i][$j] = (int)$data['sum']['month'][$i][$j]->rate + $data['sum']['month'][$i][$j-1];
 				}
 			}
 		}
 		// get view season all
 		for ($i = 1; $i <= 4; $i++) { 
-			$data['season'][$i]  = [];
+			$data['sum']['season'][$i]  = [];
 			// j is rate point
-			$data['season'][$i][0] = 0;
+			$data['sum']['season'][$i][0] = 0;
 			for ($j = 1; $j <= 5; $j++) { 
-				$data['season'][$i][$j] = BooksRateStatisticQModel::get_book_rate_season_all($i, $year, $j);
-				if ($data['season'][$i][$j] == null) {
-					$data['season'][$i][$j] = $data['season'][$i][$j-1];
+				$data['sum']['season'][$i][$j] = BooksRateStatisticQModel::get_book_rate_season_all($i, $year, $j);
+				if ($data['sum']['season'][$i][$j] == null) {
+					$data['sum']['season'][$i][$j] = $data['sum']['season'][$i][$j-1];
 				}
 				else {
-					$data['season'][$i][$j] = (int)$data['season'][$i][$j]->rate + $data['season'][$i][$j-1];
+					$data['sum']['season'][$i][$j] = (int)$data['sum']['season'][$i][$j]->rate + $data['sum']['season'][$i][$j-1];
 				}
 			}
 		}
 		// get view year all
 		for ($i = 0; $i < 8; $i++) { 
-			$data['year'][$i]  = [];
+			$data['sum']['year'][$i]  = [];
 			// j is rate point
-			$data['year'][$i][0] = 0;
+			$data['sum']['year'][$i][0] = 0;
 			for ($j = 1; $j <= 5; $j++) { 
-				$data['year'][$i][$j] = BooksRateStatisticQModel::get_book_rate_year_all($i+2012, $j);
-				if ($data['year'][$i][$j] == null) {
-					$data['year'][$i][$j] = $data['year'][$i][$j-1];
+				$data['sum']['year'][$i][$j] = BooksRateStatisticQModel::get_book_rate_year_all($i+2012, $j);
+				if ($data['sum']['year'][$i][$j] == null) {
+					$data['sum']['year'][$i][$j] = $data['sum']['year'][$i][$j-1];
 				}
 				else {
-					$data['year'][$i][$j] = (int)$data['year'][$i][$j]->rate + $data['year'][$i][$j-1];
+					$data['sum']['year'][$i][$j] = (int)$data['sum']['year'][$i][$j]->rate + $data['sum']['year'][$i][$j-1];
+				}
+			}
+		}
+
+		// get data percent
+		$data['percent']			= [];
+		$data['percent']['day']		= [];
+		$data['percent']['week']	= [];
+		$data['percent']['month']	= [];
+		$data['percent']['season']	= [];
+		$data['percent']['year']	= [];
+		// dd($data);
+		// day
+		foreach ($data['sum']['day'] as $key => $day) {
+			$sum = 0;
+			$data['percent']['day'][$key] = [];
+			foreach ($day as $star => $number) {
+				
+				$data['percent']['day'][$key][$star] = $sum + $number;
+
+				$sum += $number;
+			}
+			foreach ($day as $star => $number) {
+				if ($sum != 0) {
+					$value = $data['percent']['day'][$key][$star];
+					$max   = $data['percent']['day'][$key][5];
+					$data['percent']['day'][$key][$star] = ($value / $max) * 100;
+				} else {
+					if ($star != 0)
+						$data['percent']['day'][$key][$star] = 20 * $star;
+				}
+			}
+		}
+		// week
+		foreach ($data['sum']['week'] as $key => $week) {
+			$sum = 0;
+			$data['percent']['week'][$key] = [];
+			foreach ($week as $star => $number) {
+				
+				$data['percent']['week'][$key][$star] = $sum + $number;
+
+				$sum += $number;
+			}
+			foreach ($week as $star => $number) {
+				
+				if ($sum != 0) {
+					$value = $data['percent']['week'][$key][$star];
+					$max   = $data['percent']['week'][$key][5];
+					$data['percent']['week'][$key][$star] = ($value / $max) * 100;
+				} else {
+					if ($star != 0)
+						$data['percent']['week'][$key][$star] = 20 * $star;
+				}
+			}
+		}
+		// month
+		foreach ($data['sum']['month'] as $key => $month) {
+			$sum = 0;
+			$data['percent']['month'][$key] = [];
+			foreach ($month as $star => $number) {
+				
+				$data['percent']['month'][$key][$star] = $sum + $number;
+
+				$sum += $number;
+			}
+			foreach ($month as $star => $number) {
+				if ($sum != 0) {
+					$value = $data['percent']['month'][$key][$star];
+					$max   = $data['percent']['month'][$key][5];
+					$data['percent']['month'][$key][$star] = ($value / $max) * 100;
+				} else {
+					if ($star != 0)
+						$data['percent']['month'][$key][$star] = 20 * $star;
+				}
+			}
+		}
+		// season
+		foreach ($data['sum']['season'] as $key => $season) {
+			$sum = 0;
+			$data['percent']['season'][$key] = [];
+			foreach ($season as $star => $number) {
+				
+				$data['percent']['season'][$key][$star] = $sum + $number;
+
+				$sum += $number;
+			}
+			foreach ($season as $star => $number) {
+				if ($sum != 0) {
+					$value = $data['percent']['season'][$key][$star];
+					$max   = $data['percent']['season'][$key][5];
+					$data['percent']['season'][$key][$star] = ($value / $max) * 100;
+				} else {
+					if ($star != 0)
+						$data['percent']['season'][$key][$star] = 20 * $star;
+				}
+			}
+		}
+		// year
+		foreach ($data['sum']['year'] as $key => $year) {
+			$sum = 0;
+			$data['percent']['year'][$key] = [];
+			foreach ($year as $star => $number) {
+				
+				$data['percent']['year'][$key][$star] = $sum + $number;
+
+				$sum += $number;
+			}
+			foreach ($year as $star => $number) {
+				if ($sum != 0) {
+					$value = $data['percent']['year'][$key][$star];
+					$max   = $data['percent']['year'][$key][5];
+					$data['percent']['year'][$key][$star] = ($value / $max) * 100;
+				} else {
+					if ($star != 0)
+						$data['percent']['year'][$key][$star] = 20 * $star;
 				}
 			}
 		}
