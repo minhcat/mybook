@@ -1,5 +1,13 @@
 @extends('master.admin')
 
+@section('title')
+Admin
+@endsection
+
+@section('admin-job')
+Admin
+@endsection
+
 @section('define-header')
 	<!-- DataTables -->
 	<link rel="stylesheet" href="{{ asset('css/admin/dataTables.bootstrap.css') }}">
@@ -36,6 +44,8 @@
 			<div class="col-xs-12">
 				<!-- Database Box -->
 				@include('partials.admin.content.list.book.list-book-admin')
+
+				@include('partials.admin.content.list.book.list-book-error-admin')
 
 				@include('partials.admin.content.list.chap.list-chap-admin')
 

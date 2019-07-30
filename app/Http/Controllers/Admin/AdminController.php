@@ -3,12 +3,14 @@
 use App\Http\Requests;
 use App\Http\Helpers\Images;
 use App\Http\Controllers\Controller;
+use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\BooksErrorQModel;
 use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\CharactersBModel;
 use App\Http\Models\BModels\AuthorsBModel;
+use App\Http\Models\CModels\BooksCModel;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Contracts\Filesystem\Factory;
 
@@ -21,14 +23,28 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function admin() {
-		$user_id = 14;
+	public static function admin() {
+		$user_id = 16;
 		$data['user']			= UsersQModel::get_user_by_id($user_id);
 		$data['transes']		= TransBModel::get_transes_all();
 		$data['characters']		= CharactersBModel::get_characters_all();
 		$data['categories']		= CategoriesQModel::get_categories_all();
 		$data['books_error']	= BooksErrorQModel::get_books_error_by_uploader_id($user_id);
 		$data['authors_detail']	= AuthorsBModel::get_authors_all();
+		$data['books_approve']	= BooksQModel::get_books_not_approved_all();
+		// dd($data);
 		return view('pages.admin.admin', $data);
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public static function approve_book($book_id) {
+		$data = [
+			'approved' => 1
+		];
+		BooksCModel::update_book($book_id, $data);
 	}
 }

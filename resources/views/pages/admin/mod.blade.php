@@ -4,6 +4,10 @@
 MOD
 @endsection
 
+@section('admin-job')
+MOD
+@endsection
+
 @section('define-header')
 	<link rel="stylesheet" href="{{ asset('css/admin/mod.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/admin/common.css') }}">

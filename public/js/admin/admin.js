@@ -13,4 +13,17 @@ $(document).ready(function() {
 			$(this).toggleClass('btn-danger');
 		}
 	});
+	$('table#table-approve-book .btn.btn-success').click(function() {
+		var id = $(this).data('id');
+		var btn = $(this);
+		$.ajax({
+			type: 'GET',
+			url: '/admin/admin/ajax/approve_book/'+id,
+			success:function(data) {
+				btn.removeClass('btn-success');
+				btn.addClass('btn-danger');
+				btn.text('Đã duyệt')
+			}
+		});
+	});
 });

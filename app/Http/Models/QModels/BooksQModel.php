@@ -317,4 +317,20 @@ class BooksQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * search books by name 
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_books_not_approved_all() {
+		$result = DB::table('books as b')
+				->join('users as u','u.id','=','b.id_uploader')
+				->where('b.deleted', 0)
+				->where('b.approved', 0)
+				->select('b.id as id', 'b.*','u.name as user_name')
+				->get();
+
+		return $result;
+	}
 }

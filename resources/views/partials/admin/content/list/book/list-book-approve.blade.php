@@ -17,142 +17,24 @@
 					<th>Người đăng</th>
 					<th>Ngày đăng</th>
 					<th>Mô tả</th>
-					<th>Xem Truyện</th>
-					<th>Phản hồi</th>
-					<th class="column-fixed-100">Duyệt truyện</th>
+					<th class="column-fixed-190">Phản hồi</th>
 				</tr>
 			</thead>
 			<tbody>
+				@foreach ($books_approve as $key => $book)
 				<tr>
-					<td>001</td>
-					<td>The Rising of The Shield Hero</td>
-					<td>Võ Trinh</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td><a href="#">link</a></td>
-					<td><a href="#" data-toggle="modal" data-target="#modal-reply">phản hồi</a></td>
+					<td>{{ $key + 1 }}</td>
+					<td>{{ $book->name }}</td>
+					<td>{{ $book->user_name }}</td>
+					<td>{{ date_format(date_create($book->create_at), 'd-m-Y') }}</td>
+					<td>{{ $book->description }}</td>
 					<td>
-						<button class="btn btn-success">Duyệt</button>
+						<button class="btn btn-success" data-id="{{ $book->id }}">Duyệt</button>
+						<button class="btn btn-primary">Phản hồi</button>
 						<button class="btn btn-default">Hủy</button>
 					</td>
 				</tr>
-				<tr>
-					<td>002</td>
-					<td>The Rising of The Shield Hero</td>
-					<td>Võ Trinh</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td><a href="#">link</a></td>
-					<td><a href="#" data-toggle="modal" data-target="#modal-reply">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
-				<tr>
-					<td>003</td>
-					<td>The Rising of The Shield Hero</td>
-					<td>Võ Trinh</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td><a href="#">link</a></td>
-					<td><a href="#" data-toggle="modal" data-target="#modal-reply">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
-				<tr>
-					<td>004</td>
-					<td>The Rising of The Shield Hero</td>
-					<td>Võ Trinh</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td><a href="#">link</a></td>
-					<td><a href="#" data-toggle="modal" data-target="#modal-reply">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
-				<tr>
-					<td>005</td>
-					<td>The Rising of The Shield Hero</td>
-					<td>Võ Trinh</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td><a href="#">link</a></td>
-					<td><a href="#" data-toggle="modal" data-target="#modal-reply">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
-				<tr>
-					<td>006</td>
-					<td>The Rising of The Shield Hero</td>
-					<td>Võ Trinh</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td><a href="#">link</a></td>
-					<td><a href="#">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
-				<tr>
-					<td>007</td>
-					<td>The Rising of The Shield Hero</td>
-					<td>Võ Trinh</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td><a href="#">link</a></td>
-					<td><a href="#">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
-				<tr>
-					<td>008</td>
-					<td>The Rising of The Shield Hero</td>
-					<td>Võ Trinh</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td><a href="#">link</a></td>
-					<td><a href="#">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
-				<tr>
-					<td>009</td>
-					<td>The Rising of The Shield Hero</td>
-					<td>Võ Trinh</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td><a href="#">link</a></td>
-					<td><a href="#">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
-				<tr>
-					<td>010</td>
-					<td>The Rising of The Shield Hero</td>
-					<td>Võ Trinh</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td><a href="#">link</a></td>
-					<td><a href="#">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>

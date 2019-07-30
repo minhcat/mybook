@@ -92,7 +92,7 @@
 							<img src="{{ asset('image/users/'.$user->image.'.jpg') }}" class="img-circle" alt="User Image">
 
 							<p>
-								{{ $user->name }} - Uploader
+								{{ $user->name }} - @yield('admin-job')
 								<small>Nhân viên tháng 3 2018</small>
 							</p>
 						</li>

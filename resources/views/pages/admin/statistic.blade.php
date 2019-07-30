@@ -4,6 +4,10 @@
 Statistic
 @endsection
 
+@section('admin-job')
+Statistic
+@endsection
+
 @section('define-header')
 	<link rel="stylesheet" href="{{ asset('css/admin/dataTables.bootstrap.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/admin/uploader.css') }}">
