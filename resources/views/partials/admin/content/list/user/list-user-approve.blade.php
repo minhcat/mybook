@@ -12,147 +12,43 @@
 		<table id="table-approve-user" class="table table-bordered table-hover">
 			<thead>
 				<tr>
-					<th>ID</th>
+					<th>Stt</th>
 					<th>Tên người dùng</th>
 					<th>Người đề nghị</th>
 					<th>Ngày đề nghị</th>
 					<th>Bình luận</th>
 					<th>Hình phạt</th>
-					<th>Phản hồi</th>
-					<th class="column-fixed-100">Duyệt đề nghị</th>
+					<th class="column-fixed-190">Phản hồi</th>
 				</tr>
 			</thead>
 			<tbody>
+				@foreach ($users_approve as $key => $user)
 				<tr>
-					<td>001</td>
-					<td>Trần Văn Giàu</td>
-					<td>Bảo Nguyễn</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td>cấm bình luận 1 tuần</td>
-					<td><a href="#" data-toggle="modal" data-target="#modal-reply">phản hồi</a></td>
+					<td>{{ $key + 1 }}</td>
+					<td>{{ $user->user_name }}</td>
+					<td>{{ $user->admin_name }}</td>
+					<td>{{ date_format(date_create($user->date), 'd-m-Y') }}</td>
+					<td>{{ $user->content }}</td>
+					@if ($user->punish == '1d')
+					<td>Cấm bình luận 1 ngày</td>
+					@elseif ($user->punish == '2d')
+					<td>Cấm bình luận 2 ngày</td>
+					@elseif ($user->punish == '3d')
+					<td>Cấm bình luận 3 ngày</td>
+					@elseif ($user->punish == '1w')
+					<td>Cấm bình luận 1 tuần</td>
+					@elseif ($user->punish == '2w')
+					<td>Cấm bình luận 2 tuầns</td>
+					@elseif ($user->punish == '1m')
+					<td>Cấm bình luận 1 tháng</td>
+					@endif
 					<td>
 						<button class="btn btn-success">Duyệt</button>
+						<button class="btn btn-primary">Phản hồi</button>
 						<button class="btn btn-default">Hủy</button>
 					</td>
 				</tr>
-				<tr>
-					<td>002</td>
-					<td>Trần Văn Giàu</td>
-					<td>Bảo Nguyễn</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td>cấm bình luận 1 tuần</td>
-					<td><a href="#" data-toggle="modal" data-target="#modal-reply">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
-				<tr>
-					<td>003</td>
-					<td>Trần Văn Giàu</td>
-					<td>Bảo Nguyễn</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td>cấm bình luận 1 tuần</td>
-					<td><a href="#" data-toggle="modal" data-target="#modal-reply">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
-				<tr>
-					<td>004</td>
-					<td>Trần Văn Giàu</td>
-					<td>Bảo Nguyễn</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td>cấm bình luận 1 tuần</td>
-					<td><a href="#" data-toggle="modal" data-target="#modal-reply">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
-				<tr>
-					<td>005</td>
-					<td>Trần Văn Giàu</td>
-					<td>Bảo Nguyễn</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td>cấm bình luận 1 tuần</td>
-					<td><a href="#" data-toggle="modal" data-target="#modal-reply">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
-				<tr>
-					<td>006</td>
-					<td>Trần Văn Giàu</td>
-					<td>Bảo Nguyễn</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td>cấm bình luận 1 tuần</td>
-					<td><a href="#">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
-				<tr>
-					<td>007</td>
-					<td>Trần Văn Giàu</td>
-					<td>Bảo Nguyễn</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td>cấm bình luận 1 tuần</td>
-					<td><a href="#">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
-				<tr>
-					<td>008</td>
-					<td>Trần Văn Giàu</td>
-					<td>Bảo Nguyễn</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td>cấm bình luận 1 tuần</td>
-					<td><a href="#">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
-				<tr>
-					<td>009</td>
-					<td>Trần Văn Giàu</td>
-					<td>Bảo Nguyễn</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td>cấm bình luận 1 tuần</td>
-					<td><a href="#">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
-				<tr>
-					<td>010</td>
-					<td>Trần Văn Giàu</td>
-					<td>Bảo Nguyễn</td>
-					<td>12/2/2019</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </td>
-					<td>cấm bình luận 1 tuần</td>
-					<td><a href="#">phản hồi</a></td>
-					<td>
-						<button class="btn btn-success">Duyệt</button>
-						<button class="btn btn-default">Hủy</button>
-					</td>
-				</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>

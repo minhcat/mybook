@@ -26,6 +26,22 @@ class BooksQModel extends Model
 	}
 
 	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_book_by_id_not_approved($id) {
+		$result = DB::table('books')
+				->where('id', $id)
+				->where('deleted', 0)
+				->get();
+		if (empty($result))
+			return null;
+
+		return $result[0];
+	}
+
+	/**
 	 * get all books
 	 * @param 
 	 * @return object|boolean : all properties from `books` table

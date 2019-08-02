@@ -12,7 +12,7 @@
 		<table id="table-approve-book" class="table table-bordered table-hover">
 			<thead>
 				<tr>
-					<th>ID</th>
+					<th>Stt</th>
 					<th>Tên truyện</th>
 					<th>Người đăng</th>
 					<th>Ngày đăng</th>
@@ -30,7 +30,7 @@
 					<td>{{ $book->description }}</td>
 					<td>
 						<button class="btn btn-success" data-id="{{ $book->id }}">Duyệt</button>
-						<button class="btn btn-primary">Phản hồi</button>
+						<button class="btn btn-primary" data-toggle="modal" data-target="#modal-reply" data-id="{{ $book->id }}">Phản hồi</button>
 						<button class="btn btn-default">Hủy</button>
 					</td>
 				</tr>

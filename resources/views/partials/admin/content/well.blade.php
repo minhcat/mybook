@@ -24,4 +24,11 @@
 	<p>{{ $error }}</p>
 	@endforeach
 </div>
+@else
+<div class="well well-success collapse">
+	<button type="button" class="btn btn-box-tool btn-close pull-right"><i class="fa fa-times"></i></button>
+	<h4>Thông Báo!</h4>
+
+	<p></p>
+</div>
 @endif

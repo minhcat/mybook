@@ -26,4 +26,20 @@ $(document).ready(function() {
 			}
 		});
 	});
+	$('.box#box-approve-book .btn-primary').click(function() {
+		var id = $(this).data('id');
+		$('.modal#modal-reply .btn-primary').attr('data-id', id);
+	});
+	$('.modal#modal-reply .btn-primary').click(function() {
+		var id = $(this).data('id');
+		var reply = $(this).parents('.modal-content').find('textarea').val();
+		$.ajax({
+			type: 'GET',
+			url: '/admin/admin/ajax/reply_book/'+id+'/'+reply,
+			success:function(data) {
+				$('.well').addClass('in');
+				$('.well p').text('phản hồi thành công')
+			}
+		});
+	});
 });
