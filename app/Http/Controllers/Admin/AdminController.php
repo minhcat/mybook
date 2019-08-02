@@ -98,4 +98,13 @@ class AdminController extends Controller {
 			BooksApprovedCModel::update_book_approved($book_approved->id, $data);
 		}
 	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public static function reply_user($user_id, $content) {
+		
+	}
 }

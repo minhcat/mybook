@@ -44,7 +44,7 @@
 					@endif
 					<td>
 						<button class="btn btn-success" data-id="{{ $user->id }}">Duyệt</button>
-						<button class="btn btn-primary" data-id="{{ $user->id }}">Phản hồi</button>
+						<button class="btn btn-primary" data-id="{{ $user->id }}" data-toggle="modal" data-target="#modal-reply-user">Phản hồi</button>
 						<button class="btn btn-default">Hủy</button>
 					</td>
 				</tr>

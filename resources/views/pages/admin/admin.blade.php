@@ -133,6 +133,8 @@ Admin
 		<!-- Modal -->
 		@include('partials.admin.content.modal.modal-reply')
 
+		@include('partials.admin.content.modal.modal-reply-user')
+
 		@include('partials.admin.content.modal.modal-permiss')
 
 		@include('partials.admin.content.modal.modal-remove-category')
