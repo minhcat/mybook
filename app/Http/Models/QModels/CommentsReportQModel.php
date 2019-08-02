@@ -13,6 +13,23 @@ class CommentsReportQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
+	public static function get_comment_report_by_id($id) {
+		$result = DB::table('comments_report')
+				->where('id',$id)
+				->get();
+
+
+		if (empty($result)) 
+			return null;
+
+		return $result[0];
+	}
+
+	/**
+	 * get comment
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
 	public static function get_comments_report_new() {
 		$result = DB::table('comments_report')
 				->orderBy('id','desc')

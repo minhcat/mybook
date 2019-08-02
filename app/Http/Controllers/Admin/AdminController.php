@@ -14,6 +14,7 @@ use App\Http\Models\BModels\CharactersBModel;
 use App\Http\Models\BModels\AuthorsBModel;
 use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\BooksApprovedCModel;
+use App\Http\Models\CModels\UsersPunishCModel;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Contracts\Filesystem\Factory;
 
@@ -50,6 +51,25 @@ class AdminController extends Controller {
 			'approved' => 1
 		];
 		BooksCModel::update_book($book_id, $data);
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public static function approve_user($comment_report_id) {
+		$report_data = CommentsReportQModel::get_comment_report_by_id($comment_report_id);
+		$punish = (int)$report_data->punish[0];
+		$punish = ($report_data->punish[1] == 'd') ? $punish : (($report_data->punish[1] == 'w') ? $punish * 7 : (($report_data->punish[1] == 'm') ? $punish * 30 : 0));
+		$data = [
+			'id_user_punish' => $report_data->id_user,
+			'id_user_mod'    => $report_data->id_admin,
+			'id_comment'     => $report_data->id_comment,
+			'time_punish'    => $punish,
+			'date'			 => date('Y-m-d H:i:s'),
+		];
+		UsersPunishCModel::insert_user_punish($data);
 	}
 
 	/**

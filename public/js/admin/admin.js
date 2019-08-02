@@ -26,6 +26,19 @@ $(document).ready(function() {
 			}
 		});
 	});
+	$('table#table-approve-user .btn.btn-success').click(function() {
+		var id = $(this).data('id');
+		var btn = $(this);
+		$.ajax({
+			type: 'GET',
+			url: '/admin/admin/ajax/approve_user/'+id,
+			success:function(data) {
+				btn.removeClass('btn-success');
+				btn.addClass('btn-danger');
+				btn.text('Đã duyệt')
+			}
+		});
+	});
 	$('.box#box-approve-book .btn-primary').click(function() {
 		var id = $(this).data('id');
 		$('.modal#modal-reply .btn-primary').attr('data-id', id);
