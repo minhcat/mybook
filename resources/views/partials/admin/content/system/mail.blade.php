@@ -9,23 +9,24 @@
 		</div>
 	</div>
 	<div class="box-body">
+		<input type="hidden" class="token" value="{{ csrf_token() }}">
 		<div class="form-group">
 			<label for="name">Tựa Đề</label>
-			<input type="text" class="form-control">
+			<input type="text" class="form-control title">
 		</div>
 		<div class="form-group">
 			<label for="name">Người Nhận</label>
-			<select class="form-control">
-				<option>Nguyễn Văn A</option>
-				<option>Nguyễn Văn B</option>
-				<option>Nguyễn Văn C</option>
-				<option>Nguyễn Văn D</option>
-				<option>Nguyễn Văn E</option>
+			<select class="form-control from">
+				<option value="13">Nguyễn Văn A</option>
+				<option value="13">Nguyễn Văn B</option>
+				<option value="13">Nguyễn Văn C</option>
+				<option value="13">Nguyễn Văn D</option>
+				<option value="13">Nguyễn Văn E</option>
 			</select>
 		</div>
 		<div class="form-group">
 			<label for="name">Nội Dung</label>
-			<textarea class="form-control" name="mail-content" rows="3"></textarea>
+			<textarea class="form-control content" name="mail-content" rows="3"></textarea>
 		</div>
 	</div>
 	<div class="box-footer">

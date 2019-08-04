@@ -60,7 +60,6 @@ $(document).ready(function() {
 	});
 	
 	$(document).on('keypress',function(e) {
-		console.log(e.which);
 		if(e.which == 110) {
 			$('section.content .well').collapse('toggle');
 		}

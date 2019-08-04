@@ -71,4 +71,25 @@ $(document).ready(function() {
 			}
 		});
 	});
+	$('.box#box-mail .btn-success').click(function() {
+		var title   = $(this).parents('.box#box-mail').find('input.title').val();
+		var from    = $(this).parents('.box#box-mail').find('select.from').val();
+		var content = $(this).parents('.box#box-mail').find('textarea.content').val();
+		var token   = $(this).parents('.box#box-mail').find('input.token').val();
+		$.ajax({
+			type: 'POST',
+			url: '/admin/admin/ajax/post_mail',
+			data: {
+				id_admin : admin_id,
+				id_user  : from,
+				title    : title,
+				content  : content,
+				_token   : token,
+			},
+			success:function(data2) {
+				$('.well').addClass('in');
+				$('.well p').text('gữi mail thành công')
+			}
+		});
+	});
 });

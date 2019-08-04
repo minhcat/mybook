@@ -15,6 +15,7 @@ use App\Http\Models\BModels\AuthorsBModel;
 use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\BooksApprovedCModel;
 use App\Http\Models\CModels\UsersPunishCModel;
+use App\Http\Models\CModels\MailsCModel;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Contracts\Filesystem\Factory;
 
@@ -106,5 +107,21 @@ class AdminController extends Controller {
 	 */
 	public static function reply_user($user_id, $content) {
 		
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public static function post_mail(Request $request) {
+		$data = [
+			'id_admin' => (int)$request->input('id_admin'),
+			'id_user'  => (int)$request->input('id_user'),
+			'title'    => $request->input('title'),
+			'content'  => $request->input('content'),
+			'date'     => date('Y-m-d'),
+		];
+		MailsCModel::insert_mail($data);
 	}
 }

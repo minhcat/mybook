@@ -140,6 +140,8 @@ Route::group(['prefix' => 'admin'], function() {
 			Route::get('approve_user/{id_comment_report}', 'Admin\AdminController@approve_user');
 
 			Route::get('reply_user/{id_user}/{reply_content}', 'Admin\AdminController@reply_user');
+
+			Route::post('post_mail', 'Admin\AdminController@post_mail');
 			
 		});
 

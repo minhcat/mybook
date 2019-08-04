@@ -269,5 +269,6 @@ Admin
 			]
 		});
 	})
+	var admin_id = {{ $user->id }};
 </script>
 @endsection
