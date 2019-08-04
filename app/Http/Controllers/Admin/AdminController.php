@@ -16,6 +16,7 @@ use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\BooksApprovedCModel;
 use App\Http\Models\CModels\UsersPunishCModel;
 use App\Http\Models\CModels\MailsCModel;
+use App\Http\Models\CModels\NotificationsAdminCModel;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Contracts\Filesystem\Factory;
 
@@ -123,5 +124,34 @@ class AdminController extends Controller {
 			'date'     => date('Y-m-d'),
 		];
 		MailsCModel::insert_mail($data);
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public static function post_noti(Request $request) {
+		//check select user or all
+		$input = $request->input('user');
+		$id_user = null;
+		if ($input == 'super-all' || $input == 'all')
+			$send = $input;
+		else {
+			$send = 'user';
+			$id_user = (int)$input;
+		}
+
+		$data = [
+			'id_admin' => (int)$request->input('id_admin'),
+			'id_user'  => $id_user,
+			'type'     => $request->input('type'),
+			'title'    => $request->input('title'),
+			'content'  => $request->input('content'),
+			'sendto'   => $send,
+			'date'     => date('Y-m-d'),
+		];
+		// dd($data);
+		NotificationsAdminCModel::insert_notification($data);
 	}
 }

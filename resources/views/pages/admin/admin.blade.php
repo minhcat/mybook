@@ -156,6 +156,7 @@ Admin
 
 <script src="{{ asset('js/admin/jquery.dataTables.js') }}"></script>
 <script src="{{ asset('js/admin/dataTables.bootstrap.js') }}"></script>
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script>
 	$(function () {
 		// DataTable
@@ -226,36 +227,36 @@ Admin
 				[ 'FontSize', 'TextColor', 'BGColor' ]
 			]
 		});
-		CKEDITOR.replace('trans-content-edit', {
-			toolbar: [
-				[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
-				[ 'FontSize', 'TextColor', 'BGColor' ]
-			]
-		});
+		// CKEDITOR.replace('trans-content-edit', {
+		// 	toolbar: [
+		// 		[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+		// 		[ 'FontSize', 'TextColor', 'BGColor' ]
+		// 	]
+		// });
 		CKEDITOR.replace('character-content-new', {
 			toolbar: [
 				[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
 				[ 'FontSize', 'TextColor', 'BGColor' ]
 			]
 		});
-		CKEDITOR.replace('character-content-edit', {
-			toolbar: [
-				[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
-				[ 'FontSize', 'TextColor', 'BGColor' ]
-			]
-		});
-		CKEDITOR.replace('author-content-new', {
-			toolbar: [
-				[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
-				[ 'FontSize', 'TextColor', 'BGColor' ]
-			]
-		});
-		CKEDITOR.replace('author-content-edit', {
-			toolbar: [
-				[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
-				[ 'FontSize', 'TextColor', 'BGColor' ]
-			]
-		});
+		// CKEDITOR.replace('character-content-edit', {
+		// 	toolbar: [
+		// 		[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+		// 		[ 'FontSize', 'TextColor', 'BGColor' ]
+		// 	]
+		// });
+		// CKEDITOR.replace('author-content-new', {
+		// 	toolbar: [
+		// 		[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+		// 		[ 'FontSize', 'TextColor', 'BGColor' ]
+		// 	]
+		// });
+		// CKEDITOR.replace('author-content-edit', {
+		// 	toolbar: [
+		// 		[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+		// 		[ 'FontSize', 'TextColor', 'BGColor' ]
+		// 	]
+		// });
 		CKEDITOR.replace('mail-content', {
 			toolbar: [
 				[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' , '-', 'Image', 'Table', '-', 'Scayt'],

@@ -142,6 +142,8 @@ Route::group(['prefix' => 'admin'], function() {
 			Route::get('reply_user/{id_user}/{reply_content}', 'Admin\AdminController@reply_user');
 
 			Route::post('post_mail', 'Admin\AdminController@post_mail');
+
+			Route::post('post_noti', 'Admin\AdminController@post_noti');
 			
 		});
 

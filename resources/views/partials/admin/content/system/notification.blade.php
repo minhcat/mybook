@@ -9,32 +9,33 @@
 		</div>
 	</div>
 	<div class="box-body">
+		<input type="hidden" class="token" value="{{ csrf_token() }}">
 		<div class="form-group">
 			<label for="name">Tựa Đề</label>
-			<input type="text" class="form-control">
+			<input type="text" class="form-control title">
 		</div>
 		<div class="form-group">
 			<label for="name">Kiểu thông báo</label>
-			<select class="form-control">
-				<option>Thông tin</option>
-				<option>Cảnh báo</option>
-				<option>Nguy hiểm</option>
-				<option>Đồng ý</option>
+			<select class="form-control type">
+				<option value="info">Thông tin</option>
+				<option value="warning">Cảnh báo</option>
+				<option value="danger">Nguy hiểm</option>
+				<option value="success">Đồng ý</option>
 			</select>
 		</div>
 		<div class="form-group">
 			<label for="name">Người Nhận</label>
-			<select class="form-control">
-				<option>Nguyễn Văn C</option>
-				<option>Nguyễn Văn D</option>
-				<option>Nguyễn Văn E</option>
-				<option>Tất cả</option>
-				<option>Tất cả (không loại trừ)</option>
+			<select class="form-control send">
+				<option value="14">Nguyễn Văn C</option>
+				<option value="14">Nguyễn Văn D</option>
+				<option value="14">Nguyễn Văn E</option>
+				<option value="all">Tất cả</option>
+				<option value="super-all">Tất cả (không loại trừ)</option>
 			</select>
 		</div>
 		<div class="form-group">
 			<label for="name">Nội Dung</label>
-			<textarea class="form-control" name="noti-content" rows="3"></textarea>
+			<textarea class="form-control content" name="noti-content" rows="3"></textarea>
 		</div>
 	</div>
 	<div class="box-footer">

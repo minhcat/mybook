@@ -71,11 +71,19 @@ $(document).ready(function() {
 			}
 		});
 	});
+	function updateAllMessageForms()
+	{
+		for (instance in CKEDITOR.instances) {
+			CKEDITOR.instances[instance].updateElement();
+		}
+	}
 	$('.box#box-mail .btn-success').click(function() {
+		updateAllMessageForms();
 		var title   = $(this).parents('.box#box-mail').find('input.title').val();
 		var from    = $(this).parents('.box#box-mail').find('select.from').val();
-		var content = $(this).parents('.box#box-mail').find('textarea.content').val();
+		var content = $(this).parents('.box#box-mail').find('textarea.content').text();
 		var token   = $(this).parents('.box#box-mail').find('input.token').val();
+		debugger;
 		$.ajax({
 			type: 'POST',
 			url: '/admin/admin/ajax/post_mail',
@@ -83,6 +91,30 @@ $(document).ready(function() {
 				id_admin : admin_id,
 				id_user  : from,
 				title    : title,
+				content  : content,
+				_token   : token,
+			},
+			success:function(data2) {
+				$('.well').addClass('in');
+				$('.well p').text('gữi mail thành công')
+			}
+		});
+	});
+	$('.box#box-noti .btn-success').click(function() {
+		updateAllMessageForms();
+		var title   = $(this).parents('.box#box-noti').find('input.title').val();
+		var type    = $(this).parents('.box#box-noti').find('select.type').val();
+		var from    = $(this).parents('.box#box-noti').find('select.send').val();
+		var content = $(this).parents('.box#box-noti').find('textarea.content').val();
+		var token   = $(this).parents('.box#box-noti').find('input.token').val();
+		$.ajax({
+			type: 'POST',
+			url: '/admin/admin/ajax/post_noti',
+			data: {
+				id_admin : admin_id,
+				user     : from,
+				title    : title,
+				type     : type,
 				content  : content,
 				_token   : token,
 			},
