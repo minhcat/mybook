@@ -29,6 +29,17 @@ class ChapsCModel extends Model
 	}
 
 	/**
+	 * delete a food
+	 * @param $id int
+	 * @return boolean
+	 */
+	public static function delete_chap_by_book_id($id_book) {
+		return DB::table('chaps')
+			->where('id_book', '=', $id_book)
+			->delete();
+	}
+
+	/**
 	 * update food
 	 * @param id
 	 * @param array data

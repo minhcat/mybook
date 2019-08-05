@@ -11,6 +11,7 @@ use App\Http\Models\QModels\UsersBanQModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\CharactersQModel;
 use App\Http\Models\CModels\BooksCModel;
+use App\Http\Models\CModels\ChapsCModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\CommentsBModel;
@@ -46,5 +47,10 @@ class SuperAdminController extends Controller {
 	public function delete_book_temporary($id_book) {
 		$data = ['deleted' => 1];
 		BooksCModel::update_book($id_book, $data);
+	}
+
+	public function delete_book_permanent($id_book) {
+		ChapsCModel::delete_chap_by_book_id($id_book);
+		BooksCModel::delete_book($id_book);
 	}
 }

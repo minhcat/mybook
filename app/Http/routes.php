@@ -155,6 +155,8 @@ Route::group(['prefix' => 'admin'], function() {
 
 			Route::get('delete_book_temporary/{id_book}', 'Admin\SuperAdminController@delete_book_temporary');
 
+			Route::get('delete_book_permanent/{id_book}', 'Admin\SuperAdminController@delete_book_permanent');
+
 		});
 
 	});

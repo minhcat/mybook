@@ -35,7 +35,7 @@
 					<td>
 						<button class="btn btn-success box-link" data-target="#box-edit-book" data-small="database">sửa</button>
 						<button class="btn btn-warning" data-toggle="modal" data-target="#modal-remove-temporary-book" data-id="{{ $book->id }}">xóa tạm</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-permanent-book">xóa vĩnh viễn</button>
+						<button class="btn btn-danger" data-id="{{ $book->id }}" data-toggle="modal" data-target="#modal-remove-permanent-book">xóa vĩnh viễn</button>
 					</td>
 				</tr>
 				@endforeach
