@@ -1,5 +1,13 @@
 @extends('master.admin')
 
+@section('title')
+Super Admin
+@endsection
+
+@section('admin-job')
+Super Admin
+@endsection
+
 @section('define-header')
 	<!-- DataTables -->
 	<link rel="stylesheet" href="{{ asset('css/admin/dataTables.bootstrap.css') }}">

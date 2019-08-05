@@ -18,6 +18,7 @@ use App\Http\Models\QModels\BooksLikeStatisticQModel;
 use App\Http\Models\QModels\BooksFollowStatisticQModel;
 use App\Http\Models\QModels\BooksRateStatisticQModel;
 use App\Http\Models\QModels\AuthorsQModel;
+use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\TransQModel;
@@ -357,6 +358,29 @@ class BooksBModel extends Model
 					$rate[$i] = $rate[$i]->number;
 			}
 			$book->rates = $rate;
+		}
+
+		return $books;
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_all_books() {
+		$books = BooksQModel::get_all_books();
+
+		foreach ($books as $book) {
+			//shorted description
+			if (strlen($book->description) >= 122)
+				$book->description = mb_substr($book->description, 0, 120).'...';
+			//get uploader
+			$uploader = UsersQModel::get_user_by_id($book->id_uploader);
+			if ($uploader != null)
+				$book->uploader = $uploader->name;
+			else
+				$book->uploader = 'Đang cập nhật';
 		}
 
 		return $books;

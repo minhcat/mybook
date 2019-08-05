@@ -18,6 +18,9 @@ class UsersQModel extends Model
 				->where('id', $id)
 				->get();
 
+		if (empty($result))
+			return null;
+
 		return $result[0];
 	}
 
