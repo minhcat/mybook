@@ -206,6 +206,7 @@ Super Admin
 @endsection
 
 @section('define-footer')
+<script src="{{ asset('js/admin/super-admin.js') }}"></script>
 <script src="{{ asset('js/admin/jquery.dataTables.js') }}"></script>
 <script src="{{ asset('js/admin/dataTables.bootstrap.js') }}"></script>
 <script src="{{ asset('js/admin/select2.full.min.js') }}"></script>

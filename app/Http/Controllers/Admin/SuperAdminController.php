@@ -10,6 +10,7 @@ use App\Http\Models\QModels\UsersPunishQModel;
 use App\Http\Models\QModels\UsersBanQModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\CharactersQModel;
+use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\CommentsBModel;
@@ -40,5 +41,10 @@ class SuperAdminController extends Controller {
 		$data['books']			= BooksBModel::get_all_books();
 		// dd($data);
 		return view('pages.admin.super-admin', $data);
+	}
+
+	public function delete_book_temporary($id_book) {
+		$data = ['deleted' => 1];
+		BooksCModel::update_book($id_book, $data);
 	}
 }

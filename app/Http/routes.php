@@ -148,5 +148,15 @@ Route::group(['prefix' => 'admin'], function() {
 		});
 
 	});
+
+	Route::group(['prefix' => 'super-admin'], function() {
+
+		Route::group(['prefix' => 'ajax'], function() {
+
+			Route::get('delete_book_temporary/{id_book}', 'Admin\SuperAdminController@delete_book_temporary');
+
+		});
+
+	});
 	
 });
