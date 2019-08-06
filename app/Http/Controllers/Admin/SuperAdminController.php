@@ -40,17 +40,38 @@ class SuperAdminController extends Controller {
 		$data['artists']		= AuthorsQModel::get_artists_all();
 		$data['authors_detail']	= AuthorsBModel::get_authors_all();
 		$data['books']			= BooksBModel::get_all_books();
+		$data['books_delete']   = BooksBModel::get_all_books_delete();
 		// dd($data);
 		return view('pages.admin.super-admin', $data);
 	}
 
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
 	public function delete_book_temporary($id_book) {
 		$data = ['deleted' => 1];
 		BooksCModel::update_book($id_book, $data);
 	}
 
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
 	public function delete_book_permanent($id_book) {
 		ChapsCModel::delete_chap_by_book_id($id_book);
 		BooksCModel::delete_book($id_book);
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function restore_book($id_book) {
+		$data = ['deleted' => 0];
+		BooksCModel::update_book($id_book, $data);
 	}
 }

@@ -391,6 +391,29 @@ class BooksBModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
+	public static function get_all_books_delete() {
+		$books = BooksQModel::get_books_delete();
+
+		foreach ($books as $book) {
+			//shorted description
+			if (strlen($book->description) >= 122)
+				$book->description = mb_substr($book->description, 0, 120).'...';
+			//get uploader
+			$uploader = UsersQModel::get_user_by_id($book->id_uploader);
+			if ($uploader != null)
+				$book->uploader = $uploader->name;
+			else
+				$book->uploader = 'Đang cập nhật';
+		}
+
+		return $books;
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
 	public static function get_books_not_approved($admin_id) {
 		// get books not approved
 		$books_notapproved	= BooksQModel::get_books_not_approved_by_uploader_id($admin_id);

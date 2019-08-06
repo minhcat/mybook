@@ -12,7 +12,7 @@
 		<table id="table-book-temporary" class="table table-bordered table-striped">
 			<thead>
 				<tr>
-					<th>Id</th>
+					<th>Stt</th>
 					<th>Tên truyện</th>
 					<th>Ngày xuất bản</th>
 					<th>Ngày đăng</th>
@@ -23,136 +23,21 @@
 				</tr>
 			</thead>
 			<tbody>
+				@foreach ($books_delete as $key => $book)
 				<tr>
-					<td>001</td>
-					<td>Attack On Titan</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Attack On Titan</td>
+					<td>{{ $key + 1 }}</td>
+					<td>{{ $book->name }}</td>
+					<td>{{ date_format(date_create($book->release_at), 'd-m-Y') }}</td>
+					<td>{{ date_format(date_create($book->create_at), 'd-m-Y') }}</td>
+					<td>{{ $book->uploader }}</td>
+					<td>{!! $book->description !!}</td>
+					<td>{{ $book->keyword }}</td>
 					<td>
 						<button class="btn btn-primary">khôi phục</button>
 						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-permanent-book">xóa vĩnh viễn</button>
 					</td>
 				</tr>
-				<tr>
-					<td>002</td>
-					<td>Date A Live</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Date A Live</td>
-					<td>
-						<button class="btn btn-primary">khôi phục</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-permanent-book">xóa vĩnh viễn</button>
-					</td>
-				</tr>
-				<tr>
-					<td>003</td>
-					<td>Dragon Ball</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Dragon Ball</td>
-					<td>
-						<button class="btn btn-primary">khôi phục</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-permanent-book">xóa vĩnh viễn</button>
-					</td>
-				</tr>
-				<tr>
-					<td>004</td>
-					<td>Kakegurui</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Kakegurui</td>
-					<td>
-						<button class="btn btn-primary">khôi phục</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-permanent-book">xóa vĩnh viễn</button>
-					</td>
-				</tr>
-				<tr>
-					<td>005</td>
-					<td>Konosuba</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Konosuba</td>
-					<td>
-						<button class="btn btn-primary">khôi phục</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-permanent-book">xóa vĩnh viễn</button>
-					</td>
-				</tr>
-				<tr>
-					<td>006</td>
-					<td>Darling in the FranXX</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Darling in the FranXX</td>
-					<td>
-						<button class="btn btn-primary">khôi phục</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-permanent-book">xóa vĩnh viễn</button>
-					</td>
-				</tr>
-				<tr>
-					<td>007</td>
-					<td>Overlord</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Overlord</td>
-					<td>
-						<button class="btn btn-primary">khôi phục</button>
-						<button class="btn btn-danger">xóa vĩnh viễn</button>
-					</td>
-				</tr>
-				<tr>
-					<td>008</td>
-					<td>Girly Air Force</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Girly Air Force</td>
-					<td>
-						<button class="btn btn-primary">khôi phục</button>
-						<button class="btn btn-danger">xóa vĩnh viễn</button>
-					</td>
-				</tr>
-				<tr>
-					<td>009</td>
-					<td>Golbin Slayer</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Golbin Slayer</td>
-					<td>
-						<button class="btn btn-primary">khôi phục</button>
-						<button class="btn btn-danger">xóa vĩnh viễn</button>
-					</td>
-				</tr>
-				<tr>
-					<td>010</td>
-					<td>Death Note</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Death Note</td>
-					<td>
-						<button class="btn btn-primary">khôi phục</button>
-						<button class="btn btn-danger">xóa vĩnh viễn</button>
-					</td>
-				</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>
