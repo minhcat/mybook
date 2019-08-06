@@ -33,7 +33,7 @@
 					<td>{!! $book->description !!}</td>
 					<td>{{ $book->keyword }}</td>
 					<td>
-						<button class="btn btn-primary">khôi phục</button>
+						<button class="btn btn-primary" data-id="{{ $book->id }}">khôi phục</button>
 						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-remove-permanent-book">xóa vĩnh viễn</button>
 					</td>
 				</tr>

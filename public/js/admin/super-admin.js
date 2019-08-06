@@ -37,14 +37,14 @@ $(document).ready(function() {
 	});
 	$('table#table-book-temporary .btn-primary').click(function() {
 		var id = $(this).data('id');
-		var btn = $('table#table-book .btn-danger[data-id='+id+']');
+		var btn = $(this);
 		$.ajax({
 			type: 'GET',
-			url: '/admin/super-admin/ajax/delete_book_permanent/'+id,
+			url: '/admin/super-admin/ajax/restore_book/'+id,
 			success:function(data) {
-				btn.removeClass('btn-danger');
+				btn.removeClass('btn-primary');
 				btn.addClass('btn-default');
-				btn.text('đã xóa');
+				btn.text('đã xong');
 			}
 		});
 	});

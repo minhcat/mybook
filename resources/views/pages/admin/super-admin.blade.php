@@ -304,42 +304,42 @@ Super Admin
 				[ 'FontSize', 'TextColor', 'BGColor' ]
 			]
 		});
-		CKEDITOR.replace('trans-content-edit', {
-			toolbar: [
-				[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
-				[ 'FontSize', 'TextColor', 'BGColor' ]
-			]
-		});
+		// CKEDITOR.replace('trans-content-edit', {
+		// 	toolbar: [
+		// 		[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+		// 		[ 'FontSize', 'TextColor', 'BGColor' ]
+		// 	]
+		// });
 		CKEDITOR.replace('character-content-new', {
 			toolbar: [
 				[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
 				[ 'FontSize', 'TextColor', 'BGColor' ]
 			]
 		});
-		CKEDITOR.replace('character-content-edit', {
-			toolbar: [
-				[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
-				[ 'FontSize', 'TextColor', 'BGColor' ]
-			]
-		});
-		CKEDITOR.replace('author-content-new', {
-			toolbar: [
-				[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
-				[ 'FontSize', 'TextColor', 'BGColor' ]
-			]
-		});
-		CKEDITOR.replace('author-content-edit', {
-			toolbar: [
-				[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
-				[ 'FontSize', 'TextColor', 'BGColor' ]
-			]
-		});
-		CKEDITOR.replace('book-content-edit', {
-			toolbar: [
-				[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
-				[ 'FontSize', 'TextColor', 'BGColor' ]
-			]
-		});
+		// CKEDITOR.replace('character-content-edit', {
+		// 	toolbar: [
+		// 		[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+		// 		[ 'FontSize', 'TextColor', 'BGColor' ]
+		// 	]
+		// });
+		// CKEDITOR.replace('author-content-new', {
+		// 	toolbar: [
+		// 		[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+		// 		[ 'FontSize', 'TextColor', 'BGColor' ]
+		// 	]
+		// });
+		// CKEDITOR.replace('author-content-edit', {
+		// 	toolbar: [
+		// 		[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+		// 		[ 'FontSize', 'TextColor', 'BGColor' ]
+		// 	]
+		// });
+		// CKEDITOR.replace('book-content-edit', {
+		// 	toolbar: [
+		// 		[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' ],
+		// 		[ 'FontSize', 'TextColor', 'BGColor' ]
+		// 	]
+		// });
 		CKEDITOR.replace('mail-content', {
 			toolbar: [
 				[ 'Bold', 'Italic','Underline', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink' , '-', 'Image', 'Table', '-', 'Scayt'],
