@@ -41,6 +41,7 @@ class SuperAdminController extends Controller {
 		$data['authors_detail']	= AuthorsBModel::get_authors_all();
 		$data['books']			= BooksBModel::get_all_books();
 		$data['books_delete']   = BooksBModel::get_all_books_delete();
+		$data['admins']			= UsersQModel::get_admins();
 		// dd($data);
 		return view('pages.admin.super-admin', $data);
 	}

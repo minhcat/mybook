@@ -22,114 +22,17 @@
 				</tr>
 			</thead>
 			<tbody>
+				@foreach ($admins as $key => $admin)
 				<tr>
-					<td>001</td>
-					<td>Nam Nguyễn</td>
-					<td>Nam</td>
-					<td>12/8/1998</td>
-					<td>12/8/2008</td>
-					<td><span class="label bg-blue">uploader</span></td>
+					<td>{{ $key + 1 }}</td>
+					<td>{{ $admin->name }}</td>
+					<td>{{ ($admin->gender == 0) ? 'nam' : 'nữ' }}</td>
+					<td>{{ date_format(date_create($admin->birth), 'd-m-Y') }}</td>
+					<td>{{ date_format(date_create($admin->create_at), 'd-m-Y') }}</td>
+					<td><span class="label {{ ($admin->admin == 'uploader') ? 'bg-blue' : (($admin->admin == 'mod') ? 'bg-green' : (($admin->admin == 'statistic') ? 'bg-orange' : 'bg-red')) }}">{{ $admin->admin }}</span></td>
 					<td><button class="btn btn-success" data-toggle="modal" data-target="#modal-permiss">cấp quyền</button></td>
 				</tr>
-				<tr>
-					<td>002</td>
-					<td>Nam Nguyễn</td>
-					<td>Nam</td>
-					<td>12/8/1998</td>
-					<td>12/8/2008</td>
-					<td><span class="label bg-blue">uploader</span></td>
-					<td><button class="btn btn-success" data-toggle="modal" data-target="#modal-permiss">cấp quyền</button></td>
-				</tr>
-				<tr>
-					<td>003</td>
-					<td>Thị Hồng</td>
-					<td>Nữ</td>
-					<td>23/7/1996</td>
-					<td>23/7/2016</td>
-					<td><span class="label bg-green">mod</span></td>
-					<td><button class="btn btn-success" data-toggle="modal" data-target="#modal-permiss">cấp quyền</button></td>
-				</tr>
-				<tr>
-					<td>004</td>
-					<td>Thị Hồng</td>
-					<td>Nữ</td>
-					<td>23/7/1996</td>
-					<td>23/7/2016</td>
-					<td><span class="label bg-green">mod</span></td>
-					<td><button class="btn btn-success" data-toggle="modal" data-target="#modal-permiss">cấp quyền</button></td>
-				</tr>
-				<tr>
-					<td>005</td>
-					<td>Bảo Văn</td>
-					<td>Nam</td>
-					<td>10/5/1994</td>
-					<td>10/5/2014</td>
-					<td><span class="label bg-red">admin</span></td>
-					<td><button class="btn btn-success" data-toggle="modal" data-target="#modal-permiss">cấp quyền</button></td>
-				</tr>
-				<tr>
-					<td>006</td>
-					<td>Bảo Văn</td>
-					<td>Nam</td>
-					<td>10/5/1994</td>
-					<td>10/5/2014</td>
-					<td><span class="label bg-red">admin</span></td>
-					<td><button class="btn btn-success">cấp quyền</button></td>
-				</tr>
-				<tr>
-					<td>007</td>
-					<td>Võ Trinh</td>
-					<td>Nữ</td>
-					<td>3/10/1996</td>
-					<td>3/10/2016</td>
-					<td><span class="label bg-orange">statistion</span></td>
-					<td><button class="btn btn-success">cấp quyền</button></td>
-				</tr>
-				<tr>
-					<td>008</td>
-					<td>Võ Trinh</td>
-					<td>Nữ</td>
-					<td>3/10/1996</td>
-					<td>3/10/2016</td>
-					<td><span class="label bg-orange">statistion</span></td>
-					<td><button class="btn btn-success">cấp quyền</button></td>
-				</tr>
-				<tr>
-					<td>009</td>
-					<td>Lê Hữu Thọ</td>
-					<td>Nam</td>
-					<td>5/9/1994</td>
-					<td>5/9/2018</td>
-					<td><span class="label bg-red">admin</span></td>
-					<td><button class="btn btn-success">cấp quyền</button></td>
-				</tr>
-				<tr>
-					<td>010</td>
-					<td>Lê Hữu Thọ</td>
-					<td>Nam</td>
-					<td>5/9/1994</td>
-					<td>5/9/2018</td>
-					<td><span class="label bg-red">admin</span></td>
-					<td><button class="btn btn-success">cấp quyền</button></td>
-				</tr>
-				<tr>
-					<td>011</td>
-					<td>Phạm Khoa</td>
-					<td>Nam</td>
-					<td>7/7/1995</td>
-					<td>7/7/2015</td>
-					<td><span class="label bg-blue">uploader</span></td>
-					<td><button class="btn btn-success">cấp quyền</button></td>
-				</tr>
-				<tr>
-					<td>012</td>
-					<td>Phạm Khoa</td>
-					<td>Nam</td>
-					<td>7/7/1995</td>
-					<td>7/7/2015</td>
-					<td><span class="label bg-blue">uploader</span></td>
-					<td><button class="btn btn-success">cấp quyền</button></td>
-				</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>
