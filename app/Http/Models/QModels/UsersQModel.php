@@ -49,4 +49,16 @@ class UsersQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get user by name_login(slug)
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_users_all() {
+		$result = DB::table('users')
+				->get();
+
+		return $result;
+	}
 }

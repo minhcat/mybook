@@ -29,7 +29,7 @@
 					<td>{{ ($admin->gender == 0) ? 'nam' : 'nữ' }}</td>
 					<td>{{ date_format(date_create($admin->birth), 'd-m-Y') }}</td>
 					<td>{{ date_format(date_create($admin->create_at), 'd-m-Y') }}</td>
-					<td><span class="label {{ ($admin->admin == 'uploader') ? 'bg-blue' : (($admin->admin == 'mod') ? 'bg-green' : (($admin->admin == 'statistic') ? 'bg-orange' : 'bg-red')) }}">{{ $admin->admin }}</span></td>
+					<td><span class="label {{ ($admin->admin == 'uploader') ? 'bg-blue' : (($admin->admin == 'mod') ? 'bg-green' : (($admin->admin == 'statistic') ? 'bg-orange' : (($admin->admin == null) ? 'bg-gray' : 'bg-red'))) }}">{{ ($admin->admin != null) ? $admin->admin : 'chưa cấp quyền' }}</span></td>
 					<td><button class="btn btn-success" data-toggle="modal" data-target="#modal-permiss" data-id="{{ $admin->id }}">cấp quyền</button></td>
 				</tr>
 				@endforeach
