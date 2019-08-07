@@ -48,4 +48,26 @@ $(document).ready(function() {
 			}
 		});
 	});
+	$('table#table-staff .btn-success').click(function() {
+		var id = $(this).data('id');
+		$('.modal#modal-permiss .btn-primary').attr('data-id', id);
+	});
+	$('.modal#modal-permiss .modal-body .btn').click(function() {
+		$('.modal#modal-permiss .modal-body .btn').each(function() {
+			$(this).removeClass('select');
+		});
+		$(this).addClass('select');
+	});
+	$('.modal#modal-permiss .modal-footer .btn-primary').click(function() {
+		var id = $(this).data('id');
+		var access = $(this).parents('.modal-content').find('.modal-body .btn.select').data('access');
+		var btn = $('table#table-staff .btn-success[data-id='+id+']');
+		$.ajax({
+			type: 'GET',
+			url: '/admin/super-admin/ajax/permiss_admin/'+id+'/'+access,
+			success:function(data) {
+				btn.text('cấp lại');
+			}
+		});
+	});
 });

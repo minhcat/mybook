@@ -11,6 +11,7 @@ use App\Http\Models\QModels\UsersBanQModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\CharactersQModel;
 use App\Http\Models\CModels\BooksCModel;
+use App\Http\Models\CModels\UsersCModel;
 use App\Http\Models\CModels\ChapsCModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\TransBModel;
@@ -74,5 +75,15 @@ class SuperAdminController extends Controller {
 	public function restore_book($id_book) {
 		$data = ['deleted' => 0];
 		BooksCModel::update_book($id_book, $data);
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function permiss_admin($id_admin, $access) {
+		$data = ['admin' => $access];
+		UsersCModel::update_user($id_admin, $data);
 	}
 }

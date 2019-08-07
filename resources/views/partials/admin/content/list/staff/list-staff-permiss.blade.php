@@ -30,7 +30,7 @@
 					<td>{{ date_format(date_create($admin->birth), 'd-m-Y') }}</td>
 					<td>{{ date_format(date_create($admin->create_at), 'd-m-Y') }}</td>
 					<td><span class="label {{ ($admin->admin == 'uploader') ? 'bg-blue' : (($admin->admin == 'mod') ? 'bg-green' : (($admin->admin == 'statistic') ? 'bg-orange' : 'bg-red')) }}">{{ $admin->admin }}</span></td>
-					<td><button class="btn btn-success" data-toggle="modal" data-target="#modal-permiss">cấp quyền</button></td>
+					<td><button class="btn btn-success" data-toggle="modal" data-target="#modal-permiss" data-id="{{ $admin->id }}">cấp quyền</button></td>
 				</tr>
 				@endforeach
 			</tbody>

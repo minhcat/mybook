@@ -28,5 +28,17 @@ table tr th.column-fixed-210 {
 
 .modal .modal-dialog {
   width: 400px; }
+.modal.permiss .modal-body .btn.select.btn-primary {
+  background-color: #204d74;
+  border-color: #122b40; }
+.modal.permiss .modal-body .btn.select.btn-success {
+  background-color: #008d4c;
+  border-color: #398439; }
+.modal.permiss .modal-body .btn.select.btn-warning {
+  background-color: #e08e0b;
+  border-color: #d58512; }
+.modal.permiss .modal-body .btn.select.btn-danger {
+  background-color: #d73925;
+  border-color: #ac2925; }
 
 /*# sourceMappingURL=admin.css.map */

@@ -7,10 +7,10 @@
 				<h4 class="modal-title">Cấp quyền</h4>
 			</div>
 			<div class="modal-body">
-				<button class="btn btn-primary uploader">uploader</button>
-				<button class="btn btn-success mod">mod</button>
-				<button class="btn btn-warning statistic">statistic</button>
-				<button class="btn btn-danger admin">admin</button>
+				<button class="btn btn-primary uploader" data-access="uploader">uploader</button>
+				<button class="btn btn-success mod" data-access="mod">mod</button>
+				<button class="btn btn-warning statistic" data-access="statistic">statistic</button>
+				<button class="btn btn-danger admin" data-access="admin">admin</button>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Đồng ý</button>

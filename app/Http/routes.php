@@ -159,6 +159,8 @@ Route::group(['prefix' => 'admin'], function() {
 
 			Route::get('restore_book/{id_book}', 'Admin\SuperAdminController@restore_book');
 
+			Route::get('permiss_admin/{id_admin}/{access}', 'Admin\SuperAdminController@permiss_admin');
+
 		});
 
 	});
