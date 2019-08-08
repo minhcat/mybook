@@ -151,6 +151,8 @@ Route::group(['prefix' => 'admin'], function() {
 
 	Route::group(['prefix' => 'super-admin'], function() {
 
+		Route::post('edit_system_common', 'Admin\SuperAdminController@edit_system_common');
+
 		Route::group(['prefix' => 'ajax'], function() {
 
 			Route::get('delete_book_temporary/{id_book}', 'Admin\SuperAdminController@delete_book_temporary');

@@ -10,9 +10,11 @@ use App\Http\Models\QModels\UsersPunishQModel;
 use App\Http\Models\QModels\UsersBanQModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\CharactersQModel;
+use App\Http\Models\QModels\SystemQModel;
 use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\UsersCModel;
 use App\Http\Models\CModels\ChapsCModel;
+use App\Http\Models\CModels\SystemCModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\CommentsBModel;
@@ -87,5 +89,86 @@ class SuperAdminController extends Controller {
 	public function permiss_admin($id_admin, $access) {
 		$data = ['admin' => $access];
 		UsersCModel::update_user($id_admin, $data);
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function edit_system_common(Request $request) {
+		// website name
+		$id_webiste_name = SystemQModel::get_variable_by_name('website_name')->id;
+		$website_name    = $request->input('website_name');
+		$data = ['value' => $website_name];
+		SystemCModel::update_variable($id_webiste_name, $data);
+
+		// slogan
+		$id_slogan = SystemQModel::get_variable_by_name('slogan')->id;
+		$slogan    = $request->input('slogan');
+		$data = ['value' => $slogan];
+		SystemCModel::update_variable($id_slogan, $data);
+
+		// footer link name 1
+		$id_footer_link_name_1 = SystemQModel::get_variable_by_name('footer_link_name_1')->id;
+		$footer_link_name_1    = $request->input('footer_link_name_1');
+		$data = ['value' => $footer_link_name_1];
+		SystemCModel::update_variable($id_footer_link_name_1, $data);
+
+		// footer link name 2
+		$id_footer_link_name_2 = SystemQModel::get_variable_by_name('footer_link_name_2')->id;
+		$footer_link_name_2    = $request->input('footer_link_name_2');
+		$data = ['value' => $footer_link_name_2];
+		SystemCModel::update_variable($id_footer_link_name_2, $data);
+
+		// footer link name 3
+		$id_footer_link_name_3 = SystemQModel::get_variable_by_name('footer_link_name_3')->id;
+		$footer_link_name_3    = $request->input('footer_link_name_3');
+		$data = ['value' => $footer_link_name_3];
+		SystemCModel::update_variable($id_footer_link_name_3, $data);
+
+		// footer link value 1
+		$id_footer_link_value_1 = SystemQModel::get_variable_by_name('footer_link_value_1')->id;
+		$footer_link_value_1    = $request->input('footer_link_value_1');
+		$data = ['value' => $footer_link_value_1];
+		SystemCModel::update_variable($id_footer_link_value_1, $data);
+
+		// footer link value 2
+		$id_footer_link_value_2 = SystemQModel::get_variable_by_name('footer_link_value_2')->id;
+		$footer_link_value_2    = $request->input('footer_link_value_2');
+		$data = ['value' => $footer_link_value_2];
+		SystemCModel::update_variable($id_footer_link_value_2, $data);
+
+		// footer link value 3
+		$id_footer_link_value_3 = SystemQModel::get_variable_by_name('footer_link_value_3')->id;
+		$footer_link_value_3    = $request->input('footer_link_value_3');
+		$data = ['value' => $footer_link_value_3];
+		SystemCModel::update_variable($id_footer_link_value_3, $data);
+
+		// footer info 1
+		$id_footer_info_1 = SystemQModel::get_variable_by_name('footer_info_1')->id;
+		$footer_info_1    = $request->input('footer_info_1');
+		$data = ['value' => $footer_info_1];
+		SystemCModel::update_variable($id_footer_info_1, $data);
+
+		// footer info 2
+		$id_footer_info_2 = SystemQModel::get_variable_by_name('footer_info_2')->id;
+		$footer_info_2    = $request->input('footer_info_2');
+		$data = ['value' => $footer_info_2];
+		SystemCModel::update_variable($id_footer_info_2, $data);
+
+		// footer info 3
+		$id_footer_info_3 = SystemQModel::get_variable_by_name('footer_info_3')->id;
+		$footer_info_3    = $request->input('footer_info_3');
+		$data = ['value' => $footer_info_3];
+		SystemCModel::update_variable($id_footer_info_3, $data);
+
+		// footer last_info
+		$id_footer_last_info = SystemQModel::get_variable_by_name('footer_last_info')->id;
+		$footer_last_info    = $request->input('footer_last_info');
+		$data = ['value' => $footer_last_info];
+		SystemCModel::update_variable($id_footer_last_info, $data);
+
+		return redirect()->back()->with('success', 'Thay đổi giá trị hệ thống thành công');
 	}
 }

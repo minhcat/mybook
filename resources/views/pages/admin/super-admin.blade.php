@@ -12,6 +12,7 @@ Super Admin
 	<!-- DataTables -->
 	<link rel="stylesheet" href="{{ asset('css/admin/dataTables.bootstrap.css') }}">
 	<!-- My Book -->
+	<link rel="stylesheet" href="{{ asset('css/admin/common.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/admin/uploader.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
 @endsection
