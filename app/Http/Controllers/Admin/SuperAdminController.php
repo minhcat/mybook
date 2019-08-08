@@ -18,6 +18,7 @@ use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\UsersBModel;
 use App\Http\Models\BModels\AuthorsBModel;
+use App\Http\Models\BModels\SystemBModel;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Contracts\Filesystem\Factory;
 
@@ -43,6 +44,7 @@ class SuperAdminController extends Controller {
 		$data['books']			= BooksBModel::get_all_books();
 		$data['books_delete']   = BooksBModel::get_all_books_delete();
 		$data['admins']			= UsersQModel::get_users_all();
+		$data['system']			= SystemBModel::get_variables_super_admin();
 		// dd($data);
 		return view('pages.admin.super-admin', $data);
 	}
