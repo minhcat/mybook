@@ -21,16 +21,16 @@
 		<div class="form-group">
 			<label for="name">Logo</label>
 			<br>
-			<img class="header-img" src="img/logo.png" width="100px">
+			<img class="header-img" src="{{ asset('image/admin/logo.png') }}" width="100px">
 			<br>
 			<button class="btn btn-primary">Thay đổi hình</button>
 		</div>
 		<div class="form-group">
 			<label for="name">Hình ảnh</label>
 			<br>
-			<img class="header-img" src="img/header1.png" width="100px">
-			<img class="header-img" src="img/header2.png" width="100px">
-			<img class="header-img" src="img/header3.png" width="100px">
+			<img class="header-img" src="{{ asset('image/admin/header1.png') }}" width="100px">
+			<img class="header-img" src="{{ asset('image/admin/header2.png') }}" width="100px">
+			<img class="header-img" src="{{ asset('image/admin/header3.png') }}" width="100px">
 			<br>
 			<button class="btn btn-primary">Thay đổi hình</button>
 		</div>

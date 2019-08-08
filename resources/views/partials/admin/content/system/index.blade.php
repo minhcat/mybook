@@ -9,6 +9,34 @@
 		</div>
 	</div>
 	<div class="box-body">
+		<h4>Slider</h4>
+		<div class="form-group">
+			<label for="name">Số lượng hình</label>
+			<select class="form-control number-topic" style="width: 100%;">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option selected="selected">4</option>
+				<option>5</option>
+				<option>6</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="name">Hình ảnh</label>
+			<br>
+			<div class="slider-image">
+				<img src="{{ asset('image/slider/slider01.jpg') }}" width="200px">
+				<img src="{{ asset('image/slider/slider02.jpg') }}" width="200px">
+				<img src="{{ asset('image/slider/slider03.jpg') }}" width="200px">
+				<img src="{{ asset('image/slider/slider04.jpg') }}" width="200px">
+				<img src="{{ asset('image/slider/slider05.jpg') }}" width="200px">
+				<img src="{{ asset('image/slider/slider06.jpg') }}" width="200px">
+				<img src="{{ asset('image/slider/slider07.jpg') }}" width="200px">
+			</div>
+			<br>
+			<button class="btn btn-primary">Thay đổi hình</button>
+		</div>
+		<hr>
 		<h4>Main</h4>
 		<div class="form-group">
 			<label for="name">Số lượng khối</label>

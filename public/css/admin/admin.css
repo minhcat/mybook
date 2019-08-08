@@ -8,6 +8,11 @@
   margin-bottom: 10px;
   border: 1px solid #d2d6de;
   float: none; }
+.box .box-body .form-group .slider-image img {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #d2d6de;
+  float: none; }
 .box#timeline-all, .box#timeline-staff {
   background-color: #fbfbfb; }
 
