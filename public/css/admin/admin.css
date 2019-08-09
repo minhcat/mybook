@@ -46,4 +46,7 @@ table tr th.column-fixed-210 {
   background-color: #d73925;
   border-color: #ac2925; }
 
+input[type="file"] {
+  display: none; }
+
 /*# sourceMappingURL=admin.css.map */

@@ -1,5 +1,5 @@
 <div class="box box-primary collapse" id="box-common" aria-expanded="false">
-<form action="{{ url('/admin/super-admin/edit_system_common') }}" method="POST">
+<form action="{{ url('/admin/super-admin/edit_system_common') }}" method="POST" enctype="multipart/form-data">
 	<div class="box-header with-border">
 		<h3 class="box-title">Cài đặt chung</h3>
 
@@ -20,21 +20,27 @@
 			<label for="name">Câu Slogan</label>
 			<input type="text" class="form-control" name="slogan" value="{{ $system['slogan'] }}">
 		</div>
-		<div class="form-group">
+		<div class="form-group logo">
 			<label for="name">Logo</label>
 			<br>
 			<img class="header-img" src="{{ asset('image/system/'.$system['logo']) }}" width="100px">
 			<br>
-			<button class="btn btn-primary">Thay đổi hình</button>
+			<label class="btn btn-success">
+				Thay đổi hình
+				<input id="logo" type="file" name="logo">
+			</label>
 		</div>
-		<div class="form-group">
+		<div class="form-group image">
 			<label for="name">Hình ảnh</label>
 			<br>
-			<img class="header-img" src="{{ asset('image/system/'.$system['header_image_1']) }}" width="100px">
-			<img class="header-img" src="{{ asset('image/system/'.$system['header_image_2']) }}" width="100px">
-			<img class="header-img" src="{{ asset('image/system/'.$system['header_image_3']) }}" width="100px">
+			<img class="header-img" data-id="0" src="{{ asset('image/system/'.$system['header_image_1']) }}" width="100px">
+			<img class="header-img" data-id="1" src="{{ asset('image/system/'.$system['header_image_2']) }}" width="100px">
+			<img class="header-img" data-id="2" src="{{ asset('image/system/'.$system['header_image_3']) }}" width="100px">
 			<br>
-			<button class="btn btn-primary">Thay đổi hình</button>
+			<label class="btn btn-success">
+				Thay đổi hình
+				<input id="image" type="file" name="image[]" multiple>
+			</label>
 		</div>
 		<hr>
 		<h4>Footer</h4>

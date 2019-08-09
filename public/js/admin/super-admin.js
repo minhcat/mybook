@@ -70,4 +70,30 @@ $(document).ready(function() {
 			}
 		});
 	});
+	$('.logo input#logo').change(function() {
+		if (this.files && this.files[0]) {
+			var t = this;
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+				$(t).parent().parent().find('img').attr('src',e.target.result);
+			}
+			reader.readAsDataURL(this.files[0]);
+		}
+	});
+	$('.form-group.image input#image').change(function() {
+		var input = this;
+		var array = [];
+		$.each(this.files,function(i) {
+			console.log(i);
+			if (input.files && input.files[i] && i < 3) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+
+					$('img.header-img[data-id="'+i+'"]').attr('src',e.target.result);
+				}
+			}
+			reader.readAsDataURL(input.files[i]);
+		});
+	});
 });

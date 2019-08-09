@@ -109,6 +109,48 @@ class SuperAdminController extends Controller {
 		$data = ['value' => $slogan];
 		SystemCModel::update_variable($id_slogan, $data);
 
+		// logo
+		// upload image
+		$logo['image'] = $request->file('logo');
+		$logo['name']  = 'logo2';
+		$logo['path']  = '/image/system';
+		Images::upload_image($logo);
+		// update database
+		$id_logo = SystemQModel::get_variable_by_name('logo')->id;
+		$logo    = 'logo2.jpg';
+		$data = ['value' => $logo];
+		SystemCModel::update_variable($id_logo, $data);
+
+		// header image
+		// upload image
+		$image['images'] = $request->file('image');
+		$image['info']   = [];
+		if (!is_array($image['images']))
+			return redirect()->back()->with('danger','Up ảnh thất bại');
+		foreach ($image['images'] as $key => $img) {
+			if ($key < 3) {
+				$image['info'][$key]['name'] = 'xheader'.($key+1);
+				$image['info'][$key]['path'] = '/image/system';
+			}
+		}
+		Images::upload_multi_images($image);
+		// update database
+		// image 1
+		$id_header_image_1 = SystemQModel::get_variable_by_name('header_image_1')->id;
+		$header_image_1    = 'xheader1.jpg';
+		$data = ['value' => $header_image_1];
+		SystemCModel::update_variable($id_header_image_1, $data);
+		// image 2
+		$id_header_image_2 = SystemQModel::get_variable_by_name('header_image_2')->id;
+		$header_image_2    = 'xheader2.jpg';
+		$data = ['value' => $header_image_2];
+		SystemCModel::update_variable($id_header_image_2, $data);
+		// image 1
+		$id_header_image_3 = SystemQModel::get_variable_by_name('header_image_3')->id;
+		$header_image_3    = 'xheader3.jpg';
+		$data = ['value' => $header_image_3];
+		SystemCModel::update_variable($id_header_image_3, $data);
+
 		// footer link name 1
 		$id_footer_link_name_1 = SystemQModel::get_variable_by_name('footer_link_name_1')->id;
 		$footer_link_name_1    = $request->input('footer_link_name_1');
