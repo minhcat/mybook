@@ -10,6 +10,7 @@ use App\Http\Models\QModels\UsersPunishQModel;
 use App\Http\Models\QModels\UsersBanQModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\CharactersQModel;
+use App\Http\Models\QModels\SlidersQModel;
 use App\Http\Models\QModels\SystemQModel;
 use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\UsersCModel;
@@ -47,6 +48,14 @@ class SuperAdminController extends Controller {
 		$data['books_delete']   = BooksBModel::get_all_books_delete();
 		$data['admins']			= UsersQModel::get_users_all();
 		$data['system']			= SystemBModel::get_variables_super_admin();
+		$data['sliders']		= SlidersQModel::get_sliders_all();
+
+		$data['system']['list-type-topic'] = [
+			$data['system']['topic_type_1'],
+			$data['system']['topic_type_2'],
+			$data['system']['topic_type_3'],
+			$data['system']['topic_type_4']
+		];
 		// dd($data);
 		return view('pages.admin.super-admin', $data);
 	}

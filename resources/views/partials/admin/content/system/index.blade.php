@@ -1,4 +1,5 @@
 <div class="box box-primary collapse" id="box-index" aria-expanded="false">
+<form action="{{ url('/admin/super-admin/edit_system_index') }}" method="POST">
 	<div class="box-header with-border">
 		<h3 class="box-title">Trang Chủ</h3>
 
@@ -13,40 +14,41 @@
 		<div class="form-group">
 			<label for="name">Số lượng hình</label>
 			<select class="form-control number-topic" style="width: 100%;">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option selected="selected">4</option>
-				<option>5</option>
-				<option>6</option>
+				@for ($i = 1; $i <= $system['slider_max_images']; $i++)
+					@if ($system['slider_select_images'] == $i)
+					<option selected="selected" value="{{ $i }}">{{ $i }}</option>
+					@else
+					<option value="{{ $i }}">{{ $i }}</option>
+					@endif
+				@endfor
 			</select>
 		</div>
 		<div class="form-group">
 			<label for="name">Hình ảnh</label>
 			<br>
 			<div class="slider-image">
-				<img src="{{ asset('image/slider/slider01.jpg') }}" width="200px">
-				<img src="{{ asset('image/slider/slider02.jpg') }}" width="200px">
-				<img src="{{ asset('image/slider/slider03.jpg') }}" width="200px">
-				<img src="{{ asset('image/slider/slider04.jpg') }}" width="200px">
-				<img src="{{ asset('image/slider/slider05.jpg') }}" width="200px">
-				<img src="{{ asset('image/slider/slider06.jpg') }}" width="200px">
-				<img src="{{ asset('image/slider/slider07.jpg') }}" width="200px">
+				@foreach ($sliders as $slider)
+				<img src="{{ asset('image/sliders/'.$slider->name.'.jpg') }}" width="200px">
+				@endforeach
 			</div>
 			<br>
-			<button class="btn btn-primary">Thay đổi hình</button>
+			<label class="btn btn-primary">
+				Thêm hình
+				<input id="slider" type="file" name="slider">
+			</label>
 		</div>
 		<hr>
 		<h4>Main</h4>
 		<div class="form-group">
 			<label for="name">Số lượng khối</label>
 			<select class="form-control number-topic" style="width: 100%;">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option selected="selected">4</option>
-				<option>5</option>
-				<option>6</option>
+				@for ($i = 1; $i <= $system['main_max_topic']; $i++)
+					@if ($system['main_number_topic'] == $i)
+					<option value="{{$i}}" selected="selected">{{ $i }}</option>
+					@else
+					<option value="{{$i}}">{{ $i }}</option>
+					@endif
+				@endfor
 			</select>
 		</div>
 		
@@ -55,22 +57,22 @@
 				<!-- topic 1 -->
 				<div class="form-group">
 					<label for="name">Tiêu đề khối 1</label>
-					<input type="text" class="form-control" id="name" value="Bảng Xếp Hạng">
+					<input type="text" class="form-control" id="name" value="{{ $system['topic_name_1'] }}">
 				</div>
 				<!-- topic 2 -->
 				<div class="form-group">
 					<label for="name">Tiêu đề khối 2</label>
-					<input type="text" class="form-control" id="name" value="Bảng Xếp Hạng">
+					<input type="text" class="form-control" id="name" value="{{ $system['topic_name_2'] }}">
 				</div>
 				<!-- topic 3 -->
 				<div class="form-group">
 					<label for="name">Tiêu đề khối 3</label>
-					<input type="text" class="form-control" id="name" value="Bảng Xếp Hạng">
+					<input type="text" class="form-control" id="name" value="{{ $system['topic_name_3'] }}">
 				</div>
 				<!-- topic 4 -->
 				<div class="form-group">
 					<label for="name">Tiêu đề khối 4</label>
-					<input type="text" class="form-control" id="name" value="Bảng Xếp Hạng">
+					<input type="text" class="form-control" id="name" value="{{ $system['topic_name_4'] }}">
 				</div>
 			</div>
 			<div class="col-xs-4">
@@ -78,40 +80,52 @@
 				<div class="form-group">
 					<label for="name">Kiểu khối 1</label>
 					<select class="form-control type-topic1" style="width: 100%;">
-						<option selected="selected">Topic xếp hạng</option>
-						<option>Topic truyện mới</option>
-						<option>Topic bình luận</option>
-						<option>Topic đánh giá</option>
+						@foreach ($system['list-type-topic'] as $type)
+							@if ($system['topic_type_1'] == $type)
+							<option value="{{ $type }}" selected="selected">{{ $type }}</option>
+							@else
+							<option value="{{ $type }}">{{ $type }}</option>
+							@endif
+						@endforeach
 					</select>
 				</div>
 				<!-- topic 2 -->
 				<div class="form-group">
 					<label for="name">Kiểu khối 2</label>
 					<select class="form-control type-topic1" style="width: 100%;">
-						<option>Topic xếp hạng</option>
-						<option selected="selected">Topic truyện mới</option>
-						<option>Topic bình luận</option>
-						<option>Topic đánh giá</option>
+						@foreach ($system['list-type-topic'] as $type)
+							@if ($system['topic_type_2'] == $type)
+							<option value="{{ $type }}" selected="selected">{{ $type }}</option>
+							@else
+							<option value="{{ $type }}">{{ $type }}</option>
+							@endif
+						@endforeach
 					</select>
 				</div>
 				<!-- topic 3 -->
 				<div class="form-group">
 					<label for="name">Kiểu khối 3</label>
 					<select class="form-control type-topic1" style="width: 100%;">
-						<option>Topic xếp hạng</option>
-						<option>Topic truyện mới</option>
-						<option selected="selected">Topic bình luận</option>
-						<option>Topic đánh giá</option>
+						@foreach ($system['list-type-topic'] as $type)
+							@if ($system['topic_type_3'] == $type)
+							<option value="{{ $type }}" selected="selected">{{ $type }}</option>
+							@else
+							<option value="{{ $type }}">{{ $type }}</option>
+							@endif
+						@endforeach
 					</select>
 				</div>
 				<!-- topic 4 -->
 				<div class="form-group">
 					<label for="name">Kiểu khối 4</label>
 					<select class="form-control type-topic1" style="width: 100%;">
-						<option>Topic xếp hạng</option>
-						<option>Topic truyện mới</option>
-						<option>Topic bình luận</option>
-						<option selected="selected">Topic đánh giá</option>
+						@foreach ($system['list-type-topic'] as $type)
+							@if ($system['topic_type_4'] == $type)
+							<option value="{{ $type }}" selected="selected">{{ $type }}</option>
+							@else
+							<option value="{{ $type }}">{{ $type }}</option>
+							@endif
+						@endforeach
 					</select>
 				</div>
 			</div>
@@ -120,40 +134,52 @@
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control type-topic1" style="width: 100%;">
-						<option>4</option>
-						<option selected="selected">8</option>
-						<option>12</option>
-						<option>16</option>
+						@for ($i = 4; $i < $system['topic_number_max']; $i+=4)
+							@if ($system['topic_number_1'] == $i)
+							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
+							@else
+							<option value="{{ $i }}">{{ $i }}</option>
+							@endif
+						@endfor
 					</select>
 				</div>
 				<!-- topic 2 -->
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control type-topic1" style="width: 100%;">
-						<option>4</option>
-						<option selected="selected">8</option>
-						<option>12</option>
-						<option>16</option>
+					<select class="form-control type-topic2" style="width: 100%;">
+						@for ($i = 4; $i < $system['topic_number_max']; $i+=4)
+							@if ($system['topic_number_2'] == $i)
+							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
+							@else
+							<option value="{{ $i }}">{{ $i }}</option>
+							@endif
+						@endfor
 					</select>
 				</div>
 				<!-- topic 3 -->
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control type-topic1" style="width: 100%;">
-						<option>4</option>
-						<option selected="selected">8</option>
-						<option>12</option>
-						<option>16</option>
+					<select class="form-control type-topic3" style="width: 100%;">
+						@for ($i = 4; $i < $system['topic_number_max']; $i+=4)
+							@if ($system['topic_number_3'] == $i)
+							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
+							@else
+							<option value="{{ $i }}">{{ $i }}</option>
+							@endif
+						@endfor
 					</select>
 				</div>
 				<!-- topic 4 -->
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control type-topic1" style="width: 100%;">
-						<option>4</option>
-						<option selected="selected">8</option>
-						<option>12</option>
-						<option>16</option>
+					<select class="form-control type-topic4" style="width: 100%;">
+						@for ($i = 4; $i < $system['topic_number_max']; $i+=4)
+							@if ($system['topic_number_4'] == $i)
+							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
+							@else
+							<option value="{{ $i }}">{{ $i }}</option>
+							@endif
+						@endfor
 					</select>
 				</div>
 			</div>
@@ -288,4 +314,5 @@
 		<button class="btn btn-success">Hoàn tác</button>
 		<button class="btn btn-info">Xem thử</button>
 	</div>
+</form>
 </div>
