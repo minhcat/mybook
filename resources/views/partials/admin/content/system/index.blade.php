@@ -74,6 +74,16 @@
 					<label for="name">Tiêu đề khối 4</label>
 					<input type="text" class="form-control" id="name" value="{{ $system['topic_name_4'] }}">
 				</div>
+				<!-- topic 5 -->
+				<div class="form-group hide">
+					<label for="name">Tiêu đề khối 5</label>
+					<input type="text" class="form-control" id="name" value="{{ $system['topic_name_5'] }}">
+				</div>
+				<!-- topic 6 -->
+				<div class="form-group hide">
+					<label for="name">Tiêu đề khối 6</label>
+					<input type="text" class="form-control" id="name" value="{{ $system['topic_name_6'] }}">
+				</div>
 			</div>
 			<div class="col-xs-4">
 				<!-- topic 1 -->
@@ -128,6 +138,38 @@
 						@endforeach
 					</select>
 				</div>
+				<!-- topic 5 -->
+				<div class="form-group hide">
+					<label for="name">Kiểu khối 5</label>
+					<select class="form-control type-topic1" style="width: 100%;">
+						@foreach ($system['list-type-topic'] as $type)
+							@if ($system['topic_type_5'] == $type)
+							<option value="{{ $type }}" selected="selected">{{ $type }}</option>
+							@else
+							<option value="{{ $type }}">{{ $type }}</option>
+							@endif
+						@endforeach
+						@if ($system['topic_type_5'] == '')
+						<option disabled="disabled" selected="selected">-- Chọn kiểu --</option>
+						@endif
+					</select>
+				</div>
+				<!-- topic 6 -->
+				<div class="form-group hide">
+					<label for="name">Kiểu khối 6</label>
+					<select class="form-control type-topic1" style="width: 100%;">
+						@foreach ($system['list-type-topic'] as $type)
+							@if ($system['topic_type_6'] == $type)
+							<option value="{{ $type }}" selected="selected">{{ $type }}</option>
+							@else
+							<option value="{{ $type }}">{{ $type }}</option>
+							@endif
+						@endforeach
+						@if ($system['topic_type_6'] == '')
+						<option disabled="disabled" selected="selected">-- Chọn kiểu --</option>
+						@endif
+					</select>
+				</div>
 			</div>
 			<div class="col-xs-4">
 				<!-- topic 1 -->
@@ -180,6 +222,38 @@
 							<option value="{{ $i }}">{{ $i }}</option>
 							@endif
 						@endfor
+					</select>
+				</div>
+				<!-- topic 5 -->
+				<div class="form-group hide">
+					<label for="name">Số lượng hiển thị</label>
+					<select class="form-control type-topic5" style="width: 100%;">
+						@for ($i = 4; $i < $system['topic_number_max']; $i+=4)
+							@if ($system['topic_number_5'] == $i)
+							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
+							@else
+							<option value="{{ $i }}">{{ $i }}</option>
+							@endif
+						@endfor
+						@if ($system['topic_number_5'] == 0)
+						<option disabled="disabled" selected="selected">-- Chọn số lượng --</option>
+						@endif
+					</select>
+				</div>
+				<!-- topic 6 -->
+				<div class="form-group hide">
+					<label for="name">Số lượng hiển thị</label>
+					<select class="form-control type-topic6" style="width: 100%;">
+						@for ($i = 4; $i < $system['topic_number_max']; $i+=4)
+							@if ($system['topic_number_6'] == $i)
+							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
+							@else
+							<option value="{{ $i }}">{{ $i }}</option>
+							@endif
+						@endfor
+						@if ($system['topic_number_6'] == 0)
+						<option disabled="disabled" selected="selected">-- Chọn số lượng --</option>
+						@endif
 					</select>
 				</div>
 			</div>

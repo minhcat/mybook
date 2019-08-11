@@ -42,14 +42,20 @@ class SystemBModel extends Model
 		$topic_name_2         = SystemQModel::get_variable_by_name('topic_name_2');
 		$topic_name_3         = SystemQModel::get_variable_by_name('topic_name_3');
 		$topic_name_4         = SystemQModel::get_variable_by_name('topic_name_4');
+		$topic_name_5         = SystemQModel::get_variable_by_name('topic_name_5');
+		$topic_name_6         = SystemQModel::get_variable_by_name('topic_name_6');
 		$topic_type_1         = SystemQModel::get_variable_by_name('topic_type_1');
 		$topic_type_2         = SystemQModel::get_variable_by_name('topic_type_2');
 		$topic_type_3         = SystemQModel::get_variable_by_name('topic_type_3');
 		$topic_type_4         = SystemQModel::get_variable_by_name('topic_type_4');
+		$topic_type_5         = SystemQModel::get_variable_by_name('topic_type_5');
+		$topic_type_6         = SystemQModel::get_variable_by_name('topic_type_6');
 		$topic_number_1       = SystemQModel::get_variable_by_name('topic_number_1');
 		$topic_number_2       = SystemQModel::get_variable_by_name('topic_number_2');
 		$topic_number_3       = SystemQModel::get_variable_by_name('topic_number_3');
 		$topic_number_4       = SystemQModel::get_variable_by_name('topic_number_4');
+		$topic_number_5       = SystemQModel::get_variable_by_name('topic_number_5');
+		$topic_number_6       = SystemQModel::get_variable_by_name('topic_number_6');
 		$topic_number_max     = SystemQModel::get_variable_by_name('topic_number_max');
 
 		// common system
@@ -78,14 +84,20 @@ class SystemBModel extends Model
 		$data['topic_name_2']         = $topic_name_2->value;
 		$data['topic_name_3']         = $topic_name_3->value;
 		$data['topic_name_4']         = $topic_name_4->value;
+		$data['topic_name_5']         = $topic_name_5->value;
+		$data['topic_name_6']         = $topic_name_6->value;
 		$data['topic_type_1']         = $topic_type_1->value;
 		$data['topic_type_2']         = $topic_type_2->value;
 		$data['topic_type_3']         = $topic_type_3->value;
 		$data['topic_type_4']         = $topic_type_4->value;
+		$data['topic_type_5']         = $topic_type_5->value;
+		$data['topic_type_6']         = $topic_type_6->value;
 		$data['topic_number_1']       = $topic_number_1->value;
 		$data['topic_number_2']       = $topic_number_2->value;
 		$data['topic_number_3']       = $topic_number_3->value;
 		$data['topic_number_4']       = $topic_number_4->value;
+		$data['topic_number_5']       = $topic_number_5->value;
+		$data['topic_number_6']       = $topic_number_6->value;
 		$data['topic_number_max']     = $topic_number_max->value;
 
 		return $data;
