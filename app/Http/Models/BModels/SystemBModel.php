@@ -57,6 +57,22 @@ class SystemBModel extends Model
 		$topic_number_5       = SystemQModel::get_variable_by_name('topic_number_5');
 		$topic_number_6       = SystemQModel::get_variable_by_name('topic_number_6');
 		$topic_number_max     = SystemQModel::get_variable_by_name('topic_number_max');
+		$sidebar_max_box      = SystemQModel::get_variable_by_name('sidebar_max_box');
+		$sidebar_number_box   = SystemQModel::get_variable_by_name('sidebar_number_box');
+		$sidebar_box_type_1   = SystemQModel::get_variable_by_name('sidebar_box_type_1');
+		$sidebar_box_type_2   = SystemQModel::get_variable_by_name('sidebar_box_type_2');
+		$sidebar_box_type_3   = SystemQModel::get_variable_by_name('sidebar_box_type_3');
+		$sidebar_box_type_4   = SystemQModel::get_variable_by_name('sidebar_box_type_4');
+		$sidebar_box_type_5   = SystemQModel::get_variable_by_name('sidebar_box_type_5');
+		$sidebar_box_type_6   = SystemQModel::get_variable_by_name('sidebar_box_type_6');
+		$sidebar_box_number_1 = SystemQModel::get_variable_by_name('sidebar_box_number_1');
+		$sidebar_box_number_2 = SystemQModel::get_variable_by_name('sidebar_box_number_2');
+		$sidebar_box_number_3 = SystemQModel::get_variable_by_name('sidebar_box_number_3');
+		$sidebar_box_number_4 = SystemQModel::get_variable_by_name('sidebar_box_number_4');
+		$sidebar_box_number_5 = SystemQModel::get_variable_by_name('sidebar_box_number_5');
+		$sidebar_box_number_6 = SystemQModel::get_variable_by_name('sidebar_box_number_6');
+		$sidebar_number_min   = SystemQModel::get_variable_by_name('sidebar_number_min');
+		$sidebar_number_max   = SystemQModel::get_variable_by_name('sidebar_number_max');
 
 		// common system
 		$data['website_name']         = $website_name->value;
@@ -99,6 +115,22 @@ class SystemBModel extends Model
 		$data['topic_number_5']       = $topic_number_5->value;
 		$data['topic_number_6']       = $topic_number_6->value;
 		$data['topic_number_max']     = $topic_number_max->value;
+		$data['sidebar_max_box']      = (int)$sidebar_max_box->value;
+		$data['sidebar_number_box']   = (int)$sidebar_number_box->value;
+		$data['sidebar_box_type_1']   = $sidebar_box_type_1->value;
+		$data['sidebar_box_type_2']   = $sidebar_box_type_2->value;
+		$data['sidebar_box_type_3']   = $sidebar_box_type_3->value;
+		$data['sidebar_box_type_4']   = $sidebar_box_type_4->value;
+		$data['sidebar_box_type_5']   = $sidebar_box_type_5->value;
+		$data['sidebar_box_type_6']   = $sidebar_box_type_6->value;
+		$data['sidebar_box_number_1'] = (int)$sidebar_box_number_1->value;
+		$data['sidebar_box_number_2'] = (int)$sidebar_box_number_2->value;
+		$data['sidebar_box_number_3'] = (int)$sidebar_box_number_3->value;
+		$data['sidebar_box_number_4'] = (int)$sidebar_box_number_4->value;
+		$data['sidebar_box_number_5'] = (int)$sidebar_box_number_5->value;
+		$data['sidebar_box_number_6'] = (int)$sidebar_box_number_6->value;
+		$data['sidebar_number_min']   = (int)$sidebar_number_min->value;
+		$data['sidebar_number_max']   = (int)$sidebar_number_max->value;
 
 		return $data;
 	}

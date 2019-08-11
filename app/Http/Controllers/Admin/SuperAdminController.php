@@ -56,6 +56,13 @@ class SuperAdminController extends Controller {
 			$data['system']['topic_type_3'],
 			$data['system']['topic_type_4']
 		];
+		$data['system']['list-type-sidebar'] = [
+			$data['system']['sidebar_box_type_1'],
+			$data['system']['sidebar_box_type_2'],
+			$data['system']['sidebar_box_type_3'],
+			$data['system']['sidebar_box_type_4'],
+			$data['system']['sidebar_box_type_5']
+		];
 		// dd($data);
 		return view('pages.admin.super-admin', $data);
 	}
