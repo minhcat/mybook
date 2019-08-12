@@ -153,6 +153,8 @@ Route::group(['prefix' => 'admin'], function() {
 
 		Route::post('edit_system_common', 'Admin\SuperAdminController@edit_system_common');
 
+		Route::post('edit_system_index', 'Admin\SuperAdminController@edit_system_index');
+
 		Route::group(['prefix' => 'ajax'], function() {
 
 			Route::get('delete_book_temporary/{id_book}', 'Admin\SuperAdminController@delete_book_temporary');
