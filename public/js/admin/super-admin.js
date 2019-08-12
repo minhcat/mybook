@@ -96,4 +96,22 @@ $(document).ready(function() {
 			reader.readAsDataURL(input.files[i]);
 		});
 	});
+	$('.form-group select.number-topic').change(function() {
+		var value = parseInt($(this).val());
+		$('.form-group.topic-title').removeClass('hide');
+		$('.form-group.topic-type').removeClass('hide');
+		$('.form-group.topic-number').removeClass('hide');
+
+		for (i = value+1; i <= 6; i++) {
+			$('.form-group.title'+i).addClass('hide');
+		}
+
+		for (i = value+1; i <= 6; i++) {
+			$('.form-group.type'+i).addClass('hide');
+		}
+
+		for (i = value+1; i <= 6; i++) {
+			$('.form-group.number'+i).addClass('hide');
+		}
+	});
 });

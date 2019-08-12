@@ -56,41 +56,41 @@
 		<div class="row">
 			<div class="col-xs-4">
 				<!-- topic 1 -->
-				<div class="form-group">
+				<div class="form-group topic-title title1">
 					<label for="name">Tiêu đề khối 1</label>
 					<input name="topic_name_1" type="text" class="form-control" id="name" value="{{ $system['topic_name_1'] }}">
 				</div>
 				<!-- topic 2 -->
-				<div class="form-group">
+				<div class="form-group topic-title title2">
 					<label for="name">Tiêu đề khối 2</label>
 					<input name="topic_name_2" type="text" class="form-control" id="name" value="{{ $system['topic_name_2'] }}">
 				</div>
 				<!-- topic 3 -->
-				<div class="form-group">
+				<div class="form-group topic-title title3">
 					<label for="name">Tiêu đề khối 3</label>
 					<input name="topic_name_3" type="text" class="form-control" id="name" value="{{ $system['topic_name_3'] }}">
 				</div>
 				<!-- topic 4 -->
-				<div class="form-group">
+				<div class="form-group topic-title title4">
 					<label for="name">Tiêu đề khối 4</label>
 					<input name="topic_name_4" type="text" class="form-control" id="name" value="{{ $system['topic_name_4'] }}">
 				</div>
 				<!-- topic 5 -->
-				<div class="form-group hide">
+				<div class="form-group topic-title title5 hide">
 					<label for="name">Tiêu đề khối 5</label>
 					<input name="topic_name_5" type="text" class="form-control" id="name" value="{{ $system['topic_name_5'] }}">
 				</div>
 				<!-- topic 6 -->
-				<div class="form-group hide">
+				<div class="form-group topic-title title6 hide">
 					<label for="name">Tiêu đề khối 6</label>
 					<input name="topic_name_6" type="text" class="form-control" id="name" value="{{ $system['topic_name_6'] }}">
 				</div>
 			</div>
 			<div class="col-xs-4">
 				<!-- topic 1 -->
-				<div class="form-group">
+				<div class="form-group topic-type type1">
 					<label for="name">Kiểu khối 1</label>
-					<select class="form-control type-topic1" style="width: 100%;" name="topic_type_1">
+					<select class="form-control" style="width: 100%;" name="topic_type_1">
 						@foreach ($system['list-type-topic'] as $type)
 							@if ($system['topic_type_1'] == $type)
 							<option value="{{ $type }}" selected="selected">{{ $type }}</option>
@@ -101,9 +101,9 @@
 					</select>
 				</div>
 				<!-- topic 2 -->
-				<div class="form-group">
+				<div class="form-group topic-type type2">
 					<label for="name">Kiểu khối 2</label>
-					<select class="form-control type-topic1" style="width: 100%;" name="topic_type_2">
+					<select class="form-control" style="width: 100%;" name="topic_type_2">
 						@foreach ($system['list-type-topic'] as $type)
 							@if ($system['topic_type_2'] == $type)
 							<option value="{{ $type }}" selected="selected">{{ $type }}</option>
@@ -114,9 +114,9 @@
 					</select>
 				</div>
 				<!-- topic 3 -->
-				<div class="form-group">
+				<div class="form-group topic-type type3">
 					<label for="name">Kiểu khối 3</label>
-					<select class="form-control type-topic1" style="width: 100%;" name="topic_type_3">
+					<select class="form-control" style="width: 100%;" name="topic_type_3">
 						@foreach ($system['list-type-topic'] as $type)
 							@if ($system['topic_type_3'] == $type)
 							<option value="{{ $type }}" selected="selected">{{ $type }}</option>
@@ -127,9 +127,9 @@
 					</select>
 				</div>
 				<!-- topic 4 -->
-				<div class="form-group">
+				<div class="form-group topic-type type4">
 					<label for="name">Kiểu khối 4</label>
-					<select class="form-control type-topic1" style="width: 100%;" name="topic_type_4">
+					<select class="form-control" style="width: 100%;" name="topic_type_4">
 						@foreach ($system['list-type-topic'] as $type)
 							@if ($system['topic_type_4'] == $type)
 							<option value="{{ $type }}" selected="selected">{{ $type }}</option>
@@ -140,9 +140,9 @@
 					</select>
 				</div>
 				<!-- topic 5 -->
-				<div class="form-group hide">
+				<div class="form-group topic-type type5 hide">
 					<label for="name">Kiểu khối 5</label>
-					<select class="form-control type-topic1" style="width: 100%;" name="topic_type_5">
+					<select class="form-control" style="width: 100%;" name="topic_type_5">
 						@foreach ($system['list-type-topic'] as $type)
 							@if ($system['topic_type_5'] == $type)
 							<option value="{{ $type }}" selected="selected">{{ $type }}</option>
@@ -156,9 +156,9 @@
 					</select>
 				</div>
 				<!-- topic 6 -->
-				<div class="form-group hide">
+				<div class="form-group topic-type type6 hide">
 					<label for="name">Kiểu khối 6</label>
-					<select class="form-control type-topic1" style="width: 100%;" name="topic_type_6">
+					<select class="form-control" style="width: 100%;" name="topic_type_6">
 						@foreach ($system['list-type-topic'] as $type)
 							@if ($system['topic_type_6'] == $type)
 							<option value="{{ $type }}" selected="selected">{{ $type }}</option>
@@ -174,7 +174,7 @@
 			</div>
 			<div class="col-xs-4">
 				<!-- topic 1 -->
-				<div class="form-group">
+				<div class="form-group topic-number number1">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control type-topic1" style="width: 100%;" name="topic_number_1">
 						@for ($i = 4; $i <= $system['topic_number_max']; $i+=4)
@@ -187,7 +187,7 @@
 					</select>
 				</div>
 				<!-- topic 2 -->
-				<div class="form-group">
+				<div class="form-group topic-number number2">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control type-topic2" style="width: 100%;" name="topic_number_2">
 						@for ($i = 4; $i <= $system['topic_number_max']; $i+=4)
@@ -200,7 +200,7 @@
 					</select>
 				</div>
 				<!-- topic 3 -->
-				<div class="form-group">
+				<div class="form-group topic-number number3">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control type-topic3" style="width: 100%;" name="topic_number_3">
 						@for ($i = 4; $i <= $system['topic_number_max']; $i+=4)
@@ -213,7 +213,7 @@
 					</select>
 				</div>
 				<!-- topic 4 -->
-				<div class="form-group">
+				<div class="form-group topic-number number4">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control type-topic4" style="width: 100%;" name="topic_number_4">
 						@for ($i = 4; $i <= $system['topic_number_max']; $i+=4)
@@ -226,7 +226,7 @@
 					</select>
 				</div>
 				<!-- topic 5 -->
-				<div class="form-group hide">
+				<div class="form-group topic-number number5 hide">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control type-topic5" style="width: 100%;" name="topic_number_5">
 						@for ($i = 4; $i <= $system['topic_number_max']; $i+=4)
@@ -242,7 +242,7 @@
 					</select>
 				</div>
 				<!-- topic 6 -->
-				<div class="form-group hide">
+				<div class="form-group topic-number number6 hide">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control type-topic6" style="width: 100%;" name="topic_number_6">
 						@for ($i = 4; $i <= $system['topic_number_max']; $i+=4)
