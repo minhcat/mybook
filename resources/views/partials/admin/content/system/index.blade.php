@@ -263,7 +263,7 @@
 		<h4>Sidebar</h4>
 		<div class="form-group">
 			<label for="name">Số lượng khối</label>
-			<select class="form-control number-topic" style="width: 100%;" name="sidebar_number_box">
+			<select class="form-control number-box" style="width: 100%;" name="sidebar_number_box">
 				@for ($i = 1; $i <= $system['sidebar_max_box']; $i++)
 					@if ($system['sidebar_number_box'] == $i)
 					<option value="{{ $i }}" selected="selected">{{ $i }}</option>
@@ -275,7 +275,7 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-6">
-				<div class="form-group">
+				<div class="form-group box-type type1">
 					<label for="name">Kiểu khối 1</label>
 					<select class="form-control type-topic1" style="width: 100%;" name="sidebar_box_type_1">
 						@foreach ($system['list-type-sidebar'] as $type)
@@ -287,7 +287,7 @@
 						@endforeach
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-type type2">
 					<label for="name">Kiểu khối 2</label>
 					<select class="form-control type-topic1" style="width: 100%;" name="sidebar_box_type_2">
 						@foreach ($system['list-type-sidebar'] as $type)
@@ -299,7 +299,7 @@
 						@endforeach
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-type type3">
 					<label for="name">Kiểu khối 3</label>
 					<select class="form-control type-topic1" style="width: 100%;" name="sidebar_box_type_3">
 						@foreach ($system['list-type-sidebar'] as $type)
@@ -311,7 +311,7 @@
 						@endforeach
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-type type4">
 					<label for="name">Kiểu khối 4</label>
 					<select class="form-control type-topic1" style="width: 100%;" name="sidebar_box_type_4">
 						@foreach ($system['list-type-sidebar'] as $type)
@@ -323,7 +323,7 @@
 						@endforeach
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-type type5">
 					<label for="name">Kiểu khối 5</label>
 					<select class="form-control type-topic1" style="width: 100%;" name="sidebar_box_type_5">
 						@foreach ($system['list-type-sidebar'] as $type)
@@ -335,7 +335,7 @@
 						@endforeach
 					</select>
 				</div>
-				<div class="form-group hide">
+				<div class="form-group box-type type6 hide">
 					<label for="name">Kiểu khối 6</label>
 					<select class="form-control type-topic1" style="width: 100%;" name="sidebar_box_type_6">
 						@foreach ($system['list-type-sidebar'] as $type)
@@ -352,7 +352,7 @@
 				</div>
 			</div>
 			<div class="col-xs-6">
-				<div class="form-group box1">
+				<div class="form-group box-number number1">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['sidebar_box_number_1'] == -1) ? 'disabled' : '' }} style="width: 100%;" name="sidebar_box_number_1">
 						@if ($system['sidebar_box_number_1'] == -1)
@@ -369,7 +369,7 @@
 						@endfor
 					</select>
 				</div>
-				<div class="form-group box2">
+				<div class="form-group box-number number2">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['sidebar_box_number_2'] == -1) ? 'disabled' : '' }} style="width: 100%;" name="sidebar_box_number_2">
 						@if ($system['sidebar_box_number_2'] == -1)
@@ -386,7 +386,7 @@
 						@endfor
 					</select>
 				</div>
-				<div class="form-group box3">
+				<div class="form-group box-number number3">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['sidebar_box_number_3'] == -1) ? 'disabled' : '' }} style="width: 100%;" name="sidebar_box_number_3">
 						@if ($system['sidebar_box_number_3'] == -1)
@@ -403,7 +403,7 @@
 						@endfor
 					</select>
 				</div>
-				<div class="form-group box4">
+				<div class="form-group box-number number4">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['sidebar_box_number_4'] == -1) ? 'disabled' : '' }} style="width: 100%;" name="sidebar_box_number_4">
 						@if ($system['sidebar_box_number_4'] == -1)
@@ -420,7 +420,7 @@
 						@endfor
 					</select>
 				</div>
-				<div class="form-group box5">
+				<div class="form-group box-number number5">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['sidebar_box_number_5'] == -1) ? 'disabled' : '' }} style="width: 100%;" name="sidebar_box_number_5">
 						@if ($system['sidebar_box_number_5'] == -1)
@@ -437,7 +437,7 @@
 						@endfor
 					</select>
 				</div>
-				<div class="form-group box6 hide">
+				<div class="form-group box-number number6 hide">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['sidebar_box_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;" name="sidebar_box_number_6">
 						@if ($system['sidebar_box_number_6'] == -1)

@@ -103,15 +103,20 @@ $(document).ready(function() {
 		$('.form-group.topic-number').removeClass('hide');
 
 		for (i = value+1; i <= 6; i++) {
-			$('.form-group.title'+i).addClass('hide');
+			$('.form-group.topic-title.title'+i).addClass('hide');
+			$('.form-group.topic-type.type'+i).addClass('hide');
+			$('.form-group.topic-number.number'+i).addClass('hide');
 		}
+	});
 
-		for (i = value+1; i <= 6; i++) {
-			$('.form-group.type'+i).addClass('hide');
-		}
+	$('.form-group select.number-box').change(function() {
+		var value = parseInt($(this).val());
+		$('.form-group.box-type').removeClass('hide');
+		$('.form-group.box-number').removeClass('hide');
 
-		for (i = value+1; i <= 6; i++) {
-			$('.form-group.number'+i).addClass('hide');
+		for (i = value+1; i<=6; i++) {
+			$('.form-group.box-type.type'+i).addClass('hide');
+			$('.form-group.box-number.number'+i).addClass('hide');
 		}
 	});
 });
