@@ -356,9 +356,11 @@
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['sidebar_box_number_1'] == -1) ? 'disabled' : '' }} style="width: 100%;" name="sidebar_box_number_1">
 						@if ($system['sidebar_box_number_1'] == -1)
-						<option selected="selected">-- Không đặt --</option>
+						<option selected="selected" value="-1" disabled>-- Không đặt --</option>
 						@elseif ($system['sidebar_box_number_6'] == 0)
 						<option disabled="disabled" selected="selected">-- Chọn số lượng --</option>
+						@else
+						<option value="-1" disabled>-- Không đặt --</option>
 						@endif
 						@for ($i = $system['sidebar_number_min']; $i <= $system['sidebar_number_max']; $i++)
 							@if ($system['sidebar_box_number_1'] == $i)
@@ -373,9 +375,11 @@
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['sidebar_box_number_2'] == -1) ? 'disabled' : '' }} style="width: 100%;" name="sidebar_box_number_2">
 						@if ($system['sidebar_box_number_2'] == -1)
-						<option selected="selected">-- Không đặt --</option>
+						<option selected="selected" value="-1" disabled>-- Không đặt --</option>
 						@elseif ($system['sidebar_box_number_6'] == 0)
 						<option disabled="disabled" selected="selected">-- Chọn số lượng --</option>
+						@else
+						<option value="-1" disabled>-- Không đặt --</option>
 						@endif
 						@for ($i = $system['sidebar_number_min']; $i <= $system['sidebar_number_max']; $i++)
 							@if ($system['sidebar_box_number_2'] == $i)
@@ -390,9 +394,11 @@
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['sidebar_box_number_3'] == -1) ? 'disabled' : '' }} style="width: 100%;" name="sidebar_box_number_3">
 						@if ($system['sidebar_box_number_3'] == -1)
-						<option selected="selected">-- Không đặt --</option>
-						@elseif ($system['sidebar_box_number_6'] == 0)
+						<option selected="selected" value="-1" disabled>-- Không đặt --</option>
+						@elseif ($system['sidebar_box_number_3'] == 0)
 						<option disabled="disabled" selected="selected">-- Chọn số lượng --</option>
+						@else
+						<option value="-1" disabled>-- Không đặt --</option>
 						@endif
 						@for ($i = $system['sidebar_number_min']; $i <= $system['sidebar_number_max']; $i++)
 							@if ($system['sidebar_box_number_3'] == $i)
@@ -407,9 +413,11 @@
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['sidebar_box_number_4'] == -1) ? 'disabled' : '' }} style="width: 100%;" name="sidebar_box_number_4">
 						@if ($system['sidebar_box_number_4'] == -1)
-						<option selected="selected">-- Không đặt --</option>
-						@elseif ($system['sidebar_box_number_6'] == 0)
+						<option selected="selected" value="-1" disabled>-- Không đặt --</option>
+						@elseif ($system['sidebar_box_number_4'] == 0)
 						<option disabled="disabled" selected="selected">-- Chọn số lượng --</option>
+						@else
+						<option value="-1" disabled>-- Không đặt --</option>
 						@endif
 						@for ($i = $system['sidebar_number_min']; $i <= $system['sidebar_number_max']; $i++)
 							@if ($system['sidebar_box_number_4'] == $i)
@@ -424,9 +432,11 @@
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['sidebar_box_number_5'] == -1) ? 'disabled' : '' }} style="width: 100%;" name="sidebar_box_number_5">
 						@if ($system['sidebar_box_number_5'] == -1)
-						<option selected="selected">-- Không đặt --</option>
-						@elseif ($system['sidebar_box_number_6'] == 0)
+						<option selected="selected" value="-1" disabled>-- Không đặt --</option>
+						@elseif ($system['sidebar_box_number_5'] == 0)
 						<option disabled="disabled" selected="selected">-- Chọn số lượng --</option>
+						@else
+						<option value="-1" disabled>-- Không đặt --</option>
 						@endif
 						@for ($i = $system['sidebar_number_min']; $i <= $system['sidebar_number_max']; $i++)
 							@if ($system['sidebar_box_number_5'] == $i)
@@ -441,12 +451,14 @@
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['sidebar_box_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;" name="sidebar_box_number_6">
 						@if ($system['sidebar_box_number_6'] == -1)
-						<option selected="selected">-- Không đặt --</option>
+						<option selected="selected" value="-1" disabled>-- Không đặt --</option>
 						@elseif ($system['sidebar_box_number_6'] == 0)
 						<option disabled="disabled" selected="selected">-- Chọn số lượng --</option>
+						@else
+						<option value="-1" disabled>-- Không đặt --</option>
 						@endif
 						@for ($i = $system['sidebar_number_min']; $i <= $system['sidebar_number_max']; $i++)
-							@if ($system['sidebar_box_number_5'] == $i)
+							@if ($system['sidebar_box_number_6'] == $i)
 							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
 							@else
 							<option value="{{ $i }}">{{ $i }}</option>

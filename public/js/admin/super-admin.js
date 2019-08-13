@@ -119,4 +119,18 @@ $(document).ready(function() {
 			$('.form-group.box-number.number'+i).addClass('hide');
 		}
 	});
+	$('.form-group.box-type select').change(function() {
+		debugger;
+		var value = $(this).val();
+		var index = $(this).parent().attr('class');
+		index = index.replace('form-group box-type ', '');
+		index = index.replace('type', '');
+		if (value == 'facebook' || value == 'advertisement') {
+			$('.form-group.box-number.number'+index+' select').attr('disabled', true);
+			$('.form-group.box-number.number'+index+' select').val('-1');
+		} else {
+			$('.form-group.box-number.number'+index+' select').attr('disabled', false);
+			$('.form-group.box-number.number'+index+' select').val('6');
+		}
+	});
 });
