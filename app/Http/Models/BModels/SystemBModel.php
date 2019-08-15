@@ -73,6 +73,24 @@ class SystemBModel extends Model
 		$sidebar_box_number_6 = SystemQModel::get_variable_by_name('sidebar_box_number_6');
 		$sidebar_number_min   = SystemQModel::get_variable_by_name('sidebar_number_min');
 		$sidebar_number_max   = SystemQModel::get_variable_by_name('sidebar_number_max');
+		$list_1               = SystemQModel::get_variable_by_name('list_1');
+		$list_title_1         = SystemQModel::get_variable_by_name('list_title_1');
+		$list_info_1          = SystemQModel::get_variable_by_name('list_info_1');
+		$list_type_1          = SystemQModel::get_variable_by_name('list_type_1');
+		$list_number_1        = SystemQModel::get_variable_by_name('list_number_1');
+		$list_sidebar         = SystemQModel::get_variable_by_name('list_sidebar');
+		$list_box_type_1      = SystemQModel::get_variable_by_name('list_box_type_1');
+		$list_box_type_2      = SystemQModel::get_variable_by_name('list_box_type_2');
+		$list_box_type_3      = SystemQModel::get_variable_by_name('list_box_type_3');
+		$list_box_type_4      = SystemQModel::get_variable_by_name('list_box_type_4');
+		$list_box_type_5      = SystemQModel::get_variable_by_name('list_box_type_5');
+		$list_box_type_6      = SystemQModel::get_variable_by_name('list_box_type_6');
+		$list_box_number_1    = SystemQModel::get_variable_by_name('list_box_number_1');
+		$list_box_number_2    = SystemQModel::get_variable_by_name('list_box_number_2');
+		$list_box_number_3    = SystemQModel::get_variable_by_name('list_box_number_3');
+		$list_box_number_4    = SystemQModel::get_variable_by_name('list_box_number_4');
+		$list_box_number_5    = SystemQModel::get_variable_by_name('list_box_number_5');
+		$list_box_number_6    = SystemQModel::get_variable_by_name('list_box_number_6');
 
 		// common system
 		$data['website_name']         = $website_name->value;
@@ -131,6 +149,23 @@ class SystemBModel extends Model
 		$data['sidebar_box_number_6'] = (int)$sidebar_box_number_6->value;
 		$data['sidebar_number_min']   = (int)$sidebar_number_min->value;
 		$data['sidebar_number_max']   = (int)$sidebar_number_max->value;
+		$data['list_1']               = $list_1->value;
+		$data['list_title_1']         = $list_title_1->value;
+		$data['list_info_1']          = $list_info_1->value;
+		$data['list_number_1']        = $list_number_1->value;
+		$data['list_sidebar']         = $list_sidebar->value;
+		$data['list_box_type_1']      = $list_box_type_1->value;
+		$data['list_box_type_2']      = $list_box_type_2->value;
+		$data['list_box_type_3']      = $list_box_type_3->value;
+		$data['list_box_type_4']      = $list_box_type_4->value;
+		$data['list_box_type_5']      = $list_box_type_5->value;
+		$data['list_box_type_6']      = $list_box_type_6->value;
+		$data['list_box_number_1']    = $list_box_number_1->value;
+		$data['list_box_number_2']    = $list_box_number_2->value;
+		$data['list_box_number_3']    = $list_box_number_3->value;
+		$data['list_box_number_4']    = $list_box_number_4->value;
+		$data['list_box_number_5']    = $list_box_number_5->value;
+		$data['list_box_number_6']    = $list_box_number_6->value;
 
 		return $data;
 	}

@@ -64,6 +64,36 @@ class SuperAdminController extends Controller {
 			'facebook',
 			'advertisement'
 		];
+		$data['system']['list-list-book'] = [
+			'truyện lượt xem nhiều',
+			'truyện theo thể loại',
+			'truyện bình luận nhiều',
+			'truyện đánh giá cao',
+			'truyện đã hoàn thành',
+			'truyện đang tiến hành',
+			'truyện mới cập nhật',
+			'truyện theo năm',
+			'truyện đang theo dõi',
+			'tìm kiếm truyện',
+			'danh sách bạn',
+			'thông báo',
+			'lịch sử đọc truyện'
+		];
+		$data['system']['list-type-list'] = [
+			'list-view',
+			'list-category',
+			'list-comment',
+			'list-rate',
+			'list-completed',
+			'list-process',
+			'list-update',
+			'list-year',
+			'list-follow',
+			'list-search',
+			'list-friend',
+			'list-notification',
+			'list-history'
+		];
 		// dd($data);
 		return view('pages.admin.super-admin', $data);
 	}
