@@ -138,7 +138,19 @@
 			<div class="col-xs-6">
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" style="width: 100%;">
+					<select class="form-control number-topic" {{ ($system['list_box_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+						@if ($system['list_box_number_1'] == -1)
+						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Không đặt --</option>
+						@endif
+						{{-- check not yet set --}}
+						@if ($system['list_box_number_1'] == 0)
+						<option disabled="disabled" selected="selected" value="-1">-- Chọn số lượng --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Chọn số lượng --</option>
+						@endif
+						{{-- show value selected --}}
 						@for ($i = 1; $i <= 10; $i++)
 							@if ($system['list_box_number_1'] == $i)
 							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
@@ -150,9 +162,21 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" style="width: 100%;">
+					<select class="form-control number-topic" {{ ($system['list_box_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+						@if ($system['list_box_number_2'] == -1)
+						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Không đặt --</option>
+						@endif
+						{{-- check not yet set --}}
+						@if ($system['list_box_number_2'] == 0)
+						<option disabled="disabled" selected="selected" value="-1">-- Chọn số lượng --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Chọn số lượng --</option>
+						@endif
+						{{-- show value selected --}}
 						@for ($i = 1; $i <= 10; $i++)
-							@if ($system['list_box_number_1'] == $i)
+							@if ($system['list_box_number_2'] == $i)
 							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
 							@else
 							<option value="{{ $i }}">{{ $i }}</option>
@@ -162,9 +186,21 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" style="width: 100%;">
+					<select class="form-control number-topic" {{ ($system['list_box_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+						@if ($system['list_box_number_3'] == -1)
+						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Không đặt --</option>
+						@endif
+						{{-- check not yet set --}}
+						@if ($system['list_box_number_3'] == 0)
+						<option disabled="disabled" selected="selected" value="-1">-- Chọn số lượng --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Chọn số lượng --</option>
+						@endif
+						{{-- show value selected --}}
 						@for ($i = 1; $i <= 10; $i++)
-							@if ($system['list_box_number_1'] == $i)
+							@if ($system['list_box_number_3'] == $i)
 							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
 							@else
 							<option value="{{ $i }}">{{ $i }}</option>
@@ -174,9 +210,21 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" disabled="disabled" style="width: 100%;">
+					<select class="form-control number-topic" {{ ($system['list_box_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+						@if ($system['list_box_number_4'] == -1)
+						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Không đặt --</option>
+						@endif
+						{{-- check not yet set --}}
+						@if ($system['list_box_number_4'] == 0)
+						<option disabled="disabled" selected="selected" value="-1">-- Chọn số lượng --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Chọn số lượng --</option>
+						@endif
+						{{-- show value selected --}}
 						@for ($i = 1; $i <= 10; $i++)
-							@if ($system['list_box_number_1'] == $i)
+							@if ($system['list_box_number_4'] == $i)
 							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
 							@else
 							<option value="{{ $i }}">{{ $i }}</option>
@@ -186,9 +234,21 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" disabled="disabled" style="width: 100%;">
+					<select class="form-control number-topic" {{ ($system['list_box_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+						@if ($system['list_box_number_5'] == -1)
+						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Không đặt --</option>
+						@endif
+						{{-- check not yet set --}}
+						@if ($system['list_box_number_5'] == 0)
+						<option disabled="disabled" selected="selected" value="-1">-- Chọn số lượng --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Chọn số lượng --</option>
+						@endif
+						{{-- show value selected --}}
 						@for ($i = 1; $i <= 10; $i++)
-							@if ($system['list_box_number_1'] == $i)
+							@if ($system['list_box_number_5'] == $i)
 							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
 							@else
 							<option value="{{ $i }}">{{ $i }}</option>
@@ -198,9 +258,22 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" disabled="disabled" style="width: 100%;">
+					<select class="form-control number-topic" {{ ($system['list_box_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+						{{-- check unset --}}
+						@if ($system['list_box_number_6'] == -1)
+						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Không đặt --</option>
+						@endif
+						{{-- check not yet set --}}
+						@if ($system['list_box_number_6'] == 0)
+						<option disabled="disabled" selected="selected" value="-1">-- Chọn số lượng --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Chọn số lượng --</option>
+						@endif
+						{{-- show value selected --}}
 						@for ($i = 1; $i <= 10; $i++)
-							@if ($system['list_box_number_1'] == $i)
+							@if ($system['list_box_number_6'] == $i)
 							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
 							@else
 							<option value="{{ $i }}">{{ $i }}</option>
