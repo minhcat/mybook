@@ -12,7 +12,7 @@
 		<h4>List</h4>
 		<div class="form-group">
 			<label for="name">Chọn danh sách</label>
-			<select class="form-control number-topic" style="width: 100%;">
+			<select class="form-control select-list" style="width: 100%;">
 				@foreach ($system['list-list-book'] as $key => $list)
 					<option value="{{ $key + 1 }}">{{ $list }}</option>
 				@endforeach
@@ -22,27 +22,35 @@
 		<h4>Title</h4>
 		<div class="form-group">
 			<label for="name">Tiêu đề danh sách</label>
-			<input type="text" class="form-control" id="name" value="{{ $system['list_title_1'] }}">
+			<input type="text" class="form-control" name="list_title" id="name" value="{{ $system['list_title_1'] }}">
 		</div>
 		<div class="form-group">
 			<label for="name">Thông tin về danh sách</label>
-			<input type="text" class="form-control" id="name" value="{{ $system['list_info_1'] }}">
+			<input type="text" class="form-control" name="list_info" id="name" value="{{ $system['list_info_1'] }}">
 		</div>
 		<hr>
 		<h4>Main</h4>
 		<div class="form-group">
 			<label for="name">Kiểu danh sách</label>
-			<select class="form-control number-topic" style="width: 100%;">
+			<select class="form-control number-topic" name="list_type" style="width: 100%;">
 				@foreach ($system['list-type-list'] as $key => $list)
-				<option value="{{ $key + 1 }}">{{ $list }}</option>
+					@if ($system['list_type_1'] == $list)
+					<option value="{{ $key + 1 }}" selected="selected">{{ $list }}</option>
+					@else
+					<option value="{{ $key + 1 }}">{{ $list }}</option>
+					@endif
 				@endforeach
 			</select>
 		</div>
 		<div class="form-group">
 			<label for="name">Số lượng hiển thị</label>
-			<select class="form-control number-topic" style="width: 100%;">
+			<select class="form-control number-topic" name="list_number" style="width: 100%;">
 				@for ($i = 5; $i <= 20; $i++)
-				<option value="{{$i}}">{{ $i }}</option>
+					@if ($system['list_number_1'] == $i)
+					<option value="{{$i}}" selected="selected">{{ $i }}</option>
+					@else
+					<option value="{{$i}}">{{ $i }}</option>
+					@endif
 				@endfor
 			</select>
 		</div>
@@ -162,7 +170,7 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" {{ ($system['list_box_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+					<select class="form-control number-topic" {{ ($system['list_box_number_2'] == -1) ? 'disabled' : '' }} style="width: 100%;">
 						@if ($system['list_box_number_2'] == -1)
 						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
 						@else
@@ -186,7 +194,7 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" {{ ($system['list_box_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+					<select class="form-control number-topic" {{ ($system['list_box_number_3'] == -1) ? 'disabled' : '' }} style="width: 100%;">
 						@if ($system['list_box_number_3'] == -1)
 						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
 						@else
@@ -210,7 +218,7 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" {{ ($system['list_box_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+					<select class="form-control number-topic" {{ ($system['list_box_number_4'] == -1) ? 'disabled' : '' }} style="width: 100%;">
 						@if ($system['list_box_number_4'] == -1)
 						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
 						@else
@@ -234,7 +242,7 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" {{ ($system['list_box_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+					<select class="form-control number-topic" {{ ($system['list_box_number_5'] == -1) ? 'disabled' : '' }} style="width: 100%;">
 						@if ($system['list_box_number_5'] == -1)
 						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
 						@else

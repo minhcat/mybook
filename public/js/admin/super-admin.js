@@ -120,7 +120,6 @@ $(document).ready(function() {
 		}
 	});
 	$('.form-group.box-type select').change(function() {
-		debugger;
 		var value = $(this).val();
 		var index = $(this).parent().attr('class');
 		index = index.replace('form-group box-type ', '');
@@ -132,5 +131,14 @@ $(document).ready(function() {
 			$('.form-group.box-number.number'+index+' select').attr('disabled', false);
 			$('.form-group.box-number.number'+index+' select').val('6');
 		}
+	});
+	$('select.select-list').change(function() {
+		var value = parseInt($(this).val()) - 1;
+		$('input[name="list_title"]').val(title_list[value]);
+		$('input[name="list_info"]').val(info_list[value]);
+		$('select[name="list_number"]').val(number_list[value]);
+		$('select[name="list_type"]').val(value+1);
+
+		console.log(value);
 	});
 });

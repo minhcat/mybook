@@ -353,6 +353,27 @@ Super Admin
 				[ 'FontSize', 'TextColor', 'BGColor' ]
 			]
 		});
-	})
+	});
+	var title_list = [];
+	title_list.push('{{ $system['list_title_1'] }}');
+	title_list.push('{{ $system['list_title_2'] }}');
+	title_list.push('{{ $system['list_title_3'] }}');
+	title_list.push('{{ $system['list_title_4'] }}');
+	var info_list = [];
+	info_list.push('{{ $system['list_info_1'] }}');
+	info_list.push('{{ $system['list_info_2'] }}');
+	info_list.push('{{ $system['list_info_3'] }}');
+	info_list.push('{{ $system['list_info_4'] }}');
+	var number_list = [];
+	number_list.push('{{ $system['list_number_1'] }}');
+	number_list.push('{{ $system['list_number_2'] }}');
+	number_list.push('{{ $system['list_number_3'] }}');
+	number_list.push('{{ $system['list_number_4'] }}');
+	var type_list = [];
+	type_list.push('{{ $system['list_type_1'] }}');
+	type_list.push('{{ $system['list_type_2'] }}');
+	type_list.push('{{ $system['list_type_3'] }}');
+	type_list.push('{{ $system['list_type_4'] }}');
+
 </script>
 @endsection
