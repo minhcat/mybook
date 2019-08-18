@@ -267,6 +267,7 @@ class SuperAdminController extends Controller {
 	 * @return Response
 	 */
 	public function edit_system_index(Request $request) {
+		// dd($request->all());
 		// sidebar number box
 		$id_sidebar_number_box = SystemQModel::get_variable_by_name('sidebar_number_box')->id;
 		$sidebar_number_box    = $request->input('sidebar_number_box');
@@ -415,32 +416,42 @@ class SuperAdminController extends Controller {
 		// sidebar box type 1
 		$id_sidebar_box_type_1 = SystemQModel::get_variable_by_name('sidebar_box_type_1')->id;
 		$sidebar_box_type_1    = $request->input('sidebar_box_type_1');
-		$data = ['value' => $sidebar_box_type_1];
-		SystemCModel::update_variable($id_sidebar_box_type_1, $data);
+		if ($sidebar_box_type_1 != null) {
+			$data = ['value' => $sidebar_box_type_1];
+			SystemCModel::update_variable($id_sidebar_box_type_1, $data);
+		}
 
 		// sidebar box type 2
 		$id_sidebar_box_type_2 = SystemQModel::get_variable_by_name('sidebar_box_type_2')->id;
 		$sidebar_box_type_2    = $request->input('sidebar_box_type_2');
-		$data = ['value' => $sidebar_box_type_2];
-		SystemCModel::update_variable($id_sidebar_box_type_2, $data);
+		if ($sidebar_box_type_2 != null) {
+			$data = ['value' => $sidebar_box_type_2];
+			SystemCModel::update_variable($id_sidebar_box_type_2, $data);
+		}
 
 		// sidebar box type 3
 		$id_sidebar_box_type_3 = SystemQModel::get_variable_by_name('sidebar_box_type_3')->id;
 		$sidebar_box_type_3    = $request->input('sidebar_box_type_3');
-		$data = ['value' => $sidebar_box_type_3];
-		SystemCModel::update_variable($id_sidebar_box_type_3, $data);
+		if ($sidebar_box_type_3 != null) {
+			$data = ['value' => $sidebar_box_type_3];
+			SystemCModel::update_variable($id_sidebar_box_type_3, $data);
+		}
 
 		// sidebar box type 4
 		$id_sidebar_box_type_4 = SystemQModel::get_variable_by_name('sidebar_box_type_4')->id;
 		$sidebar_box_type_4    = $request->input('sidebar_box_type_4');
-		$data = ['value' => $sidebar_box_type_4];
-		SystemCModel::update_variable($id_sidebar_box_type_4, $data);
+		if ($sidebar_box_type_4 != null) {
+			$data = ['value' => $sidebar_box_type_4];
+			SystemCModel::update_variable($id_sidebar_box_type_4, $data);
+		}
 
 		// sidebar type 5
 		$id_sidebar_box_type_5 = SystemQModel::get_variable_by_name('sidebar_box_type_5')->id;
 		$sidebar_box_type_5    = $request->input('sidebar_box_type_5');
-		$data = ['value' => $sidebar_box_type_5];
-		SystemCModel::update_variable($id_sidebar_box_type_5, $data);
+		if ($sidebar_box_type_5 != null) {
+			$data = ['value' => $sidebar_box_type_5];
+			SystemCModel::update_variable($id_sidebar_box_type_5, $data);
+		}
 
 		// sidebar box type 6
 		$id_sidebar_box_type_6 = SystemQModel::get_variable_by_name('sidebar_box_type_6')->id;
@@ -451,38 +462,267 @@ class SuperAdminController extends Controller {
 		// sidebar box number 1
 		$id_sidebar_box_number_1 = SystemQModel::get_variable_by_name('sidebar_box_number_1')->id;
 		$sidebar_box_number_1    = $request->input('sidebar_box_number_1');
-		$data = ['value' => $sidebar_box_number_1];
-		SystemCModel::update_variable($id_sidebar_box_number_1, $data);
+		if ($sidebar_box_number_1 != null) {
+			$data = ['value' => $sidebar_box_number_1];
+			SystemCModel::update_variable($id_sidebar_box_number_1, $data);
+		}
 
 		// sidebar box number 2
 		$id_sidebar_box_number_2 = SystemQModel::get_variable_by_name('sidebar_box_number_2')->id;
 		$sidebar_box_number_2    = $request->input('sidebar_box_number_2');
-		$data = ['value' => $sidebar_box_number_2];
-		SystemCModel::update_variable($id_sidebar_box_number_2, $data);
+		if ($sidebar_box_number_2 != null) {
+			$data = ['value' => $sidebar_box_number_2];
+			SystemCModel::update_variable($id_sidebar_box_number_2, $data);
+		}
 
 		// sidebar box number 3
 		$id_sidebar_box_number_3 = SystemQModel::get_variable_by_name('sidebar_box_number_3')->id;
 		$sidebar_box_number_3    = $request->input('sidebar_box_number_3');
-		$data = ['value' => $sidebar_box_number_3];
-		SystemCModel::update_variable($id_sidebar_box_number_3, $data);
+		if ($sidebar_box_number_3 != null) {
+			$data = ['value' => $sidebar_box_number_3];
+			SystemCModel::update_variable($id_sidebar_box_number_3, $data);
+		}
 
 		// sidebar box number 4
 		$id_sidebar_box_number_4 = SystemQModel::get_variable_by_name('sidebar_box_number_4')->id;
 		$sidebar_box_number_4    = $request->input('sidebar_box_number_4');
-		$data = ['value' => $sidebar_box_number_4];
-		SystemCModel::update_variable($id_sidebar_box_number_4, $data);
+		if ($sidebar_box_number_4 != null) {
+			$data = ['value' => $sidebar_box_number_4];
+			SystemCModel::update_variable($id_sidebar_box_number_4, $data);
+		}
 
 		// sidebar box number 5
 		$id_sidebar_box_number_5 = SystemQModel::get_variable_by_name('sidebar_box_number_5')->id;
 		$sidebar_box_number_5    = $request->input('sidebar_box_number_5');
-		$data = ['value' => $sidebar_box_number_5];
-		SystemCModel::update_variable($id_sidebar_box_number_5, $data);
+		if ($sidebar_box_number_5 != null) {
+			$data = ['value' => $sidebar_box_number_5];
+			SystemCModel::update_variable($id_sidebar_box_number_5, $data);
+		}
 
 		// sidebar box number 6
 		$id_sidebar_box_number_6 = SystemQModel::get_variable_by_name('sidebar_box_number_6')->id;
 		$sidebar_box_number_6    = $request->input('sidebar_box_number_6');
-		$data = ['value' => $sidebar_box_number_6];
-		SystemCModel::update_variable($id_sidebar_box_number_6, $data);
+		if ($sidebar_box_number_6 != null) {
+			$data = ['value' => $sidebar_box_number_6];
+			SystemCModel::update_variable($id_sidebar_box_number_6, $data);
+		}
+
+		return redirect()->back()->with('success', 'Thay đổi giá trị hệ thống thành công');
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function edit_system_list(Request $request) {
+		// dd($request->all());
+		// get index list
+		$index = $request->input('list');
+
+		if ($index == '1') {
+			// list title 1
+			$id_list_title_1 = SystemQModel::get_variable_by_name('list_title_1')->id;
+			$list_title_1    = $request->input('list_title');
+			$data = ['value' => $list_title_1];
+			SystemCModel::update_variable($id_list_title_1, $data);
+
+			// list info 1
+			$id_list_info_1 = SystemQModel::get_variable_by_name('list_info_1')->id;
+			$list_info_1    = $request->input('list_info');
+			$data = ['value' => $list_info_1];
+			SystemCModel::update_variable($id_list_info_1, $data);
+
+			// list type 1
+			$id_list_type_1 = SystemQModel::get_variable_by_name('list_type_1')->id;
+			$list_type_1    = $request->input('list_type');
+			$data = ['value' => $list_type_1];
+			SystemCModel::update_variable($id_list_type_1, $data);
+
+			// list number 1
+			$id_list_number_1 = SystemQModel::get_variable_by_name('list_number_1')->id;
+			$list_number_1    = $request->input('list_number');
+			$data = ['value' => $list_number_1];
+			SystemCModel::update_variable($id_list_number_1, $data);
+
+		} else if ($index == '2') {
+			// list title 2
+			$id_list_title_2 = SystemQModel::get_variable_by_name('list_title_2')->id;
+			$list_title_2    = $request->input('list_title');
+			$data = ['value' => $list_title_2];
+			SystemCModel::update_variable($id_list_title_2, $data);
+
+			// list info 2
+			$id_list_info_2 = SystemQModel::get_variable_by_name('list_info_2')->id;
+			$list_info_2    = $request->input('list_info');
+			$data = ['value' => $list_info_2];
+			SystemCModel::update_variable($id_list_info_2, $data);
+
+			// list type 2
+			$id_list_type_2 = SystemQModel::get_variable_by_name('list_type_2')->id;
+			$list_type_2    = $request->input('list_type');
+			$data = ['value' => $list_type_2];
+			SystemCModel::update_variable($id_list_type_2, $data);
+
+			// list number 2
+			$id_list_number_2 = SystemQModel::get_variable_by_name('list_number_2')->id;
+			$list_number_2    = $request->input('list_number');
+			$data = ['value' => $list_number_2];
+			SystemCModel::update_variable($id_list_number_2, $data);
+
+		} else if ($index == '3') {
+			// list title 3
+			$id_list_title_3 = SystemQModel::get_variable_by_name('list_title_3')->id;
+			$list_title_3    = $request->input('list_title');
+			$data = ['value' => $list_title_3];
+			SystemCModel::update_variable($id_list_title_3, $data);
+
+			// list info 3
+			$id_list_info_3 = SystemQModel::get_variable_by_name('list_info_3')->id;
+			$list_info_3    = $request->input('list_info');
+			$data = ['value' => $list_info_3];
+			SystemCModel::update_variable($id_list_info_3, $data);
+
+			// list type 3
+			$id_list_type_3 = SystemQModel::get_variable_by_name('list_type_3')->id;
+			$list_type_3    = $request->input('list_type');
+			$data = ['value' => $list_type_3];
+			SystemCModel::update_variable($id_list_type_3, $data);
+
+			// list number 3
+			$id_list_number_3 = SystemQModel::get_variable_by_name('list_number_3')->id;
+			$list_number_3    = $request->input('list_number');
+			$data = ['value' => $list_number_3];
+			SystemCModel::update_variable($id_list_number_3, $data);
+
+		} else if ($index == '4') {
+			// list title 4
+			$id_list_title_4 = SystemQModel::get_variable_by_name('list_title_4')->id;
+			$list_title_4    = $request->input('list_title');
+			$data = ['value' => $list_title_4];
+			SystemCModel::update_variable($id_list_title_4, $data);
+
+			// list info 4
+			$id_list_info_4 = SystemQModel::get_variable_by_name('list_info_4')->id;
+			$list_info_4    = $request->input('list_info');
+			$data = ['value' => $list_info_4];
+			SystemCModel::update_variable($id_list_info_4, $data);
+
+			// list type 4
+			$id_list_type_4 = SystemQModel::get_variable_by_name('list_type_4')->id;
+			$list_type_4    = $request->input('list_type');
+			$data = ['value' => $list_type_4];
+			SystemCModel::update_variable($id_list_type_4, $data);
+
+			// list number 4
+			$id_list_number_4 = SystemQModel::get_variable_by_name('list_number_4')->id;
+			$list_number_4    = $request->input('list_number');
+			$data = ['value' => $list_number_4];
+			SystemCModel::update_variable($id_list_number_4, $data);
+
+		}
+
+		// sidebar number box
+		$id_list_sidebar = SystemQModel::get_variable_by_name('list_sidebar')->id;
+		$list_sidebar    = $request->input('list_sidebar');
+		$data = ['value' => $list_sidebar];
+		SystemCModel::update_variable($id_list_sidebar, $data);
+
+		// sidebar box type 1
+		$id_list_box_type_1 = SystemQModel::get_variable_by_name('list_box_type_1')->id;
+		$list_box_type_1    = $request->input('list_box_type_1');
+		if ($list_box_type_1 != null) {
+			$data = ['value' => $list_box_type_1];
+			SystemCModel::update_variable($id_list_box_type_1, $data);
+		}
+
+		// sidebar box type 2
+		$id_list_box_type_2 = SystemQModel::get_variable_by_name('list_box_type_2')->id;
+		$list_box_type_2    = $request->input('list_box_type_2');
+		if ($list_box_type_2 != null) {
+			$data = ['value' => $list_box_type_2];
+			SystemCModel::update_variable($id_list_box_type_2, $data);
+		}
+
+		// sidebar box type 3
+		$id_list_box_type_3 = SystemQModel::get_variable_by_name('list_box_type_3')->id;
+		$list_box_type_3    = $request->input('list_box_type_3');
+		if ($list_box_type_3 != null) {
+			$data = ['value' => $list_box_type_3];
+			SystemCModel::update_variable($id_list_box_type_3, $data);
+		}
+
+		// sidebar box type 4
+		$id_list_box_type_4 = SystemQModel::get_variable_by_name('list_box_type_4')->id;
+		$list_box_type_4    = $request->input('list_box_type_4');
+		if ($list_box_type_4 != null) {
+			$data = ['value' => $list_box_type_4];
+			SystemCModel::update_variable($id_list_box_type_4, $data);
+		}
+
+		// sidebar box type 5
+		$id_list_box_type_5 = SystemQModel::get_variable_by_name('list_box_type_5')->id;
+		$list_box_type_5    = $request->input('list_box_type_5');
+		if ($list_box_type_5 != null) {
+			$data = ['value' => $list_box_type_5];
+			SystemCModel::update_variable($id_list_box_type_5, $data);
+		}
+
+		// sidebar box type 6
+		$id_list_box_type_6 = SystemQModel::get_variable_by_name('list_box_type_6')->id;
+		$list_box_type_6    = $request->input('list_box_type_6');
+		if ($list_box_type_6 != null) {
+			$data = ['value' => $list_box_type_6];
+			SystemCModel::update_variable($id_list_box_type_6, $data);
+		}
+
+		// sidebar box number 1
+		$id_list_box_number_1 = SystemQModel::get_variable_by_name('list_box_number_1')->id;
+		$list_box_number_1    = $request->input('list_box_number_1');
+		if ($list_box_number_1 != null) {
+			$data = ['value' => $list_box_number_1];
+			SystemCModel::update_variable($id_list_box_number_1, $data);
+		}
+
+		// sidebar box number 2
+		$id_list_box_number_2 = SystemQModel::get_variable_by_name('list_box_number_2')->id;
+		$list_box_number_2    = $request->input('list_box_number_2');
+		if ($list_box_number_2 != null) {
+			$data = ['value' => $list_box_number_2];
+			SystemCModel::update_variable($id_list_box_number_2, $data);
+		}
+
+		// sidebar box number 3
+		$id_list_box_number_3 = SystemQModel::get_variable_by_name('list_box_number_3')->id;
+		$list_box_number_3    = $request->input('list_box_number_3');
+		if ($list_box_number_3 != null) {
+			$data = ['value' => $list_box_number_3];
+			SystemCModel::update_variable($id_list_box_number_3, $data);
+		}
+
+		// sidebar box number 4
+		$id_list_box_number_4 = SystemQModel::get_variable_by_name('list_box_number_4')->id;
+		$list_box_number_4    = $request->input('list_box_number_4');
+		if ($list_box_number_4 != null) {
+			$data = ['value' => $list_box_number_4];
+			SystemCModel::update_variable($id_list_box_number_4, $data);
+		}
+
+		// sidebar box number 5
+		$id_list_box_number_5 = SystemQModel::get_variable_by_name('list_box_number_5')->id;
+		$list_box_number_5    = $request->input('list_box_number_5');
+		if ($list_box_number_5 != null) {
+			$data = ['value' => $list_box_number_5];
+			SystemCModel::update_variable($id_list_box_number_5, $data);
+		}
+
+		// sidebar box number 6
+		$id_list_box_number_6 = SystemQModel::get_variable_by_name('list_box_number_6')->id;
+		$list_box_number_6    = $request->input('list_box_number_6');
+		if ($list_box_number_6 != null) {
+			$data = ['value' => $list_box_number_6];
+			SystemCModel::update_variable($id_list_box_number_6, $data);
+		}
 
 		return redirect()->back()->with('success', 'Thay đổi giá trị hệ thống thành công');
 	}

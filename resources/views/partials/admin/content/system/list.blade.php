@@ -1,4 +1,5 @@
 <div class="box box-primary collapse" id="box-list" aria-expanded="false">
+<form action="{{ url('/admin/super-admin/edit_system_list') }}" method="POST">
 	<div class="box-header with-border">
 		<h3 class="box-title">Các Danh Sách</h3>
 
@@ -9,10 +10,11 @@
 		</div>
 	</div>
 	<div class="box-body">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<h4>List</h4>
 		<div class="form-group">
 			<label for="name">Chọn danh sách</label>
-			<select class="form-control select-list" style="width: 100%;">
+			<select class="form-control select-list" name="list" style="width: 100%;">
 				@foreach ($system['list-list-book'] as $key => $list)
 					<option value="{{ $key + 1 }}">{{ $list }}</option>
 				@endforeach
@@ -58,7 +60,7 @@
 		<h4>Sidebar</h4>
 		<div class="form-group">
 			<label for="name">Số lượng khối</label>
-			<select class="form-control number-topic" style="width: 100%;">
+			<select class="form-control number-box" name="list_sidebar" style="width: 100%;">
 				@for ($i = 1; $i <= 6; $i++)
 					@if ($system['list_sidebar'] == $i)
 					<option selected="selected" value="{{ $i }}">{{ $i }}</option>
@@ -69,10 +71,10 @@
 			</select>
 		</div>
 		<div class="row">
-			<div class="col-xs-6">
-				<div class="form-group">
+			<div class="col-xs-6 sidebar-list">
+				<div class="form-group box-type type1">
 					<label for="name">Kiểu khối 1</label>
-					<select class="form-control type-topic1" style="width: 100%;">
+					<select class="form-control type-topic1" name="list_box_type_1" style="width: 100%;">
 						@foreach ($system['list-type-sidebar'] as $type)
 							@if ($system['list_box_type_1'] == $type)
 							<option selected="selected" value="{{ $type }}">{{ $type }}</option>
@@ -82,9 +84,9 @@
 						@endforeach
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-type type2">
 					<label for="name">Kiểu khối 2</label>
-					<select class="form-control type-topic1" style="width: 100%;">
+					<select class="form-control type-topic1" name="list_box_type_2" style="width: 100%;">
 						@foreach ($system['list-type-sidebar'] as $type)
 							@if ($system['list_box_type_2'] == $type)
 							<option selected="selected" value="{{ $type }}">{{ $type }}</option>
@@ -94,9 +96,9 @@
 						@endforeach
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-type type3">
 					<label for="name">Kiểu khối 3</label>
-					<select class="form-control type-topic1" style="width: 100%;">
+					<select class="form-control type-topic1" name="list_box_type_3" style="width: 100%;">
 						@foreach ($system['list-type-sidebar'] as $type)
 							@if ($system['list_box_type_3'] == $type)
 							<option selected="selected" value="{{ $type }}">{{ $type }}</option>
@@ -106,9 +108,9 @@
 						@endforeach
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-type type4">
 					<label for="name">Kiểu khối 4</label>
-					<select class="form-control type-topic1" style="width: 100%;">
+					<select class="form-control type-topic1" name="list_box_type_4" style="width: 100%;">
 						@foreach ($system['list-type-sidebar'] as $type)
 							@if ($system['list_box_type_4'] == $type)
 							<option selected="selected" value="{{ $type }}">{{ $type }}</option>
@@ -118,9 +120,9 @@
 						@endforeach
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-type type5">
 					<label for="name">Kiểu khối 5</label>
-					<select class="form-control type-topic1" style="width: 100%;">
+					<select class="form-control type-topic1" name="list_box_type_5" style="width: 100%;">
 						@foreach ($system['list-type-sidebar'] as $type)
 							@if ($system['list_box_type_5'] == $type)
 							<option selected="selected" value="{{ $type }}">{{ $type }}</option>
@@ -130,9 +132,9 @@
 						@endforeach
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-type type6 hide">
 					<label for="name">Kiểu khối 6</label>
-					<select class="form-control type-topic1" style="width: 100%;">
+					<select class="form-control type-topic1" name="list_box_type_6" style="width: 100%;">
 						@foreach ($system['list-type-sidebar'] as $type)
 							@if ($system['list_box_type_6'] == $type)
 							<option selected="selected" value="{{ $type }}">{{ $type }}</option>
@@ -143,10 +145,10 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-xs-6">
-				<div class="form-group">
+			<div class="col-xs-6 sidebar-list">
+				<div class="form-group box-number number1">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" {{ ($system['list_box_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+					<select class="form-control number-topic" name="list_box_number_1" {{ ($system['list_box_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;">
 						@if ($system['list_box_number_1'] == -1)
 						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
 						@else
@@ -168,9 +170,9 @@
 						@endfor
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-number number2">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" {{ ($system['list_box_number_2'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+					<select class="form-control number-topic" name="list_box_number_2" {{ ($system['list_box_number_2'] == -1) ? 'disabled' : '' }} style="width: 100%;">
 						@if ($system['list_box_number_2'] == -1)
 						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
 						@else
@@ -192,9 +194,9 @@
 						@endfor
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-number number3">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" {{ ($system['list_box_number_3'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+					<select class="form-control number-topic" name="list_box_number_3" {{ ($system['list_box_number_3'] == -1) ? 'disabled' : '' }} style="width: 100%;">
 						@if ($system['list_box_number_3'] == -1)
 						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
 						@else
@@ -216,9 +218,9 @@
 						@endfor
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-number number4">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" {{ ($system['list_box_number_4'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+					<select class="form-control number-topic" name="list_box_number_4" {{ ($system['list_box_number_4'] == -1) ? 'disabled' : '' }} style="width: 100%;">
 						@if ($system['list_box_number_4'] == -1)
 						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
 						@else
@@ -240,9 +242,9 @@
 						@endfor
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-number number5">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" {{ ($system['list_box_number_5'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+					<select class="form-control number-topic" name="list_box_number_5" {{ ($system['list_box_number_5'] == -1) ? 'disabled' : '' }} style="width: 100%;">
 						@if ($system['list_box_number_5'] == -1)
 						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
 						@else
@@ -264,9 +266,9 @@
 						@endfor
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-number number6 hide">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" {{ ($system['list_box_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+					<select class="form-control number-topic" name="list_box_number_6" {{ ($system['list_box_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;">
 						{{-- check unset --}}
 						@if ($system['list_box_number_6'] == -1)
 						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
@@ -275,7 +277,7 @@
 						@endif
 						{{-- check not yet set --}}
 						@if ($system['list_box_number_6'] == 0)
-						<option disabled="disabled" selected="selected" value="-1">-- Chọn số lượng --</option>
+						<option disabled="disabled" selected="selected" value="0">-- Chọn số lượng --</option>
 						@else
 						<option disabled="disabled" value="-1">-- Chọn số lượng --</option>
 						@endif
@@ -293,8 +295,8 @@
 		</div>
 	</div>
 	<div class="box-footer">
-		<button class="btn btn-primary">Thay đổi</button>
-		<button class="btn btn-success">Hoàn tác</button>
-		<button class="btn btn-info">Xem thử</button>
+		<button type="submit" class="btn btn-primary">Thay đổi</button>
+		<button type="button" class="btn btn-success">Hoàn tác</button>
 	</div>
+</form>
 </div>

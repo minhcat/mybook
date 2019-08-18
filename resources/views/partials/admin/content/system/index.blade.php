@@ -274,7 +274,7 @@
 			</select>
 		</div>
 		<div class="row">
-			<div class="col-xs-6">
+			<div class="col-xs-6 sidebar-index">
 				<div class="form-group box-type type1">
 					<label for="name">Kiểu khối 1</label>
 					<select class="form-control type-topic1" style="width: 100%;" name="sidebar_box_type_1">
@@ -351,13 +351,13 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-xs-6">
+			<div class="col-xs-6 sidebar-index">
 				<div class="form-group box-number number1">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['sidebar_box_number_1'] == -1) ? 'disabled' : '' }} style="width: 100%;" name="sidebar_box_number_1">
 						@if ($system['sidebar_box_number_1'] == -1)
 						<option selected="selected" value="-1" disabled>-- Không đặt --</option>
-						@elseif ($system['sidebar_box_number_6'] == 0)
+						@elseif ($system['sidebar_box_number_1'] == 0)
 						<option disabled="disabled" selected="selected">-- Chọn số lượng --</option>
 						@else
 						<option value="-1" disabled>-- Không đặt --</option>
@@ -376,7 +376,7 @@
 					<select class="form-control number-topic" {{ ($system['sidebar_box_number_2'] == -1) ? 'disabled' : '' }} style="width: 100%;" name="sidebar_box_number_2">
 						@if ($system['sidebar_box_number_2'] == -1)
 						<option selected="selected" value="-1" disabled>-- Không đặt --</option>
-						@elseif ($system['sidebar_box_number_6'] == 0)
+						@elseif ($system['sidebar_box_number_2'] == 0)
 						<option disabled="disabled" selected="selected">-- Chọn số lượng --</option>
 						@else
 						<option value="-1" disabled>-- Không đặt --</option>
