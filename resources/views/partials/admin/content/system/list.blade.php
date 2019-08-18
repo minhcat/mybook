@@ -22,7 +22,7 @@
 		<h4>Title</h4>
 		<div class="form-group">
 			<label for="name">Tiêu đề danh sách</label>
-			<input type="text" class="form-control" name="list_title" id="name" value="{{ $system['list_title_1'] }}">
+			<input type="text" class="form-control" name="list_title" id="name" value="{{ $system['list_title_3'] }}">
 		</div>
 		<div class="form-group">
 			<label for="name">Thông tin về danh sách</label>

@@ -354,16 +354,17 @@ Super Admin
 			]
 		});
 	});
+	// use echo php because laravel show error utf8 char
 	var title_list = [];
-	title_list.push('{{ $system['list_title_1'] }}');
-	title_list.push('{{ $system['list_title_2'] }}');
-	title_list.push('{{ $system['list_title_3'] }}');
-	title_list.push('{{ $system['list_title_4'] }}');
+	title_list.push('<?php echo $system['list_title_1'] ?>');
+	title_list.push('<?php echo $system['list_title_2'] ?>');
+	title_list.push('<?php echo $system['list_title_3'] ?>');
+	title_list.push('<?php echo $system['list_title_4'] ?>');
 	var info_list = [];
-	info_list.push('{{ $system['list_info_1'] }}');
-	info_list.push('{{ $system['list_info_2'] }}');
-	info_list.push('{{ $system['list_info_3'] }}');
-	info_list.push('{{ $system['list_info_4'] }}');
+	info_list.push('<?php echo $system['list_info_1'] ?>');
+	info_list.push('<?php echo $system['list_info_2'] ?>');
+	info_list.push('<?php echo $system['list_info_3'] ?>');
+	info_list.push('<?php echo $system['list_info_4'] ?>');
 	var number_list = [];
 	number_list.push('{{ $system['list_number_1'] }}');
 	number_list.push('{{ $system['list_number_2'] }}');
