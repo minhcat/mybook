@@ -94,6 +94,20 @@ class SuperAdminController extends Controller {
 			'list-notification',
 			'list-history'
 		];
+		$data['system']['list-detail'] = [
+			'truyện',
+			'nhân vật',
+			'tác giả',
+			'nhóm dịch',
+			'người dùng'
+		];
+		$data['system']['list-type-detail'] = [
+			'detail-book',
+			'detail-character',
+			'detail-author',
+			'detail-trans',
+			'detail-user'
+		];
 		// dd($data);
 		return view('pages.admin.super-admin', $data);
 	}

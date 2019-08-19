@@ -13,33 +13,29 @@
 		<div class="form-group">
 			<label for="name">Chọn trang chi tiết</label>
 			<select class="form-control number-topic" style="width: 100%;">
-				<option>truyện</option>
-				<option>nhân vật</option>
-				<option>tác giả</option>
-				<option>nhóm dịch</option>
-				<option>người dùng</option>
+				@foreach ($system['list-detail'] as $key => $detail)
+				<option value="{{ $key + 1 }}">{{ $detail }}</option>
+				@endforeach
 			</select>
 		</div>
 		<hr>
 		<h4>Title</h4>
 		<div class="form-group">
 			<label for="name">Tiêu đề trang chi tiết</label>
-			<input type="text" class="form-control" id="name" value="Bảng Xếp Hạng">
+			<input type="text" class="form-control" id="name" value="{{ $system['detail_title_1'] }}">
 		</div>
 		<div class="form-group">
 			<label for="name">Thông tin về trang chi tiết</label>
-			<input type="text" class="form-control" id="name" value="Danh sách truyện được sắp xếp dựa trên lượt xem, lượt yêu thích">
+			<input type="text" class="form-control" id="name" value="{{ $system['detail_info_1'] }}">
 		</div>
 		<hr>
 		<h4>Main</h4>
 		<div class="form-group">
 			<label for="name">Kiểu trang chi tiết</label>
 			<select class="form-control number-topic" style="width: 100%;">
-				<option>detail-book</option>
-				<option>detail-character</option>
-				<option>detail-author</option>
-				<option>detail-trans</option>
-				<option>detail-user</option>
+				@foreach ($system['list-type-detail'] as $key => $type)
+				<option value="{{ $key + 1 }}">{{ $type }}</option>
+				@endforeach
 			</select>
 		</div>
 		<hr>
@@ -47,46 +43,37 @@
 		<div class="form-group">
 			<label for="name">Số lượng bình luận</label>
 			<select class="form-control number-topic" style="width: 100%;">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>6</option>
-				<option>7</option>
-				<option>8</option>
-				<option>9</option>
-				<option>10</option>
+				@for ($i = 1; $i <= 10; $i++)
+					@if ($system['detail_comment'] == $i)
+					<option value="{{ $i }}" selected="selected">{{ $i }}</option>
+					@else
+					<option value="{{ $i }}">{{ $i }}</option>
+					@endif
+				@endfor
 			</select>
 		</div>
 		<div class="form-group">
 			<label for="name">Số bình luận thêm</label>
 			<select class="form-control number-topic" style="width: 100%;">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>6</option>
-				<option>7</option>
-				<option>8</option>
-				<option>9</option>
-				<option>10</option>
+				@for ($i = 1; $i <= 10; $i++)
+					@if ($system['detail_comment_add'] == $i)
+					<option value="{{ $i }}" selected="selected">{{ $i }}</option>
+					@else
+					<option value="{{ $i }}">{{ $i }}</option>
+					@endif
+				@endfor
 			</select>
 		</div>
 		<div class="form-group">
 			<label for="name">Số bình luận phản hồi</label>
 			<select class="form-control number-topic" style="width: 100%;">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>6</option>
-				<option>7</option>
-				<option>8</option>
-				<option>9</option>
-				<option>10</option>
+				@for ($i = 1; $i <= 10; $i++)
+					@if ($system['detail_comment_reply'] == $i)
+					<option value="{{ $i }}" selected="selected">{{ $i }}</option>
+					@else
+					<option value="{{ $i }}">{{ $i }}</option>
+					@endif
+				@endfor
 			</select>
 		</div>
 		<hr>
@@ -94,12 +81,13 @@
 		<div class="form-group">
 			<label for="name">Số lượng khối</label>
 			<select class="form-control number-topic" style="width: 100%;">
-				<option>1</option>
-				<option>2</option>
-				<option selected="selected">3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>6</option>
+				@for ($i = 1; $i <= 6; $i++)
+					@if ($system['detail_sidebar'] == $i)
+					<option value="{{ $i }}" selected="selected">{{ $i }}</option>
+					@else
+					<option value="{{ $i }}">{{ $i }}</option>
+					@endif
+				@endfor
 			</select>
 		</div>
 		<div class="row">
@@ -107,66 +95,219 @@
 				<div class="form-group">
 					<label for="name">Kiểu khối 1</label>
 					<select class="form-control type-topic1" style="width: 100%;">
-						<option>Top View</option>
-						<option selected="selected">truyện ngẫu nhiên</option>
-						<option>bình luận mới</option>
-						<option>facebook</option>
-						<option>quảng cáo</option>
+						@foreach ($system['list-type-sidebar'] as $type)
+							@if ($system['detail_sidebar_box_1'] == $type)
+							<option selected="selected" value="{{ $type }}">{{ $type }}</option>
+							@else
+							<option value="{{ $type }}">{{ $type }}</option>
+							@endif
+						@endforeach
 					</select>
 				</div>
 				<div class="form-group">
 					<label for="name">Kiểu khối 2</label>
 					<select class="form-control type-topic1" style="width: 100%;">
-						<option>Top View</option>
-						<option>truyện ngẫu nhiên</option>
-						<option selected="selected">bình luận mới</option>
-						<option>facebook</option>
-						<option>quảng cáo</option>
+						@foreach ($system['list-type-sidebar'] as $type)
+							@if ($system['detail_sidebar_box_2'] == $type)
+							<option selected="selected" value="{{ $type }}">{{ $type }}</option>
+							@else
+							<option value="{{ $type }}">{{ $type }}</option>
+							@endif
+						@endforeach
 					</select>
 				</div>
 				<div class="form-group">
 					<label for="name">Kiểu khối 3</label>
 					<select class="form-control type-topic1" style="width: 100%;">
-						<option>Top View</option>
-						<option>truyện ngẫu nhiên</option>
-						<option>bình luận mới</option>
-						<option selected="selected">facebook</option>
-						<option>quảng cáo</option>
+						@foreach ($system['list-type-sidebar'] as $type)
+							@if ($system['detail_sidebar_box_3'] == $type)
+							<option selected="selected" value="{{ $type }}">{{ $type }}</option>
+							@else
+							<option value="{{ $type }}">{{ $type }}</option>
+							@endif
+						@endforeach
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="name">Kiểu khối 4</label>
+					<select class="form-control type-topic1" style="width: 100%;">
+						@foreach ($system['list-type-sidebar'] as $type)
+							@if ($system['detail_sidebar_box_4'] == $type)
+							<option selected="selected" value="{{ $type }}">{{ $type }}</option>
+							@else
+							<option value="{{ $type }}">{{ $type }}</option>
+							@endif
+						@endforeach
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="name">Kiểu khối 5</label>
+					<select class="form-control type-topic1" style="width: 100%;">
+						@foreach ($system['list-type-sidebar'] as $type)
+							@if ($system['detail_sidebar_box_5'] == $type)
+							<option selected="selected" value="{{ $type }}">{{ $type }}</option>
+							@else
+							<option value="{{ $type }}">{{ $type }}</option>
+							@endif
+						@endforeach
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="name">Kiểu khối 6</label>
+					<select class="form-control type-topic1" style="width: 100%;">
+						@foreach ($system['list-type-sidebar'] as $type)
+							@if ($system['detail_sidebar_box_6'] == $type)
+							<option selected="selected" value="{{ $type }}">{{ $type }}</option>
+							@else
+							<option value="{{ $type }}">{{ $type }}</option>
+							@endif
+						@endforeach
 					</select>
 				</div>
 			</div>
 			<div class="col-xs-6">
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" style="width: 100%;">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option selected="selected">6</option>
+					<select class="form-control number-topic" {{ ($system['detail_sidebar_number_1'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+						@if ($system['detail_sidebar_number_1'] == -1)
+						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Không đặt --</option>
+						@endif
+						{{-- check not yet set --}}
+						@if ($system['detail_sidebar_number_1'] == 0)
+						<option disabled="disabled" selected="selected" value="-1">-- Chọn số lượng --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Chọn số lượng --</option>
+						@endif
+						{{-- show value selected --}}
+						@for ($i = 1; $i <= 10; $i++)
+							@if ($system['detail_sidebar_number_1'] == $i)
+							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
+							@else
+							<option value="{{ $i }}">{{ $i }}</option>
+							@endif
+						@endfor
 					</select>
 				</div>
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" style="width: 100%;">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option selected="selected">6</option>
+					<select class="form-control number-topic" {{ ($system['detail_sidebar_number_2'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+						@if ($system['detail_sidebar_number_2'] == -1)
+						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Không đặt --</option>
+						@endif
+						{{-- check not yet set --}}
+						@if ($system['detail_sidebar_number_2'] == 0)
+						<option disabled="disabled" selected="selected" value="-1">-- Chọn số lượng --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Chọn số lượng --</option>
+						@endif
+						{{-- show value selected --}}
+						@for ($i = 1; $i <= 10; $i++)
+							@if ($system['detail_sidebar_number_2'] == $i)
+							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
+							@else
+							<option value="{{ $i }}">{{ $i }}</option>
+							@endif
+						@endfor
 					</select>
 				</div>
 				<div class="form-group">
 					<label for="name">Số lượng hiển thị</label>
-					<select class="form-control number-topic" disabled="disabled" style="width: 100%;">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
+					<select class="form-control number-topic" {{ ($system['detail_sidebar_number_3'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+						@if ($system['detail_sidebar_number_3'] == -1)
+						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Không đặt --</option>
+						@endif
+						{{-- check not yet set --}}
+						@if ($system['detail_sidebar_number_3'] == 0)
+						<option disabled="disabled" selected="selected" value="-1">-- Chọn số lượng --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Chọn số lượng --</option>
+						@endif
+						{{-- show value selected --}}
+						@for ($i = 1; $i <= 10; $i++)
+							@if ($system['detail_sidebar_number_3'] == $i)
+							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
+							@else
+							<option value="{{ $i }}">{{ $i }}</option>
+							@endif
+						@endfor
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="name">Số lượng hiển thị</label>
+					<select class="form-control number-topic" {{ ($system['detail_sidebar_number_4'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+						@if ($system['detail_sidebar_number_4'] == -1)
+						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Không đặt --</option>
+						@endif
+						{{-- check not yet set --}}
+						@if ($system['detail_sidebar_number_4'] == 0)
+						<option disabled="disabled" selected="selected" value="-1">-- Chọn số lượng --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Chọn số lượng --</option>
+						@endif
+						{{-- show value selected --}}
+						@for ($i = 1; $i <= 10; $i++)
+							@if ($system['detail_sidebar_number_4'] == $i)
+							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
+							@else
+							<option value="{{ $i }}">{{ $i }}</option>
+							@endif
+						@endfor
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="name">Số lượng hiển thị</label>
+					<select class="form-control number-topic" {{ ($system['detail_sidebar_number_5'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+						@if ($system['detail_sidebar_number_5'] == -1)
+						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Không đặt --</option>
+						@endif
+						{{-- check not yet set --}}
+						@if ($system['detail_sidebar_number_5'] == 0)
+						<option disabled="disabled" selected="selected" value="-1">-- Chọn số lượng --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Chọn số lượng --</option>
+						@endif
+						{{-- show value selected --}}
+						@for ($i = 1; $i <= 10; $i++)
+							@if ($system['detail_sidebar_number_5'] == $i)
+							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
+							@else
+							<option value="{{ $i }}">{{ $i }}</option>
+							@endif
+						@endfor
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="name">Số lượng hiển thị</label>
+					<select class="form-control number-topic" {{ ($system['detail_sidebar_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;">
+						@if ($system['detail_sidebar_number_6'] == -1)
+						<option disabled="disabled" selected="selected" value="-1">-- Không đặt --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Không đặt --</option>
+						@endif
+						{{-- check not yet set --}}
+						@if ($system['detail_sidebar_number_6'] == 0)
+						<option disabled="disabled" selected="selected" value="-1">-- Chọn số lượng --</option>
+						@else
+						<option disabled="disabled" value="-1">-- Chọn số lượng --</option>
+						@endif
+						{{-- show value selected --}}
+						@for ($i = 1; $i <= 10; $i++)
+							@if ($system['detail_sidebar_number_6'] == $i)
+							<option value="{{ $i }}" selected="selected">{{ $i }}</option>
+							@else
+							<option value="{{ $i }}">{{ $i }}</option>
+							@endif
+						@endfor
 					</select>
 				</div>
 			</div>
