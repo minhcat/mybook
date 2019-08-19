@@ -207,13 +207,11 @@ class DetailController extends Controller {
 		$data['comments'] = CommentsBModel::get_comments_page($data['trans']->id, 'trans');
 		//set history cookie
 		$history = Cookie::get('history');
-		// dd($history);
 		// check history has value
 		if ($history == null)
 			$history = '[]';
 		//history decode
 		$history = json_decode($history);
-		// dd($history);
 		// add item
 		$item = new \stdClass;
 		$item->id = $data['trans']->id;
@@ -223,10 +221,8 @@ class DetailController extends Controller {
 		array_push($history, $item);
 
 		$history = json_encode($history);
-		// dd($history);
 
 		Cookie::queue('history',$history, 1440);
-		dd($data);
 		return view('pages.detail.detail-trans', $data);
 	}
 }
