@@ -36,7 +36,7 @@
 			<label for="name">Kiểu danh sách</label>
 			<select class="form-control number-topic" name="list_type" style="width: 100%;">
 				@foreach ($system['list-type-list'] as $key => $list)
-					@if ($system['list_type_1'] == $list)
+					@if ($system['list_type_1'] == ($key+1))
 					<option value="{{ $key + 1 }}" selected="selected">{{ $list }}</option>
 					@else
 					<option value="{{ $key + 1 }}">{{ $list }}</option>

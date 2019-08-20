@@ -740,4 +740,113 @@ class SuperAdminController extends Controller {
 
 		return redirect()->back()->with('success', 'Thay đổi giá trị hệ thống thành công');
 	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function edit_system_detail(Request $request) {
+		// dd($request->all());
+		// get index
+		$index = $request->input('detail');
+		if ($index == '1') {
+			// detail title 1
+			$id_detail_title_1 = SystemQModel::get_variable_by_name('detail_title_1')->id;
+			$detail_title_1    = $request->input('detail_title');
+			$data = ['value' => $detail_title_1];
+			SystemCModel::update_variable($id_detail_title_1, $data);
+
+			// detail info 1
+			$id_detail_info_1 = SystemQModel::get_variable_by_name('detail_info_1')->id;
+			$detail_info_1    = $request->input('detail_info');
+			$data = ['value' => $detail_info_1];
+			SystemCModel::update_variable($id_detail_info_1, $data);
+
+			// detail type 1
+			$id_detail_type_1 = SystemQModel::get_variable_by_name('detail_type_1')->id;
+			$detail_type_1    = $request->input('detail_type');
+			$data = ['value' => $detail_type_1];
+			SystemCModel::update_variable($id_detail_type_1, $data);
+
+		} else if ($index == '2') {
+			// detail title 2
+			$id_detail_title_2 = SystemQModel::get_variable_by_name('detail_title_2')->id;
+			$detail_title_2    = $request->input('detail_title');
+			$data = ['value' => $detail_title_2];
+			SystemCModel::update_variable($id_detail_title_2, $data);
+
+			// detail info 2
+			$id_detail_info_2 = SystemQModel::get_variable_by_name('detail_info_2')->id;
+			$detail_info_2    = $request->input('detail_info');
+			$data = ['value' => $detail_info_2];
+			SystemCModel::update_variable($id_detail_info_2, $data);
+
+			// detail type 2
+			$id_detail_type_2 = SystemQModel::get_variable_by_name('detail_type_2')->id;
+			$detail_type_2    = $request->input('detail_type');
+			$data = ['value' => $detail_type_2];
+			SystemCModel::update_variable($id_detail_type_2, $data);
+
+		} else if ($index == '3') {
+			// detail title 3
+			$id_detail_title_3 = SystemQModel::get_variable_by_name('detail_title_3')->id;
+			$detail_title_3    = $request->input('detail_title');
+			$data = ['value' => $detail_title_3];
+			SystemCModel::update_variable($id_detail_title_3, $data);
+
+			// detail info 3
+			$id_detail_info_3 = SystemQModel::get_variable_by_name('detail_info_3')->id;
+			$detail_info_3    = $request->input('detail_info');
+			$data = ['value' => $detail_info_3];
+			SystemCModel::update_variable($id_detail_info_3, $data);
+
+			// detail type 3
+			$id_detail_type_3 = SystemQModel::get_variable_by_name('detail_type_3')->id;
+			$detail_type_3    = $request->input('detail_type');
+			$data = ['value' => $detail_type_3];
+			SystemCModel::update_variable($id_detail_type_3, $data);
+
+		} else if ($index == '4') {
+			// detail title 4
+			$id_detail_title_4 = SystemQModel::get_variable_by_name('detail_title_4')->id;
+			$detail_title_4    = $request->input('detail_title');
+			$data = ['value' => $detail_title_4];
+			SystemCModel::update_variable($id_detail_title_4, $data);
+
+			// detail info 4
+			$id_detail_info_4 = SystemQModel::get_variable_by_name('detail_info_4')->id;
+			$detail_info_4    = $request->input('detail_info');
+			$data = ['value' => $detail_info_4];
+			SystemCModel::update_variable($id_detail_info_4, $data);
+
+			// detail type 4
+			$id_detail_type_4 = SystemQModel::get_variable_by_name('detail_type_4')->id;
+			$detail_type_4    = $request->input('detail_type');
+			$data = ['value' => $detail_type_4];
+			SystemCModel::update_variable($id_detail_type_4, $data);
+
+		} else if ($index == '5') {
+			// detail title 5
+			$id_detail_title_5 = SystemQModel::get_variable_by_name('detail_title_5')->id;
+			$detail_title_5    = $request->input('detail_title');
+			$data = ['value' => $detail_title_5];
+			SystemCModel::update_variable($id_detail_title_5, $data);
+
+			// detail info 5
+			$id_detail_info_5 = SystemQModel::get_variable_by_name('detail_info_5')->id;
+			$detail_info_5    = $request->input('detail_info');
+			$data = ['value' => $detail_info_5];
+			SystemCModel::update_variable($id_detail_info_5, $data);
+
+			// detail type 5
+			$id_detail_type_5 = SystemQModel::get_variable_by_name('detail_type_5')->id;
+			$detail_type_5    = $request->input('detail_type');
+			$data = ['value' => $detail_type_5];
+			SystemCModel::update_variable($id_detail_type_5, $data);
+
+		}
+
+		return redirect()->back()->with('success', 'Thay đổi giá trị hệ thống thành công');
+	}
 }

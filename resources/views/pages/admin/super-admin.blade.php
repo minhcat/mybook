@@ -370,6 +370,11 @@ Super Admin
 	number_list.push('{{ $system['list_number_2'] }}');
 	number_list.push('{{ $system['list_number_3'] }}');
 	number_list.push('{{ $system['list_number_4'] }}');
+	var type_list = [];
+	type_list.push('{{ $system['list_type_1'] }}');
+	type_list.push('{{ $system['list_type_2'] }}');
+	type_list.push('{{ $system['list_type_3'] }}');
+	type_list.push('{{ $system['list_type_4'] }}');
 	// detail
 	var title_detail = [];
 	title_detail.push('<?php echo $system['detail_title_1']?>');
@@ -383,5 +388,10 @@ Super Admin
 	info_detail.push('<?php echo $system['detail_info_3']?>');
 	info_detail.push('<?php echo $system['detail_info_4']?>');
 	info_detail.push('<?php echo $system['detail_info_5']?>');
+	var type_detail = [];
+	type_detail.push('{{ $system['detail_type_1'] }}');
+	type_detail.push('{{ $system['detail_type_2'] }}');
+	type_detail.push('{{ $system['detail_type_3'] }}');
+	type_detail.push('{{ $system['detail_type_4'] }}');
 </script>
 @endsection

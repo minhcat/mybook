@@ -165,7 +165,7 @@ $(document).ready(function() {
 		$('input[name="list_title"]').val(title_list[value]);
 		$('input[name="list_info"]').val(info_list[value]);
 		$('select[name="list_number"]').val(number_list[value]);
-		$('select[name="list_type"]').val(value+1);
+		$('select[name="list_type"]').val(type_list[value]);
 
 		console.log(value);
 	});
@@ -173,7 +173,7 @@ $(document).ready(function() {
 		var value = parseInt($(this).val()) - 1;
 		$('input[name="detail_title"]').val(title_detail[value]);
 		$('input[name="detail_info"]').val(info_detail[value]);
-		$('select[name="detail_type"]').val(value+1);
+		$('select[name="detail_type"]').val(type_detail[value]);
 
 		console.log(value);
 	});
