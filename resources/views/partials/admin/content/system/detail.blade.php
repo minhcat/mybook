@@ -12,7 +12,7 @@
 		<h4>Detail</h4>
 		<div class="form-group">
 			<label for="name">Chọn trang chi tiết</label>
-			<select class="form-control number-topic" style="width: 100%;">
+			<select class="form-control number-topic select-detail" style="width: 100%;">
 				@foreach ($system['list-detail'] as $key => $detail)
 				<option value="{{ $key + 1 }}">{{ $detail }}</option>
 				@endforeach
@@ -22,17 +22,17 @@
 		<h4>Title</h4>
 		<div class="form-group">
 			<label for="name">Tiêu đề trang chi tiết</label>
-			<input type="text" class="form-control" id="name" value="{{ $system['detail_title_1'] }}">
+			<input type="text" class="form-control" name="detail_title" id="name" value="{{ $system['detail_title_1'] }}">
 		</div>
 		<div class="form-group">
 			<label for="name">Thông tin về trang chi tiết</label>
-			<input type="text" class="form-control" id="name" value="{{ $system['detail_info_1'] }}">
+			<input type="text" class="form-control" name="detail_info" id="name" value="{{ $system['detail_info_1'] }}">
 		</div>
 		<hr>
 		<h4>Main</h4>
 		<div class="form-group">
 			<label for="name">Kiểu trang chi tiết</label>
-			<select class="form-control number-topic" style="width: 100%;">
+			<select class="form-control number-topic" name="detail_type" style="width: 100%;">
 				@foreach ($system['list-type-detail'] as $key => $type)
 				<option value="{{ $key + 1 }}">{{ $type }}</option>
 				@endforeach
@@ -80,7 +80,7 @@
 		<h4>Sidebar</h4>
 		<div class="form-group">
 			<label for="name">Số lượng khối</label>
-			<select class="form-control number-topic" style="width: 100%;">
+			<select class="form-control number-box" style="width: 100%;">
 				@for ($i = 1; $i <= 6; $i++)
 					@if ($system['detail_sidebar'] == $i)
 					<option value="{{ $i }}" selected="selected">{{ $i }}</option>
@@ -91,8 +91,8 @@
 			</select>
 		</div>
 		<div class="row">
-			<div class="col-xs-6">
-				<div class="form-group">
+			<div class="col-xs-6 sidebar-detail">
+				<div class="form-group box-type type1">
 					<label for="name">Kiểu khối 1</label>
 					<select class="form-control type-topic1" style="width: 100%;">
 						@foreach ($system['list-type-sidebar'] as $type)
@@ -104,7 +104,7 @@
 						@endforeach
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-type type2">
 					<label for="name">Kiểu khối 2</label>
 					<select class="form-control type-topic1" style="width: 100%;">
 						@foreach ($system['list-type-sidebar'] as $type)
@@ -116,7 +116,7 @@
 						@endforeach
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-type type3">
 					<label for="name">Kiểu khối 3</label>
 					<select class="form-control type-topic1" style="width: 100%;">
 						@foreach ($system['list-type-sidebar'] as $type)
@@ -128,7 +128,7 @@
 						@endforeach
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-type type4 hide">
 					<label for="name">Kiểu khối 4</label>
 					<select class="form-control type-topic1" style="width: 100%;">
 						@foreach ($system['list-type-sidebar'] as $type)
@@ -140,7 +140,7 @@
 						@endforeach
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-type type5 hide">
 					<label for="name">Kiểu khối 5</label>
 					<select class="form-control type-topic1" style="width: 100%;">
 						@foreach ($system['list-type-sidebar'] as $type)
@@ -152,7 +152,7 @@
 						@endforeach
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-type type6 hide">
 					<label for="name">Kiểu khối 6</label>
 					<select class="form-control type-topic1" style="width: 100%;">
 						@foreach ($system['list-type-sidebar'] as $type)
@@ -165,8 +165,8 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-xs-6">
-				<div class="form-group">
+			<div class="col-xs-6 sidebar-detail">
+				<div class="form-group box-number number1">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['detail_sidebar_number_1'] == -1) ? 'disabled' : '' }} style="width: 100%;">
 						@if ($system['detail_sidebar_number_1'] == -1)
@@ -190,7 +190,7 @@
 						@endfor
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-number number2">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['detail_sidebar_number_2'] == -1) ? 'disabled' : '' }} style="width: 100%;">
 						@if ($system['detail_sidebar_number_2'] == -1)
@@ -214,7 +214,7 @@
 						@endfor
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-number number3">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['detail_sidebar_number_3'] == -1) ? 'disabled' : '' }} style="width: 100%;">
 						@if ($system['detail_sidebar_number_3'] == -1)
@@ -238,7 +238,7 @@
 						@endfor
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-number number4 hide">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['detail_sidebar_number_4'] == -1) ? 'disabled' : '' }} style="width: 100%;">
 						@if ($system['detail_sidebar_number_4'] == -1)
@@ -262,7 +262,7 @@
 						@endfor
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-number number5 hide">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['detail_sidebar_number_5'] == -1) ? 'disabled' : '' }} style="width: 100%;">
 						@if ($system['detail_sidebar_number_5'] == -1)
@@ -286,7 +286,7 @@
 						@endfor
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group box-number number6 hide">
 					<label for="name">Số lượng hiển thị</label>
 					<select class="form-control number-topic" {{ ($system['detail_sidebar_number_6'] == -1) ? 'disabled' : '' }} style="width: 100%;">
 						@if ($system['detail_sidebar_number_6'] == -1)
@@ -314,8 +314,7 @@
 		</div>
 	</div>
 	<div class="box-footer">
-		<button class="btn btn-primary">Thay đổi</button>
-		<button class="btn btn-success">Hoàn tác</button>
-		<button class="btn btn-info">Xem thử</button>
+		<button type="submit" class="btn btn-primary">Thay đổi</button>
+		<button type="button" class="btn btn-success">Hoàn tác</button>
 	</div>
 </div>

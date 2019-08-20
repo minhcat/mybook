@@ -146,12 +146,34 @@ $(document).ready(function() {
 			$('.sidebar-list .form-group.box-number.number'+index+' select').val('6');
 		}
 	});
+	$('.sidebar-detail .form-group.box-type select').change(function() {
+		debugger;
+		var value = $(this).val();
+		var index = $(this).parent().attr('class');
+		index = index.replace('form-group box-type ', '');
+		index = index.replace('type', '');
+		if (value == 'facebook' || value == 'advertisement') {
+			$('.sidebar-detail .form-group.box-number.number'+index+' select').attr('disabled', true);
+			$('.sidebar-detail .form-group.box-number.number'+index+' select').val('-1');
+		} else {
+			$('.sidebar-detail .form-group.box-number.number'+index+' select').attr('disabled', false);
+			$('.sidebar-detail .form-group.box-number.number'+index+' select').val('6');
+		}
+	});
 	$('select.select-list').change(function() {
 		var value = parseInt($(this).val()) - 1;
 		$('input[name="list_title"]').val(title_list[value]);
 		$('input[name="list_info"]').val(info_list[value]);
 		$('select[name="list_number"]').val(number_list[value]);
 		$('select[name="list_type"]').val(value+1);
+
+		console.log(value);
+	});
+	$('select.select-detail').change(function() {
+		var value = parseInt($(this).val()) - 1;
+		$('input[name="detail_title"]').val(title_detail[value]);
+		$('input[name="detail_info"]').val(info_detail[value]);
+		$('select[name="detail_type"]').val(value+1);
 
 		console.log(value);
 	});
