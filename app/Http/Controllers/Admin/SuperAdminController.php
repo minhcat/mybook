@@ -847,6 +847,78 @@ class SuperAdminController extends Controller {
 
 		}
 
+		// detail number comment
+		$id_detail_comment = SystemQModel::get_variable_by_name('detail_comment')->id;
+		$detail_comment    = $request->input('detail_comment');
+		$data = ['value' => $detail_comment];
+		SystemCModel::update_variable($id_detail_comment, $data);
+
+		// detail number comment add
+		$id_detail_comment_add = SystemQModel::get_variable_by_name('detail_comment_add')->id;
+		$detail_comment_add    = $request->input('detail_comment_add');
+		$data = ['value' => $detail_comment_add];
+		SystemCModel::update_variable($id_detail_comment_add, $data);
+
+		// detail number comment reply
+		$id_detail_comment_reply = SystemQModel::get_variable_by_name('detail_comment_reply')->id;
+		$detail_comment_reply    = $request->input('detail_comment_reply');
+		$data = ['value' => $detail_comment_reply];
+		SystemCModel::update_variable($id_detail_comment_reply, $data);
+
+		// sidebar number box
+		$id_detail_sidebar = SystemQModel::get_variable_by_name('detail_sidebar')->id;
+		$detail_sidebar    = $request->input('detail_sidebar');
+		$data = ['value' => $detail_sidebar];
+		SystemCModel::update_variable($id_detail_sidebar, $data);
+
+		// sidebar box number 1
+		$id_detail_sidebar_box_1 = SystemQModel::get_variable_by_name('detail_sidebar_box_1')->id;
+		$detail_sidebar_box_1    = $request->input('detail_sidebar_box_1');
+		if ($detail_sidebar_box_1 != null) {
+			$data = ['value' => $detail_sidebar_box_1];
+			SystemCModel::update_variable($id_detail_sidebar_box_1, $data);
+		}
+
+		// sidebar box number 2
+		$id_detail_sidebar_box_2 = SystemQModel::get_variable_by_name('detail_sidebar_box_2')->id;
+		$detail_sidebar_box_2    = $request->input('detail_sidebar_box_2');
+		if ($detail_sidebar_box_2 != null) {
+			$data = ['value' => $detail_sidebar_box_2];
+			SystemCModel::update_variable($id_detail_sidebar_box_2, $data);
+		}
+
+		// sidebar box number 3
+		$id_detail_sidebar_box_3 = SystemQModel::get_variable_by_name('detail_sidebar_box_3')->id;
+		$detail_sidebar_box_3    = $request->input('detail_sidebar_box_3');
+		if ($detail_sidebar_box_3 != null) {
+			$data = ['value' => $detail_sidebar_box_3];
+			SystemCModel::update_variable($id_detail_sidebar_box_3, $data);
+		}
+
+		// sidebar box number 4
+		$id_detail_sidebar_box_4 = SystemQModel::get_variable_by_name('detail_sidebar_box_4')->id;
+		$detail_sidebar_box_4    = $request->input('detail_sidebar_box_4');
+		if ($detail_sidebar_box_4 != null) {
+			$data = ['value' => $detail_sidebar_box_4];
+			SystemCModel::update_variable($id_detail_sidebar_box_4, $data);
+		}
+
+		// sidebar box number 5
+		$id_detail_sidebar_box_5 = SystemQModel::get_variable_by_name('detail_sidebar_box_5')->id;
+		$detail_sidebar_box_5    = $request->input('detail_sidebar_box_5');
+		if ($detail_sidebar_box_5 != null) {
+			$data = ['value' => $detail_sidebar_box_5];
+			SystemCModel::update_variable($id_detail_sidebar_box_5, $data);
+		}
+
+		// sidebar box number 6
+		$id_detail_sidebar_box_6 = SystemQModel::get_variable_by_name('detail_sidebar_box_6')->id;
+		$detail_sidebar_box_6    = $request->input('detail_sidebar_box_6');
+		if ($detail_sidebar_box_6 != null) {
+			$data = ['value' => $detail_sidebar_box_6];
+			SystemCModel::update_variable($id_detail_sidebar_box_6, $data);
+		}
+
 		return redirect()->back()->with('success', 'Thay đổi giá trị hệ thống thành công');
 	}
 }
