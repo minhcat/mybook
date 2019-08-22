@@ -106,6 +106,7 @@ MOD
 @section('define-footer')
 	<script src="{{ asset('js/admin/jquery.dataTables.js') }}"></script>
 	<script src="{{ asset('js/admin/dataTables.bootstrap.js') }}"></script>
+	<script src="{{ asset('js/admin/mod.js') }}"></script>
 
 	<script>
 		$(function () {

@@ -24,4 +24,17 @@ class CommentsSaveQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get comment
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_comments_save_by_comment_id($comment_id) {
+		$result = DB::table('comments_save')
+				->where('id_comment', $comment_id)
+				->get();
+
+		return $result;
+	}
 }

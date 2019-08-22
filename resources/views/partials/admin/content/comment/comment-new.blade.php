@@ -28,9 +28,9 @@
 				</div>
 				<!-- tag comment -->
 				<div class="direct-chat-button">
-					<span class="fa fa-plus bg-blue" title="thêm vào danh sách kiểm tra" data-toggle="modal" data-target="#modal-comment-save"></span>
-					<span class="fa fa-flag bg-orange" title="phạt người dùng này" data-toggle="modal" data-target="#modal-comment-punish"></span>
-					<span class="fa fa-ban bg-red" title="cấm đăng nhập người dùng này" data-toggle="modal" data-target="#modal-comment-ban"></span>
+					<span class="fa fa-plus bg-blue" title="thêm vào danh sách kiểm tra" data-toggle="modal" data-target="#modal-comment-save" data-id="{{ $comment->id }}"></span>
+					<span class="fa fa-flag bg-orange" title="phạt người dùng này" data-toggle="modal" data-target="#modal-comment-punish" data-id="{{ $comment->id }}"></span>
+					<span class="fa fa-ban bg-red" title="cấm đăng nhập người dùng này" data-toggle="modal" data-target="#modal-comment-ban" data-id="{{ $comment->id }}"></span>
 				</div>
 
 				<!-- /.direct-chat-text -->

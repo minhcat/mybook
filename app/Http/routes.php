@@ -73,6 +73,15 @@ Route::group(['prefix' => 'admin'], function() {
 
 	Route::get('super-admin', 'Admin\SuperAdminController@super_admin');
 
+	Route::group(['prefix' => 'mod'], function() {
+
+		Route::group(['prefix' => 'ajax'], function() {
+
+			Route::get('add_list_save/{id_comment}', 'Admin\ModController@add_list_save');
+		});
+
+	});
+
 	Route::group(['prefix' => 'uploader'], function() {
 
 		// book

@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\UsersPunishQModel;
 use App\Http\Models\QModels\UsersBanQModel;
+use App\Http\Models\QModels\CommentsSaveQModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\UsersBModel;
+use App\Http\Models\CModels\CommentsSaveCModel;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Contracts\Filesystem\Factory;
 
@@ -36,5 +38,24 @@ class ModController extends Controller {
 		$data['comments_books_follow'] = CommentsBModel::get_comments_in_books_follow($data['books_follow']);
 		// dd($data);
 		return view('pages.admin.mod', $data);
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function add_list_save($id_comment) {
+		// check comment in data
+		$comment = CommentsSaveQModel::get_comments_save_by_comment_id($id_comment);
+		if (!empty($comment)) {
+			return;
+		}
+		$data = [
+			'id_comment'  => $id_comment,
+			'id_user_mod' => 13,
+			'date'        => date('Y-m-d H:i:s')
+		];
+		CommentsSaveCModel::insert_comment($data);
 	}
 }

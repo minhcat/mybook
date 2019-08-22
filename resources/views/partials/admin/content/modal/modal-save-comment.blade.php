@@ -11,7 +11,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Hủy</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal">Đồng ý</button>
+				<button type="button" class="btn btn-primary" data-id="0" data-dismiss="modal">Đồng ý</button>
 			</div>
 		</div>
 		<!-- /.modal-content -->
