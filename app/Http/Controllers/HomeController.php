@@ -10,6 +10,8 @@ use App\Http\Models\QModels\TransQModel;
 use App\Http\Models\QModels\CharactersQModel;
 use App\Http\Models\QModels\BooksViewQModel;
 use App\Http\Models\QModels\CommentsQModel;
+use App\Http\Models\QModels\SlidersQModel;
+use App\Http\Models\QModels\SystemQModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Helpers\Helper;
 use App\Http\Helpers\Constants;
@@ -44,6 +46,11 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
+		//get sliders
+		$number_slider   = SystemQModel::get_variable_by_name('slider_select_images');
+		$number_slider   = (int)$number_slider->value;
+		$data['sliders'] = SlidersQModel::get_sliders_with_number($number_slider);
+
 		//get data topic view
 		$background = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
 		$books_view = BooksQModel::get_books_home_view(Constants::BOOKS_ITEM_VIEW);
@@ -73,7 +80,7 @@ class HomeController extends Controller {
 		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
 
 		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
-		// dd($data['random_book']);
+		// dd($data);
 		// dd($data['top_view']['month']);
 
 		return view('pages.home', $data);

@@ -19,4 +19,18 @@ class SlidersQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get categories by name
+	 * @param 
+	 * @return object|boolean : all properties from `categories` table
+	 */
+	public static function get_sliders_with_number($number) {
+		$result = DB::table('sliders')
+				->orderBy('index','desc')
+				->take($number)
+				->get();
+
+		return $result;
+	}
 }
