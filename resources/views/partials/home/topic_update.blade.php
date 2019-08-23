@@ -1,5 +1,5 @@
 <div class="topic clearfix update">
-	<div class="topic-header">Truyện Mới Cập Nhật</div>
+	<div class="topic-header">{{ $title_update }}</div>
 	<div class="clearfix"></div>
 	<div class="topic-content">
 		<div class="row">

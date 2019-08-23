@@ -1,5 +1,5 @@
 <div class="topic clearfix rate">
-	<div class="topic-header">Truyện Đánh Giá Cao</div>
+	<div class="topic-header">{{ $title_rate }}</div>
 	<div class="clearfix"></div>
 	<div class="topic-content">
 		<div class="row">

@@ -1,5 +1,5 @@
 <div class="topic clearfix comment">
-	<div class="topic-header">Truyện Bình Luận Nhiều</div>
+	<div class="topic-header">{{ $title_comment }}</div>
 	<div class="clearfix"></div>
 	<div class="topic-content">
 		<div class="row">
