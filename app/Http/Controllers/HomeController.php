@@ -52,11 +52,14 @@ class HomeController extends Controller {
 		$data['sliders'] = SlidersQModel::get_sliders_with_number($number_slider);
 
 		//get data topic view
-		$background = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
-		$books_view = BooksQModel::get_books_home_view(Constants::BOOKS_ITEM_VIEW);
-		$books_view = Helper::add_background($books_view, $background);
+		$background  = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
+		$title_view  = SystemQModel::get_variable_by_name('topic_name_1')->value;
+		$number_view = (int)SystemQModel::get_variable_by_name('topic_number_1')->value;
+		$books_view  = BooksQModel::get_books_home_view($number_view);
+		$books_view  = Helper::add_background($books_view, $background);
 
 		$data['books_view'] = $books_view;
+		$data['title_view'] = $title_view;
 
 		//get data topic update
 		$books_update = BooksQModel::get_books_home_update(Constants::BOOKS_ITEM_UPDATE);

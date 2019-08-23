@@ -1,5 +1,5 @@
 <div class="topic clearfix view">
-	<div class="topic-header">Bảng Xếp Hạng</div>
+	<div class="topic-header">{{ $title_view }}</div>
 	<div class="clearfix"></div>
 	<div class="topic-content">
 		<div class="row">
