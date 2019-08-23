@@ -23,4 +23,17 @@ class UsersPunishQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_user_punish_by_user_id($user_id) {
+		$result = DB::table('users_punish')
+				->where('id_user_punish', $user_id)
+				->get();
+
+		return $result;
+	}
 }

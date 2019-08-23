@@ -11,6 +11,8 @@ use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\UsersBModel;
 use App\Http\Models\CModels\CommentsSaveCModel;
+use App\Http\Models\CModels\UsersPunishCModel;
+use App\Http\Models\CModels\UsersBanCModel;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Contracts\Filesystem\Factory;
 
@@ -57,5 +59,56 @@ class ModController extends Controller {
 			'date'        => date('Y-m-d H:i:s')
 		];
 		CommentsSaveCModel::insert_comment($data);
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function punish_user($id_user, Request $request) {
+		// dd($request->all());
+		$id_comment = $request->input('id_comment');
+		$time_punish = $request->input('time');
+		$users_punish = UsersPunishQModel::get_user_punish_by_user_id($id_user);
+		if (empty($users_punish)) {
+			$data = [
+				'id_user_punish' => $id_user,
+				'id_user_mod'    => 13,
+				'id_comment'     => $id_comment,
+				'time_punish'    => $time_punish,
+				'date'           => date('Y-m-d H:i:s')
+			];
+			UsersPunishCModel::insert_user_punish($data);
+		} else {
+			$data = [
+				'id_user_punish' => $id_user,
+				'id_user_mod'    => 13,
+				'id_comment'     => $id_comment,
+				'time_punish'    => $time_punish,
+				'date'           => date('Y-m-d H:i:s')
+			];
+			UsersPunishCModel::update_user_punish($users_punish[0]->id, $data);
+		}
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ban_user($id_user, Request $request) {
+		dd($request->all());
+		$id_comment = $request->input('id_comment');
+		$users_ban = UsersBanQModel::get_user_ban_by_user_id($id_user);
+		if (empty($users_ban)) {
+			$data = [
+				'id_user_ban' => $id_user,
+				'id_user_mod' => 13,
+				'id_comment'  => $id_comment,
+				'date'        => date('Y-m-d H:i:s')
+			];
+			UsersBanCModel::insert_user_ban($data);
+		}
 	}
 }

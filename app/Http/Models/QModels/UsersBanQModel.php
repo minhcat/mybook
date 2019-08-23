@@ -23,4 +23,17 @@ class UsersBanQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_user_ban_by_user_id($user_id) {
+		$result = DB::table('users_ban')
+				->where('id_user_ban', $user_id)
+				->get();
+
+		return $result;
+	}
 }

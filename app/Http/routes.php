@@ -78,6 +78,11 @@ Route::group(['prefix' => 'admin'], function() {
 		Route::group(['prefix' => 'ajax'], function() {
 
 			Route::get('add_list_save/{id_comment}', 'Admin\ModController@add_list_save');
+
+			Route::post('punish_user/{id_user}', 'Admin\ModController@punish_user');
+
+			Route::post('ban_user/{id_user}', 'Admin\ModController@ban_user');
+			
 		});
 
 	});

@@ -7,36 +7,37 @@
 				<h4 class="modal-title">Phạt Người Dùng</h4>
 			</div>
 			<div class="modal-body">
+				<input class="token" type="hidden" name="_token" value="{{ csrf_token() }}">
 				<p>Chọn hình thức phạt</p>
 				<div class="form-group">
 					<div class="radio">
 						<label>
-							<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-							Xóa bình luận
+							<input type="radio" name="time" id="optionsRadios1" value="5" checked>
+							Cấm bình luận 3 ngày
 						</label>
 					</div>
 					<div class="radio">
 						<label>
-							<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-							Cấm bình luận trong 5 ngày
+							<input type="radio" name="time" id="optionsRadios2" value="7">
+							Cấm bình luận trong 1 tuần
 						</label>
 					</div>
 					<div class="radio">
 						<label>
-							<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-							Cấm bình luận trong 20 ngày
+							<input type="radio" name="time" id="optionsRadios3" value="30">
+							Cấm bình luận trong 1 tháng
 						</label>
 					</div>
 					<div class="radio">
 						<label>
-							<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+							<input type="radio" name="time" id="optionsRadios3" value="90">
+							Cấm bình luận trong 3 tháng
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="time" id="optionsRadios3" value="9000">
 							Cấm bình luận vĩnh viễn
-						</label>
-					</div>
-					<div class="radio">
-						<label>
-							<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-							Cấm đăng nhập trong 40 ngày
 						</label>
 					</div>
 				</div>

@@ -67,7 +67,7 @@ $(document).ready(function() {
 			url: '/admin/admin/ajax/reply_user/'+id+'/'+reply,
 			success:function(data) {
 				$('.well').addClass('in');
-				$('.well p').text('phản hồi thành công')
+				$('.well p').text('phản hồi thành công');
 			}
 		});
 	});
@@ -83,7 +83,6 @@ $(document).ready(function() {
 		var from    = $(this).parents('.box#box-mail').find('select.from').val();
 		var content = $(this).parents('.box#box-mail').find('textarea.content').text();
 		var token   = $(this).parents('.box#box-mail').find('input.token').val();
-		debugger;
 		$.ajax({
 			type: 'POST',
 			url: '/admin/admin/ajax/post_mail',
