@@ -13,7 +13,7 @@ class BooksViewQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_books_view_current_date() {
+	public static function get_books_view_current_date($number) {
 		$date = date('d', strtotime('2019-06-07'));
 
 		$result = DB::table('books_view as bv')
@@ -21,7 +21,7 @@ class BooksViewQModel extends Model
 				->where('date', $date)
 				->select('b.name as name', 'bv.view as view')
 				->orderBy('view', 'desc')
-				->take(6)
+				->take($number)
 				->get();
 
 		return $result;
@@ -32,7 +32,7 @@ class BooksViewQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_books_view_current_week() {
+	public static function get_books_view_current_week($number) {
 		$day =  (int)date('w', strtotime('2019-06-07')) + 1;
 		$date = (int)date('d', strtotime('2019-06-07'));
 		$week = 0;
@@ -50,7 +50,7 @@ class BooksViewQModel extends Model
 				->select('b.name as name', DB::raw('sum(bv.view) as view'))
 				->groupBy('id_book')
 				->orderBy('view', 'desc')
-				->take(6)
+				->take($number)
 				->get();
 
 		return $result;
@@ -61,7 +61,7 @@ class BooksViewQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_books_view_current_month() {
+	public static function get_books_view_current_month($number) {
 		$month = date('m', strtotime('2019-06-07'));
 
 		$result = DB::table('books_view as bv')
@@ -70,7 +70,7 @@ class BooksViewQModel extends Model
 				->select('b.name as name', DB::raw('sum(bv.view) as view'))
 				->groupBy('id_book')
 				->orderBy('view', 'desc')
-				->take(6)
+				->take($number)
 				->get();
 
 		return $result;

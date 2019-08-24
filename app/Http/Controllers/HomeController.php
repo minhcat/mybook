@@ -165,17 +165,35 @@ class HomeController extends Controller {
 		$data['data_4']  = $data_4;
 
 		//data system sidebar
-		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook', 'advertisement'];
+		$sidebar_home = [];
+		$data['sidebar'] = [];
+		$topview_number = 5;
+		$random_book    = 5;
+		$new_comment    = 5;
+		$sidebar_home_number = (int)SystemQModel::get_variable_by_name('sidebar_number_box')->value;
+		for ($i = 0; $i < $sidebar_home_number; $i++) {
+			$sidebar_home[$i] = SystemQModel::get_variable_by_name('sidebar_box_type_'.($i+1))->value;
+			array_push($data['sidebar'], $sidebar_home[$i]);
+			if ($sidebar_home[$i] == 'top-view') {
+				$topview_number = (int)SystemQModel::get_variable_by_name('sidebar_box_number_'.($i+1))->value;
+			} elseif ($sidebar_home[$i] == 'random-book') {
+				$random_book = (int)SystemQModel::get_variable_by_name('sidebar_box_number_'.($i+1))->value;
+			} elseif ($sidebar_home[$i] == 'new-comment') {
+				$new_comment = (int)SystemQModel::get_variable_by_name('sidebar_box_number_'.($i+1))->value;
+			}
+		}
+		
+		// if ()
 
 		//data top-view sidebar
-		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
-		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
-		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
+		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date($topview_number);
+		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week($topview_number);
+		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month($topview_number);
 
 		//data random-book sidebar
-		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
+		$data['random_book'] = BooksBModel::get_books_random_sidebar($random_book);
 
-		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
+		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar($new_comment);
 		// dd($data);
 		// dd($data['top_view']['month']);
 
