@@ -60,11 +60,12 @@ class BooksQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_books_home_view($number) {
+	public static function get_books_home_view($number, $skip) {
 		$result = DB::table('books')
 				->where('deleted', 0)
 				->where('approved', 1)
 				->orderBy('view','desc')
+				->skip($skip)
 				->take($number)
 				->get();
 

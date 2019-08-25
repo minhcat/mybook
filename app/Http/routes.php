@@ -15,6 +15,12 @@ Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::group(['prefix' => 'home'], function() {
+
+	Route::get('ajax/add_new_view/{index}', 'HomeController@add_new_view');
+
+});
+
 Route::get('read/{book_slug}/{trans_slug}/{chap_slug}', 'ReadController@index');
 
 Route::group(['prefix' => 'list'], function() {

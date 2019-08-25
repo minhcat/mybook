@@ -26,7 +26,6 @@ $(document).ready(function() {
 	var enter_link_book = 0;
 	
 	$('.show-popup.book').mouseenter(function() {
-		console.log('enter');
 		enter_link_book = 1;
 		$('.popup.user').css('display','none');
 
@@ -105,17 +104,21 @@ $(document).ready(function() {
 	var data6 = '<div class="book col-lg-3 col-md-3"><div class="book-content"><img src="image/attack-on-titan-movie.jpg"><div class="book-info"><div class="name">Attack On Titan</div><div class="group row"><div class="comment col-md-4"><span class="glyphicon glyphicon-comment"></span> <span>100</span></div><div class="like col-md-4"><span class="glyphicon glyphicon-heart"></span> <span>100</span></div><div class="view col-md-4"><span class="glyphicon glyphicon-eye-open"></span> <span>100</span></div></div></div><div class="book-hover bg-turquoise"><div class="name">Attack On Titan</div><div class="type">phiêu lưu, kinh dị, lãng mạn</div><div class="chap">75 tập</div><button class="play">Xem Ngay</button><div class="group row"><div class="comment col-md-4"><span class="glyphicon glyphicon-comment"></span> <span>100</span></div><div class="like col-md-4"><span class="glyphicon glyphicon-heart"></span> <span>100</span></div><div class="view col-md-4"><span class="glyphicon glyphicon-eye-open"></span> <span>100</span></div></div></div></div></div>';
 	var data7 = '<div class="book col-lg-3 col-md-3"><div class="book-content"><img src="image/seiken-tsukai-no-kinshuu-eishou.jpg"><div class="book-info"><div class="name">Seiken Tsukai no Kinshuu Eishou</div><div class="group row"><div class="like col-md-4"><span class="glyphicon glyphicon-heart"></span> <span>100</span></div><div class="comment col-md-4"><span class="glyphicon glyphicon-comment"></span> <span>100</span></div><div class="view col-md-4"><span class="glyphicon glyphicon-eye-open"></span> <span>100</span></div></div></div><div class="book-hover bg-red"><div class="name">Seiken Tsukai no Kinshuu...</div><div class="type">phiêu lưu, giả tưởng, hài hước</div><div class="chap">25 tập</div><button class="play">Xem Ngay</button><div class="group row"><div class="like col-md-4"><span class="glyphicon glyphicon-heart"></span> <span>100</span></div><div class="comment col-md-4"><span class="glyphicon glyphicon-comment"></span> <span>100</span></div><div class="view col-md-4"><span class="glyphicon glyphicon-eye-open"></span> <span>100</span></div></div></div></div></div>';
 	var data8 = '<div class="book col-lg-3 col-md-3"><div class="book-content"><img src="image/shokugeki-no-souma.jpg"><div class="book-info"><div class="name">Shokugeki no Souma</div><div class="group row"><div class="like col-md-4"><span class="glyphicon glyphicon-heart"></span> <span>100</span></div><div class="comment col-md-4"><span class="glyphicon glyphicon-comment"></span> <span>100</span></div><div class="view col-md-4"><span class="glyphicon glyphicon-eye-open"></span> <span>100</span></div></div></div><div class="book-hover bg-red"><div class="name">Shokugeki no Souma</div><div class="type">Ẩm thực, tình cảm, hài hước</div><div class="chap">35 tập</div><button class="play">Xem Ngay</button><div class="group row"><div class="like col-md-4"><span class="glyphicon glyphicon-heart"></span> <span>100</span></div><div class="comment col-md-4"><span class="glyphicon glyphicon-comment"></span> <span>100</span></div><div class="view col-md-4"><span class="glyphicon glyphicon-eye-open"></span> <span>100</span></div></div></div></div></div>';
-	$('.view .btn.btn-link').click(function(){
+	$('.topic.view .topic-more .btn.btn-link').click(function(){
 		var parent = $(this).parent().parent();
 		var row = parent.find('.topic-content > .row');
-		row.append(data1);
-		row.append(data1);
-		row.append(data1);
-		row.append(data1);
-		row.append(data2);
-		row.append(data2);
-		row.append(data2);
-		row.append(data2);
+		var start = 8;
+		$.ajax({
+			type: 'GET',
+			url: 'home/ajax/add_new_view/'+start,
+			success:function(books) {
+				console.log(books);
+				for (i = 0; i <= 4; i++) {
+					// console.log(books[i].name);
+					row.append('<div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6"><div class="book-content"><img src="image/books/'+books[i].image+'.jpg"><div class="book-info"><div class="name">'+books[i].name+'</div><div class="group row"><div class="view col-md-6 col-sm-4 col-xs-4 col-6 text-left"><span class="glyphicon glyphicon-eye-open"></span> <span>'+books[i].view+'</span></div><div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-6 col-xs-push-5 text-right"><span class="glyphicon glyphicon-heart"></span> <span>'+books[i].like+'</span></div></div></div><div class="rank bg-gray">'+(i+start)+'</div><div class="book-hover bg-gray"><div class="name">'+books[i].name+'</div><div class="type">Khoa học viễn tưởng, hài hước</div><div class="chap">75 tập</div><a href="detail-book.html" class="btn play">Xem Ngay</a><div class="group row"><div class="view col-md-6 col-sm-4 col-xs-4"><span class="glyphicon glyphicon-eye-open"></span> <span>'+books[i].view+'<span></div><div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-xs-push-5"><span class="glyphicon glyphicon-heart"></span> <span>'+books[i].like+'</span></div></div></div></div></div>');
+				}
+			}
+		});
 	});
 	$('.update .btn.btn-link').click(function(){
 		var parent = $(this).parent().parent();

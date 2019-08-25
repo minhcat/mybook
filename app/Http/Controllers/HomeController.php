@@ -34,8 +34,7 @@ class HomeController extends Controller {
 	 *
 	 * @return void
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 		// $this->middleware('auth');
 	}
 
@@ -44,8 +43,7 @@ class HomeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
+	public function index() {
 		//get sliders
 		$number_slider   = SystemQModel::get_variable_by_name('slider_select_images');
 		$number_slider   = (int)$number_slider->value;
@@ -58,7 +56,7 @@ class HomeController extends Controller {
 		$type_1   = SystemQModel::get_variable_by_name('topic_type_1')->value;
 		if ($type_1 == 'topic-view') {
 			$type_1  = 'topic_view';
-			$books_1 = BooksQModel::get_books_home_view($number_1);
+			$books_1 = BooksQModel::get_books_home_view($number_1, 0);
 			$books_1 = Helper::add_background($books_1, $background);
 			$data_1  = ['books_view' => $books_1, 'title_view' => $title_1];
 		} else if ($type_1 == 'topic-update') {
@@ -200,4 +198,13 @@ class HomeController extends Controller {
 		return view('pages.home', $data);
 	}
 
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function add_new_view($index) {
+		$books = BooksQModel::get_books_home_view(4, $index);
+		return $books;
+	}
 }
