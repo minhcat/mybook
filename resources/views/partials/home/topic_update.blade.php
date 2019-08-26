@@ -11,7 +11,7 @@
 						<div class="name">{{ $book->name }}</div>
 						<div class="chap">Chap 25: Không kẻ nào điếc hơn kẻ không muốn nghe</div>
 					</div>
-					@if ($key <= 1) 
+					@if ($key <= 2) 
 					<div class="new">NEW</div>
 					@endif
 					<div class="book-hover bg-blue">

@@ -77,11 +77,12 @@ class BooksQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_books_home_update($number) {
+	public static function get_books_home_update($number, $skip) {
 		$result = DB::table('books')
 				->where('deleted', 0)
 				->where('approved', 1)
 				->orderBy('update_at','desc')
+				->skip($skip)
 				->take($number)
 				->get();
 
@@ -93,11 +94,12 @@ class BooksQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_books_home_comment($number) {
+	public static function get_books_home_comment($number, $skip) {
 		$result = DB::table('books')
 				->where('deleted', 0)
 				->where('approved', 1)
 				->orderBy('comment','desc')
+				->skip($skip)
 				->take($number)
 				->get();
 
@@ -109,11 +111,12 @@ class BooksQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_books_home_rate($number) {
+	public static function get_books_home_rate($number, $skip) {
 		$result = DB::table('books')
 				->where('deleted', 0)
 				->where('approved', 1)
 				->orderBy('rate','desc')
+				->skip($skip)
 				->take($number)
 				->get();
 
