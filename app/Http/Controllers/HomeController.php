@@ -56,7 +56,7 @@ class HomeController extends Controller {
 		$type_1   = SystemQModel::get_variable_by_name('topic_type_1')->value;
 		if ($type_1 == 'topic-view') {
 			$type_1  = 'topic_view';
-			$books_1 = BooksQModel::get_books_home_view($number_1, 0);
+			$books_1 = BooksBModel::get_books_home_view($number_1, 0);
 			$books_1 = Helper::add_background($books_1, $background);
 			$data_1  = ['books_view' => $books_1, 'title_view' => $title_1];
 		} else if ($type_1 == 'topic-update') {

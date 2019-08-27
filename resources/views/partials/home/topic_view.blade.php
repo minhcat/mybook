@@ -23,8 +23,18 @@
 						<div class="rank {{ $book->background }}">{{ $book->index }}</div>
 						<div class="book-hover {{ $book->background }}">
 							<div class="name">{{ $book->name }}</div>
-							<div class="type">Khoa học viễn tưởng, hài hước</div>
-							<div class="chap">75 tập</div>
+							<div class="type">
+								@foreach ($book->categories as $key => $category)
+									@if ($key == 0)
+										{{ ucwords($category) }},
+									@elseif ($key < count($book->categories) - 1)
+										{{ $category }},
+									@else
+										{{ $category }}
+									@endif
+								@endforeach
+							</div>
+							<div class="chap">{{ $book->max_chap }} tập</div>
 							<a href="detail-book.html" class="btn play">Xem Ngay</a>
 							<div class="group row">
 								<div class="view col-md-6 col-sm-4 col-xs-4">

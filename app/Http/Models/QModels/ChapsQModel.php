@@ -97,6 +97,23 @@ class ChapsQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `categories` table
 	 */
+	public static function sum_chap_by_book_id($book_id) {
+		$result = DB::table('chaps as c')
+				->join('books as b', 'b.id', '=', 'c.id_book')
+				->where('b.deleted', 0)
+				->where('c.id_book',$book_id)
+				->groupBy('c.id_trans')
+				->selectRaw('SUM(id_trans) as sum_chap')
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * get categories by name
+	 * @param 
+	 * @return object|boolean : all properties from `categories` table
+	 */
 	public static function get_book_id_by_trans_id($trans_id) {
 		$result = DB::table('chaps as c')
 				->join('books as b', 'b.id', '=', 'c.id_book')
