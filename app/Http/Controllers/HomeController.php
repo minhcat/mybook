@@ -203,7 +203,7 @@ class HomeController extends Controller {
 	 * @return Response
 	 */
 	public function add_new_view($index) {
-		return BooksQModel::get_books_home_view(4, $index);
+		return BooksBModel::get_books_home_view(4, $index);
 	}
 
 	/**

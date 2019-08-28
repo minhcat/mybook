@@ -98,7 +98,7 @@ $(document).ready(function() {
 	});
 	var view_start = 8;
 	$('.topic.view .topic-more .btn.btn-link').click(function(){
-		debugger;
+		// debugger;
 		var parent = $(this).parent().parent();
 		var row = parent.find('.topic-content > .row');
 		var start = view_start;
@@ -106,10 +106,18 @@ $(document).ready(function() {
 			type: 'GET',
 			url: 'home/ajax/add_new_view/'+start,
 			success:function(books) {
-				console.log(books);
 				for (i = 0; i < 4; i++) {
-					console.log(books[i].image);
-					row.append('<div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6"><div class="book-content"><img src="image/books/'+books[i].image+'.jpg"><div class="book-info"><div class="name">'+books[i].name+'</div><div class="group row"><div class="view col-md-6 col-sm-4 col-xs-4 col-6 text-left"><span class="glyphicon glyphicon-eye-open"></span> <span>'+books[i].view+'</span></div><div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-6 col-xs-push-5 text-right"><span class="glyphicon glyphicon-heart"></span> <span>'+books[i].like+'</span></div></div></div><div class="rank bg-gray">'+(i+start)+'</div><div class="book-hover bg-gray"><div class="name">'+books[i].name+'</div><div class="type">Khoa học viễn tưởng, hài hước</div><div class="chap">75 tập</div><a href="detail-book.html" class="btn play">Xem Ngay</a><div class="group row"><div class="view col-md-6 col-sm-4 col-xs-4"><span class="glyphicon glyphicon-eye-open"></span> <span>'+books[i].view+'<span></div><div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-xs-push-5"><span class="glyphicon glyphicon-heart"></span> <span>'+books[i].like+'</span></div></div></div></div></div>');
+					// console.log(books[i]);
+					books[i].cate = '';
+					for (j = 0; j < books[i].categories.length; j++) {
+						if (j != 3) {
+							if (j < books[i].categories.length - 1 && j != 2)
+								books[i].cate = books[i].cate + books[i].categories[j] + ', ';
+							else
+								books[i].cate = books[i].cate + books[i].categories[j];
+						}
+					}
+					row.append('<div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6"><div class="book-content"><img src="image/books/'+books[i].image+'.jpg"><div class="book-info"><div class="name">'+books[i].name+'</div><div class="group row"><div class="view col-md-6 col-sm-4 col-xs-4 col-6 text-left"><span class="glyphicon glyphicon-eye-open"></span> <span>'+books[i].view+'</span></div><div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-6 col-xs-push-5 text-right"><span class="glyphicon glyphicon-heart"></span> <span>'+books[i].like+'</span></div></div></div><div class="rank bg-gray">'+(i+start)+'</div><div class="book-hover bg-gray"><div class="name">'+books[i].name+'</div><div class="type">'+books[i].cate+'</div><div class="chap">'+books[i].max_chap+' chap</div><a href="http://localhost:8000/detail/book/'+books[i].slug+'" target="_blank" class="btn play">Xem Ngay</a><div class="group row"><div class="view col-md-6 col-sm-4 col-xs-4"><span class="glyphicon glyphicon-eye-open"></span> <span>'+books[i].view+'<span></div><div class="like col-md-4 col-md-push-2 col-sm-3 col-xs-3 col-xs-push-5"><span class="glyphicon glyphicon-heart"></span> <span>'+books[i].like+'</span></div></div></div></div></div>');
 				}
 				view_start = view_start + 4;
 			}

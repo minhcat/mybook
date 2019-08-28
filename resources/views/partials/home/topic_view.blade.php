@@ -35,7 +35,7 @@
 									@endif
 								@endforeach
 							</div>
-							<div class="chap">{{ $book->max_chap }} tập</div>
+							<div class="chap">{{ $book->max_chap }} chap</div>
 							<a href="{{ url('/detail/book/'.$book->slug) }}" target="_blank" class="btn play">Xem Ngay</a>
 							<div class="group row">
 								<div class="view col-md-6 col-sm-4 col-xs-4">
