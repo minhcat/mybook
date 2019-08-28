@@ -192,7 +192,6 @@ class HomeController extends Controller {
 		$data['random_book'] = BooksBModel::get_books_random_sidebar($random_book);
 
 		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar($new_comment);
-		// dd($data);
 		// dd($data['top_view']['month']);
 
 		return view('pages.home', $data);

@@ -41,7 +41,7 @@ class BooksBModel extends Model
 			$categories = BooksCategoryQModel::get_categories_by_book_id($book->id);
 			// dd($categories);
 			foreach ($categories as $key => $category) {
-				$book->categories[$key] = $category->name;
+				$book->categories[$key] = $category->vn_name;
 			}
 			//get chaps
 			$book->max_chap = 0;
@@ -337,7 +337,10 @@ class BooksBModel extends Model
 			$transes_id = ChapsQModel::get_trans_id_by_book_id($book->id);
 			foreach ($transes_id as $key => $trans_id) {
 				$trans = TransQModel::get_trans_by_id($trans_id->id_trans);
-				$book->transes[$key] = $trans->name;
+				if ($trans == null) 
+					$book->transes[$key] = '';
+				else
+					$book->transes[$key] = $trans->name;
 			}
 			//get character
 			$book->characters = [];

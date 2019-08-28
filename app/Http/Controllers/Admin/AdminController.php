@@ -39,6 +39,7 @@ class AdminController extends Controller {
 		$data['authors_detail']	= AuthorsBModel::get_authors_all();
 		$data['books_approve']	= BooksQModel::get_books_not_approved_all();
 		$data['users_approve']	= CommentsReportQModel::get_comments_report_with_punish();
+		$data['admins']			= UsersQModel::get_users_all();
 		// dd($data);
 		return view('pages.admin.admin', $data);
 	}

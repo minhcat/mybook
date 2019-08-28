@@ -25,9 +25,10 @@
 							<div class="name">{{ $book->name }}</div>
 							<div class="type">
 								@foreach ($book->categories as $key => $category)
-									@if ($key == 0)
-										{{ ucwords($category) }},
-									@elseif ($key < count($book->categories) - 1)
+									@if ($key == 3)
+										<?php continue; ?>
+									@endif
+									@if ($key < count($book->categories) - 1 && $key != 2)
 										{{ $category }},
 									@else
 										{{ $category }}
@@ -35,7 +36,7 @@
 								@endforeach
 							</div>
 							<div class="chap">{{ $book->max_chap }} tập</div>
-							<a href="detail-book.html" class="btn play">Xem Ngay</a>
+							<a href="{{ url('/detail/book/'.$book->slug) }}" target="_blank" class="btn play">Xem Ngay</a>
 							<div class="group row">
 								<div class="view col-md-6 col-sm-4 col-xs-4">
 									<span class="glyphicon glyphicon-eye-open"></span>

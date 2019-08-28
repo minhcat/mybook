@@ -103,7 +103,7 @@ class ChapsQModel extends Model
 				->where('b.deleted', 0)
 				->where('c.id_book',$book_id)
 				->groupBy('c.id_trans')
-				->selectRaw('SUM(id_trans) as sum_chap')
+				->selectRaw('COUNT(id_trans) as sum_chap')
 				->get();
 
 		return $result;

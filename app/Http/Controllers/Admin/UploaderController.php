@@ -111,7 +111,7 @@ class UploaderController extends Controller {
 	 * @return Response
 	 */
 	public function update_book($id_book, Request $request) {
-		$user_id = 14;
+		$user_id = 17;
 		$validate = [
 			'image' 		=> 'image',
 			'category'		=> 'required',

@@ -17,9 +17,9 @@ class TransQModel extends Model
 		$result = DB::table('trans')
 				->where('deleted', 0)
 				->where('id', $id)
-				->get();
+				->first();
 
-		return $result[0];
+		return $result;
 	}
 
 	/**
