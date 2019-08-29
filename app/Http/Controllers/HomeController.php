@@ -193,7 +193,7 @@ class HomeController extends Controller {
 
 		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar($new_comment);
 		// dd($data['top_view']['month']);
-		dd($data);
+		// dd($data);
 
 		return view('pages.home', $data);
 	}
