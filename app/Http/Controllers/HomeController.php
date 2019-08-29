@@ -61,7 +61,7 @@ class HomeController extends Controller {
 			$data_1  = ['books_view' => $books_1, 'title_view' => $title_1];
 		} else if ($type_1 == 'topic-update') {
 			$type_1  = 'topic_update';
-			$books_1 = BooksQModel::get_books_home_update($number_1, 0);
+			$books_1 = BooksBModel::get_books_home_update($number_1, 0);
 			$data_1  = ['books_update' => $books_1, 'title_update' => $title_1];
 		} else if ($type_1 == 'topic-comment') {
 			$type_1  = 'topic_comment';
@@ -84,12 +84,12 @@ class HomeController extends Controller {
 		$type_2   = SystemQModel::get_variable_by_name('topic_type_2')->value;
 		if ($type_2 == 'topic-view') {
 			$type_2  = 'topic_view';
-			$books_2 = BooksQModel::get_books_home_view($number_2, 0);
+			$books_2 = BooksBModel::get_books_home_view($number_2, 0);
 			$books_2 = Helper::add_background($books_2, $background);
 			$data_2  = ['books_view' => $books_2, 'title_view' => $title_2];
 		} else if ($type_2 == 'topic-update') {
 			$type_2  = 'topic_update';
-			$books_2 = BooksQModel::get_books_home_update($number_2, 0);
+			$books_2 = BooksBModel::get_books_home_update($number_2, 0);
 			$data_2  = ['books_update' => $books_2, 'title_update' => $title_2];
 		} else if ($type_2 == 'topic-comment') {
 			$type_2  = 'topic_comment';
@@ -193,6 +193,7 @@ class HomeController extends Controller {
 
 		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar($new_comment);
 		// dd($data['top_view']['month']);
+		dd($data);
 
 		return view('pages.home', $data);
 	}

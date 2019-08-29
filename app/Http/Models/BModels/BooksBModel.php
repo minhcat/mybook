@@ -20,6 +20,7 @@ use App\Http\Models\QModels\BooksRateStatisticQModel;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\ChapsQModel;
+use App\Http\Models\QModels\ChapsNewQModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\TransQModel;
 use App\Http\Models\QModels\ImagesQModel;
@@ -50,6 +51,25 @@ class BooksBModel extends Model
 				if ($book->max_chap < $chap->sum_chap) {
 					$book->max_chap = $chap->sum_chap;
 				}
+			}
+		}
+		return $books;
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_books_home_update($number, $skip) {
+		$books = BooksQModel::get_books_home_update($number, $skip);
+		foreach ($books as $key => $book) {
+			// get chap new
+			$chap = ChapsNewQModel::get_chap_new_by_book_id($book->id);
+			if ($chap != null) {
+				$book->chap_new = $chap->name;
+			} else {
+				$book->chap_new = '';
 			}
 		}
 		return $books;
