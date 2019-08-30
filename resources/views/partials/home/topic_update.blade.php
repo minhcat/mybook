@@ -15,7 +15,7 @@
 					<div class="new">NEW</div>
 					@endif
 					<div class="book-hover bg-blue">
-						<div class="name"><p>{{ $book->name}}</p></div>
+						<div class="name">{{ $book->name}}</div>
 						<div class="chap">{{ $book->chap_new }}</div>
 						<a href="{{ url('/detail/book/'.$book->slug) }}" class="btn play">Xem Ngay</a>
 						<div class="group row">

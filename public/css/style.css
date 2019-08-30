@@ -232,11 +232,9 @@ section {
           .listbook .content .topic .topic-content .book .book-content .book-hover .name {
             height: 60px;
             font-size: 16px;
-            line-height: 60px; }
-            .listbook .content .topic .topic-content .book .book-content .book-hover .name p {
-              line-height: 1.5;
-              display: inline-block;
-              vertical-align: middle; }
+            display: table-cell;
+            vertical-align: middle;
+            width: 204px; }
           .listbook .content .topic .topic-content .book .book-content .book-hover .type, .listbook .content .topic .topic-content .book .book-content .book-hover .chap {
             font-size: 12px;
             padding-top: 5px; }
