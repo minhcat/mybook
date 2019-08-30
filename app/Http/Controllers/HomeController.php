@@ -65,7 +65,7 @@ class HomeController extends Controller {
 			$data_1  = ['books_update' => $books_1, 'title_update' => $title_1];
 		} else if ($type_1 == 'topic-comment') {
 			$type_1  = 'topic_comment';
-			$books_1 = BooksQModel::get_books_home_comment($number_1);
+			$books_1 = BooksBModel::get_books_home_comment($number_1);
 			$data_1  = ['books_comment' => $books_1, 'title_comment' => $title_1];
 		} else if ($type_1 == 'topic-rate') {
 			$type_1  = 'topic_rate';
@@ -93,7 +93,7 @@ class HomeController extends Controller {
 			$data_2  = ['books_update' => $books_2, 'title_update' => $title_2];
 		} else if ($type_2 == 'topic-comment') {
 			$type_2  = 'topic_comment';
-			$books_2 = BooksQModel::get_books_home_comment($number_2, 0);
+			$books_2 = BooksBModel::get_books_home_comment($number_2, 0);
 			$data_2  = ['books_comment' => $books_2, 'title_comment' => $title_2];
 		} else if ($type_2 == 'topic-rate') {
 			$type_2  = 'topic_rate';
@@ -112,16 +112,16 @@ class HomeController extends Controller {
 		$type_3   = SystemQModel::get_variable_by_name('topic_type_3')->value;
 		if ($type_3 == 'topic-view') {
 			$type_3  = 'topic_view';
-			$books_3 = BooksQModel::get_books_home_view($number_3, 0);
+			$books_3 = BooksBModel::get_books_home_view($number_3, 0);
 			$books_3 = Helper::add_background($books_3, $background);
 			$data_3  = ['books_view' => $books_3, 'title_view' => $title_3];
 		} else if ($type_3 == 'topic-update') {
 			$type_3  = 'topic_update';
-			$books_3 = BooksQModel::get_books_home_update($number_3, 0);
+			$books_3 = BooksBModel::get_books_home_update($number_3, 0);
 			$data_3  = ['books_update' => $books_3, 'title_update' => $title_3];
 		} else if ($type_3 == 'topic-comment') {
 			$type_3  = 'topic_comment';
-			$books_3 = BooksQModel::get_books_home_comment($number_3, 0);
+			$books_3 = BooksBModel::get_books_home_comment($number_3, 0);
 			$data_3  = ['books_comment' => $books_3, 'title_comment' => $title_3];
 		} else if ($type_3 == 'topic-rate') {
 			$type_3  = 'topic_rate';
@@ -222,7 +222,7 @@ class HomeController extends Controller {
 	 * @return Response
 	 */
 	public function add_new_comment($index) {
-		return BooksQModel::get_books_home_comment(4, $index);
+		return BooksBModel::get_books_home_comment(4, $index);
 	}
 
 	/**

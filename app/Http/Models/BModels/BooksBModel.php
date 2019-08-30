@@ -80,6 +80,33 @@ class BooksBModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
+	public static function get_books_home_comment($number, $skip) {
+		$books = BooksQModel::get_books_home_comment($number, $skip);
+		foreach ($books as $key => $book) {
+			//get category
+			$book->categories = [];
+			$categories = BooksCategoryQModel::get_categories_by_book_id($book->id);
+			// dd($categories);
+			foreach ($categories as $key => $category) {
+				$book->categories[$key] = $category->vn_name;
+			}
+			//get chaps
+			$book->max_chap = 0;
+			$chaps = ChapsQModel::sum_chap_by_book_id($book->id);
+			foreach ($chaps as $key => $chap) {
+				if ($book->max_chap < $chap->sum_chap) {
+					$book->max_chap = $chap->sum_chap;
+				}
+			}
+		}
+		return $books;
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
 	public static function get_books_random_sidebar($number) {
 		$result = BooksQModel::get_books_random($number);
 		foreach ($result as $key => $book) {

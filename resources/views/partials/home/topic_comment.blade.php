@@ -26,9 +26,20 @@
 					</div>
 					<div class="book-hover bg-turquoise">
 						<div class="name">{{ $book->name }}</div>
-						<div class="type">phiêu lưu, lãng mạn, hài hước</div>
-						<div class="chap">75 tập</div>
-						<a href="detail-book.html" class="btn play">Xem Ngay</a>
+						<div class="type">
+							@foreach ($book->categories as $key => $category)
+								@if ($key == 3)
+									<?php continue; ?>
+								@endif
+								@if ($key < count($book->categories) - 1 && $key != 2)
+									{{ $category }},
+								@else
+									{{ $category }}
+								@endif
+							@endforeach
+						</div>
+						<div class="chap">{{ $book->max_chap }} chap</div>
+						<a href="{{ url('/detail/book/'.$book->slug) }}" class="btn play">Xem Ngay</a>
 						<div class="group row">
 							<div class="comment col-md-4 col-sm-4 col-xs-4">
 								<span class="glyphicon glyphicon-comment"></span>
