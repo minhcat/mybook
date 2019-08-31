@@ -1,5 +1,5 @@
 <div class="topic clearfix comment">
-	<div class="topic-header">{{ $title_comment }}</div>
+	<div class="topic-header"><a href="{{ url('/list/comment') }}" class="link-white">{{ $title_comment }}</a></div>
 	<div class="clearfix"></div>
 	<div class="topic-content">
 		<div class="row">

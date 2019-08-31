@@ -1,5 +1,5 @@
 <div class="topic clearfix view">
-	<div class="topic-header">{{ $title_view }}</div>
+	<div class="topic-header"><a href="{{ url('/list/view') }}" class="link-white">{{ $title_view }}</a></div>
 	<div class="clearfix"></div>
 	<div class="topic-content">
 		<div class="row">
@@ -36,7 +36,7 @@
 								@endforeach
 							</div>
 							<div class="chap">{{ $book->max_chap }} chap</div>
-							<a href="{{ url('/detail/book/'.$book->slug) }}" target="_blank" class="btn play">Xem Ngay</a>
+							<a href="{{ url('/detail/book/'.$book->slug) }}" class="btn play">Xem Ngay</a>
 							<div class="group row">
 								<div class="view col-md-6 col-sm-4 col-xs-4">
 									<span class="glyphicon glyphicon-eye-open"></span>

@@ -115,7 +115,7 @@ class BooksQModel extends Model
 		$result = DB::table('books')
 				->where('deleted', 0)
 				->where('approved', 1)
-				->orderBy('rate','desc')
+				->orderBy('rate_point','desc')
 				->skip($skip)
 				->take($number)
 				->get();

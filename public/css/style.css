@@ -55,6 +55,12 @@ p {
   .white:hover {
     color: #fff; }
 
+.link-white {
+  color: #fff; }
+  .link-white:hover {
+    color: #fff;
+    text-decoration: none; }
+
 a {
   cursor: pointer; }
 
@@ -249,7 +255,6 @@ section {
             .listbook .content .topic .topic-content .book .book-content .book-hover .play:hover {
               background-color: #ef0c1b; }
           .listbook .content .topic .topic-content .book .book-content .book-hover .group {
-            margin-top: 6px;
             margin-right: 0;
             margin-left: 0;
             padding: 0 10px; }

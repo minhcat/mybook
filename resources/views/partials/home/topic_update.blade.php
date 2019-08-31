@@ -1,5 +1,5 @@
 <div class="topic clearfix update">
-	<div class="topic-header">{{ $title_update }}</div>
+	<div class="topic-header"><a href="{{ url('/list/update') }}" class="link-white">{{ $title_update }}</a></div>
 	<div class="clearfix"></div>
 	<div class="topic-content">
 		<div class="row">
