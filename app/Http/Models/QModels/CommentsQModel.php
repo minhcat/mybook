@@ -267,7 +267,7 @@ class CommentsQModel extends Model
 		$result = DB::table('comments as c')
 				->join('users as u', 'u.id', '=', 'c.id_user')
 				->orderBy('datetime','desc')
-				->select('c.*', 'u.image', 'u.name', 'u.nickname')
+				->select('c.*', 'u.image', 'u.name', 'u.nickname', 'u.name_login as slug')
 				->take($number)
 				->get();
 

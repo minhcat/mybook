@@ -30,21 +30,28 @@ class CommentsBModel extends Model
 			if ($comment->page == 'book') {
 				$book = BooksQModel::get_book_by_id($comment->id_page);
 				$comment->page_name = $book->name;
+				$comment->page_slug = $book->slug;
 			} else if ($comment->page == 'character') {
 				$character = CharactersQModel::get_character_by_id($comment->id_page);
 				$comment->page_name = $character->name;
+				$comment->page_slug = $character->slug;
 			} else if ($comment->page == 'author') {
 				$author = AuthorsQModel::get_author_by_id($comment->id_page);
 				$comment->page_name = $author->name;
+				$comment->page_slug = $author->slug;
 			} else if ($comment->page == 'trans') {
 				$trans = TransQModel::get_trans_by_id($comment->id_page);
 				$comment->page_name = $trans->name;
+				$comment->page_slug = $trans->slug;
 			} else if ($comment->page == 'user') {
 				$user = UsersQModel::get_user_by_id($comment->id_page);
 				$comment->page_name = $user->name;
+				$comment->page_slug = $user->name_login;
 			} else if ($comment->page == 'read') {
 				$chap = ChapsQModel::get_chap_by_id($comment->id_page);
 				$comment->page_name = $chap->book_name;
+				$comment->page_chap = $chap->name;
+				$comment->page_slug = $chap->slug;
 			}
 			//shorten comment
 			if (strlen($comment->content) >= 25)

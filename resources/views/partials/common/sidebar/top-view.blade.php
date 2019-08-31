@@ -14,7 +14,7 @@
 					@foreach ($top_view['date'] as $key => $book)
 					<tr class="{{ ($key%2 == 0) ? 'gray' : '' }}">
 						<td>
-							<p><a href="detail-book.html" class="show-popup book">{{ $book->name }}</a></p>
+							<p><a href="{{ url('/detail/book/'.$book->slug) }}" class="show-popup book">{{ $book->name }}</a></p>
 							<p>{{ $book->view }} lượt xem</p>
 						</td>
 					</tr>
@@ -26,7 +26,7 @@
 					@foreach ($top_view['week'] as $key => $book)
 					<tr class="{{ ($key%2 == 0) ? 'gray' : '' }}">
 						<td>
-							<p><a href="detail-book.html" class="show-popup book">{{ $book->name }}</a></p>
+							<p><a href="{{ url('/detail/book/'.$book->slug) }}" class="show-popup book">{{ $book->name }}</a></p>
 							<p>{{ $book->view }} lượt xem</p>
 						</td>
 					</tr>
@@ -38,7 +38,7 @@
 					@foreach ($top_view['month'] as $key => $book)
 					<tr class="{{ ($key%2 == 0) ? 'gray' : '' }}">
 						<td>
-							<p><a href="detail-book.html" class="show-popup book">{{ $book->name }}</a></p>
+							<p><a href="{{ url('/detail/book/'.$book->slug) }}" class="show-popup book">{{ $book->name }}</a></p>
 							<p>{{ $book->view }} lượt xem</p>
 						</td>
 					</tr>
