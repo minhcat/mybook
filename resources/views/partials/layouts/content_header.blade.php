@@ -3,15 +3,15 @@
 		<div class="container clearfix">
 			<div class="header left">
 				<div class="logo">
-					<h1>My Book</h1>
-					<img src="{{ asset('image/logo.png') }}">
+					<h1>{{ $system['website_name'] }}</h1>
+					<img src="{{ asset('image/system/'.$system['logo']) }}">
 				</div>
-				<p>Luôn cập nhập truyện tranh mới nhất</p>
+				<p>{{ $system['slogan'] }}</p>
 			</div>
 			<div class="image right">
-				<img src="{{ asset('image/conan_200.png') }}" class="img-circle">
-				<img src="{{ asset('image/attack-on-titan-200x150.png') }}" class="img-circle">
-				<img src="{{ asset('image/kirito-200x150.png') }}" class="img-circle">
+				<img src="{{ asset('image/system/'.$system['header_image_1']) }}" class="img-circle">
+				<img src="{{ asset('image/system/'.$system['header_image_2']) }}" class="img-circle">
+				<img src="{{ asset('image/system/'.$system['header_image_3']) }}" class="img-circle">
 			</div>
 		</div>
 	</div>

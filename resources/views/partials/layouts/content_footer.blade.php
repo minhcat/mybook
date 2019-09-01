@@ -10,15 +10,15 @@
 				</div>
 				<div class="content col-lg-4 col-md-4 col-sm-4 col-xs-4 hide-xxs">
 					<h4>Liên Kết</h4>
-					<p><a href="list-update.html">Truyện mới nhất</a></p>
-					<p><a href="list-view.html">Truyện xem nhiều</a></p>
-					<p><a href="list-completed.html">Truyện đã hoàn thành</a></p>
+					<p><a href="{{ url('/list/'.$system['footer_link_value_1']) }}">{{ $system['footer_link_name_1'] }}</a></p>
+					<p><a href="{{ url('/list/'.$system['footer_link_value_2']) }}">{{ $system['footer_link_name_2'] }}</a></p>
+					<p><a href="{{ url('/list/'.$system['footer_link_value_3']) }}">{{ $system['footer_link_name_3'] }}</a></p>
 				</div>
 				<div class="content col-lg-4 col-md-4 col-sm-4 col-xs-4 col-6">
-					<h4>My Book</h4>
-					<p>Địa chỉ: 123 SD, Quận 1, TP.HCM</p>
-					<p>Điện thoại: 0909123456</p>
-					<p>Email: contact&#64;mybook.vn</p>
+					<h4>{{ $system['website_name'] }}</h4>
+					<p>{{ $system['footer_info_1'] }}</p>
+					<p>{{ $system['footer_info_2'] }}</p>
+					<p>{{ $system['footer_info_3'] }}</p>
 				</div>
 			</div>
 		</div>

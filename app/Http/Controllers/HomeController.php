@@ -13,6 +13,7 @@ use App\Http\Models\QModels\CommentsQModel;
 use App\Http\Models\QModels\SlidersQModel;
 use App\Http\Models\QModels\SystemQModel;
 use App\Http\Models\BModels\CommentsBModel;
+use App\Http\Models\BModels\SystemBModel;
 use App\Http\Helpers\Helper;
 use App\Http\Helpers\Constants;
 
@@ -44,6 +45,8 @@ class HomeController extends Controller {
 	 * @return Response
 	 */
 	public function index() {
+		//system
+		$data['system']  = SystemBModel::get_variables_website();
 		//get sliders
 		$number_slider   = SystemQModel::get_variable_by_name('slider_select_images');
 		$number_slider   = (int)$number_slider->value;
