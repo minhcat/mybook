@@ -196,6 +196,13 @@ class HomeController extends Controller {
 
 		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar($new_comment);
 		// dd($data['top_view']['month']);
+		$books_popup = [];
+		$books_popup = Helper::add_book_from_array($books_popup, $data['top_view']['date']);
+		$books_popup = Helper::add_book_from_array($books_popup, $data['top_view']['week']);
+		$books_popup = Helper::add_book_from_array($books_popup, $data['top_view']['month']);
+		$books_popup = Helper::add_book_from_array($books_popup, $data['random_book']);
+		$books_popup = Helper::add_book_from_array_comment($books_popup, $data['new_comment']);
+		$data['books_popup'] = $books_popup;
 		// dd($data);
 
 		return view('pages.home', $data);

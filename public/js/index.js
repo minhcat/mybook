@@ -27,10 +27,12 @@ $(document).ready(function() {
 	
 	$('.show-popup.book').mouseenter(function() {
 		enter_link_book = 1;
+		$('.popup.book').css('display','none');
 		$('.popup.user').css('display','none');
 
 		var offset = $(this).offset();
-		var popup = $('.popup.book');
+		var id     = $(this).data('id');
+		var popup  = $('.popup.book[data-id="'+id+'"]');
 
 		var top_popup = offset.top - 60;
 		var left_popup = offset.left - 270;

@@ -24,28 +24,29 @@
 		</div>
 	</div>
 	<div class="copyright">
-		<div class="container">Copyright &copy; 2018 My Book, All Rights Reserved</div>
+		<div class="container">{{ $system['footer_last_info'] }}</div>
 	</div>
 </footer>
 
-<div class="popup book">
+@foreach ($books_popup as $book)
+<div class="popup book" data-id="{{ $book->id }}">
 	<div class="arrow"></div>
 	<div class="content">
 		<div class="image left">
-			<img src="{{ asset('image/bang-hoai-3rd.jpg') }}" width="85px">
+			<img src="{{ asset('image/books/'.$book->image.'.jpg') }}" width="85px">
 		</div>
 		<div class="main right">
-			<p class="name"><strong>Băng Hoại 3rd lorem ipsum</strong></p>
+			<p class="name"><strong>{{ $book->name }}</strong></p>
 			<div class="star">
 				<span class="fa fa-star"></span>
 				<span class="fa fa-star"></span>
 				<span class="fa fa-star"></span>
 				<span class="fa fa-star-half-o"></span>
 				<span class="fa fa-star-o"></span>
-				<span>3.5</span>
+				<span>{{ $book->rate_point }}</span>
 			</div>
 			<div class="rate">
-				<span>100 đánh giá</span>
+				<span>{{ $book->rate }} đánh giá</span>
 			</div>
 		</div>
 		<div class="info">
@@ -53,11 +54,12 @@
 				<p><strong>Thể loại:</strong> <a href="#">Siêu nhiên</a>, <a href="">Hành động, <a href="">Hài hước</a></p>
 			</div>
 			<div class="info-content">
-				<p><strong>Nội dung:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum sequi a magni cupiditate maiores hic?</p>
+				<p><strong>Nội dung:</strong> {!! $book->description !!}</p>
 			</div>
 		</div>
 	</div>
 </div>
+@endforeach
 
 <div class="popup user">
 	<div class="arrow"></div>

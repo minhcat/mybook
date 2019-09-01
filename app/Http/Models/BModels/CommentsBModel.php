@@ -49,11 +49,12 @@ class CommentsBModel extends Model
 				$comment->page_slug = $user->name_login;
 			} else if ($comment->page == 'read') {
 				$chap = ChapsQModel::get_chap_by_id($comment->id_page);
-				$comment->chap_name = $chap->name;
-				$comment->page_name = $chap->book_name;
-				$comment->page_chap = $chap->slug;
-				$comment->page_slug = $chap->book_slug;
+				$comment->chap_name  = $chap->name;
+				$comment->page_name  = $chap->book_name;
+				$comment->page_chap  = $chap->slug;
+				$comment->page_slug  = $chap->book_slug;
 				$comment->page_trans = $chap->trans_slug;
+				$comment->book_id    = $chap->book_id;
 			}
 			//shorten comment
 			if (strlen($comment->content) >= 25)

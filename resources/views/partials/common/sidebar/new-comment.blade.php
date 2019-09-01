@@ -11,7 +11,7 @@
 					@endif
 					{{-- link page --}}
 					@if ($comment->page == 'book' || $comment->page == 'read')
-					<a href="{{ url('/detail/book/'.$comment->page_slug) }}" class="show-popup book">{{ $comment->page_name }}</a>
+					<a href="{{ url('/detail/book/'.$comment->page_slug) }}" data-id="{{ ($comment->page == 'book') ? $comment->id_page : (($comment->page == 'read') ? $comment->book_id : '') }}" class="show-popup book">{{ $comment->page_name }}</a>
 					@elseif ($comment->page == 'author')
 					<a href="{{ url('/detail/author/'.$comment->page_slug) }}" class="show-popup book">{{ $comment->page_name }}</a>
 					@elseif ($comment->page == 'character')

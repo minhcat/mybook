@@ -14,7 +14,7 @@
 					@foreach ($top_view['date'] as $key => $book)
 					<tr class="{{ ($key%2 == 0) ? 'gray' : '' }}">
 						<td>
-							<p><a href="{{ url('/detail/book/'.$book->slug) }}" class="show-popup book">{{ $book->name }}</a></p>
+							<p><a href="{{ url('/detail/book/'.$book->slug) }}" data-id="{{ $book->id }}" class="show-popup book">{{ $book->name }}</a></p>
 							<p>{{ $book->view }} lượt xem</p>
 						</td>
 					</tr>

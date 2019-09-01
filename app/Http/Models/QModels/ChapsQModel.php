@@ -19,7 +19,7 @@ class ChapsQModel extends Model
 				->join('trans as t', 't.id', '=', 'c.id_trans')
 				->where('b.deleted', 0)
 				->where('c.id',$id)
-				->select('c.*', 'b.name as book_name', 'b.image', 'b.view', 'b.like','b.follow','b.description', 'b.slug as book_slug', 't.slug as trans_slug')
+				->select('c.*','b.id as book_id', 'b.name as book_name', 'b.image', 'b.view', 'b.like','b.follow','b.description', 'b.slug as book_slug', 't.slug as trans_slug')
 				->get();
 
 		return $result[0];

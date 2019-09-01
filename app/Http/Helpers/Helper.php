@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Helpers;
 
+use App\Http\Models\QModels\BooksQModel;
+
 class Helper {
 	/**
 	 * Convert string uppercase first letter
@@ -79,5 +81,73 @@ class Helper {
 		}
 
 		return $season;
+	}
+
+	/**
+	 * Add index to array
+	 * @param array
+	 * @return array
+	 */
+	public static function add_book_from_array($books_check, $books_add) {
+		// dd($books_check);
+		// dd($books_add);
+		$result = $books_check;
+		foreach ($books_add as $book_add) {
+			$is_check = true;
+			foreach ($books_check as $book_check) {
+				// dd($books_check);
+				if ($book_check->id == $book_add->id) {
+					$is_check = false;
+				}
+			}
+			if ($is_check) {
+				$book = BooksQModel::get_book_by_id($book_add->id);
+				array_push($result, $book);
+			}
+		}
+		return $result;
+	}
+
+	/**
+	 * Add index to array
+	 * @param array
+	 * @return array
+	 */
+	public static function add_book_from_array_comment($books, $comments) {
+		// dd($books_check);
+		// dd($books_add);
+		$result = $books;
+		foreach ($comments as $comment) {
+			if ($comment->page == 'book') {
+				$is_check = true;
+				foreach ($books as $book) {
+					// dd($books_check);
+					if ($book->id == $comment->id_page) {
+						$is_check = false;
+					}
+				}
+				if ($is_check) {
+					$book = BooksQModel::get_book_by_id($comment->id_page);
+					array_push($result, $book);
+				}
+			} 
+		}
+		$books = $result;
+		foreach ($comments as $comment) {
+			if ($comment->page == 'read') {
+				$is_check = true;
+				foreach ($books as $book) {
+					// dd($books_check);
+					if ($book->id == $comment->book_id) {
+						$is_check = false;
+					}
+				}
+				if ($is_check) {
+					$book = BooksQModel::get_book_by_id($comment->book_id);
+					array_push($result, $book);
+				}
+			}
+		}
+		return $result;
 	}
 }
