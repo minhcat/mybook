@@ -7,9 +7,20 @@
 			<div class="col-lg-9 col-md-8">
 				<div class="name"><a href="{{ url('/detail/users/'.$comment->slug) }}" class="show-popup user">{{ $comment->name }}</a> bình luận 
 					@if ($comment->page == 'read')
-					<a href="{{ url('read/') }}">{{ $comment->page_chap }}</a> - 
+					<a href="{{ url('read/'.$comment->page_slug.'/'.$comment->page_trans.'/'.$comment->page_chap) }}">{{ $comment->chap_name }}</a> - 
 					@endif
-					<a href="detail-book.html" class="show-popup book">{{ $comment->page_name }}</a>
+					{{-- link page --}}
+					@if ($comment->page == 'book' || $comment->page == 'read')
+					<a href="{{ url('/detail/book/'.$comment->page_slug) }}" class="show-popup book">{{ $comment->page_name }}</a>
+					@elseif ($comment->page == 'author')
+					<a href="{{ url('/detail/author/'.$comment->page_slug) }}" class="show-popup book">{{ $comment->page_name }}</a>
+					@elseif ($comment->page == 'character')
+					<a href="{{ url('/detail/character/'.$comment->page_slug) }}" class="show-popup book">{{ $comment->page_name }}</a>
+					@elseif ($comment->page == 'user')
+					<a href="{{ url('/detail/user/'.$comment->page_slug) }}" class="show-popup book">{{ $comment->page_name }}</a>
+					@elseif ($comment->page == 'trans')
+					<a href="{{ url('/detail/trans/'.$comment->page_slug) }}" class="show-popup book">{{ $comment->page_name }}</a>
+					@endif
 				</div>
 				<div class="info">{{ $comment->content }}</div>
 			</div>

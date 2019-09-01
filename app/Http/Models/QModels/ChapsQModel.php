@@ -16,9 +16,10 @@ class ChapsQModel extends Model
 	public static function get_chap_by_id($id) {
 		$result = DB::table('chaps as c')
 				->join('books as b', 'b.id', '=', 'c.id_book')
+				->join('trans as t', 't.id', '=', 'c.id_trans')
 				->where('b.deleted', 0)
 				->where('c.id',$id)
-				->select('c.*', 'b.name as book_name', 'b.image', 'b.view', 'b.like','b.follow','b.description')
+				->select('c.*', 'b.name as book_name', 'b.image', 'b.view', 'b.like','b.follow','b.description', 'b.slug as book_slug', 't.slug as trans_slug')
 				->get();
 
 		return $result[0];
