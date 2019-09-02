@@ -5,7 +5,7 @@
 		<div class="user row {{ ($key == 0) ? 'first' : '' }}">
 			<div class="col-lg-3 col-md-4"><a href="{{ url('/detail/users/'.$comment->slug) }}"><img src="{{ asset('image/users/'.$comment->image.'.jpg') }}" class="img-circle" width="60px"></a></div>
 			<div class="col-lg-9 col-md-8">
-				<div class="name"><a href="{{ url('/detail/users/'.$comment->slug) }}" class="show-popup user">{{ $comment->name }}</a> bình luận 
+				<div class="name"><a href="{{ url('/detail/users/'.$comment->slug) }}" class="show-popup user" data-id="{{ $comment->id_user }}">{{ $comment->name }}</a> bình luận 
 					@if ($comment->page == 'read')
 					<a href="{{ url('read/'.$comment->page_slug.'/'.$comment->page_trans.'/'.$comment->page_chap) }}">{{ $comment->chap_name }}</a> - 
 					@endif

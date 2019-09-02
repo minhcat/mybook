@@ -65,9 +65,11 @@ $(document).ready(function() {
 	$('.show-popup.user').mouseenter(function() {
 		enter_link_user = 1;
 		$('.popup.book').css('display','none');
+		$('.popup.user').css('display','none');
 
 		var offset = $(this).offset();
-		var popup = $('.popup.user');
+		var id     = $(this).data('id');
+		var popup = $('.popup.user[data-id="'+id+'"]');
 
 		var top_popup = offset.top - 60;
 		var left_popup = offset.left - 270;

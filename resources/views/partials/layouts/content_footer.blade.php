@@ -102,33 +102,71 @@
 </div>
 @endforeach
 
-<div class="popup user">
+@foreach ($users_popup as $user)
+<div class="popup user" data-id="{{ $user->id }}">
 	<div class="arrow"></div>
 	<div class="content">
 		<div class="image left">
-			<img src="{{ asset('image/Asuna.jpg') }}" width="85px">
+			<img src="{{ asset('image/users/'.$user->image.'.jpg') }}" width="85px">
 		</div>
 		<div class="main right">
-			<p class="name"><strong>Asuna</strong></p>
+			<p class="name"><strong>{{ $user->name }}</strong></p>
 			<div class="star">
-				<span class="fa fa-star"></span>
-				<span class="fa fa-star"></span>
-				<span class="fa fa-star"></span>
+				{{-- star 1 --}}
+				@if ($user->rate_point <= 0.5)
 				<span class="fa fa-star-half-o"></span>
+				@else
+				<span class="fa fa-star"></span>
+				@endif
+				{{-- star 2 --}}
+				@if ($user->rate_point <= 1)
 				<span class="fa fa-star-o"></span>
-				<span>3.5</span>
+				@elseif ($book->rate_point <= 1.5)
+				<span class="fa fa-star-half-o"></span>
+				@else
+				<span class="fa fa-star"></span>
+				@endif
+				{{-- star 3 --}}
+				@if ($user->rate_point <= 2)
+				<span class="fa fa-star-o"></span>
+				@elseif ($book->rate_point <= 2.5)
+				<span class="fa fa-star-half-o"></span>
+				@else
+				<span class="fa fa-star"></span>
+				@endif
+				{{-- star 4 --}}
+				@if ($user->rate_point <= 3)
+				<span class="fa fa-star-o"></span>
+				@elseif ($book->rate_point <= 3.5)
+				<span class="fa fa-star-half-o"></span>
+				@else
+				<span class="fa fa-star"></span>
+				@endif
+				{{-- star 5 --}}
+				@if ($user->rate_point <= 4)
+				<span class="fa fa-star-o"></span>
+				@elseif ($book->rate_point <= 4.5)
+				<span class="fa fa-star-half-o"></span>
+				@else
+				<span class="fa fa-star"></span>
+				@endif
+				<span>{{ $user->rate_point }}</span>
 			</div>
 			<div class="rate">
-				<span>100 đánh giá</span>
+				<span>{{ $user->rate }} đánh giá</span>
 			</div>
 		</div>
 		<div class="info">
 			<div class="type">
-				<p><strong>Thể loại yêu thích:</strong> <a href="#">Siêu nhiên</a>, <a href="">Hành động, <a href="">Hài hước</a></p>
+				<p><strong>Giới tính:</strong> {{ ($user->gender == 0) ? 'Nam' : 'Nữ' }}</p>
 			</div>
 			<div class="info-content">
-				<p><strong>Quan điểm:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum sequi a magni cupiditate maiores hic?</p>
+				<p><strong>Tự giới thiệu:</strong> {!! $user->description !!}</p>
+			</div>
+			<div class="info-content">
+				<p><strong>Slogan:</strong> {{ $user->slogan }}</p>
 			</div>
 		</div>
 	</div>
 </div>
+@endforeach

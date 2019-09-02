@@ -3,6 +3,7 @@ namespace App\Http\Helpers;
 
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksCategoryQModel;
+use App\Http\Models\QModels\UsersQModel;
 
 class Helper {
 	/**
@@ -106,11 +107,11 @@ class Helper {
 	 * @param array
 	 * @return array
 	 */
-	public static function short_description_from_book($book) {
-		if (strlen($book->description) >= 200) {
-			$book->description = substr($book->description, 0, 200).'...';
+	public static function short_description($item, $number) {
+		if (strlen($item->description) >= $number) {
+			$item->description = substr($item->description, 0, $number).'...';
 		}
-		return $book;
+		return $item;
 	}
 
 	/**
@@ -133,7 +134,7 @@ class Helper {
 			if ($is_check) {
 				$book = BooksQModel::get_book_by_id($book_add->id);
 				$book = Helper::add_category_from_book($book);
-				$book = Helper::short_description_from_book($book);
+				$book = Helper::short_description($book, 200);
 				array_push($result, $book);
 			}
 		}
@@ -178,6 +179,32 @@ class Helper {
 					$book = BooksQModel::get_book_by_id($comment->book_id);
 					array_push($result, $book);
 				}
+			}
+		}
+		return $result;
+	}
+
+	/**
+	 * Add index to array
+	 * @param array
+	 * @return array
+	 */
+	public static function add_user_from_array_comment($users, $comments) {
+		// dd($users);
+		// dd($comments);
+		$result = $users;
+		foreach ($comments as $comment) {
+			$is_check = true;
+			foreach ($users as $user) {
+				// dd($books_check);
+				if ($user->id == $comment->id_user) {
+					$is_check = false;
+				}
+			}
+			if ($is_check) {
+				$user = UsersQModel::get_user_by_id($comment->id_user);
+				$user = Helper::short_description($user, 150);
+				array_push($result, $user);
 			}
 		}
 		return $result;

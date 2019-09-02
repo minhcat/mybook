@@ -202,7 +202,11 @@ class HomeController extends Controller {
 		$books_popup = Helper::add_book_from_array($books_popup, $data['top_view']['month']);
 		$books_popup = Helper::add_book_from_array($books_popup, $data['random_book']);
 		$books_popup = Helper::add_book_from_array_comment($books_popup, $data['new_comment']);
+		
+		$users_popup = [];
+		$users_popup = Helper::add_user_from_array_comment($users_popup, $data['new_comment']);
 		$data['books_popup'] = $books_popup;
+		$data['users_popup'] = $users_popup;
 		// dd($data);
 
 		return view('pages.home', $data);
