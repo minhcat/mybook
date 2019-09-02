@@ -13,13 +13,13 @@
 					@if ($comment->page == 'book' || $comment->page == 'read')
 					<a href="{{ url('/detail/book/'.$comment->page_slug) }}" data-id="{{ ($comment->page == 'book') ? $comment->id_page : (($comment->page == 'read') ? $comment->book_id : '') }}" class="show-popup book">{{ $comment->page_name }}</a>
 					@elseif ($comment->page == 'author')
-					<a href="{{ url('/detail/author/'.$comment->page_slug) }}" class="show-popup book">{{ $comment->page_name }}</a>
+					<a href="{{ url('/detail/author/'.$comment->page_slug) }}" data-id="{{ $comment->page_id }}" class="show-popup author">{{ $comment->page_name }}</a>
 					@elseif ($comment->page == 'character')
-					<a href="{{ url('/detail/character/'.$comment->page_slug) }}" class="show-popup book">{{ $comment->page_name }}</a>
+					<a href="{{ url('/detail/character/'.$comment->page_slug) }}" data-id="{{ $comment->page_id }}" class="show-popup char">{{ $comment->page_name }}</a>
 					@elseif ($comment->page == 'user')
-					<a href="{{ url('/detail/user/'.$comment->page_slug) }}" class="show-popup book">{{ $comment->page_name }}</a>
+					<a href="{{ url('/detail/user/'.$comment->page_slug) }}" data-id="{{ $comment->page_id }}" class="show-popup user">{{ $comment->page_name }}</a>
 					@elseif ($comment->page == 'trans')
-					<a href="{{ url('/detail/trans/'.$comment->page_slug) }}" class="show-popup book">{{ $comment->page_name }}</a>
+					<a href="{{ url('/detail/trans/'.$comment->page_slug) }}" data-id="{{ $comment->page_id }}" class="show-popup trans">{{ $comment->page_name }}</a>
 					@endif
 				</div>
 				<div class="info">{{ $comment->content }}</div>

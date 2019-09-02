@@ -33,18 +33,22 @@ class CommentsBModel extends Model
 				$comment->page_slug = $book->slug;
 			} else if ($comment->page == 'character') {
 				$character = CharactersQModel::get_character_by_id($comment->id_page);
+				$comment->page_id   = $character->id;
 				$comment->page_name = $character->name;
 				$comment->page_slug = $character->slug;
 			} else if ($comment->page == 'author') {
 				$author = AuthorsQModel::get_author_by_id($comment->id_page);
+				$comment->page_id   = $author->id;
 				$comment->page_name = $author->name;
 				$comment->page_slug = $author->slug;
 			} else if ($comment->page == 'trans') {
 				$trans = TransQModel::get_trans_by_id($comment->id_page);
+				$comment->page_id   = $trans->id;
 				$comment->page_name = $trans->name;
 				$comment->page_slug = $trans->slug;
 			} else if ($comment->page == 'user') {
 				$user = UsersQModel::get_user_by_id($comment->id_page);
+				$comment->page_id   = $user->id;
 				$comment->page_name = $user->name;
 				$comment->page_slug = $user->name_login;
 			} else if ($comment->page == 'read') {

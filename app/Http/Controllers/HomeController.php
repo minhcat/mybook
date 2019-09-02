@@ -203,10 +203,19 @@ class HomeController extends Controller {
 		$books_popup = Helper::add_book_from_array($books_popup, $data['random_book']);
 		$books_popup = Helper::add_book_from_array_comment($books_popup, $data['new_comment']);
 		
-		$users_popup = [];
-		$users_popup = Helper::add_user_from_array_comment($users_popup, $data['new_comment']);
-		$data['books_popup'] = $books_popup;
-		$data['users_popup'] = $users_popup;
+		$users_popup   = [];
+		$users_popup   = Helper::add_user_from_array_comment($users_popup, $data['new_comment']);
+		$chars_popup   = [];
+		$chars_popup   = Helper::add_character_from_array_comment($chars_popup, $data['new_comment']);
+		$authors_popup = [];
+		$authors_popup = Helper::add_author_from_array_comment($authors_popup, $data['new_comment']);
+		$trans_popup   = [];
+		$trans_popup   = Helper::add_trans_from_array_comment($trans_popup, $data['new_comment']);
+		$data['books_popup']   = $books_popup;
+		$data['users_popup']   = $users_popup;
+		$data['chars_popup']   = $chars_popup;
+		$data['authors_popup'] = $authors_popup;
+		$data['trans_popup']   = $trans_popup;
 		// dd($data);
 
 		return view('pages.home', $data);

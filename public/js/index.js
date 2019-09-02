@@ -29,6 +29,9 @@ $(document).ready(function() {
 		enter_link_book = 1;
 		$('.popup.book').css('display','none');
 		$('.popup.user').css('display','none');
+		$('.popup.char').css('display','none');
+		$('.popup.trans').css('display','none');
+		$('.popup.author').css('display','none');
 
 		var offset = $(this).offset();
 		var id     = $(this).data('id');
@@ -66,6 +69,9 @@ $(document).ready(function() {
 		enter_link_user = 1;
 		$('.popup.book').css('display','none');
 		$('.popup.user').css('display','none');
+		$('.popup.char').css('display','none');
+		$('.popup.trans').css('display','none');
+		$('.popup.author').css('display','none');
 
 		var offset = $(this).offset();
 		var id     = $(this).data('id');
@@ -94,6 +100,123 @@ $(document).ready(function() {
 	$('.popup.user').mouseleave(function() {
 		enter_popup_user = 0;
 		$('.popup.user').css('display','none');
+	});
+	// character
+	var enter_popup_char = 0;
+	var enter_link_char = 0;
+	$('.show-popup.char').mouseenter(function() {
+		enter_link_char = 1;
+		$('.popup.book').css('display','none');
+		$('.popup.user').css('display','none');
+		$('.popup.char').css('display','none');
+		$('.popup.trans').css('display','none');
+		$('.popup.author').css('display','none');
+
+		var offset = $(this).offset();
+		var id     = $(this).data('id');
+		var popup = $('.popup.char[data-id="'+id+'"]');
+
+		var top_popup = offset.top - 60;
+		var left_popup = offset.left - 270;
+
+		popup.css('top', top_popup + 'px');
+		popup.css('left', left_popup + 'px');
+		popup.css('display', 'block');
+	});
+	$('.show-popup.char').mouseleave(function() {
+		enter_link_char = 0;
+		setTimeout(
+			function() 
+			{
+				if (!enter_popup_char && !enter_link_char) {
+					$('.popup.char').css('display','none');
+				}
+			}, 500);
+	});
+	$('.popup.char').mouseenter(function() {
+		enter_popup_char = 1;
+	});
+	$('.popup.char').mouseleave(function() {
+		enter_popup_char = 0;
+		$('.popup.char').css('display','none');
+	});
+	// translator
+	var enter_popup_trans = 0;
+	var enter_link_trans = 0;
+	$('.show-popup.trans').mouseenter(function() {
+		enter_link_trans = 1;
+		$('.popup.book').css('display','none');
+		$('.popup.user').css('display','none');
+		$('.popup.char').css('display','none');
+		$('.popup.trans').css('display','none');
+		$('.popup.author').css('display','none');
+
+		var offset = $(this).offset();
+		var id     = $(this).data('id');
+		var popup = $('.popup.trans[data-id="'+id+'"]');
+
+		var top_popup = offset.top - 60;
+		var left_popup = offset.left - 270;
+
+		popup.css('top', top_popup + 'px');
+		popup.css('left', left_popup + 'px');
+		popup.css('display', 'block');
+	});
+	$('.show-popup.trans').mouseleave(function() {
+		enter_link_trans = 0;
+		setTimeout(
+			function() 
+			{
+				if (!enter_popup_trans && !enter_link_trans) {
+					$('.popup.trans').css('display','none');
+				}
+			}, 500);
+	});
+	$('.popup.trans').mouseenter(function() {
+		enter_popup_trans = 1;
+	});
+	$('.popup.trans').mouseleave(function() {
+		enter_popup_trans = 0;
+		$('.popup.trans').css('display','none');
+	});
+	// author
+	var enter_popup_author = 0;
+	var enter_link_author = 0;
+	$('.show-popup.author').mouseenter(function() {
+		enter_link_author = 1;
+		$('.popup.book').css('display','none');
+		$('.popup.user').css('display','none');
+		$('.popup.char').css('display','none');
+		$('.popup.trans').css('display','none');
+		$('.popup.author').css('display','none');
+
+		var offset = $(this).offset();
+		var id     = $(this).data('id');
+		var popup = $('.popup.author[data-id="'+id+'"]');
+
+		var top_popup = offset.top - 60;
+		var left_popup = offset.left - 270;
+
+		popup.css('top', top_popup + 'px');
+		popup.css('left', left_popup + 'px');
+		popup.css('display', 'block');
+	});
+	$('.show-popup.author').mouseleave(function() {
+		enter_link_author = 0;
+		setTimeout(
+			function() 
+			{
+				if (!enter_popup_author && !enter_link_author) {
+					$('.popup.author').css('display','none');
+				}
+			}, 500);
+	});
+	$('.popup.author').mouseenter(function() {
+		enter_popup_author = 1;
+	});
+	$('.popup.author').mouseleave(function() {
+		enter_popup_author = 0;
+		$('.popup.author').css('display','none');
 	});
 
 	//scroll top

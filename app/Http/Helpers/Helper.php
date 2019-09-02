@@ -4,6 +4,9 @@ namespace App\Http\Helpers;
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksCategoryQModel;
 use App\Http\Models\QModels\UsersQModel;
+use App\Http\Models\QModels\CharactersQModel;
+use App\Http\Models\QModels\AuthorsQModel;
+use App\Http\Models\QModels\TransQModel;
 
 class Helper {
 	/**
@@ -205,6 +208,107 @@ class Helper {
 				$user = UsersQModel::get_user_by_id($comment->id_user);
 				$user = Helper::short_description($user, 150);
 				array_push($result, $user);
+			}
+		}
+		$users = $result;
+		foreach ($comments as $comment) {
+			if ($comment->page == 'user') {
+				$is_check = true;
+				foreach ($users as $user) {
+					// dd($books_check);
+					if ($user->id == $comment->page_id) {
+						$is_check = false;
+					}
+				}
+				if ($is_check) {
+					$user = UsersQModel::get_user_by_id($comment->page_id);
+					$user = Helper::short_description($user, 150);
+					array_push($result, $user);
+				}
+			}
+		}
+		return $result;
+	}
+
+	/**
+	 * Add index to array
+	 * @param array
+	 * @return array
+	 */
+	public static function add_character_from_array_comment($characters, $comments) {
+		// dd($users);
+		// dd($comments);
+		$result = $characters;
+		foreach ($comments as $comment) {
+			if ($comment->page == 'character') {
+				$is_check = true;
+				foreach ($characters as $character) {
+					// dd($books_check);
+					if ($character->id == $comment->page_id) {
+						$is_check = false;
+					}
+				}
+				if ($is_check) {
+					$character = CharactersQModel::get_character_by_id($comment->page_id);
+					$character = Helper::short_description($character, 150);
+					array_push($result, $character);
+				}
+			}
+		}
+		return $result;
+	}
+
+	/**
+	 * Add index to array
+	 * @param array
+	 * @return array
+	 */
+	public static function add_author_from_array_comment($authors, $comments) {
+		// dd($users);
+		// dd($comments);
+		$result = $authors;
+		foreach ($comments as $comment) {
+			if ($comment->page == 'author') {
+				$is_check = true;
+				foreach ($authors as $author) {
+					// dd($books_check);
+					if ($author->id == $comment->page_id) {
+						$is_check = false;
+					}
+				}
+				if ($is_check) {
+					$author = AuthorsQModel::get_author_by_id($comment->page_id);
+					$author = Helper::short_description($author, 150);
+					array_push($result, $author);
+				}
+			}
+		}
+		return $result;
+	}
+
+	/**
+	 * Add index to array
+	 * @param array
+	 * @return array
+	 */
+	public static function add_trans_from_array_comment($transes, $comments) {
+		// dd($users);
+		// dd($comments);
+		$result = $transes;
+		foreach ($comments as $comment) {
+			if ($comment->page == 'trans') {
+				$is_check = true;
+				foreach ($transes as $trans) {
+					// dd($books_check);
+					if ($trans->id == $comment->page_id) {
+						$is_check = false;
+					}
+				}
+				if ($is_check) {
+					$trans = TransQModel::get_trans_by_id($comment->page_id);
+					$trans = Helper::short_description($trans, 150);
+					array_push($result, $trans);
+				}
 			}
 		}
 		return $result;
