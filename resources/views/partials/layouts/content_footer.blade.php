@@ -38,11 +38,44 @@
 		<div class="main right">
 			<p class="name"><strong>{{ $book->name }}</strong></p>
 			<div class="star">
-				<span class="fa fa-star"></span>
-				<span class="fa fa-star"></span>
-				<span class="fa fa-star"></span>
+				{{-- star 1 --}}
+				@if ($book->rate_point <= 0.5)
 				<span class="fa fa-star-half-o"></span>
+				@else
+				<span class="fa fa-star"></span>
+				@endif
+				{{-- star 2 --}}
+				@if ($book->rate_point <= 1)
 				<span class="fa fa-star-o"></span>
+				@elseif ($book->rate_point <= 1.5)
+				<span class="fa fa-star-half-o"></span>
+				@else
+				<span class="fa fa-star"></span>
+				@endif
+				{{-- star 3 --}}
+				@if ($book->rate_point <= 2)
+				<span class="fa fa-star-o"></span>
+				@elseif ($book->rate_point <= 2.5)
+				<span class="fa fa-star-half-o"></span>
+				@else
+				<span class="fa fa-star"></span>
+				@endif
+				{{-- star 4 --}}
+				@if ($book->rate_point <= 3)
+				<span class="fa fa-star-o"></span>
+				@elseif ($book->rate_point <= 3.5)
+				<span class="fa fa-star-half-o"></span>
+				@else
+				<span class="fa fa-star"></span>
+				@endif
+				{{-- star 5 --}}
+				@if ($book->rate_point <= 4)
+				<span class="fa fa-star-o"></span>
+				@elseif ($book->rate_point <= 4.5)
+				<span class="fa fa-star-half-o"></span>
+				@else
+				<span class="fa fa-star"></span>
+				@endif
 				<span>{{ $book->rate_point }}</span>
 			</div>
 			<div class="rate">
@@ -51,7 +84,15 @@
 		</div>
 		<div class="info">
 			<div class="type">
-				<p><strong>Thể loại:</strong> <a href="#">Siêu nhiên</a>, <a href="">Hành động, <a href="">Hài hước</a></p>
+				<p><strong>Thể loại:</strong> 
+					@foreach ($book->categories as $key => $category)
+						@if ($key < count($book->categories) - 1)
+						<a href="{{ url('/list/category/'.$category['slug']) }}">{{ $category['name'] }}</a>,
+						@else
+						<a href="{{ url('/list/category/'.$category['slug']) }}">{{ $category['name'] }}</a>
+						@endif
+					@endforeach
+				</p>
 			</div>
 			<div class="info-content">
 				<p><strong>Nội dung:</strong> {!! $book->description !!}</p>

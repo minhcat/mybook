@@ -83,7 +83,7 @@ class BooksBModel extends Model
 	public static function get_books_home_comment($number, $skip) {
 		$books = BooksQModel::get_books_home_comment($number, $skip);
 		foreach ($books as $key => $book) {
-			//get category
+			// get category
 			$book->categories = [];
 			$categories = BooksCategoryQModel::get_categories_by_book_id($book->id);
 			// dd($categories);

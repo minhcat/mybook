@@ -2,6 +2,7 @@
 namespace App\Http\Helpers;
 
 use App\Http\Models\QModels\BooksQModel;
+use App\Http\Models\QModels\BooksCategoryQModel;
 
 class Helper {
 	/**
@@ -88,6 +89,35 @@ class Helper {
 	 * @param array
 	 * @return array
 	 */
+	public static function add_category_from_book($book) {
+		$categories = BooksCategoryQModel::get_categories_by_book_id($book->id);
+		$book->categories = [];
+		foreach ($categories as $key => $category) {
+			$book->categories[$key] = [
+				'slug' => $category->slug,
+				'name' => $category->vn_name,
+			];
+		}
+		return $book;
+	}
+
+	/**
+	 * Add index to array
+	 * @param array
+	 * @return array
+	 */
+	public static function short_description_from_book($book) {
+		if (strlen($book->description) >= 200) {
+			$book->description = substr($book->description, 0, 200).'...';
+		}
+		return $book;
+	}
+
+	/**
+	 * Add index to array
+	 * @param array
+	 * @return array
+	 */
 	public static function add_book_from_array($books_check, $books_add) {
 		// dd($books_check);
 		// dd($books_add);
@@ -102,6 +132,8 @@ class Helper {
 			}
 			if ($is_check) {
 				$book = BooksQModel::get_book_by_id($book_add->id);
+				$book = Helper::add_category_from_book($book);
+				$book = Helper::short_description_from_book($book);
 				array_push($result, $book);
 			}
 		}
