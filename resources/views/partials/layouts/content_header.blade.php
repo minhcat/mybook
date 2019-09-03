@@ -75,46 +75,15 @@
 							<a rel="notfollow" class="page dropdown-toggle" data-toggle="dropdown">Thể Loại <span class="caret"></span></a>
 							
 							<ul class="dropdown-menu more">
+								@foreach ($categories as $group_category)
 								<li>
 									<div class="row">
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 first"><a href="list-category.html">Action</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">Adult</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">Adventure</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 last"><a href="list-category.html">Anime</a></div>
+										@foreach ($group_category as $key => $category)
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 {{ ($key == 0) ? 'first' : (($key == 3) ? 'last' : 'next') }}"><a href="{{ url('/list/category/'.$category->slug) }}">{{ ucwords($category->name) }}</a></div>
+										@endforeach
 									</div>
 								</li>
-								<li>
-									<div class="row">
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 first"><a href="list-category.html">Comedy</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">Comic</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">Cooking</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 last"><a href="list-category.html">Cosplay</a></div>
-									</div>
-								</li>
-								<li>
-									<div class="row">
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 first"><a href="list-category.html">Demons</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">Doujinshi</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">Ecchi</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 last"><a href="list-category.html">Fanmade</a></div>
-									</div>
-								</li>
-								<li>
-									<div class="row">
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 first"><a href="list-category.html">Fantasy</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">Harem</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">History</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 last"><a href="list-category.html">Magic</a></div>
-									</div>
-								</li>
-								<li>
-									<div class="row">
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 first"><a href="list-category.html">Mystery</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">Romance</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">School Life</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 last"><a href="list-category.html">Zombie</a></div>
-									</div>
-								</li>
+								@endforeach
 							</ul>
 						</li>
 						<li class="dropdown hide-md">

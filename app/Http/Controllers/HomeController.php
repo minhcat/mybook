@@ -12,6 +12,7 @@ use App\Http\Models\QModels\BooksViewQModel;
 use App\Http\Models\QModels\CommentsQModel;
 use App\Http\Models\QModels\SlidersQModel;
 use App\Http\Models\QModels\SystemQModel;
+use App\Http\Models\BModels\CategoriesBModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\SystemBModel;
 use App\Http\Helpers\Helper;
@@ -47,6 +48,8 @@ class HomeController extends Controller {
 	public function index() {
 		//system
 		$data['system']  = SystemBModel::get_variables_website();
+		//categories sidebar
+		$data['categories'] = CategoriesBModel::get_categories_menu();
 		//get sliders
 		$number_slider   = SystemQModel::get_variable_by_name('slider_select_images');
 		$number_slider   = (int)$number_slider->value;
