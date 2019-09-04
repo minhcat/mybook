@@ -6,15 +6,29 @@ $(document).ready(function() {
 	});
 	// search dropdown
 	$('.search .content input').keydown(function(e) {
-		e.stopPropagation();
+		// e.stopPropagation();
 		if (e.which == 8) {
 			$('.navbar .search .dropdown-menu').parent().removeClass('open');
 		} else {
+			var name = $(this).val() + e.key;
+			var form = $('.navbar .search .dropdown-menu');
+			form.find('li').remove('.clearfix');
+			$.ajax({
+				type: 'GET',
+				url: '/home/ajax/search_book/'+name,
+				success:function(books) {
+					for (i = 0; i < books.length; i++) {
+						form.prepend('<li class="clearfix"><img src="image/books/'+books[i].image+'.jpg" class="image" alt="" width="60px" height="60px"><div class="info"><a href="http://localhost:8000/detail/book/'+books[i].slug+'" class="name">'+books[i].name+'</a><div class="more">'+books[i].description.slice(0,60)+'</div></div></li>')
+					}
+				}
+			});
 			$('.navbar .search .dropdown-menu').dropdown('toggle');
 		}
 	});
 	$('body').click(function(e) {
+		// console.log(event.target);
 		if ($(event.target).closest('.navigation').length) {
+
 			return; //do nothing if event target is within the navigation
 		} else {
 			$('.search .dropdown-menu').parent().removeClass('open');

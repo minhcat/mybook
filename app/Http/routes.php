@@ -25,6 +25,8 @@ Route::group(['prefix' => 'home'], function() {
 
 	Route::get('ajax/add_new_rate/{index}', 'HomeController@add_new_rate');
 
+	Route::get('ajax/search_book/{name}', 'HomeController@search_books_menu');
+
 });
 
 Route::get('read/{book_slug}/{trans_slug}/{chap_slug}', 'ReadController@index');

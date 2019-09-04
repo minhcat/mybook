@@ -47,9 +47,16 @@ class HomeController extends Controller {
 	 */
 	public function index() {
 		//system
-		$data['system']  = SystemBModel::get_variables_website();
-		//categories sidebar
+		$data['system']     = SystemBModel::get_variables_website();
+		//categories menu
 		$data['categories'] = CategoriesBModel::get_categories_menu();
+		$data['years']      = [];
+		for ($year = 2000; $year <= date('Y'); $year++) {
+			$check = BooksQModel::check_have_book_in_year($year);
+			if ($check) {
+				array_push($data['years'], $year);
+			}
+		}
 		//get sliders
 		$number_slider   = SystemQModel::get_variable_by_name('slider_select_images');
 		$number_slider   = (int)$number_slider->value;
@@ -258,5 +265,14 @@ class HomeController extends Controller {
 	 */
 	public function add_new_rate($index) {
 		return BooksBModel::get_books_home_rate(4, $index);
+	}
+
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function search_books_menu($name) {
+		return BooksQModel::search_books_by_name_with_number($name, 5);
 	}
 }

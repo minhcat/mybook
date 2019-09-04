@@ -61,7 +61,7 @@
 							</li>
 							<hr>
 							<li class="search-more">
-								<a href="search-more">Tìm kiếm nâng cao</a>
+								<a href="search-more" class="search-more" onclick="window.open('{{ url('/list/search') }}')">Tìm kiếm nâng cao</a>
 							</li>
 						</ul>
 					</div>
@@ -69,8 +69,8 @@
 				<div class="collapse navbar-collapse" id="menu-left">
 					<ul class="nav navbar-nav">
 						<li class="active"><a rel="notfollow" class="page"><span class="glyphicon glyphicon-home"></span></a></li>
-						<li class="hide-xs"><a href="list-view.html" class="page">Truyện Hot</a></li>
-						<li class="hide-xs"><a href="list-update.html" class="page">Mới Cập Nhật</a></li>
+						<li class="hide-xs"><a href="{{ url('/list/view') }}" class="page">Truyện Hot</a></li>
+						<li class="hide-xs"><a href="{{ url('/list/update') }}" class="page">Mới Cập Nhật</a></li>
 						<li class="dropdown">
 							<a rel="notfollow" class="page dropdown-toggle" data-toggle="dropdown">Thể Loại <span class="caret"></span></a>
 							
@@ -90,20 +90,17 @@
 							<a rel="notfollow" class="page dropdown-toggle" data-toggle="dropdown">Năm Xuất Bản <span class="caret"></span></a>
 							
 							<ul class="dropdown-menu">
-								<li><a href="list-year.html" class="page">2012</a></li>
-								<li><a href="list-year.html" class="page">2013</a></li>
-								<li><a href="list-year.html" class="page">2014</a></li>
-								<li><a href="list-year.html" class="page">2015</a></li>
-								<li><a href="list-year.html" class="page">2016</a></li>
-								<li><a href="list-year.html" class="page">2017</a></li>
+								@foreach ($years as $year)
+								<li><a href="{{ url('/list/year/'.$year) }}" class="page">{{ $year }}</a></li>
+								@endforeach
 							</ul>
 						</li>
 						<li class="dropdown hide-md">
 							<a rel="notfollow" class="page dropdown-toggle" data-toggle="dropdown">Tình Trạng <span class="caret"></span></a>
 							
 							<ul class="dropdown-menu">
-								<li><a href="list-completed.html" class="page">Đã hoàn thành</a></li>
-								<li><a href="list-process.html" class="page">Đang tiến hành</a></li>
+								<li><a href="{{ url('/list/completed') }}" class="page">Đã hoàn thành</a></li>
+								<li><a href="{{ url('/list/process') }}" class="page">Đang tiến hành</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -115,37 +112,10 @@
 						</div>
 						<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tình Trạng <span class="caret"></span></a> -->
 						<ul class="dropdown-menu">
-							<li class="clearfix">
-								<img src="{{ asset('image/bang-hoai-3rd.jpg') }}" class="image" alt="" width="60px" height="60px">
-								<div class="info">
-									<a href="detail-book.html" class="name">Băng Hoại 3rd</a>
-									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
-								</div>
-							</li>
-							<li class="clearfix">
-								<img src="{{ asset('image/boruto.jpg') }}" class="image" alt="" width="60px" height="60px">
-								<div class="info">
-									<a href="detail-book.html" class="name">Boruto</a>
-									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
-								</div>
-							</li>
-							<li class="clearfix">
-								<img src="{{ asset('image/mahoutsukai-no-yome.jpg') }}" class="image" alt="" width="60px" height="60px">
-								<div class="info">
-									<a href="detail-book.html" class="name">Mahoutsukai no Yome</a>
-									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
-								</div>
-							</li>
-							<li class="clearfix">
-								<img src="{{ asset('image/himouto-umaru-chan.jpg') }}" class="image" alt="" width="60px" height="60px">
-								<div class="info">
-									<a href="detail-book.html" class="name">Himouto Umaru-chan</a>
-									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
-								</div>
-							</li>
+							
 							<hr>
 							<li class="search-more">
-								<a href="list-search.html">Tìm kiếm nâng cao</a>
+								<a href="{{ url('/list/search') }}" class="search-more"onclick="window.open('{{ url('/list/search') }}')">Tìm kiếm nâng cao</a>
 							</li>
 						</ul>
 					</div>

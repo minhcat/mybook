@@ -203,6 +203,25 @@ class BooksQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
+	public static function check_have_book_in_year($year) {
+		$result = DB::table('books')
+				->where('deleted', 0)
+				->where('approved', 1)
+				->whereYear('release_at', '=', $year)
+				->get();
+
+		if ($result == null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	/**
+	 * get books by year
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
 	public static function get_books_list_status($status, $number) {
 		$result = DB::table('books')
 				->where('deleted', 0)
@@ -282,6 +301,21 @@ class BooksQModel extends Model
 	 * @return object|boolean : all properties from `books` table
 	 */
 	public static function search_books_by_name($name) {
+		$result = DB::table('books')
+				->where('deleted', 0)
+				->where('approved', 1)
+				->where('keyword', 'like' ,'%'.$name.'%')
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * search books by name 
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function search_books_by_name_with_number($name, $number) {
 		$result = DB::table('books')
 				->where('deleted', 0)
 				->where('approved', 1)

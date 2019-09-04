@@ -493,7 +493,7 @@ class ListController extends Controller {
 	public function year($year)
 	{
 		$data['books'] = BooksQModel::get_books_list_year($year, Constants::BOOKS_ITEM_LIST);
-		$data['year'] = $year;
+		$data['year']  = $year;
 		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook'];
 
 		//data top-view sidebar
