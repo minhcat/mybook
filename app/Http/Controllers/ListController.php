@@ -16,7 +16,10 @@ use App\Http\Models\QModels\FriendsQModel;
 use App\Http\Models\QModels\NotificationsQModel;
 use App\Http\Models\BModels\NotificationsBModel;
 use App\Http\Models\QModels\UsersQModel;
+use App\Http\Models\QModels\SystemQModel;
 use App\Http\Models\QModels\TransQModel;
+use App\Http\Models\BModels\SystemBModel;
+use App\Http\Models\BModels\CategoriesBModel;
 use App\Http\Helpers\Helper;
 use App\Http\Helpers\Constants;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
@@ -34,19 +37,26 @@ class ListController extends Controller {
 	 */
 	public function category($category)
 	{
+		// header and footer
+		$header = CommonController::get_data_header();
+		$data['system']     = $header['system'];
+		$data['categories'] = $header['categories'];
+		$data['years']      = $header['years'];
+
+		//sidebar
+		$sidebar = CommonController::get_data_sidebar();
+		$data['sidebar']       = $sidebar['sidebar'];
+		$data['top_view']      = $sidebar['top_view'];
+		$data['random_book']   = $sidebar['random_book'];
+		$data['new_comment']   = $sidebar['new_comment'];
+		$data['books_popup']   = $sidebar['books_popup'];
+		$data['users_popup']   = $sidebar['users_popup'];
+		$data['chars_popup']   = $sidebar['chars_popup'];
+		$data['authors_popup'] = $sidebar['authors_popup'];
+		$data['trans_popup']   = $sidebar['trans_popup'];
+
 		$data['books'] = BooksQModel::get_books_list_category($category, Constants::BOOKS_ITEM_LIST);
 		$data['category'] = CategoriesQModel::get_category_by_name($category);
-		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook'];
-
-		//data top-view sidebar
-		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
-		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
-		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
-
-		//data random-book sidebar
-		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
-
-		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 
 		// dd($data);
 		Cookie::queue('name','value',60);
@@ -461,6 +471,11 @@ class ListController extends Controller {
 	 */
 	public function view(Request $request)
 	{
+		$header = CommonController::get_data_header();
+		$data['system']     = $header['system'];
+		$data['categories'] = $header['categories'];
+		$data['years']      = $header['years'];
+
 		$data['books'] = BooksQModel::get_books_list_view(Constants::BOOKS_ITEM_LIST);
 		$background = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
 		$page = $request->input('page');
@@ -468,19 +483,22 @@ class ListController extends Controller {
 			$data['books'] = Helper::add_background($data['books'], $background);
 		else
 			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
-		$data['sidebar'] = ['top-view', 'random-book', 'new-comment', 'facebook'];
 
-		//data top-view sidebar
-		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date();
-		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week();
-		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month();
-
-		//data random-book sidebar
-		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
-
-		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
+		//data system sidebar
+		
 
 		// dd($data['books']);
+		$sidebar = CommonController::get_data_sidebar();
+		$data['sidebar']       = $sidebar['sidebar'];
+		$data['top_view']      = $sidebar['top_view'];
+		$data['random_book']   = $sidebar['random_book'];
+		$data['new_comment']   = $sidebar['new_comment'];
+		$data['books_popup']   = $sidebar['books_popup'];
+		$data['users_popup']   = $sidebar['users_popup'];
+		$data['chars_popup']   = $sidebar['chars_popup'];
+		$data['authors_popup'] = $sidebar['authors_popup'];
+		$data['trans_popup']   = $sidebar['trans_popup'];
+		// dd($data);
 
 		return view('pages.list.list-view', $data);
 	}

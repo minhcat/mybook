@@ -6,7 +6,7 @@ blue
 @endsection
 
 @section('title-header')
-{{ $category->name }}
+{{ ucwords($category->name) }}
 @endsection
 
 @section('title-content')

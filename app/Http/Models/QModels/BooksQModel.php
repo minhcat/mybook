@@ -244,6 +244,7 @@ class BooksQModel extends Model
 				->where('c.name', '=', $category)
 				->where('b.deleted', 0)
 				->where('approved', 1)
+				->select('b.*')
 				->paginate($number);
 
 		return $result;
