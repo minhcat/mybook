@@ -17,7 +17,7 @@ class CommonController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public static function get_data_header()
+	public static function get_data_header($data)
 	{
 		//system
 		$data['system']     = SystemBModel::get_variables_website();
@@ -39,9 +39,8 @@ class CommonController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public static function get_data_sidebar()
+	public static function get_data_sidebar($data)
 	{
-		$data = [];
 		$sidebar_list = [];
 		$data['sidebar'] = [];
 		$topview_number = 5;
