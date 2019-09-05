@@ -159,10 +159,12 @@ class BooksQModel extends Model
 	 * @return object|boolean : all properties from `books` table
 	 */
 	public static function get_books_list_comment($number) {
-		$result = DB::table('books')
-				->where('deleted', 0)
-				->where('approved', 1)
-				->orderBy('comment','desc')
+		$result = DB::table('books as b')
+				->join('comments_statistic as cs', 'cs.id_book', '=', 'b.id')
+				->where('b.deleted', 0)
+				->where('b.approved', 1)
+				->orderBy('b.comment','desc')
+				->select('b.*', 'cs.detail as detail_cmd', 'cs.chap as chap_cmd', 'cs.reply as reply_cmd', 'cs.all as all_cmd')
 				->paginate($number);
 
 		return $result;

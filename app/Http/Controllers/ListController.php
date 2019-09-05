@@ -45,6 +45,10 @@ class ListController extends Controller {
 		$data = CommonController::get_data_sidebar($data);
 
 		$data['books'] = BooksQModel::get_books_list_category($category, Constants::BOOKS_ITEM_LIST);
+		foreach ($data['books'] as $key => $book) {
+			$book = Helper::add_category_from_book($book);
+			$book = Helper::short_description($book, 250);
+		}
 		$data['category'] = CategoriesQModel::get_category_by_name($category);
 
 		// dd($data);
@@ -65,7 +69,7 @@ class ListController extends Controller {
 
 		//sidebar
 		$data = CommonController::get_data_sidebar($data);
-		
+
 		$data['books'] = BooksQModel::get_books_list_comment(Constants::BOOKS_ITEM_LIST);
 		$background = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
 		$page = $request->input('page');
@@ -73,6 +77,10 @@ class ListController extends Controller {
 			$data['books'] = Helper::add_background($data['books'], $background);
 		else
 			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
+		foreach ($data['books'] as $key => $book) {
+			$book = Helper::add_category_from_book($book);
+			$book = Helper::short_description($book, 250);
+		}
 
 		// dd($value);
 		return view('pages.list.list-comment', $data);

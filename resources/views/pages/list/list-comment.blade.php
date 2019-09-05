@@ -25,16 +25,49 @@ Danh sách truyện được sắp xếp dựa trên lượt bình luận của 
 			@foreach ($books as $key => $book)
 			
 			<div class="book clearfix">
-				<a href="detail-book.html"><img src="{{ asset('image/books/'.$book->image.'.jpg') }}" width="160px" height="160px"></a>
+				<a href="{{ url('/detail/book/'.$book->slug) }}"><img src="{{ asset('image/books/'.$book->image.'.jpg') }}" width="160px" height="160px"></a>
 				<div class="rank {{ $book->background }}">{{ $book->index }}</div>
 				<div class="info">
-					<h4 class="name"><a href="detail-book.html">{{ $book->name }}</a></h4>
+					<h4 class="name"><a href="{{ url('/detail/book/'.$book->slug) }}">{{ $book->name }}</a></h4>
 					<div class="star">
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
+						{{-- star 1 --}}
+						@if ($book->rate_point <= 0.5)
 						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 2 --}}
+						@if ($book->rate_point <= 1)
 						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 1.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 3 --}}
+						@if ($book->rate_point <= 2)
+						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 2.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 4 --}}
+						@if ($book->rate_point <= 3)
+						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 3.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 5 --}}
+						@if ($book->rate_point <= 4)
+						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 4.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
 						<span>{{ $book->rate_point }}</span>
 						<span class="rate">{{ $book->rate }} đánh giá</span>
 					</div>
@@ -52,15 +85,23 @@ Danh sách truyện được sắp xếp dựa trên lượt bình luận của 
 							<span>{{ $book->follow }}</span>
 						</div>
 					</div>
-					<div class="type"><strong>Thể loại:</strong> <a href="">Hài hước</a>, <a href="">phiêu lưu</a>, <a href="">khoa học viễn tưởng</a>, <a href="">harem</a></div>
+					<div class="type"><strong>Thể loại:</strong> 
+						@foreach ($book->categories as $key => $category)
+							@if ($key < count($book->categories)-1)
+							<a href="{{ url('/list/category/'.$category['slug']) }}">{{ $category['name'] }}</a>, 
+							@else
+							<a href="{{ url('/list/category/'.$category['slug']) }}">{{ $category['name'] }}</a>
+							@endif
+						@endforeach
+					</div>
 
 					<div class="comment clearfix">
 						<strong>Lượt bình luận:</strong>
 						<br>
-						<div class="page">trang truyện: 100 lượt</div>
-						<div class="chap">các chap: 500 lượt</div>
-						<div class="reply">phản hồi: 400 lượt</div>
-						<div class="all">tổng cộng: 1000 lượt</div>
+						<div class="page">trang truyện: {{ $book->detail_cmd }} lượt</div>
+						<div class="chap">các chap: {{ $book->chap_cmd }} lượt</div>
+						<div class="reply">phản hồi: {{ $book->reply_cmd }} lượt</div>
+						<div class="all">tổng cộng: {{ $book->all_cmd }} lượt</div>
 					</div>
 				</div>
 			</div>
