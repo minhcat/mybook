@@ -102,6 +102,18 @@ class ListController extends Controller {
 
 		$data['status'] = Constants::STATUS_COMPLETED;
 		$data['books']  = BooksQModel::get_books_list_status(Constants::STATUS_COMPLETED, Constants::BOOKS_ITEM_LIST);
+		foreach ($data['books'] as $key => $book) {
+			//short description
+			$book = Helper::short_description($book, 250);
+			//get chaps
+			$book->max_chap = 0;
+			$chaps = ChapsQModel::sum_chap_by_book_id($book->id);
+			foreach ($chaps as $key => $chap) {
+				if ($book->max_chap < $chap->sum_chap) {
+					$book->max_chap = $chap->sum_chap;
+				}
+			}
+		}
 
 		return view('pages.list.list-completed', $data);
 	}
@@ -122,7 +134,12 @@ class ListController extends Controller {
 
 		$user_id = 1;
 		$data['books'] = BooksFollowQModel::get_books_follow_by_user_id($user_id);
-
+		foreach ($data['books'] as $key => $book) {
+			$book->new_chaps = ChapsQModel::get_chaps_new_by_book_id($book->id);
+			if ($book->new_chaps == null) {
+				$book->new_chaps = [];
+			}
+		}
 		// dd($data);
 		return view('pages.list.list-follow', $data);
 	}

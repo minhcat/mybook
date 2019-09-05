@@ -37,13 +37,13 @@ Danh sách các truyện mà bạn đăng ký theo dõi
 						<span class="rate">{{ $book->rate }} đánh giá</span>
 					</div>
 					<div class="group clearfix">
-						<div class="item red" title="yêu thích">
-							<span class="glyphicon glyphicon-heart"></span> 
-							<span>{{ $book->like }}</span>
-						</div>
 						<div class="item blue" title="lượt xem">
 							<span class="glyphicon glyphicon-eye-open"></span> 
 							<span>{{ $book->view }}</span>
+						</div>
+						<div class="item red" title="yêu thích">
+							<span class="glyphicon glyphicon-heart"></span> 
+							<span>{{ $book->like }}</span>
 						</div>
 						<div class="item orange" title="bình luận">
 							<span class="glyphicon glyphicon-comment"></span> 
@@ -54,13 +54,11 @@ Danh sách các truyện mà bạn đăng ký theo dõi
 							<span>{{ $book->follow }}</span>
 						</div>
 					</div>
-
+					@foreach ($book->new_chaps as $chap)
 					<div class="chap">
-						<a href="read-book.html"><strong>Chap 160</strong></a> - <div class="time">12 giờ trước</div>
+						<a href="{{ url('/read/'.$chap->book_slug.'/'.$chap->trans_slug.'/'.$chap->slug) }}"><strong>{{ $chap->name }}</strong></a> - <div class="time">{{ date_format(date_create($chap->create_at), 'd-m-Y') }}</div>
 					</div>
-					<div class="chap">
-						<a href="read-book.html"><strong>Chap 159</strong></a> - <div class="time">2 ngày trước</div>
-					</div>
+					@endforeach
 					<button class="btn unfollow">Bỏ theo dõi</button>
 				</div>
 			</div>

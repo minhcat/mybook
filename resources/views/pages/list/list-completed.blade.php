@@ -55,8 +55,8 @@ Danh sách các truyện đã kết thúc hoặc kết thúc trong một phần 
 						</div>
 					</div>
 
-					<div class="sum-chap"><strong>Số chap:</strong> 125 chap</div>
-					<div class="book-content"><strong>Nội dung:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium velit et error asperiores sint ea, deleniti, laboriosam facere mollitia officiis tempora laudantium. Adipisci necessitatibus harum, dolor vel earum, alias natus.</div>
+					<div class="sum-chap"><strong>Số chap:</strong> {{ $book->max_chap }} chap</div>
+					<div class="book-content"><strong>Nội dung:</strong> {!! $book->description !!}</div>
 				</div>
 			</div>
 			@if ($key < count($books) - 1)
