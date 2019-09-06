@@ -25,9 +25,14 @@ class NotificationsBModel extends Model
 			$notification->image = '';
 			$notification->action = '';
 			$notification->info = '';
+			$notification->slug = '';
+
 			if ($notification->type == 'reply') {
 				//get user name
 				$user = UsersQModel::get_user_by_id($notification->id_contant);
+				if ($user != null) {
+					$notification->slug = $user->name_login;
+				}
 				//get page name
 				if ($notification->page == 'read') {
 
@@ -43,6 +48,9 @@ class NotificationsBModel extends Model
 			} elseif ($notification->type == 'tag') {
 				//get user name
 				$user = UsersQModel::get_user_by_id($notification->id_contant);
+				if ($user != null) {
+					$notification->slug = $user->name_login;
+				}
 				//get page name
 				if ($notification->page == 'read') {
 
@@ -58,6 +66,9 @@ class NotificationsBModel extends Model
 			} elseif ($notification->type == 'like') {
 				//get user name
 				$user = UsersQModel::get_user_by_id($notification->id_contant);
+				if ($user != null) {
+					$notification->slug = $user->name_login;
+				}
 				//get page name
 				if ($notification->page == 'read') {
 
@@ -73,20 +84,33 @@ class NotificationsBModel extends Model
 			} elseif ($notification->type == 'addfriend') {
 				//get user name
 				$user = UsersQModel::get_user_by_id($notification->id_contant);
+				if ($user != null) {
+					$notification->slug = $user->name_login;
+				}
 				$notification = NotificationsBModel::get_notification_add_friend($notification, $user);
 			} elseif ($notification->type == 'newchap') {
 				$chap = ChapsQModel::get_chap_by_id($notification->id_contant);
+				$book = BooksQModel::get_book_by_id($chap->id_book);
+				if ($book != null) {
+					$notification->slug = $book->slug;
+				}
 				$notification = NotificationsBModel::get_notification_new_chap($notification, $chap);
 			} elseif ($notification->type == 'admin') {
 				$admin = new \stdClass();
 				$admin->image = 'admin';
+				$notification->slug = 'admin';
 				$notification = NotificationsBModel::get_notification_admin($notification, $admin);
 			} elseif ($notification->type == 'feedback') {
 				$admin = new \stdClass();
 				$admin->image = 'admin';
+				$notification->slug = 'admin';
 				$notification = NotificationsBModel::get_notification_feedback($notification, $admin);
 			} elseif ($notification->type == 'coming') {
 				$chap = ChapsQModel::get_chap_by_id($notification->id_contant);
+				$book = BooksQModel::get_book_by_id($chap->id_book);
+				if ($book != null) {
+					$notification->slug = $book->slug;
+				}
 				$notification = NotificationsBModel::get_notification_chap_coming($notification, $chap);
 			}
 		}

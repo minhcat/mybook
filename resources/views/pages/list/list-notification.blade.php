@@ -24,13 +24,11 @@ Tổng hợp các thông báo của bạn tại đây
 		<div class="list">
 			@foreach ($notifications as $key => $notification)
 			<div class="book clearfix">
-				<a href="">
-					@if ($notification->type == 'reply' || $notification->type == 'like' || $notification->type == 'tag' || $notification->type == 'addfriend' ||  $notification->type == 'admin' || $notification->type == 'feedback')
-						<img src="{{ asset('image/users/'.$notification->image.'.jpg') }}" width="100px" height="100px">
-					@elseif ($notification->type == 'newchap' || $notification->type == 'coming')
-						<img src="{{ asset('image/books/'.$notification->image.'.jpg') }}" width="100px" height="100px">
-					@endif
-				</a>
+				@if ($notification->type == 'reply' || $notification->type == 'like' || $notification->type == 'tag' || $notification->type == 'addfriend' ||  $notification->type == 'admin' || $notification->type == 'feedback')
+					<a href="{{ url('/detail/user/'.$notification->slug) }}"><img src="{{ asset('image/users/'.$notification->image.'.jpg') }}" width="100px" height="100px"></a>
+				@elseif ($notification->type == 'newchap' || $notification->type == 'coming')
+					<a href="{{ url('/detail/book/'.$notification->slug) }}"><img src="{{ asset('image/books/'.$notification->image.'.jpg') }}" width="100px" height="100px"></a>
+				@endif
 				<div class="info">
 					<h4 class="name">{!! $notification->action !!}</h4>
 					
