@@ -32,7 +32,7 @@ class NotificationsBModel extends Model
 				if ($notification->page == 'read') {
 
 					$page = ChapsQModel::get_chap_by_id($notification->id_page);
-					// dd($comment);
+					// dd($page);
 					$notification = NotificationsBModel::get_notification_reply_read($notification, $user, $page);
 				} else if ($notification->page == 'book') {
 
@@ -101,8 +101,8 @@ class NotificationsBModel extends Model
 	 */
 	private static function get_notification_reply_read($notification, $user, $page) {
 		$notification->image  = $user->image;
-		$notification->action = '<a href="#">'.$user->name.'</a> đã trả lời bình luận của bạn';
-		$notification->info   = '<strong>Truyện: </strong><a href="#">'.$page->book_name.'</a> - <a href="#">'.$page->name.'</a>';
+		$notification->action = '<a href="'.url('/detail/user/'.$user->name_login).'">'.$user->name.'</a> đã trả lời bình luận của bạn';
+		$notification->info   = '<strong>Truyện: </strong><a href="'.url('/detail/book/'.$page->book_slug).'">'.$page->book_name.'</a> - <a href="'.url('/read/'.$page->book_slug.'/'.$page->trans_slug.'/'.$page->slug).'">'.$page->name.'</a>';
 		return $notification;
 	}
 
@@ -114,8 +114,8 @@ class NotificationsBModel extends Model
 	private static function get_notification_reply_book($notification, $user, $page) {
 		//get comment
 		$notification->image  = $user->image;
-		$notification->action = '<a href="#">'.$user->name.'</a> đã trả lời bình luận của bạn';
-		$notification->info   = '<strong>Truyện: </strong><a href="#">'.$page->name.'</a>';
+		$notification->action = '<a href="'.url('/detail/user/'.$user->name_login).'">'.$user->name.'</a> đã trả lời bình luận của bạn';
+		$notification->info   = '<strong>Truyện: </strong><a href="'.url('/detail/book/'.$page->slug).'">'.$page->name.'</a>';
 		return $notification;
 	}
 
@@ -126,8 +126,8 @@ class NotificationsBModel extends Model
 	 */
 	private static function get_notification_tag_read($notification, $user, $page) {
 		$notification->image  = $user->image;
-		$notification->action = '<a href="#">'.$user->name.'</a> đã nhắn tới bạn trong một bình luận';
-		$notification->info   = '<strong>Truyện: </strong><a href="#">'.$page->book_name.'</a> - <a href="#">'.$page->name.'</a>';
+		$notification->action = '<a href="'.url('/detail/user/'.$user->name_login).'">'.$user->name.'</a> đã nhắn tới bạn trong một bình luận';
+		$notification->info   = '<strong>Truyện: </strong><a href="'.url('/detail/book/'.$page->book_slug).'">'.$page->book_name.'</a> - <a href="'.url('/read/'.$page->book_slug.'/'.$page->trans_slug.'/'.$page->slug).'">'.$page->name.'</a>';
 		return $notification;
 	}
 
@@ -138,8 +138,8 @@ class NotificationsBModel extends Model
 	 */
 	private static function get_notification_tag_book($notification, $user, $page) {
 		$notification->image  = $user->image;
-		$notification->action = '<a href="#">'.$user->name.'</a> đã nhắn tới bạn trong một bình luận';
-		$notification->info   = '<strong>Truyện: </strong><a href="#">'.$page->name.'</a>';
+		$notification->action = '<a href="'.url('/detail/user/'.$user->name_login).'">'.$user->name.'</a> đã nhắn tới bạn trong một bình luận';
+		$notification->info   = '<strong>Truyện: </strong><a href="'.url('/detail/book/'.$page->slug).'">'.$page->name.'</a>';
 		return $notification;
 	}
 
@@ -150,8 +150,8 @@ class NotificationsBModel extends Model
 	 */
 	private static function get_notification_like_read($notification, $user, $page) {
 		$notification->image  = $user->image;
-		$notification->action = '<a href="#">'.$user->name.'</a> đã thích bình luận của bạn';
-		$notification->info   = '<strong>Truyện: </strong><a href="#">'.$page->book_name.'</a> - <a href="#">'.$page->name.'</a>';
+		$notification->action = '<a href="'.url('/detail/user/'.$user->name_login).'">'.$user->name.'</a> đã thích bình luận của bạn';
+		$notification->info   = '<strong>Truyện: </strong><a href="'.url('/detail/book/'.$page->book_slug).'">'.$page->book_name.'</a> - <a href="'.url('/read/'.$page->book_slug.'/'.$page->trans_slug.'/'.$page->slug).'">'.$page->name.'</a>';
 		return $notification;
 	}
 
@@ -162,8 +162,8 @@ class NotificationsBModel extends Model
 	 */
 	private static function get_notification_like_book($notification, $user, $page) {
 		$notification->image  = $user->image;
-		$notification->action = '<a href="#">'.$user->name.'</a> đã thích bình luận của bạn';
-		$notification->info   = '<strong>Truyện: </strong><a href="#">'.$page->name.'</a>';
+		$notification->action = '<a href="'.url('/detail/user/'.$user->name_login).'">'.$user->name.'</a> đã thích bình luận của bạn';
+		$notification->info   = '<strong>Truyện: </strong><a href="'.url('/detail/book/'.$page->slug).'">'.$page->name.'</a>';
 		return $notification;
 	}
 
@@ -174,7 +174,7 @@ class NotificationsBModel extends Model
 	 */
 	private static function get_notification_add_friend($notification, $user) {
 		$notification->image  = $user->image;
-		$notification->action = '<a href="#">'.$user->name.'</a> đã gửi lời mời kết bạn tới bạn';
+		$notification->action = '<a href="'.url('/detail/user/'.$user->name_login).'">'.$user->name.'</a> đã gửi lời mời kết bạn tới bạn';
 		$notification->info   = '';
 		return $notification;
 	}
@@ -186,7 +186,7 @@ class NotificationsBModel extends Model
 	 */
 	private static function get_notification_new_chap($notification, $chap) {
 		$notification->image  = $chap->image;
-		$notification->action = '<a href="#">'.$chap->book_name.'</a> ra <a href="#">'.$chap->name.'</a>';
+		$notification->action = '<a href="'.url('/detail/book/'.$chap->book_slug).'">'.$chap->book_name.'</a> ra <a href="'.url('/read/'.$chap->book_slug.'/'.$chap->trans_slug.'/'.$chap->slug).'">'.$chap->name.'</a>';
 		$notification->info   = '';
 		return $notification;
 	}
@@ -222,7 +222,7 @@ class NotificationsBModel extends Model
 	 */
 	private static function get_notification_chap_coming($notification, $chap) {
 		$notification->image  = $chap->image;
-		$notification->action = '<a href="#">'.$chap->book_name.'</a> sắp ra <a href="#">'.$chap->name.'</a> vào lúc 12h ngày mai';
+		$notification->action = '<a href="'.url('/detail/book/'.$chap->book_slug).'">'.$chap->book_name.'</a> sắp ra <a href="'.url('/read/'.$chap->book_slug.'/'.$chap->trans_slug.'/'.$chap->slug).'">'.$chap->name.'</a> vào lúc 12h ngày mai';
 		$notification->info   = '';
 		return $notification;
 	}

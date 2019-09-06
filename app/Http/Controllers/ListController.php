@@ -185,7 +185,7 @@ class ListController extends Controller {
 
 		$user_id = 1;
 		$data['notifications'] = NotificationsBModel::get_notifications_list($user_id);
-		
+		// dd($data);
 		return view('pages.list.list-notification', $data);
 	}
 
