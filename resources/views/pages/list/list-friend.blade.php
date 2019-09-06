@@ -24,15 +24,48 @@ Danh sách những người bạn của bạn
 		<div class="list">
 			@foreach ($friends as $key => $friend)
 			<div class="book clearfix">
-				<a href=""><img src="{{ asset('image/users/'.$friend->image.'.jpg') }}" width="160px" height="160px"></a>
+				<a href="{{ url('/detail/user/'.$friend->name_login) }}"><img src="{{ asset('image/users/'.$friend->image.'.jpg') }}" width="160px" height="160px"></a>
 				<div class="info">
-					<h4 class="name"><a href="detail-book.html">{{ $friend->name }}</a></h4>
+					<h4 class="name"><a href="{{ url('/detail/user/'.$friend->name_login) }}">{{ $friend->name }}</a></h4>
 					<div class="star">
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
+						{{-- star 1 --}}
+						@if ($friend->rate_point <= 0.5)
 						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 2 --}}
+						@if ($friend->rate_point <= 1)
 						<span class="fa fa-star-o"></span>
+						@elseif ($friend->rate_point <= 1.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 3 --}}
+						@if ($friend->rate_point <= 2)
+						<span class="fa fa-star-o"></span>
+						@elseif ($friend->rate_point <= 2.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 4 --}}
+						@if ($friend->rate_point <= 3)
+						<span class="fa fa-star-o"></span>
+						@elseif ($friend->rate_point <= 3.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 5 --}}
+						@if ($friend->rate_point <= 4)
+						<span class="fa fa-star-o"></span>
+						@elseif ($friend->rate_point <= 4.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
 						<span>{{ $friend->rate_point }}</span>
 						<span class="rate">{{ $friend->rate }} đánh giá</span>
 					</div>
