@@ -24,16 +24,49 @@ Danh sách truyện được sắp xếp dựa trên mức độ đánh giá và
 		<div class="list">
 			@foreach ($books as $key => $book)
 			<div class="book clearfix">
-				<a href=""><img src="{{ asset('image/books/'.$book->image.'.jpg') }}" width="160px" height="160px"></a>
+				<a href="{{ url('/detail/book/'.$book->slug) }}"><img src="{{ asset('image/books/'.$book->image.'.jpg') }}" width="160px" height="160px"></a>
 				<div class="rank {{ $book->background }}">{{ $book->index }}</div>
 				<div class="info">
-					<h4 class="name"><a href="detail-book.html">{{ $book->name }}</a></h4>
+					<h4 class="name"><a href="{{ url('/detail/book/'.$book->slug) }}">{{ $book->name }}</a></h4>
 					<div class="star">
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
+						{{-- star 1 --}}
+						@if ($book->rate_point <= 0.5)
 						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 2 --}}
+						@if ($book->rate_point <= 1)
 						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 1.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 3 --}}
+						@if ($book->rate_point <= 2)
+						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 2.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 4 --}}
+						@if ($book->rate_point <= 3)
+						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 3.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 5 --}}
+						@if ($book->rate_point <= 4)
+						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 4.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
 						<span>3.5</span>
 						<span class="rate">100 đánh giá</span>
 					</div>
@@ -56,10 +89,10 @@ Danh sách truyện được sắp xếp dựa trên mức độ đánh giá và
 					<div class="rate clearfix">
 						<strong>Lượt đánh giá:</strong>
 						<br>
-						<div class="perfect">tuyệt vời(5 sao): 120 lượt</div>
-						<div class="good">khá hay(4 sao): 60 lượt</div>
-						<div class="normal">bình thường(3 sao): 20 lượt</div>
-						<div class="all">tổng cộng: 200 lượt</div>
+						<div class="perfect">tuyệt vời(5 sao): {{ $book->five_star }} lượt</div>
+						<div class="good">khá hay(4 sao): {{ $book->four_star }} lượt</div>
+						<div class="normal">bình thường(3 sao): {{ $book->three_star }} lượt</div>
+						<div class="all">chán(2 sao): {{ $book->two_star }} lượt</div>
 					</div>
 				</div>
 			</div>

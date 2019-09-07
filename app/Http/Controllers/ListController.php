@@ -8,6 +8,7 @@ use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\QModels\BooksFollowQModel;
 use App\Http\Models\QModels\BooksViewQModel;
+use App\Http\Models\QModels\BooksRateQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\CharactersQModel;
 use App\Http\Models\QModels\CategoriesQModel;
@@ -344,7 +345,34 @@ class ListController extends Controller {
 			$data['books'] = Helper::add_background($data['books'], $background);
 		else
 			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
-
+		foreach ($data['books'] as $key => $book) {
+			$book = Helper::add_category_from_book($book);
+			$five_star  = BooksRateQModel::get_rate_five_star_by_book_id($book->id);
+			if ($five_star != null) {
+				$book->five_star = $five_star->number;
+			} else {
+				$book->five_star = 0;
+			}
+			$four_star  = BooksRateQModel::get_rate_four_star_by_book_id($book->id);
+			if ($four_star != null) {
+				$book->four_star = $four_star->number;
+			} else {
+				$book->four_star = 0;
+			}
+			$three_star = BooksRateQModel::get_rate_three_star_by_book_id($book->id);
+			if ($three_star != null) {
+				$book->three_star = $three_star->number;
+			} else {
+				$book->three_star = 0;
+			}
+			$two_star   = BooksRateQModel::get_rate_two_star_by_book_id($book->id);
+			if ($two_star != null) {
+				$book->two_star = $two_star->number;
+			} else {
+				$book->two_star = 0;
+			}
+		}
+		// dd($data);
 		return view('pages.list.list-rate', $data);
 	}
 

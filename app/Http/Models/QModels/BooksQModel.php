@@ -225,10 +225,14 @@ class BooksQModel extends Model
 	 * @return object|boolean : all properties from `books` table
 	 */
 	public static function get_books_list_status($status, $number) {
-		$result = DB::table('books')
-				->where('deleted', 0)
-				->where('approved', 1)
-				->where('status', '=', $status)
+		$result = DB::table('books as b')
+				->join('chaps_new as cn', 'cn.id_book', '=', 'b.id')
+				->join('chaps as c', 'c.id', '=', 'cn.id_chap')
+				->join('trans as t', 't.id', '=', 'c.id_trans')
+				->where('b.deleted', 0)
+				->where('b.approved', 1)
+				->where('b.status', '=', $status)
+				->select('b.*', 'cn.name as chap_new', 'c.slug as chap_slug', 't.slug as trans_slug')
 				->paginate($number);
 
 		return $result;
