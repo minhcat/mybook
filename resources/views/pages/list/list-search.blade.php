@@ -38,12 +38,9 @@ Các bạn có thể tìm kiếm truyện thông qua từ khóa, thể loại, t
 						</button>
 						<ul class="dropdown-menu" >
 							<li>tất cả</li>
-							<li>2012</li>
-							<li>2013</li>
-							<li>2014</li>
-							<li>2015</li>
-							<li>2016</li>
-							<li>2017</li>
+							@foreach ($years as $year)
+								<li>{{ $year }}</li>
+							@endforeach
 						</ul>
 						<input type="hidden" name="year" class="year">
 					</div>
@@ -95,26 +92,9 @@ Các bạn có thể tìm kiếm truyện thông qua từ khóa, thể loại, t
 					<div class="group category col-md-12 col-sm-12">
 						<label>Thể loại</label>
 						<div class="item-group col-md-12 clearfix">
-							<div class="item">action</div>
-							<div class="item">adult</div>
-							<div class="item">adventure</div>
-							<div class="item">anime</div>
-							<div class="item">bender</div>
-							<div class="item">comic</div>
-							<div class="item">cooking</div>
-							<div class="item">cosplay</div>
-							<div class="item">demons</div>
-							<div class="item">doujinshi</div>
-							<div class="item">ecchi</div>
-							<div class="item">fanmade</div>
-							<div class="item">fantasy</div>
-							<div class="item">harem</div>
-							<div class="item">history</div>
-							<div class="item">magic</div>
-							<div class="item">mystery</div>
-							<div class="item">romance</div>
-							<div class="item">school life</div>
-							<div class="item">zombie</div>
+							@foreach ($categories_search as $category)
+							<div class="item" data-slug="{{ $category->slug }}">{{ $category->name }}</div>
+							@endforeach
 						</div>
 						<input type="hidden" name="category" class="category">
 					</div>
@@ -167,33 +147,66 @@ Các bạn có thể tìm kiếm truyện thông qua từ khóa, thể loại, t
 		<div class="list">
 			<!-- <h3>Kết quả tìm kiếm</h3>
 			<hr> -->
-			@if ($search == null)
+			@if ($is_search == null)
 				<h3 class="green">Chọn Từ Khóa Tìm Kiếm</h3>
 			@elseif (count($books) == 0)
 				<h3 class="green">Không Tìm Thấy Truyện</h3>
 			@else
 				@foreach ($books as $key => $book)
 				<div class="book clearfix">
-					<a href=""><img src="{{ asset('image/books/'.$book->image.'.jpg') }}" width="160px" height="160px"></a>
+					<a href="{{ url('/detail/book/'.$book->slug) }}"><img src="{{ asset('image/books/'.$book->image.'.jpg') }}" width="160px" height="160px"></a>
 					<div class="info">
-						<h4 class="name"><a href="detail-book.html">{{ $book->name }}</a></h4>
+						<h4 class="name"><a href="{{ url('/detail/book/'.$book->slug) }}">{{ $book->name }}</a></h4>
 						<div class="star">
-							<span class="fa fa-star"></span>
-							<span class="fa fa-star"></span>
-							<span class="fa fa-star"></span>
-							<span class="fa fa-star-half-o"></span>
-							<span class="fa fa-star-o"></span>
+							{{-- star 1 --}}
+						@if ($book->rate_point <= 0.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 2 --}}
+						@if ($book->rate_point <= 1)
+						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 1.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 3 --}}
+						@if ($book->rate_point <= 2)
+						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 2.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 4 --}}
+						@if ($book->rate_point <= 3)
+						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 3.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 5 --}}
+						@if ($book->rate_point <= 4)
+						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 4.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
 							<span>{{ $book->rate_point }}</span>
 							<span class="rate">{{ $book->rate }} đánh giá</span>
 						</div>
 						<div class="group clearfix">
-							<div class="item red" title="yêu thích">
-								<span class="glyphicon glyphicon-heart"></span> 
-								<span>{{ $book->like }}</span>
-							</div>
 							<div class="item blue" title="lượt xem">
 								<span class="glyphicon glyphicon-eye-open"></span> 
 								<span>{{ $book->view }}</span>
+							</div>
+							<div class="item red" title="yêu thích">
+								<span class="glyphicon glyphicon-heart"></span> 
+								<span>{{ $book->like }}</span>
 							</div>
 							<div class="item orange" title="bình luận">
 								<span class="glyphicon glyphicon-comment"></span> 
@@ -205,8 +218,16 @@ Các bạn có thể tìm kiếm truyện thông qua từ khóa, thể loại, t
 							</div>
 						</div>
 
-						<div class="type"><strong>Thể loại:</strong> <a href="">Hài hước</a>, <a href="">phiêu lưu</a>, <a href="">khoa học viễn tưởng</a>, <a href="">harem</a></div>
-						<div class="book-content"><strong>Nội dung:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium velit et error asperiores sint ea, deleniti, laboriosam facere mollitia officiis tempora laudantium. Adipisci necessitatibus harum, dolor vel earum, alias natus.</div>
+						<div class="type"><strong>Thể loại:</strong> 
+							@foreach ($book->categories as $key => $category)
+								@if ($key < count($book->categories)-1)
+								<a href="{{ url('/list/category/'.$category['slug']) }}">{{ $category['name'] }}</a>, 
+								@else
+								<a href="{{ url('/list/category/'.$category['slug']) }}">{{ $category['name'] }}</a>
+								@endif
+							@endforeach
+						</div>
+						<div class="book-content"><strong>Nội dung:</strong> {!! $book->description !!}</div>
 					</div>
 				</div>
 				@if ($key < count($books) - 1)

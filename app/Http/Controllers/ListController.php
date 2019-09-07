@@ -409,6 +409,7 @@ class ListController extends Controller {
 		if ($search->book === null) {
 			// dd('hello');
 			//get request search
+			$data['is_search'] = 'true';
 			$data['search'] = null;
 			$books = new Paginator(null, 0, 12, 1, [
 				'path'  => $request->url(),
@@ -432,11 +433,25 @@ class ListController extends Controller {
 			}
 			// $books_page = arr
 			
-			$data['search'] = 'true';
+			$data['is_search'] = 'true';
+			$data['search'] = $search;
 			$data['books'] = $books;
+			foreach ($data['books'] as $key => $book) {
+				$book = Helper::add_category_from_book($book);
+				$book = Helper::short_description($book, 250);
+			}
 		}
 
-		// dd($data['books']);
+		$data['years']      = [];
+		for ($year = 2000; $year <= date('Y'); $year++) {
+			$check = BooksQModel::check_have_book_in_year($year);
+			if ($check) {
+				array_push($data['years'], $year);
+			}
+		}
+		$data['categories_search'] = CategoriesQModel::get_categories_all();
+
+		// dd($data);
 		return view('pages.list.list-search', $data);
 	}
 

@@ -70,13 +70,13 @@ blue
 						<span class="rate">{{ $book->rate }} đánh giá</span>
 					</div>
 					<div class="group clearfix">
-						<div class="item red" title="yêu thích">
-							<span class="glyphicon glyphicon-heart"></span> 
-							<span>{{ $book->like }}</span>
-						</div>
 						<div class="item blue" title="lượt xem">
 							<span class="glyphicon glyphicon-eye-open"></span> 
 							<span>{{ $book->view }}</span>
+						</div>
+						<div class="item red" title="yêu thích">
+							<span class="glyphicon glyphicon-heart"></span> 
+							<span>{{ $book->like }}</span>
 						</div>
 						<div class="item orange" title="bình luận">
 							<span class="glyphicon glyphicon-comment"></span> 

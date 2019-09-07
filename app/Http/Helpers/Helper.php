@@ -111,6 +111,8 @@ class Helper {
 	 * @return array
 	 */
 	public static function short_description($item, $number) {
+		$item->description = str_replace('<p>', '', $item->description);
+		$item->description = str_replace('</p>', '', $item->description);
 		if (strlen($item->description) >= $number) {
 			$item->description = substr($item->description, 0, $number).'...';
 		}

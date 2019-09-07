@@ -94,7 +94,7 @@ $(document).ready(function() {
 		//add category value
 		var cate = '';
 		$('.group.category .item-group .item.select').each(function() {
-			var icate = $(this).text();
+			var icate = $(this).data('slug');
 			if (cate == '')
 				cate = '"' + icate + '"';
 			else
