@@ -31,6 +31,10 @@ Route::group(['prefix' => 'home'], function() {
 
 Route::get('read/{book_slug}/{trans_slug}/{chap_slug}', 'ReadController@index');
 
+Route::get('login', 'LoginController@login');
+
+Route::get('sign_up', 'LoginController@sign_up');
+
 Route::group(['prefix' => 'list'], function() {
 
 	Route::get('comment', 'ListController@comment');
