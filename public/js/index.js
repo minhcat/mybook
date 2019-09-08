@@ -18,7 +18,7 @@ $(document).ready(function() {
 				url: '/home/ajax/search_book/'+name,
 				success:function(books) {
 					for (i = 0; i < books.length; i++) {
-						form.prepend('<li class="clearfix"><img src="image/books/'+books[i].image+'.jpg" class="image" alt="" width="60px" height="60px"><div class="info"><a href="http://localhost:8000/detail/book/'+books[i].slug+'" class="name">'+books[i].name+'</a><div class="more">'+books[i].description.slice(0,60)+'...</div></div></li>')
+						form.prepend('<li class="clearfix"><img src="'+flag_url+'image/books/'+books[i].image+'.jpg" class="image" alt="" width="60px" height="60px"><div class="info"><a href="http://localhost:8000/detail/book/'+books[i].slug+'" class="name">'+books[i].name+'</a><div class="more">'+books[i].description.slice(0,60)+'...</div></div></li>')
 					}
 				}
 			});

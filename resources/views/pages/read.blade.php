@@ -67,7 +67,10 @@
 	@include('partials.layouts.content_footer')
 
 	@include('partials.layouts.define_footer')
-
+	
+	<script type="text/javascript">
+		var flag_url = '{{ asset('/') }}';
+	</script>
 	<script type="text/javascript" src="{{ asset('js/read.js') }}"></script>
 </body>
 </html>

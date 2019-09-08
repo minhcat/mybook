@@ -136,7 +136,7 @@ class ListController extends Controller {
 		$user_id = 1;
 		$data['books'] = BooksFollowQModel::get_books_follow_by_user_id($user_id);
 		foreach ($data['books'] as $key => $book) {
-			$book->new_chaps = ChapsQModel::get_chaps_new_by_book_id($book->id);
+			$book->new_chaps = ChapsQModel::get_chaps_new_by_book_id($book->id, 2);
 			if ($book->new_chaps == null) {
 				$book->new_chaps = [];
 			}
@@ -320,7 +320,7 @@ class ListController extends Controller {
 
 		$data['status'] = Constants::STATUS_PROCESS;
 		$data['books']  = BooksQModel::get_books_list_status(Constants::STATUS_PROCESS, Constants::BOOKS_ITEM_LIST);
-
+		// dd($data);
 		return view('pages.list.list-process', $data);
 	}
 
@@ -470,6 +470,12 @@ class ListController extends Controller {
 		$data = CommonController::get_data_sidebar($data);
 
 		$data['books'] = BooksQModel::get_books_list_update(Constants::BOOKS_ITEM_LIST);
+		foreach ($data['books'] as $key => $book) {
+			$book->new_chaps = ChapsQModel::get_chaps_new_by_book_id($book->id, 3);
+			if ($book->new_chaps == null) {
+				$book->new_chaps = [];
+			}
+		}
 		
 		return view('pages.list.list-update', $data);
 	}
@@ -495,6 +501,20 @@ class ListController extends Controller {
 			$data['books'] = Helper::add_background($data['books'], $background);
 		else
 			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
+		foreach ($data['books'] as $key => $book) {
+			$book = Helper::add_category_from_book($book);
+			// get book view
+			$day_view   = BooksViewQModel::get_book_view_day_by_book_id($book->id, 5, 2, 6, 2019);
+			$week_view  = BooksViewQModel::get_book_view_week_by_book_id($book->id, 2, 6, 2019);
+			$month_view = BooksViewQModel::get_book_view_month_by_book_id($book->id, 6, 2019);
+			$all_view = BooksViewQModel::get_book_view_all_by_book_id($book->id, 2019);
+			$book->book_view = [
+				'day'   => ($day_view != null) ? (int)$day_view->view : 0,
+				'week'  => ($week_view != null) ? (int)$week_view->view : 0,
+				'month' => ($month_view != null) ? (int)$month_view->view : 0,
+				'all'   => ($all_view != null) ? (int)$all_view->view : 0,
+			];
+		}
 
 		//data system sidebar
 		// dd($data);
@@ -517,6 +537,9 @@ class ListController extends Controller {
 		$data = CommonController::get_data_sidebar($data);
 
 		$data['books'] = BooksQModel::get_books_list_year($year, Constants::BOOKS_ITEM_LIST);
+		foreach ($data['books'] as $key => $book) {
+			$book = Helper::add_category_from_book($book);
+		}
 		$data['year']  = $year;
 		// dd($data);
 		return view('pages.list.list-year', $data);

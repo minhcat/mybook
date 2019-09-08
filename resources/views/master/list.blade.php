@@ -19,6 +19,9 @@
 @endsection
 
 @section('define-footer')
+	<script type="text/javascript">
+		var flag_url = '{{ asset('/') }}';
+	</script>
 	<script type="text/javascript" src="{{ asset('js/list.js') }}"></script>
 @endsection
 

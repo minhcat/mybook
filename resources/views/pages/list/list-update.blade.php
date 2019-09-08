@@ -28,22 +28,55 @@ Các loại truyện có được cập nhập, thêm chap mới, ra bảng dị
 				<div class="info">
 					<h4 class="name"><a href="detail-book.html">{{ $book->name }}</a></h4>
 					<div class="star">
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
+						{{-- star 1 --}}
+						@if ($book->rate_point <= 0.5)
 						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 2 --}}
+						@if ($book->rate_point <= 1)
 						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 1.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 3 --}}
+						@if ($book->rate_point <= 2)
+						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 2.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 4 --}}
+						@if ($book->rate_point <= 3)
+						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 3.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 5 --}}
+						@if ($book->rate_point <= 4)
+						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 4.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
 						<span>{{ $book->rate_point }}</span>
 						<span class="rate">{{ $book->rate }} đánh giá</span>
 					</div>
 					<div class="group clearfix">
-						<div class="item red">
-							<span class="glyphicon glyphicon-heart"></span> 
-							<span>{{ $book->like }}</span>
-						</div>
 						<div class="item blue">
 							<span class="glyphicon glyphicon-eye-open"></span> 
 							<span>{{ $book->view }}</span>
+						</div>
+						<div class="item red">
+							<span class="glyphicon glyphicon-heart"></span> 
+							<span>{{ $book->like }}</span>
 						</div>
 						<div class="item orange">
 							<span class="glyphicon glyphicon-comment"></span> 
@@ -55,11 +88,11 @@ Các loại truyện có được cập nhập, thêm chap mới, ra bảng dị
 						</div>
 					</div>
 
-					<div class="date"><strong>Ngày cập nhật:</strong> 20/12/2017</div>
+					<div class="date"><strong>Ngày cập nhật:</strong> {{ date_format(date_create($book->update_at), 'd/m/Y') }}</div>
 					<div class="new-chap">
-						<p><a href="">chap 78 - Lâu dài Issac</a></p>
-						<p><a href="">chap 77 - Tướng cướp Kallen</a></p>
-						<p><a href="">chap 76 - Lá thư đe dọa</a></p>
+						@foreach ($book->new_chaps as $chap)
+						<p><a href="{{ url('/read/'.$chap->book_slug.'/'.$chap->trans_slug.'/'.$chap->slug) }}">{{ $chap->name }} - {{ $chap->title }}</a></p>
+						@endforeach
 					</div>
 				</div>
 			</div>

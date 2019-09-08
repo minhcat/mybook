@@ -158,7 +158,7 @@ Các bạn có thể tìm kiếm truyện thông qua từ khóa, thể loại, t
 					<div class="info">
 						<h4 class="name"><a href="{{ url('/detail/book/'.$book->slug) }}">{{ $book->name }}</a></h4>
 						<div class="star">
-							{{-- star 1 --}}
+						{{-- star 1 --}}
 						@if ($book->rate_point <= 0.5)
 						<span class="fa fa-star-half-o"></span>
 						@else
@@ -196,8 +196,8 @@ Các bạn có thể tìm kiếm truyện thông qua từ khóa, thể loại, t
 						@else
 						<span class="fa fa-star"></span>
 						@endif
-							<span>{{ $book->rate_point }}</span>
-							<span class="rate">{{ $book->rate }} đánh giá</span>
+						<span>{{ $book->rate_point }}</span>
+						<span class="rate">{{ $book->rate }} đánh giá</span>
 						</div>
 						<div class="group clearfix">
 							<div class="item blue" title="lượt xem">

@@ -184,14 +184,14 @@ class ChapsQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `categories` table
 	 */
-	public static function get_chaps_new_by_book_id($book_id) {
+	public static function get_chaps_new_by_book_id($book_id, $number) {
 		$result = DB::table('chaps as c')
 				->join('books as b', 'b.id', '=', 'c.id_book')
 				->join('trans as t', 't.id', '=', 'c.id_trans')
 				->where('id_book', $book_id)
 				->orderBy('index', 'desc')
 				->select('c.*', 'b.slug as book_slug', 't.slug as trans_slug')
-				->take(2)
+				->take($number)
 				->get();
 				
 		return $result;

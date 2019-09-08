@@ -15,3 +15,9 @@
 </section>
 
 @endsection
+
+@section('define-footer')
+	<script type="text/javascript">
+		var flag_url = '{{ asset('/') }}';
+	</script>
+@endsection
