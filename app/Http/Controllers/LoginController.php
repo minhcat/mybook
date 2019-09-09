@@ -1,7 +1,10 @@
 <?php 
 namespace App\Http\Controllers;
 
+use App\Http\Requests;
 use App\Http\Models\QModels\UsersQModel;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller {
 
@@ -49,5 +52,9 @@ class LoginController extends Controller {
 
 		$user = $request->input('user');
 		$password = $request->input('password');
+
+		if (Auth::attempt(['name_login' => $user, 'password' => $password])) {
+			return redirect('/');
+		}
 	}
 }

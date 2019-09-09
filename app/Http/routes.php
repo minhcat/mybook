@@ -210,3 +210,5 @@ Route::group(['prefix' => 'admin'], function() {
 	});
 	
 });
+
+Route::get('/config/set_password/{user_id}', 'ConfigController@set_password');

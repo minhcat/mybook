@@ -12,7 +12,8 @@
 				<img src="image/kirito_720x720.jpg" class="img-circle">
 			</div>
 		</div>
-		<form action="index_login.html" class="login form-horizontal clearfix">
+		<form action="{{ url('/login') }}" method="POST" class="login form-horizontal clearfix">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="line clearfix">
 				<label class="col-md-3">Tên Đăng Nhập</label>
 				<div class="col-md-9">
