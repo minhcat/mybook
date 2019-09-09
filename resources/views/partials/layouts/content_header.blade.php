@@ -119,7 +119,150 @@
 							</li>
 						</ul>
 					</div>
-				
+					@if (Auth::check())
+					<ul class="nav navbar-nav navbar-right hide-sm">
+							<li>
+								<a rel="notfollow"  class="page dropdown-toggle" data-toggle="dropdown"><span class="fa fa-bell"></span> Thông Báo</a>
+								<ul class="dropdown-menu menu2">
+									<li class="clearfix">
+										<img src="image/bang-hoai-3rd.jpg" class="image img-circle" alt="" width="60px" height="60px">
+										<div class="info">
+											<div class="content"><a href="detail-book.html">Băng Hoại 3rd</a> ra chap mới: chap 78 - Dinh tự của Issac</div>
+											<div class="time">1 giờ trước</div>
+										</div>
+									</li>
+									<li class="clearfix">
+										<img src="image/boruto.jpg" class="image img-circle" alt="" width="60px" height="60px">
+										<div class="info">
+											<div class="content"><a href="detail-book.html">Boruto</a> ra chap mới: chap 128 - Ác quỷ xuất hiện</div>
+											<div class="time">2 giờ trước</div>
+										</div>
+									</li>
+									<li class="clearfix">
+										<img src="image/mahoutsukai-no-yome.jpg" class="image img-circle" alt="" width="60px" height="60px">
+										<div class="info">
+											<div class="content"><a href="detail-book.html">Mahoutsuki no Yome</a> ra chap mới: chap 25 - Không kẻ nào điếc hơn kẻ không muốn nghe</div>
+											<div class="time">1 ngày trước</div>
+										</div>
+									</li>
+									<li class="clearfix">
+										<img src="image/A-kun.jpg" class="image img-circle" alt="" width="60px" height="60px">
+										<div class="info">
+											<div class="content"><a href="">A-kun</a> trả lời bình luận của bạn: Lorem ipsum dolor sit amet.</div>
+											<div class="time">5 ngày trước</div>
+										</div>
+									</li>
+									<li class="clearfix">
+										<img src="image/Eren.jpg" class="image img-circle" alt="" width="60px" height="60px">
+										<div class="info">
+											<div class="content"><a href="">Eren</a> trả lời bình luận của bạn: Lorem ipsum dolor sit amet, consectetur.</div>
+											<div class="time">ngày 25/12/2017</div>
+										</div>
+									</li>
+									<hr>
+									<li class="all-noti">
+										<a href="notification.html">Xem tất cả</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a rel="notfollow" class="page user dropdown-toggle" data-toggle="dropdown"><img src="image/Asuna.jpg" class="img-circle" width="35px" alt="">&nbsp;&nbsp;Asuna</a>
+								<ul class="dropdown-menu menu2 user">
+									<li class="clearfix">
+										<a href="detail-user-login.html">Thông tin cá nhân</a>
+									</li>
+									<hr>
+									<li class="clearfix">
+										<a href="history.html">Truyện đang theo dõi</a>
+									</li>
+									<li class="clearfix">
+										<a href="history.html">Lịch sử đọc truyện</a>
+									<li class="clearfix">
+										<a href="list-friend.html">Danh sách bạn</a>
+									</li>
+									</li>
+									<hr>
+									<li class="clearfix">
+										<a href="setting.html">Cài đặt</a>
+									</li>
+									<li class="clearfix">
+										<a href="{{ url('logout') }}">Đăng xuất</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right show-sm">
+							<li>
+								<a href="#"  class="page dropdown-toggle" data-toggle="dropdown"><span class="fa fa-bell"></span></a>
+								<ul class="dropdown-menu menu2">
+									<li class="clearfix">
+										<img src="image/bang-hoai-3rd.jpg" class="image img-circle" alt="" width="60px" height="60px">
+										<div class="info">
+											<div class="content"><a href="detail-book.html">Băng Hoại 3rd</a> ra chap mới: chap 78 - Dinh tự của Issac</div>
+											<div class="time">1 giờ trước</div>
+										</div>
+									</li>
+									<li class="clearfix">
+										<img src="image/boruto.jpg" class="image img-circle" alt="" width="60px" height="60px">
+										<div class="info">
+											<div class="content"><a href="detail-book.html">Boruto</a> ra chap mới: chap 128 - Ác quỷ xuất hiện</div>
+											<div class="time">2 giờ trước</div>
+										</div>
+									</li>
+									<li class="clearfix">
+										<img src="image/mahoutsukai-no-yome.jpg" class="image img-circle" alt="" width="60px" height="60px">
+										<div class="info">
+											<div class="content"><a href="detail-book.html">Mahoutsuki no Yome</a> ra chap mới: chap 25 - Không kẻ nào điếc hơn kẻ không muốn nghe</div>
+											<div class="time">1 ngày trước</div>
+										</div>
+									</li>
+									<li class="clearfix">
+										<img src="image/A-kun.jpg" class="image img-circle" alt="" width="60px" height="60px">
+										<div class="info">
+											<div class="content"><a href="">A-kun</a> trả lời bình luận của bạn: Lorem ipsum dolor sit amet.</div>
+											<div class="time">5 ngày trước</div>
+										</div>
+									</li>
+									<li class="clearfix">
+										<img src="image/Eren.jpg" class="image img-circle" alt="" width="60px" height="60px">
+										<div class="info">
+											<div class="content"><a href="">Eren</a> trả lời bình luận của bạn: Lorem ipsum dolor sit amet, consectetur.</div>
+											<div class="time">ngày 25/12/2017</div>
+										</div>
+									</li>
+									<hr>
+									<li class="all-noti">
+										<a href="notification.html">Xem tất cả</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#" class="page user dropdown-toggle" data-toggle="dropdown"><img src="image/Asuna.jpg" class="img-circle" width="35px" alt=""></a>
+								<ul class="dropdown-menu menu2 user">
+									<li class="clearfix">
+										<a href="detail-user-login.html">Thông tin cá nhân</a>
+									</li>
+									<hr>
+									<li class="clearfix">
+										<a href="list-book-follow.html">Truyện đang theo dõi</a>
+									</li>
+									<li class="clearfix">
+										<a href="history.html">Lịch sử đọc truyện</a>
+									</li>
+									<li class="clearfix">
+										<a href="list-friend.html">Danh sách bạn</a>
+									</li>
+									<hr>
+									<li class="clearfix">
+										<a href="setting.html">Cài đặt</a>
+									</li>
+									<li class="clearfix">
+										<a href="{{ url('logout') }}">Đăng xuất</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					@else
 					<ul class="nav navbar-nav navbar-right hide-sm">
 						<li><a href="sign-up.html" class="page"><span class="glyphicon glyphicon-user"></span> Đăng Ký</a></li>
 						<li><a href="login.html" class="page"><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
@@ -128,6 +271,7 @@
 						<li><a href="sign-up.html" class="page"><span class="glyphicon glyphicon-user"></span></a></li>
 						<li><a href="login.html" class="page"><span class="glyphicon glyphicon-log-in"></span></a></li>
 					</ul>
+					@endif
 				</div>
 			</nav>
 		</div>

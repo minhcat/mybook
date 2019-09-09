@@ -55,6 +55,18 @@ class LoginController extends Controller {
 
 		if (Auth::attempt(['name_login' => $user, 'password' => $password])) {
 			return redirect('/');
+		} else {
+			return redirect()->back()->with('error', 'Tài khoản đăng nhập hoặc mật khẩu không đúng');
 		}
+	}
+
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function logout(Request $request) {
+		Auth::logout();
+		return redirect()->back();
 	}
 }
