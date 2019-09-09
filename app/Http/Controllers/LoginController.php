@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Models\QModels\UsersQModel;
 
 class LoginController extends Controller {
+
 	/**
 	 * Show the application dashboard to the user.
 	 *
@@ -32,5 +33,21 @@ class LoginController extends Controller {
 		$data = CommonController::get_data_sidebar($data);
 
 		return view('pages.login.sign-up', $data);
+	}
+
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function post_login(Request $request) {
+		$validate = [
+			'user' => 'required',
+			'password' => 'required'
+		];
+		$this->validate($request, $validate);
+
+		$user = $request->input('user');
+		$password = $request->input('password');
 	}
 }

@@ -35,6 +35,10 @@ Route::get('login', 'LoginController@login');
 
 Route::get('sign_up', 'LoginController@sign_up');
 
+Route::post('login', 'LoginController@post_login');
+
+Route::post('sign_up', 'LoginController@post_sign_up');
+
 Route::group(['prefix' => 'list'], function() {
 
 	Route::get('comment', 'ListController@comment');

@@ -16,13 +16,13 @@
 			<div class="line clearfix">
 				<label class="col-md-3">Tên Đăng Nhập</label>
 				<div class="col-md-9">
-					<input type="text" name="" class="form-control" placeholder="nhập tên đăng nhập">
+					<input type="text" name="user" class="form-control" placeholder="nhập tên đăng nhập">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-md-3">Mật Khẩu</label>
 				<div class="col-md-9">
-					<input type="password" name="" class="form-control" placeholder="nhập mật khẩu">
+					<input type="password" name="password" class="form-control" placeholder="nhập mật khẩu">
 				</div>
 			</div>
 
