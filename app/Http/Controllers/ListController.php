@@ -23,6 +23,7 @@ use App\Http\Models\BModels\SystemBModel;
 use App\Http\Models\BModels\CategoriesBModel;
 use App\Http\Helpers\Helper;
 use App\Http\Helpers\Constants;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 // use Symfony\Component\HttpFoundation\Cookie;
 use Cookie;
@@ -38,8 +39,12 @@ class ListController extends Controller {
 	 */
 	public function category($category)
 	{
-		// header and footer
 		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		// header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
@@ -64,8 +69,12 @@ class ListController extends Controller {
 	 */
 	public function comment(Request $request)
 	{
-		//header and footer
 		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		//header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
@@ -94,8 +103,12 @@ class ListController extends Controller {
 	 */
 	public function completed()
 	{
-		//header and footer
 		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		//header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
@@ -126,8 +139,12 @@ class ListController extends Controller {
 	 */
 	public function follow()
 	{
-		//header and footer
 		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		//header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
@@ -152,8 +169,12 @@ class ListController extends Controller {
 	 */
 	public function friend()
 	{
-		//header and footer
 		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		//header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
@@ -177,8 +198,12 @@ class ListController extends Controller {
 	 */
 	public function notification()
 	{
-		//header and footer
 		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		//header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
@@ -197,8 +222,12 @@ class ListController extends Controller {
 	 */
 	public function history(Request $request)
 	{
-		//header and footer
 		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		//header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
@@ -311,8 +340,12 @@ class ListController extends Controller {
 	 */
 	public function process()
 	{
-		//header and footer
 		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		//header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
@@ -331,8 +364,12 @@ class ListController extends Controller {
 	 */
 	public function rate(Request $request)
 	{
-		//header and footer
 		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		//header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
@@ -383,8 +420,12 @@ class ListController extends Controller {
 	 */
 	public function search(Request $request)
 	{
-		//header and footer
 		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		//header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
@@ -462,8 +503,12 @@ class ListController extends Controller {
 	 */
 	public function update()
 	{
-		//header and footer
 		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		//header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
@@ -487,8 +532,12 @@ class ListController extends Controller {
 	 */
 	public function view(Request $request)
 	{
-		//header and footer
 		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		//header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
@@ -529,8 +578,12 @@ class ListController extends Controller {
 	 */
 	public function year($year)
 	{
-		//header and footer
 		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		//header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
