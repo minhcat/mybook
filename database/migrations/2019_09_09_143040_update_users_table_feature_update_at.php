@@ -13,7 +13,7 @@ class UpdateUsersTableFeatureUpdateAt extends Migration {
 	public function up()
 	{
 		Schema::table('users', function(Blueprint $table) {
-			$table->string('update_at');
+			$table->dateTime('update_at');
 		});
 	}
 
@@ -25,7 +25,7 @@ class UpdateUsersTableFeatureUpdateAt extends Migration {
 	public function down()
 	{
 		Schema::table('users', function(Blueprint $table) {
-			$table->dropColunm('update_at');
+			$table->dropColumn('update_at');
 		});
 	}
 

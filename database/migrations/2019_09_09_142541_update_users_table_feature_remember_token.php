@@ -25,7 +25,7 @@ class UpdateUsersTableFeatureRememberToken extends Migration {
 	public function down()
 	{
 		Schema::table('users', function(Blueprint $table) {
-			$table->dropColunm('remember_token');
+			$table->dropColumn('remember_token');
 		});
 	}
 

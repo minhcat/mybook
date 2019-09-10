@@ -418,7 +418,9 @@ section {
   .listbook .content {
     margin-right: 0; }
     .listbook .content .topic .topic-content .book .book-content .book-info {
-      width: 342.5px; } }
+      width: 342.5px; }
+    .listbook .content .topic .topic-content .book .book-content .book-hover .name {
+      width: 342px; } }
 @media (min-width: 576px) and (max-width: 767px) {
   .navbar-nav > li {
     float: left; }
@@ -440,7 +442,9 @@ section {
     .listbook .content .topic .topic-content .book .book-content .book-info {
       width: 237.5px; }
     .listbook .content .topic .topic-content .book .book-content .book-hover .group {
-      font-size: 12px; } }
+      font-size: 12px; }
+    .listbook .content .topic .topic-content .book .book-content .book-hover .name {
+      width: 237px; } }
 @media (max-width: 575px) {
   .slide {
     display: none; }

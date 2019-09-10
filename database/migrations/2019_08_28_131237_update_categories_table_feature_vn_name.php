@@ -25,7 +25,7 @@ class UpdateCategoriesTableFeatureVnName extends Migration {
 	public function down()
 	{
 		Schema::table('categories', function(Blueprint $table) {
-			$table->dropColunm('vn_name');
+			$table->dropColumn('vn_name');
 		});
 	}
 

@@ -264,12 +264,12 @@
 						</ul>
 					@else
 					<ul class="nav navbar-nav navbar-right hide-sm">
-						<li><a href="sign-up.html" class="page"><span class="glyphicon glyphicon-user"></span> Đăng Ký</a></li>
-						<li><a href="login.html" class="page"><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
+						<li><a href="{{ url('sign-up') }}" class="page"><span class="glyphicon glyphicon-user"></span> Đăng Ký</a></li>
+						<li><a href="{{ url('login') }}" class="page"><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right show-sm">
-						<li><a href="sign-up.html" class="page"><span class="glyphicon glyphicon-user"></span></a></li>
-						<li><a href="login.html" class="page"><span class="glyphicon glyphicon-log-in"></span></a></li>
+						<li><a href="{{ url('sign-up') }}" class="page"><span class="glyphicon glyphicon-user"></span></a></li>
+						<li><a href="{{ url('login') }}" class="page"><span class="glyphicon glyphicon-log-in"></span></a></li>
 					</ul>
 					@endif
 				</div>
