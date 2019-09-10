@@ -124,14 +124,42 @@
 						<li>
 							<a rel="notfollow"  class="page dropdown-toggle" data-toggle="dropdown"><span class="fa fa-bell"></span> Thông Báo</a>
 							<ul class="dropdown-menu menu2">
-								<li class="clearfix">
-									<img src="image/bang-hoai-3rd.jpg" class="image img-circle" alt="" width="60px" height="60px">
-									<div class="info">
-										<div class="content"><a href="detail-book.html">Băng Hoại 3rd</a> ra chap mới: chap 78 - Dinh tự của Issac</div>
-										<div class="time">1 giờ trước</div>
-									</div>
-								</li>
-								<li class="clearfix">
+								@foreach ($notifications as $key => $notification)
+									@if ($key < 5)
+									<li class="clearfix">
+										@if ($notification->type == 'newchap' || $notification->type == 'coming')
+										<img src="{{ asset('image/books/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
+										@else
+										<img src="{{ asset('image/users/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
+										@endif
+										<div class="info">
+											<div class="content">{!! $notification->action !!}</div>
+											@if ($notification->year == (int)date('Y'))
+												@if ($notification->month == (int)date('m'))
+													@if ($notification->date == (int)date('d'))
+														@if ($notification->hour == (int)date('H'))
+															@if ($notification->minute == (int)date('i'))
+															<div class="time">{{ (int)date('s') - $notification->second }} giây trước</div>
+															@else
+															<div class="time">{{ (int)date('i') - $notification->minute }} phút trước</div>
+															@endif
+														@else
+														<div class="time">{{ (int)date('H') - $notification->hour }} giờ trước</div>
+														@endif
+													@else
+													<div class="time">{{ (int)date('d') - $notification->date }} ngày trước</div>
+													@endif
+												@else
+												<div class="time">{{ (int)date('m') - $notification->month }} tháng trước</div>
+												@endif
+											@else
+											<div class="time">{{ (int)date('Y') - $notification->year }} năm trước</div>
+											@endif
+										</div>
+									</li>
+									@endif
+								@endforeach
+							{{-- 	<li class="clearfix">
 									<img src="image/boruto.jpg" class="image img-circle" alt="" width="60px" height="60px">
 									<div class="info">
 										<div class="content"><a href="detail-book.html">Boruto</a> ra chap mới: chap 128 - Ác quỷ xuất hiện</div>
@@ -158,7 +186,7 @@
 										<div class="content"><a href="">Eren</a> trả lời bình luận của bạn: Lorem ipsum dolor sit amet, consectetur.</div>
 										<div class="time">ngày 25/12/2017</div>
 									</div>
-								</li>
+								</li> --}}
 								<hr>
 								<li class="all-noti">
 									<a href="{{ url('/list/notification') }}">Xem tất cả</a>

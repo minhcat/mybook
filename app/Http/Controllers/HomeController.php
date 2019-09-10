@@ -14,6 +14,7 @@ use App\Http\Models\QModels\SlidersQModel;
 use App\Http\Models\QModels\SystemQModel;
 use App\Http\Models\BModels\CategoriesBModel;
 use App\Http\Models\BModels\CommentsBModel;
+use App\Http\Models\BModels\NotificationsBModel;
 use App\Http\Models\BModels\SystemBModel;
 use App\Http\Helpers\Helper;
 use App\Http\Helpers\Constants;
@@ -60,7 +61,17 @@ class HomeController extends Controller {
 		}
 		//user login
 		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+			$data['user_login']    = UsersQModel::get_user_by_id(Auth::id());
+			$data['notifications'] = NotificationsBModel::get_notifications_list(Auth::id());
+			foreach ($data['notifications'] as $key => $notification) {
+				$date_create = date_create($notification->date, timezone_open('Asia/Ho_Chi_Minh'));
+				$notification->year   = (int)date_format($date_create, 'Y');
+				$notification->month  = (int)date_format($date_create, 'm');
+				$notification->date   = (int)date_format($date_create, 'd');
+				$notification->hour   = (int)date_format($date_create, 'H');
+				$notification->minute = (int)date_format($date_create, 'i');
+				$notification->second = (int)date_format($date_create, 's');
+			}
 		}
 		//get sliders
 		$number_slider   = SystemQModel::get_variable_by_name('slider_select_images');
@@ -232,6 +243,7 @@ class HomeController extends Controller {
 		$data['authors_popup'] = $authors_popup;
 		$data['trans_popup']   = $trans_popup;
 		// dd($data);
+		dd(date('H:i:s'));
 
 		return view('pages.home', $data);
 	}
