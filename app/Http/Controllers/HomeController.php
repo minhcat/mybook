@@ -17,6 +17,7 @@ use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\SystemBModel;
 use App\Http\Helpers\Helper;
 use App\Http\Helpers\Constants;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller {
 
@@ -56,6 +57,10 @@ class HomeController extends Controller {
 			if ($check) {
 				array_push($data['years'], $year);
 			}
+		}
+		//user login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
 		}
 		//get sliders
 		$number_slider   = SystemQModel::get_variable_by_name('slider_select_images');
