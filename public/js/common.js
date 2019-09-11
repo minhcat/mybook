@@ -42,6 +42,17 @@ $(document).ready(function() {
 		// console.log(id);
 		$(id).css('display','none');
 	});
+
+	$('.menu .navbar ul.nav li a').click(function() {
+		box = this;
+		$.ajax({
+			type: 'GET',
+			url: flag_url + 'home/ajax/check_seen_notification',
+			success:function(data) {
+				$(box).find('span.number').text('');
+			}
+		});
+	});
 });
 
 //close modal when click outside

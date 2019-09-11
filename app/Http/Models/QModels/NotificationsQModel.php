@@ -20,4 +20,18 @@ class NotificationsQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_notifications_not_seen($user_id) {
+		$result = DB::table('notifications')
+				->where('id_user', $user_id)
+				->where('seen', 1)
+				->paginate(12);
+
+		return $result;
+	}
 }

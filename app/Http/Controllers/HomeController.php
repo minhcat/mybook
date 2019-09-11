@@ -12,6 +12,8 @@ use App\Http\Models\QModels\BooksViewQModel;
 use App\Http\Models\QModels\CommentsQModel;
 use App\Http\Models\QModels\SlidersQModel;
 use App\Http\Models\QModels\SystemQModel;
+use App\Http\Models\QModels\NotificationsQModel;
+use App\Http\Models\CModels\NotificationsCModel;
 use App\Http\Models\BModels\CategoriesBModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\NotificationsBModel;
@@ -63,8 +65,9 @@ class HomeController extends Controller {
 		if (Auth::check()) {
 			$data['user_login']    = UsersQModel::get_user_by_id(Auth::id());
 			$data['notifications'] = NotificationsBModel::get_notifications_list(Auth::id());
+			$data['noti_seen']     = NotificationsQModel::get_notifications_not_seen(Auth::id());
 			foreach ($data['notifications'] as $key => $notification) {
-				$date_create = date_create($notification->date, timezone_open('Asia/Ho_Chi_Minh'));
+				$date_create = date_create($notification->date);
 				$notification->year   = (int)date_format($date_create, 'Y');
 				$notification->month  = (int)date_format($date_create, 'm');
 				$notification->date   = (int)date_format($date_create, 'd');
@@ -290,5 +293,15 @@ class HomeController extends Controller {
 	 */
 	public function search_books_menu($name) {
 		return BooksQModel::search_books_by_name_with_number($name, 5);
+	}
+
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function check_seen_notification() {
+		$data = ['seen' => 0];
+		return NotificationsCModel::update_notification_by_user_id(Auth::id(), $data);
 	}
 }

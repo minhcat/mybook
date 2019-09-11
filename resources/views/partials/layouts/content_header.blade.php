@@ -122,7 +122,7 @@
 					@if (Auth::check())
 					<ul class="nav navbar-nav navbar-right hide-sm">
 						<li>
-							<a rel="notfollow"  class="page dropdown-toggle" data-toggle="dropdown"><span class="fa fa-bell"></span> Thông Báo</a>
+							<a rel="notfollow"  class="page dropdown-toggle" data-toggle="dropdown"><span class="fa fa-bell"></span> Thông Báo <span class="number">{{ (count($noti_seen) != 0) ? '('.count($noti_seen).')' : '' }}</span></a>
 							<ul class="dropdown-menu menu2">
 								@foreach ($notifications as $key => $notification)
 									@if ($key < 5)

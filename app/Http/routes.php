@@ -27,6 +27,8 @@ Route::group(['prefix' => 'home'], function() {
 
 	Route::get('ajax/search_book/{name}', 'HomeController@search_books_menu');
 
+	Route::get('ajax/check_seen_notification', 'HomeController@check_seen_notification');
+
 });
 
 Route::get('read/{book_slug}/{trans_slug}/{chap_slug}', 'ReadController@index');
