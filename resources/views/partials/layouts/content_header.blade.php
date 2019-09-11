@@ -133,6 +133,7 @@
 										<img src="{{ asset('image/users/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
 										@endif
 										<div class="info">
+											<?php date_default_timezone_set('Asia/Ho_Chi_Minh'); ?>
 											<div class="content">{!! $notification->action !!}</div>
 											@if ($notification->year == (int)date('Y'))
 												@if ($notification->month == (int)date('m'))

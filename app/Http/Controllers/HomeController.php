@@ -243,7 +243,6 @@ class HomeController extends Controller {
 		$data['authors_popup'] = $authors_popup;
 		$data['trans_popup']   = $trans_popup;
 		// dd($data);
-		dd(date('H:i:s'));
 
 		return view('pages.home', $data);
 	}
