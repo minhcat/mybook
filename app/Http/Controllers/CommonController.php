@@ -22,12 +22,12 @@ class CommonController extends Controller {
 		//system
 		$data['system']     = SystemBModel::get_variables_website();
 		//categories menu
-		$data['categories'] = CategoriesBModel::get_categories_menu();
-		$data['years']      = [];
+		$data['menu_categories'] = CategoriesBModel::get_categories_menu();
+		$data['menu_years']      = [];
 		for ($year = 2000; $year <= date('Y'); $year++) {
 			$check = BooksQModel::check_have_book_in_year($year);
 			if ($check) {
-				array_push($data['years'], $year);
+				array_push($data['menu_years'], $year);
 			}
 		}
 

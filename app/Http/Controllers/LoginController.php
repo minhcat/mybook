@@ -2,7 +2,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Http\Helpers\Images;
 use App\Http\Models\QModels\UsersQModel;
+use App\Http\Models\QModels\CategoriesQModel;
+use App\Http\Models\CModels\UsersCModel;
+use App\Http\Models\CModels\UsersCategoryCModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,6 +38,8 @@ class LoginController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		$data = CommonController::get_data_sidebar($data);
+
+		$data['categories'] = CategoriesQModel::get_categories_all();
 
 		return view('pages.login.sign-up', $data);
 	}
@@ -68,5 +74,71 @@ class LoginController extends Controller {
 	public function logout(Request $request) {
 		Auth::logout();
 		return redirect()->back();
+	}
+
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function post_sign_up(Request $request) {
+		// dd($request);
+		$validate = [
+			'name_login'	=> 'required',
+			'name'			=> 'required',
+			'password'		=> 'required',
+			'repassword'	=> 'required',
+			'email'			=> 'required|email'
+		];
+		$this->validate($request, $validate);
+
+		// data image upload
+		$data['image'] = $request->file('image');
+		$data['name']  = $request->input('name_login');
+		$data['path']  = '/image/users';
+		Images::upload_image($data);
+
+		// check password
+		$password	= $request->input('password');
+		$repassword	= $request->input('repassword');
+		if ($password != $repassword) {
+			return redirect()->back()->withErrors('password không trùng');
+		}
+
+		// create user
+		$data = [
+			'name_login'	=> $request->input('name_login'),
+			'name'			=> $request->input('name'),
+			'password'		=> $request->input('password'),
+			'email'			=> $request->input('email'),
+			'nickname'		=> $request->input('nickname'),
+			'genitive'		=> $request->input('genitive'),
+			'facebook'		=> $request->input('facebook'),
+			'twitter'		=> $request->input('twitter'),
+			'slogan'		=> $request->input('slogan'),
+			'description'	=> $request->input('description'),
+			'create_at'		=> date('Y-m-d'),
+		];
+		// set birth
+		$year  = $request->input('year');
+		$month = $request->input('month');
+		$date  = $request->input('date');
+		$data['birth'] = $year.'-'.$month.'-'.$date;
+		// set gender
+		$gender = $request->input('gender');
+		if ($gender == '') {
+			$data['gender'] = 2;
+		} else {
+			$data['gender'] = $gender;
+		}
+		$user_id = UsersCModel::insert_user($data);
+		// set category
+		$categories = json_decode($request->input('category'));
+		foreach ($categories as $category) {
+			$data = ['id_user' => $user_id, 'id_category' => $category];
+			UsersCategoryCModel::insert_user_category($data);
+		}
+
+		return redirect('login')->with('success', 'Bạn đã đăng ký thành công, mời bạn đăng nhập vào hệ thống');
 	}
 }

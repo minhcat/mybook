@@ -75,7 +75,7 @@
 							<a rel="notfollow" class="page dropdown-toggle" data-toggle="dropdown">Thể Loại <span class="caret"></span></a>
 							
 							<ul class="dropdown-menu more">
-								@foreach ($categories as $group_category)
+								@foreach ($menu_categories as $group_category)
 								<li>
 									<div class="row">
 										@foreach ($group_category as $key => $category)
@@ -90,7 +90,7 @@
 							<a rel="notfollow" class="page dropdown-toggle" data-toggle="dropdown">Năm Xuất Bản <span class="caret"></span></a>
 							
 							<ul class="dropdown-menu">
-								@foreach ($years as $year)
+								@foreach ($menu_years as $year)
 								<li><a href="{{ url('/list/year/'.$year) }}" class="page">{{ $year }}</a></li>
 								@endforeach
 							</ul>

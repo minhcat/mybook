@@ -6,42 +6,58 @@
 			<li><a href="">Trang chủ</a></li>
 			<li class="active">Đăng ký</li>
 		</ul>
-		<div class="header clearfix">
-			<h2>Đăng Ký</h2>
-			<div class="image">
-				<img src="image/user-default.png" class="sign-up">
-			</div>
-			<div class="col-4 col-offset-4">
-				<div class="col-10 col-offset-1">
-					<button class="form-control">Tải ảnh lên</button>
+		<form action="{{ url('sign_up') }}" class="sign-up form-horizontal clearfix" method="POST" enctype="multipart/form-data">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<div class="header clearfix">
+				<h2>Đăng Ký</h2>
+				<div class="image">
+					<img src="image/user-default.png" class="sign-up">
+				</div>
+				<div class="col-4 col-offset-4">
+					<div class="col-10 col-offset-1">
+						<label class="button form-control">
+							Thêm hình
+							<input id="image" type="file" name="image">
+						</label>
+					</div>
 				</div>
 			</div>
-		</div>
-		<form action="" class="sign-up form-horizontal clearfix">
+		
 			<h4>Thông tin chính</h4>
 			<hr>
+			@if ($errors->any())
+				@foreach ($errors->all() as $error)
+				<p>{{ $error }}</p>
+				@endforeach
+			@endif
 			<div class="line clearfix">
 				<label class="col-lg-3 col-md-4 col-sm-4">Tên Đăng Nhập<span>(*)</span></label>
 				<div class="col-lg-9 col-md-8 col-sm-8">
-					<input type="text" name="" class="form-control" placeholder="nhập tên đăng nhập">
+					<input type="text" name="name_login" class="form-control" placeholder="nhập tên đăng nhập">
+				</div>
+			</div>
+			<div class="line clearfix">
+				<label class="col-lg-3 col-md-4 col-sm-4">Tên Hiển Thị<span>(*)</span></label>
+				<div class="col-lg-9 col-md-8 col-sm-8">
+					<input type="text" name="name" class="form-control" placeholder="nhập tên hiển thị">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-lg-3 col-md-4">Mật Khẩu<span>(*)</span></label>
 				<div class="col-lg-9 col-md-8">
-					<input type="password" name="" class="form-control" placeholder="nhập mật khẩu">
+					<input type="password" name="password" class="form-control" placeholder="nhập mật khẩu">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-lg-3 col-md-4">Nhập Lại Mật Khẩu<span>(*)</span></label>
 				<div class="col-lg-9 col-md-8">
-					<input type="password" name="" class="form-control" placeholder="nhập lại mật khẩu">
+					<input type="password" name="repassword" class="form-control" placeholder="nhập lại mật khẩu">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-lg-3 col-md-4">Email<span>(*)</span></label>
 				<div class="col-lg-9 col-md-8">
-					<input type="text" name="" class="form-control" placeholder="nhập email">
+					<input type="text" name="email" class="form-control" placeholder="nhập email">
 				</div>
 			</div>
 			<h4>Thông tin khác</h4>
@@ -58,6 +74,7 @@
 						<li>Nữ</li>
 					</ul>
 				</div>
+				<input type="hidden" name="gender">
 			</div>
 
 			<div class="line clearfix">
@@ -67,89 +84,83 @@
 						<span class="text">ngày</span>
 						<span class="caret"></span>
 					</button>
-					<ul class="dropdown-menu">
+					<ul class="dropdown-menu birth">
 						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-						<li>4</li>
-						<li>5</li>
+						@for ($i = 2; $i <= 31; $i++)
+						<li>{{ $i }}</li>
+						@endfor
 					</ul>
 				</div>
+				<input type="hidden" name="date" value="01">
 				<div class="col-lg-2 col-md-3">
 					<button class="select form-control" type="button">
 						<span class="text">tháng</span>
 						<span class="caret"></span>
 					</button>
-					<ul class="dropdown-menu">
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-						<li>4</li>
-						<li>5</li>
+					<ul class="dropdown-menu birth">
+						@for ($i = 1; $i <= 12; $i++)
+						<li>{{ $i }}</li>
+						@endfor
 					</ul>
 				</div>
+				<input type="hidden" name="month" value="01">
 				<div class="col-lg-2 col-md-3">
 					<button class="select form-control" type="button">
 						<span class="text">năm</span>
 						<span class="caret"></span>
 					</button>
-					<ul class="dropdown-menu">
-						<li>1990</li>
-						<li>1991</li>
-						<li>1992</li>
-						<li>1993</li>
-						<li>1994</li>
+					<ul class="dropdown-menu birth">
+						@for ($i = 2019; $i >= 1900; $i--)
+						<li>{{ $i }}</li>
+						@endfor
 					</ul>
 				</div>
-			</div>
-			<div class="line clearfix">
-				<label class="col-md-3">Tên Hiển Thị</label>
-				<div class="col-md-9">
-					<input type="text" name="" class="form-control" placeholder="nhập tên hiển thị">
-				</div>
+				<input type="hidden" name="year" value="1990">
 			</div>
 			<div class="line clearfix">
 				<label class="col-md-3">Biệt Danh</label>
 				<div class="col-md-9">
-					<input type="text" name="" class="form-control" placeholder="nhập biệt danh">
+					<input type="text" name="nickname" class="form-control" placeholder="nhập biệt danh">
 				</div>
 			</div>
 			<div class="line clearfix">
-				<label class="col-md-3">Nơi Làm Việc</label>
+				<label class="col-md-3">Tính Cách</label>
 				<div class="col-md-9">
-					<input type="text" name="" class="form-control" placeholder="nhập nơi làm việc">
+					<input type="text" name="genitive" class="form-control" placeholder="nhập tính cách">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-md-3">Facebook</label>
 				<div class="col-md-9">
-					<input type="text" name="" class="form-control" placeholder="nhập link facebook">
+					<input type="text" name="facebook" class="form-control" placeholder="nhập link facebook">
+				</div>
+			</div>
+			<div class="line clearfix">
+				<label class="col-md-3">Twitter</label>
+				<div class="col-md-9">
+					<input type="text" name="twitter" class="form-control" placeholder="nhập link twitter">
+				</div>
+			</div>
+			<div class="line clearfix">
+				<label class="col-md-3">Câu slogan</label>
+				<div class="col-md-9">
+					<input type="text" name="slogan" class="form-control" placeholder="nhập câu slogan">
+				</div>
+			</div>
+			<div class="line clearfix">
+				<label class="col-md-3">Tự Giới Thiệu</label>
+				<div class="col-md-9">
+					<textarea name="description" class="form-control" placeholder="nhập nội dung giới thiệu" rows="6"></textarea>
 				</div>
 			</div>
 			<div class="line category clearfix">
 				<label class="col-md-12">Thể loại yêu thích</label>
 				<div class="item-group col-md-12 clearfix">
-					<div class="item">action</div>
-					<div class="item">adult</div>
-					<div class="item">adventure</div>
-					<div class="item">anime</div>
-					<div class="item">bender</div>
-					<div class="item">comic</div>
-					<div class="item">cooking</div>
-					<div class="item">cosplay</div>
-					<div class="item">demons</div>
-					<div class="item">doujinshi</div>
-					<div class="item">ecchi</div>
-					<div class="item">fanmade</div>
-					<div class="item">fantasy</div>
-					<div class="item">harem</div>
-					<div class="item">history</div>
-					<div class="item">magic</div>
-					<div class="item">mystery</div>
-					<div class="item">romance</div>
-					<div class="item">school life</div>
-					<div class="item">zombie</div>
+					@foreach ($categories as $category)
+					<div class="item" data-slug="{{ $category->id }}">{{ $category->name }}</div>
+					@endforeach
 				</div>
+				<input type="hidden" name="category" value="[]">
 			</div>
 
 			<h4>Điều khoản</h4>
@@ -187,9 +198,13 @@
 				</div>
 			</div>
 			<div class="line clearfix">
-				<div class="col-md-6"><button type="button" class="submit form-control">Đăng ký</button></div>
+				<div class="col-md-6"><button type="submit" class="submit form-control">Đăng ký</button></div>
 				<div class="col-md-6"><button type="reset" class="reset form-control">Nhập lại</button></div>
 			</div>
 		</form>
 	</div>
+@endsection
+
+@section('define-footer')
+	<script type="text/javascript" src="{{ asset('js/login.js') }}"></script>
 @endsection

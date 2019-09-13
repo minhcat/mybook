@@ -49,16 +49,6 @@ Route::group(['prefix' => 'list'], function() {
 
 	Route::get('completed', 'ListController@completed');
 
-	Route::get('follow', 'ListController@follow');
-
-	Route::get('friend', 'ListController@friend');
-
-	Route::get('notification', 'ListController@notification');
-
-	Route::get('history', 'ListController@history');
-
-	Route::get('process', 'ListController@process');
-
 	Route::get('rate', 'ListController@rate');
 
 	Route::get('update', 'ListController@update');
@@ -71,6 +61,20 @@ Route::group(['prefix' => 'list'], function() {
 
 	Route::get('category/{category}', 'ListController@category');
 
+	Route::group(['middleware' => 'auth'], function() {
+
+		Route::get('follow', 'ListController@follow');
+
+		Route::get('friend', 'ListController@friend');
+
+		Route::get('notification', 'ListController@notification');
+
+		Route::get('history', 'ListController@history');
+
+		Route::get('process', 'ListController@process');
+
+	});
+	
 });
 
 Route::group(['prefix' => 'detail'], function () {

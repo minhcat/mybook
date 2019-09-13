@@ -76,7 +76,7 @@ class UploaderController extends Controller {
 			'name'			=> 'required',
 			'category'		=> 'required',
 		];
-		dd($request->all());
+		// dd($request->all());
 		$this->validate($request, $validate);
 
 		$new_book = new \stdClass;

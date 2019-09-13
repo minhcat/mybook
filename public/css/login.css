@@ -21,11 +21,21 @@
         background-color: #03c233;
         border-color: #03c233;
         color: #fff; }
+      .login-form .main .header label.button, .sign-up-form .main .header label.button {
+        cursor: pointer;
+        background-color: #03c233;
+        border-color: #03c233;
+        color: #fff; }
+        .login-form .main .header label.button:hover, .sign-up-form .main .header label.button:hover {
+          background-color: #03a233; }
+        .login-form .main .header label.button input, .sign-up-form .main .header label.button input {
+          display: none; }
       .login-form .main .header .image, .sign-up-form .main .header .image {
         padding-top: 10px;
         padding-bottom: 10px; }
         .login-form .main .header .image img, .sign-up-form .main .header .image img {
-          width: 200px; }
+          width: 200px;
+          height: 200px; }
           .login-form .main .header .image img.sign-up, .sign-up-form .main .header .image img.sign-up {
             border-radius: 8px; }
     .login-form .main .login .line, .sign-up-form .main .login .line {
@@ -96,6 +106,10 @@
         left: 15px;
         margin-top: 10px;
         padding: 5px 0; }
+        .login-form .main .sign-up .line .dropdown-menu.birth, .sign-up-form .main .sign-up .line .dropdown-menu.birth {
+          height: 200px;
+          min-width: 100px;
+          overflow-y: scroll; }
         .login-form .main .sign-up .line .dropdown-menu li, .sign-up-form .main .sign-up .line .dropdown-menu li {
           padding-left: 12px;
           padding-right: 12px; }
