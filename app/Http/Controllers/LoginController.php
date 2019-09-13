@@ -109,7 +109,7 @@ class LoginController extends Controller {
 		$data = [
 			'name_login'	=> $request->input('name_login'),
 			'name'			=> $request->input('name'),
-			'password'		=> $request->input('password'),
+			'password'		=> bcrypt($request->input('password')),
 			'email'			=> $request->input('email'),
 			'nickname'		=> $request->input('nickname'),
 			'genitive'		=> $request->input('genitive'),

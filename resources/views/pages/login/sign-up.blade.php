@@ -6,6 +6,15 @@
 			<li><a href="">Trang chủ</a></li>
 			<li class="active">Đăng ký</li>
 		</ul>
+		@if ($errors->any())
+		<div class="alert alert-danger alert-dismissable">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+			<strong>Danger!</strong> 
+			@foreach ($errors->all() as $error)
+				<p>{{ $error }}</p>
+			@endforeach
+		</div>
+		@endif
 		<form action="{{ url('sign_up') }}" class="sign-up form-horizontal clearfix" method="POST" enctype="multipart/form-data">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="header clearfix">
@@ -25,11 +34,6 @@
 		
 			<h4>Thông tin chính</h4>
 			<hr>
-			@if ($errors->any())
-				@foreach ($errors->all() as $error)
-				<p>{{ $error }}</p>
-				@endforeach
-			@endif
 			<div class="line clearfix">
 				<label class="col-lg-3 col-md-4 col-sm-4">Tên Đăng Nhập<span>(*)</span></label>
 				<div class="col-lg-9 col-md-8 col-sm-8">
@@ -187,7 +191,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="line clearfix">
+			<div class="line clearfix success">
 				<div class="col-md-12">
 					<input type="checkbox"> Đồng ý điều khoản
 				</div>
@@ -197,8 +201,8 @@
 					<p>Chú thích: <span class="red">(*)</span> thông tin bắt buộc</p>
 				</div>
 			</div>
-			<div class="line clearfix">
-				<div class="col-md-6"><button type="submit" class="submit form-control">Đăng ký</button></div>
+			<div class="line clearfix submit">
+				<div class="col-md-6"><button type="button" class="submit form-control">Đăng ký</button></div>
 				<div class="col-md-6"><button type="reset" class="reset form-control">Nhập lại</button></div>
 			</div>
 		</form>

@@ -6,8 +6,23 @@
 			<li><a href="">Trang chủ</a></li>
 			<li class="active">Đăng nhập</li>
 		</ul>
+		@if ($errors->any())
+		<div class="alert alert-danger alert-dismissable">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+			<strong>Danger!</strong> 
+			@foreach ($errors->all() as $error)
+				<p>{{ $error }}</p>
+			@endforeach
+		</div>
+		@elseif (\Session::has('success'))
+		<div class="alert alert-success alert-dismissable">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+			<strong>Success!</strong>  {{ \Session::get('success') }}
+			
+		</div>
+		@endif
 		<div class="header">
-		<h2>Đăng Nhập</h2>
+			<h2>Đăng Nhập</h2>
 			<div class="image">
 				<img src="image/kirito_720x720.jpg" class="img-circle">
 			</div>

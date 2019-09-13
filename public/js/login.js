@@ -55,4 +55,11 @@ $(document).ready(function() {
 			$('.line.category input').val(json_category);
 		}
 	});
+	$('.line.submit button.submit').click(function() {
+		if (!$('.line.success input').is(':checked')) {
+			alert('Bạn chưa đồng ý điều khoản');
+		} else {
+			$('form.sign-up').submit();
+		}
+	});
 });
