@@ -9,8 +9,10 @@ use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\TransQModel;
 use App\Http\Models\QModels\CharactersQModel;
 use App\Http\Models\QModels\CommentsQModel;
+use App\Http\Models\QModels\NotificationsQModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\CommentsBModel;
+use App\Http\Models\BModels\NotificationsBModel;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -29,12 +31,23 @@ class DetailController extends Controller {
 		// login
 		if (Auth::check()) {
 			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+			$data['notifications'] = NotificationsBModel::get_notifications_list(Auth::id());
+			$data['noti_seen']     = NotificationsQModel::get_notifications_not_seen(Auth::id());
+			foreach ($data['notifications'] as $key => $notification) {
+				$date_create = date_create($notification->date);
+				$notification->year   = (int)date_format($date_create, 'Y');
+				$notification->month  = (int)date_format($date_create, 'm');
+				$notification->date   = (int)date_format($date_create, 'd');
+				$notification->hour   = (int)date_format($date_create, 'H');
+				$notification->minute = (int)date_format($date_create, 'i');
+				$notification->second = (int)date_format($date_create, 's');
+			}
 		}
 		// header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_list_sidebar($data);
+		$data = CommonController::get_data_detail_sidebar($data);
 
 		$data['author']  = AuthorsQModel::get_author_by_slug($slug);
 		$data['books']   = BooksQModel::get_books_by_author_id($data['author']->id);
@@ -80,7 +93,7 @@ class DetailController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_list_sidebar($data);
+		$data = CommonController::get_data_detail_sidebar($data);
 
 		$book  = BooksQModel::get_book_by_slug($slug);
 		$array_trans = ChapsQModel::get_trans_id_by_book_id($book->id);
@@ -134,7 +147,7 @@ class DetailController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_list_sidebar($data);
+		$data = CommonController::get_data_detail_sidebar($data);
 
 		$data['character'] = CharactersQModel::get_character_by_slug($slug);
 		//data comment
@@ -181,7 +194,7 @@ class DetailController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_list_sidebar($data);
+		$data = CommonController::get_data_detail_sidebar($data);
 
 		$data['user'] = UsersQModel::get_user_by_name_login($slug);
 		
@@ -229,7 +242,7 @@ class DetailController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_list_sidebar($data);
+		$data = CommonController::get_data_detail_sidebar($data);
 
 		$data['trans'] = TransQModel::get_trans_by_slug($slug);
 		$data['books'] = TransQModel::get_books_by_trans_id($data['trans']->id);
