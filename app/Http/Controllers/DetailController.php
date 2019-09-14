@@ -11,6 +11,7 @@ use App\Http\Models\QModels\CharactersQModel;
 use App\Http\Models\QModels\CommentsQModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\CommentsBModel;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use Cookie;
@@ -24,14 +25,19 @@ class DetailController extends Controller {
 	 */
 	public function author($slug)
 	{
+		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		// header and footer
+		$data = CommonController::get_data_header($data);
+
+		//sidebar
+		$data = CommonController::get_data_sidebar($data);
+
 		$data['author']  = AuthorsQModel::get_author_by_slug($slug);
 		$data['books']   = BooksQModel::get_books_by_author_id($data['author']->id);
-		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
-
-		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
-
-		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
-
 		$data['comments'] = CommentsBModel::get_comments_page($data['author']->id, 'author');
 		//set history cookie
 		$history = Cookie::get('history');
@@ -65,6 +71,17 @@ class DetailController extends Controller {
 	 */
 	public function book($slug)
 	{
+		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		// header and footer
+		$data = CommonController::get_data_header($data);
+
+		//sidebar
+		$data = CommonController::get_data_sidebar($data);
+
 		$book  = BooksQModel::get_book_by_slug($slug);
 		$array_trans = ChapsQModel::get_trans_id_by_book_id($book->id);
 		// dd($trans_id);
@@ -74,11 +91,6 @@ class DetailController extends Controller {
 
 		$data['book']  = $book;
 		$data['chaps_trans'] = $chaps;
-		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
-
-		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
-
-		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 
 		$data['comments'] = CommentsBModel::get_comments_page($data['book']->id, 'book');
 		//set history cookie
@@ -113,12 +125,18 @@ class DetailController extends Controller {
 	 */
 	public function character($slug)
 	{
+		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		// header and footer
+		$data = CommonController::get_data_header($data);
+
+		//sidebar
+		$data = CommonController::get_data_sidebar($data);
+
 		$data['character'] = CharactersQModel::get_character_by_slug($slug);
-		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
-
-		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
-
-		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 		//data comment
 		$data['comments'] = CommentsBModel::get_comments_page($data['character']->id, 'character');
 		//set history cookie
@@ -154,12 +172,18 @@ class DetailController extends Controller {
 	 */
 	public function user($slug)
 	{
+		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		// header and footer
+		$data = CommonController::get_data_header($data);
+
+		//sidebar
+		$data = CommonController::get_data_sidebar($data);
+
 		$data['user'] = UsersQModel::get_user_by_name_login($slug);
-		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
-
-		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
-
-		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 		
 		//data comment
 		$data['comments'] = CommentsBModel::get_comments_page($data['user']->id, 'user');
@@ -196,13 +220,19 @@ class DetailController extends Controller {
 	 */
 	public function trans($slug)
 	{
+		$data = [];
+		// login
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+		}
+		// header and footer
+		$data = CommonController::get_data_header($data);
+
+		//sidebar
+		$data = CommonController::get_data_sidebar($data);
+
 		$data['trans'] = TransQModel::get_trans_by_slug($slug);
 		$data['books'] = TransQModel::get_books_by_trans_id($data['trans']->id);
-		$data['sidebar'] = ['random-book', 'new-comment', 'facebook'];
-		
-		$data['random_book'] = BooksBModel::get_books_random_sidebar(6);
-
-		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar(6);
 
 		$data['comments'] = CommentsBModel::get_comments_page($data['trans']->id, 'trans');
 		//set history cookie
