@@ -48,7 +48,7 @@ class ListController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		$data['books'] = BooksQModel::get_books_list_category($category, Constants::BOOKS_ITEM_LIST);
 		foreach ($data['books'] as $key => $book) {
@@ -78,7 +78,7 @@ class ListController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		$data['books'] = BooksQModel::get_books_list_comment(Constants::BOOKS_ITEM_LIST);
 		$background = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
@@ -112,7 +112,7 @@ class ListController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		$data['status'] = Constants::STATUS_COMPLETED;
 		$data['books']  = BooksQModel::get_books_list_status(Constants::STATUS_COMPLETED, Constants::BOOKS_ITEM_LIST);
@@ -148,7 +148,7 @@ class ListController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		$user_id = 1;
 		$data['books'] = BooksFollowQModel::get_books_follow_by_user_id($user_id);
@@ -178,7 +178,7 @@ class ListController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		$user_id = 1;
 		$data['friends'] = FriendsQModel::get_friends_by_user_id($user_id);
@@ -207,7 +207,7 @@ class ListController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		$user_id = 1;
 		$data['notifications'] = NotificationsBModel::get_notifications_list($user_id);
@@ -231,7 +231,7 @@ class ListController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		//get cookie
 		$history = Cookie::get('history');
@@ -349,7 +349,7 @@ class ListController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		$data['status'] = Constants::STATUS_PROCESS;
 		$data['books']  = BooksQModel::get_books_list_status(Constants::STATUS_PROCESS, Constants::BOOKS_ITEM_LIST);
@@ -373,7 +373,7 @@ class ListController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		$data['books'] = BooksQModel::get_books_list_rate(Constants::BOOKS_ITEM_LIST);
 		$background = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
@@ -429,7 +429,7 @@ class ListController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		//get value search
 		$search = new \stdClass;
@@ -512,7 +512,7 @@ class ListController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		$data['books'] = BooksQModel::get_books_list_update(Constants::BOOKS_ITEM_LIST);
 		foreach ($data['books'] as $key => $book) {
@@ -541,7 +541,7 @@ class ListController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		$data['books'] = BooksQModel::get_books_list_view(Constants::BOOKS_ITEM_LIST);
 		$background = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
@@ -587,7 +587,7 @@ class ListController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		$data['books'] = BooksQModel::get_books_list_year($year, Constants::BOOKS_ITEM_LIST);
 		foreach ($data['books'] as $key => $book) {

@@ -34,7 +34,7 @@ class DetailController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		$data['author']  = AuthorsQModel::get_author_by_slug($slug);
 		$data['books']   = BooksQModel::get_books_by_author_id($data['author']->id);
@@ -80,7 +80,7 @@ class DetailController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		$book  = BooksQModel::get_book_by_slug($slug);
 		$array_trans = ChapsQModel::get_trans_id_by_book_id($book->id);
@@ -134,7 +134,7 @@ class DetailController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		$data['character'] = CharactersQModel::get_character_by_slug($slug);
 		//data comment
@@ -181,7 +181,7 @@ class DetailController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		$data['user'] = UsersQModel::get_user_by_name_login($slug);
 		
@@ -229,7 +229,7 @@ class DetailController extends Controller {
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
-		$data = CommonController::get_data_sidebar($data);
+		$data = CommonController::get_data_list_sidebar($data);
 
 		$data['trans'] = TransQModel::get_trans_by_slug($slug);
 		$data['books'] = TransQModel::get_books_by_trans_id($data['trans']->id);
