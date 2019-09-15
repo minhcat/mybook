@@ -51,8 +51,8 @@ $(document).ready(function() {
 		var id     = $(this).data('id');
 		var popup  = $('.popup.book[data-id="'+id+'"]');
 
-		var top_popup = offset.top - 60;
-		var left_popup = offset.left - 270;
+		var top_popup = offset.top - 601.375;
+		var left_popup = offset.left - 1242;
 
 		popup.css('top', top_popup + 'px');
 		popup.css('left', left_popup + 'px');

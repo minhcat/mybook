@@ -22,8 +22,6 @@ class LoginController extends Controller {
 		$data = [];
 		$data = CommonController::get_data_header($data);
 
-		$data = CommonController::get_data_list_sidebar($data);
-
 		return view('pages.login.login', $data);
 	}
 
@@ -36,8 +34,6 @@ class LoginController extends Controller {
 		// header and footer
 		$data = [];
 		$data = CommonController::get_data_header($data);
-
-		$data = CommonController::get_data_sidebar($data);
 
 		$data['categories'] = CategoriesQModel::get_categories_all();
 
