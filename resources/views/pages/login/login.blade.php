@@ -44,7 +44,7 @@
 
 			<div class="line clearfix">
 				<div class="col-md-12">
-					<input type="checkbox" checked="checked"> Nhớ mật khẩu
+					<input type="checkbox" checked="checked" name="remember"> Nhớ mật khẩu
 				</div>
 			</div>
 

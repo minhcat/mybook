@@ -54,8 +54,9 @@ class LoginController extends Controller {
 
 		$user = $request->input('user');
 		$password = $request->input('password');
+		$remember = ($request->input('remember') != null) ? true : false;
 
-		if (Auth::attempt(['name_login' => $user, 'password' => $password])) {
+		if (Auth::attempt(['name_login' => $user, 'password' => $password], $remember)) {
 			return redirect('/');
 		} else {
 			return redirect()->back()->with('error', 'Tài khoản đăng nhập hoặc mật khẩu không đúng');
