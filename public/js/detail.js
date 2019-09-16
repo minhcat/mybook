@@ -80,13 +80,13 @@ $(document).ready(function() {
 	});
 	$('.book .btn.right').click(function() {
 		if ($(this).hasClass('off')) return;
-		if ($('.main').hasClass('notlogin')) return; 
-		$(this).text('Đã thích');
-		$(this).addClass('off');
-		var num_like = parseInt($('.info .group .like span.num-like').text());
-		num_like++;
-		$('.info .group .like span.num-like').text(num_like);
-		console.log(num_like);
+		if ($(this).hasClass('login')) { 
+			$(this).text('Đã thích');
+			$(this).addClass('off');
+			var num_like = parseInt($('.info .group .red span.number').text());
+			num_like++;
+			$('.info .group .red span.number').text(num_like);
+		}
 	});
 	//modal rate
 	$('.modal.rate .rate .star').mouseenter(function() {

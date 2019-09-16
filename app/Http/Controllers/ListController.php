@@ -41,9 +41,7 @@ class ListController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		// header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -71,9 +69,7 @@ class ListController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		//header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -105,9 +101,7 @@ class ListController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		//header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -141,9 +135,7 @@ class ListController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		//header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -171,9 +163,7 @@ class ListController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		//header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -200,9 +190,7 @@ class ListController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		//header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -224,9 +212,7 @@ class ListController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		//header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -342,9 +328,7 @@ class ListController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		//header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -366,9 +350,7 @@ class ListController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		//header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -422,9 +404,7 @@ class ListController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		//header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -505,9 +485,7 @@ class ListController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		//header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -534,9 +512,7 @@ class ListController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		//header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -580,9 +556,7 @@ class ListController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		//header and footer
 		$data = CommonController::get_data_header($data);
 

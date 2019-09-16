@@ -15,7 +15,7 @@
 					<img src="{{ asset('image/books/'.$book->image.'.jpg') }}" width="85px">
 				</div>
 				<div class="main right">
-					<p class="name"><strong>{{ $book->name }}</strong></p>
+					<a href="{{ url('/detail/book/'.$book->slug) }}" class="name"><strong>{{ $book->name }}</strong></a>
 					<div class="star">
 						{{-- star 1 --}}
 						@if ($book->rate_point <= 0.5)
@@ -89,7 +89,7 @@
 					<img src="{{ asset('image/users/'.$user->image.'.jpg') }}" width="85px">
 				</div>
 				<div class="main right">
-					<p class="name"><strong>{{ $user->name }}</strong></p>
+					<a href="{{ url('/detail/user/'.$user->name_login) }}" class="name"><strong>{{ $user->name }}</strong></a>
 					<div class="star">
 						{{-- star 1 --}}
 						@if ($user->rate_point <= 0.5)
@@ -158,7 +158,7 @@
 					<img src="{{ asset('image/authors/'.$author->image.'.jpg') }}" width="85px">
 				</div>
 				<div class="main right">
-					<p class="name"><strong>{{ $author->name }}</strong></p>
+					<a href="{{ url('/detail/author/'.$author->slug) }}" class="name"><strong>{{ $author->name }}</strong></a>
 					<div class="star">
 						{{-- star 1 --}}
 						@if ($author->rate_point <= 0.5)
@@ -227,7 +227,7 @@
 					<img src="{{ asset('image/characters/'.$char->image.'.jpg') }}" width="85px">
 				</div>
 				<div class="main right">
-					<p class="name"><strong>{{ $char->name }}</strong></p>s
+					<a href="{{ url('/detail/character/'.$char->slug) }}" class="name"><strong>{{ $char->name }}</strong></a>
 				</div>
 				<div class="info">
 					<div class="type">
@@ -252,7 +252,7 @@
 					<img src="{{ asset('image/trans/'.$trans->image.'.jpg') }}" width="85px">
 				</div>
 				<div class="main right">
-					<p class="name"><strong>{{ $trans->name }}</strong></p>
+					<a href="{{ url('/detail/trans/'.$trans->slug) }}" class="name"><strong>{{ $trans->name }}</strong></a>
 					<div class="star">
 						{{-- star 1 --}}
 						@if ($trans->rate_point <= 0.5)

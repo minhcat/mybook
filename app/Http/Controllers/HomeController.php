@@ -50,32 +50,13 @@ class HomeController extends Controller {
 	 * @return Response
 	 */
 	public function index() {
+		$data = [];
 		//system
-		$data['system']     = SystemBModel::get_variables_website();
-		//categories menu
-		$data['menu_categories'] = CategoriesBModel::get_categories_menu();
-		$data['menu_years']      = [];
-		for ($year = 2000; $year <= date('Y'); $year++) {
-			$check = BooksQModel::check_have_book_in_year($year);
-			if ($check) {
-				array_push($data['menu_years'], $year);
-			}
-		}
+		$data = CommonController::get_data_header($data);
 		//user login
-		if (Auth::check()) {
-			$data['user_login']    = UsersQModel::get_user_by_id(Auth::id());
-			$data['notifications'] = NotificationsBModel::get_notifications_list(Auth::id());
-			$data['noti_seen']     = NotificationsQModel::get_notifications_not_seen(Auth::id());
-			foreach ($data['notifications'] as $key => $notification) {
-				$date_create = date_create($notification->date);
-				$notification->year   = (int)date_format($date_create, 'Y');
-				$notification->month  = (int)date_format($date_create, 'm');
-				$notification->date   = (int)date_format($date_create, 'd');
-				$notification->hour   = (int)date_format($date_create, 'H');
-				$notification->minute = (int)date_format($date_create, 'i');
-				$notification->second = (int)date_format($date_create, 's');
-			}
-		}
+		$data = CommonController::get_data_auth($data);
+		//data system sidebar
+		$data = CommonController::get_data_home_sidebar($data);
 		//get sliders
 		$number_slider   = SystemQModel::get_variable_by_name('slider_select_images');
 		$number_slider   = (int)$number_slider->value;
@@ -194,57 +175,8 @@ class HomeController extends Controller {
 		$data['type_4']  = $type_4;
 		$data['data_4']  = $data_4;
 
-		//data system sidebar
-		$sidebar_home = [];
-		$data['sidebar'] = [];
-		$topview_number = 5;
-		$random_book    = 5;
-		$new_comment    = 5;
-		$sidebar_home_number = (int)SystemQModel::get_variable_by_name('sidebar_number_box')->value;
-		for ($i = 0; $i < $sidebar_home_number; $i++) {
-			$sidebar_home[$i] = SystemQModel::get_variable_by_name('sidebar_box_type_'.($i+1))->value;
-			array_push($data['sidebar'], $sidebar_home[$i]);
-			if ($sidebar_home[$i] == 'top-view') {
-				$topview_number = (int)SystemQModel::get_variable_by_name('sidebar_box_number_'.($i+1))->value;
-			} elseif ($sidebar_home[$i] == 'random-book') {
-				$random_book = (int)SystemQModel::get_variable_by_name('sidebar_box_number_'.($i+1))->value;
-			} elseif ($sidebar_home[$i] == 'new-comment') {
-				$new_comment = (int)SystemQModel::get_variable_by_name('sidebar_box_number_'.($i+1))->value;
-			}
-		}
 		
-		// if ()
-
-		//data top-view sidebar
-		$data['top_view']['date']  = BooksViewQModel::get_books_view_current_date($topview_number);
-		$data['top_view']['week']  = BooksViewQModel::get_books_view_current_week($topview_number);
-		$data['top_view']['month'] = BooksViewQModel::get_books_view_current_month($topview_number);
-
-		//data random-book sidebar
-		$data['random_book'] = BooksBModel::get_books_random_sidebar($random_book);
-
-		$data['new_comment'] = CommentsBModel::get_new_comments_sidebar($new_comment);
-		// dd($data['top_view']['month']);
-		$books_popup = [];
-		$books_popup = Helper::add_book_from_array($books_popup, $data['top_view']['date']);
-		$books_popup = Helper::add_book_from_array($books_popup, $data['top_view']['week']);
-		$books_popup = Helper::add_book_from_array($books_popup, $data['top_view']['month']);
-		$books_popup = Helper::add_book_from_array($books_popup, $data['random_book']);
-		$books_popup = Helper::add_book_from_array_comment($books_popup, $data['new_comment']);
 		
-		$users_popup   = [];
-		$users_popup   = Helper::add_user_from_array_comment($users_popup, $data['new_comment']);
-		$chars_popup   = [];
-		$chars_popup   = Helper::add_character_from_array_comment($chars_popup, $data['new_comment']);
-		$authors_popup = [];
-		$authors_popup = Helper::add_author_from_array_comment($authors_popup, $data['new_comment']);
-		$trans_popup   = [];
-		$trans_popup   = Helper::add_trans_from_array_comment($trans_popup, $data['new_comment']);
-		$data['books_popup']   = $books_popup;
-		$data['users_popup']   = $users_popup;
-		$data['chars_popup']   = $chars_popup;
-		$data['authors_popup'] = $authors_popup;
-		$data['trans_popup']   = $trans_popup;
 		// dd($data);
 
 		return view('pages.home', $data);

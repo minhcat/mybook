@@ -29,20 +29,7 @@ class DetailController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-			$data['notifications'] = NotificationsBModel::get_notifications_list(Auth::id());
-			$data['noti_seen']     = NotificationsQModel::get_notifications_not_seen(Auth::id());
-			foreach ($data['notifications'] as $key => $notification) {
-				$date_create = date_create($notification->date);
-				$notification->year   = (int)date_format($date_create, 'Y');
-				$notification->month  = (int)date_format($date_create, 'm');
-				$notification->date   = (int)date_format($date_create, 'd');
-				$notification->hour   = (int)date_format($date_create, 'H');
-				$notification->minute = (int)date_format($date_create, 'i');
-				$notification->second = (int)date_format($date_create, 's');
-			}
-		}
+		$data = CommonController::get_data_auth($data);
 		// header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -86,9 +73,7 @@ class DetailController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		// header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -140,9 +125,7 @@ class DetailController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		// header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -187,9 +170,7 @@ class DetailController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		// header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -235,9 +216,7 @@ class DetailController extends Controller {
 	{
 		$data = [];
 		// login
-		if (Auth::check()) {
-			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
-		}
+		$data = CommonController::get_data_auth($data);
 		// header and footer
 		$data = CommonController::get_data_header($data);
 

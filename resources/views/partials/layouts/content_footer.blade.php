@@ -27,3 +27,55 @@
 		<div class="container">{{ $system['footer_last_info'] }}</div>
 	</div>
 </footer>
+
+<!-- modal -->
+@if (Auth::check())
+<div id="modalfollow" class="modal">
+	<div class="content">
+		<div class="header">
+			<h3>Thông Báo</h3>
+			<span class="close" data-modal="#modalfollow">&times;</span>
+		</div>
+		<div class="main">
+			<p>Truyện đã được đưa vào danh sách theo dõi</p>
+			<button class="btn login">Đồng ý</button>
+			<button class="btn cancel right" data-modal="#modalfollow">Hủy</button>
+		</div>
+	</div>
+</div>
+
+<div id="modalrate" class="modal rate">
+	<div class="content">
+		<div class="header">
+			<h3>Đánh Giá</h3>
+			<span class="close" data-modal="#modalrate">&times;</span>
+		</div>
+		<div class="main">
+			<p>Bạn đánh giá mấy sao cho truyện này</p>
+			<div class="rate">
+				<div class="star" data-star="1" title="dở"><span class="fa fa-star-o"></span></div>
+				<div class="star" data-star="2" title="tạm"><span class="fa fa-star-o"></span></div>
+				<div class="star" data-star="3" title="hay"><span class="fa fa-star-o"></span></div>
+				<div class="star" data-star="4" title="rất hay"><span class="fa fa-star-o"></span></div>
+				<div class="star" data-star="5" title="tuyệt vời"><span class="fa fa-star-o"></span></div>
+			</div>
+			<button class="btn login">Đồng ý</button>
+			<button class="btn cancel right" data-modal="#modalrate">Hủy</button>
+		</div>
+	</div>
+</div>
+@else
+<div id="modalnotlogin" class="modal">
+	<div class="content">
+		<div class="header">
+			<h3>Thông Báo</h3>
+			<span class="close" data-modal="#modalnotlogin">&times;</span>
+		</div>
+		<div class="main">
+			<p>Bạn cần đăng nhập để thực hiện chức năng này</p>
+			<a href="login.html" class="btn login">Đăng nhập</a>
+			<button class="btn cancel right" data-modal="#modalnotlogin">Hủy</button>
+		</div>
+	</div>
+</div>
+@endif
