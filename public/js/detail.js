@@ -78,14 +78,23 @@ $(document).ready(function() {
 	$(document).on('click', '.form-comment .reset', function() {
 		$(this).parent().find('.textarea').html('');
 	});
+	//click like
 	$('.book .btn.right').click(function() {
 		if ($(this).hasClass('off')) return;
-		if ($(this).hasClass('login')) { 
-			$(this).text('Đã thích');
-			$(this).addClass('off');
-			var num_like = parseInt($('.info .group .red span.number').text());
-			num_like++;
-			$('.info .group .red span.number').text(num_like);
+		if ($(this).hasClass('login')) {
+			var button = this;
+			var book_id = $(this).data('id');
+			$.ajax({
+				url: flag_url+'detail/ajax/like_book/'+auth_id+'/'+book_id,
+				type: 'GET',
+				success: function(data) {
+					$(button).text('Đã thích');
+					$(button).addClass('off');
+					var num_like = parseInt($('.info .group .red span.number').text());
+					num_like++;
+					$('.info .group .red span.number').text(num_like);
+				}
+			});
 		}
 	});
 	//modal rate

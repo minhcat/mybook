@@ -15,6 +15,18 @@ Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::get('read/{book_slug}/{trans_slug}/{chap_slug}', 'ReadController@index');
+
+Route::get('login', 'LoginController@login');
+
+Route::get('sign_up', 'LoginController@sign_up');
+
+Route::get('logout', 'LoginController@logout');
+
+Route::post('login', 'LoginController@post_login');
+
+Route::post('sign_up', 'LoginController@post_sign_up');
+
 Route::group(['prefix' => 'home'], function() {
 
 	Route::get('ajax/add_new_view/{index}', 'HomeController@add_new_view');
@@ -30,18 +42,6 @@ Route::group(['prefix' => 'home'], function() {
 	Route::get('ajax/check_seen_notification', 'HomeController@check_seen_notification');
 
 });
-
-Route::get('read/{book_slug}/{trans_slug}/{chap_slug}', 'ReadController@index');
-
-Route::get('login', 'LoginController@login');
-
-Route::get('sign_up', 'LoginController@sign_up');
-
-Route::get('logout', 'LoginController@logout');
-
-Route::post('login', 'LoginController@post_login');
-
-Route::post('sign_up', 'LoginController@post_sign_up');
 
 Route::group(['prefix' => 'list'], function() {
 
@@ -88,6 +88,12 @@ Route::group(['prefix' => 'detail'], function () {
 	Route::get('user/{slug}', 'DetailController@user');
 
 	Route::get('trans/{slug}', 'DetailController@trans');
+
+	Route::group(['prefix' => 'ajax'], function() {
+
+		Route::get('like_book/{user_id}/{book_id}', 'DetailController@ajax_like_book');
+
+	});
 
 });
 

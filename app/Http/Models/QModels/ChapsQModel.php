@@ -52,6 +52,7 @@ class ChapsQModel extends Model
 				->where('c.id_book',$book_id)
 				->where('c.id_trans',$trans_id)
 				->orderBy('c.index','desc')
+				->select('c.*')
 				->get();
 
 		return $result;

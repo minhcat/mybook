@@ -37,7 +37,7 @@
 			<span class="close" data-modal="#modalfollow">&times;</span>
 		</div>
 		<div class="main">
-			<p>Truyện đã được đưa vào danh sách theo dõi</p>
+			<p>Thêm truyện vào danh sách theo dõi</p>
 			<button class="btn login">Đồng ý</button>
 			<button class="btn cancel right" data-modal="#modalfollow">Hủy</button>
 		</div>

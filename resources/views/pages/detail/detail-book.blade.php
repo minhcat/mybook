@@ -31,7 +31,7 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 						@if (Auth::check())
 						<button type="button" class="btn left open-modal" data-modal="#modalrate">Đánh giá</button>
 						<button type="button" class="btn center open-modal" data-modal="#modalfollow">Theo dõi</button>
-						<button type="button" class="btn right login">Yêu thích</button>
+						<button type="button" class="btn right login" data-id='{{ $book->id }}'>Yêu thích</button>
 						@else
 						<button type="button" class="btn left open-modal" data-modal="#modalnotlogin">Đánh giá</button>
 						<button type="button" class="btn center open-modal" data-modal="#modalnotlogin">Theo dõi</button>

@@ -4,12 +4,17 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\BooksQModel;
+use App\Http\Models\QModels\BooksLikeQModel;
+use App\Http\Models\QModels\BooksLikeStatisticQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\TransQModel;
 use App\Http\Models\QModels\CharactersQModel;
 use App\Http\Models\QModels\CommentsQModel;
 use App\Http\Models\QModels\NotificationsQModel;
+use App\Http\Models\CModels\BooksLikeCModel;
+use App\Http\Models\CModels\BooksLikeStatisticCModel;
+use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\NotificationsBModel;
@@ -246,5 +251,53 @@ class DetailController extends Controller {
 
 		Cookie::queue('history',$history, 1440);
 		return view('pages.detail.detail-trans', $data);
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_like_book($user_id, $book_id)
+	{
+		$book = BooksQModel::get_book_by_id($book_id);
+		$book_like = BooksLikeQModel::get_book_like_by_user_id($user_id);
+		// check user id has in data
+		if ($book_like != null) {
+			// insert book like
+			$data = [
+				'id_user' => $user_id,
+				'id_book' => $book_id
+			];
+			BooksLikeCModel::insert_book_like($data);
+			// update book
+			$data = [
+				'like' => $book->like + 1,
+			];
+			BooksCModel::update_book($data);
+			// update book like statistic
+			$date  = date('d');
+			$month = date('m');
+			$year  = date('Y');
+			$book_like_statistic = BooksLikeStatisticQModel::get_book_like_by_book_id_and_date($book_id, $date, $month, $year);
+			if (!empty($book_like_statistic)) {
+				$data = [
+					'id_book' => $book_id,
+					'day'     => 0,
+					'date'    => $date,
+					'week'    => 0,
+					'month'   => $month,
+					'season'  => 0,
+					'year'    => $year,
+					'like_statistic' => 1
+				];
+				BooksLikeStatisticCModel::insert_book_like($data);
+			} else {
+				$data = [
+					'like_statistic' => $book_like_statistic[0]->like_statistic + 1,
+				];
+				BooksLikeStatisticCModel::update_book_like($book_like_statistic->id, $data);
+			}
+		}
 	}
 }

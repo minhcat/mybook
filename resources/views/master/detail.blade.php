@@ -21,6 +21,9 @@
 @section('define-footer')
 	<script type="text/javascript">
 		var flag_url = '{{ asset('/') }}';
+		@if (Auth::check())
+		var auth_id  = '{{ Auth::id() }}';
+		@endif
 	</script>
 	<script type="text/javascript" src="{{ asset('js/select.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/detail.js') }}"></script>
