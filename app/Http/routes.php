@@ -93,6 +93,8 @@ Route::group(['prefix' => 'detail'], function () {
 
 		Route::get('like_book/{user_id}/{book_id}', 'DetailController@ajax_like_book');
 
+		Route::get('unlike_book/{user_id}/{book_id}', 'DetailController@ajax_unlike_book');
+
 	});
 
 });

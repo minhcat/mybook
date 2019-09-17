@@ -128,7 +128,7 @@ class BooksLikeStatisticQModel extends Model
 				->where('date', $date)
 				->where('month', $month)
 				->where('year', $year)
-				->get();
+				->first();
 
 		return $result;
 	}

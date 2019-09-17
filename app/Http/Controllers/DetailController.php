@@ -299,9 +299,49 @@ class DetailController extends Controller {
 				BooksLikeStatisticCModel::insert_book_like($data);
 			} else {
 				$data = [
-					'like_statistic' => $book_like_statistic[0]->like_statistic + 1,
+					'like_statistic' => $book_like_statistic->like_statistic + 1,
 				];
-				BooksLikeStatisticCModel::update_book_like($book_like_statistic[0]->id, $data);
+				BooksLikeStatisticCModel::update_book_like($book_like_statistic->id, $data);
+			}
+		}
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_unlike_book($user_id, $book_id)
+	{
+		$book = BooksQModel::get_book_by_id($book_id);
+		$book_like = BooksLikeQModel::get_book_like_by_user_id_and_book_id($user_id, $book_id);
+		// check user id has in data
+		if ($book_like != null) {
+			// delete book like
+			$data = [
+				'id_user' => $user_id,
+				'id_book' => $book_id,
+				'date'    => date('Y-m-d')
+			];
+			BooksLikeCModel::delete_book_like($book_like->id);
+			// update book
+			$data = [
+				'like' => $book->like - 1,
+			];
+
+			BooksCModel::update_book($book_id, $data);
+			// update book like statistic
+			$date  = (int)date_format(date_create($book_like->date), 'd');
+			$month = (int)date_format(date_create($book_like->date), 'm');
+			$year  = (int)date_format(date_create($book_like->date), 'Y');
+			$book_like_statistic = BooksLikeStatisticQModel::get_book_like_by_book_id_and_date($book_id, $date, $month, $year);
+			if (!empty($book_like_statistic)) {
+				if ($book_like_statistic->like_statistic == 1) {
+					BooksLikeStatisticCModel::delete_book_like($book_like_statistic->id);
+				} else {
+					$data = ['like_statistic' => $book_like_statistic->like_statistic - 1];
+					BooksLikeStatisticCModel::update_book_like($book_like_statistic->id, $data);
+				}
 			}
 		}
 	}

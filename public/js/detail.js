@@ -80,21 +80,39 @@ $(document).ready(function() {
 	});
 	//click like
 	$('.book .btn.right').click(function() {
-		if ($(this).hasClass('off')) return;
+		// check login
 		if ($(this).hasClass('login')) {
-			var button = this;
-			var book_id = $(this).data('id');
-			$.ajax({
-				url: flag_url+'detail/ajax/like_book/'+auth_id+'/'+book_id,
-				type: 'GET',
-				success: function(data) {
-					$(button).text('Đã thích');
-					$(button).addClass('off');
-					var num_like = parseInt($('.info .group .red span.number').text());
-					num_like++;
-					$('.info .group .red span.number').text(num_like);
-				}
-			});
+			if ($(this).hasClass('off')) {
+				// unlike book
+				var button = this;
+				var book_id = $(this).data('id');
+				$.ajax({
+					url: flag_url+'detail/ajax/unlike_book/'+auth_id+'/'+book_id,
+					type: 'GET',
+					success: function(data) {
+						$(button).text('Yêu thích');
+						$(button).removeClass('off');
+						var num_like = parseInt($('.info .group .red span.number').text());
+						num_like--;
+						$('.info .group .red span.number').text(num_like);
+					}
+				});
+			} else {
+				// like book
+				var button = this;
+				var book_id = $(this).data('id');
+				$.ajax({
+					url: flag_url+'detail/ajax/like_book/'+auth_id+'/'+book_id,
+					type: 'GET',
+					success: function(data) {
+						$(button).text('Đã thích');
+						$(button).addClass('off');
+						var num_like = parseInt($('.info .group .red span.number').text());
+						num_like++;
+						$('.info .group .red span.number').text(num_like);
+					}
+				});
+			}
 		}
 	});
 	//modal rate
