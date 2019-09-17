@@ -315,4 +315,32 @@ class Helper {
 		}
 		return $result;
 	}
+
+	/**
+	 * Add index to array
+	 * @param array
+	 * @return array
+	 */
+	public static function get_time_statistic($date, $month, $year) {
+		$time = date_create($year.'-'.$month.'-'.$date);
+		// dd($time);
+		$data['day'] = date_format($time, 'w');
+		// dd($day);
+		$data['week'] = 0;
+		for ($i = $date; $i >= 1;$i -= 7) {
+			if ($i > 7) {
+				$data['week'] ++;
+			}
+		}
+		if ($month == 1 || $month == 2 || $month == 3) {
+			$data['season'] = 0;
+		} elseif ($month == 4 || $month == 5 || $month == 6) {
+			$data['season'] = 1;
+		} elseif ($month == 7 || $month == 8 || $month == 9) {
+			$data['season'] = 2;
+		} elseif ($month == 10 || $month == 11 || $month == 12) {
+			$data['season'] = 3;
+		}
+		return $data;
+	}
 }

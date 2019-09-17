@@ -18,6 +18,7 @@ use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\NotificationsBModel;
+use App\Http\Helpers\Helper;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -76,16 +77,17 @@ class DetailController extends Controller {
 	 */
 	public function book($slug)
 	{
+		$book  = BooksQModel::get_book_by_slug($slug);
 		$data = [];
 		// login
-		$data = CommonController::get_data_auth($data);
+		$data = CommonController::get_data_auth_detail($data, $book->id);
 		// header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
 		$data = CommonController::get_data_detail_sidebar($data);
 
-		$book  = BooksQModel::get_book_by_slug($slug);
+		
 		$array_trans = ChapsQModel::get_trans_id_by_book_id($book->id);
 		// dd($trans_id);
 		foreach ($array_trans as $trans) {
@@ -261,33 +263,36 @@ class DetailController extends Controller {
 	public function ajax_like_book($user_id, $book_id)
 	{
 		$book = BooksQModel::get_book_by_id($book_id);
-		$book_like = BooksLikeQModel::get_book_like_by_user_id($user_id);
+		$book_like = BooksLikeQModel::get_book_like_by_user_id_and_book_id($user_id, $book_id);
 		// check user id has in data
-		if ($book_like != null) {
+		if ($book_like == null) {
 			// insert book like
 			$data = [
 				'id_user' => $user_id,
-				'id_book' => $book_id
+				'id_book' => $book_id,
+				'date'    => date('Y-m-d')
 			];
 			BooksLikeCModel::insert_book_like($data);
 			// update book
 			$data = [
 				'like' => $book->like + 1,
 			];
-			BooksCModel::update_book($data);
+
+			BooksCModel::update_book($book_id, $data);
 			// update book like statistic
-			$date  = date('d');
-			$month = date('m');
-			$year  = date('Y');
+			$date  = (int)date('d');
+			$month = (int)date('m');
+			$year  = (int)date('Y');
+			$time  = Helper::get_time_statistic($date, $month, $year);
 			$book_like_statistic = BooksLikeStatisticQModel::get_book_like_by_book_id_and_date($book_id, $date, $month, $year);
-			if (!empty($book_like_statistic)) {
+			if (empty($book_like_statistic)) {
 				$data = [
 					'id_book' => $book_id,
-					'day'     => 0,
+					'day'     => $time['day'],
 					'date'    => $date,
-					'week'    => 0,
+					'week'    => $time['week'],
 					'month'   => $month,
-					'season'  => 0,
+					'season'  => $time['season'],
 					'year'    => $year,
 					'like_statistic' => 1
 				];
@@ -296,7 +301,7 @@ class DetailController extends Controller {
 				$data = [
 					'like_statistic' => $book_like_statistic[0]->like_statistic + 1,
 				];
-				BooksLikeStatisticCModel::update_book_like($book_like_statistic->id, $data);
+				BooksLikeStatisticCModel::update_book_like($book_like_statistic[0]->id, $data);
 			}
 		}
 	}

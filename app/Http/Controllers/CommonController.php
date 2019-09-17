@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksViewQModel;
+use App\Http\Models\QModels\BooksLikeQModel;
 use App\Http\Models\QModels\SystemQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\NotificationsQModel;
@@ -227,6 +228,33 @@ class CommonController extends Controller {
 			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
 			$data['notifications'] = NotificationsBModel::get_notifications_list(Auth::id());
 			$data['noti_seen']     = NotificationsQModel::get_notifications_not_seen(Auth::id());
+			foreach ($data['notifications'] as $key => $notification) {
+				$date_create = date_create($notification->date);
+				$notification->year   = (int)date_format($date_create, 'Y');
+				$notification->month  = (int)date_format($date_create, 'm');
+				$notification->date   = (int)date_format($date_create, 'd');
+				$notification->hour   = (int)date_format($date_create, 'H');
+				$notification->minute = (int)date_format($date_create, 'i');
+				$notification->second = (int)date_format($date_create, 's');
+			}
+		}
+		return $data;
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public static function get_data_auth_detail($data, $book_id)
+	{
+		if (Auth::check()) {
+			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
+			$data['notifications'] = NotificationsBModel::get_notifications_list(Auth::id());
+			$data['noti_seen']     = NotificationsQModel::get_notifications_not_seen(Auth::id());
+			$book_like = BooksLikeQModel::get_book_like_by_user_id_and_book_id(Auth::id(), $book_id);
+			$data['contact'] = [];
+			$data['contact']['like'] = (empty($book_like)) ? true : false;
 			foreach ($data['notifications'] as $key => $notification) {
 				$date_create = date_create($notification->date);
 				$notification->year   = (int)date_format($date_create, 'Y');
