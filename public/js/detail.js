@@ -151,13 +151,32 @@ $(document).ready(function() {
 			}
 		}
 	});
+	$('.book .btn.left').click(function() {
+		var book_id = $(this).data('id');
+		$('#modalrate button.login').data('id', book_id);
+	});
+	$('#modalrate button.login').click(function() {
+		// rate book
+		var button  = this;
+		var book_id = $(this).data('id');
+		var point   = $(this).data('star');
+		$.ajax({
+			url: flag_url+'detail/ajax/rate_book/'+auth_id+'/'+book_id+'/'+point,
+			type: 'GET',
+			success: function(data) {
+				$(button).parents('#modalrate').css('display','none');
+				$('.info .star span.rate').text(data['rate']);
+				$('.info .star span.rate_point').text(data['rate_point']);
+			}
+		});
+	});
 	//modal rate
 	$('.modal.rate .rate .star').mouseenter(function() {
 		//check
 		if ($(this).parent().hasClass('end')) return;
 
 		var star = parseInt($(this).data('star'));
-		console.log(star);
+		// console.log(star);
 		for (i = 5; i > star; i--) {
 			$('.modal.rate .rate .star[data-star="' + i + '"]').find('span').addClass('fa-star-o');
 			$('.modal.rate .rate .star[data-star="' + i + '"]').find('span').removeClass('fa-star');
@@ -169,8 +188,10 @@ $(document).ready(function() {
 	});
 	
 	$('.modal.rate .rate .star').click(function() {
+		var star = $(this).data('star');
 		$('.modal.rate .rate').toggleClass('end');
 		$(this).toggleClass('checked');
+		$(this).parents('.main').find('.btn.login').data('star', star);
 	});
 	$('.modal.rate .rate').mouseleave(function() {
 		if ($(this).hasClass('end')) return;

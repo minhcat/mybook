@@ -29,13 +29,18 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 					</div>
 					<div class="button">
 						@if (Auth::check())
-						<button type="button" class="btn left open-modal login" data-modal="#modalrate">Đánh giá</button>
-						<button type="button" class="btn center login" data-id='{{ $book->id }}'>Theo dõi</button>
+							<button type="button" class="btn left open-modal login" data-id='{{ $book->id }}' data-modal="#modalrate">Đánh giá</button>
+							{{-- follow --}}
+							@if ($contact['follow'])
+							<button type="button" class="btn center login" data-id='{{ $book->id }}'>Theo dõi</button>
+							@else
+							<button type="button" class="btn center login off" data-id='{{ $book->id }}'>Bỏ theo dõi</button>
+							@endif
 							{{-- like --}}
 							@if ($contact['like'])
 							<button type="button" class="btn right login" data-id='{{ $book->id }}'>Yêu thích</button>
 							@else
-							<button type="button" class="btn right login off" data-id='{{ $book->id }}'>Đã thích</button>
+							<button type="button" class="btn right login off" data-id='{{ $book->id }}'>Bỏ thích</button>
 							@endif
 						@else
 						<button type="button" class="btn left open-modal" data-modal="#modalnotlogin">Đánh giá</button>
@@ -52,8 +57,8 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star-half-o"></span>
 						<span class="fa fa-star-o"></span>
-						<span>{{ $book->rate_point }}</span>
-						<span class="rate">{{ $book->rate }} đánh giá</span>
+						<span class="rate_point">{{ $book->rate_point }}</span>
+						<span class="rate">{{ $book->rate }}</span> đánh giá
 					</div>
 					<div class="group clearfix">
 						<div class="item red" title="yêu thích">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksViewQModel;
 use App\Http\Models\QModels\BooksLikeQModel;
+use App\Http\Models\QModels\BooksFollowQModel;
 use App\Http\Models\QModels\SystemQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\NotificationsQModel;
@@ -252,9 +253,11 @@ class CommonController extends Controller {
 			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
 			$data['notifications'] = NotificationsBModel::get_notifications_list(Auth::id());
 			$data['noti_seen']     = NotificationsQModel::get_notifications_not_seen(Auth::id());
-			$book_like = BooksLikeQModel::get_book_like_by_user_id_and_book_id(Auth::id(), $book_id);
+			$book_like   = BooksLikeQModel::get_book_like_by_user_id_and_book_id(Auth::id(), $book_id);
+			$book_follow = BooksFollowQModel::get_book_follow_by_user_id_and_book_id(Auth::id(), $book_id);
 			$data['contact'] = [];
-			$data['contact']['like'] = (empty($book_like)) ? true : false;
+			$data['contact']['like']   = (empty($book_like)) ? true : false;
+			$data['contact']['follow'] = (empty($book_follow)) ? true : false;
 			foreach ($data['notifications'] as $key => $notification) {
 				$date_create = date_create($notification->date);
 				$notification->year   = (int)date_format($date_create, 'Y');

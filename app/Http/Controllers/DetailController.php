@@ -8,6 +8,8 @@ use App\Http\Models\QModels\BooksLikeQModel;
 use App\Http\Models\QModels\BooksLikeStatisticQModel;
 use App\Http\Models\QModels\BooksFollowQModel;
 use App\Http\Models\QModels\BooksFollowStatisticQModel;
+use App\Http\Models\QModels\BooksRateQModel;
+use App\Http\Models\QModels\BooksRateStatisticQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\TransQModel;
@@ -18,6 +20,8 @@ use App\Http\Models\CModels\BooksLikeCModel;
 use App\Http\Models\CModels\BooksLikeStatisticCModel;
 use App\Http\Models\CModels\BooksFollowCModel;
 use App\Http\Models\CModels\BooksFollowStatisticCModel;
+use App\Http\Models\CModels\BooksRateCModel;
+use App\Http\Models\CModels\BooksRateStatisticCModel;
 use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\CommentsBModel;
@@ -439,5 +443,67 @@ class DetailController extends Controller {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_rate_book($user_id, $book_id, $point)
+	{
+		$book = BooksQModel::get_book_by_id($book_id);
+		$book_rate = BooksRateQModel::get_book_rate_by_user_id_and_book_id($user_id, $book_id);
+		// check user id has in data
+		if ($book_rate == null) {
+			// insert book rate
+			$data = [
+				'id_user' => $user_id,
+				'id_book' => $book_id,
+				'rate'    => $point,
+				'date'    => date('Y-m-d')
+			];
+			BooksRateCModel::insert_book_rate($data);
+			// update book
+			$data = [
+				'rate' => $book->rate + 1,
+			];
+
+			BooksCModel::update_book($book_id, $data);
+		} else {
+			$data = ['rate' => $point];
+			BooksRateCModel::update_book_rate($book_rate->id, $data);
+		}
+		
+		// update book like statistic
+		$date  = (int)date('d');
+		$month = (int)date('m');
+		$year  = (int)date('Y');
+		$time  = Helper::get_time_statistic($date, $month, $year);
+		$book_rate_statistic = BooksRateStatisticQModel::get_book_rate_by_book_id_and_date_and_rate($book_id, $date, $month, $year, $point);
+		if (empty($book_rate_statistic)) {
+			$data = [
+				'id_book' => $book_id,
+				'day'     => $time['day'],
+				'date'    => $date,
+				'week'    => $time['week'],
+				'month'   => $month,
+				'season'  => $time['season'],
+				'year'    => $year,
+				'point'   => $point,
+				'rate'    => 1
+			];
+			BooksRateStatisticCModel::insert_book_rate($data);
+		} else {
+			$data = [
+				'rate' => $book_rate_statistic->rate + 1,
+			];
+			BooksRateStatisticCModel::update_book_rate($book_rate_statistic->id, $data);
+		}
+		$book = BooksQModel::get_book_by_id($book_id);
+		$data = [];
+		$data['rate'] = $book->rate;
+		$data['rate_point'] = $book->rate_point;
+		return $data;
 	}
 }

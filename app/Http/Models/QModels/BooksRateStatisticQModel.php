@@ -121,4 +121,21 @@ class BooksRateStatisticQModel extends Model
 		
 		return $result[0];
 	}
+
+	/**
+	 * get book view current week
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_book_rate_by_book_id_and_date_and_rate($book_id, $date, $month, $year, $point) {
+		$result = DB::table('books_rate_statistic')
+				->where('id_book', $book_id)
+				->where('point', $point)
+				->where('date', $date)
+				->where('month', $month)
+				->where('year', $year)
+				->first();
+
+		return $result;
+	}
 }
