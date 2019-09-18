@@ -30,20 +30,6 @@
 
 <!-- modal -->
 @if (Auth::check())
-<div id="modalfollow" class="modal">
-	<div class="content">
-		<div class="header">
-			<h3>Thông Báo</h3>
-			<span class="close" data-modal="#modalfollow">&times;</span>
-		</div>
-		<div class="main">
-			<p>Thêm truyện vào danh sách theo dõi</p>
-			<button class="btn login">Đồng ý</button>
-			<button class="btn cancel right" data-modal="#modalfollow">Hủy</button>
-		</div>
-	</div>
-</div>
-
 <div id="modalrate" class="modal rate">
 	<div class="content">
 		<div class="header">

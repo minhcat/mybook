@@ -6,6 +6,8 @@ use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksLikeQModel;
 use App\Http\Models\QModels\BooksLikeStatisticQModel;
+use App\Http\Models\QModels\BooksFollowQModel;
+use App\Http\Models\QModels\BooksFollowStatisticQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\TransQModel;
@@ -14,6 +16,8 @@ use App\Http\Models\QModels\CommentsQModel;
 use App\Http\Models\QModels\NotificationsQModel;
 use App\Http\Models\CModels\BooksLikeCModel;
 use App\Http\Models\CModels\BooksLikeStatisticCModel;
+use App\Http\Models\CModels\BooksFollowCModel;
+use App\Http\Models\CModels\BooksFollowStatisticCModel;
 use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\CommentsBModel;
@@ -341,6 +345,97 @@ class DetailController extends Controller {
 				} else {
 					$data = ['like_statistic' => $book_like_statistic->like_statistic - 1];
 					BooksLikeStatisticCModel::update_book_like($book_like_statistic->id, $data);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_follow_book($user_id, $book_id)
+	{
+		$book = BooksQModel::get_book_by_id($book_id);
+		$book_follow = BooksFollowQModel::get_book_follow_by_user_id_and_book_id($user_id, $book_id);
+		// check user id has in data
+		if ($book_follow == null) {
+			// insert book follow
+			$data = [
+				'id_user' => $user_id,
+				'id_book' => $book_id,
+				'date'    => date('Y-m-d')
+			];
+			BooksFollowCModel::insert_book_follow($data);
+			// update book
+			$data = [
+				'follow' => $book->follow + 1,
+			];
+
+			BooksCModel::update_book($book_id, $data);
+			// update book like statistic
+			$date  = (int)date('d');
+			$month = (int)date('m');
+			$year  = (int)date('Y');
+			$time  = Helper::get_time_statistic($date, $month, $year);
+			$book_follow_statistic = BooksFollowStatisticQModel::get_book_follow_by_book_id_and_date($book_id, $date, $month, $year);
+			if (empty($book_follow_statistic)) {
+				$data = [
+					'id_book' => $book_id,
+					'day'     => $time['day'],
+					'date'    => $date,
+					'week'    => $time['week'],
+					'month'   => $month,
+					'season'  => $time['season'],
+					'year'    => $year,
+					'follow'  => 1
+				];
+				BooksFollowStatisticCModel::insert_book_follow($data);
+			} else {
+				$data = [
+					'follow' => $book_follow_statistic->follow + 1,
+				];
+				BooksFollowStatisticCModel::update_book_follow($book_follow_statistic->id, $data);
+			}
+		}
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_unfollow_book($user_id, $book_id)
+	{
+		$book = BooksQModel::get_book_by_id($book_id);
+		$book_follow = BooksFollowQModel::get_book_follow_by_user_id_and_book_id($user_id, $book_id);
+		// check user id has in data
+		if ($book_follow != null) {
+			// delete book like
+			$data = [
+				'id_user' => $user_id,
+				'id_book' => $book_id,
+				'date'    => date('Y-m-d')
+			];
+			BooksFollowCModel::delete_book_follow($book_follow->id);
+			// update book
+			$data = [
+				'follow' => $book->follow - 1,
+			];
+
+			BooksCModel::update_book($book_id, $data);
+			// update book like statistic
+			$date  = (int)date_format(date_create($book_follow->date), 'd');
+			$month = (int)date_format(date_create($book_follow->date), 'm');
+			$year  = (int)date_format(date_create($book_follow->date), 'Y');
+			$book_follow_statistic = BooksFollowStatisticQModel::get_book_follow_by_book_id_and_date($book_id, $date, $month, $year);
+			if (!empty($book_follow_statistic)) {
+				if ($book_follow_statistic->follow == 1) {
+					BooksFollowStatisticCModel::delete_book_follow($book_follow_statistic->id);
+				} else {
+					$data = ['follow' => $book_follow_statistic->follow - 1];
+					BooksFollowStatisticCModel::update_book_follow($book_follow_statistic->id, $data);
 				}
 			}
 		}

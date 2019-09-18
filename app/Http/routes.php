@@ -95,6 +95,10 @@ Route::group(['prefix' => 'detail'], function () {
 
 		Route::get('unlike_book/{user_id}/{book_id}', 'DetailController@ajax_unlike_book');
 
+		Route::get('follow_book/{user_id}/{book_id}', 'DetailController@ajax_follow_book');
+
+		Route::get('unfollow_book/{user_id}/{book_id}', 'DetailController@ajax_unfollow_book');
+
 	});
 
 });

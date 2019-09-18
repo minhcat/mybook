@@ -29,8 +29,9 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 					</div>
 					<div class="button">
 						@if (Auth::check())
-						<button type="button" class="btn left open-modal" data-modal="#modalrate">Đánh giá</button>
-						<button type="button" class="btn center open-modal" data-modal="#modalfollow">Theo dõi</button>
+						<button type="button" class="btn left open-modal login" data-modal="#modalrate">Đánh giá</button>
+						<button type="button" class="btn center login" data-id='{{ $book->id }}'>Theo dõi</button>
+							{{-- like --}}
 							@if ($contact['like'])
 							<button type="button" class="btn right login" data-id='{{ $book->id }}'>Yêu thích</button>
 							@else

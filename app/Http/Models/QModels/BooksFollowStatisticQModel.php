@@ -116,4 +116,20 @@ class BooksFollowStatisticQModel extends Model
 		
 		return $result[0];
 	}
+
+	/**
+	 * get book view current week
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_book_follow_by_book_id_and_date($book_id, $date, $month, $year) {
+		$result = DB::table('books_follow_statistic')
+				->where('id_book', $book_id)
+				->where('date', $date)
+				->where('month', $month)
+				->where('year', $year)
+				->first();
+
+		return $result;
+	}
 }
