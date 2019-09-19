@@ -101,6 +101,10 @@ Route::group(['prefix' => 'detail'], function () {
 
 		Route::get('rate_book/{user_id}/{book_id}/{point}', 'DetailController@ajax_rate_book');
 
+		Route::get('like_author/{user_id}/{author_id}', 'DetailController@ajax_like_author');
+
+		Route::get('unlike_author/{user_id}/{author_id}', 'DetailController@ajax_unlike_author');
+
 	});
 
 });

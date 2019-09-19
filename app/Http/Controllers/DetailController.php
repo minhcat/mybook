@@ -3,6 +3,8 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Models\QModels\AuthorsQModel;
+use App\Http\Models\QModels\AuthorsLikeQModel;
+use App\Http\Models\QModels\AuthorsLikeStatisticQModel;
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksLikeQModel;
 use App\Http\Models\QModels\BooksLikeStatisticQModel;
@@ -14,15 +16,19 @@ use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\TransQModel;
 use App\Http\Models\QModels\CharactersQModel;
+use App\Http\Models\QModels\CharactersBookQModel;
 use App\Http\Models\QModels\CommentsQModel;
 use App\Http\Models\QModels\NotificationsQModel;
+use App\Http\Models\CModels\AuthorsCModel;
+use App\Http\Models\CModels\AuthorsLikeCModel;
+use App\Http\Models\CModels\AuthorsLikeStatisticCModel;
+use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\BooksLikeCModel;
 use App\Http\Models\CModels\BooksLikeStatisticCModel;
 use App\Http\Models\CModels\BooksFollowCModel;
 use App\Http\Models\CModels\BooksFollowStatisticCModel;
 use App\Http\Models\CModels\BooksRateCModel;
 use App\Http\Models\CModels\BooksRateStatisticCModel;
-use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\NotificationsBModel;
@@ -41,16 +47,17 @@ class DetailController extends Controller {
 	 */
 	public function author($slug)
 	{
+		$author = AuthorsQModel::get_author_by_slug($slug);
 		$data = [];
 		// login
-		$data = CommonController::get_data_auth($data);
+		$data = CommonController::get_data_auth_detail($data, $author->id, 'author');
 		// header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
 		$data = CommonController::get_data_detail_sidebar($data);
 
-		$data['author']  = AuthorsQModel::get_author_by_slug($slug);
+		$data['author']  = $author;
 		$data['books']   = BooksQModel::get_books_by_author_id($data['author']->id);
 		$data['comments'] = CommentsBModel::get_comments_page($data['author']->id, 'author');
 		//set history cookie
@@ -85,10 +92,15 @@ class DetailController extends Controller {
 	 */
 	public function book($slug)
 	{
-		$book  = BooksQModel::get_book_by_slug($slug);
+		$book = BooksQModel::get_book_by_slug($slug);
+		$book = Helper::add_category_from_book($book);
+		$book->author  = AuthorsQModel::get_author_by_id($book->id_author);
+		$book->artist  = AuthorsQModel::get_author_by_id($book->id_artist);
+		$book->transes = TransQModel::get_transes_by_book_id($book->id);
+		$book->characters = CharactersBookQModel::get_characters_by_book_id($book->id);
 		$data = [];
 		// login
-		$data = CommonController::get_data_auth_detail($data, $book->id);
+		$data = CommonController::get_data_auth_detail($data, $book->id, 'book');
 		// header and footer
 		$data = CommonController::get_data_header($data);
 
@@ -505,5 +517,96 @@ class DetailController extends Controller {
 		$data['rate'] = $book->rate;
 		$data['rate_point'] = $book->rate_point;
 		return $data;
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_like_author($user_id, $author_id)
+	{
+		$author = AuthorsQModel::get_author_by_id($author_id);
+		$author_like = AuthorsLikeQModel::get_author_like_by_user_id_and_author_id($user_id, $author_id);
+		// check user id has in data
+		if ($author_like == null) {
+			// insert author like
+			$data = [
+				'id_user'   => $user_id,
+				'id_author' => $author_id,
+				'date'      => date('Y-m-d')
+			];
+			AuthorsLikeCModel::insert_author_like($data);
+			// update author
+			$data = [
+				'like' => $author->like + 1,
+			];
+
+			AuthorsCModel::update_author($author_id, $data);
+			// update book like statistic
+			$date  = (int)date('d');
+			$month = (int)date('m');
+			$year  = (int)date('Y');
+			$time  = Helper::get_time_statistic($date, $month, $year);
+			$author_like_statistic = AuthorsLikeStatisticQModel::get_author_like_by_author_id_and_date($author_id, $date, $month, $year);
+			if (empty($author_like_statistic)) {
+				$data = [
+					'id_author' => $author_id,
+					'day'     => $time['day'],
+					'date'    => $date,
+					'week'    => $time['week'],
+					'month'   => $month,
+					'season'  => $time['season'],
+					'year'    => $year,
+					'like_statistic' => 1
+				];
+				AuthorsLikeStatisticCModel::insert_author_like($data);
+			} else {
+				$data = [
+					'like_statistic' => $author_like_statistic->like_statistic + 1,
+				];
+				AuthorsLikeStatisticCModel::update_author_like($author_like_statistic->id, $data);
+			}
+		}
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_unlike_author($user_id, $author_id)
+	{
+		$author = AuthorsQModel::get_author_by_id($author_id);
+		$author_like = AuthorsLikeQModel::get_author_like_by_user_id_and_author_id($user_id, $author_id);
+		// check user id has in data
+		if ($author_like != null) {
+			// delete author like
+			$data = [
+				'id_user'   => $user_id,
+				'id_author' => $author_id,
+				'date'      => date('Y-m-d')
+			];
+			AuthorsLikeCModel::delete_author_like($author_like->id);
+			// update book
+			$data = [
+				'like' => $author->like - 1,
+			];
+
+			AuthorsCModel::update_author($author_id, $data);
+			// update author like statistic
+			$date  = (int)date_format(date_create($author_like->date), 'd');
+			$month = (int)date_format(date_create($author_like->date), 'm');
+			$year  = (int)date_format(date_create($author_like->date), 'Y');
+			$author_like_statistic = AuthorsLikeStatisticQModel::get_author_like_by_author_id_and_date($author_id, $date, $month, $year);
+			if (!empty($author_like_statistic)) {
+				if ($author_like_statistic->like_statistic == 1) {
+					AuthorsLikeStatisticCModel::delete_author_like($author_like_statistic->id);
+				} else {
+					$data = ['like_statistic' => $author_like_statistic->like_statistic - 1];
+					AuthorsLikeStatisticCModel::update_author_like($author_like_statistic->id, $data);
+				}
+			}
+		}
 	}
 }

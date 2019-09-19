@@ -78,7 +78,7 @@ $(document).ready(function() {
 	$(document).on('click', '.form-comment .reset', function() {
 		$(this).parent().find('.textarea').html('');
 	});
-	//click like
+	//click like book
 	$('.book .btn.right').click(function() {
 		// check login
 		if ($(this).hasClass('login')) {
@@ -115,6 +115,7 @@ $(document).ready(function() {
 			}
 		}
 	});
+	//click follow book
 	$('.book .btn.center').click(function() {
 		// check login
 		if ($(this).hasClass('login')) {
@@ -151,9 +152,47 @@ $(document).ready(function() {
 			}
 		}
 	});
+	//click rate book
 	$('.book .btn.left').click(function() {
 		var book_id = $(this).data('id');
 		$('#modalrate button.login').data('id', book_id);
+	});
+	//click like author
+	$('.author .btn.right').click(function() {
+		// check login
+		if ($(this).hasClass('login')) {
+			if ($(this).hasClass('off')) {
+				// unlike author
+				var button = this;
+				var author_id = $(this).data('id');
+				$.ajax({
+					url: flag_url+'detail/ajax/unlike_author/'+auth_id+'/'+author_id,
+					type: 'GET',
+					success: function(data) {
+						$(button).text('Yêu thích');
+						$(button).removeClass('off');
+						var num_like = parseInt($('.info .group .red span.number').text());
+						num_like--;
+						$('.info .group .red span.number').text(num_like);
+					}
+				});
+			} else {
+				// like author
+				var button = this;
+				var author_id = $(this).data('id');
+				$.ajax({
+					url: flag_url+'detail/ajax/like_author/'+auth_id+'/'+author_id,
+					type: 'GET',
+					success: function(data) {
+						$(button).text('Bỏ thích');
+						$(button).addClass('off');
+						var num_like = parseInt($('.info .group .red span.number').text());
+						num_like++;
+						$('.info .group .red span.number').text(num_like);
+					}
+				});
+			}
+		}
 	});
 	$('#modalrate button.login').click(function() {
 		// rate book

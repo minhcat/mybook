@@ -1,6 +1,10 @@
 <?php 
 namespace App\Http\Controllers;
 
+use App\Http\Models\QModels\AuthorsQModel;
+use App\Http\Models\QModels\AuthorsViewQModel;
+use App\Http\Models\QModels\AuthorsLikeQModel;
+use App\Http\Models\QModels\AuthorsFollowQModel;
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksViewQModel;
 use App\Http\Models\QModels\BooksLikeQModel;
@@ -247,17 +251,25 @@ class CommonController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public static function get_data_auth_detail($data, $book_id)
+	public static function get_data_auth_detail($data, $item_id, $type)
 	{
 		if (Auth::check()) {
 			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
 			$data['notifications'] = NotificationsBModel::get_notifications_list(Auth::id());
 			$data['noti_seen']     = NotificationsQModel::get_notifications_not_seen(Auth::id());
-			$book_like   = BooksLikeQModel::get_book_like_by_user_id_and_book_id(Auth::id(), $book_id);
-			$book_follow = BooksFollowQModel::get_book_follow_by_user_id_and_book_id(Auth::id(), $book_id);
-			$data['contact'] = [];
-			$data['contact']['like']   = (empty($book_like)) ? true : false;
-			$data['contact']['follow'] = (empty($book_follow)) ? true : false;
+			if ($type == 'book') {
+				$book_like   = BooksLikeQModel::get_book_like_by_user_id_and_book_id(Auth::id(), $item_id);
+				$book_follow = BooksFollowQModel::get_book_follow_by_user_id_and_book_id(Auth::id(), $item_id);
+				$data['contact'] = [];
+				$data['contact']['like']   = (empty($book_like)) ? true : false;
+				$data['contact']['follow'] = (empty($book_follow)) ? true : false;
+			} elseif ($type == 'author') {
+				$author_like   = AuthorsLikeQModel::get_author_like_by_user_id_and_author_id(Auth::id(), $item_id);
+				// $author_follow = AuthorsFollowQModel::get_author_follow_by_user_id_and_author_id(Auth::id(), $item_id);
+				$data['contact'] = [];
+				$data['contact']['like']   = (empty($author_like)) ? true : false;
+				$data['contact']['follow'] = (empty($author_follow)) ? true : false;
+			}
 			foreach ($data['notifications'] as $key => $notification) {
 				$date_create = date_create($notification->date);
 				$notification->year   = (int)date_format($date_create, 'Y');

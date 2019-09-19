@@ -68,6 +68,24 @@ class TransQModel extends Model
 	}
 
 	/**
+	 * get trans by slug
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_transes_by_book_id($book_id) {
+		$result = DB::table('trans as t')
+				->join('chaps as c', 'c.id_trans', '=', 't.id')
+				->join('books as b', 'c.id_book', '=', 'b.id')
+				->groupBy('t.id')
+				->where('t.deleted', 0)
+				->where('b.id', $book_id)
+				->select('t.*')
+				->get();
+
+		return $result;
+	}
+
+	/**
 	 * get character by name
 	 * @param 
 	 * @return object|boolean : all properties from `books` table

@@ -79,13 +79,37 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 						</div>
 					</div>
 					<p><strong>Tên khác:</strong> {{ $book->other_name }}</p>
-					<p><strong>Thể loại:</strong> <a href="">Comedy</a>, <a href="">Magic, <a href="">Fanstasy</a></p>
-					<p><strong>Tác giả:</strong> <a href="">Maruyama Kugane</a></p>
-					<p><strong>Minh họa:</strong> <a href="">Miyama Hugin</a></p>
-					<p><strong>Nhóm dịch:</strong> <a href="">A3manga</a>, <a href="">MangaVN</a>, <a href="">Dark Angels Group</a>, <a href="">A3manga</a>, <a href="">MangaVN</a>, <a href="">Dark Angels Group</a></p>
-					<p><strong>Ngày xuất bản:</strong> 30/07/2012</p>
-					<p><strong>Tình trạng:</strong> Đang tiến hành</p>
-					<p><strong>Nhân vật:</strong> <a href="">Mononga</a>, <a href="">Albedo</a>, <a href="">Shalltear Bloodfallen</a>, <a href="">Cocytus</a>, <a href="">Demiurge</a>, <a href="">Sebas Tian</a>, <a href="">Narberal Gamma</a></p>
+					<p><strong>Thể loại:</strong> 
+						@foreach ($book->categories as $key => $category)
+							@if ($key < count($book->categories) - 1)
+							<a href="{{ url('/list/category/'.$category['slug']) }}">{{ $category['name'] }}</a>,
+							@else
+							<a href="{{ url('/list/category/'.$category['slug']) }}">{{ $category['name'] }}</a>
+							@endif
+						@endforeach
+					</p>
+					<p><strong>Tác giả:</strong> <a href="{{ url('/detail/author/'.$book->author->slug) }}">{{ $book->author->name }}</a></p>
+					<p><strong>Minh họa:</strong> <a href="{{ url('/detail/author/'.$book->artist->slug) }}">{{ $book->artist->name }}</a></p>
+					<p><strong>Nhóm dịch:</strong> 
+						@foreach ($book->transes as $key => $trans)
+							@if ($key < count($book->transes) - 1)
+							<a href="{{ url('/detail/trans/'.$trans->slug) }}">{{ $trans->name }}</a>,
+							@else
+							<a href="{{ url('/detail/trans/'.$trans->slug) }}">{{ $trans->name }}</a>
+							@endif
+						@endforeach
+					</p>
+					<p><strong>Ngày xuất bản:</strong> {{ date_format(date_create($book->release_at), 'd/m/Y') }}</p>
+					<p><strong>Tình trạng:</strong> {{ ($book->status == 1) ? 'Đang tiến hành' : 'Đã hoàn thành' }}</p>
+					<p><strong>Nhân vật:</strong> 
+						@foreach ($book->characters as $key => $character)
+							@if ($key < count($book->characters) - 1)
+							<a href="{{ url('/detail/character/'.$character->slug) }}">{{ $character->name }}</a>,
+							@else
+							<a href="{{ url('/detail/character/'.$character->slug) }}">{{ $character->name }}</a>
+							@endif
+						@endforeach
+					</p>
 				</div>
 			</div>
 			<div class="line second">
@@ -97,9 +121,13 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 				<hr> -->
 				<div class="header">
 					<ul class="nav nav-tabs">
-						<li class="active"><a data-toggle="tab" href="#group1">A3manga</a></li>
-						<li><a data-toggle="tab" href="#group2">MangaVN</a></li>
-						<li><a data-toggle="tab" href="#group3">Dark Angels Group</a></li>
+						@foreach ($book->transes as $key => $trans)
+							@if ($key == 0)
+							<li class="active"><a data-toggle="tab" href="#group{{ $key + 1 }}">{{ $trans->name }}</a></li>
+							@else
+							<li><a data-toggle="tab" href="#group{{ $key + 1 }}">{{ $trans->name }}</a></li>
+							@endif
+						@endforeach
 					</ul>
 				</div>
 				<div class="body">

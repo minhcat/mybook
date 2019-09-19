@@ -21,16 +21,32 @@ Bạn có thể xem thông tin tác giả tại đây
 			<li><a href="">Trang chủ</a></li>
 			<li class="active">{{ $author->name }}</li>
 		</ul>
-		<div class="book">
+		<div class="author">
 			<div class="line first clearfix">
 				<div class="image left">
 					<div class="img">
 						<img src="{{ asset('image/authors/'.$author->image.'.jpg') }}">
 					</div>
 					<div class="button">
+						@if (Auth::check())
+							<button type="button" class="btn left open-modal login" data-id='{{ $author->id }}' data-modal="#modalrate">Đánh giá</button>
+							{{-- follow --}}
+							@if ($contact['follow'])
+							<button type="button" class="btn center login" data-id='{{ $author->id }}'>Theo dõi</button>
+							@else
+							<button type="button" class="btn center login off" data-id='{{ $author->id }}'>Bỏ theo dõi</button>
+							@endif
+							{{-- like --}}
+							@if ($contact['like'])
+							<button type="button" class="btn right login" data-id='{{ $author->id }}'>Yêu thích</button>
+							@else
+							<button type="button" class="btn right login off" data-id='{{ $author->id }}'>Bỏ thích</button>
+							@endif
+						@else
 						<button type="button" class="btn left open-modal" data-modal="#modalnotlogin">Đánh giá</button>
 						<button type="button" class="btn center open-modal" data-modal="#modalnotlogin">Theo dõi</button>
 						<button type="button" class="btn right open-modal" data-modal="#modalnotlogin">Yêu thích</button>
+						@endif
 					</div>
 				</div>
 				<div class="info">
@@ -42,24 +58,24 @@ Bạn có thể xem thông tin tác giả tại đây
 						<span class="fa fa-star-half-o"></span>
 						<span class="fa fa-star-o"></span>
 						<span>{{ $author->rate_point }}</span>
-						<span class="rate">{{ $author->rate }} đánh giá</span>
+						<span class="rate">{{ $author->rate }}</span> đánh giá
 					</div>
 					<div class="group clearfix">
 						<div class="item red" title="yêu thích">
 							<span class="glyphicon glyphicon-heart"></span> 
-							<span>{{ $author->like }}</span>
+							<span class="number">{{ $author->like }}</span>
 						</div>
 						<div class="item blue" title="lượt xem">
 							<span class="glyphicon glyphicon-eye-open"></span> 
-							<span>{{ $author->view }}</span>
+							<span class="number">{{ $author->view }}</span>
 						</div>
 						<div class="item orange" title="bình luận">
 							<span class="glyphicon glyphicon-comment"></span> 
-							<span>{{ $author->comment }}</span>
+							<span class="number">{{ $author->comment }}</span>
 						</div>
 						<div class="item green" title="theo dõi">
 							<span class="glyphicon glyphicon-user"></span> 
-							<span>{{ $author->follow }}</span>
+							<span class="number">{{ $author->follow }}</span>
 						</div>
 					</div>
 					<p><strong>Nơi sinh:</strong> {{ $author->birthplace }}</p>
