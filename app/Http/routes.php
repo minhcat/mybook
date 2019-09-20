@@ -109,6 +109,8 @@ Route::group(['prefix' => 'detail'], function () {
 
 		Route::get('unfollow_author/{user_id}/{book_id}', 'DetailController@ajax_unfollow_author');
 
+		Route::get('rate_author/{user_id}/{book_id}/{point}', 'DetailController@ajax_rate_author');
+
 	});
 
 });

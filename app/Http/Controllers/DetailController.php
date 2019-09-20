@@ -7,6 +7,8 @@ use App\Http\Models\QModels\AuthorsLikeQModel;
 use App\Http\Models\QModels\AuthorsLikeStatisticQModel;
 use App\Http\Models\QModels\AuthorsFollowQModel;
 use App\Http\Models\QModels\AuthorsFollowStatisticQModel;
+use App\Http\Models\QModels\AuthorsRateQModel;
+use App\Http\Models\QModels\AuthorsRateStatisticQModel;
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksLikeQModel;
 use App\Http\Models\QModels\BooksLikeStatisticQModel;
@@ -26,6 +28,8 @@ use App\Http\Models\CModels\AuthorsLikeCModel;
 use App\Http\Models\CModels\AuthorsLikeStatisticCModel;
 use App\Http\Models\CModels\AuthorsFollowCModel;
 use App\Http\Models\CModels\AuthorsFollowStatisticCModel;
+use App\Http\Models\CModels\AuthorsRateCModel;
+use App\Http\Models\CModels\AuthorsRateStatisticCModel;
 use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\BooksLikeCModel;
 use App\Http\Models\CModels\BooksLikeStatisticCModel;
@@ -481,8 +485,10 @@ class DetailController extends Controller {
 			];
 			BooksRateCModel::insert_book_rate($data);
 			// update book
+			$rate_point = ($book->rate_point * $book->rate + $point)/($book->rate_point + 1);
 			$data = [
 				'rate' => $book->rate + 1,
+				'rate_point' => $rate_point,
 			];
 
 			BooksCModel::update_book($book_id, $data);
@@ -612,5 +618,69 @@ class DetailController extends Controller {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_rate_author($user_id, $author_id, $point)
+	{
+		$author = AuthorsQModel::get_author_by_id($author_id);
+		$author_rate = AuthorsRateQModel::get_author_rate_by_user_id_and_author_id($user_id, $author_id);
+		// check user id has in data
+		if ($author_rate == null) {
+			// insert author rate
+			$data = [
+				'id_user'   => $user_id,
+				'id_author' => $author_id,
+				'rate'      => $point,
+				'date'      => date('Y-m-d')
+			];
+			AuthorsRateCModel::insert_author_rate($data);
+			// update author
+			$rate_point = round(($author->rate_point * $author->rate + $point)/($author->rate + 1), 2);
+			$data = [
+				'rate' => $author->rate + 1,
+				'rate_point' => $rate_point,
+			];
+
+			AuthorsCModel::update_author($author_id, $data);
+		} else {
+			$data = ['rate' => $point];
+			AuthorsRateCModel::update_author_rate($author_rate->id, $data);
+		}
+		
+		// update book like statistic
+		$date  = (int)date('d');
+		$month = (int)date('m');
+		$year  = (int)date('Y');
+		$time  = Helper::get_time_statistic($date, $month, $year);
+		$author_rate_statistic = AuthorsRateStatisticQModel::get_author_rate_by_author_id_and_date_and_rate($author_id, $date, $month, $year, $point);
+		if (empty($author_rate_statistic)) {
+			$data = [
+				'id_author' => $author_id,
+				'day'     => $time['day'],
+				'date'    => $date,
+				'week'    => $time['week'],
+				'month'   => $month,
+				'season'  => $time['season'],
+				'year'    => $year,
+				'point'   => $point,
+				'rate'    => 1
+			];
+			AuthorsRateStatisticCModel::insert_author_rate($data);
+		} else {
+			$data = [
+				'rate' => $author_rate_statistic->rate + 1,
+			];
+			AuthorsRateStatisticCModel::update_author_rate($author_rate_statistic->id, $data);
+		}
+		$author = AuthorsQModel::get_author_by_id($author_id);
+		$data = [];
+		$data['rate'] = $author->rate;
+		$data['rate_point'] = $author->rate_point;
+		return $data;
 	}
 }

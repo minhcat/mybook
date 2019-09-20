@@ -57,7 +57,7 @@ Bạn có thể xem thông tin tác giả tại đây
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star-half-o"></span>
 						<span class="fa fa-star-o"></span>
-						<span>{{ $author->rate_point }}</span>
+						<span class="rate_point">{{ $author->rate_point }}</span>
 						<span class="rate">{{ $author->rate }}</span> đánh giá
 					</div>
 					<div class="group clearfix">

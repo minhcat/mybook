@@ -156,6 +156,7 @@ $(document).ready(function() {
 	$('.book .btn.left').click(function() {
 		var book_id = $(this).data('id');
 		$('#modalrate button.login').data('id', book_id);
+		$('#modalrate button.login').data('item', 'book');
 	});
 	//click like author
 	$('.author .btn.right').click(function() {
@@ -231,13 +232,20 @@ $(document).ready(function() {
 			}
 		}
 	});
+	//click rate book
+	$('.author .btn.left').click(function() {
+		var author_id = $(this).data('id');
+		$('#modalrate button.login').data('id', author_id);
+		$('#modalrate button.login').data('item', 'author');
+	});
 	$('#modalrate button.login').click(function() {
 		// rate book
 		var button  = this;
-		var book_id = $(this).data('id');
+		var item_id = $(this).data('id');
 		var point   = $(this).data('star');
+		var item    = $(this).data('item');
 		$.ajax({
-			url: flag_url+'detail/ajax/rate_book/'+auth_id+'/'+book_id+'/'+point,
+			url: flag_url+'detail/ajax/rate_'+item+'/'+auth_id+'/'+item_id+'/'+point,
 			type: 'GET',
 			success: function(data) {
 				$(button).parents('#modalrate').css('display','none');
