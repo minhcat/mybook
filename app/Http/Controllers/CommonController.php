@@ -265,7 +265,7 @@ class CommonController extends Controller {
 				$data['contact']['follow'] = (empty($book_follow)) ? true : false;
 			} elseif ($type == 'author') {
 				$author_like   = AuthorsLikeQModel::get_author_like_by_user_id_and_author_id(Auth::id(), $item_id);
-				// $author_follow = AuthorsFollowQModel::get_author_follow_by_user_id_and_author_id(Auth::id(), $item_id);
+				$author_follow = AuthorsFollowQModel::get_author_follow_by_user_id_and_author_id(Auth::id(), $item_id);
 				$data['contact'] = [];
 				$data['contact']['like']   = (empty($author_like)) ? true : false;
 				$data['contact']['follow'] = (empty($author_follow)) ? true : false;

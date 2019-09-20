@@ -194,6 +194,43 @@ $(document).ready(function() {
 			}
 		}
 	});
+	//click follow author
+	$('.author .btn.center').click(function() {
+		// check login
+		if ($(this).hasClass('login')) {
+			if ($(this).hasClass('off')) {
+				// unfollow author
+				var button = this;
+				var author_id = $(this).data('id');
+				$.ajax({
+					url: flag_url+'detail/ajax/unfollow_author/'+auth_id+'/'+author_id,
+					type: 'GET',
+					success: function(data) {
+						$(button).text('Theo dõi');
+						$(button).removeClass('off');
+						var num_like = parseInt($('.info .group .green span.number').text());
+						num_like--;
+						$('.info .group .green span.number').text(num_like);
+					}
+				});
+			} else {
+				// follow author
+				var button = this;
+				var author_id = $(this).data('id');
+				$.ajax({
+					url: flag_url+'detail/ajax/follow_author/'+auth_id+'/'+author_id,
+					type: 'GET',
+					success: function(data) {
+						$(button).text('Bỏ theo dõi');
+						$(button).addClass('off');
+						var num_like = parseInt($('.info .group .green span.number').text());
+						num_like++;
+						$('.info .group .green span.number').text(num_like);
+					}
+				});
+			}
+		}
+	});
 	$('#modalrate button.login').click(function() {
 		// rate book
 		var button  = this;

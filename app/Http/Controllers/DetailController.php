@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\AuthorsLikeQModel;
 use App\Http\Models\QModels\AuthorsLikeStatisticQModel;
+use App\Http\Models\QModels\AuthorsFollowQModel;
+use App\Http\Models\QModels\AuthorsFollowStatisticQModel;
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksLikeQModel;
 use App\Http\Models\QModels\BooksLikeStatisticQModel;
@@ -22,6 +24,8 @@ use App\Http\Models\QModels\NotificationsQModel;
 use App\Http\Models\CModels\AuthorsCModel;
 use App\Http\Models\CModels\AuthorsLikeCModel;
 use App\Http\Models\CModels\AuthorsLikeStatisticCModel;
+use App\Http\Models\CModels\AuthorsFollowCModel;
+use App\Http\Models\CModels\AuthorsFollowStatisticCModel;
 use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\BooksLikeCModel;
 use App\Http\Models\CModels\BooksLikeStatisticCModel;
@@ -524,22 +528,22 @@ class DetailController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function ajax_like_author($user_id, $author_id)
+	public function ajax_follow_author($user_id, $author_id)
 	{
 		$author = AuthorsQModel::get_author_by_id($author_id);
-		$author_like = AuthorsLikeQModel::get_author_like_by_user_id_and_author_id($user_id, $author_id);
+		$author_follow = AuthorsFollowQModel::get_author_follow_by_user_id_and_author_id($user_id, $author_id);
 		// check user id has in data
-		if ($author_like == null) {
+		if ($author_follow == null) {
 			// insert author like
 			$data = [
 				'id_user'   => $user_id,
 				'id_author' => $author_id,
 				'date'      => date('Y-m-d')
 			];
-			AuthorsLikeCModel::insert_author_like($data);
+			AuthorsFollowCModel::insert_author_follow($data);
 			// update author
 			$data = [
-				'like' => $author->like + 1,
+				'follow' => $author->follow + 1,
 			];
 
 			AuthorsCModel::update_author($author_id, $data);
@@ -548,8 +552,8 @@ class DetailController extends Controller {
 			$month = (int)date('m');
 			$year  = (int)date('Y');
 			$time  = Helper::get_time_statistic($date, $month, $year);
-			$author_like_statistic = AuthorsLikeStatisticQModel::get_author_like_by_author_id_and_date($author_id, $date, $month, $year);
-			if (empty($author_like_statistic)) {
+			$author_follow_statistic = AuthorsFollowStatisticQModel::get_author_follow_by_author_id_and_date($author_id, $date, $month, $year);
+			if (empty($author_follow_statistic)) {
 				$data = [
 					'id_author' => $author_id,
 					'day'     => $time['day'],
@@ -558,14 +562,14 @@ class DetailController extends Controller {
 					'month'   => $month,
 					'season'  => $time['season'],
 					'year'    => $year,
-					'like_statistic' => 1
+					'follow'  => 1
 				];
-				AuthorsLikeStatisticCModel::insert_author_like($data);
+				AuthorsFollowStatisticCModel::insert_author_follow($data);
 			} else {
 				$data = [
-					'like_statistic' => $author_like_statistic->like_statistic + 1,
+					'follow'  => $author_follow_statistic->follow + 1,
 				];
-				AuthorsLikeStatisticCModel::update_author_like($author_like_statistic->id, $data);
+				AuthorsFollowStatisticCModel::update_author_follow($author_follow_statistic->id, $data);
 			}
 		}
 	}
@@ -575,36 +579,36 @@ class DetailController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function ajax_unlike_author($user_id, $author_id)
+	public function ajax_unfollow_author($user_id, $author_id)
 	{
 		$author = AuthorsQModel::get_author_by_id($author_id);
-		$author_like = AuthorsLikeQModel::get_author_like_by_user_id_and_author_id($user_id, $author_id);
+		$author_follow = AuthorsFollowQModel::get_author_follow_by_user_id_and_author_id($user_id, $author_id);
 		// check user id has in data
-		if ($author_like != null) {
+		if ($author_follow != null) {
 			// delete author like
 			$data = [
 				'id_user'   => $user_id,
 				'id_author' => $author_id,
 				'date'      => date('Y-m-d')
 			];
-			AuthorsLikeCModel::delete_author_like($author_like->id);
+			AuthorsFollowCModel::delete_author_follow($author_follow->id);
 			// update book
 			$data = [
-				'like' => $author->like - 1,
+				'follow' => $author->follow - 1,
 			];
 
 			AuthorsCModel::update_author($author_id, $data);
 			// update author like statistic
-			$date  = (int)date_format(date_create($author_like->date), 'd');
-			$month = (int)date_format(date_create($author_like->date), 'm');
-			$year  = (int)date_format(date_create($author_like->date), 'Y');
-			$author_like_statistic = AuthorsLikeStatisticQModel::get_author_like_by_author_id_and_date($author_id, $date, $month, $year);
-			if (!empty($author_like_statistic)) {
-				if ($author_like_statistic->like_statistic == 1) {
-					AuthorsLikeStatisticCModel::delete_author_like($author_like_statistic->id);
+			$date  = (int)date_format(date_create($author_follow->date), 'd');
+			$month = (int)date_format(date_create($author_follow->date), 'm');
+			$year  = (int)date_format(date_create($author_follow->date), 'Y');
+			$author_follow_statistic = AuthorsFollowStatisticQModel::get_author_follow_by_author_id_and_date($author_id, $date, $month, $year);
+			if (!empty($author_follow_statistic)) {
+				if ($author_follow_statistic->follow == 1) {
+					AuthorsFollowStatisticCModel::delete_author_follow($author_follow_statistic->id);
 				} else {
-					$data = ['like_statistic' => $author_like_statistic->like_statistic - 1];
-					AuthorsLikeStatisticCModel::update_author_like($author_like_statistic->id, $data);
+					$data = ['follow' => $author_follow_statistic->follow - 1];
+					AuthorsFollowStatisticCModel::update_author_follow($author_follow_statistic->id, $data);
 				}
 			}
 		}
