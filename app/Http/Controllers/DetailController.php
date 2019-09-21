@@ -19,6 +19,12 @@ use App\Http\Models\QModels\BooksRateStatisticQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\TransQModel;
+use App\Http\Models\QModels\TransLikeQModel;
+use App\Http\Models\QModels\TransLikeStatisticQModel;
+use App\Http\Models\QModels\TransFollowQModel;
+use App\Http\Models\QModels\TransFollowStatisticQModel;
+use App\Http\Models\QModels\TransRateQModel;
+use App\Http\Models\QModels\TransRateStatisticQModel;
 use App\Http\Models\QModels\CharactersQModel;
 use App\Http\Models\QModels\CharactersBookQModel;
 use App\Http\Models\QModels\CommentsQModel;
@@ -37,6 +43,13 @@ use App\Http\Models\CModels\BooksFollowCModel;
 use App\Http\Models\CModels\BooksFollowStatisticCModel;
 use App\Http\Models\CModels\BooksRateCModel;
 use App\Http\Models\CModels\BooksRateStatisticCModel;
+use App\Http\Models\CModels\TransCModel;
+use App\Http\Models\CModels\TransLikeCModel;
+use App\Http\Models\CModels\TransLikeStatisticCModel;
+use App\Http\Models\CModels\TransFollowCModel;
+use App\Http\Models\CModels\TransFollowStatisticCModel;
+use App\Http\Models\CModels\TransRateCModel;
+use App\Http\Models\CModels\TransRateStatisticCModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\NotificationsBModel;
@@ -249,16 +262,17 @@ class DetailController extends Controller {
 	 */
 	public function trans($slug)
 	{
+		$trans = TransQModel::get_trans_by_slug($slug);
 		$data = [];
 		// login
-		$data = CommonController::get_data_auth($data);
+		$data = CommonController::get_data_auth_detail($data, $trans->id, 'trans');
 		// header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
 		$data = CommonController::get_data_detail_sidebar($data);
 
-		$data['trans'] = TransQModel::get_trans_by_slug($slug);
+		$data['trans'] = $trans;
 		$data['books'] = TransQModel::get_books_by_trans_id($data['trans']->id);
 
 		$data['comments'] = CommentsBModel::get_comments_page($data['trans']->id, 'trans');
@@ -797,5 +811,102 @@ class DetailController extends Controller {
 		$data['rate'] = $author->rate;
 		$data['rate_point'] = $author->rate_point;
 		return $data;
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_like_trans($user_id, $trans_id)
+	{
+		$trans = TransQModel::get_trans_by_id($trans_id);
+		$trans_like = TransLikeQModel::get_trans_like_by_user_id_and_trans_id($user_id, $trans_id);
+		// check user id has in data
+		if ($trans_like == null) {
+			// insert author like
+			$data = [
+				'id_user'   => $user_id,
+				'id_trans'  => $trans_id,
+				'date'      => date('Y-m-d')
+			];
+			TransLikeCModel::insert_trans_like($data);
+			// update author
+			$data = [
+				'like' => $trans->like + 1,
+			];
+
+			TransCModel::update_trans($trans_id, $data);
+			// update book like statistic
+			$date  = (int)date('d');
+			$month = (int)date('m');
+			$year  = (int)date('Y');
+			$time  = Helper::get_time_statistic($date, $month, $year);
+			$trans_like_statistic = TransLikeStatisticQModel::get_trans_like_by_trans_id_and_date($trans_id, $date, $month, $year);
+			if (empty($trans_like_statistic)) {
+				$data = [
+					'id_trans'       => $trans_id,
+					'day'            => $time['day'],
+					'date'           => $date,
+					'week'           => $time['week'],
+					'month'          => $month,
+					'season'         => $time['season'],
+					'year'           => $year,
+					'like_statistic' => 1
+				];
+				TransLikeStatisticCModel::insert_trans_like($data);
+			} else {
+				$data = [
+					'like_statistic'  => $trans_like_statistic->like_statistic + 1,
+				];
+				TransLikeStatisticCModel::update_trans_like($trans_like_statistic->id, $data);
+			}
+		}
+		// get data
+		$trans = TransQModel::get_trans_by_id($trans_id);
+		return $trans->like;
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_unlike_trans($user_id, $trans_id)
+	{
+		$trans = TransQModel::get_trans_by_id($trans_id);
+		$trans_like = TransLikeQModel::get_trans_like_by_user_id_and_trans_id($user_id, $trans_id);
+		// check user id has in data
+		if ($trans_like != null) {
+			// delete author like
+			$data = [
+				'id_user'   => $user_id,
+				'id_author' => $trans_id,
+				'date'      => date('Y-m-d')
+			];
+			TransLikeCModel::delete_trans_like($trans_like->id);
+			// update book
+			$data = [
+				'like' => $trans->like - 1,
+			];
+
+			TransCModel::update_trans($trans_id, $data);
+			// update author like statistic
+			$date  = (int)date_format(date_create($trans_like->date), 'd');
+			$month = (int)date_format(date_create($trans_like->date), 'm');
+			$year  = (int)date_format(date_create($trans_like->date), 'Y');
+			$trans_like_statistic = TransLikeStatisticQModel::get_trans_like_by_trans_id_and_date($trans_id, $date, $month, $year);
+			if (!empty($trans_like_statistic)) {
+				if ($trans_like_statistic->like_statistic == 1) {
+					TransLikeStatisticCModel::delete_trans_like($trans_like_statistic->id);
+				} else {
+					$data = ['like_statistic' => $trans_like_statistic->like_statistic - 1];
+					TransLikeStatisticCModel::update_trans_like($trans_like_statistic->id, $data);
+				}
+			}
+		}
+		// get data
+		$trans = TransQModel::get_trans_by_id($trans_id);
+		return $trans->like;
 	}
 }

@@ -164,9 +164,7 @@ $(document).ready(function() {
 					success: function(data) {
 						$(button).text('Yêu thích');
 						$(button).removeClass('off');
-						var num_like = parseInt($('.info .group .red span.number').text());
-						num_like--;
-						$('.info .group .red span.number').text(num_like);
+						$('.info .group .red span.number').text(data);
 					}
 				});
 			} else {
@@ -179,9 +177,7 @@ $(document).ready(function() {
 					success: function(data) {
 						$(button).text('Bỏ thích');
 						$(button).addClass('off');
-						var num_like = parseInt($('.info .group .red span.number').text());
-						num_like++;
-						$('.info .group .red span.number').text(num_like);
+						$('.info .group .red span.number').text(data);
 					}
 				});
 			}
@@ -220,11 +216,44 @@ $(document).ready(function() {
 			}
 		}
 	});
-	//click rate book
+	//click rate author
 	$('.author .btn.left').click(function() {
 		var author_id = $(this).data('id');
 		$('#modalrate button.login').data('id', author_id);
 		$('#modalrate button.login').data('item', 'author');
+	});
+	//click like trans
+	$('.trans .btn.right').click(function() {
+		// check login
+		if ($(this).hasClass('login')) {
+			if ($(this).hasClass('off')) {
+				// unlike trans
+				var button = this;
+				var trans_id = $(this).data('id');
+				$.ajax({
+					url: flag_url+'detail/ajax/unlike_trans/'+auth_id+'/'+trans_id,
+					type: 'GET',
+					success: function(data) {
+						$(button).text('Yêu thích');
+						$(button).removeClass('off');
+						$('.info .group .red span.number').text(data);
+					}
+				});
+			} else {
+				// like trans
+				var button = this;
+				var trans_id = $(this).data('id');
+				$.ajax({
+					url: flag_url+'detail/ajax/like_trans/'+auth_id+'/'+trans_id,
+					type: 'GET',
+					success: function(data) {
+						$(button).text('Bỏ thích');
+						$(button).addClass('off');
+						$('.info .group .red span.number').text(data);
+					}
+				});
+			}
+		}
 	});
 	$('#modalrate button.login').click(function() {
 		// rate book

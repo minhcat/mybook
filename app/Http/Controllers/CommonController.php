@@ -10,6 +10,10 @@ use App\Http\Models\QModels\BooksViewQModel;
 use App\Http\Models\QModels\BooksLikeQModel;
 use App\Http\Models\QModels\BooksFollowQModel;
 use App\Http\Models\QModels\SystemQModel;
+use App\Http\Models\QModels\TransQModel;
+use App\Http\Models\QModels\TransViewQModel;
+use App\Http\Models\QModels\TransLikeQModel;
+use App\Http\Models\QModels\TransFollowQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\NotificationsQModel;
 use App\Http\Models\BModels\BooksBModel;
@@ -269,6 +273,12 @@ class CommonController extends Controller {
 				$data['contact'] = [];
 				$data['contact']['like']   = (empty($author_like)) ? true : false;
 				$data['contact']['follow'] = (empty($author_follow)) ? true : false;
+			} elseif ($type == 'trans') {
+				$trans_like   = TransLikeQModel::get_trans_like_by_user_id_and_trans_id(Auth::id(), $item_id);
+				// $trans_follow = TransFollowQModel::get_trans_follow_by_user_id_and_trans_id(Auth::id(), $item_id);
+				$data['contact'] = [];
+				$data['contact']['like']   = (empty($trans_like)) ? true : false;
+				$data['contact']['follow'] = (empty($trans_follow)) ? true : false;
 			}
 			foreach ($data['notifications'] as $key => $notification) {
 				$date_create = date_create($notification->date);

@@ -21,16 +21,32 @@ Bạn có thể xem thông tin nhóm dịch tại đây
 			<li><a href="">Trang chủ</a></li>
 			<li class="active">{{ $trans->name }}</li>
 		</ul>
-		<div class="book">
+		<div class="trans">
 			<div class="line first clearfix">
 				<div class="image left">
 					<div class="img">
 						<img src="{{ asset('image/trans/'.$trans->image.'.jpg') }}">
 					</div>
 					<div class="button">
+						@if (Auth::check())
+							<button type="button" class="btn left open-modal login" data-id='{{ $trans->id }}' data-modal="#modalrate">Đánh giá</button>
+							{{-- follow --}}
+							@if ($contact['follow'])
+							<button type="button" class="btn center login" data-id='{{ $trans->id }}'>Theo dõi</button>
+							@else
+							<button type="button" class="btn center login off" data-id='{{ $trans->id }}'>Bỏ theo dõi</button>
+							@endif
+							{{-- like --}}
+							@if ($contact['like'])
+							<button type="button" class="btn right login" data-id='{{ $trans->id }}'>Yêu thích</button>
+							@else
+							<button type="button" class="btn right login off" data-id='{{ $trans->id }}'>Bỏ thích</button>
+							@endif
+						@else
 						<button type="button" class="btn left open-modal" data-modal="#modalnotlogin">Đánh giá</button>
 						<button type="button" class="btn center open-modal" data-modal="#modalnotlogin">Theo dõi</button>
 						<button type="button" class="btn right open-modal" data-modal="#modalnotlogin">Yêu thích</button>
+						@endif
 					</div>
 				</div>
 				<div class="info">
@@ -41,25 +57,25 @@ Bạn có thể xem thông tin nhóm dịch tại đây
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star-half-o"></span>
 						<span class="fa fa-star-o"></span>
-						<span>{{ $trans->rate_point }}</span>
-						<span class="rate">{{ $trans->rate }} đánh giá</span>
+						<span class="rate_point">{{ $trans->rate_point }}</span>
+						<span class="rate">{{ $trans->rate }}</span> đánh giá
 					</div>
 					<div class="group clearfix">
 						<div class="item red" title="yêu thích">
 							<span class="glyphicon glyphicon-heart"></span> 
-							<span>{{ $trans->like }}</span>
+							<span class="number">{{ $trans->like }}</span>
 						</div>
 						<div class="item blue" title="lượt xem">
 							<span class="glyphicon glyphicon-eye-open"></span> 
-							<span>{{ $trans->view }}</span>
+							<span class="number">{{ $trans->view }}</span>
 						</div>
 						<div class="item orange" title="bình luận">
 							<span class="glyphicon glyphicon-comment"></span> 
-							<span>{{ $trans->comment }}</span>
+							<span class="number">{{ $trans->comment }}</span>
 						</div>
 						<div class="item green" title="theo dõi">
 							<span class="glyphicon glyphicon-user"></span> 
-							<span>{{ $trans->follow }}</span>
+							<span class="number">{{ $trans->follow }}</span>
 						</div>
 					</div>
 					<p><strong>Trưởng nhóm:</strong> {{ $trans->leader }}</p>
