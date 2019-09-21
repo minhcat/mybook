@@ -92,9 +92,7 @@ $(document).ready(function() {
 					success: function(data) {
 						$(button).text('Yêu thích');
 						$(button).removeClass('off');
-						var num_like = parseInt($('.info .group .red span.number').text());
-						num_like--;
-						$('.info .group .red span.number').text(num_like);
+						$('.info .group .red span.number').text(data);
 					}
 				});
 			} else {
@@ -107,9 +105,7 @@ $(document).ready(function() {
 					success: function(data) {
 						$(button).text('Bỏ thích');
 						$(button).addClass('off');
-						var num_like = parseInt($('.info .group .red span.number').text());
-						num_like++;
-						$('.info .group .red span.number').text(num_like);
+						$('.info .group .red span.number').text(data);
 					}
 				});
 			}
@@ -129,9 +125,7 @@ $(document).ready(function() {
 					success: function(data) {
 						$(button).text('Theo dõi');
 						$(button).removeClass('off');
-						var num_follow = parseInt($('.info .group .green span.number').text());
-						num_follow--;
-						$('.info .group .green span.number').text(num_follow);
+						$('.info .group .green span.number').text(data);
 					}
 				});
 			} else {
@@ -144,9 +138,7 @@ $(document).ready(function() {
 					success: function(data) {
 						$(button).text('Bỏ theo dõi');
 						$(button).addClass('off');
-						var num_follow = parseInt($('.info .group .green span.number').text());
-						num_follow++;
-						$('.info .group .green span.number').text(num_follow);
+						$('.info .group .green span.number').text(data);
 					}
 				});
 			}
@@ -209,9 +201,7 @@ $(document).ready(function() {
 					success: function(data) {
 						$(button).text('Theo dõi');
 						$(button).removeClass('off');
-						var num_like = parseInt($('.info .group .green span.number').text());
-						num_like--;
-						$('.info .group .green span.number').text(num_like);
+						$('.info .group .green span.number').text(data);
 					}
 				});
 			} else {
@@ -224,9 +214,7 @@ $(document).ready(function() {
 					success: function(data) {
 						$(button).text('Bỏ theo dõi');
 						$(button).addClass('off');
-						var num_like = parseInt($('.info .group .green span.number').text());
-						num_like++;
-						$('.info .group .green span.number').text(num_like);
+						$('.info .group .green span.number').text(data);
 					}
 				});
 			}

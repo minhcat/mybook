@@ -332,6 +332,9 @@ class DetailController extends Controller {
 				BooksLikeStatisticCModel::update_book_like($book_like_statistic->id, $data);
 			}
 		}
+		// get data
+		$book = BooksQModel::get_book_by_id($book_id);
+		return $book->like;
 	}
 
 	/**
@@ -372,6 +375,9 @@ class DetailController extends Controller {
 				}
 			}
 		}
+		// get data
+		$book = BooksQModel::get_book_by_id($book_id);
+		return $book->like;
 	}
 
 	/**
@@ -423,6 +429,9 @@ class DetailController extends Controller {
 				BooksFollowStatisticCModel::update_book_follow($book_follow_statistic->id, $data);
 			}
 		}
+		// get data
+		$book = BooksQModel::get_book_by_id($book_id);
+		return $book->follow;
 	}
 
 	/**
@@ -463,6 +472,9 @@ class DetailController extends Controller {
 				}
 			}
 		}
+		// get data
+		$book = BooksQModel::get_book_by_id($book_id);
+		return $book->follow;
 	}
 
 	/**
@@ -534,6 +546,103 @@ class DetailController extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function ajax_like_author($user_id, $author_id)
+	{
+		$author = AuthorsQModel::get_author_by_id($author_id);
+		$author_like = AuthorsLikeQModel::get_author_like_by_user_id_and_author_id($user_id, $author_id);
+		// check user id has in data
+		if ($author_like == null) {
+			// insert author like
+			$data = [
+				'id_user'   => $user_id,
+				'id_author' => $author_id,
+				'date'      => date('Y-m-d')
+			];
+			AuthorsLikeCModel::insert_author_like($data);
+			// update author
+			$data = [
+				'like' => $author->like + 1,
+			];
+
+			AuthorsCModel::update_author($author_id, $data);
+			// update book like statistic
+			$date  = (int)date('d');
+			$month = (int)date('m');
+			$year  = (int)date('Y');
+			$time  = Helper::get_time_statistic($date, $month, $year);
+			$author_like_statistic = AuthorsLikeStatisticQModel::get_author_like_by_author_id_and_date($author_id, $date, $month, $year);
+			if (empty($author_like_statistic)) {
+				$data = [
+					'id_author'      => $author_id,
+					'day'            => $time['day'],
+					'date'           => $date,
+					'week'           => $time['week'],
+					'month'          => $month,
+					'season'         => $time['season'],
+					'year'           => $year,
+					'like_statistic' => 1
+				];
+				AuthorsLikeStatisticCModel::insert_author_like($data);
+			} else {
+				$data = [
+					'like_statistic'  => $author_like_statistic->like_statistic + 1,
+				];
+				AuthorsLikeStatisticCModel::update_author_like($author_like_statistic->id, $data);
+			}
+		}
+		// get data
+		$author = AuthorsQModel::get_author_by_id($author_id);
+		return $author->like;
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_unlike_author($user_id, $author_id)
+	{
+		$author = AuthorsQModel::get_author_by_id($author_id);
+		$author_like = AuthorsLikeQModel::get_author_like_by_user_id_and_author_id($user_id, $author_id);
+		// check user id has in data
+		if ($author_like != null) {
+			// delete author like
+			$data = [
+				'id_user'   => $user_id,
+				'id_author' => $author_id,
+				'date'      => date('Y-m-d')
+			];
+			AuthorsLikeCModel::delete_author_like($author_like->id);
+			// update book
+			$data = [
+				'like' => $author->like - 1,
+			];
+
+			AuthorsCModel::update_author($author_id, $data);
+			// update author like statistic
+			$date  = (int)date_format(date_create($author_like->date), 'd');
+			$month = (int)date_format(date_create($author_like->date), 'm');
+			$year  = (int)date_format(date_create($author_like->date), 'Y');
+			$author_like_statistic = AuthorsLikeStatisticQModel::get_author_like_by_author_id_and_date($author_id, $date, $month, $year);
+			if (!empty($author_like_statistic)) {
+				if ($author_like_statistic->like_statistic == 1) {
+					AuthorsLikeStatisticCModel::delete_author_like($author_like_statistic->id);
+				} else {
+					$data = ['like_statistic' => $author_like_statistic->like_statistic - 1];
+					AuthorsLikeStatisticCModel::update_author_like($author_like_statistic->id, $data);
+				}
+			}
+		}
+		// get data
+		$author = AuthorsQModel::get_author_by_id($author_id);
+		return $author->like;
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
 	public function ajax_follow_author($user_id, $author_id)
 	{
 		$author = AuthorsQModel::get_author_by_id($author_id);
@@ -578,6 +687,9 @@ class DetailController extends Controller {
 				AuthorsFollowStatisticCModel::update_author_follow($author_follow_statistic->id, $data);
 			}
 		}
+		// get data
+		$author = AuthorsQModel::get_author_by_id($author_id);
+		return $author->follow;
 	}
 
 	/**
@@ -618,6 +730,9 @@ class DetailController extends Controller {
 				}
 			}
 		}
+		// get data
+		$author = AuthorsQModel::get_author_by_id($author_id);
+		return $author->follow;
 	}
 
 	/**
