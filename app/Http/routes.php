@@ -91,6 +91,8 @@ Route::group(['prefix' => 'detail'], function () {
 
 	Route::group(['prefix' => 'ajax'], function() {
 
+		// book
+
 		Route::get('like_book/{user_id}/{book_id}', 'DetailController@ajax_like_book');
 
 		Route::get('unlike_book/{user_id}/{book_id}', 'DetailController@ajax_unlike_book');
@@ -100,6 +102,8 @@ Route::group(['prefix' => 'detail'], function () {
 		Route::get('unfollow_book/{user_id}/{book_id}', 'DetailController@ajax_unfollow_book');
 
 		Route::get('rate_book/{user_id}/{book_id}/{point}', 'DetailController@ajax_rate_book');
+
+		// author
 
 		Route::get('like_author/{user_id}/{author_id}', 'DetailController@ajax_like_author');
 
@@ -111,6 +115,8 @@ Route::group(['prefix' => 'detail'], function () {
 
 		Route::get('rate_author/{user_id}/{author_id}/{point}', 'DetailController@ajax_rate_author');
 
+		// trans
+
 		Route::get('like_trans/{user_id}/{trans_id}', 'DetailController@ajax_like_trans');
 
 		Route::get('unlike_trans/{user_id}/{trans_id}', 'DetailController@ajax_unlike_trans');
@@ -118,6 +124,8 @@ Route::group(['prefix' => 'detail'], function () {
 		Route::get('follow_trans/{user_id}/{trans_id}', 'DetailController@ajax_follow_trans');
 
 		Route::get('unfollow_trans/{user_id}/{trans_id}', 'DetailController@ajax_unfollow_trans');
+
+		Route::get('rate_trans/{user_id}/{trans_id}/{point}', 'DetailController@ajax_rate_trans');
 
 	});
 

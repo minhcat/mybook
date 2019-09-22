@@ -1006,4 +1006,71 @@ class DetailController extends Controller {
 		$trans = TransQModel::get_trans_by_id($trans_id);
 		return $trans->follow;
 	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_rate_trans($user_id, $trans_id, $point)
+	{
+		$trans = TransQModel::get_trans_by_id($trans_id);
+		$trans_rate = TransRateQModel::get_trans_rate_by_user_id_and_trans_id($user_id, $trans_id);
+		// check user id has in data
+		if ($trans_rate == null) {
+			// insert author rate
+			$data = [
+				'id_user'  => $user_id,
+				'id_trans' => $trans_id,
+				'rate'     => $point,
+				'date'     => date('Y-m-d')
+			];
+			TransRateCModel::insert_trans_rate($data);
+			// update author
+			$rate_point = round(($trans->rate_point * $trans->rate + $point)/($trans->rate + 1), 2);
+			$data = [
+				'rate' => $trans->rate + 1,
+				'rate_point' => $rate_point,
+			];
+
+			TransCModel::update_trans($trans_id, $data);
+		} else {
+			$data = ['rate' => $point];
+			TransRateCModel::update_trans_rate($trans_rate->id, $data);
+			$rate_point = round(($trans->rate_point * ($trans->rate-1) + $point)/$trans->rate, 2);
+			$data = ['rate_point' => $rate_point];
+			TransCModel::update_trans($trans_id, $data);
+		}
+		
+		// update book like statistic
+		$date  = (int)date('d');
+		$month = (int)date('m');
+		$year  = (int)date('Y');
+		$time  = Helper::get_time_statistic($date, $month, $year);
+		$trans_rate_statistic = TransRateStatisticQModel::get_trans_rate_by_trans_id_and_date_and_rate($trans_id, $date, $month, $year, $point);
+		if (empty($trans_rate_statistic)) {
+			$data = [
+				'id_trans' => $trans_id,
+				'day'     => $time['day'],
+				'date'    => $date,
+				'week'    => $time['week'],
+				'month'   => $month,
+				'season'  => $time['season'],
+				'year'    => $year,
+				'point'   => $point,
+				'rate'    => 1
+			];
+			TransRateStatisticCModel::insert_trans_rate($data);
+		} else {
+			$data = [
+				'rate' => $trans_rate_statistic->rate + 1,
+			];
+			TransRateStatisticCModel::update_trans_rate($trans_rate_statistic->id, $data);
+		}
+		$trans = TransQModel::get_trans_by_id($trans_id);
+		$data = [];
+		$data['rate'] = $trans->rate;
+		$data['rate_point'] = $trans->rate_point;
+		return $data;
+	}
 }

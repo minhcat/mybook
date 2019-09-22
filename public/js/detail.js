@@ -288,6 +288,12 @@ $(document).ready(function() {
 			}
 		}
 	});
+	//click rate author
+	$('.trans .btn.left').click(function() {
+		var trans_id = $(this).data('id');
+		$('#modalrate button.login').data('id', trans_id);
+		$('#modalrate button.login').data('item', 'trans');
+	});
 	$('#modalrate button.login').click(function() {
 		// rate book
 		var button  = this;
