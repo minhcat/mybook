@@ -275,7 +275,7 @@ class CommonController extends Controller {
 				$data['contact']['follow'] = (empty($author_follow)) ? true : false;
 			} elseif ($type == 'trans') {
 				$trans_like   = TransLikeQModel::get_trans_like_by_user_id_and_trans_id(Auth::id(), $item_id);
-				// $trans_follow = TransFollowQModel::get_trans_follow_by_user_id_and_trans_id(Auth::id(), $item_id);
+				$trans_follow = TransFollowQModel::get_trans_follow_by_user_id_and_trans_id(Auth::id(), $item_id);
 				$data['contact'] = [];
 				$data['contact']['like']   = (empty($trans_like)) ? true : false;
 				$data['contact']['follow'] = (empty($trans_follow)) ? true : false;

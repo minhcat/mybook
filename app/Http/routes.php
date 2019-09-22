@@ -115,6 +115,10 @@ Route::group(['prefix' => 'detail'], function () {
 
 		Route::get('unlike_trans/{user_id}/{trans_id}', 'DetailController@ajax_unlike_trans');
 
+		Route::get('follow_trans/{user_id}/{trans_id}', 'DetailController@ajax_follow_trans');
+
+		Route::get('unfollow_trans/{user_id}/{trans_id}', 'DetailController@ajax_unfollow_trans');
+
 	});
 
 });

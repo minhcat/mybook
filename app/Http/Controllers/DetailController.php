@@ -909,4 +909,101 @@ class DetailController extends Controller {
 		$trans = TransQModel::get_trans_by_id($trans_id);
 		return $trans->like;
 	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_follow_trans($user_id, $trans_id)
+	{
+		$trans = TransQModel::get_trans_by_id($trans_id);
+		$trans_follow = TransFollowQModel::get_trans_follow_by_user_id_and_trans_id($user_id, $trans_id);
+		// check user id has in data
+		if ($trans_follow == null) {
+			// insert author like
+			$data = [
+				'id_user'   => $user_id,
+				'id_trans'  => $trans_id,
+				'date'      => date('Y-m-d')
+			];
+			TransFollowCModel::insert_trans_follow($data);
+			// update author
+			$data = [
+				'follow' => $trans->follow + 1,
+			];
+
+			TransCModel::update_trans($trans_id, $data);
+			// update book like statistic
+			$date  = (int)date('d');
+			$month = (int)date('m');
+			$year  = (int)date('Y');
+			$time  = Helper::get_time_statistic($date, $month, $year);
+			$trans_follow_statistic = TransFollowStatisticQModel::get_trans_follow_by_trans_id_and_date($trans_id, $date, $month, $year);
+			if (empty($trans_follow_statistic)) {
+				$data = [
+					'id_trans' => $trans_id,
+					'day'      => $time['day'],
+					'date'     => $date,
+					'week'     => $time['week'],
+					'month'    => $month,
+					'season'   => $time['season'],
+					'year'     => $year,
+					'follow'   => 1
+				];
+				TransFollowStatisticCModel::insert_trans_follow($data);
+			} else {
+				$data = [
+					'follow'  => $trans_follow_statistic->follow + 1,
+				];
+				TransFollowStatisticCModel::update_trans_follow($trans_follow_statistic->id, $data);
+			}
+		}
+		// get data
+		$trans = TransQModel::get_trans_by_id($trans_id);
+		return $trans->follow;
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_unfollow_trans($user_id, $trans_id)
+	{
+		$trans = TransQModel::get_trans_by_id($trans_id);
+		$trans_follow = TransFollowQModel::get_trans_follow_by_user_id_and_trans_id($user_id, $trans_id);
+		// check user id has in data
+		if ($trans_follow != null) {
+			// delete author follow
+			$data = [
+				'id_user'   => $user_id,
+				'id_author' => $trans_id,
+				'date'      => date('Y-m-d')
+			];
+			TransFollowCModel::delete_trans_follow($trans_follow->id);
+			// update book
+			$data = [
+				'follow' => $trans->follow - 1,
+			];
+
+			TransCModel::update_trans($trans_id, $data);
+			// update author follow statistic
+			$date  = (int)date_format(date_create($trans_follow->date), 'd');
+			$month = (int)date_format(date_create($trans_follow->date), 'm');
+			$year  = (int)date_format(date_create($trans_follow->date), 'Y');
+			$trans_follow_statistic = TransFollowStatisticQModel::get_trans_follow_by_trans_id_and_date($trans_id, $date, $month, $year);
+			if (!empty($trans_follow_statistic)) {
+				if ($trans_follow_statistic->follow == 1) {
+					TransFollowStatisticCModel::delete_trans_follow($trans_follow_statistic->id);
+				} else {
+					$data = ['follow' => $trans_follow_statistic->follow - 1];
+					TransFollowStatisticCModel::update_trans_follow($trans_follow_statistic->id, $data);
+				}
+			}
+		}
+		// get data
+		$trans = TransQModel::get_trans_by_id($trans_id);
+		return $trans->follow;
+	}
 }

@@ -255,6 +255,39 @@ $(document).ready(function() {
 			}
 		}
 	});
+	//click follow author
+	$('.trans .btn.center').click(function() {
+		// check login
+		if ($(this).hasClass('login')) {
+			if ($(this).hasClass('off')) {
+				// unfollow trans
+				var button = this;
+				var trans_id = $(this).data('id');
+				$.ajax({
+					url: flag_url+'detail/ajax/unfollow_trans/'+auth_id+'/'+trans_id,
+					type: 'GET',
+					success: function(data) {
+						$(button).text('Theo dõi');
+						$(button).removeClass('off');
+						$('.info .group .green span.number').text(data);
+					}
+				});
+			} else {
+				// follow trans
+				var button = this;
+				var trans_id = $(this).data('id');
+				$.ajax({
+					url: flag_url+'detail/ajax/follow_trans/'+auth_id+'/'+trans_id,
+					type: 'GET',
+					success: function(data) {
+						$(button).text('Bỏ theo dõi');
+						$(button).addClass('off');
+						$('.info .group .green span.number').text(data);
+					}
+				});
+			}
+		}
+	});
 	$('#modalrate button.login').click(function() {
 		// rate book
 		var button  = this;
