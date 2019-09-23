@@ -15,6 +15,7 @@ use App\Http\Models\QModels\TransViewQModel;
 use App\Http\Models\QModels\TransLikeQModel;
 use App\Http\Models\QModels\TransFollowQModel;
 use App\Http\Models\QModels\UsersQModel;
+use App\Http\Models\QModels\UsersLikeQModel;
 use App\Http\Models\QModels\NotificationsQModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\SystemBModel;
@@ -279,6 +280,12 @@ class CommonController extends Controller {
 				$data['contact'] = [];
 				$data['contact']['like']   = (empty($trans_like)) ? true : false;
 				$data['contact']['follow'] = (empty($trans_follow)) ? true : false;
+			} elseif ($type == 'user') {
+				$user_like   = UsersLikeQModel::get_user_like_by_user_id_and_user_like_id($item_id, Auth::id());
+				// $user_follow = UsersFollowQModel::get_user_follow_by_user_id_and_user_id(Auth::id(), $item_id);
+				$data['contact'] = [];
+				$data['contact']['like']   = (empty($user_like)) ? true : false;
+				$data['contact']['follow'] = (empty($user_follow)) ? true : false;
 			}
 			foreach ($data['notifications'] as $key => $notification) {
 				$date_create = date_create($notification->date);

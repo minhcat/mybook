@@ -294,6 +294,39 @@ $(document).ready(function() {
 		$('#modalrate button.login').data('id', trans_id);
 		$('#modalrate button.login').data('item', 'trans');
 	});
+	//click like user
+	$('.user .btn.right').click(function() {
+		// check login
+		if ($(this).hasClass('login')) {
+			if ($(this).hasClass('off')) {
+				// unlike user
+				var button = this;
+				var user_id = $(this).data('id');
+				$.ajax({
+					url: flag_url+'detail/ajax/unlike_user/'+auth_id+'/'+user_id,
+					type: 'GET',
+					success: function(data) {
+						$(button).text('Yêu thích');
+						$(button).removeClass('off');
+						$('.info .group .red span.number').text(data);
+					}
+				});
+			} else {
+				// like user
+				var button = this;
+				var user_id = $(this).data('id');
+				$.ajax({
+					url: flag_url+'detail/ajax/like_user/'+auth_id+'/'+user_id,
+					type: 'GET',
+					success: function(data) {
+						$(button).text('Bỏ thích');
+						$(button).addClass('off');
+						$('.info .group .red span.number').text(data);
+					}
+				});
+			}
+		}
+	});
 	$('#modalrate button.login').click(function() {
 		// rate book
 		var button  = this;

@@ -127,6 +127,12 @@ Route::group(['prefix' => 'detail'], function () {
 
 		Route::get('rate_trans/{user_id}/{trans_id}/{point}', 'DetailController@ajax_rate_trans');
 
+		// user
+
+		Route::get('like_user/{user_like_id}/{user_id}', 'DetailController@ajax_like_user');
+
+		Route::get('unlike_user/{user_like_id}/{user_id}', 'DetailController@ajax_unlike_user');
+
 	});
 
 });

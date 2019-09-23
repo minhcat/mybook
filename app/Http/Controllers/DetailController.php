@@ -17,6 +17,8 @@ use App\Http\Models\QModels\BooksFollowStatisticQModel;
 use App\Http\Models\QModels\BooksRateQModel;
 use App\Http\Models\QModels\BooksRateStatisticQModel;
 use App\Http\Models\QModels\UsersQModel;
+use App\Http\Models\QModels\UsersLikeQModel;
+use App\Http\Models\QModels\UsersLikeStatisticQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\TransQModel;
 use App\Http\Models\QModels\TransLikeQModel;
@@ -50,6 +52,9 @@ use App\Http\Models\CModels\TransFollowCModel;
 use App\Http\Models\CModels\TransFollowStatisticCModel;
 use App\Http\Models\CModels\TransRateCModel;
 use App\Http\Models\CModels\TransRateStatisticCModel;
+use App\Http\Models\CModels\UsersCModel;
+use App\Http\Models\CModels\UsersLikeCModel;
+use App\Http\Models\CModels\UsersLikeStatisticCModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\NotificationsBModel;
@@ -216,16 +221,17 @@ class DetailController extends Controller {
 	 */
 	public function user($slug)
 	{
+		$user = UsersQModel::get_user_by_name_login($slug);
 		$data = [];
 		// login
-		$data = CommonController::get_data_auth($data);
+		$data = CommonController::get_data_auth_detail($data, $user->id, 'user');
 		// header and footer
 		$data = CommonController::get_data_header($data);
 
 		//sidebar
 		$data = CommonController::get_data_detail_sidebar($data);
 
-		$data['user'] = UsersQModel::get_user_by_name_login($slug);
+		$data['user'] = $user;
 		
 		//data comment
 		$data['comments'] = CommentsBModel::get_comments_page($data['user']->id, 'user');
@@ -1072,5 +1078,102 @@ class DetailController extends Controller {
 		$data['rate'] = $trans->rate;
 		$data['rate_point'] = $trans->rate_point;
 		return $data;
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_like_user($user_like_id, $user_id)
+	{
+		$user = UsersQModel::get_user_by_id($user_id);
+		$user_like = UsersLikeQModel::get_user_like_by_user_id_and_user_like_id($user_id, $user_like_id);
+		// check user id has in data
+		if ($user_like == null) {
+			// insert author like
+			$data = [
+				'id_user'      => $user_id,
+				'id_user_like' => $user_like_id,
+				'date'         => date('Y-m-d')
+			];
+			UsersLikeCModel::insert_user_like($data);
+			// update author
+			$data = [
+				'like' => $user->like + 1,
+			];
+
+			UsersCModel::update_user($user_id, $data);
+			// update book like statistic
+			$date  = (int)date('d');
+			$month = (int)date('m');
+			$year  = (int)date('Y');
+			$time  = Helper::get_time_statistic($date, $month, $year);
+			$user_like_statistic = UsersLikeStatisticQModel::get_user_like_by_user_id_and_date($user_id, $date, $month, $year);
+			if (empty($user_like_statistic)) {
+				$data = [
+					'id_user'        => $user_id,
+					'day'            => $time['day'],
+					'date'           => $date,
+					'week'           => $time['week'],
+					'month'          => $month,
+					'season'         => $time['season'],
+					'year'           => $year,
+					'like_statistic' => 1
+				];
+				UsersLikeStatisticCModel::insert_user_like($data);
+			} else {
+				$data = [
+					'like_statistic'  => $user_like_statistic->like_statistic + 1,
+				];
+				UsersLikeStatisticCModel::update_user_like($user_like_statistic->id, $data);
+			}
+		}
+		// get data
+		$user = UsersQModel::get_user_by_id($user_id);
+		return $user->like;
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_unlike_user($user_like_id, $user_id)
+	{
+		$user = UsersQModel::get_user_by_id($user_id);
+		$user_like = UsersLikeQModel::get_user_like_by_user_id_and_user_like_id($user_id, $user_like_id);
+		// check user id has in data
+		if ($user_like != null) {
+			// delete author like
+			$data = [
+				'id_user'      => $user_id,
+				'id_user_like' => $user_id,
+				'date'         => date('Y-m-d')
+			];
+			UsersLikeCModel::delete_user_like($user_like->id);
+			// update book
+			$data = [
+				'like' => $user->like - 1,
+			];
+
+			UsersCModel::update_user($user_id, $data);
+			// update author like statistic
+			$date  = (int)date_format(date_create($user_like->date), 'd');
+			$month = (int)date_format(date_create($user_like->date), 'm');
+			$year  = (int)date_format(date_create($user_like->date), 'Y');
+			$user_like_statistic = UsersLikeStatisticQModel::get_user_like_by_user_id_and_date($user_id, $date, $month, $year);
+			if (!empty($user_like_statistic)) {
+				if ($user_like_statistic->like_statistic == 1) {
+					UsersLikeStatisticCModel::delete_user_like($user_like_statistic->id);
+				} else {
+					$data = ['like_statistic' => $user_like_statistic->like_statistic - 1];
+					UsersLikeStatisticCModel::update_user_like($user_like_statistic->id, $data);
+				}
+			}
+		}
+		// get data
+		$user = UsersQModel::get_user_by_id($user_id);
+		return $user->like;
 	}
 }

@@ -21,16 +21,32 @@ Bạn có thể xem thông tin người dùng được cập nhật công khai t
 			<li><a href="">Trang chủ</a></li>
 			<li class="active">{{ $user->name }}</li>
 		</ul>
-		<div class="book">
+		<div class="user">
 			<div class="line first clearfix">
 				<div class="image left">
 					<div class="img">
 						<img src="{{ asset('image/users/'.$user->image.'.jpg') }}">
 					</div>
 					<div class="button">
+						@if (Auth::check())
+							<button type="button" class="btn left open-modal login" data-id='{{ $user->id }}' data-modal="#modalrate">Đánh giá</button>
+							{{-- follow --}}
+							@if ($contact['follow'])
+							<button type="button" class="btn center login" data-id='{{ $user->id }}'>Theo dõi</button>
+							@else
+							<button type="button" class="btn center login off" data-id='{{ $user->id }}'>Bỏ theo dõi</button>
+							@endif
+							{{-- like --}}
+							@if ($contact['like'])
+							<button type="button" class="btn right login" data-id='{{ $user->id }}'>Yêu thích</button>
+							@else
+							<button type="button" class="btn right login off" data-id='{{ $user->id }}'>Bỏ thích</button>
+							@endif
+						@else
 						<button type="button" class="btn left open-modal" data-modal="#modalnotlogin">Đánh giá</button>
 						<button type="button" class="btn center open-modal" data-modal="#modalnotlogin">Theo dõi</button>
 						<button type="button" class="btn right open-modal" data-modal="#modalnotlogin">Yêu thích</button>
+						@endif
 					</div>
 				</div>
 				<div class="info">
