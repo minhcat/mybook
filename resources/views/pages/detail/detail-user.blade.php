@@ -57,7 +57,7 @@ Bạn có thể xem thông tin người dùng được cập nhật công khai t
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star-half-o"></span>
 						<span class="fa fa-star-o"></span>
-						<span>{{ $user->rate_point }}</span>
+						<span class="rate_point">{{ $user->rate_point }}</span>
 						<span class="rate">{{ $user->rate }} đánh giá</span>
 					</div>
 					<div class="group clearfix">

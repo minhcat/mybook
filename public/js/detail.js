@@ -327,6 +327,12 @@ $(document).ready(function() {
 			}
 		}
 	});
+	//click rate user
+	$('.user .btn.left').click(function() {
+		var user_id = $(this).data('id');
+		$('#modalrate button.login').data('id', user_id);
+		$('#modalrate button.login').data('item', 'user');
+	});
 	$('#modalrate button.login').click(function() {
 		// rate book
 		var button  = this;

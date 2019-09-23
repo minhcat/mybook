@@ -19,6 +19,8 @@ use App\Http\Models\QModels\BooksRateStatisticQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\UsersLikeQModel;
 use App\Http\Models\QModels\UsersLikeStatisticQModel;
+use App\Http\Models\QModels\UsersRateQModel;
+use App\Http\Models\QModels\UsersRateStatisticQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\TransQModel;
 use App\Http\Models\QModels\TransLikeQModel;
@@ -55,6 +57,8 @@ use App\Http\Models\CModels\TransRateStatisticCModel;
 use App\Http\Models\CModels\UsersCModel;
 use App\Http\Models\CModels\UsersLikeCModel;
 use App\Http\Models\CModels\UsersLikeStatisticCModel;
+use App\Http\Models\CModels\UsersRateCModel;
+use App\Http\Models\CModels\UsersRateStatisticCModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\NotificationsBModel;
@@ -1175,5 +1179,78 @@ class DetailController extends Controller {
 		// get data
 		$user = UsersQModel::get_user_by_id($user_id);
 		return $user->like;
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_rate_user($user_rate_id, $user_id, $point)
+	{
+		$user = UsersQModel::get_user_by_id($user_id);
+		$user_rate = UsersRateQModel::get_user_rate_by_user_rate_id_and_user_id($user_rate_id, $user_id);
+		// check user id has in data
+		if ($user_rate == null) {
+			// insert author rate
+			$data = [
+				'id_user_rate' => $user_rate_id,
+				'id_user'      => $user_id,
+				'rate'         => $point,
+				'date'         => date('Y-m-d')
+			];
+			UsersRateCModel::insert_user_rate($data);
+			// update author
+			$rate_point = round(($user->rate_point * $user->rate + $point)/($user->rate + 1), 2);
+			$data = [
+				'rate' => $user->rate + 1,
+				'rate_point' => $rate_point,
+			];
+
+			UsersCModel::update_user($user_id, $data);
+		} else {
+			$data = ['rate' => $point];
+			UsersRateCModel::update_user_rate($user_rate->id, $data);
+
+			$old_rate_point = ($user->rate_point*$user->rate - $user_rate->rate)/($user->rate - 1);
+			$new_rate_point = round( ( $old_rate_point*( $user->rate - 1 ) + $point)/$user->rate );
+			$data = [
+				'rate_point' => $new_rate_point,
+			];
+			UsersCModel::update_user($user_id, $data);
+		}
+		
+		// update book like statistic
+		$date  = (int)date('d');
+		$month = (int)date('m');
+		$year  = (int)date('Y');
+		$time  = Helper::get_time_statistic($date, $month, $year);
+		$user_rate_statistic = UsersRateStatisticQModel::get_user_rate_by_user_id_and_date_and_rate($user_id, $date, $month, $year, $point);
+		if (empty($user_rate_statistic)) {
+			$data = [
+				'id_user' => $user_id,
+				'day'     => $time['day'],
+				'date'    => $date,
+				'week'    => $time['week'],
+				'month'   => $month,
+				'season'  => $time['season'],
+				'year'    => $year,
+				'point'   => $point,
+				'rate'    => 1
+			];
+			UsersRateStatisticCModel::insert_user_rate($data);
+		} else {
+			
+			$data = [
+				'rate' => $user_rate_statistic->rate + 1,
+				'rate_point' => $new_rate_point,
+			];
+			UsersRateStatisticCModel::update_user_rate($user_rate_statistic->id, $data);
+		}
+		$user = UsersQModel::get_user_by_id($user_id);
+		$data = [];
+		$data['rate'] = $user->rate;
+		$data['rate_point'] = $user->rate_point;
+		return $data;
 	}
 }

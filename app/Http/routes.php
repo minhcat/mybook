@@ -133,6 +133,8 @@ Route::group(['prefix' => 'detail'], function () {
 
 		Route::get('unlike_user/{user_like_id}/{user_id}', 'DetailController@ajax_unlike_user');
 
+		Route::get('rate_user/{user_rate_id}/{user_id}/{point}', 'DetailController@ajax_rate_user');
+
 	});
 
 });
