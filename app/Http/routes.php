@@ -135,6 +135,8 @@ Route::group(['prefix' => 'detail'], function () {
 
 		Route::get('rate_user/{user_rate_id}/{user_id}/{point}', 'DetailController@ajax_rate_user');
 
+		Route::get('add_friend/{user_rate_id}/{user_id}', 'DetailController@ajax_add_friend');
+
 	});
 
 });

@@ -16,6 +16,8 @@ use App\Http\Models\QModels\BooksFollowQModel;
 use App\Http\Models\QModels\BooksFollowStatisticQModel;
 use App\Http\Models\QModels\BooksRateQModel;
 use App\Http\Models\QModels\BooksRateStatisticQModel;
+use App\Http\Models\QModels\FriendsQModel;
+use App\Http\Models\QModels\FriendsAddQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\UsersLikeQModel;
 use App\Http\Models\QModels\UsersLikeStatisticQModel;
@@ -47,6 +49,7 @@ use App\Http\Models\CModels\BooksFollowCModel;
 use App\Http\Models\CModels\BooksFollowStatisticCModel;
 use App\Http\Models\CModels\BooksRateCModel;
 use App\Http\Models\CModels\BooksRateStatisticCModel;
+use App\Http\Models\CModels\FriendsAddCModel;
 use App\Http\Models\CModels\TransCModel;
 use App\Http\Models\CModels\TransLikeCModel;
 use App\Http\Models\CModels\TransLikeStatisticCModel;
@@ -1252,5 +1255,25 @@ class DetailController extends Controller {
 		$data['rate'] = $user->rate;
 		$data['rate_point'] = $user->rate_point;
 		return $data;
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_add_friend($user_add_id, $user_id)
+	{
+		$user   = UsersQModel::get_user_by_id($user_id);
+		$friend = FriendsQModel::get_friend_by_user_id_1_and_user_id_2($user_add_id, $user_id);
+		if ($friend == null) {
+			// $friend_add = FriendsAddQModel::get_friend_add_by_user_add_id_and_user_id($user_add_id, $user_id);
+			$data = [
+				'id_user'     => $user_id,
+				'id_user_add' => $user_add_id,
+				'date'        => date('Y-m-d'),
+			];
+			$id = FriendsAddCModel::insert_friend_add($data);
+		}
 	}
 }

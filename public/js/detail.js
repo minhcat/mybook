@@ -327,6 +327,26 @@ $(document).ready(function() {
 			}
 		}
 	});
+	//click add friend
+	$('.user .btn.center').click(function() {
+		// check login
+		if ($(this).hasClass('login')) {
+			if (!$(this).hasClass('off')) {
+				// unfollow trans
+				var button = this;
+				var user_id = $(this).data('id');
+				$.ajax({
+					url: flag_url+'detail/ajax/add_friend/'+auth_id+'/'+user_id,
+					type: 'GET',
+					success: function(data) {
+						$(button).text('Đã gữi');
+						$(button).addClass('off');
+						// $('.info .group .green span.number').text(data);
+					}
+				});
+			}
+		}
+	});
 	//click rate user
 	$('.user .btn.left').click(function() {
 		var user_id = $(this).data('id');

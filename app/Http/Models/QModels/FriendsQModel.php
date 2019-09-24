@@ -22,4 +22,24 @@ class FriendsQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_friend_by_user_id_1_and_user_id_2($user_id_1, $user_id_2) {
+		// dd($user_id_2);
+		$result = DB::table('friends')
+				->where(function($query) use ($user_id_1, $user_id_2){
+					$query->where('id_user_1', $user_id_1)
+						  ->where('id_user_2', $user_id_2);
+				})
+				->orWhere(function($query) use ($user_id_1, $user_id_2){
+					$query->where('id_user_2', $user_id_1)
+						  ->where('id_user_1', $user_id_2);
+				})
+				->first();
+		return $result;
+	}
 }

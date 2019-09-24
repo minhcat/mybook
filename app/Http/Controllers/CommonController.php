@@ -9,6 +9,8 @@ use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksViewQModel;
 use App\Http\Models\QModels\BooksLikeQModel;
 use App\Http\Models\QModels\BooksFollowQModel;
+use App\Http\Models\QModels\FriendsQModel;
+use App\Http\Models\QModels\FriendsAddQModel;
 use App\Http\Models\QModels\SystemQModel;
 use App\Http\Models\QModels\TransQModel;
 use App\Http\Models\QModels\TransViewQModel;
@@ -282,10 +284,11 @@ class CommonController extends Controller {
 				$data['contact']['follow'] = (empty($trans_follow)) ? true : false;
 			} elseif ($type == 'user') {
 				$user_like   = UsersLikeQModel::get_user_like_by_user_id_and_user_like_id($item_id, Auth::id());
-				// $user_follow = UsersFollowQModel::get_user_follow_by_user_id_and_user_id(Auth::id(), $item_id);
+				$friend = FriendsQModel::get_friend_by_user_id_1_and_user_id_2(Auth::id(), $item_id);
+				$friend_add = FriendsAddQModel::get_friend_add_by_user_add_id_and_user_id(Auth::id(), $item_id);
 				$data['contact'] = [];
 				$data['contact']['like']   = (empty($user_like)) ? true : false;
-				$data['contact']['follow'] = (empty($user_follow)) ? true : false;
+				$data['contact']['friend'] = (!empty($friend)) ? 0 : ((empty($friend_add)) ? 1 : 2);
 			}
 			foreach ($data['notifications'] as $key => $notification) {
 				$date_create = date_create($notification->date);

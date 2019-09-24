@@ -30,11 +30,13 @@ Bạn có thể xem thông tin người dùng được cập nhật công khai t
 					<div class="button">
 						@if (Auth::check())
 							<button type="button" class="btn left open-modal login" data-id='{{ $user->id }}' data-modal="#modalrate">Đánh giá</button>
-							{{-- follow --}}
-							@if ($contact['follow'])
-							<button type="button" class="btn center login" data-id='{{ $user->id }}'>Theo dõi</button>
+							{{-- friend --}}
+							@if ($contact['friend'] == 0)
+							<button type="button" class="btn center login off" data-id='{{ $user->id }}'>Bạn bè</button>
+							@elseif ($contact['friend'] == 1)
+							<button type="button" class="btn center login" data-id='{{ $user->id }}'>Kết bạn</button>
 							@else
-							<button type="button" class="btn center login off" data-id='{{ $user->id }}'>Bỏ theo dõi</button>
+							<button type="button" class="btn center login off" data-id='{{ $user->id }}'>Đã gữi</button>
 							@endif
 							{{-- like --}}
 							@if ($contact['like'])
@@ -44,7 +46,7 @@ Bạn có thể xem thông tin người dùng được cập nhật công khai t
 							@endif
 						@else
 						<button type="button" class="btn left open-modal" data-modal="#modalnotlogin">Đánh giá</button>
-						<button type="button" class="btn center open-modal" data-modal="#modalnotlogin">Theo dõi</button>
+						<button type="button" class="btn center open-modal" data-modal="#modalnotlogin">Kết bạn</button>
 						<button type="button" class="btn right open-modal" data-modal="#modalnotlogin">Yêu thích</button>
 						@endif
 					</div>
