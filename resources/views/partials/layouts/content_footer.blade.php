@@ -50,6 +50,30 @@
 		</div>
 	</div>
 </div>
+<!-- modal -->
+<div id="modaledit" class="modal">
+	<div class="content">
+		<div class="header">
+			<h3>Thay đổi</h3>
+			<span class="close" data-modal="#modaledit">&times;</span>
+		</div>
+		<div class="main">
+
+			<!-- <p>Nội dung cần thay đổi</p> -->
+			<div class="form-group">
+				<div class="row">
+					<div class="col-md-4"><label class="name">Biệt hiệu</label></div>
+					<div class="col-md-8">
+						<input class="col-md-8 form-control" type="text" name="value">
+					</div>
+				</div>
+			</div>
+			
+			<button class="btn login">Thay đổi</button>
+			<button class="btn cancel right" data-modal="#modaledit">Hủy</button>
+		</div>
+	</div>
+</div>
 @else
 <div id="modalnotlogin" class="modal">
 	<div class="content">

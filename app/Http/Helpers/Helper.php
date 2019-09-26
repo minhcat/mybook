@@ -4,6 +4,7 @@ namespace App\Http\Helpers;
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksCategoryQModel;
 use App\Http\Models\QModels\UsersQModel;
+use App\Http\Models\QModels\UsersCategoryQModel;
 use App\Http\Models\QModels\CharactersQModel;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\TransQModel;
@@ -93,7 +94,7 @@ class Helper {
 	 * @param array
 	 * @return array
 	 */
-	public static function add_category_from_book($book) {
+	public static function add_category_for_book($book) {
 		$categories = BooksCategoryQModel::get_categories_by_book_id($book->id);
 		$book->categories = [];
 		foreach ($categories as $key => $category) {
@@ -103,6 +104,23 @@ class Helper {
 			];
 		}
 		return $book;
+	}
+
+	/**
+	 * Add index to array
+	 * @param array
+	 * @return array
+	 */
+	public static function add_category_for_user($user) {
+		$categories = UsersCategoryQModel::get_categories_by_user_id($user->id);
+		$user->categories = [];
+		foreach ($categories as $key => $category) {
+			$user->categories[$key] = [
+				'slug' => $category->slug,
+				'name' => $category->vn_name,
+			];
+		}
+		return $user;
 	}
 
 	/**
@@ -138,7 +156,7 @@ class Helper {
 			}
 			if ($is_check) {
 				$book = BooksQModel::get_book_by_id($book_add->id);
-				$book = Helper::add_category_from_book($book);
+				$book = Helper::add_category_for_book($book);
 				$book = Helper::short_description($book, 200);
 				array_push($result, $book);
 			}

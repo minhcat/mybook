@@ -397,6 +397,12 @@ $(document).ready(function() {
 		$('.modal.rate .rate .star').find('span').removeClass('fa-star');
 		$('.modal.rate .rate .star').find('span').addClass('fa-star-o');
 	});
+	$('.open-modal.edit').click(function() {
+		var type = $(this).data('type');
+		var text = '';
+		if (type == 'name') text = 'Tên hiển thị';
+		$('#modaledit .main label.name').text(text);
+	});
 
 	//new comment
 	$(document).on('click', '.book .line.comment .form-comment button', function() {

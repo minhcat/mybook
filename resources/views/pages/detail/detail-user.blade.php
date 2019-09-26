@@ -29,20 +29,25 @@ Bạn có thể xem thông tin người dùng được cập nhật công khai t
 					</div>
 					<div class="button">
 						@if (Auth::check())
-							<button type="button" class="btn left open-modal login" data-id='{{ $user->id }}' data-modal="#modalrate">Đánh giá</button>
-							{{-- friend --}}
-							@if ($contact['friend'] == 0)
-							<button type="button" class="btn center login off" data-id='{{ $user->id }}'>Bạn bè</button>
-							@elseif ($contact['friend'] == 1)
-							<button type="button" class="btn center login" data-id='{{ $user->id }}'>Kết bạn</button>
+							@if (Auth::id() == $user->id)
+								<a href="{{ url('/edit_info') }}" type="button" class="btn info login">Thay đổi thông tin</a>
+								<a href="{{ url('/edit_info') }}" type="button" class="btn password login">Đổi mật khẩu</a>
 							@else
-							<button type="button" class="btn center login off" data-id='{{ $user->id }}'>Đã gữi</button>
-							@endif
-							{{-- like --}}
-							@if ($contact['like'])
-							<button type="button" class="btn right login" data-id='{{ $user->id }}'>Yêu thích</button>
-							@else
-							<button type="button" class="btn right login off" data-id='{{ $user->id }}'>Bỏ thích</button>
+								<button type="button" class="btn left open-modal login" data-id='{{ $user->id }}' data-modal="#modalrate">Đánh giá</button>
+								{{-- friend --}}
+								@if ($contact['friend'] == 0)
+								<button type="button" class="btn center login off" data-id='{{ $user->id }}'>Bạn bè</button>
+								@elseif ($contact['friend'] == 1)
+								<button type="button" class="btn center login" data-id='{{ $user->id }}'>Kết bạn</button>
+								@else
+								<button type="button" class="btn center login off" data-id='{{ $user->id }}'>Đã gữi</button>
+								@endif
+								{{-- like --}}
+								@if ($contact['like'])
+								<button type="button" class="btn right login" data-id='{{ $user->id }}'>Yêu thích</button>
+								@else
+								<button type="button" class="btn right login off" data-id='{{ $user->id }}'>Bỏ thích</button>
+								@endif
 							@endif
 						@else
 						<button type="button" class="btn left open-modal" data-modal="#modalnotlogin">Đánh giá</button>
@@ -76,18 +81,36 @@ Bạn có thể xem thông tin người dùng được cập nhật công khai t
 							<span>{{ $user->comment }}</span>
 						</div>
 					</div>
-					<p><strong>Biệt hiệu:</strong> {{ $user->nickname }}</p>
-					<p><strong>Giới tính:</strong> {{ ($user->gender)? 'Nữ' : 'Nam'}}</p>
-					<p><strong>Ngày sinh:</strong> {{ date_format(date_create($user->birth),'d/m/Y')}}</p>
-					<p><strong>Tính cách:</strong> {{ $user->genitive }}</p>
-					<p><strong>Thể loại yêu thích:</strong> <a href="">Comedy</a>, <a href="">Magic, <a href="">Fanstasy</a></p>
-					<p><strong>Facebook:</strong> <a href="">{{ $user->name }}</a></p>
-					<p><strong>Twitter:</strong> <a href="">{{ $user->name }}</a></p>
-					<p><strong>Câu slogan:</strong> {{ $user->slogan}}</p>
+					<p>
+						<strong>Biệt hiệu:</strong> {{ $user->nickname }}
+					</p>
+					<p>
+						<strong>Giới tính:</strong> {{ ($user->gender)? 'Nữ' : 'Nam'}}
+					</p>
+					<p>
+						<strong>Ngày sinh:</strong> {{ date_format(date_create($user->birth),'d/m/Y')}}
+					</p>
+					<p>
+						<strong>Tính cách:</strong> {{ $user->genitive }}
+					</p>
+					<p>
+						<strong>Thể loại yêu thích:</strong> <a href="">Comedy</a>, <a href="">Magic, <a href="">Fanstasy</a>
+					</p>
+					<p>
+						<strong>Facebook:</strong> <a href="">{{ $user->name }}</a>
+					</p>
+					<p>
+						<strong>Twitter:</strong> <a href="">{{ $user->name }}</a>
+					</p>
+					<p>
+						<strong>Câu slogan:</strong> {{ $user->slogan}}
+					</p>
 				</div>
 			</div>
 			<div class="line second">
-				<p style="text-align: justify;"><strong>Tự giới thiệu:</strong> {{ $user->description }}</p>
+				<p style="text-align: justify;">
+					<strong>Tự giới thiệu:</strong> {{ $user->description }}
+				</p>
 			</div>
 			@include('partials.common.comment')
 		</div>

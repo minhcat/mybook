@@ -1,3 +1,6 @@
+.open-modal {
+  cursor: pointer; }
+
 .title {
   margin-bottom: 10px;
   text-align: center;
@@ -79,6 +82,17 @@
           background-color: #d00; }
           .detail .content .first .image .button .btn.right:hover {
             background-color: #e20; }
+        .detail .content .first .image .button .btn.info {
+          width: 140px;
+          background-color: #0a0; }
+          .detail .content .first .image .button .btn.info:hover {
+            background-color: #0c0; }
+        .detail .content .first .image .button .btn.password {
+          width: 140px;
+          margin-left: 15px;
+          background-color: #d00; }
+          .detail .content .first .image .button .btn.password:hover {
+            background-color: #e20; }
   .detail .content .first .info {
     float: left;
     width: 500px; }
@@ -120,7 +134,7 @@
       padding-bottom: 5px; }
       .detail .content .first .info p span.fa {
         cursor: pointer;
-        color: #090; }
+        color: #000; }
   .detail .content .second {
     margin-top: 15px; }
     .detail .content .second p {
@@ -169,7 +183,7 @@
             padding-bottom: 5px; }
 
 .modal#modaledit .content {
-  width: 250px; }
+  width: 350px; }
   .modal#modaledit .content .main .btn {
     width: 100px; }
 

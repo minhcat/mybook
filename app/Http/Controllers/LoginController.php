@@ -7,6 +7,7 @@ use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\CModels\UsersCModel;
 use App\Http\Models\CModels\UsersCategoryCModel;
+use App\Http\Helpers\Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +22,8 @@ class LoginController extends Controller {
 		// header and footer
 		$data = [];
 		$data = CommonController::get_data_header($data);
+		//user login
+		$data = CommonController::get_data_auth($data);
 
 		return view('pages.login.login', $data);
 	}
@@ -34,10 +37,34 @@ class LoginController extends Controller {
 		// header and footer
 		$data = [];
 		$data = CommonController::get_data_header($data);
+		//user login
+		$data = CommonController::get_data_auth($data);
 
 		$data['categories'] = CategoriesQModel::get_categories_all();
 
 		return view('pages.login.sign-up', $data);
+	}
+
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function edit_info() {
+		// header and footer
+		$data = [];
+		$data = CommonController::get_data_header($data);
+		//user login
+		$data = CommonController::get_data_auth($data);
+
+		$data['categories'] = CategoriesQModel::get_categories_all();
+
+		$data['user'] = UsersQModel::get_user_by_id(Auth::id());
+		$data['user'] = Helper::add_category_for_user($data['user']);
+
+		// dd($data);
+
+		return view('pages.login.edit-info', $data);
 	}
 
 	/**
