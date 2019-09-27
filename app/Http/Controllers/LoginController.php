@@ -165,4 +165,62 @@ class LoginController extends Controller {
 
 		return redirect('login')->with('success', 'Bạn đã đăng ký thành công, mời bạn đăng nhập vào hệ thống');
 	}
+
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function post_edit_info($user_id, Request $request) {
+		// dd($request);
+		$validate = [
+			'name'			=> 'required',
+			'email'			=> 'required|email'
+		];
+		$this->validate($request, $validate);
+
+		// data image upload
+		if ($request->hasFile('image')) {
+			$data['image'] = $request->file('image');
+			$data['name']  = $request->input('name_login');
+			$data['path']  = '/image/users';
+			Images::upload_image($data);
+		}
+
+		// create user
+		$data = [
+			'name'			=> $request->input('name'),
+			'email'			=> $request->input('email'),
+			'nickname'		=> $request->input('nickname'),
+			'genitive'		=> $request->input('genitive'),
+			'facebook'		=> $request->input('facebook'),
+			'twitter'		=> $request->input('twitter'),
+			'slogan'		=> $request->input('slogan'),
+			'description'	=> $request->input('description'),
+		];
+		// set birth
+		$year  = $request->input('year');
+		$month = $request->input('month');
+		$date  = $request->input('date');
+		$data['birth'] = $year.'-'.$month.'-'.$date;
+		// set gender
+		$gender = $request->input('gender');
+		if ($gender == '') {
+			$data['gender'] = 2;
+		} else {
+			$data['gender'] = $gender;
+		}
+		UsersCModel::update_user($user_id, $data);
+
+		// set category
+		UsersCategoryCModel::delete_user_category_by_user_id($user_id);
+		$categories = json_decode($request->input('category'));
+		foreach ($categories as $category) {
+			$data = ['id_user' => $user_id, 'id_category' => $category];
+			UsersCategoryCModel::insert_user_category($data);
+		}
+		$user = UsersQModel::get_user_by_id($user_id);
+		
+		return redirect('/detail/user/'.$user->name_login)->with('success', 'Bạn đã đăng ký thành công, mời bạn đăng nhập vào hệ thống');
+	}
 }

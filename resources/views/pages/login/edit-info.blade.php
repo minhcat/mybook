@@ -15,7 +15,7 @@
 			@endforeach
 		</div>
 		@endif
-		<form action="{{ url('edit_info') }}" class="sign-up form-horizontal clearfix" method="POST" enctype="multipart/form-data">
+		<form action="{{ url('edit_info/'.$user->id) }}" class="edit-info form-horizontal clearfix" method="POST" enctype="multipart/form-data">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="header clearfix">
 				<h2>Thay Đổi Thông Tin</h2>
@@ -155,11 +155,16 @@
 						
 					@endforeach
 				</div>
-				<input type="hidden" name="category" value="[]">
+				<?php $json = []; ?>
+				@foreach ($user->categories as $category)
+					<?php array_push($json, $category['id']); ?>
+				@endforeach
+				<?php $json = json_encode($json) ?>
+				<input type="hidden" name="category" value="{{ $json }}">
 			</div>
 
 			<div class="line clearfix submit">
-				<div class="col-md-6"><button type="button" class="submit form-control">Thay đổi</button></div>
+				<div class="col-md-6"><button type="submit" class="submit form-control">Thay đổi</button></div>
 				<div class="col-md-6"><button type="reset" class="reset form-control">Nhập lại</button></div>
 			</div>
 		</form>

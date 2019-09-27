@@ -60,66 +60,66 @@
         .login-form .main .login .line button.reset:hover, .login-form .main .login .line button.reset:focus, .sign-up-form .main .login .line button.reset:hover, .sign-up-form .main .login .line button.reset:focus {
           background-color: #fefefe;
           border-color: #e5e5e5; }
-    .login-form .main .sign-up h4, .sign-up-form .main .sign-up h4 {
+    .login-form .main .sign-up h4, .login-form .main .edit-info h4, .sign-up-form .main .sign-up h4, .sign-up-form .main .edit-info h4 {
       margin-top: 20px;
       padding-left: 15px;
       color: #d93330; }
-    .login-form .main .sign-up hr, .sign-up-form .main .sign-up hr {
+    .login-form .main .sign-up hr, .login-form .main .edit-info hr, .sign-up-form .main .sign-up hr, .sign-up-form .main .edit-info hr {
       margin-left: 15px;
       margin-right: 15px;
       margin-top: 10px; }
-    .login-form .main .sign-up .line, .sign-up-form .main .sign-up .line {
+    .login-form .main .sign-up .line, .login-form .main .edit-info .line, .sign-up-form .main .sign-up .line, .sign-up-form .main .edit-info .line {
       margin-top: 15px;
       margin-bottom: 15px; }
-      .login-form .main .sign-up .line label span, .sign-up-form .main .sign-up .line label span {
+      .login-form .main .sign-up .line label span, .login-form .main .edit-info .line label span, .sign-up-form .main .sign-up .line label span, .sign-up-form .main .edit-info .line label span {
         color: #e33; }
-      .login-form .main .sign-up .line button, .sign-up-form .main .sign-up .line button {
+      .login-form .main .sign-up .line button, .login-form .main .edit-info .line button, .sign-up-form .main .sign-up .line button, .sign-up-form .main .edit-info .line button {
         padding-top: 5px;
         padding-bottom: 5px;
         height: 44px; }
-      .login-form .main .sign-up .line button.select, .sign-up-form .main .sign-up .line button.select {
+      .login-form .main .sign-up .line button.select, .login-form .main .edit-info .line button.select, .sign-up-form .main .sign-up .line button.select, .sign-up-form .main .edit-info .line button.select {
         height: 34px;
         text-align: left;
         color: #999; }
-        .login-form .main .sign-up .line button.select .caret, .sign-up-form .main .sign-up .line button.select .caret {
+        .login-form .main .sign-up .line button.select .caret, .login-form .main .edit-info .line button.select .caret, .sign-up-form .main .sign-up .line button.select .caret, .sign-up-form .main .edit-info .line button.select .caret {
           float: right;
           margin-top: 10px;
           color: #444; }
-        .login-form .main .sign-up .line button.select.checked, .sign-up-form .main .sign-up .line button.select.checked {
+        .login-form .main .sign-up .line button.select.checked, .login-form .main .edit-info .line button.select.checked, .sign-up-form .main .sign-up .line button.select.checked, .sign-up-form .main .edit-info .line button.select.checked {
           color: #444; }
-      .login-form .main .sign-up .line button.submit, .sign-up-form .main .sign-up .line button.submit {
+      .login-form .main .sign-up .line button.submit, .login-form .main .edit-info .line button.submit, .sign-up-form .main .sign-up .line button.submit, .sign-up-form .main .edit-info .line button.submit {
         background-color: #d93330;
         border-color: #d93330;
         color: #fff; }
-        .login-form .main .sign-up .line button.submit:hover, .login-form .main .sign-up .line button.submit:focus, .sign-up-form .main .sign-up .line button.submit:hover, .sign-up-form .main .sign-up .line button.submit:focus {
+        .login-form .main .sign-up .line button.submit:hover, .login-form .main .sign-up .line button.submit:focus, .login-form .main .edit-info .line button.submit:hover, .login-form .main .edit-info .line button.submit:focus, .sign-up-form .main .sign-up .line button.submit:hover, .sign-up-form .main .sign-up .line button.submit:focus, .sign-up-form .main .edit-info .line button.submit:hover, .sign-up-form .main .edit-info .line button.submit:focus {
           background-color: #ee3f3a;
           border-color: #d9302c; }
-      .login-form .main .sign-up .line button.reset, .sign-up-form .main .sign-up .line button.reset {
+      .login-form .main .sign-up .line button.reset, .login-form .main .edit-info .line button.reset, .sign-up-form .main .sign-up .line button.reset, .sign-up-form .main .edit-info .line button.reset {
         background-color: #f8f8f8;
         border-color: #d5d5d5;
         color: #444;
         box-shadow: unset; }
-        .login-form .main .sign-up .line button.reset:hover, .login-form .main .sign-up .line button.reset:focus, .sign-up-form .main .sign-up .line button.reset:hover, .sign-up-form .main .sign-up .line button.reset:focus {
+        .login-form .main .sign-up .line button.reset:hover, .login-form .main .sign-up .line button.reset:focus, .login-form .main .edit-info .line button.reset:hover, .login-form .main .edit-info .line button.reset:focus, .sign-up-form .main .sign-up .line button.reset:hover, .sign-up-form .main .sign-up .line button.reset:focus, .sign-up-form .main .edit-info .line button.reset:hover, .sign-up-form .main .edit-info .line button.reset:focus {
           background-color: #fefefe;
           border-color: #e5e5e5; }
-      .login-form .main .sign-up .line .dropdown-menu, .sign-up-form .main .sign-up .line .dropdown-menu {
+      .login-form .main .sign-up .line .dropdown-menu, .login-form .main .edit-info .line .dropdown-menu, .sign-up-form .main .sign-up .line .dropdown-menu, .sign-up-form .main .edit-info .line .dropdown-menu {
         left: 15px;
         margin-top: 10px;
         padding: 5px 0; }
-        .login-form .main .sign-up .line .dropdown-menu.birth, .sign-up-form .main .sign-up .line .dropdown-menu.birth {
+        .login-form .main .sign-up .line .dropdown-menu.birth, .login-form .main .edit-info .line .dropdown-menu.birth, .sign-up-form .main .sign-up .line .dropdown-menu.birth, .sign-up-form .main .edit-info .line .dropdown-menu.birth {
           height: 200px;
           min-width: 100px;
           overflow-y: scroll; }
-        .login-form .main .sign-up .line .dropdown-menu li, .sign-up-form .main .sign-up .line .dropdown-menu li {
+        .login-form .main .sign-up .line .dropdown-menu li, .login-form .main .edit-info .line .dropdown-menu li, .sign-up-form .main .sign-up .line .dropdown-menu li, .sign-up-form .main .edit-info .line .dropdown-menu li {
           padding-left: 12px;
           padding-right: 12px; }
-          .login-form .main .sign-up .line .dropdown-menu li:hover, .login-form .main .sign-up .line .dropdown-menu li:focus, .sign-up-form .main .sign-up .line .dropdown-menu li:hover, .sign-up-form .main .sign-up .line .dropdown-menu li:focus {
+          .login-form .main .sign-up .line .dropdown-menu li:hover, .login-form .main .sign-up .line .dropdown-menu li:focus, .login-form .main .edit-info .line .dropdown-menu li:hover, .login-form .main .edit-info .line .dropdown-menu li:focus, .sign-up-form .main .sign-up .line .dropdown-menu li:hover, .sign-up-form .main .sign-up .line .dropdown-menu li:focus, .sign-up-form .main .edit-info .line .dropdown-menu li:hover, .sign-up-form .main .edit-info .line .dropdown-menu li:focus {
             background-color: #55f;
             color: #fff; }
-      .login-form .main .sign-up .line .item-group, .sign-up-form .main .sign-up .line .item-group {
+      .login-form .main .sign-up .line .item-group, .login-form .main .edit-info .line .item-group, .sign-up-form .main .sign-up .line .item-group, .sign-up-form .main .edit-info .line .item-group {
         margin-left: -5px;
         padding-top: 10px; }
-        .login-form .main .sign-up .line .item-group .item, .sign-up-form .main .sign-up .line .item-group .item {
+        .login-form .main .sign-up .line .item-group .item, .login-form .main .edit-info .line .item-group .item, .sign-up-form .main .sign-up .line .item-group .item, .sign-up-form .main .edit-info .line .item-group .item {
           float: left;
           min-width: 90px;
           padding: 5px;
@@ -132,15 +132,15 @@
           background-color: #00e;
           border-radius: 5px;
           cursor: pointer; }
-          .login-form .main .sign-up .line .item-group .item:hover, .sign-up-form .main .sign-up .line .item-group .item:hover {
+          .login-form .main .sign-up .line .item-group .item:hover, .login-form .main .edit-info .line .item-group .item:hover, .sign-up-form .main .sign-up .line .item-group .item:hover, .sign-up-form .main .edit-info .line .item-group .item:hover {
             background-color: #24f; }
-          .login-form .main .sign-up .line .item-group .item.select, .sign-up-form .main .sign-up .line .item-group .item.select {
+          .login-form .main .sign-up .line .item-group .item.select, .login-form .main .edit-info .line .item-group .item.select, .sign-up-form .main .sign-up .line .item-group .item.select, .sign-up-form .main .edit-info .line .item-group .item.select {
             background-color: #d42; }
-      .login-form .main .sign-up .line .rules, .sign-up-form .main .sign-up .line .rules {
+      .login-form .main .sign-up .line .rules, .login-form .main .edit-info .line .rules, .sign-up-form .main .sign-up .line .rules, .sign-up-form .main .edit-info .line .rules {
         padding: 10px 15px;
         border: 1px solid #eee;
         border-radius: 10px; }
-        .login-form .main .sign-up .line .rules .head, .sign-up-form .main .sign-up .line .rules .head {
+        .login-form .main .sign-up .line .rules .head, .login-form .main .edit-info .line .rules .head, .sign-up-form .main .sign-up .line .rules .head, .sign-up-form .main .edit-info .line .rules .head {
           padding-top: 5px;
           padding-bottom: 5px;
           color: #d00; }

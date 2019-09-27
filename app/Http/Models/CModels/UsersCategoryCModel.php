@@ -39,4 +39,15 @@ class UsersCategoryCModel extends Model
 				->where('id', '=', $id)
 				->update($data);
 	}
+
+	/**
+	 * delete a food
+	 * @param $id int
+	 * @return boolean
+	 */
+	public static function delete_user_category_by_user_id($user_id) {
+		return DB::table('users_category')
+			->where('id_user', '=', $user_id)
+			->delete();
+	}
 }

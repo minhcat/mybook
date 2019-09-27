@@ -82,9 +82,9 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 					<p><strong>Thể loại:</strong> 
 						@foreach ($book->categories as $key => $category)
 							@if ($key < count($book->categories) - 1)
-							<a href="{{ url('/list/category/'.$category['slug']) }}">{{ $category['name'] }}</a>,
+							<a href="{{ url('/list/category/'.$category['slug']) }}">{{ ucwords($category['name']) }}</a>,
 							@else
-							<a href="{{ url('/list/category/'.$category['slug']) }}">{{ $category['name'] }}</a>
+							<a href="{{ url('/list/category/'.$category['slug']) }}">{{ ucwords($category['name']) }}</a>
 							@endif
 						@endforeach
 					</p>

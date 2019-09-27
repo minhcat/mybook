@@ -116,6 +116,7 @@ class Helper {
 		$user->categories = [];
 		foreach ($categories as $key => $category) {
 			$user->categories[$key] = [
+				'id'   => $category->id_category,
 				'slug' => $category->slug,
 				'name' => $category->vn_name,
 			];

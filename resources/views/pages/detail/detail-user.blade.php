@@ -94,7 +94,14 @@ Bạn có thể xem thông tin người dùng được cập nhật công khai t
 						<strong>Tính cách:</strong> {{ $user->genitive }}
 					</p>
 					<p>
-						<strong>Thể loại yêu thích:</strong> <a href="">Comedy</a>, <a href="">Magic, <a href="">Fanstasy</a>
+						<strong>Thể loại yêu thích:</strong>
+						@foreach ($user->categories as $key => $category)
+							@if ($key < count($user->categories) - 1)
+							<a href="{{ url('/list/category/'.$category['slug']) }}">{{ ucwords($category['name']) }}</a>,
+							@else
+							<a href="{{ url('/list/category/'.$category['slug']) }}">{{ ucwords($category['name']) }}</a>
+							@endif
+						@endforeach
 					</p>
 					<p>
 						<strong>Facebook:</strong> <a href="">{{ $user->name }}</a>

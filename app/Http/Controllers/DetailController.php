@@ -126,7 +126,7 @@ class DetailController extends Controller {
 	public function book($slug)
 	{
 		$book = BooksQModel::get_book_by_slug($slug);
-		$book = Helper::add_category_from_book($book);
+		$book = Helper::add_category_for_book($book);
 		$book->author  = AuthorsQModel::get_author_by_id($book->id_author);
 		$book->artist  = AuthorsQModel::get_author_by_id($book->id_artist);
 		$book->transes = TransQModel::get_transes_by_book_id($book->id);
@@ -229,6 +229,7 @@ class DetailController extends Controller {
 	public function user($slug)
 	{
 		$user = UsersQModel::get_user_by_name_login($slug);
+		$user = Helper::add_category_for_user($user);
 		$data = [];
 		// login
 		$data = CommonController::get_data_auth_detail($data, $user->id, 'user');
@@ -264,6 +265,7 @@ class DetailController extends Controller {
 		// dd($history);
 
 		Cookie::queue('history',$history, 1440);
+		// dd($data);
 
 		return view('pages.detail.detail-user', $data);
 	}

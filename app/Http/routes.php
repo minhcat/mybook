@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth'], function() {
 
 	Route::get('edit_info', 'LoginController@edit_info');
 
-	Route::post('edit_info', 'LoginController@post_edit_info');
+	Route::post('edit_info/{user_id}', 'LoginController@post_edit_info');
 
 });
 
