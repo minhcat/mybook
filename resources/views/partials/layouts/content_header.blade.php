@@ -31,34 +31,7 @@
 						</div>
 						<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tình Trạng <span class="caret"></span></a> -->
 						<ul class="dropdown-menu">
-							<li class="clearfix">
-								<img src="{{ asset('image/bang-hoai-3rd.jpg') }}" class="image" alt="" width="60px" height="60px">
-								<div class="info">
-									<a href="detail-book.html" class="name">Băng Hoại 3rd</a>
-									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
-								</div>
-							</li>
-							<li class="clearfix">
-								<img src="{{ asset('image/boruto.jpg') }}" class="image" alt="" width="60px" height="60px">
-								<div class="info">
-									<a href="detail-book.html" class="name">Boruto</a>
-									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
-								</div>
-							</li>
-							<li class="clearfix">
-								<img src="{{ asset('image/mahoutsukai-no-yome.jpg') }}" class="image" alt="" width="60px" height="60px">
-								<div class="info">
-									<a href="detail-book.html" class="name">Mahoutsukai no Yome</a>
-									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
-								</div>
-							</li>
-							<li class="clearfix">
-								<img src="{{ asset('image/himouto-umaru-chan.jpg') }}" class="image" alt="" width="60px" height="60px">
-								<div class="info">
-									<a href="detail-book.html" class="name">Himouto Umaru-chan</a>
-									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
-								</div>
-							</li>
+							
 							<hr>
 							<li class="search-more">
 								<a href="search-more" class="search-more" onclick="window.open('{{ url('/list/search') }}')">Tìm kiếm nâng cao</a>
@@ -160,34 +133,6 @@
 									</li>
 									@endif
 								@endforeach
-							{{-- 	<li class="clearfix">
-									<img src="image/boruto.jpg" class="image img-circle" alt="" width="60px" height="60px">
-									<div class="info">
-										<div class="content"><a href="detail-book.html">Boruto</a> ra chap mới: chap 128 - Ác quỷ xuất hiện</div>
-										<div class="time">2 giờ trước</div>
-									</div>
-								</li>
-								<li class="clearfix">
-									<img src="image/mahoutsukai-no-yome.jpg" class="image img-circle" alt="" width="60px" height="60px">
-									<div class="info">
-										<div class="content"><a href="detail-book.html">Mahoutsuki no Yome</a> ra chap mới: chap 25 - Không kẻ nào điếc hơn kẻ không muốn nghe</div>
-										<div class="time">1 ngày trước</div>
-									</div>
-								</li>
-								<li class="clearfix">
-									<img src="image/A-kun.jpg" class="image img-circle" alt="" width="60px" height="60px">
-									<div class="info">
-										<div class="content"><a href="">A-kun</a> trả lời bình luận của bạn: Lorem ipsum dolor sit amet.</div>
-										<div class="time">5 ngày trước</div>
-									</div>
-								</li>
-								<li class="clearfix">
-									<img src="image/Eren.jpg" class="image img-circle" alt="" width="60px" height="60px">
-									<div class="info">
-										<div class="content"><a href="">Eren</a> trả lời bình luận của bạn: Lorem ipsum dolor sit amet, consectetur.</div>
-										<div class="time">ngày 25/12/2017</div>
-									</div>
-								</li> --}}
 								<hr>
 								<li class="all-noti">
 									<a href="{{ url('/list/notification') }}">Xem tất cả</a>
@@ -222,43 +167,44 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right show-sm">
 						<li>
-							<a href="#"  class="page dropdown-toggle" data-toggle="dropdown"><span class="fa fa-bell"></span></a>
-							<ul class="dropdown-menu menu2">
-								<li class="clearfix">
-									<img src="image/bang-hoai-3rd.jpg" class="image img-circle" alt="" width="60px" height="60px">
-									<div class="info">
-										<div class="content"><a href="detail-book.html">Băng Hoại 3rd</a> ra chap mới: chap 78 - Dinh tự của Issac</div>
-										<div class="time">1 giờ trước</div>
-									</div>
-								</li>
-								<li class="clearfix">
-									<img src="image/boruto.jpg" class="image img-circle" alt="" width="60px" height="60px">
-									<div class="info">
-										<div class="content"><a href="detail-book.html">Boruto</a> ra chap mới: chap 128 - Ác quỷ xuất hiện</div>
-										<div class="time">2 giờ trước</div>
-									</div>
-								</li>
-								<li class="clearfix">
-									<img src="image/mahoutsukai-no-yome.jpg" class="image img-circle" alt="" width="60px" height="60px">
-									<div class="info">
-										<div class="content"><a href="detail-book.html">Mahoutsuki no Yome</a> ra chap mới: chap 25 - Không kẻ nào điếc hơn kẻ không muốn nghe</div>
-										<div class="time">1 ngày trước</div>
-									</div>
-								</li>
-								<li class="clearfix">
-									<img src="image/A-kun.jpg" class="image img-circle" alt="" width="60px" height="60px">
-									<div class="info">
-										<div class="content"><a href="">A-kun</a> trả lời bình luận của bạn: Lorem ipsum dolor sit amet.</div>
-										<div class="time">5 ngày trước</div>
-									</div>
-								</li>
-								<li class="clearfix">
-									<img src="image/Eren.jpg" class="image img-circle" alt="" width="60px" height="60px">
-									<div class="info">
-										<div class="content"><a href="">Eren</a> trả lời bình luận của bạn: Lorem ipsum dolor sit amet, consectetur.</div>
-										<div class="time">ngày 25/12/2017</div>
-									</div>
-								</li>
+							<a rel="notfollow"  class="page dropdown-toggle" data-toggle="dropdown"><span class="fa fa-bell"></span></a>
+							<ul class="dropdown-menu menu2 noti-small">
+								@foreach ($notifications as $key => $notification)
+									@if ($key < 5)
+									<li class="clearfix">
+										@if ($notification->type == 'newchap' || $notification->type == 'coming')
+										<img src="{{ asset('image/books/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
+										@else
+										<img src="{{ asset('image/users/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
+										@endif
+										<div class="info">
+											<?php date_default_timezone_set('Asia/Ho_Chi_Minh'); ?>
+											<div class="content">{!! $notification->action !!}</div>
+											@if ($notification->year == (int)date('Y'))
+												@if ($notification->month == (int)date('m'))
+													@if ($notification->date == (int)date('d'))
+														@if ($notification->hour == (int)date('H'))
+															@if ($notification->minute == (int)date('i'))
+															<div class="time">{{ (int)date('s') - $notification->second }} giây trước</div>
+															@else
+															<div class="time">{{ (int)date('i') - $notification->minute }} phút trước</div>
+															@endif
+														@else
+														<div class="time">{{ (int)date('H') - $notification->hour }} giờ trước</div>
+														@endif
+													@else
+													<div class="time">{{ (int)date('d') - $notification->date }} ngày trước</div>
+													@endif
+												@else
+												<div class="time">{{ (int)date('m') - $notification->month }} tháng trước</div>
+												@endif
+											@else
+											<div class="time">{{ (int)date('Y') - $notification->year }} năm trước</div>
+											@endif
+										</div>
+									</li>
+									@endif
+								@endforeach
 								<hr>
 								<li class="all-noti">
 									<a href="notification.html">Xem tất cả</a>
@@ -266,24 +212,24 @@
 							</ul>
 						</li>
 						<li>
-							<a href="#" class="page user dropdown-toggle" data-toggle="dropdown"><img src="image/Asuna.jpg" class="img-circle" width="35px" alt=""></a>
-							<ul class="dropdown-menu menu2 user">
+							<a href="#" class="page user dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('image/users/'.$user_login->image.'.jpg') }}" class="img-circle" width="35px" alt=""></a>
+							<ul class="dropdown-menu menu2 user user-small">
 								<li class="clearfix">
-									<a href="detail-user-login.html">Thông tin cá nhân</a>
+									<a href="{{ url('/detail/user/'.$user_login->name_login) }}">Thông tin cá nhân</a>
 								</li>
 								<hr>
 								<li class="clearfix">
-									<a href="list-book-follow.html">Truyện đang theo dõi</a>
+									<a href="{{ url('/list/follow') }}">Truyện đang theo dõi</a>
 								</li>
 								<li class="clearfix">
-									<a href="history.html">Lịch sử đọc truyện</a>
+									<a href="{{ url('/list/history') }}">Lịch sử đọc truyện</a>
 								</li>
 								<li class="clearfix">
-									<a href="list-friend.html">Danh sách bạn</a>
+									<a href="{{ url('/list/friend') }}">Danh sách bạn</a>
 								</li>
 								<hr>
 								<li class="clearfix">
-									<a href="setting.html">Cài đặt</a>
+									<a href="{{ url('setting') }}">Cài đặt</a>
 								</li>
 								<li class="clearfix">
 									<a href="{{ url('logout') }}">Đăng xuất</a>

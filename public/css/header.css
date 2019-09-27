@@ -78,6 +78,12 @@
         background-color: #fff;
         min-width: 300px;
         padding: 5px 10px; }
+        .menu .navbar li .dropdown-menu.menu2.noti-small {
+          position: absolute;
+          left: -190px; }
+        .menu .navbar li .dropdown-menu.menu2.user-small {
+          position: absolute;
+          left: -115px; }
         .menu .navbar li .dropdown-menu.menu2.user {
           min-width: 180px;
           padding-right: 15px;
