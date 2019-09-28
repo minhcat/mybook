@@ -15,6 +15,7 @@
 			@endforeach
 		</div>
 		@endif
+
 		<form action="{{ url('sign_up') }}" class="sign-up form-horizontal clearfix" method="POST" enctype="multipart/form-data">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="header clearfix">
@@ -37,36 +38,36 @@
 			<div class="line clearfix">
 				<label class="col-lg-3 col-md-4 col-sm-4">Tên Đăng Nhập<span>(*)</span></label>
 				<div class="col-lg-9 col-md-8 col-sm-8">
-					<input type="text" name="name_login" class="form-control" placeholder="nhập tên đăng nhập">
+					<input type="text" name="name_login" class="form-control" placeholder="nhập tên đăng nhập" value="{{ old('name_login') }}">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-lg-3 col-md-4 col-sm-4">Tên Hiển Thị<span>(*)</span></label>
 				<div class="col-lg-9 col-md-8 col-sm-8">
-					<input type="text" name="name" class="form-control" placeholder="nhập tên hiển thị">
+					<input type="text" name="name" class="form-control" placeholder="nhập tên hiển thị" value="{{ old('name') }}">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-lg-3 col-md-4">Mật Khẩu<span>(*)</span></label>
 				<div class="col-lg-9 col-md-8">
-					<input type="password" name="password" class="form-control" placeholder="nhập mật khẩu">
+					<input type="password" name="password" class="form-control" placeholder="nhập mật khẩu" value="{{ old('password') }}">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-lg-3 col-md-4">Nhập Lại Mật Khẩu<span>(*)</span></label>
 				<div class="col-lg-9 col-md-8">
-					<input type="password" name="repassword" class="form-control" placeholder="nhập lại mật khẩu">
+					<input type="password" name="repassword" class="form-control" placeholder="nhập lại mật khẩu" value="{{ old('repassword') }}">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-lg-3 col-md-4">Email<span>(*)</span></label>
 				<div class="col-lg-9 col-md-8">
-					<input type="text" name="email" class="form-control" placeholder="nhập email">
+					<input type="text" name="email" class="form-control" placeholder="nhập email" value="{{ old('email') }}">
 				</div>
 			</div>
 			<h4>Thông tin khác</h4>
 			<hr>
-			<div class="line clearfix">
+			<div class="line clearfix gender">
 				<label class="col-md-3">Giới Tính</label>
 				<div class="col-lg-2 col-md-3">
 					<button class="select form-control" type="button">
@@ -74,87 +75,88 @@
 						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
-						<li>Nam</li>
-						<li>Nữ</li>
+						<li data-value="0">Nam</li>
+						<li data-value="1">Nữ</li>
 					</ul>
+					<input id="gender" type="hidden" name="gender" value="{{ old('gender') }}">
 				</div>
-				<input type="hidden" name="gender">
 			</div>
 
-			<div class="line clearfix">
+			<div class="line clearfix birth">
 				<label class="col-md-3">Ngày Sinh</label>
-				<div class="col-lg-2 col-md-3">
+				<div class="col-lg-2 col-md-3 date">
 					<button class="select form-control" type="button">
 						<span class="text">ngày</span>
 						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu birth">
-						<li>1</li>
-						@for ($i = 2; $i <= 31; $i++)
-						<li>{{ $i }}</li>
+						@for ($i = 1; $i <= 31; $i++)
+						<li data-value="{{ $i }}">{{ $i }}</li>
 						@endfor
 					</ul>
+					<input id="date" type="hidden" name="date" value="{{ old('date') }}">
 				</div>
-				<input type="hidden" name="date" value="01">
-				<div class="col-lg-2 col-md-3">
+				
+				<div class="col-lg-2 col-md-3 month">
 					<button class="select form-control" type="button">
 						<span class="text">tháng</span>
 						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu birth">
 						@for ($i = 1; $i <= 12; $i++)
-						<li>{{ $i }}</li>
+						<li data-value="{{ $i }}">{{ $i }}</li>
 						@endfor
 					</ul>
+					<input id="month" type="hidden" name="month" value="{{ old('month') }}">
 				</div>
-				<input type="hidden" name="month" value="01">
-				<div class="col-lg-2 col-md-3">
+				
+				<div class="col-lg-2 col-md-3 year">
 					<button class="select form-control" type="button">
 						<span class="text">năm</span>
 						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu birth">
 						@for ($i = 2019; $i >= 1900; $i--)
-						<li>{{ $i }}</li>
+						<li data-value="{{ $i }}">{{ $i }}</li>
 						@endfor
 					</ul>
+					<input id="year" type="hidden" name="year" value="{{ old('year') }}">
 				</div>
-				<input type="hidden" name="year" value="1990">
 			</div>
 			<div class="line clearfix">
 				<label class="col-md-3">Biệt Danh</label>
 				<div class="col-md-9">
-					<input type="text" name="nickname" class="form-control" placeholder="nhập biệt danh">
+					<input type="text" name="nickname" class="form-control" placeholder="nhập biệt danh" value="{{ old('nickname') }}">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-md-3">Tính Cách</label>
 				<div class="col-md-9">
-					<input type="text" name="genitive" class="form-control" placeholder="nhập tính cách">
+					<input type="text" name="genitive" class="form-control" placeholder="nhập tính cách" value="{{ old('genitive') }}">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-md-3">Facebook</label>
 				<div class="col-md-9">
-					<input type="text" name="facebook" class="form-control" placeholder="nhập link facebook">
+					<input type="text" name="facebook" class="form-control" placeholder="nhập link facebook" value="{{ old('facebook') }}">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-md-3">Twitter</label>
 				<div class="col-md-9">
-					<input type="text" name="twitter" class="form-control" placeholder="nhập link twitter">
+					<input type="text" name="twitter" class="form-control" placeholder="nhập link twitter" value="{{ old('twitter') }}">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-md-3">Câu slogan</label>
 				<div class="col-md-9">
-					<input type="text" name="slogan" class="form-control" placeholder="nhập câu slogan">
+					<input type="text" name="slogan" class="form-control" placeholder="nhập câu slogan" value="{{ old('slogan') }}">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-md-3">Tự Giới Thiệu</label>
 				<div class="col-md-9">
-					<textarea name="description" class="form-control" placeholder="nhập nội dung giới thiệu" rows="6"></textarea>
+					<textarea name="description" class="form-control" placeholder="nhập nội dung giới thiệu" rows="6">{{ old('description') }}</textarea>
 				</div>
 			</div>
 			<div class="line category clearfix">

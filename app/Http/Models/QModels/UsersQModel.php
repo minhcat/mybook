@@ -16,12 +16,9 @@ class UsersQModel extends Model
 	public static function get_user_by_id($id) {
 		$result = DB::table('users')
 				->where('id', $id)
-				->get();
+				->first();
 
-		if (empty($result))
-			return null;
-
-		return $result[0];
+		return $result;
 	}
 
 	/**
@@ -32,9 +29,22 @@ class UsersQModel extends Model
 	public static function get_user_by_name_login($name_login) {
 		$result = DB::table('users')
 				->where('name_login', $name_login)
-				->get();
+				->first();
 
-		return $result[0];
+		return $result;
+	}
+
+	/**
+	 * get user by name_login(slug)
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_user_by_name($name) {
+		$result = DB::table('users')
+				->where('name', $name)
+				->first();
+
+		return $result;
 	}
 
 	/**

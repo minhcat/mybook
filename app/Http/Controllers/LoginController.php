@@ -73,6 +73,7 @@ class LoginController extends Controller {
 	 * @return Response
 	 */
 	public function post_login(Request $request) {
+		dd($request->all());
 		$validate = [
 			'user' => 'required',
 			'password' => 'required'
@@ -106,7 +107,7 @@ class LoginController extends Controller {
 	 * @return Response
 	 */
 	public function post_sign_up(Request $request) {
-		// dd($request);
+		// dd($request->all());
 		$validate = [
 			'name_login'	=> 'required',
 			'name'			=> 'required',
@@ -116,18 +117,30 @@ class LoginController extends Controller {
 		];
 		$this->validate($request, $validate);
 
-		// data image upload
-		$data['image'] = $request->file('image');
-		$data['name']  = $request->input('name_login');
-		$data['path']  = '/image/users';
-		Images::upload_image($data);
+		// check name
+		$name       = $request->input('name');
+		$name_login = $request->input('name_login');
+		$check_name = UsersQModel::get_user_by_name_login($name_login);
+		if ($check_name != null) {
+			return redirect()->back()->withErrors('tên đăng nhập bị trùng')->withInput();
+		}
+		$check_name = UsersQModel::get_user_by_name($name);
+		if ($check_name != null) {
+			return redirect()->back()->withErrors('tên hiển thị bị trùng')->withInput();
+		}
 
 		// check password
 		$password	= $request->input('password');
 		$repassword	= $request->input('repassword');
 		if ($password != $repassword) {
-			return redirect()->back()->withErrors('password không trùng');
+			return redirect()->back()->withErrors('password không trùng')->withInput();
 		}
+
+		// data image upload
+		$data['image'] = $request->file('image');
+		$data['name']  = $request->input('name_login');
+		$data['path']  = '/image/users';
+		Images::upload_image($data);
 
 		// create user
 		$data = [

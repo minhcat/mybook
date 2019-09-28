@@ -1,10 +1,35 @@
 $(document).ready(function() {
+	//get old input
+	var input_gender = $('input#gender').val();
+	if (input_gender != '') {
+		var gender = $('.line.gender ul li[data-value="'+input_gender+'"]').text();
+		$('.line.gender button.select').addClass('checked');
+		$('.line.gender button.select span.text').text(gender);
+	}
+	var input_date = $('input#date').val();
+	if (input_date != '') {
+		var date = $('.line.birth .date ul li[data-value="'+input_date+'"]').text();
+		$('.line.birth .date button.select').addClass('checked');
+		$('.line.birth .date button.select span.text').text(date);
+	}
+	var input_month = $('input#month').val();
+	if (input_month != '') {
+		var month = $('.line.birth .month ul li[data-value="'+input_month+'"]').text();
+		$('.line.birth .month button.select').addClass('checked');
+		$('.line.birth .month button.select span.text').text(month);
+	}
+	var input_year = $('input#year').val();
+	if (input_year != '') {
+		var year = $('.line.birth .year ul li[data-value="'+input_year+'"]').text();
+		$('.line.birth .year button.select').addClass('checked');
+		$('.line.birth .year button.select span.text').text(year);
+	}
 	//click combobox search
-	$('form.sign-up button.select').click(function(e) {
+	$('form button.select').click(function(e) {
 		e.stopPropagation();
 		var btn_this = $(this);
 		//close other combobox
-		$('form.sign-up .dropdown-menu').parent().each(function() {
+		$('form .dropdown-menu').parent().each(function() {
 			if ( !$(this).is( btn_this.parent() ) ) {
 				$(this).removeClass('open');
 			}
@@ -14,13 +39,14 @@ $(document).ready(function() {
 	});
 
 	//click option combobox
-	$('form.sign-up .dropdown-menu li').click(function() {
+	$('form .dropdown-menu li').click(function() {
 		var parent = $(this).parent().parent();
+		var value  = $(this).data('value');
 		parent.find('.text').text($(this).text());
 		parent.find('.select').addClass('checked');
-		$('form.sign-up .dropdown-menu').parent().removeClass('open');
+		parent.find('input').val(value);
+		$('form .dropdown-menu').parent().removeClass('open');
 	});
-
 	$('body').click(function(e) {
 		if ($(event.target).closest('.navigation').length) {
 			return; //do nothing if event target is within the navigation
