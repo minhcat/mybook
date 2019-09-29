@@ -14,13 +14,26 @@
 				<p>{{ $error }}</p>
 			@endforeach
 		</div>
+		@elseif (\Session::has('success'))
+		<div class="alert alert-success alert-dismissable">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+			<strong>Success!</strong>  {{ \Session::get('success') }}
+			
+		</div>
 		@endif
 		<form action="{{ url('edit_info/'.$user->id) }}" class="edit-info form-horizontal clearfix" method="POST" enctype="multipart/form-data">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="header clearfix">
 				<h2>Thay Đổi Thông Tin</h2>
 				<div class="image">
+					@if (Session::has('user-image'))
+					<img src="{{ asset('image/upload/user.jpg') }}" class="edit-info">
+					@elseif ($user->image != '' )
 					<img src="{{ asset('image/users/'.$user->image.'.jpg') }}" class="edit-info">
+					@else
+					<img src="{{ asset('image/user-default.png') }}" class="edit-info">
+					@endif
+					
 				</div>
 				<div class="col-4 col-offset-4">
 					<div class="col-10 col-offset-1">
@@ -37,104 +50,107 @@
 			<div class="line clearfix">
 				<label class="col-lg-3 col-md-4 col-sm-4">Tên Hiển Thị<span></span></label>
 				<div class="col-lg-9 col-md-8 col-sm-8">
-					<input type="text" name="name" class="form-control" placeholder="nhập tên hiển thị" value="{{ $user->name }}">
+					<input type="text" name="name" class="form-control" placeholder="nhập tên hiển thị" value="{{ (old('name')) ? old('name') : $user->name }}">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-lg-3 col-md-4">Email<span></span></label>
 				<div class="col-lg-9 col-md-8">
-					<input type="text" name="email" class="form-control" placeholder="nhập email" value="{{ $user->email }}">
+					<input type="text" name="email" class="form-control" placeholder="nhập email" value="{{ (old('email')) ? old('email') : $user->email }}">
 				</div>
 			</div>
-			<div class="line clearfix">
+			<div class="line clearfix gender">
 				<label class="col-md-3">Giới Tính</label>
 				<div class="col-lg-2 col-md-3">
 					<button class="select form-control checked" type="button">
-						<span class="text">{{ ($user->gender == 0) ? 'Nam' : 'Nữ' }}</span>
+						<span class="text"></span>
 						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
-						<li class="action">Nam</li>
-						<li>Nữ</li>
+						<li data-value="0">Nam</li>
+						<li data-value="1">Nữ</li>
 					</ul>
+					<input id="gender" type="hidden" name="gender" value="{{ (old('gender')) ? old('gender') : $user->gender }}">
 				</div>
-				<input type="hidden" name="gender">
+				
 			</div>
 
-			<div class="line clearfix">
+			<div class="line clearfix birth">
 				<label class="col-md-3">Ngày Sinh</label>
-				<div class="col-lg-2 col-md-3">
+				<div class="col-lg-2 col-md-3 date">
 					<button class="select form-control checked" type="button">
-						<span class="text">{{ date_format(date_create($user->birth), 'd') }}</span>
+						<span class="text"></span>
 						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu birth">
-						<li>1</li>
-						@for ($i = 2; $i <= 31; $i++)
-						<li>{{ $i }}</li>
+						@for ($i = 1; $i <= 31; $i++)
+						<li data-value="{{ $i }}">{{ $i }}</li>
 						@endfor
 					</ul>
+					<input id="date" type="hidden" name="date" value="{{ (old('date')) ? old('date') : date_format(date_create($user->birth), 'd') }}">
 				</div>
-				<input type="hidden" name="date" value="{{ date_format(date_create($user->birth), 'd') }}">
-				<div class="col-lg-2 col-md-3">
+				
+				<div class="col-lg-2 col-md-3 month">
 					<button class="select form-control checked" type="button">
-						<span class="text">{{ date_format(date_create($user->birth), 'm') }}</span>
+						<span class="text"></span>
 						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu birth">
 						@for ($i = 1; $i <= 12; $i++)
-						<li>{{ $i }}</li>
+						<li data-value="{{ $i }}">{{ $i }}</li>
 						@endfor
 					</ul>
+					<input id="month" type="hidden" name="month" value="{{ (old('month')) ? old('month') : date_format(date_create($user->birth), 'm') }}">
 				</div>
-				<input type="hidden" name="month" value="{{ date_format(date_create($user->birth), 'm') }}">
-				<div class="col-lg-2 col-md-3">
+				
+				<div class="col-lg-2 col-md-3 year">
 					<button class="select form-control checked" type="button">
-						<span class="text">{{ date_format(date_create($user->birth), 'Y') }}</span>
+						<span class="text"></span>
 						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu birth">
 						@for ($i = 2019; $i >= 1900; $i--)
-						<li>{{ $i }}</li>
+						<li data-value={{ $i }}>{{ $i }}</li>
 						@endfor
 					</ul>
+					<input id="year" type="hidden" name="year" value="{{ (old('year')) ? old('year') : date_format(date_create($user->birth), 'Y') }}">
 				</div>
-				<input type="hidden" name="year" value="{{ date_format(date_create($user->birth), 'Y') }}">
+				
 			</div>
 			<div class="line clearfix">
 				<label class="col-md-3">Biệt Danh</label>
 				<div class="col-md-9">
-					<input type="text" name="nickname" class="form-control" placeholder="nhập biệt danh" value="{{ $user->nickname }}">
+					<input type="text" name="nickname" class="form-control" placeholder="nhập biệt danh" value="{{ (old('nickname')) ? old('nickname') : $user->nickname }}">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-md-3">Tính Cách</label>
 				<div class="col-md-9">
-					<input type="text" name="genitive" class="form-control" placeholder="nhập tính cách" value="{{ $user->genitive }}">
+					<input type="text" name="genitive" class="form-control" placeholder="nhập tính cách" value="{{ (old('genitive')) ? old('genitive') : $user->genitive }}">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-md-3">Facebook</label>
 				<div class="col-md-9">
-					<input type="text" name="facebook" class="form-control" placeholder="nhập link facebook" value="{{ $user->facebook }}">
+					<input type="text" name="facebook" class="form-control" placeholder="nhập link facebook" value="{{ (old('facebook')) ? old('facebook') : $user->facebook }}">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-md-3">Twitter</label>
 				<div class="col-md-9">
-					<input type="text" name="twitter" class="form-control" placeholder="nhập link twitter" value="{{ $user->twitter }}">
+					<input type="text" name="twitter" class="form-control" placeholder="nhập link twitter" value="{{ (old('twitter')) ? old('twitter') : $user->twitter }}">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-md-3">Câu slogan</label>
 				<div class="col-md-9">
-					<input type="text" name="slogan" class="form-control" placeholder="nhập câu slogan" value="{{ $user->slogan }}">
+					<input type="text" name="slogan" class="form-control" placeholder="nhập câu slogan" value="{{ (old('slogan')) ? old('slogan') : $user->slogan }}">
 				</div>
 			</div>
 			<div class="line clearfix">
 				<label class="col-md-3">Tự Giới Thiệu</label>
 				<div class="col-md-9">
-					<textarea name="description" class="form-control" placeholder="nhập nội dung giới thiệu" rows="6">{{ $user->description }}</textarea>
+					<textarea name="description" class="form-control" placeholder="nhập nội dung giới thiệu" rows="6">{{ (old('description')) ? old('description') : $user->description }}</textarea>
 				</div>
 			</div>
 			<div class="line category clearfix">
@@ -145,12 +161,12 @@
 						@foreach ($user->categories as $user_category)
 							@if ($user_category['slug'] == $category->slug)
 								<?php $check_cate = false; ?>
-								<div class="item select" data-slug="{{ $category->id }}">{{ $category->name }}</div>
+								<div class="item select" data-id="{{ $category->id }}">{{ $category->name }}</div>
 								<?php break;?>
 							@endif
 						@endforeach
 						@if ($check_cate == true)
-							<div class="item" data-slug="{{ $category->id }}">{{ $category->name }}</div>
+							<div class="item" data-id="{{ $category->id }}">{{ $category->name }}</div>
 						@endif
 						
 					@endforeach

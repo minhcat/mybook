@@ -167,7 +167,7 @@
 				<label class="col-md-12">Thể loại yêu thích</label>
 				<div class="item-group col-md-12 clearfix">
 					@foreach ($categories as $category)
-					<div class="item" data-slug="{{ $category->id }}">{{ $category->name }}</div>
+					<div class="item" data-id="{{ $category->id }}">{{ $category->name }}</div>
 					@endforeach
 				</div>
 				<input type="hidden" name="category" value="[]">

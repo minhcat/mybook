@@ -8,12 +8,14 @@ $(document).ready(function() {
 	}
 	var input_date = $('input#date').val();
 	if (input_date != '') {
+		input_date = parseInt(input_date);
 		var date = $('.line.birth .date ul li[data-value="'+input_date+'"]').text();
 		$('.line.birth .date button.select').addClass('checked');
 		$('.line.birth .date button.select span.text').text(date);
 	}
 	var input_month = $('input#month').val();
 	if (input_month != '') {
+		input_month = parseInt(input_month);
 		var month = $('.line.birth .month ul li[data-value="'+input_month+'"]').text();
 		$('.line.birth .month button.select').addClass('checked');
 		$('.line.birth .month button.select span.text').text(month);
@@ -67,16 +69,22 @@ $(document).ready(function() {
 		}
 	});
 	$('.line.category .item').click(function() {
+		// debugger;
 		var category = JSON.parse($('.line.category input').val());
 		if ($(this).hasClass('select')) {
 			$(this).removeClass('select');
-			category.remove(parseInt($(this).data('slug')));
+			var remove = parseInt($(this).data('id'));
+			for (var i = 0; i < category.length; i++) {
+				if (category[i] == remove) {
+					category.splice(i, 1);
+				}
+			}
 			var json_category = JSON.stringify(category);
 			$('.line.category input').val(json_category);
 		}
 		else {
 			$(this).addClass('select');
-			category.push(parseInt($(this).data('slug')));
+			category.push(parseInt($(this).data('id')));
 			var json_category = JSON.stringify(category);
 			$('.line.category input').val(json_category);
 		}

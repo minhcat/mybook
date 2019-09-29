@@ -59,6 +59,9 @@ class LoginController extends Controller {
 	 * @return Response
 	 */
 	public function edit_info() {
+		if (!Session::has('errors')) {
+			Session::forget('user-image');
+		}
 		// header and footer
 		$data = [];
 		$data = CommonController::get_data_header($data);
@@ -207,19 +210,32 @@ class LoginController extends Controller {
 	 * @return Response
 	 */
 	public function post_edit_info($user_id, Request $request) {
-		// dd($request);
+		// dd($request->all());
+		if ($request->hasFile('image')) {
+			$data['image'] = $request->file('image');
+			$data['name']  = 'user';
+			$data['path']  = '/image/upload';
+			Images::upload_image($data);
+			Session::put('user-image',true);
+		}
+		
 		$validate = [
 			'name'			=> 'required',
 			'email'			=> 'required|email'
 		];
 		$this->validate($request, $validate);
 
+		// check name
+		$name       = $request->input('name');
+		$user = UsersQModel::get_user_by_name($name);
+		if ($user != null && $user->id != $user_id) {
+			return redirect()->back()->withErrors('tên hiển thị bị trùng')->withInput();
+		}
+
 		// data image upload
-		if ($request->hasFile('image')) {
-			$data['image'] = $request->file('image');
-			$data['name']  = $request->input('name_login');
-			$data['path']  = '/image/users';
-			Images::upload_image($data);
+		if (Session::has('user-image')) {
+			$name  = $user->image;
+			Storage::disk('image')->copy('/upload/user.jpg', '/users/'.$name.'.jpg');
 		}
 
 		// create user
@@ -245,17 +261,19 @@ class LoginController extends Controller {
 		} else {
 			$data['gender'] = $gender;
 		}
-		UsersCModel::update_user($user_id, $data);
+		// dd($data);
+		// UsersCModel::update_user($user_id, $data);
 
 		// set category
-		UsersCategoryCModel::delete_user_category_by_user_id($user_id);
+		// UsersCategoryCModel::delete_user_category_by_user_id($user_id);
 		$categories = json_decode($request->input('category'));
+		dd($categories);
 		foreach ($categories as $category) {
 			$data = ['id_user' => $user_id, 'id_category' => $category];
 			UsersCategoryCModel::insert_user_category($data);
 		}
 		$user = UsersQModel::get_user_by_id($user_id);
 		
-		return redirect('/detail/user/'.$user->name_login)->with('success', 'Bạn đã đăng ký thành công, mời bạn đăng nhập vào hệ thống');
+		return redirect('/detail/user/'.$user->name_login)->with('success', 'Bạn đã thay đổi thông tin thành công');
 	}
 }
