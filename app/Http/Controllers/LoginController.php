@@ -10,6 +10,8 @@ use App\Http\Models\CModels\UsersCategoryCModel;
 use App\Http\Helpers\Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Session;
+use Storage;
 
 class LoginController extends Controller {
 
@@ -34,6 +36,12 @@ class LoginController extends Controller {
 	 * @return Response
 	 */
 	public function sign_up() {
+		if (!Session::has('errors')) {
+			Session::forget('user-image');
+		}
+		
+		// dd($file);
+
 		// header and footer
 		$data = [];
 		$data = CommonController::get_data_header($data);
@@ -108,6 +116,15 @@ class LoginController extends Controller {
 	 */
 	public function post_sign_up(Request $request) {
 		// dd($request->all());
+		// upload image temporary
+		if ($request->hasFile('image')) {
+			$data['image'] = $request->file('image');
+			$data['name']  = 'user';
+			$data['path']  = '/image/upload';
+			Images::upload_image($data);
+			Session::put('user-image',true);
+		}
+
 		$validate = [
 			'name_login'	=> 'required',
 			'name'			=> 'required',
@@ -137,10 +154,15 @@ class LoginController extends Controller {
 		}
 
 		// data image upload
-		$data['image'] = $request->file('image');
-		$data['name']  = $request->input('name_login');
-		$data['path']  = '/image/users';
-		Images::upload_image($data);
+		if ($request->hasFile('image')) {
+			$data['image'] = $request->file('image');
+			$data['name']  = $request->input('name_login');
+			$data['path']  = '/image/users';
+			Images::upload_image($data);
+		} else if (Session::has('user-image')) {
+			$name  = $request->input('name_login');
+			Storage::disk('image')->copy('/upload/user.jpg', '/users/'.$name.'.jpg');
+		}
 
 		// create user
 		$data = [

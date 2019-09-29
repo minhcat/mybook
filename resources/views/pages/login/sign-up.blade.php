@@ -21,7 +21,11 @@
 			<div class="header clearfix">
 				<h2>Đăng Ký</h2>
 				<div class="image">
-					<img src="image/user-default.png" class="sign-up">
+					@if (Session::has('user-image'))
+					<img src="{{ asset('image/upload/user.jpg') }}" class="sign-up">
+					@else
+					<img src="{{ asset('image/user-default.png') }}" class="sign-up">
+					@endif
 				</div>
 				<div class="col-4 col-offset-4">
 					<div class="col-10 col-offset-1">
