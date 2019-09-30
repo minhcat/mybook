@@ -35,6 +35,10 @@ Route::group(['middleware' => 'auth'], function() {
 
 	Route::post('edit_info/{user_id}', 'LoginController@post_edit_info');
 
+	Route::get('change_password', 'LoginController@change_password');
+
+	Route::post('change_password/{user_id}', 'LoginController@post_change_password');
+
 });
 
 Route::group(['prefix' => 'home'], function() {

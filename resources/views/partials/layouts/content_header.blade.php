@@ -145,6 +145,9 @@
 								<li class="clearfix">
 									<a href="{{ url('/detail/user/'.$user_login->name_login) }}">Thông tin cá nhân</a>
 								</li>
+								<li class="clearfix">
+									<a href="{{ url('/change-password') }}">Đổi mật khẩu</a>
+								</li>
 								<hr>
 								<li class="clearfix">
 									<a href="{{ url('/list/follow') }}">Truyện đang theo dõi</a>
@@ -216,6 +219,9 @@
 							<ul class="dropdown-menu menu2 user user-small">
 								<li class="clearfix">
 									<a href="{{ url('/detail/user/'.$user_login->name_login) }}">Thông tin cá nhân</a>
+								</li>
+								<li class="clearfix">
+									<a href="{{ url('/change-password') }}">Đổi mật khẩu</a>
 								</li>
 								<hr>
 								<li class="clearfix">

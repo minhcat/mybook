@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Storage;
+use Hash;
 
 class LoginController extends Controller {
 
@@ -83,8 +84,27 @@ class LoginController extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function change_password() {
+		// header and footer
+		$data = [];
+		$data = CommonController::get_data_header($data);
+		//user login
+		$data = CommonController::get_data_auth($data);
+
+		$data['user'] = UsersQModel::get_user_by_id(Auth::id());
+
+		// dd($data);
+
+		return view('pages.login.change-password', $data);
+	}
+
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
 	public function post_login(Request $request) {
-		dd($request->all());
+		// dd($request->all());
 		$validate = [
 			'user' => 'required',
 			'password' => 'required'
@@ -262,10 +282,10 @@ class LoginController extends Controller {
 			$data['gender'] = $gender;
 		}
 		// dd($data);
-		// UsersCModel::update_user($user_id, $data);
+		UsersCModel::update_user($user_id, $data);
 
 		// set category
-		// UsersCategoryCModel::delete_user_category_by_user_id($user_id);
+		UsersCategoryCModel::delete_user_category_by_user_id($user_id);
 		$categories = json_decode($request->input('category'));
 		dd($categories);
 		foreach ($categories as $category) {
@@ -275,5 +295,48 @@ class LoginController extends Controller {
 		$user = UsersQModel::get_user_by_id($user_id);
 		
 		return redirect('/detail/user/'.$user->name_login)->with('success', 'Bạn đã thay đổi thông tin thành công');
+	}
+
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function post_change_password($user_id, Request $request) {
+		// dd($request->all());
+		
+		$validate = [
+			'old-password'	=> 'required',
+			'new-password'	=> 'required',
+			'repassword'	=> 'required',
+			'code'			=> 'required'
+		];
+		$this->validate($request, $validate);
+
+		// check old password
+		$user = UsersQModel::get_user_by_id($user_id);
+		$old_pass = $request->input('old-password');
+		if (!Hash::check($old_pass, $user->password)) {
+			return redirect()->back()->withErrors('Mật khẩu cũ không đúng')->withInput();
+		}
+		// check repassword
+		$new_pass = $request->input('new-password');
+		$repass   = $request->input('repassword');
+		if ($new_pass != $repass) {
+			return redirect()->back()->withErrors('Mật khẩu không trùng')->withInput();
+		}
+		// check code
+		$code = $request->input('code');
+		if ($code != 'AT4G5') {
+			return redirect()->back()->withErrors('Mã xác nhận không đúng')->withInput();
+		}
+
+		// update password
+		$data = [
+			'password' => bcrypt($new_pass),
+		];
+		UsersCModel::update_user($user_id, $data);
+		
+		return redirect('/detail/user/'.$user->name_login)->with('success', 'Bạn đã thay đổi mật khẩu thành công');
 	}
 }
