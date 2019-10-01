@@ -103,6 +103,25 @@ class LoginController extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function setting() {
+		// header and footer
+		$data = [];
+		$data = CommonController::get_data_header($data);
+		//user login
+		$data = CommonController::get_data_auth($data);
+
+		$data['user'] = UsersQModel::get_user_by_id(Auth::id());
+
+		// dd($data);
+
+		return view('pages.login.setting', $data);
+	}
+
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
 	public function post_login(Request $request) {
 		// dd($request->all());
 		$validate = [

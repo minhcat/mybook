@@ -39,6 +39,10 @@ Route::group(['middleware' => 'auth'], function() {
 
 	Route::post('change_password/{user_id}', 'LoginController@post_change_password');
 
+	Route::get('setting', 'LoginController@setting');
+
+	Route::post('setting/{user_id}', 'LoginController@post_setting');
+
 });
 
 Route::group(['prefix' => 'home'], function() {

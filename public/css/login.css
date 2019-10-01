@@ -144,6 +144,55 @@
           padding-top: 5px;
           padding-bottom: 5px;
           color: #d00; }
+    .login-form .main .setting hr, .sign-up-form .main .setting hr {
+      margin-top: 10px; }
+    .login-form .main .setting .set-label, .sign-up-form .main .setting .set-label {
+      margin-top: 25px; }
+    .login-form .main .setting .notification table, .login-form .main .setting .private table, .sign-up-form .main .setting .notification table, .sign-up-form .main .setting .private table {
+      width: 100%; }
+      .login-form .main .setting .notification table tr td, .login-form .main .setting .private table tr td, .sign-up-form .main .setting .notification table tr td, .sign-up-form .main .setting .private table tr td {
+        padding: 5px; }
+        .login-form .main .setting .notification table tr td #cover, .login-form .main .setting .private table tr td #cover, .sign-up-form .main .setting .notification table tr td #cover, .sign-up-form .main .setting .private table tr td #cover {
+          width: 80px;
+          height: 40px;
+          margin: 0 auto;
+          position: relative; }
+          .login-form .main .setting .notification table tr td #cover #checkbox, .login-form .main .setting .private table tr td #cover #checkbox, .sign-up-form .main .setting .notification table tr td #cover #checkbox, .sign-up-form .main .setting .private table tr td #cover #checkbox {
+            margin: 0px;
+            width: 100%;
+            height: 50px;
+            cursor: pointer;
+            opacity: 0;
+            position: relative;
+            z-index: 3; }
+          .login-form .main .setting .notification table tr td #cover #checkbox:active ~ #knob, .login-form .main .setting .private table tr td #cover #checkbox:active ~ #knob, .sign-up-form .main .setting .notification table tr td #cover #checkbox:active ~ #knob, .sign-up-form .main .setting .private table tr td #cover #checkbox:active ~ #knob {
+            left: 48px; }
+          .login-form .main .setting .notification table tr td #cover #checkbox:checked ~ #knob, .login-form .main .setting .private table tr td #cover #checkbox:checked ~ #knob, .sign-up-form .main .setting .notification table tr td #cover #checkbox:checked ~ #knob, .sign-up-form .main .setting .private table tr td #cover #checkbox:checked ~ #knob {
+            left: 48px; }
+          .login-form .main .setting .notification table tr td #cover #checkbox:checked ~ #bar, .login-form .main .setting .private table tr td #cover #checkbox:checked ~ #bar, .sign-up-form .main .setting .notification table tr td #cover #checkbox:checked ~ #bar, .sign-up-form .main .setting .private table tr td #cover #checkbox:checked ~ #bar {
+            background-color: #d1d1d1; }
+          .login-form .main .setting .notification table tr td #cover #checkbox:checked:active ~ #knob, .login-form .main .setting .private table tr td #cover #checkbox:checked:active ~ #knob, .sign-up-form .main .setting .notification table tr td #cover #checkbox:checked:active ~ #knob, .sign-up-form .main .setting .private table tr td #cover #checkbox:checked:active ~ #knob {
+            left: 8px; }
+          .login-form .main .setting .notification table tr td #cover #bar, .login-form .main .setting .private table tr td #cover #bar, .sign-up-form .main .setting .notification table tr td #cover #bar, .sign-up-form .main .setting .private table tr td #cover #bar {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: #3dd897;
+            z-index: 1;
+            border-radius: 50px; }
+          .login-form .main .setting .notification table tr td #cover #knob, .login-form .main .setting .private table tr td #cover #knob, .sign-up-form .main .setting .notification table tr td #cover #knob, .sign-up-form .main .setting .private table tr td #cover #knob {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 25px;
+            height: 25px;
+            background-color: #fff;
+            border-radius: 50%;
+            transition: left 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28), margin-left 0.3s ease, width 0.3s ease, border-radius 0.3s ease;
+            box-shadow: 0px 1px 1px #7d7d7d;
+            z-index: 2; }
   .login-form .sidebar, .sign-up-form .sidebar {
     width: 360px;
     float: left;
