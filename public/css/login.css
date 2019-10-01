@@ -144,6 +144,9 @@
           padding-top: 5px;
           padding-bottom: 5px;
           color: #d00; }
+    .login-form .main .setting .group, .sign-up-form .main .setting .group {
+      padding-left: 15px;
+      padding-right: 15px; }
     .login-form .main .setting hr, .sign-up-form .main .setting hr {
       margin-top: 10px; }
     .login-form .main .setting .set-label, .sign-up-form .main .setting .set-label {
@@ -153,8 +156,8 @@
       .login-form .main .setting .notification table tr td, .login-form .main .setting .private table tr td, .sign-up-form .main .setting .notification table tr td, .sign-up-form .main .setting .private table tr td {
         padding: 5px; }
         .login-form .main .setting .notification table tr td #cover, .login-form .main .setting .private table tr td #cover, .sign-up-form .main .setting .notification table tr td #cover, .sign-up-form .main .setting .private table tr td #cover {
-          width: 80px;
-          height: 40px;
+          width: 60px;
+          height: 30px;
           margin: 0 auto;
           position: relative; }
           .login-form .main .setting .notification table tr td #cover #checkbox, .login-form .main .setting .private table tr td #cover #checkbox, .sign-up-form .main .setting .notification table tr td #cover #checkbox, .sign-up-form .main .setting .private table tr td #cover #checkbox {
@@ -166,9 +169,9 @@
             position: relative;
             z-index: 3; }
           .login-form .main .setting .notification table tr td #cover #checkbox:active ~ #knob, .login-form .main .setting .private table tr td #cover #checkbox:active ~ #knob, .sign-up-form .main .setting .notification table tr td #cover #checkbox:active ~ #knob, .sign-up-form .main .setting .private table tr td #cover #checkbox:active ~ #knob {
-            left: 48px; }
+            left: 35px; }
           .login-form .main .setting .notification table tr td #cover #checkbox:checked ~ #knob, .login-form .main .setting .private table tr td #cover #checkbox:checked ~ #knob, .sign-up-form .main .setting .notification table tr td #cover #checkbox:checked ~ #knob, .sign-up-form .main .setting .private table tr td #cover #checkbox:checked ~ #knob {
-            left: 48px; }
+            left: 35px; }
           .login-form .main .setting .notification table tr td #cover #checkbox:checked ~ #bar, .login-form .main .setting .private table tr td #cover #checkbox:checked ~ #bar, .sign-up-form .main .setting .notification table tr td #cover #checkbox:checked ~ #bar, .sign-up-form .main .setting .private table tr td #cover #checkbox:checked ~ #bar {
             background-color: #d1d1d1; }
           .login-form .main .setting .notification table tr td #cover #checkbox:checked:active ~ #knob, .login-form .main .setting .private table tr td #cover #checkbox:checked:active ~ #knob, .sign-up-form .main .setting .notification table tr td #cover #checkbox:checked:active ~ #knob, .sign-up-form .main .setting .private table tr td #cover #checkbox:checked:active ~ #knob {
@@ -184,15 +187,85 @@
             border-radius: 50px; }
           .login-form .main .setting .notification table tr td #cover #knob, .login-form .main .setting .private table tr td #cover #knob, .sign-up-form .main .setting .notification table tr td #cover #knob, .sign-up-form .main .setting .private table tr td #cover #knob {
             position: absolute;
-            top: 8px;
+            top: 5px;
             left: 8px;
-            width: 25px;
-            height: 25px;
+            width: 20px;
+            height: 20px;
             background-color: #fff;
             border-radius: 50%;
             transition: left 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28), margin-left 0.3s ease, width 0.3s ease, border-radius 0.3s ease;
             box-shadow: 0px 1px 1px #7d7d7d;
             z-index: 2; }
+        .login-form .main .setting .notification table tr td.header, .login-form .main .setting .private table tr td.header, .sign-up-form .main .setting .notification table tr td.header, .sign-up-form .main .setting .private table tr td.header {
+          text-align: left;
+          width: 300px; }
+        .login-form .main .setting .notification table tr td.select, .login-form .main .setting .private table tr td.select, .sign-up-form .main .setting .notification table tr td.select, .sign-up-form .main .setting .private table tr td.select {
+          width: 320px;
+          color: #a5a5a5; }
+        .login-form .main .setting .notification table tr td .dropdown button, .login-form .main .setting .private table tr td .dropdown button, .sign-up-form .main .setting .notification table tr td .dropdown button, .sign-up-form .main .setting .private table tr td .dropdown button {
+          background-image: unset;
+          text-shadow: unset;
+          box-shadow: unset;
+          border: unset; }
+        .login-form .main .setting .notification table tr td .dropdown.open button, .login-form .main .setting .private table tr td .dropdown.open button, .sign-up-form .main .setting .notification table tr td .dropdown.open button, .sign-up-form .main .setting .private table tr td .dropdown.open button {
+          background-color: #265a88; }
+        .login-form .main .setting .notification table tr td .dropdown ul.dropdown-menu, .login-form .main .setting .private table tr td .dropdown ul.dropdown-menu, .sign-up-form .main .setting .notification table tr td .dropdown ul.dropdown-menu, .sign-up-form .main .setting .private table tr td .dropdown ul.dropdown-menu {
+          padding-top: 5px;
+          padding-bottom: 5px; }
+          .login-form .main .setting .notification table tr td .dropdown ul.dropdown-menu li, .login-form .main .setting .private table tr td .dropdown ul.dropdown-menu li, .sign-up-form .main .setting .notification table tr td .dropdown ul.dropdown-menu li, .sign-up-form .main .setting .private table tr td .dropdown ul.dropdown-menu li {
+            padding-left: 10px;
+            padding-right: 10px; }
+            .login-form .main .setting .notification table tr td .dropdown ul.dropdown-menu li:hover, .login-form .main .setting .private table tr td .dropdown ul.dropdown-menu li:hover, .sign-up-form .main .setting .notification table tr td .dropdown ul.dropdown-menu li:hover, .sign-up-form .main .setting .private table tr td .dropdown ul.dropdown-menu li:hover {
+              background-color: #337ab7;
+              color: #fff;
+              cursor: pointer; }
+    .login-form .main .setting .block, .sign-up-form .main .setting .block {
+      background-color: #eee;
+      padding: 10px;
+      padding-top: 5px;
+      border-radius: 10px;
+      overflow: auto;
+      height: 240px; }
+      .login-form .main .setting .block .user, .sign-up-form .main .setting .block .user {
+        cursor: pointer;
+        background-color: #d20;
+        padding: 5px;
+        border-radius: 5px;
+        margin-right: 5px;
+        margin-top: 5px;
+        float: left;
+        color: #fff; }
+        .login-form .main .setting .block .user .cancel-block, .sign-up-form .main .setting .block .user .cancel-block {
+          display: none;
+          cursor: pointer;
+          background-color: #c20;
+          color: #fff;
+          border-radius: 10px;
+          padding: 2px 6px; }
+          .login-form .main .setting .block .user .cancel-block.active, .sign-up-form .main .setting .block .user .cancel-block.active {
+            display: block; }
+    .login-form .main .setting .line, .sign-up-form .main .setting .line {
+      margin-top: 15px;
+      margin-bottom: 15px; }
+      .login-form .main .setting .line button, .sign-up-form .main .setting .line button {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        height: 44px; }
+      .login-form .main .setting .line button.submit, .sign-up-form .main .setting .line button.submit {
+        background-color: #d93330;
+        border-color: #d93330;
+        color: #fff; }
+        .login-form .main .setting .line button.submit:hover, .login-form .main .setting .line button.submit:focus, .sign-up-form .main .setting .line button.submit:hover, .sign-up-form .main .setting .line button.submit:focus {
+          background-color: #ee3f3a;
+          border-color: #d9302c; }
+      .login-form .main .setting .line button.reset, .sign-up-form .main .setting .line button.reset {
+        background-color: #f8f8f8;
+        border-color: #d5d5d5;
+        color: #444;
+        box-shadow: unset; }
+        .login-form .main .setting .line button.reset:hover, .login-form .main .setting .line button.reset:focus, .sign-up-form .main .setting .line button.reset:hover, .sign-up-form .main .setting .line button.reset:focus {
+          background-color: #fefefe;
+          border-color: #e5e5e5; }
   .login-form .sidebar, .sign-up-form .sidebar {
     width: 360px;
     float: left;
