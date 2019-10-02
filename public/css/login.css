@@ -169,26 +169,26 @@
             position: relative;
             z-index: 3; }
           .login-form .main .setting .notification table tr td #cover #checkbox:active ~ #knob, .login-form .main .setting .private table tr td #cover #checkbox:active ~ #knob, .sign-up-form .main .setting .notification table tr td #cover #checkbox:active ~ #knob, .sign-up-form .main .setting .private table tr td #cover #checkbox:active ~ #knob {
-            left: 35px; }
-          .login-form .main .setting .notification table tr td #cover #checkbox:checked ~ #knob, .login-form .main .setting .private table tr td #cover #checkbox:checked ~ #knob, .sign-up-form .main .setting .notification table tr td #cover #checkbox:checked ~ #knob, .sign-up-form .main .setting .private table tr td #cover #checkbox:checked ~ #knob {
-            left: 35px; }
-          .login-form .main .setting .notification table tr td #cover #checkbox:checked ~ #bar, .login-form .main .setting .private table tr td #cover #checkbox:checked ~ #bar, .sign-up-form .main .setting .notification table tr td #cover #checkbox:checked ~ #bar, .sign-up-form .main .setting .private table tr td #cover #checkbox:checked ~ #bar {
-            background-color: #d1d1d1; }
-          .login-form .main .setting .notification table tr td #cover #checkbox:checked:active ~ #knob, .login-form .main .setting .private table tr td #cover #checkbox:checked:active ~ #knob, .sign-up-form .main .setting .notification table tr td #cover #checkbox:checked:active ~ #knob, .sign-up-form .main .setting .private table tr td #cover #checkbox:checked:active ~ #knob {
             left: 8px; }
+          .login-form .main .setting .notification table tr td #cover #checkbox:checked ~ #knob, .login-form .main .setting .private table tr td #cover #checkbox:checked ~ #knob, .sign-up-form .main .setting .notification table tr td #cover #checkbox:checked ~ #knob, .sign-up-form .main .setting .private table tr td #cover #checkbox:checked ~ #knob {
+            left: 8px; }
+          .login-form .main .setting .notification table tr td #cover #checkbox:checked ~ #bar, .login-form .main .setting .private table tr td #cover #checkbox:checked ~ #bar, .sign-up-form .main .setting .notification table tr td #cover #checkbox:checked ~ #bar, .sign-up-form .main .setting .private table tr td #cover #checkbox:checked ~ #bar {
+            background-color: #3dd897; }
+          .login-form .main .setting .notification table tr td #cover #checkbox:checked:active ~ #knob, .login-form .main .setting .private table tr td #cover #checkbox:checked:active ~ #knob, .sign-up-form .main .setting .notification table tr td #cover #checkbox:checked:active ~ #knob, .sign-up-form .main .setting .private table tr td #cover #checkbox:checked:active ~ #knob {
+            left: 35px; }
           .login-form .main .setting .notification table tr td #cover #bar, .login-form .main .setting .private table tr td #cover #bar, .sign-up-form .main .setting .notification table tr td #cover #bar, .sign-up-form .main .setting .private table tr td #cover #bar {
             position: absolute;
             top: 0px;
             left: 0px;
             right: 0px;
             bottom: 0px;
-            background-color: #3dd897;
+            background-color: #d1d1d1;
             z-index: 1;
             border-radius: 50px; }
           .login-form .main .setting .notification table tr td #cover #knob, .login-form .main .setting .private table tr td #cover #knob, .sign-up-form .main .setting .notification table tr td #cover #knob, .sign-up-form .main .setting .private table tr td #cover #knob {
             position: absolute;
             top: 5px;
-            left: 8px;
+            left: 35px;
             width: 20px;
             height: 20px;
             background-color: #fff;

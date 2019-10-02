@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Helpers\Images;
 use App\Http\Models\QModels\UsersQModel;
+use App\Http\Models\QModels\UsersSettingQModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\CModels\UsersCModel;
 use App\Http\Models\CModels\UsersCategoryCModel;
+use App\Http\Models\CModels\UsersSettingCModel;
 use App\Http\Helpers\Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -111,6 +113,18 @@ class LoginController extends Controller {
 		$data = CommonController::get_data_auth($data);
 
 		$data['user'] = UsersQModel::get_user_by_id(Auth::id());
+
+		$data['setting'] = UsersSettingQModel::get_user_setting_by_user_id(Auth::id());
+
+		if ($data['setting'] == null) {
+			$data['setting'] = new \stdClass;
+			$data['setting']->noti_admin = 1;
+			$data['setting']->noti_user  = 1;
+			$data['setting']->noti_item  = 1;
+			$data['setting']->info       = 'all';
+			$data['setting']->tag        = 'all';
+			$data['setting']->friend     = 'all';
+		}
 
 		// dd($data);
 

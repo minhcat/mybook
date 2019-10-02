@@ -31,7 +31,7 @@
 							<td>Nhận thông báo từ ban quản trị</td>
 							<td>
 								<div id="cover">
-									<input type="checkbox" id="checkbox" name="noti-admin">
+									<input type="checkbox" id="checkbox" name="noti-admin" {{ ($setting->noti_admin == 1) ? 'checked' : '' }}>
 									<div id="bar"></div>
 									<div id="knob"></div>
 								</div>
@@ -41,7 +41,7 @@
 							<td>Nhận thông báo từ người dùng tương tác</td>
 							<td>
 								<div id="cover">
-									<input type="checkbox" id="checkbox" name="noti-user">
+									<input type="checkbox" id="checkbox" name="noti-user"{{ ($setting->noti_user == 1) ? 'checked' : '' }}>
 									<div id="bar"></div>
 									<div id="knob"></div>
 								</div>
@@ -51,7 +51,7 @@
 							<td>Nhận thông báo từ đối tượng đang theo dõi</td>
 							<td>
 								<div id="cover">
-									<input type="checkbox" id="checkbox" name="noti-item">
+									<input type="checkbox" id="checkbox" name="noti-item"{{ ($setting->noti_item == 1) ? 'checked' : '' }}>
 									<div id="bar"></div>
 									<div id="knob"></div>
 								</div>
@@ -67,10 +67,20 @@
 					<table>
 						<tr class="info">
 							<td class="header">Ai có thể xem thông tin cá nhân của bạn</td>
-							<td class="select">Tất cả mọi người</td>
+							<td class="select">
+								@if ($setting->info == 'all')
+								Tất cả mọi người
+								@elseif ($setting->info == 'friends-of-friends')
+								Bạn của bạn
+								@elseif ($setting->info == 'friends')
+								Bạn bè
+								@elseif ($setting->info == 'only-me')
+								Chỉ mình tôi
+								@endif
+							</td>
 							<td>
 								<div class="dropdown">
-									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">tùy chọn <span class="caret"></span></button>
+									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">thay đổi <span class="caret"></span></button>
 									<ul class="dropdown-menu">
 										<li data-target="info" data-value="all">Tất cả mọi người</li>
 										<li data-target="info" data-value="friends-of-friends">Bạn của bạn</li>
@@ -82,10 +92,20 @@
 						</tr>
 						<tr class="tag">
 							<td class="header">Ai có thể tag bạn trong bình luận</td>
-							<td class="select">Tất cả mọi người</td>
+							<td class="select">
+								@if ($setting->tag == 'all')
+								Tất cả mọi người
+								@elseif ($setting->tag == 'friends-of-friends')
+								Bạn của bạn
+								@elseif ($setting->tag == 'friends')
+								Bạn bè
+								@elseif ($setting->tag == 'only-me')
+								Chỉ mình tôi
+								@endif
+							</td>
 							<td>
 								<div class="dropdown">
-									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">tùy chọn <span class="caret"></span></button>
+									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">thay đổi <span class="caret"></span></button>
 									<ul class="dropdown-menu">
 										<li data-target="tag" data-value="all">Tất cả mọi người</li>
 										<li data-target="tag" data-value="friends-of-friends">Bạn của bạn</li>
@@ -97,10 +117,20 @@
 						</tr>
 						<tr class="friend">
 							<td class="header">Ai có thể gữi lời kết bạn đến bạn</td>
-							<td class="select">Tất cả mọi người</td>
+							<td class="select">
+								@if ($setting->friend == 'all')
+								Tất cả mọi người
+								@elseif ($setting->friend == 'friends-of-friends')
+								Bạn của bạn
+								@elseif ($setting->friend == 'friends')
+								Bạn bè
+								@elseif ($setting->friend == 'only-me')
+								Chỉ mình tôi
+								@endif
+							</td>
 							<td>
 								<div class="dropdown">
-									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">tùy chọn <span class="caret"></span></button>
+									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">thay đổi <span class="caret"></span></button>
 									<ul class="dropdown-menu">
 										<li data-target="friend" data-value="all">Tất cả mọi người</li>
 										<li data-target="friend" data-value="friends-of-friends">Bạn của bạn</li>
@@ -111,25 +141,9 @@
 							</td>
 						</tr>
 					</table>
-					<input id="info" type="hidden" name="info-me">
-					<input id="tag" type="hidden" name="tag-me">
-					<input id="friend" type="hidden" name="add-friend">
-				</div>
-			</div>
-			<div class="group">
-				<div class="set-label"><h4><strong>Chặn</strong></h4></div>
-				<hr>
-				<div class="block">
-					<div class="user active">Nguyễn Võ <span class="cancel-block open-modal" data-modal="#modalblock">&times;</span></div>
-					<div class="user">Võ Thị Quyên <span class="cancel-block open-modal" data-modal="#modalblock">&times;</span></div>
-					<div class="user">Trương Tuấn Long Nhân <span class="cancel-block open-modal" data-modal="#modalblock">&times;</span></div>
-					<div class="user">Minh Lê <span class="cancel-block open-modal" data-modal="#modalblock">&times;</span></div>
-					<div class="user">Nguyễn Võ <span class="cancel-block open-modal" data-modal="#modalblock">&times;</span></div>
-					<div class="user">Võ Thị Quyên <span class="cancel-block open-modal" data-modal="#modalblock">&times;</span></div>
-					<div class="user">Trương Tuấn Long Nhân <span class="cancel-block open-modal" data-modal="#modalblock">&times;</span></div>
-					<div class="user">Minh Lê <span class="cancel-block open-modal" data-modal="#modalblock">&times;</span></div>
-					<div class="user">Lose Man <span class="cancel-block open-modal" data-modal="#modalblock">&times;</span></div>
-					<div class="user">Cyber Archfiend <span class="cancel-block open-modal" data-modal="#modalblock">&times;</span></div>
+					<input id="info" type="hidden" name="info-me" value="{{ $setting->info }}">
+					<input id="tag" type="hidden" name="tag-me" value="{{ $setting->tag }}">
+					<input id="friend" type="hidden" name="add-friend" value="{{ $setting->friend }}">
 				</div>
 			</div>
 			<div class="line clearfix submit">
