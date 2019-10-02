@@ -23,7 +23,7 @@
 		@endif
 		<form class="setting">
 			<div class="group">
-				<div class="set-label"><h4>Thông Báo</h4></div>
+				<div class="set-label"><h4><strong>Thông Báo</strong></h4></div>
 				<hr>
 				<div class="notification">
 					<table>
@@ -31,7 +31,7 @@
 							<td>Nhận thông báo từ ban quản trị</td>
 							<td>
 								<div id="cover">
-									<input type="checkbox" id="checkbox">
+									<input type="checkbox" id="checkbox" name="noti-admin">
 									<div id="bar"></div>
 									<div id="knob"></div>
 								</div>
@@ -41,7 +41,7 @@
 							<td>Nhận thông báo từ người dùng tương tác</td>
 							<td>
 								<div id="cover">
-									<input type="checkbox" id="checkbox">
+									<input type="checkbox" id="checkbox" name="noti-user">
 									<div id="bar"></div>
 									<div id="knob"></div>
 								</div>
@@ -51,7 +51,7 @@
 							<td>Nhận thông báo từ đối tượng đang theo dõi</td>
 							<td>
 								<div id="cover">
-									<input type="checkbox" id="checkbox">
+									<input type="checkbox" id="checkbox" name="noti-item">
 									<div id="bar"></div>
 									<div id="knob"></div>
 								</div>
@@ -61,63 +61,66 @@
 				</div>
 			</div>
 			<div class="group">
-				<div class="set-label"><h4>Quyền Riêng Tư</h4></div>
+				<div class="set-label"><h4><strong>Quyền Riêng Tư</strong></h4></div>
 				<hr>
 				<div class="private">
 					<table>
-						<tr>
+						<tr class="info">
 							<td class="header">Ai có thể xem thông tin cá nhân của bạn</td>
 							<td class="select">Tất cả mọi người</td>
 							<td>
 								<div class="dropdown">
 									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">tùy chọn <span class="caret"></span></button>
 									<ul class="dropdown-menu">
-										<li>Tất cả mọi người</li>
-										<li>Bạn của bạn</li>
-										<li>Bạn bè</li>
-										<li>Chỉ mình tôi</li>
+										<li data-target="info" data-value="all">Tất cả mọi người</li>
+										<li data-target="info" data-value="friends-of-friends">Bạn của bạn</li>
+										<li data-target="info" data-value="friends">Bạn bè</li>
+										<li data-target="info" data-value="only-me">Chỉ mình tôi</li>
 									</ul>
 								</div>
 							</td>
 						</tr>
-						<tr>
+						<tr class="tag">
 							<td class="header">Ai có thể tag bạn trong bình luận</td>
 							<td class="select">Tất cả mọi người</td>
 							<td>
 								<div class="dropdown">
 									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">tùy chọn <span class="caret"></span></button>
 									<ul class="dropdown-menu">
-										<li>Tất cả mọi người</li>
-										<li>Bạn của bạn</li>
-										<li>Bạn bè</li>
-										<li>Chỉ mình tôi</li>
+										<li data-target="tag" data-value="all">Tất cả mọi người</li>
+										<li data-target="tag" data-value="friends-of-friends">Bạn của bạn</li>
+										<li data-target="tag" data-value="friends">Bạn bè</li>
+										<li data-target="tag" data-value="only-me">Chỉ mình tôi</li>
 									</ul>
 								</div>
 							</td>
 						</tr>
-						<tr>
+						<tr class="friend">
 							<td class="header">Ai có thể gữi lời kết bạn đến bạn</td>
 							<td class="select">Tất cả mọi người</td>
 							<td>
 								<div class="dropdown">
 									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">tùy chọn <span class="caret"></span></button>
 									<ul class="dropdown-menu">
-										<li>Tất cả mọi người</li>
-										<li>Bạn của bạn</li>
-										<li>Bạn bè</li>
-										<li>Chỉ mình tôi</li>
+										<li data-target="friend" data-value="all">Tất cả mọi người</li>
+										<li data-target="friend" data-value="friends-of-friends">Bạn của bạn</li>
+										<li data-target="friend" data-value="friends">Bạn bè</li>
+										<li data-target="friend" data-value="only-me">Chỉ mình tôi</li>
 									</ul>
 								</div>
 							</td>
 						</tr>
 					</table>
+					<input id="info" type="hidden" name="info-me">
+					<input id="tag" type="hidden" name="tag-me">
+					<input id="friend" type="hidden" name="add-friend">
 				</div>
 			</div>
 			<div class="group">
-				<div class="set-label"><h4>Chặn</h4></div>
+				<div class="set-label"><h4><strong>Chặn</strong></h4></div>
 				<hr>
 				<div class="block">
-					<div class="user">Nguyễn Võ <span class="cancel-block open-modal" data-modal="#modalblock">&times;</span></div>
+					<div class="user active">Nguyễn Võ <span class="cancel-block open-modal" data-modal="#modalblock">&times;</span></div>
 					<div class="user">Võ Thị Quyên <span class="cancel-block open-modal" data-modal="#modalblock">&times;</span></div>
 					<div class="user">Trương Tuấn Long Nhân <span class="cancel-block open-modal" data-modal="#modalblock">&times;</span></div>
 					<div class="user">Minh Lê <span class="cancel-block open-modal" data-modal="#modalblock">&times;</span></div>
@@ -135,4 +138,8 @@
 			</div>
 		</form>
 	</div>
+@endsection
+
+@section('define-footer')
+	<script type="text/javascript" src="{{ asset('js/login.js') }}"></script>
 @endsection

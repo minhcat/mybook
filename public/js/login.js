@@ -96,4 +96,16 @@ $(document).ready(function() {
 			$('form.sign-up').submit();
 		}
 	});
+	$('form.setting .private table ul li').click(function() {
+		var value = $(this).data('value');
+		var target = $(this).data('target');
+		var text = $(this).text();
+
+		$(this).parents('.private').find('input#'+target).val(value);
+		$(this).parents('.private').find('.'+target+' .select').text(text);
+	});
+	$('form.setting .block .user').click(function() {
+		$(this).parent().find('.user').removeClass('active');
+		$(this).addClass('active');
+	});
 });

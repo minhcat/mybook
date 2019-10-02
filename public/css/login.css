@@ -228,7 +228,7 @@
       height: 240px; }
       .login-form .main .setting .block .user, .sign-up-form .main .setting .block .user {
         cursor: pointer;
-        background-color: #d20;
+        background-color: #d42;
         padding: 5px;
         border-radius: 5px;
         margin-right: 5px;
@@ -238,12 +238,14 @@
         .login-form .main .setting .block .user .cancel-block, .sign-up-form .main .setting .block .user .cancel-block {
           display: none;
           cursor: pointer;
-          background-color: #c20;
+          background-color: #b20;
           color: #fff;
           border-radius: 10px;
           padding: 2px 6px; }
-          .login-form .main .setting .block .user .cancel-block.active, .sign-up-form .main .setting .block .user .cancel-block.active {
-            display: block; }
+        .login-form .main .setting .block .user.active, .sign-up-form .main .setting .block .user.active {
+          background-color: #c20; }
+          .login-form .main .setting .block .user.active .cancel-block, .sign-up-form .main .setting .block .user.active .cancel-block {
+            display: initial; }
     .login-form .main .setting .line, .sign-up-form .main .setting .line {
       margin-top: 15px;
       margin-bottom: 15px; }
