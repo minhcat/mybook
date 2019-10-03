@@ -21,7 +21,8 @@
 			
 		</div>
 		@endif
-		<form class="setting">
+		<form class="setting" method="POST" action="{{ url('/setting/'.$user->id) }}">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="group">
 				<div class="set-label"><h4><strong>Thông Báo</strong></h4></div>
 				<hr>
@@ -41,7 +42,7 @@
 							<td>Nhận thông báo từ người dùng tương tác</td>
 							<td>
 								<div id="cover">
-									<input type="checkbox" id="checkbox" name="noti-user"{{ ($setting->noti_user == 1) ? 'checked' : '' }}>
+									<input type="checkbox" id="checkbox" name="noti-user" {{ ($setting->noti_user == 1) ? 'checked' : '' }}>
 									<div id="bar"></div>
 									<div id="knob"></div>
 								</div>
@@ -51,7 +52,7 @@
 							<td>Nhận thông báo từ đối tượng đang theo dõi</td>
 							<td>
 								<div id="cover">
-									<input type="checkbox" id="checkbox" name="noti-item"{{ ($setting->noti_item == 1) ? 'checked' : '' }}>
+									<input type="checkbox" id="checkbox" name="noti-item" {{ ($setting->noti_item == 1) ? 'checked' : '' }}>
 									<div id="bar"></div>
 									<div id="knob"></div>
 								</div>
@@ -147,7 +148,7 @@
 				</div>
 			</div>
 			<div class="line clearfix submit">
-				<div class="col-md-6"><button type="button" class="submit form-control">Thay Đổi</button></div>
+				<div class="col-md-6"><button type="submit" class="submit form-control">Thay Đổi</button></div>
 				<div class="col-md-6"><button type="reset" class="reset form-control">Nhập lại</button></div>
 			</div>
 		</form>

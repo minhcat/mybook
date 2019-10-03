@@ -372,4 +372,30 @@ class LoginController extends Controller {
 		
 		return redirect('/detail/user/'.$user->name_login)->with('success', 'Bạn đã thay đổi mật khẩu thành công');
 	}
+
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function post_setting($user_id, Request $request) {
+		// dd($request->all());
+		$data = [
+			'noti_admin' => ($request->input('noti-admin') == null) ? 0 : 1,
+			'noti_user'  => ($request->input('noti-user') == null) ? 0 : 1,
+			'noti_item'  => ($request->input('noti-item') == null) ? 0 : 1,
+			'info'       => $request->input('info-me'),
+			'tag'        => $request->input('tag-me'),
+			'friend'     => $request->input('add-friend'),
+		];
+		// dd($data);
+		$user_setting = UsersSettingQModel::get_user_setting_by_user_id($user_id);
+		if ($user_setting == null) {
+			$data['id_user'] = $user_id;
+			UsersSettingCModel::insert_user_setting($data);
+		} else {
+			UsersSettingCModel::update_user_setting($user_setting->id, $data);
+		}
+		return redirect()->back()->with('success', 'Thay đổi thành công');
+	}
 }
