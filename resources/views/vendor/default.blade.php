@@ -15,7 +15,7 @@
 			</li> --}}
 			@if ($i == $paginator->currentPage())
 				<li class="active"><span>{{ $i }}</span></li>
-			@elseif (($i == $paginator->currentPage() + 1 || $i == $paginator->currentPage() + 2 || $i == $paginator->currentPage() - 1) || $i == $paginator->lastPage() || $i == 1))
+			@elseif (($i == $paginator->currentPage() + 1 || $i == $paginator->currentPage() + 2 || $i == $paginator->currentPage() - 1) || $i == $paginator->lastPage() || $i == 1)
 				<li><a href="{{ $paginator->url($i) }}">{{ $i }}</a></li>
 			@elseif ($i == $paginator->lastPage() - 1 || $i == $paginator->currentPage() - 2)
 				<li class="disabled"><span><i class="fa fa-ellipsis-h"></i></span></li>

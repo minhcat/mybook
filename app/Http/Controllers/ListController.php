@@ -50,12 +50,13 @@ class ListController extends Controller {
 
 		$data['books'] = BooksQModel::get_books_list_category($category, Constants::BOOKS_ITEM_LIST);
 		foreach ($data['books'] as $key => $book) {
-			$book = Helper::add_category_from_book($book);
+			$book = Helper::add_category_for_book($book);
 			$book = Helper::short_description($book, 250);
 		}
-		$data['category'] = CategoriesQModel::get_category_by_name($category);
+		$data['_category'] = CategoriesQModel::get_category_by_name($category);
 
 		// dd($data);
+		$data['page'] = 'category';
 		Cookie::queue('name','value',60);
 		return view('pages.list.list-category', $data);
 	}
@@ -84,7 +85,7 @@ class ListController extends Controller {
 		else
 			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
 		foreach ($data['books'] as $key => $book) {
-			$book = Helper::add_category_from_book($book);
+			$book = Helper::add_category_for_book($book);
 			$book = Helper::short_description($book, 250);
 		}
 
@@ -122,6 +123,7 @@ class ListController extends Controller {
 				}
 			}
 		}
+		$data['page'] = 'status';
 
 		return view('pages.list.list-completed', $data);
 	}
@@ -199,6 +201,7 @@ class ListController extends Controller {
 
 		$user_id = 1;
 		$data['notifications'] = NotificationsBModel::get_notifications_list($user_id);
+		$data['page'] = 'notification';
 		// dd($data);
 		return view('pages.list.list-notification', $data);
 	}
@@ -337,6 +340,7 @@ class ListController extends Controller {
 
 		$data['status'] = Constants::STATUS_PROCESS;
 		$data['books']  = BooksQModel::get_books_list_status(Constants::STATUS_PROCESS, Constants::BOOKS_ITEM_LIST);
+		$data['page'] = 'status';
 		// dd($data);
 		return view('pages.list.list-process', $data);
 	}
@@ -365,7 +369,7 @@ class ListController extends Controller {
 		else
 			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
 		foreach ($data['books'] as $key => $book) {
-			$book = Helper::add_category_from_book($book);
+			$book = Helper::add_category_for_book($book);
 			$five_star  = BooksRateQModel::get_rate_five_star_by_book_id($book->id);
 			if ($five_star != null) {
 				$book->five_star = $five_star->number;
@@ -458,7 +462,7 @@ class ListController extends Controller {
 			$data['search'] = $search;
 			$data['books'] = $books;
 			foreach ($data['books'] as $key => $book) {
-				$book = Helper::add_category_from_book($book);
+				$book = Helper::add_category_for_book($book);
 				$book = Helper::short_description($book, 250);
 			}
 		}
@@ -499,6 +503,8 @@ class ListController extends Controller {
 				$book->new_chaps = [];
 			}
 		}
+
+		$data['page'] = 'update';
 		
 		return view('pages.list.list-update', $data);
 	}
@@ -527,7 +533,7 @@ class ListController extends Controller {
 		else
 			$data['books'] = Helper::add_background_else($data['books'], 'bg-gray', Constants::BOOKS_ITEM_LIST*($page - 1));
 		foreach ($data['books'] as $key => $book) {
-			$book = Helper::add_category_from_book($book);
+			$book = Helper::add_category_for_book($book);
 			// get book view
 			$day_view   = BooksViewQModel::get_book_view_day_by_book_id($book->id, 5, 2, 6, 2019);
 			$week_view  = BooksViewQModel::get_book_view_week_by_book_id($book->id, 2, 6, 2019);
@@ -541,7 +547,7 @@ class ListController extends Controller {
 			];
 		}
 
-		//data system sidebar
+		$data['page'] = 'view';
 		// dd($data);
 
 		return view('pages.list.list-view', $data);
@@ -565,9 +571,10 @@ class ListController extends Controller {
 
 		$data['books'] = BooksQModel::get_books_list_year($year, Constants::BOOKS_ITEM_LIST);
 		foreach ($data['books'] as $key => $book) {
-			$book = Helper::add_category_from_book($book);
+			$book = Helper::add_category_for_book($book);
 		}
-		$data['year']  = $year;
+		$data['year'] = $year;
+		$data['page'] = 'year';
 		// dd($data);
 		return view('pages.list.list-year', $data);
 	}

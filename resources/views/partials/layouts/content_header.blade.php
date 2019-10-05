@@ -41,39 +41,47 @@
 				</div>
 				<div class="collapse navbar-collapse" id="menu-left">
 					<ul class="nav navbar-nav">
-						<li class="active"><a rel="notfollow" class="page"><span class="glyphicon glyphicon-home"></span></a></li>
-						<li class="hide-xs"><a href="{{ url('/list/view') }}" class="page">Truyện Hot</a></li>
-						<li class="hide-xs"><a href="{{ url('/list/update') }}" class="page">Mới Cập Nhật</a></li>
-						<li class="dropdown">
+						<li class="{{ (isset($page) && $page == 'home') ? 'active' : '' }}"><a rel="notfollow" class="page"><span class="glyphicon glyphicon-home"></span></a></li>
+						<li class="{{ (isset($page) && $page == 'view') ? 'active' : '' }} hide-xs"><a href="{{ url('/list/view') }}" class="page">Truyện Hot</a></li>
+						<li class="{{ (isset($page) && $page == 'update') ? 'active' : '' }} hide-xs"><a href="{{ url('/list/update') }}" class="page">Mới Cập Nhật</a></li>
+						<li class="{{ (isset($page) && $page == 'category') ? 'active' : '' }} dropdown">
 							<a rel="notfollow" class="page dropdown-toggle" data-toggle="dropdown">Thể Loại <span class="caret"></span></a>
 							
 							<ul class="dropdown-menu more">
 								@foreach ($menu_categories as $group_category)
 								<li>
 									<div class="row">
-										@foreach ($group_category as $key => $category)
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 {{ ($key == 0) ? 'first' : (($key == 3) ? 'last' : 'next') }}"><a href="{{ url('/list/category/'.$category->slug) }}">{{ ucwords($category->name) }}</a></div>
+										@foreach ($group_category as $key => $cate)
+											@if (isset($_category))
+												@if ($_category->slug == $cate->slug)
+												<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 {{ ($key == 0) ? 'first' : (($key == 3) ? 'last' : 'next') }}"><a href="{{ url('/list/category/'.$cate->slug) }}" class="active">{{ ucwords($cate->name) }}</a></div>
+												@else
+												<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 {{ ($key == 0) ? 'first' : (($key == 3) ? 'last' : 'next') }}"><a href="{{ url('/list/category/'.$cate->slug) }}">{{ ucwords($cate->name) }}</a></div>
+												@endif
+											@else
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 {{ ($key == 0) ? 'first' : (($key == 3) ? 'last' : 'next') }}"><a href="{{ url('/list/category/'.$cate->slug) }}">{{ ucwords($cate->name) }}</a></div>
+											@endif
 										@endforeach
 									</div>
 								</li>
 								@endforeach
 							</ul>
 						</li>
-						<li class="dropdown hide-md">
+						<li class="{{ (isset($page) && $page == 'year') ? 'active' : '' }} dropdown hide-md">
 							<a rel="notfollow" class="page dropdown-toggle" data-toggle="dropdown">Năm Xuất Bản <span class="caret"></span></a>
 							
 							<ul class="dropdown-menu">
-								@foreach ($menu_years as $year)
-								<li><a href="{{ url('/list/year/'.$year) }}" class="page">{{ $year }}</a></li>
+								@foreach ($menu_years as $year2)
+								<li><a href="{{ url('/list/year/'.$year2) }}" class="page {{ (isset($year) && $year == $year2) ? 'active' : '' }}">{{ $year2 }}</a></li>
 								@endforeach
 							</ul>
 						</li>
-						<li class="dropdown hide-md">
+						<li class="{{ (isset($page) && $page == 'status') ? 'active' : '' }} dropdown hide-md">
 							<a rel="notfollow" class="page dropdown-toggle" data-toggle="dropdown">Tình Trạng <span class="caret"></span></a>
 							
 							<ul class="dropdown-menu">
-								<li><a href="{{ url('/list/completed') }}" class="page">Đã hoàn thành</a></li>
-								<li><a href="{{ url('/list/process') }}" class="page">Đang tiến hành</a></li>
+								<li><a href="{{ url('/list/completed') }}" class="page {{ (isset($status) && !$status) ? 'active' : '' }}">Đã hoàn thành</a></li>
+								<li><a href="{{ url('/list/process') }}" class="page {{ (isset($status) && $status) ? 'active' : '' }}">Đang tiến hành</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -94,10 +102,10 @@
 					</div>
 					@if (Auth::check())
 					<ul class="nav navbar-nav navbar-right hide-sm">
-						<li>
+						<li class="{{ (isset($page) && $page == 'notification') ? 'active' : '' }}">
 							<a rel="notfollow"  class="page dropdown-toggle" data-toggle="dropdown"><span class="fa fa-bell"></span> Thông Báo <span class="number">{{ (count($noti_seen) != 0) ? '('.count($noti_seen).')' : '' }}</span></a>
 							<ul class="dropdown-menu menu2">
-								@foreach ($notifications as $key => $notification)
+								@foreach ($menu_noti as $key => $notification)
 									@if ($key < 5)
 									<li class="clearfix">
 										@if ($notification->type == 'newchap' || $notification->type == 'coming')
@@ -169,10 +177,10 @@
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right show-sm">
-						<li>
+						<li class="{{ (isset($page) && $page == 'notification') ? 'active' : '' }}">
 							<a rel="notfollow"  class="page dropdown-toggle" data-toggle="dropdown"><span class="fa fa-bell"></span></a>
 							<ul class="dropdown-menu menu2 noti-small">
-								@foreach ($notifications as $key => $notification)
+								@foreach ($menu_noti as $key => $notification)
 									@if ($key < 5)
 									<li class="clearfix">
 										@if ($notification->type == 'newchap' || $notification->type == 'coming')
@@ -245,12 +253,12 @@
 					</ul>
 					@else
 					<ul class="nav navbar-nav navbar-right hide-sm">
-						<li><a href="{{ url('sign_up') }}" class="page"><span class="glyphicon glyphicon-user"></span> Đăng Ký</a></li>
-						<li><a href="{{ url('login') }}" class="page"><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
+						<li class="{{ (isset($page) && $page == 'sign-up') ? 'active' : '' }}"><a href="{{ url('sign_up') }}" class="page"><span class="glyphicon glyphicon-user"></span> Đăng Ký</a></li>
+						<li class="{{ (isset($page) && $page == 'login') ? 'active' : '' }}"><a href="{{ url('login') }}" class="page"><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right show-sm">
-						<li><a href="{{ url('sign_up') }}" class="page"><span class="glyphicon glyphicon-user"></span></a></li>
-						<li><a href="{{ url('login') }}" class="page"><span class="glyphicon glyphicon-log-in"></span></a></li>
+						<li class="{{ (isset($page) && $page == 'sign-up') ? 'active' : '' }}"><a href="{{ url('sign_up') }}" class="page"><span class="glyphicon glyphicon-user"></span></a></li>
+						<li class="{{ (isset($page) && $page == 'login') ? 'active' : '' }}"><a href="{{ url('login') }}" class="page"><span class="glyphicon glyphicon-log-in"></span></a></li>
 					</ul>
 					@endif
 				</div>

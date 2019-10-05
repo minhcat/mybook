@@ -176,7 +176,7 @@ class HomeController extends Controller {
 		$data['data_4']  = $data_4;
 
 		
-		
+		$data['page'] = 'home';
 		// dd($data);
 
 		return view('pages.home', $data);

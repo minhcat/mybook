@@ -30,6 +30,8 @@ class LoginController extends Controller {
 		//user login
 		$data = CommonController::get_data_auth($data);
 
+		$data['page'] = 'login';
+
 		return view('pages.login.login', $data);
 	}
 
@@ -52,6 +54,8 @@ class LoginController extends Controller {
 		$data = CommonController::get_data_auth($data);
 
 		$data['categories'] = CategoriesQModel::get_categories_all();
+
+		$data['page'] = 'sign-up';
 
 		return view('pages.login.sign-up', $data);
 	}

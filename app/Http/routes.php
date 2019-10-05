@@ -75,6 +75,8 @@ Route::group(['prefix' => 'list'], function() {
 
 	Route::get('search', 'ListController@search');
 
+	Route::get('process', 'ListController@process');
+
 	Route::get('year/{year}', 'ListController@year');
 
 	Route::get('category/{category}', 'ListController@category');
@@ -88,8 +90,6 @@ Route::group(['prefix' => 'list'], function() {
 		Route::get('notification', 'ListController@notification');
 
 		Route::get('history', 'ListController@history');
-
-		Route::get('process', 'ListController@process');
 
 	});
 	

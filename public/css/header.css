@@ -47,7 +47,7 @@
       margin-left: -15px; }
     .menu .navbar li.active {
       background-color: #22d; }
-    .menu .navbar li.open > a:hover, .menu .navbar li.open a:active, .menu .navbar li.open a:focus, .menu .navbar li.open a:visited {
+    .menu .navbar li.open > a:hover, .menu .navbar li.open a:active, .menu .navbar li.open a:focus, .menu .navbar li.open a:visited, .menu .navbar li.open a.active {
       background-color: #22d; }
     .menu .navbar li > .page {
       color: #fff; }

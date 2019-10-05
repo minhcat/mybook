@@ -6,11 +6,11 @@ blue
 @endsection
 
 @section('title-header')
-{{ ucwords($category->name) }}
+{{ ucwords($_category->name) }}
 @endsection
 
 @section('title-content')
-{{ $category->description }}
+{{ $_category->description }}
 @endsection
 {{-- end title --}}
 
@@ -19,7 +19,7 @@ blue
 	<div class="content">
 		<ul class="breadcrumb">
 			<li><a href="">Trang chủ</a></li>
-			<li class="active">Thể loại {{ strtolower($category->name) }}</li>
+			<li class="active">Thể loại {{ strtolower($_category->name) }}</li>
 		</ul>
 		<div class="list">
 			@foreach ($books as $key => $book)
@@ -89,11 +89,11 @@ blue
 					</div>
 
 					<div class="type"><strong>Thể loại:</strong> 
-						@foreach ($book->categories as $key => $category)
+						@foreach ($book->categories as $key => $cate)
 							@if ($key < count($book->categories)-1)
-							<a href="{{ url('/list/category/'.$category['slug']) }}">{{ $category['name'] }}</a>, 
+							<a href="{{ url('/list/category/'.$cate['slug']) }}">{{ $cate['name'] }}</a>, 
 							@else
-							<a href="{{ url('/list/category/'.$category['slug']) }}">{{ $category['name'] }}</a>
+							<a href="{{ url('/list/category/'.$cate['slug']) }}">{{ $cate['name'] }}</a>
 							@endif
 						@endforeach
 					</div>
