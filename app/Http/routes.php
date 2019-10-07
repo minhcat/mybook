@@ -159,6 +159,8 @@ Route::group(['prefix' => 'detail'], function () {
 
 });
 
+Route::get('admin/login', 'Admin\AdminController@login');
+
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 
 	Route::get('/', 'Admin\AdminController@set_admin');

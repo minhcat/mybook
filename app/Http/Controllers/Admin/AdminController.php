@@ -68,6 +68,15 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
+	public static function login() {
+		return view('pages.admin.login');
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
 	public static function approve_book($book_id) {
 		$data = [
 			'approved' => 1
