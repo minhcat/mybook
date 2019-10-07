@@ -19,6 +19,7 @@ use App\Http\Models\CModels\MailsCModel;
 use App\Http\Models\CModels\NotificationsAdminCModel;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Contracts\Filesystem\Factory;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -42,6 +43,24 @@ class AdminController extends Controller {
 		$data['admins']			= UsersQModel::get_users_all();
 		// dd($data);
 		return view('pages.admin.admin', $data);
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public static function set_admin() {
+		$user = UsersQModel::get_user_by_id(Auth::id());
+		if ($user->admin == 'mod') {
+			return redirect('/admin/mod');
+		} elseif ($user->admin == 'uploader') {
+			return redirect('/admin/uploader');
+		} elseif ($user->admin == 'admin') {
+			return redirect('/admin/admin');
+		} elseif ($user->admin == 'super-admin') {
+			return redirect('/admin/super-admin');
+		}
 	}
 
 	/**

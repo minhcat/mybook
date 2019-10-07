@@ -71,4 +71,18 @@ class UsersQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get user by name_login(slug)
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function check_admin($user_id) {
+		$result = DB::table('users')
+				->where('id', $user_id)
+				->whereNotNull('admin')
+				->get();
+
+		return (!empty($result)) ? true : false;
+	}
 }

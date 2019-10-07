@@ -159,7 +159,9 @@ Route::group(['prefix' => 'detail'], function () {
 
 });
 
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
+
+	Route::get('/', 'Admin\AdminController@set_admin');
 
 	Route::get('mod', 'Admin\ModController@mod');
 
