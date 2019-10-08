@@ -30,7 +30,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public static function admin() {
+	public function admin() {
 		$user_id = 16;
 		$data['user']			= UsersQModel::get_user_by_id($user_id);
 		$data['transes']		= TransBModel::get_transes_all();
@@ -50,7 +50,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public static function set_admin() {
+	public function set_admin() {
 		$user = UsersQModel::get_user_by_id(Auth::id());
 		if ($user->admin == 'mod') {
 			return redirect('/admin/mod');
@@ -68,7 +68,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public static function login() {
+	public function login() {
 		return view('pages.admin.login');
 	}
 
@@ -77,7 +77,36 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public static function approve_book($book_id) {
+	public function post_login(Request $request) {
+		$validate = [
+			'user' => 'required',
+			'password' => 'required'
+		];
+		$this->validate($request, $validate);
+
+		$user = $request->input('user');
+		$password = $request->input('password');
+		$remember = ($request->input('remember') != null) ? true : false;
+
+		if (Auth::attempt(['name_login' => $user, 'password' => $password], $remember)) {
+			$user = UsersQModel::get_user_by_id(Auth::id());
+			if ($user->admin == null) {
+				Auth::logout();
+				return redirect()->back()->with('error', 'Tài khoản đăng nhập hoặc mật khẩu không đúng');
+			} else {
+				return redirect('/admin');
+			}
+		} else {
+			return redirect()->back()->with('error', 'Tài khoản đăng nhập hoặc mật khẩu không đúng');
+		}
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function approve_book($book_id) {
 		$data = [
 			'approved' => 1
 		];
@@ -89,7 +118,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public static function approve_user($comment_report_id) {
+	public function approve_user($comment_report_id) {
 		$report_data = CommentsReportQModel::get_comment_report_by_id($comment_report_id);
 		$punish = (int)$report_data->punish[0];
 		$punish = ($report_data->punish[1] == 'd') ? $punish : (($report_data->punish[1] == 'w') ? $punish * 7 : (($report_data->punish[1] == 'm') ? $punish * 30 : 0));
@@ -108,7 +137,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public static function reply_book($book_id, $content) {
+	public function reply_book($book_id, $content) {
 		$book_id = (int)$book_id;
 		$book_approved	= BooksApprovedQModel::get_book_approved_by_book_id($book_id);
 		$book			= BooksQModel::get_book_by_id_not_approved($book_id);
@@ -135,7 +164,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public static function reply_user($user_id, $content) {
+	public function reply_user($user_id, $content) {
 		
 	}
 
@@ -144,7 +173,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public static function post_mail(Request $request) {
+	public function post_mail(Request $request) {
 		$data = [
 			'id_admin' => (int)$request->input('id_admin'),
 			'id_user'  => (int)$request->input('id_user'),
@@ -160,7 +189,7 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public static function post_noti(Request $request) {
+	public function post_noti(Request $request) {
 		//check select user or all
 		$input = $request->input('user');
 		$id_user = null;
