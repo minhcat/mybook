@@ -23,10 +23,16 @@
 					<!-- Menu toggle button -->
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="fa fa-envelope-o"></i>
-						<span class="label label-success">4</span>
+						@if (count($mails) != 0)
+						<span class="label label-success">{{ count($mails) }}</span>
+						@endif
 					</a>
 					<ul class="dropdown-menu">
-						<li class="header">Bạn có 4 tin nhắn</li>
+						@if (count($mails) == 0)
+						<li class="header">Bạn chưa có tin nhắn mới</li>
+						@else
+						<li class="header">Bạn có {{ count($mails) }} tin nhắn</li>
+						@endif
 						<li>
 							<!-- inner menu: contains the messages -->
 							<ul class="menu">
@@ -59,10 +65,17 @@
 					<!-- Menu toggle button -->
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="fa fa-bell-o"></i>
-						<span class="label label-warning">10</span>
+						@if (count($notifications) != 0)
+						<span class="label label-warning">{{ count($notifications) }}</span>
+						@endif
+
 					</a>
 					<ul class="dropdown-menu">
-						<li class="header">Bạn có 10 thông báo</li>
+						@if (count($notifications) == 0)
+						<li class="header">Bạn chưa có thông báo mới</li>
+						@else
+						<li class="header">Bạn có {{ count($notifications) }} thông báo</li>
+						@endif
 						<li>
 							<!-- Inner Menu: contains the notifications -->
 							<ul class="menu">

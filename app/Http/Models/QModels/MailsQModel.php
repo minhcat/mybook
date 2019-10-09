@@ -29,9 +29,23 @@ class MailsQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
-	public static function get_mail_by_admin_id($admin_id) {
+	public static function get_mails_by_admin_id($admin_id) {
 		$result = DB::table('mails')
 				->where('id_admin', $admin_id)
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * get author by slug
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_mails_not_seen_by_user_id($user_id) {
+		$result = DB::table('mails')
+				->where('id_user', $user_id)
+				->where('seen', 0)
 				->get();
 
 		return $result;

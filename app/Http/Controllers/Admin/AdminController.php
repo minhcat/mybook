@@ -9,6 +9,8 @@ use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\CommentsReportQModel;
 use App\Http\Models\QModels\BooksErrorQModel;
+use App\Http\Models\QModels\MailsQModel;
+use App\Http\Models\QModels\NotificationsAdminQModel;
 use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\CharactersBModel;
 use App\Http\Models\BModels\AuthorsBModel;
@@ -41,6 +43,8 @@ class AdminController extends Controller {
 		$data['books_approve']	= BooksQModel::get_books_not_approved_all();
 		$data['users_approve']	= CommentsReportQModel::get_comments_report_with_punish();
 		$data['admins']			= UsersQModel::get_users_all();
+		$data['mails']			= MailsQModel::get_mails_not_seen_by_user_id($user_id);
+		$data['notifications']	= NotificationsAdminQModel::get_notifications_not_seen_by_user_id($user_id);
 		// dd($data);
 		return view('pages.admin.admin', $data);
 	}
