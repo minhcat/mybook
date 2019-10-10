@@ -7,6 +7,8 @@ use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\UsersPunishQModel;
 use App\Http\Models\QModels\UsersBanQModel;
 use App\Http\Models\QModels\CommentsSaveQModel;
+use App\Http\Models\QModels\MailsQModel;
+use App\Http\Models\QModels\NotificationsAdminQModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\UsersBModel;
@@ -38,6 +40,8 @@ class ModController extends Controller {
 		$data['books_follow']          = BooksBModel::get_books_follow_admin($user_id);
 		$data['checkwords']            = CommentsBModel::get_checkword_with_number_comments_have();
 		$data['comments_books_follow'] = CommentsBModel::get_comments_in_books_follow($data['books_follow']);
+		$data['mails']			= MailsQModel::get_mails_not_seen_by_user_id($user_id);
+		$data['notifications']	= NotificationsAdminQModel::get_notifications_not_seen_by_user_id($user_id);
 		// dd($data);
 		return view('pages.admin.mod', $data);
 	}

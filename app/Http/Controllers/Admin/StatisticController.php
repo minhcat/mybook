@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\UsersPunishQModel;
 use App\Http\Models\QModels\UsersBanQModel;
+use App\Http\Models\QModels\MailsQModel;
+use App\Http\Models\QModels\NotificationsAdminQModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\UsersBModel;
@@ -30,6 +32,8 @@ class StatisticController extends Controller {
 		$data['like_all']			= BooksBModel::get_like_all('2019-7-24');
 		$data['follow_all']			= BooksBModel::get_follow_all('2019-7-24');
 		$data['rate_all']			= BooksBModel::get_rate_all('2019-7-25');
+		$data['mails']			= MailsQModel::get_mails_not_seen_by_user_id($user_id);
+		$data['notifications']	= NotificationsAdminQModel::get_notifications_not_seen_by_user_id($user_id);
 		// dd($data);
 		return view('pages.admin.statistic', $data);
 	}

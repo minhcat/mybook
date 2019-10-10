@@ -10,6 +10,8 @@ use App\Http\Models\QModels\UsersPunishQModel;
 use App\Http\Models\QModels\UsersBanQModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\CharactersQModel;
+use App\Http\Models\QModels\MailsQModel;
+use App\Http\Models\QModels\NotificationsAdminQModel;
 use App\Http\Models\QModels\SlidersQModel;
 use App\Http\Models\QModels\SystemQModel;
 use App\Http\Models\CModels\BooksCModel;
@@ -50,6 +52,8 @@ class SuperAdminController extends Controller {
 		$data['admins']			= UsersQModel::get_users_all();
 		$data['system']			= SystemBModel::get_variables_super_admin();
 		$data['sliders']		= SlidersQModel::get_sliders_all();
+		$data['mails']			= MailsQModel::get_mails_not_seen_by_user_id($user_id);
+		$data['notifications']	= NotificationsAdminQModel::get_notifications_not_seen_by_user_id($user_id);
 
 		$data['system']['list-type-topic'] = [
 			'topic-view',

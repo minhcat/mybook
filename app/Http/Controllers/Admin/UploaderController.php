@@ -15,6 +15,8 @@ use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\ChapsApprovedQModel;
 use App\Http\Models\QModels\ChapsErrorQModel;
 use App\Http\Models\QModels\TransQModel;
+use App\Http\Models\QModels\MailsQModel;
+use App\Http\Models\QModels\NotificationsAdminQModel;
 use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\AuthorsCModel;
 use App\Http\Models\CModels\ChapsCModel;
@@ -59,6 +61,8 @@ class UploaderController extends Controller {
 		$data['authors_detail']		= AuthorsBModel::get_authors_all();
 		$data['comments']			= CommentsBModel::get_new_comments_uploader($data['books_upload']);
 		$data['first_book']			= $data['books_upload'][0];
+		$data['mails']			= MailsQModel::get_mails_not_seen_by_user_id($user_id);
+		$data['notifications']	= NotificationsAdminQModel::get_notifications_not_seen_by_user_id($user_id);
 
 		// dd($data);
 		return view('pages.admin.uploader', $data);
