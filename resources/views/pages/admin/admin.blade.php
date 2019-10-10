@@ -38,7 +38,9 @@ Admin
 		<!-- Statistic book control box -->
 		@include('partials.admin.content.small.database-book')
 		
-		@include('partials.admin.content.small.database-contant')
+		@include('partials.admin.content.small.database-contact')
+
+		@include('partials.admin.content.small.box-mail')
 
 		<!-- Box -->
 		<div class="row">
@@ -109,6 +111,10 @@ Admin
 
 				<!-- Mail Box -->
 				@include('partials.admin.content.system.mail')
+
+				@include('partials.admin.content.list.system.list-mail-receive')
+
+				@include('partials.admin.content.list.system.list-mail-send')
 				<!-- End Mail Box -->
 
 				<!-- Notification Box -->
@@ -211,7 +217,13 @@ Admin
 		$('#table-staff').DataTable({
 			"lengthMenu": [5, 10, 25, 50],
 		});
-		
+		$('#table-mail-receive').DataTable({
+			"lengthMenu": [5, 10, 25, 50],
+		});
+		$('#table-mail-send').DataTable({
+			"lengthMenu": [5, 10, 25, 50],
+		});
+
 		// Datepicker
 		$('#character-birthday-new').datepicker({
 			autoclose: true

@@ -45,6 +45,8 @@ class AdminController extends Controller {
 		$data['admins']			= UsersQModel::get_users_all();
 		$data['mails']			= MailsQModel::get_mails_not_seen_by_user_id($user_id);
 		$data['notifications']	= NotificationsAdminQModel::get_notifications_not_seen_by_user_id($user_id);
+		$data['mails_receive']	= MailsQModel::get_mails_by_user_id($user_id);
+		$data['mails_send']		= MailsQModel::get_mails_by_admin_id($user_id);
 		// dd($data);
 		return view('pages.admin.admin', $data);
 	}
