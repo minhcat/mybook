@@ -117,6 +117,14 @@ Admin
 				@include('partials.admin.content.list.system.list-mail-receive')
 
 				@include('partials.admin.content.list.system.list-mail-send')
+
+				@include('partials.admin.content.detail.detail-mail', ['mails' => $mails_receive])
+
+				@include('partials.admin.content.detail.detail-mail', ['mails' => $mails_send])
+
+				@include('partials.admin.content.detail.detail-notification', ['noties' => $noties_receive])
+
+				@include('partials.admin.content.detail.detail-notification', ['noties' => $noties_send])
 				<!-- End Mail Box -->
 
 				<!-- Notification Box -->

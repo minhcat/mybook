@@ -31,9 +31,10 @@ class MailsQModel extends Model
 	 */
 	public static function get_mails_by_admin_id($admin_id) {
 		$result = DB::table('mails as m')
-				->join('users as u', 'u.id', '=', 'm.id_user')
+				->join('users as u1', 'u1.id', '=', 'm.id_user')
+				->join('users as u2', 'u2.id', '=', 'm.id_admin')
 				->where('id_admin', $admin_id)
-				->select('m.*', 'u.name')
+				->select('m.*', 'u1.name as receive_name', 'u2.name as send_name')
 				->get();
 
 		return $result;
@@ -46,9 +47,10 @@ class MailsQModel extends Model
 	 */
 	public static function get_mails_by_user_id($user_id) {
 		$result = DB::table('mails as m')
-				->join('users as u', 'u.id', '=', 'm.id_admin')
+				->join('users as u1', 'u1.id', '=', 'm.id_user')
+				->join('users as u2', 'u2.id', '=', 'm.id_admin')
 				->where('id_user', $user_id)
-				->select('m.*', 'u.name')
+				->select('m.*', 'u1.name as receive_name', 'u2.name as send_name')
 				->get();
 
 		return $result;

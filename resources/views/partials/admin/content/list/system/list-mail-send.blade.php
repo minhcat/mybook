@@ -18,7 +18,7 @@
 					<th>Người nhận</th>
 					<th>Nội dung</th>
 					<th>Ngày gữi</th>
-					<th>Xóa</th>
+					<th class="column-fixed-80">Tùy chọn</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,10 +26,13 @@
 				<tr>
 					<td>{{ $key + 1 }}</td>
 					<td>{{ $mail->title }}</td>
-					<td>{{ $mail->name }}</td>
+					<td>{{ $mail->receive_name }}</td>
 					<td>{{ $mail->content }}</td>
 					<td>{{ date_format(date_create($mail->date), 'd-m-Y') }}</td>
-					<td><button class="btn btn-danger" data-toggle="modal" data-target="#modal-checkword-remove">Xóa</button></td>
+					<td>
+						<button class="btn btn-primary box-link" data-target="#box-mail-detail-{{ $mail->id }}" data-small="mail">Xem</button>
+						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-checkword-remove">Xóa</button>
+					</td>
 				</tr>
 				@endforeach
 			</tbody>

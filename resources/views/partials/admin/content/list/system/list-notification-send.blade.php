@@ -18,7 +18,7 @@
 					<th>Người nhận</th>
 					<th>Nội dung</th>
 					<th>Ngày gữi</th>
-					<th>Xóa</th>
+					<th>Chi tiết</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,10 +26,10 @@
 				<tr>
 					<td>{{ $key + 1 }}</td>
 					<td>{{ $noti->title }}</td>
-					<td>{{ $noti->name }}</td>
+					<td>{{ $noti->receive_name }}</td>
 					<td>{{ $noti->content }}</td>
 					<td>{{ date_format(date_create($noti->date), 'd-m-Y') }}</td>
-					<td><button class="btn btn-danger" data-toggle="modal" data-target="#modal-checkword-remove">Xóa</button></td>
+					<td><button class="btn btn-primary box-link" data-target="#box-noti-detail-{{ $noti->id }}" data-small="notification">Xem</button></td>
 				</tr>
 				@endforeach
 			</tbody>

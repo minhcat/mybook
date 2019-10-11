@@ -29,9 +29,10 @@ class NotificationsAdminQModel extends Model
 	 */
 	public static function get_notifications_by_admin_id($admin_id) {
 		$result = DB::table('notifications_admin as n')
-				->join('users as u', 'u.id', '=', 'n.id_user')
+				->join('users as u1', 'u1.id', '=', 'n.id_user')
+				->join('users as u2', 'u2.id', '=', 'n.id_admin')
 				->where('id_admin', $admin_id)
-				->select('n.*', 'u.name')
+				->select('n.*', 'u1.name as receive_name', 'u2.name as send_name')
 				->get();
 
 		return $result;
@@ -44,9 +45,10 @@ class NotificationsAdminQModel extends Model
 	 */
 	public static function get_notifications_by_user_id($user_id) {
 		$result = DB::table('notifications_admin as n')
-				->join('users as u', 'u.id', '=', 'n.id_admin')
+				->join('users as u1', 'u1.id', '=', 'n.id_user')
+				->join('users as u2', 'u2.id', '=', 'n.id_admin')
 				->where('id_user', $user_id)
-				->select('n.*', 'u.name')
+				->select('n.*', 'u1.name as receive_name', 'u2.name as send_name')
 				->get();
 
 		return $result;
