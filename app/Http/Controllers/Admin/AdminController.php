@@ -47,6 +47,8 @@ class AdminController extends Controller {
 		$data['notifications']	= NotificationsAdminQModel::get_notifications_not_seen_by_user_id($user_id);
 		$data['mails_receive']	= MailsQModel::get_mails_by_user_id($user_id);
 		$data['mails_send']		= MailsQModel::get_mails_by_admin_id($user_id);
+		$data['noties_receive']	= NotificationsAdminQModel::get_notifications_by_user_id($user_id);
+		$data['noties_send']	= NotificationsAdminQModel::get_notifications_by_admin_id($user_id);
 		// dd($data);
 		return view('pages.admin.admin', $data);
 	}

@@ -42,6 +42,8 @@ Admin
 
 		@include('partials.admin.content.small.box-mail')
 
+		@include('partials.admin.content.small.box-notification')
+
 		<!-- Box -->
 		<div class="row">
 			<div class="col-xs-12">
@@ -119,6 +121,10 @@ Admin
 
 				<!-- Notification Box -->
 				@include('partials.admin.content.system.notification')
+
+				@include('partials.admin.content.list.system.list-notification-receive')
+
+				@include('partials.admin.content.list.system.list-notification-send')
 				<!-- End Notification Box -->
 
 				<!-- Setting Box -->
@@ -221,6 +227,12 @@ Admin
 			"lengthMenu": [5, 10, 25, 50],
 		});
 		$('#table-mail-send').DataTable({
+			"lengthMenu": [5, 10, 25, 50],
+		});
+		$('#table-noti-receive').DataTable({
+			"lengthMenu": [5, 10, 25, 50],
+		});
+		$('#table-noti-send').DataTable({
 			"lengthMenu": [5, 10, 25, 50],
 		});
 

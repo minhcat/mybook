@@ -71,7 +71,7 @@
 				<a href="#" class="box-link" data-target="#box-mail"  data-small="mail"><i class="fa fa-envelope"></i> <span>Mail</span></a>
 			</li>
 			<li class="treeview">
-				<a href="#" class="box-link" data-target="#box-noti"><i class="fa fa-bell"></i> <span>Thông báo</span></a>
+				<a href="#" class="box-link" data-target="#box-noti" data-small="notification"><i class="fa fa-bell"></i> <span>Thông báo</span></a>
 			</li>
 			<li class="treeview">
 				<a href="#" class="box-link" data-target="#box-setting"><i class="fa fa-gear"></i> <span>Cài đặt</span></a>
