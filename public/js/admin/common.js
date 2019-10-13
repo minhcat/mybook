@@ -67,4 +67,20 @@ $(document).ready(function() {
 	$('.well .btn.btn-close').click(function() {
 		$(this).parent().collapse('hide');
 	});
+	$('.btn.remove.mail').click(function() {
+		var id = $(this).data('id');
+		$('#modal-remove-mail button.btn-primary').data('id',id);
+	});
+	$('#modal-remove-mail button.btn-primary').click(function() {
+		var id = $(this).data('id');
+		$.ajax({
+			url: '/admin/ajax/remove_mail/'+id,
+			type: 'get',
+			success:function() {
+				$('.well').addClass('in');
+				$('.well p').text('Xóa mail thành công');
+				$('.box.collapse.in').collapse('hide');
+			}
+		});
+	});
 });

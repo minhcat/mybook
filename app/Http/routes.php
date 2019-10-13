@@ -290,6 +290,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 		});
 
 	});
+
+	Route::group(['prefix' => 'ajax'], function() {
+
+		Route::get('remove_mail/{id}', 'Admin\AdminController@remove_mail');
+
+	});
 	
 });
 

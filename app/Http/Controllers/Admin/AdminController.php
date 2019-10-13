@@ -220,4 +220,13 @@ class AdminController extends Controller {
 		// dd($data);
 		NotificationsAdminCModel::insert_notification($data);
 	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function remove_mail($id) {
+		MailsCModel::delete_mail($id);
+	}
 }

@@ -165,6 +165,8 @@ Admin
 
 		@include('partials.admin.content.modal.modal-remove-author')
 
+		@include('partials.admin.content.modal.modal-remove-mail')
+
 	</section>
 	<!-- /.content -->
 </div>

@@ -31,7 +31,7 @@
 					<td>{{ date_format(date_create($mail->date), 'd-m-Y') }}</td>
 					<td>
 						<button class="btn btn-primary box-link" data-target="#box-mail-detail-{{ $mail->id }}" data-small="mail">Xem</button>
-						<button class="btn btn-danger" data-toggle="modal" data-target="#modal-checkword-remove">Xóa</button>
+						<button class="btn btn-danger remove mail" data-toggle="modal" data-target="#modal-remove-mail" data-id="{{ $mail->id }}">Xóa</button>
 					</td>
 				</tr>
 				@endforeach
