@@ -26,7 +26,7 @@
 				<tr>
 					<td>{{ $key + 1 }}</td>
 					<td>{{ $noti->title }}</td>
-					<td>{{ $noti->send_name }}</td>
+					{{-- <td>{{ $noti->send_name }}</td> --}}
 					<td>{{ $noti->content }}</td>
 					<td>{{ date_format(date_create($noti->date), 'd-m-Y') }}</td>
 					<td><button class="btn btn-primary box-link" data-target="#box-noti-detail-{{ $noti->id }}" data-small="notification">Xem</button></td>

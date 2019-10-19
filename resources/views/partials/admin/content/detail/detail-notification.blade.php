@@ -10,7 +10,7 @@
 		</div>
 	</div>
 	<div class="box-body" style="height: 280px;">
-		<p><strong>{{ $noti->send_name }}</strong> đến <strong>{{ $noti->receive_name }}</strong> - {{ date_format(date_create($noti->date), 'd/m/Y') }}</p>
+		<p><strong></strong> đến <strong></strong> - {{ date_format(date_create($noti->date), 'd/m/Y') }}</p>
 		<p><strong>Nội dung:</strong> 
 			{!! $noti->content !!}
 		</p>

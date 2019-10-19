@@ -26,7 +26,11 @@
 				<tr>
 					<td>{{ $key + 1 }}</td>
 					<td>{{ $noti->title }}</td>
+					@if ($noti->id_group != null)
+					<td>{{ $noti->group_name }}</td>
+					@else
 					<td>{{ $noti->receive_name }}</td>
+					@endif
 					<td>{{ $noti->content }}</td>
 					<td>{{ date_format(date_create($noti->date), 'd-m-Y') }}</td>
 					<td><button class="btn btn-primary box-link" data-target="#box-noti-detail-{{ $noti->id }}" data-small="notification">Xem</button></td>

@@ -28,11 +28,8 @@ class NotificationsAdminQModel extends Model
 	 * @return object|boolean : all properties from `books` table
 	 */
 	public static function get_notifications_by_admin_id($admin_id) {
-		$result = DB::table('notifications_admin as n')
-				->join('users as u1', 'u1.id', '=', 'n.id_user')
-				->join('users as u2', 'u2.id', '=', 'n.id_admin')
+		$result = DB::table('notifications_admin')
 				->where('id_admin', $admin_id)
-				->select('n.*', 'u1.name as receive_name', 'u2.name as send_name')
 				->get();
 
 		return $result;
@@ -44,11 +41,21 @@ class NotificationsAdminQModel extends Model
 	 * @return object|boolean : all properties from `books` table
 	 */
 	public static function get_notifications_by_user_id($user_id) {
-		$result = DB::table('notifications_admin as n')
-				->join('users as u1', 'u1.id', '=', 'n.id_user')
-				->join('users as u2', 'u2.id', '=', 'n.id_admin')
+		$result = DB::table('notifications_admin')
 				->where('id_user', $user_id)
-				->select('n.*', 'u1.name as receive_name', 'u2.name as send_name')
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * get author by slug
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_notifications_by_group_id($group_id) {
+		$result = DB::table('notifications_admin')
+				->where('id_group', $group_id)
 				->get();
 
 		return $result;

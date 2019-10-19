@@ -14,6 +14,7 @@ use App\Http\Models\QModels\NotificationsAdminQModel;
 use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\CharactersBModel;
 use App\Http\Models\BModels\AuthorsBModel;
+use App\Http\Models\BModels\NotificationsAdminBModel;
 use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\BooksApprovedCModel;
 use App\Http\Models\CModels\UsersPunishCModel;
@@ -48,7 +49,8 @@ class AdminController extends Controller {
 		$data['mails_receive']	= MailsQModel::get_mails_by_user_id($user_id);
 		$data['mails_send']		= MailsQModel::get_mails_by_admin_id($user_id);
 		$data['noties_receive']	= NotificationsAdminQModel::get_notifications_by_user_id($user_id);
-		$data['noties_send']	= NotificationsAdminQModel::get_notifications_by_admin_id($user_id);
+		$data['noties_send']	= NotificationsAdminBModel::get_notifications_send($user_id);
+
 		// dd($data);
 		return view('pages.admin.admin', $data);
 	}
