@@ -10,7 +10,7 @@
 		</div>
 	</div>
 	<div class="box-body" style="height: 280px;">
-		<p><strong></strong> đến <strong></strong> - {{ date_format(date_create($noti->date), 'd/m/Y') }}</p>
+		<p><strong>{{ $noti->send_name }}</strong> đến <strong>@if($noti->id_group != null) {{ $noti->group_name }} @else {{ $noti->receive_name }} @endif</strong> - {{ date_format(date_create($noti->date), 'd/m/Y') }}</p>
 		<p><strong>Nội dung:</strong> 
 			{!! $noti->content !!}
 		</p>

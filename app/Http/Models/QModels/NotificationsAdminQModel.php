@@ -60,4 +60,19 @@ class NotificationsAdminQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get author by slug
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_notifications_group_by_user_id($user_id) {
+		$result = DB::table('notifications_admin as n')
+				->join('notifications_user_group as nu', 'n.id_group', '=', 'nu.id_group')
+				->where('nu.id_user', $user_id)
+				->select('n.*')
+				->get();
+
+		return $result;
+	}
 }
