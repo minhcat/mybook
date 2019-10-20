@@ -15,6 +15,7 @@ use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\CharactersBModel;
 use App\Http\Models\BModels\AuthorsBModel;
 use App\Http\Models\BModels\NotificationsAdminBModel;
+use App\Http\Models\BModels\UsersBModel;
 use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\BooksApprovedCModel;
 use App\Http\Models\CModels\UsersPunishCModel;
@@ -50,6 +51,7 @@ class AdminController extends Controller {
 		$data['mails_send']		= MailsQModel::get_mails_by_admin_id($user_id);
 		$data['noties_receive']	= NotificationsAdminBModel::get_notifications_receive($user_id);
 		$data['noties_send']	= NotificationsAdminBModel::get_notifications_send($user_id);
+		$data['list_receive']   = UsersBModel::get_admin_and_group_receive();
 
 		// dd($data);
 		return view('pages.admin.admin', $data);
@@ -200,23 +202,26 @@ class AdminController extends Controller {
 	 * @return Response
 	 */
 	public function post_noti(Request $request) {
-		//check select user or all
-		$input = $request->input('user');
-		$id_user = null;
-		if ($input == 'super-all' || $input == 'all')
-			$send = $input;
-		else {
-			$send = 'user';
-			$id_user = (int)$input;
+		// dd($request->all());
+		//check select user or group
+		$group = $request->input('group');
+		if ($group == '0') {
+			$id_user  = (int)$request->input('send');
+			$id_group = null;
 		}
+		else {
+			$id_user  = null;
+			$id_group = (int)$request->input('send');
+		}
+		
 
 		$data = [
 			'id_admin' => (int)$request->input('id_admin'),
 			'id_user'  => $id_user,
+			'id_group' => $id_group,
 			'type'     => $request->input('type'),
 			'title'    => $request->input('title'),
 			'content'  => $request->input('content'),
-			'sendto'   => $send,
 			'date'     => date('Y-m-d'),
 		];
 		// dd($data);

@@ -23,15 +23,14 @@
 				<option value="success">Đồng ý</option>
 			</select>
 		</div>
-		<div class="form-group">
+		<div class="form-group receive">
 			<label for="name">Người Nhận</label>
 			<select class="form-control send">
-				<option value="14">Nguyễn Văn C</option>
-				<option value="14">Nguyễn Văn D</option>
-				<option value="14">Nguyễn Văn E</option>
-				<option value="all">Tất cả</option>
-				<option value="super-all">Tất cả (không loại trừ)</option>
+				@foreach ($list_receive as $receive)
+				<option value="{{ $receive->id }}" class="{{ ($receive->group == 'true') ? 'group' : 'user' }}">{{ $receive->name }}</option>
+				@endforeach
 			</select>
+			<input class="group" type="hidden" value="0">
 		</div>
 		<div class="form-group">
 			<label for="name">Nội Dung</label>

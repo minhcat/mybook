@@ -59,6 +59,14 @@ $(document).ready(function() {
 			}
 		});
 	});
+	$('.box#box-noti select.send').change(function(){
+		var option = $(this).find('option:selected');
+		if (option.hasClass('group')) {
+			$(this).parents('.form-group.receive').find('input.group').val('1');
+		} else {
+			$(this).parents('.form-group.receive').find('input.group').val('0');
+		}
+	});
 	$('.modal#modal-reply-user .btn-primary').click(function() {
 		var id = $(this).data('id');
 		var reply = $(this).parents('.modal-content').find('textarea').val();
@@ -71,6 +79,7 @@ $(document).ready(function() {
 			}
 		});
 	});
+	// get value in textarea when post form by ajax
 	function updateAllMessageForms()
 	{
 		for (instance in CKEDITOR.instances) {
@@ -103,7 +112,8 @@ $(document).ready(function() {
 		updateAllMessageForms();
 		var title   = $(this).parents('.box#box-noti').find('input.title').val();
 		var type    = $(this).parents('.box#box-noti').find('select.type').val();
-		var from    = $(this).parents('.box#box-noti').find('select.send').val();
+		var send    = $(this).parents('.box#box-noti').find('select.send').val();
+		var group   = $(this).parents('.box#box-noti').find('input.group').val();
 		var content = $(this).parents('.box#box-noti').find('textarea.content').val();
 		var token   = $(this).parents('.box#box-noti').find('input.token').val();
 		$.ajax({
@@ -111,7 +121,8 @@ $(document).ready(function() {
 			url: '/admin/admin/ajax/post_noti',
 			data: {
 				id_admin : admin_id,
-				user     : from,
+				send     : send,
+				group    : group,
 				title    : title,
 				type     : type,
 				content  : content,
@@ -119,7 +130,7 @@ $(document).ready(function() {
 			},
 			success:function(data2) {
 				$('.well').addClass('in');
-				$('.well p').text('gữi mail thành công')
+				$('.well p').text('tạo thông báo thành công')
 			}
 		});
 	});

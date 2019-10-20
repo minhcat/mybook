@@ -13,6 +13,7 @@ use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\UsersFollowQModel;
 use App\Http\Models\QModels\CommentsQModel;
+use App\Http\Models\QModels\NotificationsGroupQModel;
 
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
@@ -33,5 +34,31 @@ class UsersBModel extends Model
 		}
 
 		return $users;
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_admin_and_group_receive() {
+		$admins = UsersQModel::get_admins();
+		$groups = NotificationsGroupQModel::get_groups_all();
+		$result = [];
+		foreach ($admins as $admin) {
+			$item = new \stdClass();
+			$item->id    = $admin->id;
+			$item->name  = $admin->name;
+			$item->group = 'false';
+			array_push($result, $item);
+		}
+		foreach ($groups as $group) {
+			$item = new \stdClass();
+			$item->id    = $group->id;
+			$item->name  = $group->group;
+			$item->group = 'true';
+			array_push($result, $item);
+		}
+		return $result;
 	}
 }

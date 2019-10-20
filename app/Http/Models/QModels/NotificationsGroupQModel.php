@@ -20,4 +20,16 @@ class NotificationsGroupQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_groups_all() {
+		$result = DB::table('notifications_group')
+				->get();
+
+		return $result;
+	}
 }
