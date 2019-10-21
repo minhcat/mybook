@@ -27,10 +27,10 @@ class StatisticController extends Controller {
 	public function statistic() {
 		$user_id = Auth::id();
 		$user = UsersQModel::get_user_by_id($user_id);
-		if ($user->admin != 'statistic' || $user->admin != 'super-admin') {
+		if ($user->admin != 'statistic' && $user->admin != 'super-admin') {
 			return redirect('/admin/'.$user->admin);
 		}
-		$data['user'] 				= UsersQModel::get_user_by_id($user_id);
+		$data['user'] 				= $user;
 		$data['transes']			= TransBModel::get_transes_all();
 		$data['view_all']			= BooksBModel::get_view_all('2019-7-21');
 		$data['comment_all']		= BooksBModel::get_comment_all('2019-7-23');

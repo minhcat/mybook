@@ -30,7 +30,7 @@ class ModController extends Controller {
 	public function mod() {
 		$user_id = Auth::id();
 		$user = UsersQModel::get_user_by_id($user_id);
-		if ($user->admin != 'mod' || $user->admin != 'super-admin') {
+		if ($user->admin != 'mod' && $user->admin != 'super-admin') {
 			return redirect('/admin/'.$user->admin);
 		}
 		$data['user']                  = $user;

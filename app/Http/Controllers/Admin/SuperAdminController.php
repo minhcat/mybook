@@ -44,7 +44,7 @@ class SuperAdminController extends Controller {
 		if ($user->admin != 'super-admin') {
 			return redirect('/admin/'.$user->admin);
 		}
-		$data['user']			= UsersQModel::get_user_by_id($user_id);
+		$data['user']			= $user;
 		$data['books_upload']	= BooksBModel::get_books_upload($user_id);
 		$data['categories']		= CategoriesQModel::get_categories_all();
 		$data['characters']		= CharactersQModel::get_characters_all();

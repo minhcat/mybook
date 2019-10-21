@@ -48,10 +48,10 @@ class UploaderController extends Controller {
 	public function uploader() {
 		$user_id = Auth::id();
 		$user = UsersQModel::get_user_by_id($user_id);
-		if ($user->admin != 'uploader' || $user->admin != 'super-admin') {
+		if ($user->admin != 'uploader' && $user->admin != 'super-admin') {
 			return redirect('/admin/'.$user->admin);
 		}
-		$data['user'] 				= UsersQModel::get_user_by_id($user_id);
+		$data['user'] 				= $user;
 		$data['chaps']				= ChapsQModel::get_chaps_all();
 		$data['books_upload'] 		= BooksBModel::get_books_upload($user_id);
 		$data['categories']			= CategoriesQModel::get_categories_all();
