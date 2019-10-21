@@ -12,6 +12,7 @@ use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\UsersBModel;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Filesystem\Factory;
 
 use Illuminate\Http\Request;
@@ -24,7 +25,11 @@ class StatisticController extends Controller {
 	 * @return Response
 	 */
 	public function statistic() {
-		$user_id = 15;
+		$user_id = Auth::id();
+		$user = UsersQModel::get_user_by_id($user_id);
+		if ($user->admin != 'statistic' || $user->admin != 'super-admin') {
+			return redirect('/admin/'.$user->admin);
+		}
 		$data['user'] 				= UsersQModel::get_user_by_id($user_id);
 		$data['transes']			= TransBModel::get_transes_all();
 		$data['view_all']			= BooksBModel::get_view_all('2019-7-21');

@@ -33,6 +33,7 @@ use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\ImagesBModel;
 use App\Http\Models\BModels\UsersBModel;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Filesystem\Factory;
 
 use Illuminate\Http\Request;
@@ -45,7 +46,11 @@ class UploaderController extends Controller {
 	 * @return Response
 	 */
 	public function uploader() {
-		$user_id = 14;
+		$user_id = Auth::id();
+		$user = UsersQModel::get_user_by_id($user_id);
+		if ($user->admin != 'uploader' || $user->admin != 'super-admin') {
+			return redirect('/admin/'.$user->admin);
+		}
 		$data['user'] 				= UsersQModel::get_user_by_id($user_id);
 		$data['chaps']				= ChapsQModel::get_chaps_all();
 		$data['books_upload'] 		= BooksBModel::get_books_upload($user_id);
@@ -60,7 +65,12 @@ class UploaderController extends Controller {
 		$data['chaps_error']		= ChapsErrorQModel::get_chaps_error_by_uploader_id($user_id);
 		$data['authors_detail']		= AuthorsBModel::get_authors_all();
 		$data['comments']			= CommentsBModel::get_new_comments_uploader($data['books_upload']);
-		$data['first_book']			= $data['books_upload'][0];
+		if (!empty($data['books_upload']))
+			$data['first_book']		= $data['books_upload'][0];
+		else {
+			$data['first_book']		= new \stdClass;
+			$data['first_book']->id = 0;
+		}
 		$data['mails']			= MailsQModel::get_mails_not_seen_by_user_id($user_id);
 		$data['notifications']	= NotificationsAdminQModel::get_notifications_not_seen_by_user_id($user_id);
 

@@ -16,8 +16,8 @@ use App\Http\Models\CModels\CommentsSaveCModel;
 use App\Http\Models\CModels\UsersPunishCModel;
 use App\Http\Models\CModels\UsersBanCModel;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Filesystem\Factory;
-
 use Illuminate\Http\Request;
 
 class ModController extends Controller {
@@ -28,8 +28,12 @@ class ModController extends Controller {
 	 * @return Response
 	 */
 	public function mod() {
-		$user_id = 13;
-		$data['user']                  = UsersQModel::get_user_by_id($user_id);
+		$user_id = Auth::id();
+		$user = UsersQModel::get_user_by_id($user_id);
+		if ($user->admin != 'mod' || $user->admin != 'super-admin') {
+			return redirect('/admin/'.$user->admin);
+		}
+		$data['user']                  = $user;
 		$data['new_comments']          = CommentsBModel::get_new_comments_mod(5);
 		$data['report_comments']       = CommentsBModel::get_new_comments_report();
 		$data['checkword_comments']    = CommentsBModel::get_comments_checkword();

@@ -26,6 +26,7 @@ use App\Http\Models\BModels\UsersBModel;
 use App\Http\Models\BModels\AuthorsBModel;
 use App\Http\Models\BModels\SystemBModel;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Filesystem\Factory;
 
 use Illuminate\Http\Request;
@@ -38,7 +39,11 @@ class SuperAdminController extends Controller {
 	 * @return Response
 	 */
 	public function super_admin() {
-		$user_id = 16;
+		$user_id = Auth::id();
+		$user = UsersQModel::get_user_by_id($user_id);
+		if ($user->admin != 'super-admin') {
+			return redirect('/admin/'.$user->admin);
+		}
 		$data['user']			= UsersQModel::get_user_by_id($user_id);
 		$data['books_upload']	= BooksBModel::get_books_upload($user_id);
 		$data['categories']		= CategoriesQModel::get_categories_all();
