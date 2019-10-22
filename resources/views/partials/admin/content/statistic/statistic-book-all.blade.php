@@ -1,4 +1,4 @@
-<div class="box box-primary collapse in book" id="box-book-all" aria-expanded="true">
+<div class="box box-primary collapse in book" id="box-book-all" aria-expanded="false">
 	<div class="box-header with-border">
 		<h3 class="box-title">Thống Kê Tổng Số</h3>
 

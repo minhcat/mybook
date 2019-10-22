@@ -66,6 +66,19 @@
 					<li><a href="#" class="box-link" data-target="#timeline-staff" data-with="#box-staff-small">Hoạt động từng người</a></li>
 				</ul>
 			</li>
+			<li class="treeview">
+				<a href="#"><i class="fa fa-bar-chart"></i> <span>Thống kê</span>
+					<span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+				</a>
+				<ul class="treeview-menu">
+					<li><a href="#" class="box-link book" data-target="#box-book-all" data-small="statistic">Thống kê truyện</a></li>
+					<li><a href="#" class="box-link category" data-target="#box-category-chart" data-small="statistic2" data-with="#box-category-list-small">Thống kê thể loại</a></li>
+					<li><a href="#" class="box-link user" data-target="#box-user-chart" data-small="statistic3" data-with="#box-user-list-small">Thống kê người dùng</a></li>
+					<li><a href="#" class="box-link trans" data-target="#box-trans-chart" data-small="statistic4" data-with="#box-trans-list-small">Thống kê nhóm dịch</a></li>
+				</ul>
+			</li>
 			<li class="header">HỆ THỐNG</li>
 			<li class="treeview">
 				<a href="#" class="box-link" data-target="#box-mail"  data-small="mail"><i class="fa fa-envelope"></i> <span>Mail</span></a>

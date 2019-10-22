@@ -11,6 +11,7 @@ use App\Http\Models\QModels\CommentsReportQModel;
 use App\Http\Models\QModels\BooksErrorQModel;
 use App\Http\Models\QModels\MailsQModel;
 use App\Http\Models\QModels\NotificationsAdminQModel;
+use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\CharactersBModel;
 use App\Http\Models\BModels\AuthorsBModel;
@@ -49,6 +50,13 @@ class AdminController extends Controller {
 		$data['books_approve']	= BooksQModel::get_books_not_approved_all();
 		$data['users_approve']	= CommentsReportQModel::get_comments_report_with_punish();
 		$data['admins']			= UsersQModel::get_users_all();
+		//statistic
+		$data['view_all']			= BooksBModel::get_view_all('2019-7-21');
+		$data['comment_all']		= BooksBModel::get_comment_all('2019-7-23');
+		$data['like_all']			= BooksBModel::get_like_all('2019-7-24');
+		$data['follow_all']			= BooksBModel::get_follow_all('2019-7-24');
+		$data['rate_all']			= BooksBModel::get_rate_all('2019-7-25');
+		//system
 		$data['mails']			= MailsQModel::get_mails_not_seen_by_user_id($user_id);
 		$data['notifications']	= NotificationsAdminQModel::get_notifications_not_seen_by_user_id($user_id);
 		$data['mails_receive']	= MailsQModel::get_mails_by_user_id($user_id);
