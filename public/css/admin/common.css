@@ -1,3 +1,6 @@
+header .navbar .messages-menu .dropdown-menu li .menu {
+  max-height: 244px !important; }
+
 section.content .well {
   position: relative; }
   section.content .well.well-info {

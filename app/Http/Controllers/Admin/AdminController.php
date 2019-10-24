@@ -15,6 +15,7 @@ use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\CharactersBModel;
 use App\Http\Models\BModels\AuthorsBModel;
+use App\Http\Models\BModels\MailsBModel;
 use App\Http\Models\BModels\NotificationsAdminBModel;
 use App\Http\Models\BModels\UsersBModel;
 use App\Http\Models\CModels\BooksCModel;
@@ -51,15 +52,15 @@ class AdminController extends Controller {
 		$data['users_approve']	= CommentsReportQModel::get_comments_report_with_punish();
 		$data['admins']			= UsersQModel::get_users_all();
 		//statistic
-		$data['view_all']			= BooksBModel::get_view_all('2019-7-21');
-		$data['comment_all']		= BooksBModel::get_comment_all('2019-7-23');
-		$data['like_all']			= BooksBModel::get_like_all('2019-7-24');
-		$data['follow_all']			= BooksBModel::get_follow_all('2019-7-24');
-		$data['rate_all']			= BooksBModel::get_rate_all('2019-7-25');
+		$data['view_all']		= BooksBModel::get_view_all('2019-7-21');
+		$data['comment_all']	= BooksBModel::get_comment_all('2019-7-23');
+		$data['like_all']		= BooksBModel::get_like_all('2019-7-24');
+		$data['follow_all']		= BooksBModel::get_follow_all('2019-7-24');
+		$data['rate_all']		= BooksBModel::get_rate_all('2019-7-25');
 		//system
 		$data['mails']			= MailsQModel::get_mails_not_seen_by_user_id($user_id);
 		$data['notifications']	= NotificationsAdminQModel::get_notifications_not_seen_by_user_id($user_id);
-		$data['mails_receive']	= MailsQModel::get_mails_by_user_id($user_id);
+		$data['mails_receive']	= MailsBModel::get_mails_receive($user_id);
 		$data['mails_send']		= MailsQModel::get_mails_by_admin_id($user_id);
 		$data['noties_receive']	= NotificationsAdminBModel::get_notifications_receive($user_id);
 		$data['noties_send']	= NotificationsAdminBModel::get_notifications_send($user_id);
@@ -247,5 +248,31 @@ class AdminController extends Controller {
 	 */
 	public function remove_mail($id) {
 		MailsCModel::delete_mail($id);
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function check_seen_mail() {
+		$mails = MailsQModel::get_mails_not_seen_by_user_id(Auth::id());
+		foreach ($mails as $mail) {
+			$data = ['seen' => 1];
+			MailsCModel::update_mail(Auth::id(), $data);
+		}
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function check_seen_noti() {
+		$mails = NotificationsAdminQModel::get_notifications_not_seen_by_user_id(Auth::id());
+		foreach ($mails as $mail) {
+			$data = ['seen' => 1];
+			NotificationsAdminCModel::update_notification(Auth::id(), $data);
+		}
 	}
 }

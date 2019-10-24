@@ -69,7 +69,7 @@ class NotificationsAdminBModel extends Model
 		foreach ($groups as $group) {
 			array_push($noties, $group);
 		}
-		//add info
+		//add info and short content
 		foreach ($noties as $noti) {
 			$admin = UsersQModel::get_user_by_id($noti->id_admin);
 			$noti->send_name = $admin->name;
@@ -81,6 +81,7 @@ class NotificationsAdminBModel extends Model
 				$group = NotificationsGroupQModel::get_group_by_id($noti->id_group);
 				$noti->group_name = $group->group;
 			}
+			$noti->content = substr($noti->content, 0, 30).'...';
 		}
 		return $noties;
 	}

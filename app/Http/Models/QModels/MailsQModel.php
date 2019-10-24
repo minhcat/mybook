@@ -34,7 +34,7 @@ class MailsQModel extends Model
 				->join('users as u1', 'u1.id', '=', 'm.id_user')
 				->join('users as u2', 'u2.id', '=', 'm.id_admin')
 				->where('id_admin', $admin_id)
-				->select('m.*', 'u1.name as receive_name', 'u2.name as send_name')
+				->select('m.*', 'u1.name as receive_name', 'u2.name as send_name', 'u2.image as send_image')
 				->get();
 
 		return $result;
@@ -50,7 +50,7 @@ class MailsQModel extends Model
 				->join('users as u1', 'u1.id', '=', 'm.id_user')
 				->join('users as u2', 'u2.id', '=', 'm.id_admin')
 				->where('id_user', $user_id)
-				->select('m.*', 'u1.name as receive_name', 'u2.name as send_name')
+				->select('m.*', 'u1.name as receive_name', 'u2.name as send_name', 'u2.image as send_image')
 				->get();
 
 		return $result;

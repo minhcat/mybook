@@ -171,8 +171,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 
 	Route::get('uploader', 'Admin\UploaderController@uploader');
 
-	Route::get('statistic', 'Admin\StatisticController@statistic');
-
 	Route::get('admin', 'Admin\AdminController@admin');
 
 	Route::get('super-admin', 'Admin\SuperAdminController@super_admin');

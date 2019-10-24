@@ -36,26 +36,30 @@
 						<li>
 							<!-- inner menu: contains the messages -->
 							<ul class="menu">
-								<li><!-- start message -->
-									<a href="#">
-										<div class="pull-left">
-											<!-- User Image -->
-											<img src="{{ asset('image/users/'.$user->image.'.jpg') }}" class="img-circle" alt="User Image">
-										</div>
-										<!-- Message title and timestamp -->
-										<h4>
-											Nguyễn Văn Sơn
-											<small><i class="fa fa-clock-o"></i> 5 mins</small>
-										</h4>
-										<!-- The message -->
-										<p>Helo ope hyper werty candy quebe</p>
-									</a>
-								</li>
+								@foreach ($mails_receive as $key => $mail)
+									@if ($key < 4)
+									<li><!-- start message -->
+										<a href="#">
+											<div class="pull-left">
+												<!-- User Image -->
+												<img src="{{ asset('image/users/'.$mail->send_image.'.jpg') }}" class="img-circle" alt="User Image">
+											</div>
+											<!-- Message title and timestamp -->
+											<h4>
+												{{ $mail->send_name }}
+												<small><i class="fa fa-clock-o"></i> 5 mins</small>
+											</h4>
+											<!-- The message -->
+											<p>{{ $mail->content }}</p>
+										</a>
+									</li>
+									@endif
+								@endforeach
 								<!-- end message -->
 							</ul>
 							<!-- /.menu -->
 						</li>
-						<li class="footer"><a href="#">Xem tất cả</a></li>
+						<li class="footer"><a href="#" class="box-link" data-target="#box-mail-receive" data-small="mail">Xem tất cả</a></li>
 					</ul>
 				</li>
 				<!-- /.messages-menu -->
@@ -79,15 +83,19 @@
 						<li>
 							<!-- Inner Menu: contains the notifications -->
 							<ul class="menu">
-								<li><!-- start notification -->
-									<a href="#">
-										<i class="fa fa-users text-aqua"></i> 5 báo cáo người dùng
-									</a>
-								</li>
+								@foreach ($noties_receive as $key => $noti)
+									@if ($key < 4)
+									<li><!-- start notification -->
+										<a href="#">
+											<i class="fa fa-users text-aqua"></i> [{{$noti->type}}] {{ $noti->content }}
+										</a>
+									</li>
+									@endif
+								@endforeach
 								<!-- end notification -->
 							</ul>
 						</li>
-						<li class="footer"><a href="#">Xem tất cả</a></li>
+						<li class="footer"><a href="#" class="box-link" data-target="#box-noti-receive" data-small="notification">Xem tất cả</a></li>
 					</ul>
 				</li>
 				<!-- User Account Menu -->
