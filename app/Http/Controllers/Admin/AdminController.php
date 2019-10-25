@@ -257,9 +257,10 @@ class AdminController extends Controller {
 	 */
 	public function check_seen_mail() {
 		$mails = MailsQModel::get_mails_not_seen_by_user_id(Auth::id());
+		// dd($mails);
 		foreach ($mails as $mail) {
 			$data = ['seen' => 1];
-			MailsCModel::update_mail(Auth::id(), $data);
+			MailsCModel::update_mail($mail->id, $data);
 		}
 	}
 
@@ -269,10 +270,10 @@ class AdminController extends Controller {
 	 * @return Response
 	 */
 	public function check_seen_noti() {
-		$mails = NotificationsAdminQModel::get_notifications_not_seen_by_user_id(Auth::id());
-		foreach ($mails as $mail) {
+		$noties = NotificationsAdminQModel::get_notifications_not_seen_by_user_id(Auth::id());
+		foreach ($noties as $noti) {
 			$data = ['seen' => 1];
-			NotificationsAdminCModel::update_notification(Auth::id(), $data);
+			NotificationsAdminCModel::update_notification($noti->id, $data);
 		}
 	}
 }

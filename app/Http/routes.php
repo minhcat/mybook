@@ -293,6 +293,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 
 		Route::get('remove_mail/{id}', 'Admin\AdminController@remove_mail');
 
+		Route::get('seen_mail', 'Admin\AdminController@check_seen_mail');
+
+		Route::get('seen_noti', 'Admin\AdminController@check_seen_noti');
+
 	});
 	
 });

@@ -83,4 +83,26 @@ $(document).ready(function() {
 			}
 		});
 	});
+	// set seen mail
+	$('.navbar .messages-menu a.dropdown-toggle').click(function() {
+		var _this = this;
+		$.ajax({
+			type: 'get',
+			url: '/admin/ajax/seen_mail',
+			success:function() {
+				$(_this).find('span').remove();
+			}
+		});
+	});
+	// set seen mail
+	$('.navbar .notifications-menu a.dropdown-toggle').click(function() {
+		var _this = this;
+		$.ajax({
+			type: 'get',
+			url: '/admin/ajax/seen_noti',
+			success:function() {
+				$(_this).find('span').remove();
+			}
+		});
+	});
 });
