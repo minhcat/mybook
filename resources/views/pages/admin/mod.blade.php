@@ -32,6 +32,8 @@ MOD
 	<!-- Main content -->
 	<section class="content container-fluid">
 		@include('partials.admin.content.well')
+
+		@include('partials.admin.content.small.box-mail')
 		<!-- Box -->
 		<div class="row">
 			<div class="col-xs-12">
@@ -62,6 +64,14 @@ MOD
 
 				<!-- Mail Box -->
 				@include('partials.admin.content.system.mail')
+
+				@include('partials.admin.content.list.system.list-mail-receive')
+
+				@include('partials.admin.content.list.system.list-mail-send')
+
+				@include('partials.admin.content.detail.detail-mail', ['mails' => $mails_receive])
+
+				@include('partials.admin.content.detail.detail-mail', ['mails' => $mails_send])
 				<!-- End Mail Box -->
 
 				<!-- Setting Box -->
@@ -123,6 +133,12 @@ MOD
 				"lengthMenu": [5, 10, 25, 50],
 			});
 			$('#table-checkword').DataTable({
+				"lengthMenu": [5, 10, 25, 50],
+			});
+			$('#table-mail-receive').DataTable({
+				"lengthMenu": [5, 10, 25, 50],
+			});
+			$('#table-mail-send').DataTable({
 				"lengthMenu": [5, 10, 25, 50],
 			});
 			CKEDITOR.replace('mail-content', {

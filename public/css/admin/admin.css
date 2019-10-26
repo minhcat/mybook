@@ -16,21 +16,6 @@
 .box#timeline-all, .box#timeline-staff {
   background-color: #fbfbfb; }
 
-table tr th.column-fixed-80 {
-  width: 80px; }
-
-table tr th.column-fixed-100 {
-  width: 100px; }
-
-table tr th.column-fixed-170 {
-  width: 170px; }
-
-table tr th.column-fixed-190 {
-  width: 190px; }
-
-table tr th.column-fixed-210 {
-  width: 210px; }
-
 .modal .modal-dialog {
   width: 400px; }
 .modal.permiss .modal-body .btn.select.btn-primary {

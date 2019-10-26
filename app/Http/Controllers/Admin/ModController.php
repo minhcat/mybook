@@ -11,6 +11,8 @@ use App\Http\Models\QModels\MailsQModel;
 use App\Http\Models\QModels\NotificationsAdminQModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\CommentsBModel;
+use App\Http\Models\BModels\MailsBModel;
+use App\Http\Models\BModels\NotificationsAdminBModel;
 use App\Http\Models\BModels\UsersBModel;
 use App\Http\Models\CModels\CommentsSaveCModel;
 use App\Http\Models\CModels\UsersPunishCModel;
@@ -46,6 +48,9 @@ class ModController extends Controller {
 		$data['comments_books_follow'] = CommentsBModel::get_comments_in_books_follow($data['books_follow']);
 		$data['mails']			= MailsQModel::get_mails_not_seen_by_user_id($user_id);
 		$data['notifications']	= NotificationsAdminQModel::get_notifications_not_seen_by_user_id($user_id);
+		$data['mails_receive']	= MailsBModel::get_mails_receive($user_id);
+		$data['mails_send']		= MailsQModel::get_mails_by_admin_id($user_id);
+		$data['noties_receive']	= NotificationsAdminBModel::get_notifications_receive($user_id);
 		// dd($data);
 		return view('pages.admin.mod', $data);
 	}

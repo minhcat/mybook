@@ -24,6 +24,8 @@ use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\UsersBModel;
 use App\Http\Models\BModels\AuthorsBModel;
+use App\Http\Models\BModels\MailsBModel;
+use App\Http\Models\BModels\NotificationsAdminBModel;
 use App\Http\Models\BModels\SystemBModel;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
@@ -59,6 +61,11 @@ class SuperAdminController extends Controller {
 		$data['sliders']		= SlidersQModel::get_sliders_all();
 		$data['mails']			= MailsQModel::get_mails_not_seen_by_user_id($user_id);
 		$data['notifications']	= NotificationsAdminQModel::get_notifications_not_seen_by_user_id($user_id);
+		$data['mails_receive']	= MailsBModel::get_mails_receive($user_id);
+		$data['mails_send']		= MailsQModel::get_mails_by_admin_id($user_id);
+		$data['noties_receive']	= NotificationsAdminBModel::get_notifications_receive($user_id);
+		$data['noties_send']	= NotificationsAdminBModel::get_notifications_send($user_id);
+		$data['list_receive']   = UsersBModel::get_admin_and_group_receive();
 
 		$data['system']['list-type-topic'] = [
 			'topic-view',

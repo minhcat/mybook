@@ -21,4 +21,38 @@ section.content .well {
 section.content .box table tr.link {
   cursor: pointer; }
 
+.small-box {
+  cursor: pointer; }
+  .small-box.collapse {
+    display: none; }
+    .small-box.collapse.in {
+      display: block; }
+  .small-box .small-box-header {
+    text-align: left;
+    padding: 3px 10px;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(0, 0, 0, 0.1); }
+  .small-box .inner h4 {
+    font-size: 24px; }
+  .small-box .icon {
+    top: 15px;
+    font-size: 55px; }
+  .small-box:hover .icon {
+    font-size: 60px; }
+
+table tr th.column-fixed-80 {
+  width: 80px; }
+
+table tr th.column-fixed-100 {
+  width: 100px; }
+
+table tr th.column-fixed-170 {
+  width: 170px; }
+
+table tr th.column-fixed-190 {
+  width: 190px; }
+
+table tr th.column-fixed-210 {
+  width: 210px; }
+
 /*# sourceMappingURL=common.css.map */

@@ -58,7 +58,7 @@
 			<li class="treeview"><a href="#" class="box-link" data-target="#box-checkword"><i class="fa fa-pencil"></i> <span>Từ khóa kiểm tra tự động</span></a></li>
 			<li class="header">HỆ THỐNG</li>
 			<li class="treeview">
-				<a href="#" class="box-link" data-target="#box-mail"><i class="fa fa-envelope"></i> <span>Viết mail</span></a>
+				<a href="#" class="box-link" data-target="#box-mail" data-small="mail"><i class="fa fa-envelope"></i> <span>Viết mail</span></a>
 			</li>
 			<li class="treeview">
 				<a href="#" class="box-link" data-target="#box-setting"><i class="fa fa-gear"></i> <span>Cài đặt</span></a>

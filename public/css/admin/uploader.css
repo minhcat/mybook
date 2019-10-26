@@ -74,25 +74,6 @@
   min-height: 1px;
   float: left; }
 
-.small-box {
-  cursor: pointer; }
-  .small-box.collapse {
-    display: none; }
-    .small-box.collapse.in {
-      display: block; }
-  .small-box .small-box-header {
-    text-align: left;
-    padding: 3px 10px;
-    color: rgba(255, 255, 255, 0.8);
-    background: rgba(0, 0, 0, 0.1); }
-  .small-box .inner h4 {
-    font-size: 24px; }
-  .small-box .icon {
-    top: 15px;
-    font-size: 55px; }
-  .small-box:hover .icon {
-    font-size: 60px; }
-
 p.error {
   color: #d20; }
 

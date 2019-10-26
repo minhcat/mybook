@@ -40,7 +40,7 @@ Super Admin
 
 		@include('partials.admin.content.small.database-temporary')
 
-		@include('partials.admin.content.small.database-contant')
+		@include('partials.admin.content.small.database-contact')
 
 		<!-- Box -->
 		<div class="row">

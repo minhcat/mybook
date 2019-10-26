@@ -73,13 +73,13 @@
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="#" class="box-link" data-target="#box-book-comment-1" data-with="#box-book-list-small-comment">Bình luận truyện</a></li>
+					<li><a href="#" class="box-link" data-target="#box-book-comment-{{ $first_book->id }}" data-with="#box-book-list-small-comment">Bình luận truyện</a></li>
 					<li><a href="#" class="box-link" data-target="#box-book-chart-view" data-small="statistic"  data-with="#box-book-list-small-3">Thống kê tương tác</a></li>
 				</ul>
 			</li>
 			<li class="header">HỆ THỐNG</li>
 			<li class="treeview">
-				<a href="#" class="box-link" data-target="#box-mail"><i class="fa fa-envelope"></i> <span>Viết mail</span></a>
+				<a href="#" class="box-link" data-target="#box-mail" data-small="mail"><i class="fa fa-envelope"></i> <span>Viết mail</span></a>
 			</li>
 			<li class="treeview">
 				<a href="#" class="box-link" data-target="#box-setting"><i class="fa fa-gear"></i> <span>Cài đặt</span></a>

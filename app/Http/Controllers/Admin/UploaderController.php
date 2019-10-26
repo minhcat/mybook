@@ -29,6 +29,8 @@ use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\ChapsBModel;
 use App\Http\Models\BModels\CharactersBModel;
 use App\Http\Models\BModels\CommentsBModel;
+use App\Http\Models\BModels\MailsBModel;
+use App\Http\Models\BModels\NotificationsAdminBModel;
 use App\Http\Models\BModels\TransBModel;
 use App\Http\Models\BModels\ImagesBModel;
 use App\Http\Models\BModels\UsersBModel;
@@ -73,6 +75,9 @@ class UploaderController extends Controller {
 		}
 		$data['mails']			= MailsQModel::get_mails_not_seen_by_user_id($user_id);
 		$data['notifications']	= NotificationsAdminQModel::get_notifications_not_seen_by_user_id($user_id);
+		$data['mails_receive']	= MailsBModel::get_mails_receive($user_id);
+		$data['mails_send']		= MailsQModel::get_mails_by_admin_id($user_id);
+		$data['noties_receive']	= NotificationsAdminBModel::get_notifications_receive($user_id);
 
 		// dd($data);
 		return view('pages.admin.uploader', $data);
