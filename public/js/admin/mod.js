@@ -13,7 +13,7 @@ $(document).ready(function() {
 		var id = $(this).data('id');
 		$.ajax({
 			type: 'GET',
-			url: '/admin/mod/ajax/add_list_save/'+id,
+			url: '/admin/censor/ajax/add_list_save/'+id,
 			success: function(data) {
 				$('.well').addClass('in');
 				$('.well p').text('Lưu bình luận thành công');
@@ -28,7 +28,7 @@ $(document).ready(function() {
 		var time  = $(this).parents('.modal#modal-comment-punish').find('input[name="time"]:checked').val();
 		$.ajax({
 			type: 'POST',
-			url: '/admin/mod/ajax/punish_user/'+user,
+			url: '/admin/censor/ajax/punish_user/'+user,
 			data: {
 				_token: token,
 				time: time,
@@ -48,7 +48,7 @@ $(document).ready(function() {
 		var token = $(this).parents('.modal#modal-comment-ban').find('input.token').val();
 		$.ajax({
 			type: 'POST',
-			url: '/admin/mod/ajax/ban_user/'+user,
+			url: '/admin/censor/ajax/ban_user/'+user,
 			data: {
 				_token: token,
 				id_comment: id,

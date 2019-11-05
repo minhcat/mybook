@@ -1,15 +1,15 @@
 @extends('master.admin')
 
 @section('title')
-MOD
+Censor
 @endsection
 
 @section('admin-job')
-MOD
+Censor
 @endsection
 
 @section('define-header')
-	<link rel="stylesheet" href="{{ asset('css/admin/mod.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin/censor.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/admin/common.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/admin/dataTables.bootstrap.css') }}">
 @endsection
@@ -24,7 +24,7 @@ MOD
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			MOD 
+			Censor 
 			<small>Tiếp nhận, kiểm tra báo cáo bình luận trên web</small>
 		</h1>
 	</section>

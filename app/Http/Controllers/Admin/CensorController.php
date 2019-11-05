@@ -22,14 +22,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Filesystem\Factory;
 use Illuminate\Http\Request;
 
-class ModController extends Controller {
+class CensorController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function mod() {
+	public function censor() {
 		$user_id = Auth::id();
 		$user = UsersQModel::get_user_by_id($user_id);
 		if ($user->admin != 'mod' && $user->admin != 'super-admin') {
@@ -52,7 +52,7 @@ class ModController extends Controller {
 		$data['mails_send']		= MailsQModel::get_mails_by_admin_id($user_id);
 		$data['noties_receive']	= NotificationsAdminBModel::get_notifications_receive($user_id);
 		// dd($data);
-		return view('pages.admin.mod', $data);
+		return view('pages.admin.censor', $data);
 	}
 
 	/**
@@ -68,7 +68,7 @@ class ModController extends Controller {
 		}
 		$data = [
 			'id_comment'  => $id_comment,
-			'id_user_mod' => 13,
+			'id_user_mod' => Auth::id(),
 			'date'        => date('Y-m-d H:i:s')
 		];
 		CommentsSaveCModel::insert_comment($data);
@@ -87,7 +87,7 @@ class ModController extends Controller {
 		if (empty($users_punish)) {
 			$data = [
 				'id_user_punish' => $id_user,
-				'id_user_mod'    => 13,
+				'id_user_mod'    => Auth::id(),
 				'id_comment'     => $id_comment,
 				'time_punish'    => $time_punish,
 				'date'           => date('Y-m-d H:i:s')
@@ -96,7 +96,7 @@ class ModController extends Controller {
 		} else {
 			$data = [
 				'id_user_punish' => $id_user,
-				'id_user_mod'    => 13,
+				'id_user_mod'    => Auth::id(),
 				'id_comment'     => $id_comment,
 				'time_punish'    => $time_punish,
 				'date'           => date('Y-m-d H:i:s')
@@ -111,13 +111,13 @@ class ModController extends Controller {
 	 * @return Response
 	 */
 	public function ban_user($id_user, Request $request) {
-		dd($request->all());
+		// dd($request->all());
 		$id_comment = $request->input('id_comment');
 		$users_ban = UsersBanQModel::get_user_ban_by_user_id($id_user);
 		if (empty($users_ban)) {
 			$data = [
 				'id_user_ban' => $id_user,
-				'id_user_mod' => 13,
+				'id_user_mod' => Auth::id(),
 				'id_comment'  => $id_comment,
 				'date'        => date('Y-m-d H:i:s')
 			];

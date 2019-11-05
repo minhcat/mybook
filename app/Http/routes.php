@@ -167,7 +167,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 
 	Route::get('/', 'Admin\AdminController@set_admin');
 
-	Route::get('mod', 'Admin\ModController@mod');
+	Route::get('censor', 'Admin\CensorController@censor');
 
 	Route::get('uploader', 'Admin\UploaderController@uploader');
 
@@ -175,15 +175,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 
 	Route::get('super-admin', 'Admin\SuperAdminController@super_admin');
 
-	Route::group(['prefix' => 'mod'], function() {
+	Route::group(['prefix' => 'censor'], function() {
 
 		Route::group(['prefix' => 'ajax'], function() {
 
-			Route::get('add_list_save/{id_comment}', 'Admin\ModController@add_list_save');
+			Route::get('add_list_save/{id_comment}', 'Admin\CensorController@add_list_save');
 
-			Route::post('punish_user/{id_user}', 'Admin\ModController@punish_user');
+			Route::post('punish_user/{id_user}', 'Admin\CensorController@punish_user');
 
-			Route::post('ban_user/{id_user}', 'Admin\ModController@ban_user');
+			Route::post('ban_user/{id_user}', 'Admin\CensorController@ban_user');
 			
 		});
 
