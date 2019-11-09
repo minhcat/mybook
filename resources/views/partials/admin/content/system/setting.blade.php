@@ -10,70 +10,46 @@
 	</div>
 	<div class="box-body">
 		<label for="name">Sidebar</label>
-		<div class="checkbox">
+		<div class="checkbox sidebar">
 			<label for="name">
-				<input type="checkbox">
+				<input type="checkbox" {{ ($admin_setting->sidebar == 1) ? 'checked' : '' }}>
 				Small Sidebar
 			</label>
 		</div>
 		<label for="name">Skin</label>
-		<div class="form-group">
+		<div class="form-group skin">
 			<div class="radio">
-				<label><input type="radio" name="skin">Skin blue</label>
+				<label><input type="radio" name="skin" data-value="blue" {{ ($admin_setting->skin == 'blue') ? 'checked' : '' }}>Skin blue</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="skin">Skin red</label>
+				<label><input type="radio" name="skin" data-value="red" {{ ($admin_setting->skin == 'red') ? 'checked' : '' }}>Skin red</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="skin">Skin green</label>
+				<label><input type="radio" name="skin" data-value="green" {{ ($admin_setting->skin == 'green') ? 'checked' : '' }}>Skin green</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="skin">Skin purple</label>
+				<label><input type="radio" name="skin" data-value="purple" {{ ($admin_setting->skin == 'purple') ? 'checked' : '' }}>Skin purple</label>
 			</div>
-		</div>
-		<div class="form-group">
-			<label for="name">Trang Mặc Định</label>
-			<select class="form-control">
-				<option disabled="disabled">Dữ liệu</option>
-				<option>- Truyện</option>
-				<option>- Tương tác</option>
-				<option>- Người dùng</option>
-				<option>- Thể loại</option>
-				<option>- Nhóm dịch</option>
-				<option disabled="disabled">Danh sách xóa tạm</option>
-				<option>- Truyện</option>
-				<option>- Người dùng</option>
-				<option>- Thể loại</option>
-				<option>- Nhóm dịch</option>
-				<option disabled="disabled">Hệ thống</option>
-				<option>- Cài đặt chung</option>
-				<option>- Trang chủ</option>
-				<option>- Danh sách truyện</option>
-				<option>- Thông tin chi tiết</option>
-				<option>Cấp quyền</option>
-				<option>Viết mail</option>
-				<option>Cài đặt</option>
-			</select>
 		</div>
 		<label for="name">Email</label>
 		<div class="form-group">
 			<div class="radio">
-				<label><input type="radio" name="mail">Luôn nhận mail</label>
+				<label><input type="radio" name="email" {{ ($admin_setting->email == 'receive') ? 'checked' : '' }}>Luôn nhận mail</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="mail">Chỉ nhận từ admin</label>
+				<label><input type="radio" name="email" {{ ($admin_setting->email == 'admin') ? 'checked' : '' }}>Chỉ nhận từ admin</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="mail">Không nhận tất cả email</label>
+				<label><input type="radio" name="email" {{ ($admin_setting->email == 'none') ? 'checked' : '' }}>Không nhận tất cả email</label>
 			</div>
 		</div>
 		<label for="name">Thông Báo</label>
 		<div class="form-group">
 			<div class="radio">
-				<label><input type="radio" name="mail">Luôn nhận thông báo</label>
+				<label><input type="radio" name="mail" {{ ($admin_setting->notification == 'receive') ? 'checked' : '' }}>Luôn nhận thông báo</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="mail">Không nhận thông báo</label>
+				<label><input type="radio" name="mail" {{ ($admin_setting->notification == 'none') ? 'checked' : '' }}>Không nhận thông báo</label>
 			</div>
 		</div>
 	</div>

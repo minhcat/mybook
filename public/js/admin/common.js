@@ -105,4 +105,15 @@ $(document).ready(function() {
 			}
 		});
 	});
+	$('.box#box-setting .box-body .sidebar input').change(function() {
+		$('body').toggleClass('sidebar-collapse');
+	});
+	$('.box#box-setting .box-body .skin input').change(function() {
+		var value = $(this).data('value');
+		$('body').removeClass('skin-blue');
+		$('body').removeClass('skin-red');
+		$('body').removeClass('skin-green');
+		$('body').removeClass('skin-purple');
+		$('body').addClass('skin-'+value);
+	});
 });

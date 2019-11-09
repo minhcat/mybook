@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Helpers\Images;
 use App\Http\Controllers\Controller;
+use App\Http\Models\QModels\AdminsSettingQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\UsersPunishQModel;
 use App\Http\Models\QModels\UsersBanQModel;
@@ -51,6 +52,7 @@ class CensorController extends Controller {
 		$data['mails_receive']	= MailsBModel::get_mails_receive($user_id);
 		$data['mails_send']		= MailsQModel::get_mails_by_admin_id($user_id);
 		$data['noties_receive']	= NotificationsAdminBModel::get_notifications_receive($user_id);
+		$data['admin_setting']	= AdminsSettingQModel::get_setting_by_admin_id($user_id);
 		// dd($data);
 		return view('pages.admin.censor', $data);
 	}

@@ -5,7 +5,7 @@
 
 	@yield('define-header')
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-{{ $admin_setting->skin }} sidebar-mini {{ ($admin_setting->sidebar == 1) ? 'sidebar-collapse' : '' }}">
 	<div class="wrapper">
 		@include('partials.admin.layouts.content_header')
 		

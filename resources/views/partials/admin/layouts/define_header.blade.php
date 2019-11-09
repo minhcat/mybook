@@ -18,6 +18,7 @@
 			apply the skin class to the body tag so the changes take effect. -->
 <link rel="stylesheet" href="{{ asset('css/admin/skin-blue.css') }}">
 <link rel="stylesheet" href="{{ asset('css/admin/skin-black.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin/all-skins.css') }}">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
