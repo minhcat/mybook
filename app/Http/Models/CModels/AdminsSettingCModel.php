@@ -39,4 +39,16 @@ class AdminsSettingCModel extends Model
 				->where('id', '=', $id)
 				->update($data);
 	}
+
+	/**
+	 * update food
+	 * @param id
+	 * @param array data
+	 * @return boolean
+	 */
+	public static function update_admin_setting_by_admin_id($admin_id, $data) {
+		return DB::table('admins_setting')
+				->where('id_admin', '=', $admin_id)
+				->update($data);
+	}
 }

@@ -19,6 +19,7 @@ use App\Http\Models\BModels\AuthorsBModel;
 use App\Http\Models\BModels\MailsBModel;
 use App\Http\Models\BModels\NotificationsAdminBModel;
 use App\Http\Models\BModels\UsersBModel;
+use App\Http\Models\CModels\AdminsSettingCModel;
 use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\BooksApprovedCModel;
 use App\Http\Models\CModels\UsersPunishCModel;
@@ -275,6 +276,33 @@ class AdminController extends Controller {
 		foreach ($noties as $noti) {
 			$data = ['seen' => 1];
 			NotificationsAdminCModel::update_notification($noti->id, $data);
+		}
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function post_setting(Request $request) {
+		$setting = AdminsSettingQModel::get_setting_by_admin_id(Auth::id());
+		if ($setting != null) {
+			$data = [
+				'sidebar'      => $request->input('sidebar'),
+				'skin'         => $request->input('skin'),
+				'email'        => $request->input('email'),
+				'notification' => $request->input('notification'),
+			];
+			AdminsSettingCModel::update_admin_setting_by_admin_id(Auth::id(), $data);
+		} else {
+			$data = [
+				'id_admin'     => Auth::id(),
+				'sidebar'      => $request->input('sidebar'),
+				'skin'         => $request->input('skin'),
+				'email'        => $request->input('email'),
+				'notification' => $request->input('notification'),
+			];
+			AdminsSettingCModel::insert_admin_setting($data);
 		}
 	}
 }

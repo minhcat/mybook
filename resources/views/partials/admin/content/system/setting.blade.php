@@ -9,6 +9,7 @@
 		</div>
 	</div>
 	<div class="box-body">
+		<input type="hidden" class="token" name="_token" value="{{ csrf_token() }}">
 		<label for="name">Sidebar</label>
 		<div class="checkbox sidebar">
 			<label for="name">
@@ -32,24 +33,24 @@
 			</div>
 		</div>
 		<label for="name">Email</label>
-		<div class="form-group">
+		<div class="form-group email">
 			<div class="radio">
-				<label><input type="radio" name="email" {{ ($admin_setting->email == 'receive') ? 'checked' : '' }}>Luôn nhận mail</label>
+				<label><input type="radio" name="email" {{ ($admin_setting->email == 'receive') ? 'checked' : '' }} data-value="receive">Luôn nhận mail</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="email" {{ ($admin_setting->email == 'admin') ? 'checked' : '' }}>Chỉ nhận từ admin</label>
+				<label><input type="radio" name="email" {{ ($admin_setting->email == 'admin') ? 'checked' : '' }} data-value="admin">Chỉ nhận từ admin</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="email" {{ ($admin_setting->email == 'none') ? 'checked' : '' }}>Không nhận tất cả email</label>
+				<label><input type="radio" name="email" {{ ($admin_setting->email == 'none') ? 'checked' : '' }} data-value="none">Không nhận tất cả email</label>
 			</div>
 		</div>
 		<label for="name">Thông Báo</label>
-		<div class="form-group">
+		<div class="form-group notification">
 			<div class="radio">
-				<label><input type="radio" name="mail" {{ ($admin_setting->notification == 'receive') ? 'checked' : '' }}>Luôn nhận thông báo</label>
+				<label><input type="radio" name="mail" {{ ($admin_setting->notification == 'receive') ? 'checked' : '' }} data-value="receive">Luôn nhận thông báo</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="mail" {{ ($admin_setting->notification == 'none') ? 'checked' : '' }}>Không nhận thông báo</label>
+				<label><input type="radio" name="mail" {{ ($admin_setting->notification == 'none') ? 'checked' : '' }} data-value="none">Không nhận thông báo</label>
 			</div>
 		</div>
 	</div>

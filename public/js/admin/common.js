@@ -116,4 +116,28 @@ $(document).ready(function() {
 		$('body').removeClass('skin-purple');
 		$('body').addClass('skin-'+value);
 	});
+	$('.box#box-setting .box-footer .btn-success').click(function() {
+		var sidebar = $('.box#box-setting .sidebar input').prop('checked');
+		var skin    = $('.box#box-setting .skin input[type=radio]:checked').data('value');
+		var email   = $('.box#box-setting .email input[type=radio]:checked').data('value');
+		var noti    = $('.box#box-setting .notification input[type=radio]:checked').data('value');
+		var token   = $('.box#box-setting .token').val();
+
+		if (sidebar == true) sidebar = 1; else sidebar = 0;
+		$.ajax({
+			type: 'POST',
+			url: '/admin/admin/ajax/post_setting',
+			data: {
+				sidebar: sidebar,
+				skin: skin,
+				email: email,
+				notification: noti,
+				_token: token,
+			},
+			success:function() {
+				$('.well').addClass('in');
+				$('.well p').text('cài đặt thành công')
+			}
+		});
+	});
 });

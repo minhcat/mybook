@@ -260,6 +260,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 			Route::post('post_mail', 'Admin\AdminController@post_mail');
 
 			Route::post('post_noti', 'Admin\AdminController@post_noti');
+
+			Route::post('post_setting', 'Admin\AdminController@post_setting');
 			
 		});
 
