@@ -16,9 +16,16 @@
 		@include('partials.admin.layouts.content_footer')
 	</div>
 	
+	<script type="text/javascript">
+		var flag_url = '{{ asset('/') }}';
+		@if (Auth::check())
+		var auth_id  = '{{ Auth::id() }}';
+		@endif
+	</script>
+	
 	@include('partials.admin.layouts.define_footer')
 
 	@yield('define-footer')
-
+	
 </body>
 </html>

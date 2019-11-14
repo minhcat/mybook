@@ -184,6 +184,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 			Route::post('punish_user/{id_user}', 'Admin\CensorController@punish_user');
 
 			Route::post('ban_user/{id_user}', 'Admin\CensorController@ban_user');
+
+			Route::get('reset_new_comment/{id_comment}', 'Admin\CensorController@reset_new_comment');
 			
 		});
 
@@ -304,3 +306,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 });
 
 Route::get('/config/set_password/{user_id}', 'ConfigController@set_password');
+
+Route::get('/config/create_comment/{user_id}', 'ConfigController@create_comment');

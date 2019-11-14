@@ -279,6 +279,22 @@ class CommentsQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
+	public static function get_comment_new_first($id_comment_old) {
+		$result = DB::table('comments as c')
+				->join('users as u', 'u.id', '=', 'c.id_user')
+				->where('c.id', '>', $id_comment_old)
+				->orderBy('datetime','desc')
+				->select('c.*', 'u.image', 'u.name', 'u.nickname', 'u.name_login as slug')
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * get comment
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
 	public static function get_number_comments_by_user_id($id_user) {
 		$result = DB::table('comments')
 				->where('id_user', $id_user)

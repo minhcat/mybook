@@ -107,6 +107,41 @@ class CommentsBModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
+	public static function get_new_comment_mod($id_comment_old) {
+		$comments = CommentsQModel::get_comment_new_first($id_comment_old);
+		// dd($comments);
+		foreach ($comments as $comment) {
+			//get page name
+			if ($comment->page == 'book') {
+				$book = BooksQModel::get_book_by_id($comment->id_page);
+				$comment->page_name = $book->name;
+			} else if ($comment->page == 'character') {
+				$character = CharactersQModel::get_character_by_id($comment->id_page);
+				$comment->page_name = $character->name;
+			} else if ($comment->page == 'author') {
+				$author = AuthorsQModel::get_author_by_id($comment->id_page);
+				$comment->page_name = $author->name;
+			} else if ($comment->page == 'trans') {
+				$trans = TransQModel::get_trans_by_id($comment->id_page);
+				$comment->page_name = $trans->name;
+			} else if ($comment->page == 'user') {
+				$user = UsersQModel::get_user_by_id($comment->id_page);
+				$comment->page_name = $user->name;
+			} else if ($comment->page == 'read') {
+				$chap = ChapsQModel::get_chap_by_id($comment->id_page);
+				$comment->page_name = $chap->book_name;
+				$comment->chap_name = $chap->name;
+			}
+		}
+
+		return $comments;
+	}
+
+	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
 	public static function get_new_comments_uploader($books) {
 		$comments = [];
 		// get comments each book

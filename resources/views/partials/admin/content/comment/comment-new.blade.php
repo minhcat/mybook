@@ -13,10 +13,10 @@
 	<!-- box body -->
 	<div class="box-body">
 		<!-- Conversations are loaded here -->
-		<div class="direct-chat-messages">
+		<div class="direct-chat-messages" {{ (!empty($new_comments)) ? 'data-id='.$new_comments[0]->id.'' : '' }}>
 			<!-- Message. Default to the left -->
-			@foreach ($new_comments as $comment)
-			<div class="direct-chat-msg">
+			@foreach ($new_comments as $key => $comment)
+			<div class="direct-chat-msg {{ ($key == 0)? 'first' : '' }}" data-id="{{ $comment->id }}">
 				<div class="direct-chat-info clearfix">
 					<span class="direct-chat-name pull-left">{{ $comment->name }} - <span class="direct-chat-timestamp">{{ ($comment->page == 'author') ? 'Tác giả' : (($comment->page == 'character') ? 'Nhân vật' : (($comment->page == 'user') ? 'Người dùng' : (($comment->page == 'trans') ? 'Nhóm dịch' : 'Truyện'))) }} {{ $comment->page_name }} {{ ($comment->type == 'read') ? $comment->chap_name : '' }}</span> - <span class="direct-chat-timestamp">{{ date_format(date_create($comment->datetime), 'H:i d-m-Y') }}</span></span>
 				</div>

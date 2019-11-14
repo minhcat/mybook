@@ -126,4 +126,16 @@ class CensorController extends Controller {
 			UsersBanCModel::insert_user_ban($data);
 		}
 	}
+
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function reset_new_comment($id_comment_old) {
+		$data = CommentsBModel::get_new_comment_mod($id_comment_old);
+		// dd($data);
+		return $data;
+	}
 }
