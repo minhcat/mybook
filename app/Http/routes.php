@@ -301,6 +301,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 
 		Route::get('seen_noti', 'Admin\AdminController@check_seen_noti');
 
+		Route::get('reset_noti/{user_id}', 'Admin\AdminController@reset_noti');
+
 	});
 	
 });

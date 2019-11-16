@@ -85,4 +85,36 @@ class NotificationsAdminBModel extends Model
 		}
 		return $noties;
 	}
+
+	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_notifications_not_seen($user_id) {
+		$result = [];
+
+		$noti1     = NotificationsAdminQModel::get_notifications_not_seen_by_user_id($user_id);
+		$noti2     = NotificationsAdminQModel::get_notifications_group_by_user_id($user_id);
+		$noti_seen = NotificationsAdminQModel::get_notifications_seen_group_by_user_id($user_id);
+
+		foreach ($noti1 as $noti) {
+			array_push($result, $noti);
+		}
+
+		foreach ($noti2 as $noti_group) {
+			$check = true;
+			foreach ($noti_seen as $noti) {
+				if ($noti->id_notification == $noti_group->id) {
+					$check = false;
+					break;
+				}
+			}
+			if ($check) {
+				array_push($result, $noti_group);
+			}
+		}
+
+		return $result;
+	}
 }

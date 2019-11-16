@@ -140,4 +140,19 @@ $(document).ready(function() {
 			}
 		});
 	});
+	function reset_notification() {
+		if (!$('.well').hasClass('in')) {
+			$.ajax({
+				type: 'GET',
+				url: '/admin/ajax/reset_noti/'+auth_id,
+				success:function(noti) {
+					if (noti.length != 0) {
+						$('.well').collapse('show');
+						$('.well p').text(noti[0].content);
+					}
+				}
+			});
+		}
+	}
+	setInterval(reset_notification, 3000);
 });
