@@ -31,4 +31,10 @@
 
 	<p></p>
 </div>
+<div class="well well-danger collapse">
+	<button type="button" class="btn btn-box-tool btn-close pull-right"><i class="fa fa-times"></i></button>
+	<h4>Thông Báo!</h4>
+
+	<p></p>
+</div>
 @endif

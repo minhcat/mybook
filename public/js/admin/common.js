@@ -147,8 +147,8 @@ $(document).ready(function() {
 				url: '/admin/ajax/reset_noti/'+auth_id,
 				success:function(noti) {
 					if (noti.length != 0) {
-						$('.well').collapse('show');
-						$('.well p').text(noti[0].content);
+						$('.well.well-success').collapse('show');
+						$('.well.well-success p').text(noti[0].content);
 					}
 				}
 			});
@@ -161,12 +161,13 @@ $(document).ready(function() {
 				url: '/admin/ajax/reset_mail/'+auth_id,
 				success:function(mail) {
 					if (mail.length != 0) {
-						$('.well').collapse('show');
-						$('.well p').text('Bạn có tin nhắn mới');
+						$('.well.well-danger').collapse('show');
+						$('.well.well-danger p').text('Bạn có tin nhắn mới');
 					}
 				}
 			});
 		}
 	}
 	setInterval(reset_notification, 3000);
+	setInterval(reset_mail, 3000);
 });

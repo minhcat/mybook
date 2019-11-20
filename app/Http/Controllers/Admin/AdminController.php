@@ -335,18 +335,10 @@ class AdminController extends Controller {
 	 * @return Response
 	 */
 	public function reset_mail($user_id) {
-		$result = NotificationsAdminBModel::get_notifications_not_seen($user_id);
+		$result = MailsQModel::get_mails_not_show_by_user_id($user_id);
 		if (!empty($result)) {
-			if ($result[0]->id_group == null) {
-				$data = ['seen' => 1];
-				NotificationsAdminCModel::update_notification($result[0]->id, $data);
-			} else {
-				$data = [
-					'id_notification' => $result[0]->id,
-					'id_admin'        => Auth::id(),
-				];
-				NotificationsSeenCModel::insert_notification_seen($data);
-			}
+			$data = ['show' => 1];
+			MailsCModel::update_mail($result[0]->id, $data);
 		}
 		return $result;
 	}

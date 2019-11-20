@@ -69,4 +69,18 @@ class MailsQModel extends Model
 
 		return $result;
 	}
+
+	/**
+	 * get author by slug
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_mails_not_show_by_user_id($user_id) {
+		$result = DB::table('mails')
+				->where('id_user', $user_id)
+				->where('show', 0)
+				->get();
+
+		return $result;
+	}
 }
