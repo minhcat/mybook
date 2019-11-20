@@ -154,5 +154,19 @@ $(document).ready(function() {
 			});
 		}
 	}
+	function reset_mail() {
+		if (!$('.well').hasClass('in')) {
+			$.ajax({
+				type: 'GET',
+				url: '/admin/ajax/reset_mail/'+auth_id,
+				success:function(mail) {
+					if (mail.length != 0) {
+						$('.well').collapse('show');
+						$('.well p').text('Bạn có tin nhắn mới');
+					}
+				}
+			});
+		}
+	}
 	setInterval(reset_notification, 3000);
 });

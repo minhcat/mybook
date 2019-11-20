@@ -23,6 +23,20 @@ class NotificationsAdminQModel extends Model
 	}
 
 	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_notifications_not_show_by_user_id($user_id) {
+		$result = DB::table('notifications_admin')
+				->where('id_user', $user_id)
+				->where('show', 0)
+				->get();
+
+		return $result;
+	}
+
+	/**
 	 * get author by slug
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
@@ -82,6 +96,20 @@ class NotificationsAdminQModel extends Model
 	 * @return object|boolean : all properties from `books` table
 	 */
 	public static function get_notifications_seen_group_by_user_id($user_id) {
+		$result = DB::table('notifications_seen')
+				->where('id_admin', $user_id)
+				->where('seen', 0)
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * get author by slug
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_notifications_show_group_by_user_id($user_id) {
 		$result = DB::table('notifications_seen')
 				->where('id_admin', $user_id)
 				->get();

@@ -313,6 +313,28 @@ class AdminController extends Controller {
 	 * @return Response
 	 */
 	public function reset_noti($user_id) {
+		$result = NotificationsAdminBModel::get_notifications_not_show($user_id);
+		if (!empty($result)) {
+			if ($result[0]->id_group == null) {
+				$data = ['show' => 1];
+				NotificationsAdminCModel::update_notification($result[0]->id, $data);
+			} else {
+				$data = [
+					'id_notification' => $result[0]->id,
+					'id_admin'        => Auth::id(),
+				];
+				NotificationsSeenCModel::insert_notification_seen($data);
+			}
+		}
+		return $result;
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function reset_mail($user_id) {
 		$result = NotificationsAdminBModel::get_notifications_not_seen($user_id);
 		if (!empty($result)) {
 			if ($result[0]->id_group == null) {

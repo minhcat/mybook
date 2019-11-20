@@ -303,6 +303,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 
 		Route::get('reset_noti/{user_id}', 'Admin\AdminController@reset_noti');
 
+		Route::get('reset_mail/{user_id}', 'Admin\AdminController@reset_mail');
+
 	});
 	
 });
