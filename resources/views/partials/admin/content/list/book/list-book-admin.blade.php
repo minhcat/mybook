@@ -22,96 +22,17 @@
 				</tr>
 			</thead>
 			<tbody>
+				@foreach ($books as $key => $book)
 				<tr>
-					<td>001</td>
-					<td>Attack On Titan</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Attack On Titan</td>
+					<td>{{ $key + 1 }}</td>
+					<td>{{ $book->name }}</td>
+					<td>{{ date_format(date_create($book->release_at), 'd/m/Y') }}</td>
+					<td>{{ date_format(date_create($book->create_at), 'd/m/Y') }}</td>
+					<td>{{ $book->uploader }}</td>
+					<td>{{ $book->description }}</td>
+					<td>{{ $book->keyword }}</td>
 				</tr>
-				<tr>
-					<td>002</td>
-					<td>Date A Live</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Date A Live</td>
-				</tr>
-				<tr>
-					<td>003</td>
-					<td>Dragon Ball</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Dragon Ball</td>
-				</tr>
-				<tr>
-					<td>004</td>
-					<td>Kakegurui</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Kakegurui</td>
-				</tr>
-				<tr>
-					<td>005</td>
-					<td>Konosuba</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Konosuba</td>
-				</tr>
-				<tr>
-					<td>006</td>
-					<td>Darling in the FranXX</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Darling in the FranXX</td>
-				</tr>
-				<tr>
-					<td>007</td>
-					<td>Overlord</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Overlord</td>
-				</tr>
-				<tr>
-					<td>008</td>
-					<td>Girly Air Force</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Girly Air Force</td>
-				</tr>
-				<tr>
-					<td>009</td>
-					<td>Golbin Slayer</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Golbin Slayer</td>
-				</tr>
-				<tr>
-					<td>010</td>
-					<td>Death Note</td>
-					<td>12/2/2008</td>
-					<td>29/4/2018</td>
-					<td>Võ Trinh</td>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</td>
-					<td>Death Note</td>
-				</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>

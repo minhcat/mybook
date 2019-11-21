@@ -8,6 +8,7 @@ use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksApprovedQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\CategoriesQModel;
+use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\CommentsReportQModel;
 use App\Http\Models\QModels\BooksErrorQModel;
 use App\Http\Models\QModels\MailsQModel;
@@ -45,6 +46,8 @@ class AdminController extends Controller {
 		if ($user->admin != 'admin' && $user->admin != 'super-admin') {
 			return redirect('/admin/'.$user->admin);
 		}
+		$data['books']			= BooksBModel::get_all_books();
+		$data['chaps']			= ChapsQModel::get_all_chaps();
 		$data['user']			= $user;
 		$data['transes']		= TransBModel::get_transes_all();
 		$data['characters']		= CharactersBModel::get_characters_all();
