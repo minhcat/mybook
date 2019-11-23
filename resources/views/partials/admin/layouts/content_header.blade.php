@@ -117,28 +117,13 @@
 								<small>Nhân viên tháng 3 2018</small>
 							</p>
 						</li>
-						<!-- Menu Body -->
-						<li class="user-body">
-							<div class="row">
-								<div class="col-xs-4 text-center">
-									<a href="#">Theo dõi</a>
-								</div>
-								<div class="col-xs-4 text-center">
-									<a href="#">Yêu thích</a>
-								</div>
-								<div class="col-xs-4 text-center">
-									<a href="#">Bạn bè</a>
-								</div>
-							</div>
-							<!-- /.row -->
-						</li>
 						<!-- Menu Footer-->
 						<li class="user-footer">
-							<div class="pull-left">
-								<a href="#" class="btn btn-default btn-flat">Thông tin</a>
+							<div class="pull-left info">
+								<a href="#" class="btn btn-default btn-flat box-link" data-target="#box-user-detail-{{ $user->id }}">Thông tin</a>
 							</div>
-							<div class="pull-right">
-								<a href="#" class="btn btn-default btn-flat">Đăng xuất</a>
+							<div class="pull-right logout">
+								<a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Đăng xuất</a>
 							</div>
 						</li>
 					</ul>

@@ -82,6 +82,8 @@ Admin
 
 				@include('partials.admin.content.list.trans.list-trans-admin')
 
+				@include('partials.admin.content.detail.detail-user')
+
 				<!-- Add, Edit Box -->
 				@include('partials.admin.content.new.new-category')
 

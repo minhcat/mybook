@@ -263,7 +263,17 @@ class CommonController extends Controller {
 		if (Auth::check()) {
 			$data['user_login'] = UsersQModel::get_user_by_id(Auth::id());
 			$data['notifications'] = NotificationsBModel::get_notifications_list(Auth::id());
+			$data['menu_noti'] = NotificationsBModel::get_notifications_list(Auth::id());
 			$data['noti_seen']     = NotificationsQModel::get_notifications_not_seen(Auth::id());
+			foreach ($data['menu_noti'] as $key => $notification) {
+				$date_create = date_create($notification->date);
+				$notification->year   = (int)date_format($date_create, 'Y');
+				$notification->month  = (int)date_format($date_create, 'm');
+				$notification->date   = (int)date_format($date_create, 'd');
+				$notification->hour   = (int)date_format($date_create, 'H');
+				$notification->minute = (int)date_format($date_create, 'i');
+				$notification->second = (int)date_format($date_create, 's');
+			}
 			if ($type == 'book') {
 				$book_like   = BooksLikeQModel::get_book_like_by_user_id_and_book_id(Auth::id(), $item_id);
 				$book_follow = BooksFollowQModel::get_book_follow_by_user_id_and_book_id(Auth::id(), $item_id);

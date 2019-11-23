@@ -12,6 +12,7 @@ use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\CategoriesQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\UsersFollowQModel;
+use App\Http\Models\QModels\UsersCategoryQModel;
 use App\Http\Models\QModels\CommentsQModel;
 use App\Http\Models\QModels\NotificationsGroupQModel;
 
@@ -60,5 +61,23 @@ class UsersBModel extends Model
 			array_push($result, $item);
 		}
 		return $result;
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_user_by_id($id) {
+		$user = UsersQModel::get_user_by_id($id);
+		if (!empty($user)) {
+			$categories = UsersCategoryQModel::get_categories_by_user_id($id);
+
+			$user->categories = [];
+			foreach ($categories as $key => $category) {
+				$user->categories[$key] = $category->name;
+			}
+		}
+		return $user;
 	}
 }

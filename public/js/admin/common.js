@@ -140,6 +140,15 @@ $(document).ready(function() {
 			}
 		});
 	});
+	$('header.main-header .navbar .user .dropdown-menu .user-footer .logout .btn').click(function() {
+		$.ajax({
+			url: '/logout',
+			type: 'get',
+			success:function() {
+				
+			}
+		});
+	});
 	function reset_notification() {
 		if (!$('.well').hasClass('in')) {
 			$.ajax({

@@ -42,7 +42,7 @@ class AdminController extends Controller {
 	 */
 	public function admin() {
 		$user_id = Auth::id();
-		$user = UsersQModel::get_user_by_id($user_id);
+		$user = UsersBModel::get_user_by_id($user_id);
 		if ($user->admin != 'admin' && $user->admin != 'super-admin') {
 			return redirect('/admin/'.$user->admin);
 		}
