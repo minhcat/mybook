@@ -88,8 +88,16 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 							@endif
 						@endforeach
 					</p>
+					@if ($book->author == null)
+					<p><strong>Tác giả:</strong> Đang cập nhật</p>
+					@else
 					<p><strong>Tác giả:</strong> <a href="{{ url('/detail/author/'.$book->author->slug) }}">{{ $book->author->name }}</a></p>
+					@endif
+					@if ($book->artist == null)
+					<p><strong>Minh họa:</strong> Đang cập nhật</p>
+					@else
 					<p><strong>Minh họa:</strong> <a href="{{ url('/detail/author/'.$book->artist->slug) }}">{{ $book->artist->name }}</a></p>
+					@endif
 					<p><strong>Nhóm dịch:</strong> 
 						@foreach ($book->transes as $key => $trans)
 							@if ($key < count($book->transes) - 1)
@@ -132,7 +140,7 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 				</div>
 				<div class="body">
 					<div class="info clearfix">
-						<span class="chap-index"><strong>OVERLORD SỐ CHAP</strong></span>
+						<span class="chap-index"><strong>SỐ CHAP</strong></span>
 						<span class="date"><strong>NGÀY ĐĂNG</strong></span>
 					</div>
 					<div class="tab-content">
