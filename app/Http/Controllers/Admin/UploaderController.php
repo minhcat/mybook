@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Helpers\Images;
 use App\Http\Controllers\Controller;
+use App\Http\Models\QModels\AdminsSettingQModel;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksApprovedQModel;
@@ -54,7 +55,7 @@ class UploaderController extends Controller {
 			return redirect('/admin/'.$user->admin);
 		}
 		$data['user'] 				= $user;
-		$data['chaps']				= ChapsQModel::get_chaps_all();
+		$data['chaps']				= ChapsQModel::get_all_chaps();
 		$data['books_upload'] 		= BooksBModel::get_books_upload($user_id);
 		$data['categories']			= CategoriesQModel::get_categories_all();
 		$data['characters']			= CharactersBModel::get_characters_all();
@@ -78,6 +79,7 @@ class UploaderController extends Controller {
 		$data['mails_receive']	= MailsBModel::get_mails_receive($user_id);
 		$data['mails_send']		= MailsQModel::get_mails_by_admin_id($user_id);
 		$data['noties_receive']	= NotificationsAdminBModel::get_notifications_receive($user_id);
+		$data['admin_setting']	= AdminsSettingQModel::get_setting_by_admin_id($user_id);
 
 		// dd($data);
 		return view('pages.admin.uploader', $data);

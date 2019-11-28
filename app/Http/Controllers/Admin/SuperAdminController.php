@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Helpers\Images;
 use App\Http\Controllers\Controller;
+use App\Http\Models\QModels\AdminsSettingQModel;
 use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\UsersQModel;
@@ -66,6 +67,7 @@ class SuperAdminController extends Controller {
 		$data['noties_receive']	= NotificationsAdminBModel::get_notifications_receive($user_id);
 		$data['noties_send']	= NotificationsAdminBModel::get_notifications_send($user_id);
 		$data['list_receive']   = UsersBModel::get_admin_and_group_receive();
+		$data['admin_setting']	= AdminsSettingQModel::get_setting_by_admin_id($user_id);
 
 		$data['system']['list-type-topic'] = [
 			'topic-view',
