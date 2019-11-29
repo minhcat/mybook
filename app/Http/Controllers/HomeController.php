@@ -61,6 +61,10 @@ class HomeController extends Controller {
 		$number_slider   = SystemQModel::get_variable_by_name('slider_select_images');
 		$number_slider   = (int)$number_slider->value;
 		$data['sliders'] = SlidersQModel::get_sliders_with_number($number_slider);
+		foreach ($data['sliders'] as $key => $slider) {
+			$book = BooksQModel::get_book_by_id($slider->id_book);
+			$slider->slug = $book->slug;
+		}
 
 		//get data topic view
 		$background  = ['bg-red', 'bg-blue', 'bg-green', 'bg-orange', 'bg-gray'];
