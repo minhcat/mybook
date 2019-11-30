@@ -232,6 +232,7 @@ class ListController extends Controller {
 			$item = json_decode($item);
 			$history[$key] = $item;
 		}
+		$history = array_reverse($history);
 		//get data from history
 		foreach ($history as $key => $item) {
 			if ($item->page == 'read') {
@@ -243,7 +244,7 @@ class ListController extends Controller {
 				$history[$key]->like        = $chap->like;
 				$history[$key]->follow      = $chap->follow;
 				$history[$key]->description = $chap->description;
-				$history[$key]->book_slug	= $chap->book_slug;
+				$history[$key]->slug		= $chap->book_slug;
 				$history[$key]->chap_slug	= $chap->slug;
 				$history[$key]->trans_slug	= $chap->trans_slug;
 				$history[$key]->chap		= 'chap';

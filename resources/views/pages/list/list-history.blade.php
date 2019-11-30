@@ -15,6 +15,7 @@ Lịch sử đọc truyện được lưu trữ tại đây
 {{-- end title --}}
 
 @section('list')
+<?php date_default_timezone_set('Asia/Ho_Chi_Minh'); ?>
 <div class="listbook comment col-lg-9 col-md-9 col-sm-12 col-xs-12">
 	<div class="content">
 		<ul class="breadcrumb">
@@ -30,7 +31,7 @@ Lịch sử đọc truyện được lưu trữ tại đây
 					<h4 class="name">
 						<a href="{{ url('detail/'.$item->type.'/'.$item->slug) }}">{{ $item->name }}</a>
 						@if ($item->chap != null)
-						- <a href="{{ url('read/'.$item->book_slug.'/'.$item->trans_slug.'/'.$item->slug) }}">{{ $item->chap_name }}</a>
+						- <a href="{{ url('read/'.$item->slug.'/'.$item->trans_slug.'/'.$item->chap_slug) }}">{{ $item->chap_name }}</a>
 						@endif
 					</h4>
 					<div class="group clearfix">

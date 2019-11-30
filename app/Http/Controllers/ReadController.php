@@ -20,6 +20,14 @@ class ReadController extends Controller {
 	 */
 	public function index($book_slug, $trans_slug, $chap_slug)
 	{
+		$data = [];
+		//system
+		$data = CommonController::get_data_header($data);
+		//user login
+		$data = CommonController::get_data_auth($data);
+		//data system sidebar
+		$data = CommonController::get_data_home_sidebar($data);
+		
 		$book = BooksQModel::get_book_by_slug($book_slug);
 		// dd($book);
 		$trans = TransQModel::get_trans_by_slug($trans_slug);
