@@ -236,13 +236,19 @@ class ListController extends Controller {
 		foreach ($history as $key => $item) {
 			if ($item->page == 'read') {
 				$chap = ChapsQModel::get_chap_by_id($item->id);
-				$history[$key]->name        = $chap->book_name.' - '.$chap->name;
+				$history[$key]->name        = $chap->book_name;
+				$history[$key]->chap_name	= $chap->name;
 				$history[$key]->image       = $chap->image;
 				$history[$key]->view        = $chap->view;
 				$history[$key]->like        = $chap->like;
 				$history[$key]->follow      = $chap->follow;
 				$history[$key]->description = $chap->description;
-				$history[$key]->type        = 'books';
+				$history[$key]->book_slug	= $chap->book_slug;
+				$history[$key]->chap_slug	= $chap->slug;
+				$history[$key]->trans_slug	= $chap->trans_slug;
+				$history[$key]->chap		= 'chap';
+				$history[$key]->type		= 'book';
+				$history[$key]->group		= 'books';
 				if (strlen($history[$key]->description) >= 262)
 					$history[$key]->description = mb_substr($history[$key]->description, 0, 260).'...';
 			} elseif ($item->page == 'book') {
@@ -253,7 +259,10 @@ class ListController extends Controller {
 				$history[$key]->like        = $book->like;
 				$history[$key]->follow      = $book->follow;
 				$history[$key]->description = $book->description;
-				$history[$key]->type        = 'books';
+				$history[$key]->slug		= $book->slug;
+				$history[$key]->chap		= null;
+				$history[$key]->type        = 'book';
+				$history[$key]->group		= 'books';
 				if (strlen($history[$key]->description) >= 262)
 					$history[$key]->description = mb_substr($history[$key]->description, 0, 260).'...';
 			} elseif ($item->page == 'author') {
@@ -264,7 +273,10 @@ class ListController extends Controller {
 				$history[$key]->like        = $author->like;
 				$history[$key]->follow      = $author->follow;
 				$history[$key]->description = $author->description;
-				$history[$key]->type        = 'authors';
+				$history[$key]->slug		= $author->slug;
+				$history[$key]->chap		= null;
+				$history[$key]->type        = 'author';
+				$history[$key]->group		= 'authors';
 				if (strlen($history[$key]->description) >= 262)
 					$history[$key]->description = mb_substr($history[$key]->description, 0, 260).'...';
 			} elseif ($item->page == 'character') {
@@ -275,7 +287,10 @@ class ListController extends Controller {
 				$history[$key]->like        = 0;
 				$history[$key]->follow      = 0;
 				$history[$key]->description = $character->description;
-				$history[$key]->type        = 'characters';
+				$history[$key]->slug		= $character->slug;
+				$history[$key]->chap		= null;
+				$history[$key]->type        = 'character';
+				$history[$key]->group		= 'characters';
 				if (strlen($history[$key]->description) >= 262)
 					$history[$key]->description = mb_substr($history[$key]->description, 0, 260).'...';
 			} elseif ($item->page == 'user') {
@@ -286,7 +301,10 @@ class ListController extends Controller {
 				$history[$key]->like        = $user->like;
 				$history[$key]->follow      = 0;
 				$history[$key]->description = $user->description;
-				$history[$key]->type        = 'users';
+				$history[$key]->slug		= $user->name_login;
+				$history[$key]->chap		= null;
+				$history[$key]->type        = 'user';
+				$history[$key]->group		= 'users';
 				if (strlen($history[$key]->description) >= 262)
 					$history[$key]->description = mb_substr($history[$key]->description, 0, 260).'...';
 			} elseif ($item->page == 'trans') {
@@ -297,7 +315,10 @@ class ListController extends Controller {
 				$history[$key]->like        = $trans->like;
 				$history[$key]->follow      = $trans->follow;
 				$history[$key]->description = $trans->description;
+				$history[$key]->slug		= $trans->slug;
+				$history[$key]->chap		= null;
 				$history[$key]->type        = 'trans';
+				$history[$key]->group		= 'trans';
 				if (strlen($history[$key]->description) >= 262)
 					$history[$key]->description = mb_substr($history[$key]->description, 0, 260).'...';
 			}

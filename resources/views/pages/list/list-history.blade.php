@@ -25,9 +25,14 @@ Lịch sử đọc truyện được lưu trữ tại đây
 			@foreach ($history as $key => $item)
 			
 			<div class="book clearfix">
-				<a href="detail-book.html"><img src="{{ asset('image/'.$item->type.'/'.$item->image.'.jpg') }}" width="160px" height="160px"></a>
+				<a href="{{ url('detail/'.$item->type.'/'.$item->slug) }}"><img src="{{ asset('image/'.$item->group.'/'.$item->image.'.jpg') }}" width="160px" height="160px"></a>
 				<div class="info">
-					<h4 class="name"><a href="detail-book.html">{{ $item->name }}</a></h4>
+					<h4 class="name">
+						<a href="{{ url('detail/'.$item->type.'/'.$item->slug) }}">{{ $item->name }}</a>
+						@if ($item->chap != null)
+						- <a href="{{ url('read/'.$item->book_slug.'/'.$item->trans_slug.'/'.$item->slug) }}">{{ $item->chap_name }}</a>
+						@endif
+					</h4>
 					<div class="group clearfix">
 						<div class="item red" title="yêu thích">
 							<span class="glyphicon glyphicon-heart"></span> 
