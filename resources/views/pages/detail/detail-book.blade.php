@@ -150,7 +150,7 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 								@foreach ($chaps as $chap)
 								<tr>
 									<td class="clearfix">
-										<p class="left"><a href="#">{{ $chap->name }}</a></p>
+										<p class="left"><a href="{{ url('read/'.$book->slug.'/'.$book->transes[$key]->slug.'/'.$chap->slug) }}">{{ $chap->name }}</a></p>
 										<p class="right">{{ date_format(date_create($chap->create_at),'d-m-Y') }}</p>
 									</td>
 								</tr>

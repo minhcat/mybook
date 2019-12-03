@@ -41,7 +41,7 @@
 				</div>
 				<div class="collapse navbar-collapse" id="menu-left">
 					<ul class="nav navbar-nav">
-						<li class="{{ (isset($page) && $page == 'home') ? 'active' : '' }}"><a rel="notfollow" class="page"><span class="glyphicon glyphicon-home"></span></a></li>
+						<li class="{{ (isset($page) && $page == 'home') ? 'active' : '' }}"><a href="{{ url('/') }}" class="page"><span class="glyphicon glyphicon-home"></span></a></li>
 						<li class="{{ (isset($page) && $page == 'view') ? 'active' : '' }} hide-xs"><a href="{{ url('/list/view') }}" class="page">Truyện Hot</a></li>
 						<li class="{{ (isset($page) && $page == 'update') ? 'active' : '' }} hide-xs"><a href="{{ url('/list/update') }}" class="page">Mới Cập Nhật</a></li>
 						<li class="{{ (isset($page) && $page == 'category') ? 'active' : '' }} dropdown">

@@ -71,7 +71,7 @@
 							@endforeach
 						</div>
 						<div class="chap">{{ $book->max_chap }} chap</div>
-						<a href="detail-book.html" class="btn play">Xem Ngay</a>
+						<a href="{{ url('/detail/book/'.$book->slug) }}" class="btn play">Xem Ngay</a>
 						<div class="group row">
 							<div class="star col-md-7 col-sm-6 col-xs-6">
 								{{-- star 1 --}}

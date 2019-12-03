@@ -43,6 +43,8 @@ Route::group(['middleware' => 'auth'], function() {
 
 	Route::post('setting/{user_id}', 'LoginController@post_setting');
 
+	Route::post('comment', 'DetailController@post_comment');
+
 });
 
 Route::group(['prefix' => 'home'], function() {

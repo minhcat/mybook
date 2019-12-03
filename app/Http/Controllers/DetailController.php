@@ -49,6 +49,7 @@ use App\Http\Models\CModels\BooksFollowCModel;
 use App\Http\Models\CModels\BooksFollowStatisticCModel;
 use App\Http\Models\CModels\BooksRateCModel;
 use App\Http\Models\CModels\BooksRateStatisticCModel;
+use App\Http\Models\CModels\CommentsCModel;
 use App\Http\Models\CModels\FriendsAddCModel;
 use App\Http\Models\CModels\TransCModel;
 use App\Http\Models\CModels\TransLikeCModel;
@@ -143,8 +144,9 @@ class DetailController extends Controller {
 		
 		$array_trans = ChapsQModel::get_trans_id_by_book_id($book->id);
 		// dd($trans_id);
-		foreach ($array_trans as $trans) {
-			$chaps[$trans->id_trans] = ChapsQModel::get_chaps_by_book_id_trans_id($book->id, $trans->id_trans);
+		$chaps = [];
+		foreach ($array_trans as $key => $trans) {
+			$chaps[$key] = ChapsQModel::get_chaps_by_book_id_trans_id($book->id, $trans->id_trans);
 		}
 
 		$data['book']  = $book;
@@ -1277,5 +1279,31 @@ class DetailController extends Controller {
 			];
 			$id = FriendsAddCModel::insert_friend_add($data);
 		}
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function post_comment(Request $request)
+	{
+		// dd($request->all());
+		$data = [
+			'id_user'	=> Auth::id(),
+			'id_page'	=> $request->input('id_page'),
+			'content'	=> $request->input('content'),
+			'type'		=> $request->input('type'),
+			'page'		=> $request->input('page'),
+			'level'		=> $request->input('level'),
+			'datetime'	=> date('Y-m-d H:i:s'),
+		];
+
+		CommentsCModel::insert_comment($data);
+
+		$data = [
+			'user' => UsersQModel::get_user_by_id(Auth::id())
+		];
+		return $data;
 	}
 }

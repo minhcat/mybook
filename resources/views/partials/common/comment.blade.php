@@ -19,11 +19,16 @@
 	<hr>
 	<div class="form-comment clearfix">
 		<div class="image">
+			@if (Auth::check())
+			<img src="{{ asset('image/users/'.$user_login->image.'.jpg') }}" class="img-circle">
+			@else
 			<img src="{{ asset('image/user-default.png') }}" class="img-circle">
+			@endif
 		</div>
 		<div class="text-cmd {{ (isset($large_comment)) ? 'large' : '' }}">
 			<div class="textarea" data-placeholder="thêm bình luận" contentEditable="true" spellcheck="false"></div>
-			<button class="btn submit open-modal">Đăng bình luận</button>
+			<input class="token" type="hidden" name="_token" value="{{ csrf_token() }}">
+			<button class="btn submit open-modal" data-id="{{ $book->id }}">Đăng bình luận</button>
 			<button class="btn reset">Hủy bỏ</button>
 			<div class="dropdown emoji-drop">
 				<button class="btn emoji select">
