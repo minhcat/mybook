@@ -51,6 +51,7 @@ class CommentsQModel extends Model
 				->where('level', 0)
 				->where('id_page', $id_book)
 				->select('c.*', 'u.image', 'u.name', 'u.nickname')
+				->orderBy('c.id', 'desc')
 				->get();
 
 		return $result;
@@ -88,6 +89,7 @@ class CommentsQModel extends Model
 				->where('level', 0)
 				->where('id_page', $id_character)
 				->select('c.*', 'u.image', 'u.name', 'u.nickname')
+				->orderBy('c.id', 'desc')
 				->get();
 
 		return $result;
@@ -125,6 +127,7 @@ class CommentsQModel extends Model
 				->where('level', 0)
 				->where('id_page', $id_user)
 				->select('c.*', 'u.image', 'u.name', 'u.nickname')
+				->orderBy('c.id', 'desc')
 				->get();
 
 		return $result;
@@ -162,6 +165,7 @@ class CommentsQModel extends Model
 				->where('level', 0)
 				->where('id_page', $id_author)
 				->select('c.*', 'u.image', 'u.name', 'u.nickname')
+				->orderBy('c.d', 'desc')
 				->get();
 
 		return $result;
@@ -199,6 +203,7 @@ class CommentsQModel extends Model
 				->where('level', 0)
 				->where('id_page', $id_trans)
 				->select('c.*', 'u.image', 'u.name', 'u.nickname')
+				->orderBy('c.id', 'desc')
 				->get();
 
 		return $result;
@@ -235,6 +240,7 @@ class CommentsQModel extends Model
 				->where('level', 0)
 				->where('id_page', $id_chap)
 				->select('c.*', 'u.image', 'u.name', 'u.nickname')
+				->orderBy('c.id', 'desc')
 				->get();
 
 		return $result;

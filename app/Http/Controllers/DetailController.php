@@ -91,8 +91,9 @@ class DetailController extends Controller {
 		//sidebar
 		$data = CommonController::get_data_detail_sidebar($data);
 
-		$data['author']  = $author;
-		$data['books']   = BooksQModel::get_books_by_author_id($data['author']->id);
+		$data['page']     = 'author';
+		$data['author']   = $author;
+		$data['books']    = BooksQModel::get_books_by_author_id($data['author']->id);
 		$data['comments'] = CommentsBModel::get_comments_page($data['author']->id, 'author');
 		//set history cookie
 		$history = Cookie::get('history');
@@ -149,6 +150,7 @@ class DetailController extends Controller {
 			$chaps[$key] = ChapsQModel::get_chaps_by_book_id_trans_id($book->id, $trans->id_trans);
 		}
 
+		$data['page']  = 'book'; //user to comment blade
 		$data['book']  = $book;
 		$data['chaps_trans'] = $chaps;
 
@@ -194,6 +196,7 @@ class DetailController extends Controller {
 		//sidebar
 		$data = CommonController::get_data_detail_sidebar($data);
 
+		$data['page']     = 'character';
 		$data['character'] = CharactersQModel::get_character_by_slug($slug);
 		//data comment
 		$data['comments'] = CommentsBModel::get_comments_page($data['character']->id, 'character');
@@ -241,6 +244,7 @@ class DetailController extends Controller {
 		//sidebar
 		$data = CommonController::get_data_detail_sidebar($data);
 
+		$data['page'] = 'user';
 		$data['user'] = $user;
 		
 		//data comment
@@ -289,6 +293,7 @@ class DetailController extends Controller {
 		//sidebar
 		$data = CommonController::get_data_detail_sidebar($data);
 
+		$data['page']  = 'trans';
 		$data['trans'] = $trans;
 		$data['books'] = TransQModel::get_books_by_trans_id($data['trans']->id);
 

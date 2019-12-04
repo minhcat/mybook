@@ -404,33 +404,6 @@ $(document).ready(function() {
 		$('#modaledit .main label.name').text(text);
 	});
 
-	//new comment
-	$(document).on('click', '.book .line.comment .form-comment button.submit', function() {
-		var id_page = $(this).data('id');
-		var content = $(this).parent().find('.textarea').text();
-		var token   = $(this).parent().find('.token').val();
-		var button  = this;
-		console.log(content);
-		$.ajax({
-			url: '/comment',
-			type: 'post',
-			data: {
-				id_page: id_page,
-				content: content,
-				type: 'detail',
-				page: 'book',
-				level: 0,
-				_token: token,
-			},
-			success:function(data) {
-				var user = data['user'];
-				console.log(user);
-				$(button).parent().parent().parent().find('.list-cmd').first().prepend('<div class="item-comment clearfix"><div class="image"><img src="' + flag_url + 'image/users/' + user.image + '.jpg" class="img-circle"></div><div class="info"><p class="name"><a href="' + flag_url + 'detail/user/' + user.name_login + '">' + user.name + '</a> · <span>' + user.nickname + '</span></p><p class="text">' + content + '</p><p class="like"><a class="cmd-main" disabled="disabled">Phản hồi</a> · <span class="like"><img src="' + flag_url + 'image/like.png"> <span class="num-like"></span></span> · <span class="dislike"><img src="' + flag_url + 'image/dislike.png"> <span class="num-dislike"></span></span> <span class="cmd-date">· 04/01/2018</span></p></div></div>');
-			}
-		});
-		
-	});
-
 	//report
 	$('.item-comment .info .cmd').mouseenter(function() {
 		$(this).find('.report span').css('display','block');

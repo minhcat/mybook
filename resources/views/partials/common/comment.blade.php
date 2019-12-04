@@ -28,7 +28,21 @@
 		<div class="text-cmd {{ (isset($large_comment)) ? 'large' : '' }}">
 			<div class="textarea" data-placeholder="thêm bình luận" contentEditable="true" spellcheck="false"></div>
 			<input class="token" type="hidden" name="_token" value="{{ csrf_token() }}">
-			<button class="btn submit open-modal" data-id="{{ $book->id }}">Đăng bình luận</button>
+			{{-- Submit Button for type --}}
+			@if ($page == 'author')
+			<button class="btn submit open-modal" data-id="{{ $author->id }}" data-page="author">Đăng bình luận</button>
+			@elseif ($page == 'book')
+			<button class="btn submit open-modal" data-id="{{ $book->id }}" data-page="book">Đăng bình luận</button>
+			@elseif ($page == 'character')
+			<button class="btn submit open-modal" data-id="{{ $character->id }}" data-page="character">Đăng bình luận</button>
+			@elseif ($page == 'trans')
+			<button class="btn submit open-modal" data-id="{{ $trans->id }}" data-page="trans">Đăng bình luận</button>
+			@elseif ($page == 'user')
+			<button class="btn submit open-modal" data-id="{{ $user->id }}" data-page="user">Đăng bình luận</button>
+			@else
+			<button class="btn submit open-modal" data-id="{{ $chap['id'] }}" data-page="chap">Đăng bình luận</button>
+			@endif
+			{{-- End Submit Button --}}
 			<button class="btn reset">Hủy bỏ</button>
 			<div class="dropdown emoji-drop">
 				<button class="btn emoji select">

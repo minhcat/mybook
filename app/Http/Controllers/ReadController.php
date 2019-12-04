@@ -34,9 +34,11 @@ class ReadController extends Controller {
 		// dd($trans);
 		$chap = ChapsQModel::get_chap_by_book_id_trans_id_chap_slug($book->id, $trans->id, $chap_slug);
 		// dd($chap);
+		$data['page']   = 'chap';
 		$data['images'] = ImagesQModel::get_images_by_chap_id($chap->id);
 		$data['book']['name']  = $book->name;
 		$data['trans']['name'] = $trans->name;
+		$data['chap']['id']    = $chap->id;
 		$data['chap']['name']  = $chap->name.' - '.$chap->title;
 		$data['book']['slug']  = $book_slug;
 		$data['trans']['slug'] = $trans_slug;
