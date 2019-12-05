@@ -72,6 +72,14 @@ class AdminController extends Controller {
 		$data['noties_send']	= NotificationsAdminBModel::get_notifications_send($user_id);
 		$data['list_receive']   = UsersBModel::get_admin_and_group_receive();
 		$data['admin_setting']	= AdminsSettingQModel::get_setting_by_admin_id($user_id);
+		if ($data['admin_setting'] == null) {
+			$data['admin_setting'] = new \stdClass;
+			$data['admin_setting']->sidebar = 0;
+			$data['admin_setting']->skin = 'blue';
+			$data['admin_setting']->default_page = 'box-book';
+			$data['admin_setting']->email = 'none';
+			$data['admin_setting']->notification = 'none';
+		}
 		// dd($data);
 		return view('pages.admin.admin', $data);
 	}

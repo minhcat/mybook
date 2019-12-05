@@ -53,6 +53,14 @@ class CensorController extends Controller {
 		$data['mails_send']		= MailsQModel::get_mails_by_admin_id($user_id);
 		$data['noties_receive']	= NotificationsAdminBModel::get_notifications_receive($user_id);
 		$data['admin_setting']	= AdminsSettingQModel::get_setting_by_admin_id($user_id);
+		if ($data['admin_setting'] == null) {
+			$data['admin_setting'] = new \stdClass;
+			$data['admin_setting']->sidebar = 0;
+			$data['admin_setting']->skin = 'blue';
+			$data['admin_setting']->default_page = 'box-book';
+			$data['admin_setting']->email = 'none';
+			$data['admin_setting']->notification = 'none';
+		}
 		// dd($data);
 		return view('pages.admin.censor', $data);
 	}
