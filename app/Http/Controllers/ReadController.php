@@ -43,6 +43,7 @@ class ReadController extends Controller {
 		$data['book']['slug']  = $book_slug;
 		$data['trans']['slug'] = $trans_slug;
 		$data['chap']['slug']  = $chap_slug;
+		$data['chap']['index'] = $chap->index;
 
 		// dd($data);
 

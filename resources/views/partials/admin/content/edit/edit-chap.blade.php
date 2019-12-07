@@ -57,7 +57,7 @@
 				Up lại
 				<input name="images_reup[]" class="input-new-chap hide" type="file" multiple>
 			</label>
-			<input class="select" type="hidden" name="images_select" value="add">
+			<input class="select" type="hidden" name="images_select" value="none">
 		</div>
 	</div>
 	<!-- /.box-body -->

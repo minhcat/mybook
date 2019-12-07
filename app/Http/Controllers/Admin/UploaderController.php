@@ -8,6 +8,7 @@ use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksApprovedQModel;
 use App\Http\Models\QModels\BooksErrorQModel;
+use App\Http\Models\QModels\BooksFollowQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\CommentsQModel;
 use App\Http\Models\QModels\CategoriesQModel;
@@ -25,6 +26,7 @@ use App\Http\Models\CModels\CharactersCModel;
 use App\Http\Models\CModels\BooksApprovedCModel;
 use App\Http\Models\CModels\ChapsApprovedCModel;
 use App\Http\Models\CModels\TransCModel;
+use App\Http\Models\CModels\NotificationsCModel;
 use App\Http\Models\BModels\AuthorsBModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\ChapsBModel;
@@ -242,6 +244,10 @@ class UploaderController extends Controller {
 		//insert chap into database
 		ChapsBModel::create_chap($new_chap);
 
+		$new_chap->id_book = $id_book;
+
+		UploaderController::create_noti_to_follower($new_chap);
+
 		return redirect()->back()->with('success','Thêm chap thành công');
 	}
 
@@ -289,6 +295,7 @@ class UploaderController extends Controller {
 				$data['info'][$key]['name'] = 'img'.($img_index + $key + 1);
 				$data['info'][$key]['path'] = '/image/chaps/'.$book->slug.'/'.$trans->slug.'/'.$index;
 			}
+			Images::upload_multi_images($data);
 		} elseif ($images_select == 'reup') {
 			$data['images'] = $request->file('images_reup');
 			$data['info']   = [];
@@ -300,8 +307,11 @@ class UploaderController extends Controller {
 				$data['info'][$key]['path'] = '/image/chaps/'.$book->slug.'/'.$trans->slug.'/'.$index;
 			}
 			Images::delete_all_images_from_folder('image/chaps/'.$book->slug.'/'.$trans->slug.'/'.$index);
+			Images::upload_multi_images($data);
+		} elseif ($images_select == 'none') {
+			$data['images'] = null;
 		}
-		Images::upload_multi_images($data);
+		
 		
 		//update chap
 		$update_chap = new \stdClass;
@@ -644,5 +654,27 @@ class UploaderController extends Controller {
 			'call' => $chap_approved->call + 1,
 		];
 		ChapsApprovedCModel::update_chap_approved($chap_approved->id, $data);
+	}
+
+	/**
+	 * get random books in sidebar
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function create_noti_to_follower($chap) {
+		$books_follow = BooksFollowQModel::get_books_follow_by_book_id($chap->id_book);
+		foreach ($books_follow as $book_follow) {
+			$data = [
+				'id_user'		=> $book_follow->id_user,
+				'id_contant'	=> $chap->id_book,
+				'id_page'		=> null,
+				'type'			=> 'newchap',
+				'content'		=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium velit et error asperiores sint ea, deleniti, laboriosam facere mollitia officiis tempora laudantium. Adipisci necessitatibus',
+				'date'			=> date('Y-m-d h:i:s'),
+				'page'			=> null,
+				'seen'			=> 0,
+			];
+			NotificationsCModel::insert_notification($data);
+		}
 	}
 }

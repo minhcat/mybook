@@ -42,7 +42,7 @@
 		</div>
 		<div class="main-read">
 			@foreach ($images as $image)
-			<img src="{{ asset('image/chaps/'.$book['slug'].'/'.$trans['slug'].'/'.$image->id_chap.'/'.$image->image.'') }}">
+			<img src="{{ asset('image/chaps/'.$book['slug'].'/'.$trans['slug'].'/'.$chap['index'].'/'.$image->image.'') }}">
 			@endforeach
 		</div>
 		<div class="container">

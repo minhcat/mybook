@@ -16,6 +16,7 @@ class NotificationsQModel extends Model
 	public static function get_notifications_by_user_id($user_id) {
 		$result = DB::table('notifications')
 				->where('id_user', $user_id)
+				->orderBy('date', 'desc')
 				->paginate(12);
 
 		return $result;
