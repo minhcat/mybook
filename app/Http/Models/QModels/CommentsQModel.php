@@ -165,7 +165,7 @@ class CommentsQModel extends Model
 				->where('level', 0)
 				->where('id_page', $id_author)
 				->select('c.*', 'u.image', 'u.name', 'u.nickname')
-				->orderBy('c.d', 'desc')
+				->orderBy('c.datetime', 'desc')
 				->get();
 
 		return $result;

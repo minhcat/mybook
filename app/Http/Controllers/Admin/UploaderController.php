@@ -676,5 +676,20 @@ class UploaderController extends Controller {
 			];
 			NotificationsCModel::insert_notification($data);
 		}
+
+		$authors_follow = AuthorsFollowQModel::get_authors_follow_by_book_id($chap->id_book);
+		foreach ($authors_follow as $author_follow) {
+			$data = [
+				'id_user'		=> $author_follow->id_user,
+				'id_contant'	=> $author_follow->id_author,
+				'id_page'		=> null,
+				'type'			=> 'authornewchap',
+				'content'		=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium velit et error asperiores sint ea, deleniti, laboriosam facere mollitia officiis tempora laudantium. Adipisci necessitatibus',
+				'date'			=> date('Y-m-d h:i:s'),
+				'page'			=> null,
+				'seen'			=> 0,
+			];
+			NotificationsCModel::insert_notification($data);
+		}
 	}
 }

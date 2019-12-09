@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\Http\Helpers\Constants;
 use App\Http\Models\QModels\NotificationsQModel;
+use App\Http\Models\QModels\AuthorsQModel;
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\ChapsQModel;
@@ -95,6 +96,19 @@ class NotificationsBModel extends Model
 					$notification->slug = $book->slug;
 				}
 				$notification = NotificationsBModel::get_notification_new_chap($notification, $chap);
+			} elseif ($notification->type == 'authornewchap') {
+				$chap = ChapsQModel::get_chap_by_id($notification->id_contant);
+				$book = BooksQModel::get_book_by_id($chap->id_book);
+				$author = AuthorsQModel::get_author_by_id($book->id_author);
+				if ($book != null) {
+					$notification->slug = $book->slug;
+				}
+				if ($author != null) {
+					$chap->author_slug  = $author->slug;
+					$chap->author_image = $author->image;
+					$chap->author_name  = $author->name;
+				}
+				$notification = NotificationsBModel::get_notification_author_new_chap($notification, $chap);
 			} elseif ($notification->type == 'admin') {
 				$admin = new \stdClass();
 				$admin->image = 'admin';
@@ -210,7 +224,19 @@ class NotificationsBModel extends Model
 	 */
 	private static function get_notification_new_chap($notification, $chap) {
 		$notification->image  = $chap->image;
-		$notification->action = '<a href="'.url('/detail/book/'.$chap->book_slug).'">'.$chap->book_name.'</a> ra <a href="'.url('/read/'.$chap->book_slug.'/'.$chap->trans_slug.'/'.$chap->slug).'">'.$chap->name.'</a>';
+		$notification->action = 'Truyện <a href="'.url('/detail/book/'.$chap->book_slug).'">'.$chap->book_name.'</a> ra <a href="'.url('/read/'.$chap->book_slug.'/'.$chap->trans_slug.'/'.$chap->slug).'">'.$chap->name.'</a>';
+		$notification->info   = '';
+		return $notification;
+	}
+
+	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	private static function get_notification_author_new_chap($notification, $chap) {
+		$notification->image  = $chap->author_image;
+		$notification->action = 'Truyện <a href="'.url('/detail/book/'.$chap->book_slug).'">'.$chap->book_name.'</a> của tác giả <a href="'.url('/detail/author/'.$chap->author_slug).'">'.$chap->author_name.'</a> ra <a href="'.url('/read/'.$chap->book_slug.'/'.$chap->trans_slug.'/'.$chap->slug).'">'.$chap->name.'</a>';
 		$notification->info   = '';
 		return $notification;
 	}
