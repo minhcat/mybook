@@ -28,7 +28,7 @@ class AuthorsFollowQModel extends Model
 	 */
 	public static function get_authors_follow_by_book_id($book_id) {
 		$result = DB::table('authors_follow as af')
-				->join('book as b', 'b.id_author', '=', 'af.id')
+				->join('books as b', 'b.id_author', '=', 'af.id_author')
 				->where('b.id', $book_id)
 				->select('af.*')
 				->get();

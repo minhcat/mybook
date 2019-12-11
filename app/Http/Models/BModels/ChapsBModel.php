@@ -38,6 +38,7 @@ class ChapsBModel extends Model
 			];
 			ImagesCModel::insert_image($data);
 		}
+		return $id_chap;
 	}
 
 	/**

@@ -5,6 +5,7 @@ use App\Http\Helpers\Images;
 use App\Http\Controllers\Controller;
 use App\Http\Models\QModels\AdminsSettingQModel;
 use App\Http\Models\QModels\AuthorsQModel;
+use App\Http\Models\QModels\AuthorsFollowQModel;
 use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\BooksApprovedQModel;
 use App\Http\Models\QModels\BooksErrorQModel;
@@ -17,6 +18,7 @@ use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\ChapsApprovedQModel;
 use App\Http\Models\QModels\ChapsErrorQModel;
 use App\Http\Models\QModels\TransQModel;
+use App\Http\Models\QModels\TransFollowQModel;
 use App\Http\Models\QModels\MailsQModel;
 use App\Http\Models\QModels\NotificationsAdminQModel;
 use App\Http\Models\CModels\BooksCModel;
@@ -242,7 +244,7 @@ class UploaderController extends Controller {
 		Images::upload_multi_images($data);
 
 		//insert chap into database
-		ChapsBModel::create_chap($new_chap);
+		$new_chap->id = ChapsBModel::create_chap($new_chap);
 
 		$new_chap->id_book = $id_book;
 
@@ -666,7 +668,7 @@ class UploaderController extends Controller {
 		foreach ($books_follow as $book_follow) {
 			$data = [
 				'id_user'		=> $book_follow->id_user,
-				'id_contant'	=> $chap->id_book,
+				'id_contant'	=> $chap->id,
 				'id_page'		=> null,
 				'type'			=> 'newchap',
 				'content'		=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium velit et error asperiores sint ea, deleniti, laboriosam facere mollitia officiis tempora laudantium. Adipisci necessitatibus',
@@ -678,10 +680,11 @@ class UploaderController extends Controller {
 		}
 
 		$authors_follow = AuthorsFollowQModel::get_authors_follow_by_book_id($chap->id_book);
+		dd($authors_follow);
 		foreach ($authors_follow as $author_follow) {
 			$data = [
 				'id_user'		=> $author_follow->id_user,
-				'id_contant'	=> $author_follow->id_author,
+				'id_contant'	=> $chap->id,
 				'id_page'		=> null,
 				'type'			=> 'authornewchap',
 				'content'		=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium velit et error asperiores sint ea, deleniti, laboriosam facere mollitia officiis tempora laudantium. Adipisci necessitatibus',
