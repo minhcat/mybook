@@ -112,6 +112,8 @@
 										<img src="{{ asset('image/books/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
 										@elseif ($notification->type == 'authornewchap')
 										<img src="{{ asset('image/authors/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
+										@elseif ($notification->type == 'transnewchap')
+										<img src="{{ asset('image/trans/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
 										@else
 										<img src="{{ asset('image/users/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
 										@endif

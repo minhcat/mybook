@@ -26,6 +26,21 @@ class TransFollowQModel extends Model
 	 * @param 
 	 * @return object|boolean : all properties from `books` table
 	 */
+	public static function get_transes_follow_by_chap_id($chap_id) {
+		$result = DB::table('trans_follow as tf')
+				->join('chaps as c', 'c.id_trans', '=', 'tf.id')
+				->where('c.id', $chap_id)
+				->select('tf.*')
+				->get();
+
+		return $result;
+	}
+
+	/**
+	 * get book view current date
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
 	public static function get_trans_follow_by_user_id_and_trans_id($user_id, $trans_id) {
 		$result = DB::table('trans_follow')
 				->where('id_user', $user_id)

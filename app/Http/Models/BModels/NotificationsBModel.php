@@ -11,6 +11,7 @@ use App\Http\Models\QModels\BooksQModel;
 use App\Http\Models\QModels\UsersQModel;
 use App\Http\Models\QModels\ChapsQModel;
 use App\Http\Models\QModels\CommentsQModel;
+use App\Http\Models\QModels\TransQModel;
 
 class NotificationsBModel extends Model
 {
@@ -109,6 +110,18 @@ class NotificationsBModel extends Model
 					$chap->author_name  = $author->name;
 				}
 				$notification = NotificationsBModel::get_notification_author_new_chap($notification, $chap);
+			} elseif ($notification->type == 'transnewchap') {
+				$chap  = ChapsQModel::get_chap_by_id($notification->id_contant);
+				$book  = BooksQModel::get_book_by_id($chap->id_book);
+				$trans = TransQModel::get_trans_by_id($chap->id_trans);
+				if ($book != null) {
+					$notification->slug = $book->slug;
+				}
+				if ($trans != null) {
+					$chap->trans_image = $trans->image;
+					$chap->trans_name  = $trans->name;
+				}
+				$notification = NotificationsBModel::get_notification_trans_new_chap($notification, $chap);
 			} elseif ($notification->type == 'admin') {
 				$admin = new \stdClass();
 				$admin->image = 'admin';
@@ -237,6 +250,18 @@ class NotificationsBModel extends Model
 	private static function get_notification_author_new_chap($notification, $chap) {
 		$notification->image  = $chap->author_image;
 		$notification->action = 'Truyện <a href="'.url('/detail/book/'.$chap->book_slug).'">'.$chap->book_name.'</a> của tác giả <a href="'.url('/detail/author/'.$chap->author_slug).'">'.$chap->author_name.'</a> ra <a href="'.url('/read/'.$chap->book_slug.'/'.$chap->trans_slug.'/'.$chap->slug).'">'.$chap->name.'</a>';
+		$notification->info   = '';
+		return $notification;
+	}
+
+	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	private static function get_notification_trans_new_chap($notification, $chap) {
+		$notification->image  = $chap->trans_image;
+		$notification->action = 'Truyện <a href="'.url('/detail/book/'.$chap->book_slug).'">'.$chap->book_name.'</a> của nhóm dịch <a href="'.url('/detail/trans/'.$chap->trans_slug).'">'.$chap->trans_name.'</a> ra <a href="'.url('/read/'.$chap->book_slug.'/'.$chap->trans_slug.'/'.$chap->slug).'">'.$chap->name.'</a>';
 		$notification->info   = '';
 		return $notification;
 	}
