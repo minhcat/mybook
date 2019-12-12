@@ -17,12 +17,12 @@
 		</div>
 	</div>
 	<hr>
-	<div class="form-comment clearfix">
+	<div class="form-comment parent clearfix">
 		<div class="image">
 			@if (Auth::check())
-			<img src="{{ asset('image/users/'.$user_login->image.'.jpg') }}" class="img-circle">
+			<img src="{{ asset('image/users/'.$user_login->image.'.jpg') }}" class="img-circle" data-image="{{ $user_login->image }}">
 			@else
-			<img src="{{ asset('image/user-default.png') }}" class="img-circle">
+			<img src="{{ asset('image/user-default.png') }}" class="img-circle" data-image="user-default">
 			@endif
 		</div>
 		<div class="text-cmd {{ (isset($large_comment)) ? 'large' : '' }}">
@@ -136,7 +136,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="list-comment clearfix">
+	<div class="list-comment clearfix" data-image="{{ $user_login->image }}">
 		<div class="list-cmd">
 			@foreach ($comments as $i => $comment)
 			@if ($i <= 3)
