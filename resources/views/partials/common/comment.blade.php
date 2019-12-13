@@ -140,7 +140,7 @@
 		<div class="list-cmd">
 			@foreach ($comments as $i => $comment)
 			@if ($i <= 3)
-			<div class="item-comment clearfix">
+			<div class="item-comment clearfix" data-id="{{ $comment->id }}">
 				<div class="image">
 					<img src="{{ asset('image/users/'.$comment->image.'.jpg') }}" class="img-circle">
 				</div>

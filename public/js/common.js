@@ -56,38 +56,53 @@ $(document).ready(function() {
 
 	//new comment
 	$(document).on('click', '.line.comment .form-comment button.submit', function() {
-		var id_page = $(this).data('id');
-		var content = $(this).parent().find('.textarea').text();
-		var token   = $(this).parent().find('.token').val();
-		var page    = $(this).data('page');
-		var button  = this;
-		console.log(content);
+		var id_page  = $(this).data('id');
+		var content  = $(this).parent().find('.textarea').text();
+		var token    = $('.form-comment.parent .token').val();
+		var page     = $(this).data('page');
+		var form     = $(this).parents('.form-comment');
+		var button   = this;
+		var level    = 0;
+		var id_reply = null;
+		//reset textarea
+		$(button).parent().find('.textarea').text('');
+		//check reply comment
+		if (form.hasClass('child')) {
+			id_reply = form.parents('.item-comment').data('id');
+			level = 1;
+		}
 		if (content == '') {
 			alert('Bạn không thể để trống bình luận');
 		}
-		if (page == 'chap') {
-			type = 'read';
-			page = 'read';
-		} else {
-			type = 'detail';
-		}
-		$.ajax({
-			url: '/comment',
-			type: 'post',
-			data: {
-				id_page: id_page,
-				content: content,
-				type: type,
-				page: page,
-				level: 0,
-				_token: token,
-			},
-			success:function(data) {
-				var user = data['user'];
-				$(button).parent().parent().parent().find('.list-cmd').first().prepend('<div class="item-comment clearfix"><div class="image"><img src="' + flag_url + 'image/users/' + user.image + '.jpg" class="img-circle"></div><div class="info"><p class="name"><a href="' + flag_url + 'detail/user/' + user.name_login + '">' + user.name + '</a> · <span>' + user.nickname + '</span></p><p class="text">' + content + '</p><p class="like"><a class="cmd-main" disabled="disabled">Phản hồi</a> · <span class="like"><img src="' + flag_url + 'image/like.png"> <span class="num-like"></span></span> · <span class="dislike"><img src="' + flag_url + 'image/dislike.png"> <span class="num-dislike"></span></span> <span class="cmd-date">· 04/01/2018</span></p></div></div>');
+		else {
+			if (page == 'chap') {
+				type = 'read';
+				page = 'read';
+			} else {
+				type = 'detail';
 			}
-		});
-		
+			$.ajax({
+				url: '/comment',
+				type: 'post',
+				data: {
+					id_page: id_page,
+					content: content,
+					type: type,
+					page: page,
+					level: level,
+					id_reply: id_reply,
+					_token: token,
+				},
+				success:function(data) {
+					var user = data['user'];
+					$(button).parent().parent().parent().find('.list-cmd').first().prepend('<div class="item-comment clearfix"><div class="image"><img src="' + flag_url + 'image/users/' + user.image + '.jpg" class="img-circle"></div><div class="info"><p class="name"><a href="' + flag_url + 'detail/user/' + user.name_login + '">' + user.name + '</a> · <span>' + user.nickname + '</span></p><p class="text">' + content + '</p><p class="like"><a class="cmd-main" disabled="disabled">Phản hồi</a> · <span class="like"><img src="' + flag_url + 'image/like.png"> <span class="num-like"></span></span> · <span class="dislike"><img src="' + flag_url + 'image/dislike.png"> <span class="num-dislike"></span></span> <span class="cmd-date">· 04/01/2018</span></p></div></div>');
+
+					if (level == 1) {
+						$(button).parents('.form-comment.child').remove();
+					}
+				}
+			});
+		}
 	});
 });
 

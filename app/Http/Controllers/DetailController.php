@@ -1301,6 +1301,7 @@ class DetailController extends Controller {
 			'type'		=> $request->input('type'),
 			'page'		=> $request->input('page'),
 			'level'		=> $request->input('level'),
+			'id_reply'	=> ($request->input('id_reply') == '') ? null : $request->input('id_reply'),
 			'datetime'	=> date('Y-m-d H:i:s'),
 		];
 
