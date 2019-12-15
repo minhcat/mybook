@@ -63,6 +63,7 @@ use App\Http\Models\CModels\UsersLikeCModel;
 use App\Http\Models\CModels\UsersLikeStatisticCModel;
 use App\Http\Models\CModels\UsersRateCModel;
 use App\Http\Models\CModels\UsersRateStatisticCModel;
+use App\Http\Models\CModels\NotificationsCModel;
 use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\NotificationsBModel;
@@ -1306,6 +1307,21 @@ class DetailController extends Controller {
 		];
 
 		CommentsCModel::insert_comment($data);
+
+		// check reply and create noti
+		if ($data['id_reply'] != null) {
+			$data = [
+				'id_user'		=> $data['id_reply'],
+				'id_contant'	=> Auth::id(),
+				'id_page'		=> $data['id_page'],
+				'type'			=> 'reply',
+				'content'		=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium velit et error asperiores sint ea, deleniti, laboriosam facere mollitia officiis tempora laudantium. Adipisci necessitatibus',
+				'date'			=> date('Y-m-d h:i:s'),
+				'page'			=> $data['page'],
+				'seen'			=> 0,
+			];
+			NotificationsCModel::insert_notification($data);
+		}
 
 		$data = [
 			'user' => UsersQModel::get_user_by_id(Auth::id())

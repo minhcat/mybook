@@ -57,7 +57,7 @@ $(document).ready(function() {
 	//new comment
 	$(document).on('click', '.line.comment .form-comment button.submit', function() {
 		var id_page  = $(this).data('id');
-		var content  = $(this).parent().find('.textarea').text();
+		var content  = $(this).parent().find('.textarea').html();
 		var token    = $('.form-comment.parent .token').val();
 		var page     = $(this).data('page');
 		var form     = $(this).parents('.form-comment');
@@ -81,6 +81,7 @@ $(document).ready(function() {
 			} else {
 				type = 'detail';
 			}
+
 			$.ajax({
 				url: '/comment',
 				type: 'post',
