@@ -75,6 +75,15 @@ $(document).ready(function() {
 		else t = parseInt(t);
 		t++;
 		num.text(t);
+		//save data
+		var id = $(this).parents('.item-comment').data('id');
+		$.ajax({
+			type: 'get',
+			url: '/ajax/like_comment/'+id,
+			success:function() {
+				console.log('like success');
+			}
+		});
 	});
 	$(document).on('click', '.list-comment span.dislike img', function() {
 		var num = $(this).parent().find('span.num-dislike');
@@ -83,6 +92,15 @@ $(document).ready(function() {
 		else t = parseInt(t);
 		t++;
 		num.text(t);
+		//save data
+		var id = $(this).parents('.item-comment').data('id');
+		$.ajax({
+			type: 'get',
+			url: '/ajax/dislike_comment/'+id,
+			success:function() {
+				console.log('dislike success');
+			}
+		});
 	});
 	$(document).on('click', '.form-comment .reset', function() {
 		$(this).parent().find('.textarea').html('');

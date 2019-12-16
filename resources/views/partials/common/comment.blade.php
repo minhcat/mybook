@@ -153,7 +153,7 @@
 						<div class="list-cmd">
 							@foreach ($comment->reply as $key => $reply)
 							@if ($key < 2)
-								<div class="item-comment clearfix">
+								<div class="item-comment clearfix" data-id="{{ $comment->id }}">
 									<div class="image">
 										<img src="{{ asset('image/users/'.$reply->image.'.jpg') }}" class="img-circle">
 									</div>

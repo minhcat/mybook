@@ -45,6 +45,14 @@ Route::group(['middleware' => 'auth'], function() {
 
 	Route::post('comment', 'DetailController@post_comment');
 
+	Route::group(['prefix' => 'ajax'], function() {
+
+		Route::get('like_comment/{id_comment}', 'DetailController@ajax_like_comment');
+
+		Route::get('dislike_comment/{id_comment}', 'DetailController@ajax_dislike_comment');
+
+	});
+
 });
 
 Route::group(['prefix' => 'home'], function() {

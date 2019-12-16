@@ -1328,4 +1328,30 @@ class DetailController extends Controller {
 		];
 		return $data;
 	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_like_comment($id_comment)
+	{
+		$comment = CommentsQModel::get_comment_by_id($id_comment);
+
+		$data = ['like' => $comment->like + 1];
+		CommentsCModel::update_comment($id_comment, $data);
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_dislike_comment($id_comment)
+	{
+		$comment = CommentsQModel::get_comment_by_id($id_comment);
+
+		$data = ['dislike' => $comment->dislike + 1];
+		CommentsCModel::update_comment($id_comment, $data);
+	}
 }
