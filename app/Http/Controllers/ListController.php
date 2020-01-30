@@ -567,6 +567,7 @@ class ListController extends Controller {
 				'month' => ($month_view != null) ? (int)$month_view->view : 0,
 				'all'   => ($all_view != null) ? (int)$all_view->view : 0,
 			];
+			$book = Helper::short_description($book, 250);
 		}
 
 		$data['page'] = 'view';

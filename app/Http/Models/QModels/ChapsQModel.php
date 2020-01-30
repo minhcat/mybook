@@ -198,4 +198,19 @@ class ChapsQModel extends Model
 				
 		return $result;
 	}
+
+	/**
+	 * get categories by name
+	 * @param 
+	 * @return object|boolean : all properties from `categories` table
+	 */
+	public static function get_chap_by_index($book_id, $trans_id, $index) {
+		$result = DB::table('chaps as c')
+				->where('id_book', $book_id)
+				->where('id_trans', $trans_id)
+				->where('index', $index)
+				->first();
+
+		return $result;
+	}
 }

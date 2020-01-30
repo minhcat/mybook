@@ -324,7 +324,7 @@ class LoginController extends Controller {
 		// set category
 		UsersCategoryCModel::delete_user_category_by_user_id($user_id);
 		$categories = json_decode($request->input('category'));
-		dd($categories);
+		// dd($categories);
 		foreach ($categories as $category) {
 			$data = ['id_user' => $user_id, 'id_category' => $category];
 			UsersCategoryCModel::insert_user_category($data);

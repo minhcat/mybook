@@ -45,6 +45,20 @@ class ReadController extends Controller {
 		$data['chap']['slug']  = $chap_slug;
 		$data['chap']['index'] = $chap->index;
 
+		//get next chap and previous chap
+		$next     = ChapsQModel::get_chap_by_index($book->id, $trans->id, $chap->index - 1);
+		$previous = ChapsQModel::get_chap_by_index($book->id, $trans->id, $chap->index + 1);
+		if ($next == null) {
+			$data['chap']['next'] = 'none';
+		} else {
+			$data['chap']['next'] = $next->slug;
+		}
+		if ($previous == null) {
+			$data['chap']['previous'] = 'none';
+		} else {
+			$data['chap']['previous'] = $previous->slug;
+		}
+
 		// dd($data);
 
 		$data['comments'] = CommentsBModel::get_comments_page($chap->id, 'read');

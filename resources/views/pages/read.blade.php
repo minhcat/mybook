@@ -27,7 +27,9 @@
 				</div>
 				<p>Nếu muốn chuyển chap chọn các tùy chọn bên dưới</p>
 				<div class="chap">
-					<button class="btn bg-green white">Chap trước</button>
+					@if ($chap['next'] != 'none')
+					<a href="{{ url('/read/'.$book['slug'].'/'.$trans['slug'].'/'.$chap['next']) }}" class="btn bg-green white">Chap trước</a>
+					@endif
 					<select class="list-chap form-control">
 						<option>chap 1</option>
 						<option>chap 2</option>
@@ -35,7 +37,9 @@
 						<option>chap 4</option>
 						<option>chap 5</option>
 					</select>
-					<button class="btn bg-green white">Chap sau</button>
+					@if ($chap['previous'] != 'none')
+					<a href="{{ url('/read/'.$book['slug'].'/'.$trans['slug'].'/'.$chap['previous']) }}" class="btn bg-green white">Chap sau</a>
+					@endif
 					<button class="btn bg-red white">Báo lỗi</button>
 				</div>
 			</div>

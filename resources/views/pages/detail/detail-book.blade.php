@@ -145,7 +145,7 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 					</div>
 					<div class="tab-content">
 						@foreach ($chaps_trans as $key => $chaps)
-						<div id="group{{ $key }}" class="tab-pane fade in active">
+						<div id="group{{ $key + 1 }}" class="tab-pane fade in active">
 							<table>
 								@foreach ($chaps as $chap)
 								<tr>

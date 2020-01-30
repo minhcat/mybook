@@ -71,6 +71,10 @@ Danh sách truyện được sắp xếp dựa trên lượt xem, lượt yêu t
 						<span class="rate">{{ $book->rate }} đánh giá</span>
 					</div>
 					<div class="group clearfix">
+						<div class="item blue" title="yêu thích">
+							<span class="glyphicon glyphicon-eye-open"></span> 
+							<span>{{ $book->view }}</span>
+						</div>
 						<div class="item red" title="yêu thích">
 							<span class="glyphicon glyphicon-heart"></span> 
 							<span>{{ $book->like }}</span>
@@ -94,13 +98,10 @@ Danh sách truyện được sắp xếp dựa trên lượt xem, lượt yêu t
 						@endforeach
 					</div>
 
-					<div class="view clearfix">
-						<strong>Lượt xem:</strong>
-						<br>
-						<div class="day">ngày: {{ $book->book_view['day'] }} lượt</div>
-						<div class="week">tuần: {{ $book->book_view['week'] }} lượt</div>
-						<div class="month">tháng: {{ $book->book_view['month'] }} lượt</div>
-						<div class="all">tổng cộng: {{ $book->book_view['all'] }} lượt</div>
+					<div class="clearfix">
+						<strong>Nội dung:</strong>
+						{!! $book->description !!}
+						
 					</div>
 				</div>
 			</div>
