@@ -218,40 +218,58 @@ class CommentsBModel extends Model
 	public static function get_comments_page($id, $page) {
 		if ($page == 'author') {
 			$result = CommentsQModel::get_comments_by_author_id($id);
+			$number = count($result);
 			foreach ($result as $comment) {
 				$reply = CommentsQModel::get_comments_author_reply_by_user_id($comment->id_user, $id);
+				$number += count($reply);
 				$comment->reply = $reply;
 			}
+			$result['number'] = $number; //get nummber comment
 		} else if ($page == 'book') {
 			$result = CommentsQModel::get_comments_by_book_id($id);
+			$number = count($result);
 			foreach ($result as $comment) {
 				$reply = CommentsQModel::get_comments_book_reply_by_user_id($comment->id_user, $id);
+				$number += count($reply);
 				$comment->reply = $reply;
 			}
+			$result['number'] = $number; //get nummber comment
 		} else if ($page == 'character') {
 			$result = CommentsQModel::get_comments_by_character_id($id);
+			$number = count($result);
 			foreach ($result as $comment) {
 				$reply = CommentsQModel::get_comments_character_reply_by_user_id($comment->id_user, $id);
+				$number += count($reply);
 				$comment->reply = $reply;
 			}
+			$result['number'] = $number; //get nummber comment
 		} else if ($page == 'user') {
 			$result = CommentsQModel::get_comments_by_user_id($id);
+			$number = count($result);
 			foreach ($result as $comment) {
 				$reply = CommentsQModel::get_comments_user_reply_by_user_id($comment->id_user, $id);
+				$number += count($reply);
 				$comment->reply = $reply;
 			}
+			$result['number'] = $number; //get nummber comment
 		} else if ($page == 'trans') {
 			$result = CommentsQModel::get_comments_by_trans_id($id);
+			$number = count($result);
 			foreach ($result as $comment) {
 				$reply = CommentsQModel::get_comments_trans_reply_by_user_id($comment->id_user, $id);
+				$number += count($reply);
 				$comment->reply = $reply;
 			}
+			$result['number'] = $number; //get nummber comment
 		} else if ($page == 'read') {
 			$result = CommentsQModel::get_comments_by_chap_id($id);
+			$number = count($result);
 			foreach ($result as $comment) {
 				$reply = CommentsQModel::get_comments_chap_reply_by_user_id($comment->id_user, $id);
+				$number += count($reply);
 				$comment->reply = $reply;
 			}
+			$result['number'] = $number; //get nummber comment
 		}
 
 		return $result;

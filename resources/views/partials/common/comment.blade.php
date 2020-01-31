@@ -1,7 +1,7 @@
 <div class="line cmd comment">
 	<h4>Bình luận</h4>
 	<div class="sort clearfix">
-		<span class="left"><strong>20 bình luận</strong></span>
+		<span class="left"><strong> {{ $comments['number'] }} bình luận</strong></span>
 		<div class="right">
 			<strong>Sắp xếp theo</strong> 
 			<button class="select" type="button">
@@ -136,10 +136,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="list-comment clearfix" data-image="{{ $user_login->image }}">
+	<div class="list-comment clearfix" data-image="{{ (Auth::check()) ? $user_login->image : '' }}">
 		<div class="list-cmd">
 			@foreach ($comments as $i => $comment)
+			@if ($i !== 'number') {{-- 0 = 'string' --}}
 			@if ($i <= 3)
+
 			<div class="item-comment clearfix" data-id="{{ $comment->id }}">
 				<div class="image">
 					<img src="{{ asset('image/users/'.$comment->image.'.jpg') }}" class="img-circle">
@@ -175,6 +177,7 @@
 					@endif
 				</div>
 			</div>
+			@endif
 			@endif
 			@endforeach
 		</div>
