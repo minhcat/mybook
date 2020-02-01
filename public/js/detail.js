@@ -2,7 +2,17 @@ $(document).ready(function() {
 	//more comment
 	$('.list-comment .more a').click(function() {
 		var t = $(this).parent().parent().find('.list-cmd').first();
-		t.append('<div class="item-comment clearfix"><div class="image"><img src="image/Asuna.jpg" class="img-circle"></div><div class="info"><p class="name"><a href="">Asuna</a> · <span>kiếm vương</span></p><p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, ducimus.</p><p class="like"><a class="cmd-child" disabled="disabled">Phản hồi</a> · <span class="like"><img src="image/like.png"> <span class="num-like"></span></span> · <span class="dislike"><img src="image/dislike.png"> <span class="num-dislike"></span></span> · 04/01/2018</p></div></div><div class="item-comment clearfix"><div class="image"><img src="image/Eren.jpg" class="img-circle"></div><div class="info"><p class="name"><a href="">Eren</a> · <span>người khổng lồ</span></p><p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, ducimus.</p><p class="like"><a class="cmd-child" disabled="disabled">Phản hồi</a> · <span class="like"><img src="image/like.png"> <span class="num-like"></span></span> · <span class="dislike"><img src="image/dislike.png"> <span class="num-dislike"></span></span> · 04/01/2018</p></div></div>');
+		$.ajax({
+			url: '/ajax/more_comment/book/1',
+			type: 'get',
+			success:function(data) {
+				// t.append(data.length);
+				$.each(data, function(i, value) {
+					t.append('<div class="item-comment clearfix"><div class="image"><img src="' + flag_url + 'image/users/' + data[i].image + '.jpg" class="img-circle"></div><div class="info"><p class="name"><a href="">' + data[i].name + '</a> · <span>' + data[i].nickname + '</span></p><p class="text">' + data[i].content + '</p><p class="like"><a class="cmd-child" disabled="disabled">Phản hồi</a> · <span class="like"><img src="' + flag_url + 'image/like.png"> <span class="num-like"></span></span> · <span class="dislike"><img src="' + flag_url + 'image/dislike.png"> <span class="num-dislike"></span></span> · 04/01/2018</p></div></div>');
+				});
+			}
+		});
+		
 	});
 	//dropdown emoji
 	$(document).on('click', '.form-comment .select', function() {

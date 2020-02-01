@@ -140,7 +140,7 @@
 		<div class="list-cmd">
 			@foreach ($comments as $i => $comment)
 			@if ($i !== 'number') {{-- 0 = 'string' --}}
-			@if ($i <= 3)
+			@if ($i <= 2)
 
 			<div class="item-comment clearfix" data-id="{{ $comment->id }}">
 				<div class="image">
@@ -181,7 +181,7 @@
 			@endif
 			@endforeach
 		</div>
-		@if (count($comments) > 3)
+		@if (count($comments) > 4)
 		<div class="more">
 			<a disabled="disabled">Xem thêm bình luận</a>
 		</div>

@@ -51,6 +51,8 @@ Route::group(['middleware' => 'auth'], function() {
 
 		Route::get('dislike_comment/{id_comment}', 'DetailController@ajax_dislike_comment');
 
+		Route::get('more_comment/{page}/{id}', 'DetailController@ajax_more_comment');
+
 	});
 
 });

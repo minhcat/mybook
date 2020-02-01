@@ -1354,4 +1354,21 @@ class DetailController extends Controller {
 		$data = ['dislike' => $comment->dislike + 1];
 		CommentsCModel::update_comment($id_comment, $data);
 	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function ajax_more_comment($page, $id_page) 
+	{
+		$comments = CommentsBModel::get_comments_page($id_page, $page);
+		$result = [];
+		foreach ($comments as $key => $comment) {
+			if ($key >= 3) {
+				array_push($result, $comment);
+			}
+		}
+		return $result;
+	}
 }
