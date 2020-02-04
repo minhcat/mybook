@@ -183,7 +183,7 @@
 		</div>
 		@if (count($comments) > 4)
 		<div class="more">
-			<a disabled="disabled">Xem thêm bình luận</a>
+			<a disabled="disabled" data-index="{{ (count($comments) > 4) ? 3 : count($comments) - 1 }}">Xem thêm bình luận</a>
 		</div>
 		@endif
 	</div>

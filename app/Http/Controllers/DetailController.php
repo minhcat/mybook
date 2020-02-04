@@ -1360,14 +1360,27 @@ class DetailController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function ajax_more_comment($page, $id_page) 
+	public function ajax_more_comment($page, $id_page, $index) 
 	{
 		$comments = CommentsBModel::get_comments_page($id_page, $page);
-		$result = [];
+		$data = [];
+		$i = 0;
 		foreach ($comments as $key => $comment) {
-			if ($key >= 3) {
-				array_push($result, $comment);
+			if ($key >= $index) {
+				// get 2 comment
+				if ($i > 2) {
+					break;
+				} else {
+					$i++;
+				}
+				array_push($data, $comment);
 			}
+		}
+		$result = [];
+		$result[0] = $data;
+		//check number comment not just show
+		if (count($comments) - 1 <= $index + 2) {
+			$result[1] = 'end';
 		}
 		return $result;
 	}

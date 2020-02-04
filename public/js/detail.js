@@ -2,14 +2,24 @@ $(document).ready(function() {
 	//more comment
 	$('.list-comment .more a').click(function() {
 		var t = $(this).parent().parent().find('.list-cmd').first();
+		var index = $(this).data('index');
+		var link = this;
 		$.ajax({
-			url: '/ajax/more_comment/book/1',
+			url: '/ajax/more_comment/book/1/'+index,
 			type: 'get',
-			success:function(data) {
+			success:function(result) {
 				// t.append(data.length);
+				data = result[0];
 				$.each(data, function(i, value) {
+					if (value == 7) return;
 					t.append('<div class="item-comment clearfix"><div class="image"><img src="' + flag_url + 'image/users/' + data[i].image + '.jpg" class="img-circle"></div><div class="info"><p class="name"><a href="">' + data[i].name + '</a> · <span>' + data[i].nickname + '</span></p><p class="text">' + data[i].content + '</p><p class="like"><a class="cmd-child" disabled="disabled">Phản hồi</a> · <span class="like"><img src="' + flag_url + 'image/like.png"> <span class="num-like"></span></span> · <span class="dislike"><img src="' + flag_url + 'image/dislike.png"> <span class="num-dislike"></span></span> · 04/01/2018</p></div></div>');
 				});
+				end = result[1];
+				console.log(end);
+				if (end == 'end') {
+					$(link).parent().remove();
+				}
+				$(link).data('index', index + 2);
 			}
 		});
 		
