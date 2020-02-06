@@ -93,6 +93,7 @@ class DetailController extends Controller {
 		$data = CommonController::get_data_detail_sidebar($data);
 
 		$data['page']     = 'author';
+		$data['page_id']  = $author->id;
 		$data['author']   = $author;
 		$data['books']    = BooksQModel::get_books_by_author_id($data['author']->id);
 		$data['comments'] = CommentsBModel::get_comments_page($data['author']->id, 'author');
@@ -152,6 +153,7 @@ class DetailController extends Controller {
 		}
 
 		$data['page']  = 'book'; //user to comment blade
+		$data['page_id'] = $book->id;
 		$data['book']  = $book;
 		$data['chaps_trans'] = $chaps;
 
@@ -198,7 +200,9 @@ class DetailController extends Controller {
 		$data = CommonController::get_data_detail_sidebar($data);
 
 		$data['page']     = 'character';
+
 		$data['character'] = CharactersQModel::get_character_by_slug($slug);
+		$data['page_id']  = $data['character']->id;
 		//data comment
 		$data['comments'] = CommentsBModel::get_comments_page($data['character']->id, 'character');
 		//set history cookie
@@ -246,6 +250,7 @@ class DetailController extends Controller {
 		$data = CommonController::get_data_detail_sidebar($data);
 
 		$data['page'] = 'user';
+		$data['page_id']  = $user->id;
 		$data['user'] = $user;
 		
 		//data comment
@@ -1360,7 +1365,7 @@ class DetailController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function ajax_more_comment($page, $id_page, $index) 
+	public function ajax_more_comment($type, $page, $id_page, $index) 
 	{
 		$comments = CommentsBModel::get_comments_page($id_page, $page);
 		$data = [];

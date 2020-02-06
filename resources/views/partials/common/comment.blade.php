@@ -170,7 +170,7 @@
 						</div>
 						@if (count($comment->reply) > 2)
 						<div class="more">
-							<a disabled="disabled">Xem thêm bình luận</a>
+							<a disabled="disabled" data-type="reply" data-page="{{ $page }}" data-id="{{ $page_id }}" data-index="{{ count($comment->reply) - 2 }}">Xem thêm bình luận</a>
 						</div>
 						@endif
 					</div>
@@ -183,7 +183,7 @@
 		</div>
 		@if (count($comments) > 4)
 		<div class="more">
-			<a disabled="disabled" data-index="{{ (count($comments) > 4) ? 3 : count($comments) - 1 }}">Xem thêm bình luận</a>
+			<a disabled="disabled" data-type="main" data-page="{{ $page }}" data-id="{{ $page_id }}" data-index="{{ (count($comments) > 4) ? 3 : count($comments) - 1 }}">Xem thêm bình luận</a>
 		</div>
 		@endif
 	</div>
