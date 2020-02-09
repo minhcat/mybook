@@ -15,20 +15,27 @@ $(document).ready(function() {
 				data = result[0];
 				// console.log(data);
 				$.each(data, function(i, value) {
+					if (i >= 2) return false;
 					// console.log(typeof(value));
 					if (typeof(value) == 'number') return;
-					console.log(data[i].reply.length);
+					// console.log(data[i].reply.length);
 					var str = '';
 					if (data[i].reply.length > 0) {
 						var item = '';
 						$.each(data[i].reply, function(j, value2) {
-							var like = value2.like; 
-							var dislike = value2.dislike;
-							if (like == 0) like = '';
-							if (dislike == 0) dislike = '';
-							item = item + '<div class="item-comment clearfix" data-id="'+value2.id+'"><div class="image"><img src="'+flag_url+'image/users/'+value2.image+'.jpg" class="img-circle"></div><div class="info"><p class="name"><a href="">'+value2.name+'</a> · <span>'+value2.nickname+'</span></p><p class="text">'+value2.content+'</p><p class="like"><a class="cmd-child" disabled="disabled">Phản hồi</a> · <span class="like"><img src="'+flag_url+'image/like.png"> <span class="num-like">'+like+'</span></span> · <span class="dislike"><img src="'+flag_url+'image/dislike.png"> <span class="num-dislike">'+dislike+'</span></span> <span class="cmd-date">· 04/01/2018</span></p></div></div>';
+							if (j < 2) { 
+								var like = value2.like; 
+								var dislike = value2.dislike;
+								if (like == 0) like = '';
+								if (dislike == 0) dislike = '';
+								item = item + '<div class="item-comment clearfix" data-id="'+value2.id+'"><div class="image"><img src="'+flag_url+'image/users/'+value2.image+'.jpg" class="img-circle"></div><div class="info"><p class="name"><a href="">'+value2.name+'</a> · <span>'+value2.nickname+'</span></p><p class="text">'+value2.content+'</p><p class="like"><a class="cmd-child" disabled="disabled">Phản hồi</a> · <span class="like"><img src="'+flag_url+'image/like.png"> <span class="num-like">'+like+'</span></span> · <span class="dislike"><img src="'+flag_url+'image/dislike.png"> <span class="num-dislike">'+dislike+'</span></span> <span class="cmd-date">· 04/01/2018</span></p></div></div>';
+							}
 						});
-						str = '<div class="list-comment reply"><div class="list-cmd">'+item+'</div></div>';
+						var more = '';
+						if (data[i].reply.length > 2) {
+							more = '<div class="more"><a disabled="disabled" data-type="reply" data-page="AAAA" data-id="BBBB" data-index="CCCC">Xem thêm bình luận</a></div>';
+						}
+						str = '<div class="list-comment reply"><div class="list-cmd">'+item+'</div>'+more+'</div>';
 					}
 					list.append('<div class="item-comment clearfix"><div class="image"><img src="' + flag_url + 'image/users/' + data[i].image + '.jpg" class="img-circle"></div><div class="info"><p class="name"><a href="">' + data[i].name + '</a> · <span>' + data[i].nickname + '</span></p><p class="text">' + data[i].content + '</p><p class="like"><a class="cmd-child" disabled="disabled">Phản hồi</a> · <span class="like"><img src="' + flag_url + 'image/like.png"> <span class="num-like"></span></span> · <span class="dislike"><img src="' + flag_url + 'image/dislike.png"> <span class="num-dislike"></span></span> · 04/01/2018</p> ' + str + ' </div></div>');
 				});
