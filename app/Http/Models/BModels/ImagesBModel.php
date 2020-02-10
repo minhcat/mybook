@@ -20,6 +20,7 @@ class ImagesBModel extends Model
 		//get image
 		$images = ImagesQModel::get_images_by_chap_id($chap_id);
 
+		if (count($images) == 0) return 0;
 		$max = $images[0]->index;
 		foreach ($images as $key => $image) {
 			if ($image->index > $max) {
