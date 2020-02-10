@@ -34,6 +34,8 @@ class ReadController extends Controller {
 		// dd($trans);
 		$chap = ChapsQModel::get_chap_by_book_id_trans_id_chap_slug($book->id, $trans->id, $chap_slug);
 		// dd($chap);
+		$option = ChapsQModel::get_chaps_by_book_id_trans_id($book->id, $trans->id);
+		// dd($option);
 		$data['page']   = 'chap';
 		$data['images'] = ImagesQModel::get_images_by_chap_id($chap->id);
 		$data['book']['name']  = $book->name;
@@ -44,6 +46,7 @@ class ReadController extends Controller {
 		$data['trans']['slug'] = $trans_slug;
 		$data['chap']['slug']  = $chap_slug;
 		$data['chap']['index'] = $chap->index;
+		$data['book']['option'] = $option;
 
 		//get next chap and previous chap
 		$next     = ChapsQModel::get_chap_by_index($book->id, $trans->id, $chap->index - 1);
@@ -65,6 +68,7 @@ class ReadController extends Controller {
 		$data['large_comment'] = 0 ; //set css
 
 		$data['random_books'] = BooksQModel::get_books_random(10);
+		// dd($data);
 
 		// set cookie history
 		$history = Cookie::get('history');
