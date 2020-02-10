@@ -220,7 +220,7 @@ class CommentsBModel extends Model
 			$result = CommentsQModel::get_comments_by_author_id($id);
 			$number = count($result);
 			foreach ($result as $comment) {
-				$reply = CommentsQModel::get_comments_author_reply_by_user_id($comment->id_user, $id);
+				$reply = CommentsQModel::get_comments_reply($comment->id);
 				$number += count($reply);
 				$comment->reply = $reply;
 			}
@@ -229,7 +229,7 @@ class CommentsBModel extends Model
 			$result = CommentsQModel::get_comments_by_book_id($id);
 			$number = count($result);
 			foreach ($result as $comment) {
-				$reply = CommentsQModel::get_comments_book_reply_by_user_id($comment->id_user, $id);
+				$reply = CommentsQModel::get_comments_reply($comment->id);
 				$number += count($reply);
 				$comment->reply = $reply;
 			}
@@ -238,7 +238,7 @@ class CommentsBModel extends Model
 			$result = CommentsQModel::get_comments_by_character_id($id);
 			$number = count($result);
 			foreach ($result as $comment) {
-				$reply = CommentsQModel::get_comments_character_reply_by_user_id($comment->id_user, $id);
+				$reply = CommentsQModel::get_comments_reply($comment->id);
 				$number += count($reply);
 				$comment->reply = $reply;
 			}
@@ -247,7 +247,7 @@ class CommentsBModel extends Model
 			$result = CommentsQModel::get_comments_by_user_id($id);
 			$number = count($result);
 			foreach ($result as $comment) {
-				$reply = CommentsQModel::get_comments_user_reply_by_user_id($comment->id_user, $id);
+				$reply = CommentsQModel::get_comments_reply($comment->id);
 				$number += count($reply);
 				$comment->reply = $reply;
 			}
@@ -256,7 +256,7 @@ class CommentsBModel extends Model
 			$result = CommentsQModel::get_comments_by_trans_id($id);
 			$number = count($result);
 			foreach ($result as $comment) {
-				$reply = CommentsQModel::get_comments_trans_reply_by_user_id($comment->id_user, $id);
+				$reply = CommentsQModel::get_comments_reply($comment->id);
 				$number += count($reply);
 				$comment->reply = $reply;
 			}
@@ -265,7 +265,7 @@ class CommentsBModel extends Model
 			$result = CommentsQModel::get_comments_by_chap_id($id);
 			$number = count($result);
 			foreach ($result as $comment) {
-				$reply = CommentsQModel::get_comments_chap_reply_by_user_id($comment->id_user, $id);
+				$reply = CommentsQModel::get_comments_reply($comment->id);
 				$number += count($reply);
 				$comment->reply = $reply;
 			}
@@ -273,6 +273,21 @@ class CommentsBModel extends Model
 		}
 
 		return $result;
+	}
+
+	/**
+	 * get book by id
+	 * @param 
+	 * @return object|boolean : all properties from `books` table
+	 */
+	public static function get_comments_reply_more($id_comment) {
+		$comments = CommentsQModel::get_comments_reply($id_comment);
+		//fix error js
+		foreach ($comments as $key => $comment) {
+			$comment->reply = [];
+		}
+		
+		return $comments;
 	}
 
 	/**

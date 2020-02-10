@@ -170,7 +170,7 @@
 						</div>
 						@if (count($comment->reply) > 2)
 						<div class="more">
-							<a disabled="disabled" data-type="reply" data-page="{{ $page }}" data-id="{{ $page_id }}" data-index="{{ count($comment->reply) - 2 }}">Xem thêm bình luận</a>
+							<a disabled="disabled" data-type="reply" data-page="{{ $page }}" data-id="{{ $comment->id }}" data-index="{{ count($comment->reply) - 1 }}">Xem thêm bình luận</a>
 						</div>
 						@endif
 					</div>

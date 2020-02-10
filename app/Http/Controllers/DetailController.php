@@ -1367,7 +1367,11 @@ class DetailController extends Controller {
 	 */
 	public function ajax_more_comment($type, $page, $id_page, $index) 
 	{
-		$comments = CommentsBModel::get_comments_page($id_page, $page);
+		if ($type == 'main')
+			$comments = CommentsBModel::get_comments_page($id_page, $page);
+		else
+			$comments = CommentsBModel::get_comments_reply_more($id_page);
+		// dd($comments);
 		$data = [];
 		$i = 0;
 		foreach ($comments as $key => $comment) {

@@ -13,7 +13,7 @@ $(document).ready(function() {
 			success:function(result) {
 				// t.append(data.length);
 				data = result[0];
-				// console.log(data);
+				console.log(result);
 				$.each(data, function(i, value) {
 					if (i >= 2) return false;
 					// console.log(typeof(value));
