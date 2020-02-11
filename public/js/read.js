@@ -28,4 +28,19 @@ $(document).ready(function() {
 		slidesToShow: 5,
 		slidesToScroll: 5
 	});
+	$(document).on('click', '.form-comment .select', function() {
+		console.log('a');
+		// console.log(e.target);
+		// console.log(this);
+		$(this).parent().toggleClass('open');
+	});
+	//emoji
+	$(document).on('click', '.form-comment .dropdown-menu img', function() {
+		console.log('img');
+		var text = $(this).parent().parent().parent().find('.textarea');
+		var image = $(this).data('image');
+		var t = text.html();
+		t = t + "<img src='" + flag_url + "image/emoji/" + image + ".png' width='20px'/>";
+		text.html(t);
+	});
 });

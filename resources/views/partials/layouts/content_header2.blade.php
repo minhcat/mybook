@@ -3,14 +3,14 @@
 		<div class="container clearfix">
 			<div class="header left">
 				<div class="logo">
-					<h1>My Book</h1>
-					<img src="{{ asset('image/logo.png') }}">
+					<h1>{{ $system['website_name'] }}</h1>
+					<img src="{{ asset('image/system/'.$system['logo']) }}">
 				</div>
 			</div>
 			<div class="image right">
-				<img src="{{ asset('image/conan_200.png') }}" class="img-circle">
-				<img src="{{ asset('image/attack-on-titan-200x150.png') }}" class="img-circle">
-				<img src="{{ asset('image/kirito-200x150.png') }}" class="img-circle">
+				<img src="{{ asset('image/system/'.$system['header_image_1']) }}" class="img-circle">
+				<img src="{{ asset('image/system/'.$system['header_image_2']) }}" class="img-circle">
+				<img src="{{ asset('image/system/'.$system['header_image_3']) }}" class="img-circle">
 			</div>
 		</div>
 	</div>
@@ -30,110 +30,57 @@
 						</div>
 						<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tình Trạng <span class="caret"></span></a> -->
 						<ul class="dropdown-menu">
-							<li class="clearfix">
-								<img src="image/bang-hoai-3rd.jpg" class="image" alt="" width="60px" height="60px">
-								<div class="info">
-									<a href="detail-book.html" class="name">Băng Hoại 3rd</a>
-									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
-								</div>
-							</li>
-							<li class="clearfix">
-								<img src="image/boruto.jpg" class="image" alt="" width="60px" height="60px">
-								<div class="info">
-									<a href="detail-book.html" class="name">Boruto</a>
-									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
-								</div>
-							</li>
-							<li class="clearfix">
-								<img src="image/mahoutsukai-no-yome.jpg" class="image" alt="" width="60px" height="60px">
-								<div class="info">
-									<a href="detail-book.html" class="name">Mahoutsukai no Yome</a>
-									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
-								</div>
-							</li>
-							<li class="clearfix">
-								<img src="image/himouto-umaru-chan.jpg" class="image" alt="" width="60px" height="60px">
-								<div class="info">
-									<a href="detail-book.html" class="name">Himouto Umaru-chan</a>
-									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
-								</div>
-							</li>
+
 							<hr>
 							<li class="search-more">
-								<a href="search-more">Tìm kiếm nâng cao</a>
+								<a href="search-more" class="search-more" onclick="window.open('{{ url('/list/search') }}')">Tìm kiếm nâng cao</a>
 							</li>
 						</ul>
 					</div>
 				</div>
 				<div class="collapse navbar-collapse" id="menu-left">
 					<ul class="nav navbar-nav">
-						<li class="active"><a rel="notfollow" class="page"><span class="glyphicon glyphicon-home"></span></a></li>
-						<li class="hide-xs"><a href="list-view.html" class="page">Truyện Hot</a></li>
-						<li class="hide-xs"><a href="list-update.html" class="page">Mới Cập Nhật</a></li>
-						<li class="dropdown">
+						<li class="{{ (isset($page) && $page == 'home') ? 'active' : '' }}"><a href="{{ url('/') }}" class="page"><span class="glyphicon glyphicon-home"></span></a></li>
+						<li class="{{ (isset($page) && $page == 'view') ? 'active' : '' }} hide-xs"><a href="{{ url('/list/view') }}" class="page">Truyện Hot</a></li>
+						<li class="{{ (isset($page) && $page == 'update') ? 'active' : '' }} hide-xs"><a href="{{ url('/list/update') }}" class="page">Mới Cập Nhật</a></li>
+						<li class="{{ (isset($page) && $page == 'category') ? 'active' : '' }} dropdown">
 							<a rel="notfollow" class="page dropdown-toggle" data-toggle="dropdown">Thể Loại <span class="caret"></span></a>
 							
 							<ul class="dropdown-menu more">
+								@foreach ($menu_categories as $group_category)
 								<li>
 									<div class="row">
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 first"><a href="list-category.html">Action</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">Adult</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">Adventure</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 last"><a href="list-category.html">Anime</a></div>
+										@foreach ($group_category as $key => $cate)
+											@if (isset($_category))
+												@if ($_category->slug == $cate->slug)
+												<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 {{ ($key == 0) ? 'first' : (($key == 3) ? 'last' : 'next') }}"><a href="{{ url('/list/category/'.$cate->slug) }}" class="active">{{ ucwords($cate->name) }}</a></div>
+												@else
+												<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 {{ ($key == 0) ? 'first' : (($key == 3) ? 'last' : 'next') }}"><a href="{{ url('/list/category/'.$cate->slug) }}">{{ ucwords($cate->name) }}</a></div>
+												@endif
+											@else
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 {{ ($key == 0) ? 'first' : (($key == 3) ? 'last' : 'next') }}"><a href="{{ url('/list/category/'.$cate->slug) }}">{{ ucwords($cate->name) }}</a></div>
+											@endif
+										@endforeach
 									</div>
 								</li>
-								<li>
-									<div class="row">
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 first"><a href="list-category.html">Comedy</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">Comic</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">Cooking</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 last"><a href="list-category.html">Cosplay</a></div>
-									</div>
-								</li>
-								<li>
-									<div class="row">
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 first"><a href="list-category.html">Demons</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">Doujinshi</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">Ecchi</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 last"><a href="list-category.html">Fanmade</a></div>
-									</div>
-								</li>
-								<li>
-									<div class="row">
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 first"><a href="list-category.html">Fantasy</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">Harem</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">History</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 last"><a href="list-category.html">Magic</a></div>
-									</div>
-								</li>
-								<li>
-									<div class="row">
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 first"><a href="list-category.html">Mystery</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">Romance</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 next"><a href="list-category.html">School Life</a></div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-6 last"><a href="list-category.html">Zombie</a></div>
-									</div>
-								</li>
+								@endforeach
 							</ul>
 						</li>
 						<li class="dropdown hide-md">
 							<a rel="notfollow" class="page dropdown-toggle" data-toggle="dropdown">Năm Xuất Bản <span class="caret"></span></a>
 							
 							<ul class="dropdown-menu">
-								<li><a href="list-year.html" class="page">2012</a></li>
-								<li><a href="list-year.html" class="page">2013</a></li>
-								<li><a href="list-year.html" class="page">2014</a></li>
-								<li><a href="list-year.html" class="page">2015</a></li>
-								<li><a href="list-year.html" class="page">2016</a></li>
-								<li><a href="list-year.html" class="page">2017</a></li>
+								@foreach ($menu_years as $year2)
+								<li><a href="{{ url('/list/year/'.$year2) }}" class="page {{ (isset($year) && $year == $year2) ? 'active' : '' }}">{{ $year2 }}</a></li>
+								@endforeach
 							</ul>
 						</li>
 						<li class="dropdown hide-md">
 							<a rel="notfollow" class="page dropdown-toggle" data-toggle="dropdown">Tình Trạng <span class="caret"></span></a>
 							
 							<ul class="dropdown-menu">
-								<li><a href="list-completed.html" class="page">Đã hoàn thành</a></li>
-								<li><a href="list-process.html" class="page">Đang tiến hành</a></li>
+								<li><a href="{{ url('/list/completed') }}" class="page {{ (isset($status) && !$status) ? 'active' : '' }}">Đã hoàn thành</a></li>
+								<li><a href="{{ url('/list/process') }}" class="page {{ (isset($status) && $status) ? 'active' : '' }}">Đang tiến hành</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -145,49 +92,179 @@
 						</div>
 						<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tình Trạng <span class="caret"></span></a> -->
 						<ul class="dropdown-menu">
-							<li class="clearfix">
-								<img src="image/bang-hoai-3rd.jpg" class="image" alt="" width="60px" height="60px">
-								<div class="info">
-									<a href="detail-book.html" class="name">Băng Hoại 3rd</a>
-									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
-								</div>
-							</li>
-							<li class="clearfix">
-								<img src="image/boruto.jpg" class="image" alt="" width="60px" height="60px">
-								<div class="info">
-									<a href="detail-book.html" class="name">Boruto</a>
-									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
-								</div>
-							</li>
-							<li class="clearfix">
-								<img src="image/mahoutsukai-no-yome.jpg" class="image" alt="" width="60px" height="60px">
-								<div class="info">
-									<a href="detail-book.html" class="name">Mahoutsukai no Yome</a>
-									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
-								</div>
-							</li>
-							<li class="clearfix">
-								<img src="image/himouto-umaru-chan.jpg" class="image" alt="" width="60px" height="60px">
-								<div class="info">
-									<a href="detail-book.html" class="name">Himouto Umaru-chan</a>
-									<div class="more">Lorem ipsum dolor sit amet, consec tetur adipisicing elit. Porro, ea.</div>
-								</div>
-							</li>
+							
 							<hr>
 							<li class="search-more">
-								<a href="list-search.html">Tìm kiếm nâng cao</a>
+								<a href="{{ url('/list/search') }}" class="search-more"onclick="window.open('{{ url('/list/search') }}')">Tìm kiếm nâng cao</a>
 							</li>
 						</ul>
 					</div>
 				
+					@if (Auth::check())
 					<ul class="nav navbar-nav navbar-right hide-sm">
-						<li><a href="sign-up.html" class="page"><span class="glyphicon glyphicon-user"></span> Đăng Ký</a></li>
-						<li><a href="login.html" class="page"><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
+						<li class="{{ (isset($page) && $page == 'notification') ? 'active' : '' }}">
+							<a rel="notfollow"  class="page dropdown-toggle" data-toggle="dropdown"><span class="fa fa-bell"></span> Thông Báo <span class="number">{{ (count($noti_seen) != 0) ? '('.count($noti_seen).')' : '' }}</span></a>
+							<ul class="dropdown-menu menu2">
+								@foreach ($menu_noti as $key => $notification)
+									@if ($key < 5)
+									<li class="clearfix">
+										@if ($notification->type == 'newchap' || $notification->type == 'coming')
+										<img src="{{ asset('image/books/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
+										@elseif ($notification->type == 'authornewchap')
+										<img src="{{ asset('image/authors/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
+										@elseif ($notification->type == 'transnewchap')
+										<img src="{{ asset('image/trans/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
+										@else
+										<img src="{{ asset('image/users/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
+										@endif
+										<div class="info">
+											<?php date_default_timezone_set('Asia/Ho_Chi_Minh'); ?>
+											<div class="content">{!! $notification->action !!}</div>
+											@if ($notification->year == (int)date('Y'))
+												@if ($notification->month == (int)date('m'))
+													@if ($notification->date == (int)date('d'))
+														@if ($notification->hour == (int)date('H'))
+															@if ($notification->minute == (int)date('i'))
+															<div class="time">{{ (int)date('s') - $notification->second }} giây trước</div>
+															@else
+															<div class="time">{{ (int)date('i') - $notification->minute }} phút trước</div>
+															@endif
+														@else
+														<div class="time">{{ (int)date('H') - $notification->hour }} giờ trước</div>
+														@endif
+													@else
+													<div class="time">{{ (int)date('d') - $notification->date }} ngày trước</div>
+													@endif
+												@else
+												<div class="time">{{ (int)date('m') - $notification->month }} tháng trước</div>
+												@endif
+											@else
+											<div class="time">{{ (int)date('Y') - $notification->year }} năm trước</div>
+											@endif
+										</div>
+									</li>
+									@endif
+								@endforeach
+								<hr>
+								<li class="all-noti">
+									<a href="{{ url('/list/notification') }}">Xem tất cả</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a rel="notfollow" class="page user dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('image/users/'.$user_login->image.'.jpg') }}" class="img-circle" width="35px" alt="">&nbsp;&nbsp;{{ $user_login->name }}</a>
+							<ul class="dropdown-menu menu2 user">
+								<li class="clearfix">
+									<a href="{{ url('/detail/user/'.$user_login->name_login) }}">Thông tin cá nhân</a>
+								</li>
+								<li class="clearfix">
+									<a href="{{ url('/change-password') }}">Đổi mật khẩu</a>
+								</li>
+								<hr>
+								<li class="clearfix">
+									<a href="{{ url('/list/follow') }}">Truyện đang theo dõi</a>
+								</li>
+								<li class="clearfix">
+									<a href="{{ url('/list/history') }}">Lịch sử đọc truyện</a>
+								<li class="clearfix">
+									<a href="{{ url('/list/friend') }}">Danh sách bạn</a>
+								</li>
+								</li>
+								<hr>
+								<li class="clearfix">
+									<a href="{{ url('setting') }}">Cài đặt</a>
+								</li>
+								<li class="clearfix">
+									<a href="{{ url('logout') }}">Đăng xuất</a>
+								</li>
+							</ul>
+						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right show-sm">
-						<li><a href="sign-up.html" class="page"><span class="glyphicon glyphicon-user"></span></a></li>
-						<li><a href="login.html" class="page"><span class="glyphicon glyphicon-log-in"></span></a></li>
+						<li class="{{ (isset($page) && $page == 'notification') ? 'active' : '' }}">
+							<a rel="notfollow"  class="page dropdown-toggle" data-toggle="dropdown"><span class="fa fa-bell"></span></a>
+							<ul class="dropdown-menu menu2 noti-small">
+								@foreach ($menu_noti as $key => $notification)
+									@if ($key < 5)
+									<li class="clearfix">
+										@if ($notification->type == 'newchap' || $notification->type == 'coming')
+										<img src="{{ asset('image/books/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
+										@else
+										<img src="{{ asset('image/users/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
+										@endif
+										<div class="info">
+											<?php date_default_timezone_set('Asia/Ho_Chi_Minh'); ?>
+											<div class="content">{!! $notification->action !!}</div>
+											@if ($notification->year == (int)date('Y'))
+												@if ($notification->month == (int)date('m'))
+													@if ($notification->date == (int)date('d'))
+														@if ($notification->hour == (int)date('H'))
+															@if ($notification->minute == (int)date('i'))
+															<div class="time">{{ (int)date('s') - $notification->second }} giây trước</div>
+															@else
+															<div class="time">{{ (int)date('i') - $notification->minute }} phút trước</div>
+															@endif
+														@else
+														<div class="time">{{ (int)date('H') - $notification->hour }} giờ trước</div>
+														@endif
+													@else
+													<div class="time">{{ (int)date('d') - $notification->date }} ngày trước</div>
+													@endif
+												@else
+												<div class="time">{{ (int)date('m') - $notification->month }} tháng trước</div>
+												@endif
+											@else
+											<div class="time">{{ (int)date('Y') - $notification->year }} năm trước</div>
+											@endif
+										</div>
+									</li>
+									@endif
+								@endforeach
+								<hr>
+								<li class="all-noti">
+									<a href="notification.html">Xem tất cả</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#" class="page user dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('image/users/'.$user_login->image.'.jpg') }}" class="img-circle" width="35px" alt=""></a>
+							<ul class="dropdown-menu menu2 user user-small">
+								<li class="clearfix">
+									<a href="{{ url('/detail/user/'.$user_login->name_login) }}">Thông tin cá nhân</a>
+								</li>
+								<li class="clearfix">
+									<a href="{{ url('/change-password') }}">Đổi mật khẩu</a>
+								</li>
+								<hr>
+								<li class="clearfix">
+									<a href="{{ url('/list/follow') }}">Truyện đang theo dõi</a>
+								</li>
+								<li class="clearfix">
+									<a href="{{ url('/list/history') }}">Lịch sử đọc truyện</a>
+								</li>
+								<li class="clearfix">
+									<a href="{{ url('/list/friend') }}">Danh sách bạn</a>
+								</li>
+								<hr>
+								<li class="clearfix">
+									<a href="{{ url('setting') }}">Cài đặt</a>
+								</li>
+								<li class="clearfix">
+									<a href="{{ url('logout') }}">Đăng xuất</a>
+								</li>
+							</ul>
+						</li>
 					</ul>
+					@else
+					<ul class="nav navbar-nav navbar-right hide-sm">
+						<li class="{{ (isset($page) && $page == 'sign-up') ? 'active' : '' }}"><a href="{{ url('sign_up') }}" class="page"><span class="glyphicon glyphicon-user"></span> Đăng Ký</a></li>
+						<li class="{{ (isset($page) && $page == 'login') ? 'active' : '' }}"><a href="{{ url('login') }}" class="page"><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right show-sm">
+						<li class="{{ (isset($page) && $page == 'sign-up') ? 'active' : '' }}"><a href="{{ url('sign_up') }}" class="page"><span class="glyphicon glyphicon-user"></span></a></li>
+						<li class="{{ (isset($page) && $page == 'login') ? 'active' : '' }}"><a href="{{ url('login') }}" class="page"><span class="glyphicon glyphicon-log-in"></span></a></li>
+					</ul>
+					@endif
 				</div>
 			</nav>
 		</div>
