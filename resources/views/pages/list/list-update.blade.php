@@ -24,7 +24,7 @@ Các loại truyện có được cập nhập, thêm chap mới, ra bảng dị
 		<div class="list">
 			@foreach ($books as $key => $book)
 			<div class="book clearfix">
-				<a href=""><img src="{{ asset('image/books/'.$book->image.'.jpg') }}" width="160px" height="160px"></a>
+				<a href=""><img src="{{ asset('image/books/'.$book->image) }}" width="160px" height="160px"></a>
 				<div class="info">
 					<h4 class="name"><a href="detail-book.html">{{ $book->name }}</a></h4>
 					<div class="star">

@@ -25,7 +25,7 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 			<div class="line first clearfix">
 				<div class="image left">
 					<div class="img">
-						<img src="{{ asset('image/books/'.$book->image.'.jpg') }}">
+						<img src="{{ asset('image/books/'.$book->image) }}">
 					</div>
 					<div class="button">
 						@if (Auth::check())

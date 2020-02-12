@@ -6,7 +6,7 @@
 			@foreach($books_view as $book)
 				<div class="book col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
 					<div class="book-content">
-						<img src="image/books/{{ $book->image }}.jpg">
+						<img src="image/books/{{ $book->image }}">
 						<div class="book-info">
 							<div class="name">{{ $book->name }}</div>
 							<div class="group row">

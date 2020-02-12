@@ -276,11 +276,9 @@
 		<a href="{{ url('/read/'.$book['slug'].'/'.$trans['slug'].'/'.$chap['next']) }}" class="btn bg-green white">Chap trước</a>
 		@endif
 		<select class="list-chap form-control">
-			<option>chap 1</option>
-			<option>chap 2</option>
-			<option>chap 3</option>
-			<option>chap 4</option>
-			<option>chap 5</option>
+			@foreach ($book['option'] as $option)
+			<option {{ ($option->index == $chap['index']) ? 'selected="selected"' : '' }}>{{ $option->name }}</option>
+			@endforeach
 		</select>
 		@if ($chap['previous'] != 'none')
 		<a href="{{ url('/read/'.$book['slug'].'/'.$trans['slug'].'/'.$chap['previous']) }}" class="btn bg-green white">Chap sau</a>

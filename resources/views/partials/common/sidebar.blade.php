@@ -12,7 +12,7 @@
 			<div class="arrow"></div>
 			<div class="content">
 				<div class="image left">
-					<img src="{{ asset('image/books/'.$book->image.'.jpg') }}" width="85px">
+					<img src="{{ asset('image/books/'.$book->image) }}" width="85px">
 				</div>
 				<div class="main right">
 					<a href="{{ url('/detail/book/'.$book->slug) }}" class="name"><strong>{{ $book->name }}</strong></a>

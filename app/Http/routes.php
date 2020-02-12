@@ -324,3 +324,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 Route::get('/config/set_password/{user_id}', 'ConfigController@set_password');
 
 Route::get('/config/create_comment/{user_id}', 'ConfigController@create_comment');
+
+Route::get('/config/add_extension_image_book/{book_id}', 'ConfigController@add_extension_image_book');

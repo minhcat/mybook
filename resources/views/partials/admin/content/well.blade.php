@@ -6,7 +6,8 @@
 	<p>{{ \Session::get('danger') }}</p>
 
 </div>
-@elseif (\Session::has('success'))
+@endif
+@if (\Session::has('success'))
 <div class="well well-success collapse in">
 	<button type="button" class="btn btn-box-tool btn-close pull-right"><i class="fa fa-times"></i></button>
 	<h4>Thông Báo!</h4>
@@ -14,7 +15,8 @@
 	<p>{{ \Session::get('success') }}</p>
 
 </div>
-@elseif ($errors->any())
+@endif
+@if ($errors->any())
 <div class="well well-danger collapse in">
 	<button type="button" class="btn btn-box-tool btn-close pull-right"><i class="fa fa-times"></i></button>
 	<h4>Thông Báo!</h4>

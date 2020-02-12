@@ -10,7 +10,7 @@
 		</div>
 	</div>
 	<div class="box-body">
-		<img src="{{ asset('image/books/'.$book->image.'.jpg') }}" class="img-circle" width="150px"  alt="user image">
+		<img src="{{ asset('image/books/'.$book->image) }}" class="img-circle" width="150px"  alt="user image">
 		<div class="box-info">
 			<p><strong>Tên khác:</strong> {{ $book->other_name }}</p>
 			<p><strong>Đánh giá:</strong> {{ $book->rate_point }}, lượt đánh giá: {{ $book->rate }}</p>

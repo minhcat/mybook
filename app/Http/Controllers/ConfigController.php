@@ -8,6 +8,7 @@ use App\Http\Models\BModels\BooksBModel;
 use App\Http\Models\BModels\SystemBModel;
 use App\Http\Models\BModels\CommentsBModel;
 use App\Http\Models\BModels\CategoriesBModel;
+use App\Http\Models\CModels\BooksCModel;
 use App\Http\Models\CModels\CommentsCModel;
 use App\Http\Models\CModels\UsersCModel;
 use App\Http\Helpers\Helper;
@@ -42,5 +43,20 @@ class ConfigController extends Controller {
 			'datetime'	=> date('Y-m-d H:i:s'),
 		];
 		return CommentsCModel::insert_comment($data);
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public static function add_extension_image_book($id_book){
+		$book = BooksQModel::get_book_by_id($id_book);
+		if ($book != null) {
+			$data = [
+				'image' => $book->image.'.jpg'
+			];
+			BooksCModel::update_book($id_book, $data);
+		}
 	}
 }

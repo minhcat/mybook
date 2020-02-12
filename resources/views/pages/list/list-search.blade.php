@@ -154,7 +154,7 @@ Các bạn có thể tìm kiếm truyện thông qua từ khóa, thể loại, t
 			@else
 				@foreach ($books as $key => $book)
 				<div class="book clearfix">
-					<a href="{{ url('/detail/book/'.$book->slug) }}"><img src="{{ asset('image/books/'.$book->image.'.jpg') }}" width="160px" height="160px"></a>
+					<a href="{{ url('/detail/book/'.$book->slug) }}"><img src="{{ asset('image/books/'.$book->image) }}" width="160px" height="160px"></a>
 					<div class="info">
 						<h4 class="name"><a href="{{ url('/detail/book/'.$book->slug) }}">{{ $book->name }}</a></h4>
 						<div class="star">
