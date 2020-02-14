@@ -1,7 +1,7 @@
 @foreach ($books_upload as $key => $book)
 <div class="modal fade" id="modal-keyword-new-{{ $key }}">
 	<div class="modal-dialog">
-		<form id="add_keyword" action="{{ url('/admin/uploader/add_keyword/'.$book->id) }}" method="POST">
+		<form id="add_keyword-{{ $key }}" action="{{ url('/admin/uploader/add_keyword/'.$book->id) }}" method="POST">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -12,7 +12,7 @@
 			<div class="modal-body">
 				<div class="form-group">
 					<label for="">Từ khóa</label>
-					<input type="text" class="form-control" id="" placeholder="Thêm từ khóa" name="keyword">
+					<input type="text" class="form-control" placeholder="Thêm từ khóa" name="keyword">
 				</div>
 			</div>
 			<div class="modal-footer">

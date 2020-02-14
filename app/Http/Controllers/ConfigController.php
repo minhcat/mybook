@@ -59,4 +59,21 @@ class ConfigController extends Controller {
 			BooksCModel::update_book($id_book, $data);
 		}
 	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public static function add_description_book($id_book){
+		$book = BooksQModel::get_book_by_id($id_book);
+		if($book != null) {
+			if ($book->description == '') {
+				$data = [
+					'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque leo sed augue vehicula, et aliquam lectus consequat. Aliquam viverra condimentum est, ac mollis ligula ornare in. Nam vel euismod nunc, vel semper quam.'
+				];
+				BooksCModel::update_book($id_book, $data);
+			}
+		}
+	}
 }

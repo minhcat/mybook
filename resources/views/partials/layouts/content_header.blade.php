@@ -109,7 +109,7 @@
 									@if ($key < 5)
 									<li class="clearfix">
 										@if ($notification->type == 'newchap' || $notification->type == 'coming')
-										<img src="{{ asset('image/books/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
+										<img src="{{ asset('image/books/'.$notification->image) }}" class="image img-circle" alt="" width="60px" height="60px">
 										@elseif ($notification->type == 'authornewchap')
 										<img src="{{ asset('image/authors/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
 										@elseif ($notification->type == 'transnewchap')
@@ -188,7 +188,7 @@
 									@if ($key < 5)
 									<li class="clearfix">
 										@if ($notification->type == 'newchap' || $notification->type == 'coming')
-										<img src="{{ asset('image/books/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
+										<img src="{{ asset('image/books/'.$notification->image) }}" class="image img-circle" alt="" width="60px" height="60px">
 										@else
 										<img src="{{ asset('image/users/'.$notification->image.'.jpg') }}" class="image img-circle" alt="" width="60px" height="60px">
 										@endif

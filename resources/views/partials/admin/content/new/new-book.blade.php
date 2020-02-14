@@ -15,7 +15,7 @@
 				<img src="{{ asset('image/admin/book-default.png') }}" class="img-circle" width="150px" height="150px"  alt="user image">
 				<label class="btn btn-success">
 					Thêm hình
-					<input id="image" type="file" name="image">
+					<input class="image" type="file" name="image">
 				</label>
 				<p class="error hide">Bạn chưa up hình</p>
 			</div>

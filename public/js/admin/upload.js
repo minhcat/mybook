@@ -102,7 +102,7 @@ $(document).ready(function() {
 			$(this).parent().find('input').val(JSON.stringify(array_characters));
 		}
 	});
-	$('.avatar input#image').change(function() {
+	$('.avatar input.image').change(function() {
 		if (this.files && this.files[0]) {
 			var t = this;
 			var reader = new FileReader();
@@ -160,8 +160,8 @@ $(document).ready(function() {
 
 	});
 	// check create chap
-	$('form#form-new-chap .box-footer .btn.btn-success').click(function() {
-		var form  = $(this).parents('form#form-new-chap');
+	$('form.form-new-chap .box-footer .btn.btn-success').click(function() {
+		var form  = $(this).parents('form.form-new-chap');
 		var check = true;
 		//check enter name
 		var name = form.find('.form-group.name input').val();

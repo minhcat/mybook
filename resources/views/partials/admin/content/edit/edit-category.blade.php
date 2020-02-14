@@ -12,11 +12,11 @@
 		<div class="box-body">
 			<div class="form-group">
 				<label for="name">Tên thể loại</label>
-				<input type="text" class="form-control" id="name" placeholder="tên thể loại" value="Action">
+				<input type="text" class="form-control" placeholder="tên thể loại" value="Action">
 			</div>
 			<div class="form-group">
 				<label for="name">Tên khác</label>
-				<input type="text" class="form-control" id="name" placeholder="tên thể loại" value="Hành động">
+				<input type="text" class="form-control" placeholder="tên thể loại" value="Hành động">
 			</div>
 			<div class="form-group">
 				<label for="name">Mô tả</label>

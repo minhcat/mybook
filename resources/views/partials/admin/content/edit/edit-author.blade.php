@@ -9,7 +9,7 @@
 			<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
 		</div>
 	</div>
-	<form id="create-chap" action="{{ url('/admin/uploader/update_author/'.$author->id) }}" method="POST" enctype="multipart/form-data">
+	<form id="create-author-{{ $author->id }}" action="{{ url('/admin/uploader/update_author/'.$author->id) }}" method="POST" enctype="multipart/form-data">
 		<div class="box-body">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="avatar">
@@ -20,13 +20,13 @@
 				@endif
 				<label class="btn btn-success">
 					Thay đổi hình
-					<input id="image" type="file" name="image">
+					<input class="image" type="file" name="image">
 				</label>
 			</div>
 			<div class="box-edit">
 				<div class="form-group">
 					<label for="name">Tên tác giả</label>
-					<input type="text" name="name" class="form-control" id="name" placeholder="tên tác giả" value="{{ $author->name }}">
+					<input type="text" name="name" class="form-control" placeholder="tên tác giả" value="{{ $author->name }}">
 				</div>
 				<div class="form-group">
 					<label for="name">Giới tính</label>
@@ -71,15 +71,15 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Facebook</label>
-					<input type="text" name="facebook" class="form-control" id="name" placeholder="facebook" value="{{ $author->facebook }}">
+					<input type="text" name="facebook" class="form-control" placeholder="facebook" value="{{ $author->facebook }}">
 				</div>
 				<div class="form-group">
 					<label for="name">Twitter</label>
-					<input type="text" name="twitter" class="form-control" id="name" placeholder="twitter" value="{{ $author->twitter }}">
+					<input type="text" name="twitter" class="form-control" placeholder="twitter" value="{{ $author->twitter }}">
 				</div>
 				<div class="form-group">
 					<label for="name">Website</label>
-					<input type="text" name="website" class="form-control" id="name" placeholder="website" value="{{ $author->website }}">
+					<input type="text" name="website" class="form-control" placeholder="website" value="{{ $author->website }}">
 				</div>
 				<div class="form-group">
 					<label for="name">Giới thiệu</label>

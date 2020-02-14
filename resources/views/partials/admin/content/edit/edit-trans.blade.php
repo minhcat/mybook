@@ -9,7 +9,7 @@
 			<button type="button" class="btn btn-box-tool" data-remove="collapse"><i class="fa fa-times"></i></button>
 		</div>
 	</div>
-	<form id="create-trans" action="{{ url('/admin/uploader/update_trans/'.$trans->id) }}" method="POST" enctype="multipart/form-data">
+	<form id="create-trans-{{ $trans->id }}" action="{{ url('/admin/uploader/update_trans/'.$trans->id) }}" method="POST" enctype="multipart/form-data">
 		<div class="box-body">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="avatar">
@@ -20,30 +20,30 @@
 				@endif
 				<label class="btn btn-success">
 					Thêm hình
-					<input id="image" type="file" name="image">
+					<input class="image" type="file" name="image">
 				</label>
 				<p class="error hide">Bạn chưa up hình</p>
 			</div>
 			<div class="box-edit">
 				<div class="form-group">
 					<label for="name">Tên nhóm dịch</label>
-					<input type="text" name="name" class="form-control" id="name" placeholder="tên nhóm dịch" value="{{ $trans->name }}">
+					<input type="text" name="name" class="form-control" placeholder="tên nhóm dịch" value="{{ $trans->name }}">
 				</div>
 				<div class="form-group">
 					<label for="name">Trưởng nhóm</label>
-					<input type="text" name="leader" class="form-control" id="name" placeholder="tên trưởng nhóm" value="{{ $trans->leader }}">
+					<input type="text" name="leader" class="form-control" placeholder="tên trưởng nhóm" value="{{ $trans->leader }}">
 				</div>
 				<div class="form-group">
 					<label for="name">Thành viên</label>
-					<input type="text" name="member" class="form-control" id="name" placeholder="tên thành viên" value="{{ $trans->member }}">
+					<input type="text" name="member" class="form-control" placeholder="tên thành viên" value="{{ $trans->member }}">
 				</div>
 				<div class="form-group">
 					<label for="name">Facebook</label>
-					<input type="text" name="facebook" class="form-control" id="name" placeholder="link facebook" value="{{ $trans->facebook }}">
+					<input type="text" name="facebook" class="form-control" placeholder="link facebook" value="{{ $trans->facebook }}">
 				</div>
 				<div class="form-group">
 					<label for="name">Website</label>
-					<input type="text" name="website" class="form-control" id="name" placeholder="link website" value="{{ $trans->website }}">
+					<input type="text" name="website" class="form-control" placeholder="link website" value="{{ $trans->website }}">
 				</div>
 				<div class="form-group">
 					<label for="name">Mô tả</label>

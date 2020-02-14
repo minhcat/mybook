@@ -16,14 +16,14 @@
 				<img src="{{ asset('image/admin/user-default.jpg') }}" class="img-circle" width="150px" height="150px"  alt="user image">
 				<label class="btn btn-success">
 					Thêm hình
-					<input id="image" type="file" name="image">
+					<input class="image" type="file" name="image">
 				</label>
 				<p class="error hide">Bạn chưa up hình</p>
 			</div>
 			<div class="box-new">
 				<div class="form-group name">
 					<label for="name">Tên tác giả</label>
-					<input type="text" class="form-control" id="name" placeholder="nhập tên tác giả" name="name">
+					<input type="text" class="form-control" placeholder="nhập tên tác giả" name="name">
 					<p class="error hide">Bạn chưa nhập tên tác giả</p>
 				</div>
 				<div class="form-group">
@@ -49,15 +49,15 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Facebook</label>
-					<input type="text" class="form-control" id="name" name="facebook" placeholder="nhập facebook">
+					<input type="text" class="form-control" name="facebook" placeholder="nhập facebook">
 				</div>
 				<div class="form-group">
 					<label for="name">Twitter</label>
-					<input type="text" class="form-control" id="name" name="twitter" placeholder="nhập twitter">
+					<input type="text" class="form-control" name="twitter" placeholder="nhập twitter">
 				</div>
 				<div class="form-group">
 					<label for="name">Website</label>
-					<input type="text" class="form-control" id="name" name="website" placeholder="nhập website">
+					<input type="text" class="form-control" name="website" placeholder="nhập website">
 				</div>
 				<div class="form-group">
 					<label for="name">Giới thiệu</label>

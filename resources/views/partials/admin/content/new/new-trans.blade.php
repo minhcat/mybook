@@ -15,30 +15,30 @@
 				<img src="{{ asset('image/admin/group-default.png') }}" class="img-circle" width="150px" height="150px"  alt="user image">
 				<label class="btn btn-success">
 					Thêm hình
-					<input id="image" type="file" name="image">
+					<input class="image" type="file" name="image">
 				</label>
 				<p class="error hide">Bạn chưa up hình</p>
 			</div>
 			<div class="box-new">
 				<div class="form-group">
 					<label for="name">Tên nhóm dịch</label>
-					<input type="text" name="name" class="form-control" id="name" placeholder="tên nhóm dịch">
+					<input type="text" name="name" class="form-control" placeholder="tên nhóm dịch">
 				</div>
 				<div class="form-group">
 					<label for="name">Trưởng nhóm</label>
-					<input type="text" name="leader" class="form-control" id="name" placeholder="tên trưởng nhóm">
+					<input type="text" name="leader" class="form-control" placeholder="tên trưởng nhóm">
 				</div>
 				<div class="form-group">
 					<label for="name">Thành viên</label>
-					<input type="text" name="member" class="form-control" id="name" placeholder="tên thành viên">
+					<input type="text" name="member" class="form-control" placeholder="tên thành viên">
 				</div>
 				<div class="form-group">
 					<label for="name">Facebook</label>
-					<input type="text" name="facebook" class="form-control" id="name" placeholder="tên thành viên">
+					<input type="text" name="facebook" class="form-control" placeholder="tên thành viên">
 				</div>
 				<div class="form-group">
 					<label for="name">Website</label>
-					<input type="text" name="website" class="form-control" id="name" placeholder="tên thành viên">
+					<input type="text" name="website" class="form-control" placeholder="tên thành viên">
 				</div>
 				<div class="form-group">
 					<label for="name">Mô tả</label>

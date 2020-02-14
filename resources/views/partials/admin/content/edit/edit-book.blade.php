@@ -1,6 +1,6 @@
 @foreach ($books_upload as $key => $book)
 <div class="box box-primary collapse book-edit" id="box-book-edit-{{ $book->id }}" aria-expanded="false"  data-with="#box-book-list-small">
-	<form id="update-book" action="{{ url('/admin/uploader/update_book/'.$book->id) }}" method="POST" enctype="multipart/form-data">
+	<form id="update-book-{{ $book->id }}" action="{{ url('/admin/uploader/update_book/'.$book->id) }}" method="POST" enctype="multipart/form-data">
 	<div class="box-header with-border">
 		<h3 class="box-title">{{ $book->name }} - Chỉnh Sửa</h3>
 
@@ -13,10 +13,10 @@
 	<div class="box-body">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<div class="avatar">
-			<img src="{{ asset('image/books/'.$book->image.'.jpg') }}" class="img-circle" width="150px" height="150px" alt="user image">
+			<img src="{{ asset('image/books/'.$book->image) }}" class="img-circle" width="150px" height="150px" alt="user image">
 			<label class="btn btn-success">
 				Thêm hình
-				<input id="image" type="file" name="image">
+				<input class="image" type="file" name="image">
 			</label>
 		</div>
 		<div class="box-edit">
@@ -74,7 +74,7 @@
 			</div>
 			<div class="form-group">
 				<label>Ngày xuất bản</label>
-				<input type="text" name="release_at" class="form-control datepicker-book-edit" id="datepicker-book-edit" value="{{ date_format(date_create($book->create_at), 'd/m/Y') }}">
+				<input type="text" name="release_at" class="form-control datepicker-book-edit" id="datepicker-book-edit-{{ $book->id }}" value="{{ date_format(date_create($book->create_at), 'd/m/Y') }}">
 			</div>
 			<div class="form-group description">
 				<label>Nội dung</label>

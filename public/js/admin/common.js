@@ -59,11 +59,11 @@ $(document).ready(function() {
 		$(box).collapse('hide');
 	});
 	
-	$(document).on('keypress',function(e) {
-		if(e.which == 110) {
-			$('section.content .well').collapse('toggle');
-		}
-	});
+	// $(document).on('keypress',function(e) {
+	// 	if(e.which == 110) { //button "n"
+	// 		$('section.content .well').collapse('toggle');
+	// 	}
+	// });
 	$('.well .btn.btn-close').click(function() {
 		$(this).parent().collapse('hide');
 	});
