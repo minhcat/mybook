@@ -52,11 +52,44 @@ Bạn có thể xem thông tin sách được cập nhật đầy đủ ở đâ
 				<div class="info">
 					<h3>{{ $book->name }}</h3>
 					<div class="star">
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
+						{{-- star 1 --}}
+						@if ($book->rate_point <= 0.5)
 						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 2 --}}
+						@if ($book->rate_point <= 1)
 						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 1.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 3 --}}
+						@if ($book->rate_point <= 2)
+						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 2.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 4 --}}
+						@if ($book->rate_point <= 3)
+						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 3.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
+						{{-- star 5 --}}
+						@if ($book->rate_point <= 4)
+						<span class="fa fa-star-o"></span>
+						@elseif ($book->rate_point <= 4.5)
+						<span class="fa fa-star-half-o"></span>
+						@else
+						<span class="fa fa-star"></span>
+						@endif
 						<span class="rate_point">{{ $book->rate_point }}</span>
 						<span class="rate">{{ $book->rate }}</span> đánh giá
 					</div>

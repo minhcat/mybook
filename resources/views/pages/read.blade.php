@@ -56,7 +56,7 @@
 					<div class="books-slide">
 						@foreach ($random_books as $book)
 						<div class="book-item">
-							<a href="detail-book.html"><img src="{{ asset('image/books/'.$book->image.'.jpg') }}"/></a>
+							<a href="detail-book.html"><img src="{{ asset('image/books/'.$book->image) }}"/></a>
 							<p>{{ $book->name }}</p>
 						</div>
 						@endforeach
