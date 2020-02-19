@@ -77,6 +77,25 @@ $(document).ready(function() {
 		popup.css('left', left_popup + 'px');
 		popup.css('display', 'block');
 	});
+	$('.master-list .show-popup.book').mouseenter(function() {
+		enter_link_book = 1;
+		$('.popup.book').css('display','none');
+		$('.popup.user').css('display','none');
+		$('.popup.char').css('display','none');
+		$('.popup.trans').css('display','none');
+		$('.popup.author').css('display','none');
+
+		var offset = $(this).offset();
+		var id     = $(this).data('id');
+		var popup  = $('.popup.book[data-id="'+id+'"]');
+
+		var top_popup = offset.top - 441.375;
+		var left_popup = offset.left - 1242;
+
+		popup.css('top', top_popup + 'px');
+		popup.css('left', left_popup + 'px');
+		popup.css('display', 'block');
+	});
 	$('.show-popup.book').mouseleave(function() {
 		enter_link_book = 0;
 		setTimeout(
@@ -110,8 +129,8 @@ $(document).ready(function() {
 		var id     = $(this).data('id');
 		var popup = $('.popup.user[data-id="'+id+'"]');
 
-		var top_popup = offset.top - 60;
-		var left_popup = offset.left - 270;
+		var top_popup = offset.top - 438;
+		var left_popup = offset.left - 1250;//270;
 
 		popup.css('top', top_popup + 'px');
 		popup.css('left', left_popup + 'px');

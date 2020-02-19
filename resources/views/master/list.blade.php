@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<section>
+<section class="master-list">
 	@include('partials.common.title')
 
 	<div class="main container">
