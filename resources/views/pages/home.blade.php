@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<section>
+<section class="page-home">
 
 	@include('partials.home.slider')
 

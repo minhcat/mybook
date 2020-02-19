@@ -39,7 +39,7 @@ $(document).ready(function() {
 	var enter_popup_book = 0;
 	var enter_link_book = 0;
 	
-	$('.show-popup.book').mouseenter(function() {
+	$('.page-home .show-popup.book').mouseenter(function() {
 		enter_link_book = 1;
 		$('.popup.book').css('display','none');
 		$('.popup.user').css('display','none');
@@ -52,6 +52,25 @@ $(document).ready(function() {
 		var popup  = $('.popup.book[data-id="'+id+'"]');
 
 		var top_popup = offset.top - 601.375;
+		var left_popup = offset.left - 1242;
+
+		popup.css('top', top_popup + 'px');
+		popup.css('left', left_popup + 'px');
+		popup.css('display', 'block');
+	});
+	$('.master-detail .show-popup.book').mouseenter(function() {
+		enter_link_book = 1;
+		$('.popup.book').css('display','none');
+		$('.popup.user').css('display','none');
+		$('.popup.char').css('display','none');
+		$('.popup.trans').css('display','none');
+		$('.popup.author').css('display','none');
+
+		var offset = $(this).offset();
+		var id     = $(this).data('id');
+		var popup  = $('.popup.book[data-id="'+id+'"]');
+
+		var top_popup = offset.top - 441.375;
 		var left_popup = offset.left - 1242;
 
 		popup.css('top', top_popup + 'px');

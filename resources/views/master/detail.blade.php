@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-<section>
+<section class="master-detail">
 	@include('partials.common.title')
 	<div class="main container notlogin">
 		<div class="row">
